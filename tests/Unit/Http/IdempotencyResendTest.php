@@ -89,4 +89,21 @@ final class IdempotencyResendTest extends TestCase
         self::assertSame(ApiException::IDEMPOTENCY_KEY_IN_USE, $harness->listener->after[0][2]?->errorCode);
         self::assertSame(200, $harness->listener->after[1][1]?->status);
     }
+
+    public function testResendsOnlyOnA409(): void
+    {
+        $harness = new Harness();
+        $harness->answer(401, self::IN_USE);
+        $harness->answer(200);
+
+        try {
+            $harness->pixonaut->call('designs.commit', ['id' => 'd_1'], [], []);
+            self::fail('Expected the 401.');
+        } catch (ApiException $e) {
+            self::assertSame(401, $e->status);
+        }
+        self::assertCount(1, $harness->sent());
+        self::assertSame([], $harness->sleeps);
+        self::assertCount(1, $harness->listener->unauthorized);
+    }
 }

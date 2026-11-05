@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Tests\Unit\Http;
 
 use Http\Client\Exception\NetworkException;
+use Http\Message\RequestMatcher\CallbackRequestMatcher;
 use Nyholm\Psr7\Request;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -12,6 +13,7 @@ use Pixonaut\Sdk\Credentials\StaticCredentials;
 use Pixonaut\Sdk\Exception\ApiException;
 use Pixonaut\Sdk\Exception\IdempotencyBugException;
 use Pixonaut\Sdk\Tests\Unit\Support\Harness;
+use Psr\Http\Message\RequestInterface;
 
 final class ErrorMappingTest extends TestCase
 {
@@ -155,6 +157,69 @@ final class ErrorMappingTest extends TestCase
         }
         self::assertSame(['before designs.get', 'after designs.get'], $harness->listener->calls);
         self::assertSame([], $harness->logger->records);
+    }
+
+    public function testTheListenerNeverSeesTheRequestATransportFailureCarries(): void
+    {
+        $harness = new Harness();
+        $harness->http->on(
+            new CallbackRequestMatcher(static fn(): bool => true),
+            static function (RequestInterface $request): never {
+                throw new NetworkException('Connection refused', $request);
+            },
+        );
+
+        try {
+            $harness->pixonaut->call('designs.get', ['id' => 'd_1']);
+            self::fail('Expected transport_failed.');
+        } catch (ApiException $e) {
+            $previous = $e->getPrevious();
+            self::assertInstanceOf(NetworkException::class, $previous);
+            self::assertSame('Bearer ' . Harness::INTEGRATION_KEY, $previous->getRequest()->getHeaderLine('Authorization'));
+        }
+        $seen = $harness->listener->after[0][2];
+        self::assertInstanceOf(ApiException::class, $seen);
+        self::assertSame(ApiException::TRANSPORT_FAILED, $seen->errorCode);
+        self::assertNull($seen->getPrevious());
+    }
+
+    /**
+     * @return iterable<string, array{string}>
+     */
+    public static function undecodableJson(): iterable
+    {
+        yield 'HTML' => ['<html>busy</html>'];
+        yield 'truncated' => ['{"id":'];
+    }
+
+    #[DataProvider('undecodableJson')]
+    public function testASuccessThatIsNotJsonIsAnUnexpectedResponse(string $body): void
+    {
+        $harness = new Harness();
+        $harness->answer(200, $body);
+        $request = $harness->pixonaut->prepare('designs.get', ['id' => 'd_1']);
+
+        foreach (['send', 'handle'] as $path) {
+            try {
+                $path === 'send'
+                    ? $harness->pixonaut->send($request)
+                    : $harness->pixonaut->handle($request, new \Nyholm\Psr7\Response(200, [], $body));
+                self::fail('Expected unexpected_response.');
+            } catch (ApiException $e) {
+                self::assertSame(ApiException::UNEXPECTED_RESPONSE, $e->errorCode);
+                self::assertSame(200, $e->status);
+            }
+        }
+        self::assertNull($harness->listener->after[0][1]);
+        self::assertSame(ApiException::UNEXPECTED_RESPONSE, $harness->listener->after[0][2]?->errorCode);
+    }
+
+    public function testAnEmptySuccessIsAResult(): void
+    {
+        $harness = new Harness();
+        $harness->answer(204, '');
+
+        self::assertSame(204, $harness->pixonaut->call('designs.get', ['id' => 'd_1'])->status);
     }
 
     public function testASensitiveOperationKeepsNoDetails(): void

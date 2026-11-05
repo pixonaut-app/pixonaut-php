@@ -57,6 +57,9 @@ final class Pixonaut
 
     private const UNAUTHORIZED_STATUS = 401;
 
+    /** The status Pixonaut answers `idempotency_key_in_use` with. */
+    private const CONFLICT_STATUS = 409;
+
     private const SUCCESS_MIN = 200;
 
     private const SUCCESS_MAX = 299;
@@ -152,7 +155,8 @@ final class Pixonaut
                 $response = $this->client->sendRequest($psr);
             } catch (ClientExceptionInterface $failure) {
                 $error = ErrorMapper::transportFailed($operation, $failure);
-                $this->listener->after($request, null, $error);
+                // The PSR-18 exception may carry the request, credential included.
+                $this->listener->after($request, null, ErrorMapper::withoutPrevious($error));
                 throw $this->raise($error);
             }
 
@@ -161,7 +165,8 @@ final class Pixonaut
                 return $outcome;
             }
             if (
-                $outcome->errorCode === ApiException::IDEMPOTENCY_KEY_IN_USE
+                $outcome->status === self::CONFLICT_STATUS
+                && $outcome->errorCode === ApiException::IDEMPOTENCY_KEY_IN_USE
                 && $request->idempotencyKey !== null
                 && $resends < self::MAX_IN_USE_RESENDS
             ) {
@@ -347,6 +352,12 @@ final class Pixonaut
         $deprecation = $this->deprecation($operation, $headers);
 
         if ($status >= self::SUCCESS_MIN && $status <= self::SUCCESS_MAX) {
+            if ($operation->accept === Operation::JSON && $body !== '' && !self::isJson($body)) {
+                $error = (new Result($operation->id, $status, $headers, $body, $deprecation, $operation->sensitive))->unexpected();
+                $this->listener->after($request, null, $error);
+
+                return $error;
+            }
             $result = new Result($operation->id, $status, $headers, $body, $deprecation, $operation->sensitive);
             $this->listener->after($request, $result, null);
 
@@ -357,6 +368,13 @@ final class Pixonaut
         $this->listener->after($request, null, $error);
 
         return $error;
+    }
+
+    private static function isJson(string $body): bool
+    {
+        json_decode($body);
+
+        return json_last_error() === JSON_ERROR_NONE;
     }
 
     /**

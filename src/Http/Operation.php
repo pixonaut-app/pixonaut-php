@@ -41,18 +41,29 @@ final class Operation
 
     /**
      * Whether a request target (path and query) is one of this operation's
-     * paths: each `{name}` stands for one non-empty path segment, and
-     * nothing in it is a control character or a space.
+     * paths: each `{name}` stands for one non-empty path segment that is
+     * not a dot segment, and nothing in it is a control character or a space.
      */
     public function matches(string $target): bool
     {
         $segments = preg_split('/(\{[^}]+\})/', $this->path, -1, PREG_SPLIT_DELIM_CAPTURE);
         $pattern = '';
         foreach ($segments === false ? [] : $segments as $segment) {
-            $pattern .= str_starts_with($segment, '{') ? '[^/?#\x00-\x20\x7f]+' : preg_quote($segment, '~');
+            $pattern .= str_starts_with($segment, '{') ? '([^/?#\x00-\x20\x7f]+)' : preg_quote($segment, '~');
+        }
+        if (preg_match('~^' . $pattern . '(?:\?[^#\x00-\x20\x7f]*)?\z~', $target, $match) !== 1) {
+            return false;
+        }
+        array_shift($match);
+        foreach ($match as $value) {
+            // A dot segment, encoded or not, points the request at another
+            // path once an HTTP stack resolves it.
+            if (in_array(rawurldecode($value), ['.', '..'], true)) {
+                return false;
+            }
         }
 
-        return preg_match('~^' . $pattern . '(\?[^#\x00-\x20\x7f]*)?\z~', $target) === 1;
+        return true;
     }
 
     public function accepts(Credential $credential): bool

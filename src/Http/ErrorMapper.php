@@ -78,6 +78,15 @@ final class ErrorMapper
     }
 
     /**
+     * The same error without its cause, for a listener: a PSR-18 exception
+     * may carry the request, and with it the credential.
+     */
+    public static function withoutPrevious(ApiException $error): ApiException
+    {
+        return new ApiException($error->operation, $error->status, $error->errorCode, $error->retryable, $error->retryAfter, $error->requestId, $error->details);
+    }
+
+    /**
      * @return array{body: string}
      */
     public static function excerpt(string $body): array

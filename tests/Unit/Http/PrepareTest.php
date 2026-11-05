@@ -198,6 +198,8 @@ final class PrepareTest extends TestCase
         yield 'key on a non-idempotent operation' => [new PreparedRequest('designs.get', '/v1/designs/d_1', null, 'k')];
         yield 'bad key' => [new PreparedRequest('designs.commit', '/v1/designs/d_1/commit', '{}', "k\n")];
         yield 'unknown operation' => [new PreparedRequest('nope', '/v1/nope')];
+        yield 'dot segment' => [new PreparedRequest('designs.get', '/v1/designs/..')];
+        yield 'encoded dot segment' => [new PreparedRequest('designs.commit', '/v1/designs/%2e%2E/commit', '{}', 'k')];
         yield 'extra segment' => [new PreparedRequest('designs.get', '/v1/designs/d_1/x')];
     }
 

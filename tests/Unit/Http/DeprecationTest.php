@@ -65,4 +65,24 @@ final class DeprecationTest extends TestCase
 
         self::assertCount(1, $harness->listener->deprecations);
     }
+
+    public function testATimestampOutOfRangeIsKeptRawAndTheResponseStillMapped(): void
+    {
+        $overflow = '@' . str_repeat('9', 30);
+        $harness = new Harness();
+        $harness->answer(200, '{}', ['Deprecation' => $overflow]);
+        $harness->answer(404, '{"error":"not_found"}', ['Deprecation' => $overflow]);
+
+        $deprecation = $harness->pixonaut->call('designs.get', ['id' => 'd_1'])->deprecation;
+        try {
+            $harness->pixonaut->call('designs.get', ['id' => 'd_1']);
+            self::fail('Expected not_found.');
+        } catch (ApiException $e) {
+            self::assertSame('not_found', $e->errorCode);
+        }
+
+        self::assertNull($deprecation?->deprecated);
+        self::assertSame($overflow, $deprecation?->header);
+        self::assertCount(2, $harness->listener->after);
+    }
 }

@@ -12,6 +12,9 @@ use DateTimeImmutable;
  */
 final class Deprecation
 {
+    /** Unix seconds up to the year 33658, far past any sunset and well inside a 64-bit date. */
+    private const MAX_TIMESTAMP_DIGITS = 12;
+
     /**
      * @param string                 $operation  Operation id.
      * @param string                 $header     The `Deprecation` header as sent.
@@ -30,7 +33,8 @@ final class Deprecation
     public static function fromHeaders(string $operation, string $deprecation, ?string $sunset): self
     {
         $deprecated = null;
-        if (preg_match('/^@(\d+)\z/', trim($deprecation), $match) === 1) {
+        // A longer number is out of the range a date holds: kept as the raw header only.
+        if (preg_match('/^@(\d{1,' . self::MAX_TIMESTAMP_DIGITS . '})\z/', trim($deprecation), $match) === 1) {
             $deprecated = new DateTimeImmutable('@' . $match[1]);
         }
 
