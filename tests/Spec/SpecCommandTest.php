@@ -15,6 +15,8 @@ final class SpecCommandTest extends TestCase
 {
     private const PINNED_FILES = ['openapi.json', 'webhook-signature-vectors.json', 'spec.lock.json'];
 
+    private const PINNED_FILES_SORTED = ['openapi.json', 'spec.lock.json', 'webhook-signature-vectors.json'];
+
     private const VECTORS = '{"vectors":[]}';
 
     private string $directory;
@@ -55,7 +57,7 @@ final class SpecCommandTest extends TestCase
             'sha256' => hash('sha256', self::specJson('1.0.0')),
             'webhookSignatureVectors' => ['sha256' => hash('sha256', self::VECTORS)],
         ], json_decode($this->read('spec.lock.json'), true));
-        self::assertSame([], glob($this->directory . '/*.partial'));
+        self::assertSame(self::PINNED_FILES_SORTED, $this->listing());
     }
 
     public function testPinningThePinnedReleaseAgainChangesNoByte(): void
@@ -102,6 +104,23 @@ final class SpecCommandTest extends TestCase
 
         self::assertSame($before, $this->snapshot());
         self::assertStringContainsString('answered 503', $this->lastLine());
+    }
+
+    public function testAFailedReplacementPutsBackTheFilesAlreadyReplaced(): void
+    {
+        $this->binSpec('pin', '1.0.0');
+        $before = $this->snapshot();
+        // The vectors cannot be moved aside, after the spec was replaced.
+        $blocked = $this->directory . '/webhook-signature-vectors.json.previous';
+        mkdir($blocked);
+        touch($blocked . '/occupied');
+
+        self::assertSame(SpecCommand::EXIT_FAILED, $this->binSpec('pin', '1.1.0'));
+
+        unlink($blocked . '/occupied');
+        rmdir($blocked);
+        self::assertSame($before, $this->snapshot());
+        self::assertSame(self::PINNED_FILES_SORTED, $this->listing());
     }
 
     public function testABodyThatIsNotJsonIsRefused(): void
@@ -253,6 +272,14 @@ final class SpecCommandTest extends TestCase
         }
 
         return $files;
+    }
+
+    /**
+     * @return list<string> The directory's entries, sorted.
+     */
+    private function listing(): array
+    {
+        return array_values(array_diff(scandir($this->directory) ?: [], ['.', '..']));
     }
 
     private function lastLine(): string

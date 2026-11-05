@@ -83,12 +83,14 @@ final class SpecFiles
 
     /**
      * Writes `$release` and its lock. Every file is written beside its target
-     * first and then renamed into place, the lock last, so an interrupted
-     * write never leaves a lock vouching for a file it does not describe.
+     * first and then renamed into place, the lock last. When a rename fails,
+     * the files already replaced are put back, so the previous pin stays
+     * whole; an interrupted process at worst leaves a lock that no longer
+     * matches, which `check` reports.
      */
     public function write(Release $release): void
     {
-        if (!is_dir($this->directory) && !mkdir($this->directory, 0o777, true) && !is_dir($this->directory)) {
+        if (!is_dir($this->directory) && !@mkdir($this->directory, 0o777, true) && !is_dir($this->directory)) {
             throw new SpecException("Could not create {$this->directory}.");
         }
 
@@ -97,17 +99,57 @@ final class SpecFiles
             Cdn::VECTORS_FILE => $release->vectors,
             self::LOCK_FILE => SpecLock::forRelease($release)->toJson(),
         ];
+        /** @var array<string, string> $staged partial file => target */
         $staged = [];
-        foreach ($files as $name => $bytes) {
-            $partial = $this->path($name) . '.partial';
-            if (file_put_contents($partial, $bytes) !== strlen($bytes)) {
-                throw new SpecException("Could not write {$partial}.");
+        /** @var array<string, string|null> $replaced target => its backup, null when it did not exist */
+        $replaced = [];
+        try {
+            foreach ($files as $name => $bytes) {
+                $partial = $this->path($name) . '.partial';
+                $staged[$partial] = $this->path($name);
+                if (@file_put_contents($partial, $bytes) !== strlen($bytes)) {
+                    throw new SpecException("Could not write {$partial}.");
+                }
             }
-            $staged[$partial] = $this->path($name);
+            foreach ($staged as $partial => $target) {
+                $backup = null;
+                if (file_exists($target)) {
+                    $backup = $target . '.previous';
+                    if (!@rename($target, $backup)) {
+                        throw new SpecException("Could not move {$target} aside to {$backup}.");
+                    }
+                }
+                $replaced[$target] = $backup;
+                if (!@rename($partial, $target)) {
+                    throw new SpecException("Could not move {$partial} to {$target}.");
+                }
+            }
+        } catch (SpecException $exception) {
+            self::restore($replaced);
+
+            throw $exception;
+        } finally {
+            foreach ([...array_keys($staged), ...array_filter($replaced)] as $leftover) {
+                if (is_file($leftover)) {
+                    @unlink($leftover);
+                }
+            }
         }
-        foreach ($staged as $partial => $target) {
-            if (!rename($partial, $target)) {
-                throw new SpecException("Could not move {$partial} to {$target}.");
+    }
+
+    /**
+     * Puts back the targets `write()` had replaced, newest first.
+     *
+     * @param array<string, string|null> $replaced target => its backup
+     */
+    private static function restore(array $replaced): void
+    {
+        foreach (array_reverse($replaced, true) as $target => $backup) {
+            if (is_file($target)) {
+                @unlink($target);
+            }
+            if ($backup !== null) {
+                @rename($backup, $target);
             }
         }
     }
