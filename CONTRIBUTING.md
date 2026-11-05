@@ -32,6 +32,7 @@ bin/spec pin <version>   # pin another release from https://cdn.pixonaut.app/api
 bin/spec pin             # pin the pinned release again: changes nothing
 bin/spec check           # the files hash to the lock (offline; part of `composer check`)
 bin/spec check --online  # and the CDN still serves the same release
+bin/spec diff [<old>]    # oasdiff from <old> (default: the spec a pin replaced) to the pinned spec
 ```
 
 Change the files in `spec/` only with `bin/spec pin`: a pull request runs
@@ -39,7 +40,9 @@ Change the files in `spec/` only with `bin/spec pin`: a pull request runs
 holds them to the release's `integrity.json` before writing anything, so a
 failed pin leaves the previous one in place. After a pin to another version
 it prints oasdiff's changelog between the two specs, breaking changes first,
-and says whether the next SDK release must be a major. Commit the new pin
+and says whether the next SDK release must be a major.
+If that comparison fails, the replaced spec is kept and `bin/spec diff`
+runs it again. Commit the new pin
 together with the regenerated SDK.
 
 A scheduled workflow runs `bin/spec check --online` weekly.

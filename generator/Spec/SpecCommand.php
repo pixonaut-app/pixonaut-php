@@ -24,6 +24,7 @@ final class SpecCommand
         Usage:
           bin/spec pin [<version>] [--cdn <origin>]
           bin/spec check [--online] [--cdn <origin>]
+          bin/spec diff [<old-spec>]
         TXT;
 
     /** @var Closure(string): void */

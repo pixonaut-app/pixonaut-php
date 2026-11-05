@@ -3,8 +3,10 @@
 #
 #   bin/spec pin [<version>] [--cdn <origin>]   pin a release from the CDN
 #   bin/spec check [--online] [--cdn <origin>]  check the pinned files
+#   bin/spec diff [<old-spec>]                  what the pinned spec changes
+#                                               against <old-spec>
 #
-# The commands run in the package's PHP container (generator/spec.php). After
+# pin and check run in the package's PHP container (generator/spec.php). After
 # a pin to another version, oasdiff, from its Docker image pinned by digest,
 # prints what the new spec changes for SDK users, breaking changes first.
 set -euo pipefail
@@ -17,41 +19,79 @@ oasdiff_image='tufin/oasdiff:v1.34.1@sha256:67a23cfea7d251e2ae34ee703ac8733c5d96
 # The exit status oasdiff gives when `--fail-on` finds a change at that level.
 oasdiff_found=1
 
-if [ "${1:-}" != "pin" ]; then
-    exec "${run}" php generator/spec.php "$@"
-fi
-
-# Where the pin leaves the spec it replaced, relative to the checkout (the
-# container's working directory), when the pin moves to another version.
+# Where a pin to another version leaves the spec it replaced, relative to the
+# checkout (the container's working directory). It stays until `diff` has
+# compared it, so a failed comparison can be run again.
 previous='.cache/spec/previous-openapi.json'
-mkdir -p "${root}/.cache/spec"
-rm -f "${root}/${previous}"
-trap 'rm -f "${root}/${previous}"' EXIT
 
-"${run}" php generator/spec.php "$@" --previous-out "${previous}"
+# Prints oasdiff's changelog from the spec at $1 (relative to the checkout)
+# to the pinned one, and what it means for the next SDK release.
+compare() {
+    echo
+    echo 'What the new spec changes for SDK users:'
+    local status=0
+    docker run --rm --network none \
+        --volume "${root}:/app:ro" \
+        --workdir /app \
+        "${oasdiff_image}" \
+        changelog "$1" spec/openapi.json \
+        --color never --allow-external-refs=false --fail-on ERR \
+        || status=$?
 
-if [ ! -f "${root}/${previous}" ]; then
-    exit 0
-fi
+    echo
+    case "${status}" in
+        0) echo 'No breaking changes: the next SDK release can be a minor or a patch.' ;;
+        "${oasdiff_found}") echo 'Breaking changes: the next SDK release must be a major.' ;;
+        *)
+            echo "oasdiff failed (exit ${status})." >&2
+            return "${status}"
+            ;;
+    esac
+    echo 'Regenerate the SDK from the new spec, and commit the pin and the generated code together.'
+}
 
-echo
-echo 'What the new spec changes for SDK users:'
-status=0
-docker run --rm --network none \
-    --volume "${root}:/app:ro" \
-    --workdir /app \
-    "${oasdiff_image}" \
-    changelog "${previous}" spec/openapi.json \
-    --color never --allow-external-refs=false --fail-on ERR \
-    || status=$?
-
-echo
-case "${status}" in
-    0) echo 'No breaking changes: the next SDK release can be a minor or a patch.' ;;
-    "${oasdiff_found}") echo 'Breaking changes: the next SDK release must be a major.' ;;
+case "${1:-}" in
+    pin)
+        if [ -f "${root}/${previous}" ]; then
+            echo "The comparison of an earlier pin is pending: run bin/spec diff first." >&2
+            exit 1
+        fi
+        # Fetched before anything is pinned, so a registry failure changes nothing.
+        docker image inspect "${oasdiff_image}" >/dev/null 2>&1 \
+            || docker pull --quiet "${oasdiff_image}" >/dev/null
+        mkdir -p "${root}/.cache/spec"
+        "${run}" php generator/spec.php "$@" --previous-out "${previous}"
+        if [ ! -f "${root}/${previous}" ]; then
+            exit 0
+        fi
+        if ! compare "${previous}"; then
+            echo "The previous spec is kept at ${previous}; run bin/spec diff to compare again." >&2
+            exit 1
+        fi
+        rm -f "${root}/${previous}"
+        ;;
+    diff)
+        if [ $# -gt 2 ]; then
+            echo 'Usage: bin/spec diff [<old-spec>]' >&2
+            exit 2
+        fi
+        if [ $# -eq 2 ]; then
+            # oasdiff reads it inside the container, through the checkout.
+            old="$(realpath --relative-to="${root}" "$2")"
+            case "${old}" in
+                ../*) echo "bin/spec diff: $2 is not inside the checkout." >&2; exit 2 ;;
+            esac
+            compare "${old}"
+        else
+            if [ ! -f "${root}/${previous}" ]; then
+                echo "No earlier spec to compare: name one, e.g. bin/spec diff old-openapi.json." >&2
+                exit 2
+            fi
+            compare "${previous}"
+            rm -f "${root}/${previous}"
+        fi
+        ;;
     *)
-        echo "oasdiff failed (exit ${status}); compare the specs before releasing." >&2
-        exit "${status}"
+        exec "${run}" php generator/spec.php "$@"
         ;;
 esac
-echo 'Regenerate the SDK from the new spec, and commit the pin and the generated code together.'
