@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+# The pinned API spec in spec/.
+#
+#   bin/spec pin [<version>] [--cdn <origin>]   pin a release from the CDN
+#   bin/spec check [--online] [--cdn <origin>]  check the pinned files
+#
+# The commands run in the package's PHP container (generator/spec.php). After
+# a pin to another version, oasdiff, from its Docker image pinned by digest,
+# prints what the new spec changes for SDK users, breaking changes first.
+set -euo pipefail
+
+root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+run="${root}/bin/docker-run"
+
+# oasdiff v1.34.1. To move it, change the tag and the digest together.
+oasdiff_image='tufin/oasdiff:v1.34.1@sha256:67a23cfea7d251e2ae34ee703ac8733c5d96bc2e7b90fd0f4d475ec99367b85f'
+# The exit status oasdiff gives when `--fail-on` finds a change at that level.
+oasdiff_found=1
+
+if [ "${1:-}" != "pin" ]; then
+    exec "${run}" php generator/spec.php "$@"
+fi
+
+# Where the pin leaves the spec it replaced, relative to the checkout (the
+# container's working directory), when the pin moves to another version.
+previous='.cache/spec/previous-openapi.json'
+mkdir -p "${root}/.cache/spec"
+rm -f "${root}/${previous}"
+trap 'rm -f "${root}/${previous}"' EXIT
+
+"${run}" php generator/spec.php "$@" --previous-out "${previous}"
+
+if [ ! -f "${root}/${previous}" ]; then
+    exit 0
+fi
+
+echo
+echo 'What the new spec changes for SDK users:'
+status=0
+docker run --rm --network none \
+    --volume "${root}:/app:ro" \
+    --workdir /app \
+    "${oasdiff_image}" \
+    changelog "${previous}" spec/openapi.json \
+    --color never --allow-external-refs=false --fail-on ERR \
+    || status=$?
+
+echo
+case "${status}" in
+    0) echo 'No breaking changes: the next SDK release can be a minor or a patch.' ;;
+    "${oasdiff_found}") echo 'Breaking changes: the next SDK release must be a major.' ;;
+    *)
+        echo "oasdiff failed (exit ${status}); compare the specs before releasing." >&2
+        exit "${status}"
+        ;;
+esac
+echo 'Regenerate the SDK from the new spec, and commit the pin and the generated code together.'

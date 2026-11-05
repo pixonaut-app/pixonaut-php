@@ -49,6 +49,7 @@ jobs:
           persist-credentials: false
       - run: bin/composer validate --strict
       - run: bin/composer install --no-interaction --no-progress
+      - run: bin/spec check
       - run: bin/composer lint
       - run: bin/composer analyse
       - run: bin/composer test:unit

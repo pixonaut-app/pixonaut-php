@@ -12,6 +12,7 @@
     <testsuites>
         <testsuite name="unit">
             <directory>tests/Guard</directory>
+            <directory>tests/Spec</directory>
         </testsuite>
     </testsuites>
     <source>

@@ -1,5 +1,8 @@
 * text=auto eol=lf
 
+# The pinned release, byte for byte: spec.lock.json holds its sha256.
+/spec/** -text
+
 # The dist archive Composer installs holds the runtime only.
 /.cache export-ignore
 /.github export-ignore

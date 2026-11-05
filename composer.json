@@ -18,6 +18,7 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.95",
+        "guzzlehttp/guzzle": "^7.9",
         "nikic/php-parser": "^5.0",
         "nyholm/psr7": "^1.8",
         "php-http/mock-client": "^1.6",
@@ -50,8 +51,10 @@
         "analyse": "phpstan analyse --no-progress",
         "lint": "php-cs-fixer check --diff",
         "format": "php-cs-fixer fix",
+        "spec:check": "@php generator/spec.php check",
         "check": [
             "@composer validate --strict",
+            "@spec:check",
             "@lint",
             "@analyse",
             "@test"
@@ -63,6 +66,7 @@
         "analyse": "Run PHPStan.",
         "lint": "Check the code style without changing files.",
         "format": "Fix the code style.",
+        "spec:check": "Check the pinned spec against its lock, offline.",
         "check": "Run everything a pull request runs."
     }
 }

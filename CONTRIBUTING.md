@@ -20,6 +20,30 @@ file is resolved for it. `PHP_VERSION=<version>` selects another
 `php:<version>-cli` image; pull requests run the checks on 8.1 and on the
 newest stable PHP.
 
+## The API spec
+
+The SDK is built from one published release of the Pixonaut API. `spec/`
+holds a copy of that release's `openapi.json` and
+`webhook-signature-vectors.json`, and `spec/spec.lock.json` names the
+version and the sha256 of both files.
+
+```sh
+bin/spec pin <version>   # pin another release from https://cdn.pixonaut.app/api/<version>/
+bin/spec pin             # pin the pinned release again: changes nothing
+bin/spec check           # the files hash to the lock (offline; part of `composer check`)
+bin/spec check --online  # and the CDN still serves the same release
+```
+
+Change the files in `spec/` only with `bin/spec pin`: a pull request runs
+`bin/spec check`, which fails on a hand edit. A pin downloads both files and
+holds them to the release's `integrity.json` before writing anything, so a
+failed pin leaves the previous one in place. After a pin to another version
+it prints oasdiff's changelog between the two specs, breaking changes first,
+and says whether the next SDK release must be a major. Commit the new pin
+together with the regenerated SDK.
+
+A scheduled workflow runs `bin/spec check --online` weekly.
+
 ## Commits
 
 Commits follow [Conventional Commits](https://www.conventionalcommits.org/):
