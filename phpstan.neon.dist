@@ -1,0 +1,8 @@
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+    excludePaths:
+        # Deliberately bad code the guard test is run against.
+        - tests/Guard/fixtures

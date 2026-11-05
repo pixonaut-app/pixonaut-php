@@ -1,0 +1,54 @@
+name: Pull request
+
+# Everything a pull request runs, on GitHub-hosted runners with read-only
+# contents and no secrets, so a fork's pull request runs it too. The checks
+# run through the same Docker wrappers as locally, on the minimum PHP and on
+# the newest stable PHP.
+on:
+  pull_request:
+    # `edited` re-runs the title check when only the title changes.
+    types: [opened, synchronize, reopened, edited]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pull-request-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  title:
+    name: Conventional Commits title
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check the title
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          pattern='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z0-9._/-]+\))?!?: [^ ].*$'
+          if ! printf '%s' "$TITLE" | grep -Eq "$pattern"; then
+            echo "::error::The pull request title is not a Conventional Commits subject, e.g. 'fix(client): retry on 503'. It becomes the squash commit and the changelog entry."
+            exit 1
+          fi
+
+  check:
+    name: PHP ${{ matrix.php }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        # The minimum the package supports, and the newest stable PHP.
+        php: ['8.1', '8.5']
+    env:
+      PHP_VERSION: ${{ matrix.php }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: bin/composer validate --strict
+      - run: bin/composer install --no-interaction --no-progress
+      - run: bin/composer lint
+      - run: bin/composer analyse
+      - run: bin/composer test:unit

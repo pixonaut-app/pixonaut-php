@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# PHP in the package's container (docker/php/Dockerfile).
+exec "$(dirname "${BASH_SOURCE[0]}")/docker-run" php "$@"

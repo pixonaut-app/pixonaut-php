@@ -1,0 +1,40 @@
+# Contributing
+
+## Running the checks
+
+The host needs Docker and nothing else. `bin/composer` runs Composer, and
+`bin/php` runs PHP, in a container built from `docker/php/Dockerfile` with
+the checkout mounted at `/app`.
+
+```sh
+bin/composer install
+bin/composer check       # validate, lint, analyse, test: what a pull request runs
+bin/composer test:unit   # the unit tests
+bin/composer analyse     # PHPStan, level max
+bin/composer lint        # PHP-CS-Fixer (PER-CS 2.0), without changing files
+bin/composer format      # PHP-CS-Fixer, fixing files
+```
+
+The container runs PHP 8.1, the minimum the package supports, and the lock
+file is resolved for it. `PHP_VERSION=<version>` selects another
+`php:<version>-cli` image; pull requests run the checks on 8.1 and on the
+newest stable PHP.
+
+## Commits
+
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/):
+`type(scope): subject`, with `feat`, `fix`, `perf`, `refactor`, `docs`,
+`test`, `build`, `ci`, `chore`, `style` or `revert` as the type. Pull requests
+are squash-merged, so the pull request title becomes the commit on `main`;
+a check refuses a title that is not a Conventional Commits subject.
+
+Mark a breaking change with `!` after the type (`feat!: drop PHP 8.1`) or a
+`BREAKING CHANGE:` footer. Release-please reads these commits to choose the
+next version and write `CHANGELOG.md`.
+
+## Prefixing
+
+Integrations prefix the package with Strauss or PHP-Scoper, which rewrite
+class names they can see in the source. Code in `src/` names every class
+statically: no `new $class`, no `$class::method()`, no class name in a string.
+`tests/Guard/NoDynamicClassNamesTest.php` enforces it.

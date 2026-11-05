@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# Runs a command in the package's PHP image with the checkout mounted at /app,
+# so the host needs Docker and nothing else. PHP_VERSION picks the image's
+# php:<version>-cli base (default 8.1, the package's minimum).
+set -euo pipefail
+
+root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+php_version="${PHP_VERSION:-8.1}"
+image="pixonaut-php-dev:${php_version}"
+
+docker build --quiet \
+    --build-arg "PHP_VERSION=${php_version}" \
+    --tag "${image}" \
+    "${root}/docker/php" >/dev/null
+
+# Rootless Docker already maps the container's root to the host user; a
+# rootful daemon needs the host uid, or the files written to the checkout
+# end up owned by root.
+user_args=()
+if ! docker info --format '{{.SecurityOptions}}' 2>/dev/null | grep -q rootless; then
+    user_args=(--user "$(id -u):$(id -g)")
+fi
+
+tty_args=()
+if [ -t 0 ] && [ -t 1 ]; then
+    tty_args=(--interactive --tty)
+fi
+
+exec docker run --rm \
+    "${user_args[@]}" \
+    "${tty_args[@]}" \
+    --volume "${root}:/app" \
+    --workdir /app \
+    --env HOME=/tmp \
+    --env COMPOSER_HOME=/tmp/composer \
+    --env COMPOSER_CACHE_DIR=/app/.cache/composer \
+    --env COMPOSER_ROOT_VERSION="${COMPOSER_ROOT_VERSION:-dev-main}" \
+    "${image}" \
+    "$@"
