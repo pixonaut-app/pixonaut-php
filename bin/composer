@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Composer (from the composer:2 image) in the package's PHP container.
+exec "$(dirname "${BASH_SOURCE[0]}")/docker-run" composer "$@"

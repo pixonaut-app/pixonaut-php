@@ -1,0 +1,68 @@
+{
+    "name": "pixonaut/pixonaut-php",
+    "description": "PHP SDK for the Pixonaut public API.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["pixonaut", "sdk", "api", "psr-18"],
+    "homepage": "https://github.com/pixonaut-app/pixonaut-php",
+    "support": {
+        "issues": "https://github.com/pixonaut-app/pixonaut-php/issues",
+        "source": "https://github.com/pixonaut-app/pixonaut-php"
+    },
+    "require": {
+        "php": ">=8.1",
+        "psr/http-client": "^1.0",
+        "psr/http-factory": "^1.0",
+        "psr/http-message": "^1.1 || ^2.0",
+        "psr/log": "^1.1 || ^2.0 || ^3.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "nikic/php-parser": "^5.0",
+        "nyholm/psr7": "^1.8",
+        "php-http/mock-client": "^1.6",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^10.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pixonaut\\Sdk\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pixonaut\\Sdk\\Tests\\": "tests/",
+            "Pixonaut\\Sdk\\Generator\\": "generator/"
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "8.1.0"
+        },
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": false
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:unit": "phpunit --testsuite unit",
+        "analyse": "phpstan analyse --no-progress",
+        "lint": "php-cs-fixer check --diff",
+        "format": "php-cs-fixer fix",
+        "check": [
+            "@composer validate --strict",
+            "@lint",
+            "@analyse",
+            "@test"
+        ]
+    },
+    "scripts-descriptions": {
+        "test": "Run every test suite.",
+        "test:unit": "Run the unit tests.",
+        "analyse": "Run PHPStan.",
+        "lint": "Check the code style without changing files.",
+        "format": "Fix the code style.",
+        "check": "Run everything a pull request runs."
+    }
+}
