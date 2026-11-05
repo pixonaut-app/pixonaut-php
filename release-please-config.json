@@ -6,7 +6,10 @@
             "package-name": "pixonaut/pixonaut-php",
             "include-component-in-tag": false,
             "initial-version": "1.0.0",
-            "changelog-path": "CHANGELOG.md"
+            "changelog-path": "CHANGELOG.md",
+            "extra-files": [
+                "src/Pixonaut.php"
+            ]
         }
     }
 }
