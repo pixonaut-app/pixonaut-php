@@ -3,6 +3,12 @@ name: Release please
 # Opens or updates the release pull request from the Conventional Commits on
 # main; merging it tags the version and creates the GitHub Release. The only
 # workflow with write access, and only in its one job.
+#
+# A pull request opened with the default GITHUB_TOKEN starts no workflows, so
+# the release pull request would get no checks. Set the RELEASE_PLEASE_TOKEN
+# secret (a GitHub App token or fine-grained token with contents and pull
+# requests write on this repository) to have them run; without it the
+# workflow falls back to GITHUB_TOKEN.
 on:
   push:
     branches: [main]
@@ -25,3 +31,4 @@ jobs:
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
