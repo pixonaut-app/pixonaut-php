@@ -36,5 +36,14 @@ next version and write `CHANGELOG.md`.
 
 Integrations prefix the package with Strauss or PHP-Scoper, which rewrite
 class names they can see in the source. Code in `src/` names every class
-statically: no `new $class`, no `$class::method()`, no class name in a string.
+statically: no `new $class`, no `$class::method()`, no `instanceof $class`, no callable built from a string, no class name in a string.
 `tests/Guard/NoDynamicClassNamesTest.php` enforces it.
+
+## Releases
+
+Release-please keeps a release pull request open from the commits on `main`;
+merging it tags the version and creates the GitHub Release. For the pull
+request checks to run on that release pull request, the repository needs a
+`RELEASE_PLEASE_TOKEN` secret (a GitHub App token or fine-grained token with
+contents and pull requests write access): a pull request opened with the
+default `GITHUB_TOKEN` starts no workflows.

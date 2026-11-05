@@ -32,18 +32,24 @@ final class DynamicClassNameFinder extends NodeVisitorAbstract
     /** Matches a fully qualified name in the package's namespace. */
     private const PACKAGE_CLASS_PATTERN = '/^\\\\?Pixonaut\\\\Sdk(\\\\|$)/';
 
-    /** Functions whose class-name argument must be visible to a scoper, by argument position. */
+    /**
+     * Functions whose class-name argument must be visible to a scoper: the
+     * argument's position and its parameter name, for named arguments.
+     */
     private const CLASS_NAME_ARGUMENTS = [
-        'class_exists' => 0,
-        'interface_exists' => 0,
-        'trait_exists' => 0,
-        'enum_exists' => 0,
-        'is_a' => 1,
-        'is_subclass_of' => 1,
+        'class_exists' => [0, 'class'],
+        'interface_exists' => [0, 'interface'],
+        'trait_exists' => [0, 'trait'],
+        'enum_exists' => [0, 'enum'],
+        'is_a' => [1, 'class'],
+        'is_subclass_of' => [1, 'class'],
     ];
 
-    /** Functions that take a callable as their first argument. */
-    private const CALLABLE_FUNCTIONS = ['call_user_func', 'call_user_func_array'];
+    /** Functions that take a callable, with its position and parameter name. */
+    private const CALLABLE_ARGUMENTS = [
+        'call_user_func' => [0, 'callback'],
+        'call_user_func_array' => [0, 'callback'],
+    ];
 
     private readonly Parser $parser;
 
@@ -100,7 +106,8 @@ final class DynamicClassNameFinder extends NodeVisitorAbstract
         match (true) {
             $node instanceof Expr\New_ => $this->checkNew($node),
             $node instanceof Expr\StaticCall,
-            $node instanceof Expr\StaticPropertyFetch => $this->checkClassReference($node->class, $node),
+            $node instanceof Expr\StaticPropertyFetch,
+            $node instanceof Expr\Instanceof_ => $this->checkClassReference($node->class, $node),
             $node instanceof Expr\ClassConstFetch => $this->checkClassConstant($node),
             $node instanceof Expr\FuncCall => $this->checkFunctionCall($node),
             $node instanceof Scalar\String_ => $this->checkString($node->value, $node),
@@ -146,16 +153,16 @@ final class DynamicClassNameFinder extends NodeVisitorAbstract
         $function = strtolower($node->name->toString());
 
         if (array_key_exists($function, self::CLASS_NAME_ARGUMENTS)) {
-            $argument = $this->argument($node, self::CLASS_NAME_ARGUMENTS[$function]);
+            $argument = $this->argument($node, ...self::CLASS_NAME_ARGUMENTS[$function]);
             if ($argument !== null && !$this->isClassLiteral($argument)) {
                 $this->report($node, "{$function}() with a class name that is not a ::class literal");
             }
         }
 
-        if (in_array($function, self::CALLABLE_FUNCTIONS, true)) {
-            $callable = $this->argument($node, 0);
-            if ($callable !== null && $this->isStringCallable($callable)) {
-                $this->report($node, "{$function}() with a string callable");
+        if (array_key_exists($function, self::CALLABLE_ARGUMENTS)) {
+            $callable = $this->argument($node, ...self::CALLABLE_ARGUMENTS[$function]);
+            if ($callable !== null && !$this->isStaticCallable($callable)) {
+                $this->report($node, "{$function}() with a callable that does not name its class statically");
             }
         }
     }
@@ -167,11 +174,30 @@ final class DynamicClassNameFinder extends NodeVisitorAbstract
         }
     }
 
-    private function argument(Expr\FuncCall $node, int $position): ?Expr
+    /**
+     * The argument passed for a parameter, by name when the call names it,
+     * else by position. Null when the call leaves it out or unpacks a list.
+     */
+    private function argument(Expr\FuncCall $node, int $position, string $name): ?Expr
     {
-        $argument = $node->args[$position] ?? null;
+        $positional = 0;
+        foreach ($node->args as $argument) {
+            if (!$argument instanceof Arg || $argument->unpack) {
+                return null;
+            }
+            if ($argument->name !== null) {
+                if ($argument->name->toString() === $name) {
+                    return $argument->value;
+                }
+                continue;
+            }
+            if ($positional === $position) {
+                return $argument->value;
+            }
+            ++$positional;
+        }
 
-        return $argument instanceof Arg ? $argument->value : null;
+        return null;
     }
 
     private function isClassLiteral(Expr $expression): bool
@@ -182,25 +208,27 @@ final class DynamicClassNameFinder extends NodeVisitorAbstract
             && $expression->name->toLowerString() === 'class';
     }
 
-    private function isStringCallable(Expr $expression): bool
+    /**
+     * Whether a callable's class, if it has one, is visible in the source: a
+     * closure, a first-class callable (`$this->run(...)`), or an array whose
+     * first element is `$this` or a `::class` literal. Anything else may hold
+     * a class name in a string.
+     */
+    private function isStaticCallable(Expr $expression): bool
     {
-        if ($this->isString($expression)) {
+        if ($expression instanceof Expr\Closure || $expression instanceof Expr\ArrowFunction) {
+            return true;
+        }
+        if ($expression instanceof Expr\CallLike && $expression->isFirstClassCallable()) {
             return true;
         }
         if (!$expression instanceof Expr\Array_) {
             return false;
         }
-        // `['Some\Class', 'method']` names the class in a string.
-        $first = $expression->items[0] ?? null;
+        $target = $expression->items[0]->value ?? null;
 
-        return $first !== null && $this->isString($first->value);
-    }
-
-    private function isString(Expr $expression): bool
-    {
-        return $expression instanceof Scalar\String_
-            || $expression instanceof Scalar\InterpolatedString
-            || $expression instanceof Expr\BinaryOp\Concat;
+        return ($target instanceof Expr\Variable && $target->name === 'this')
+            || ($target instanceof Expr && $this->isClassLiteral($target));
     }
 
     private function report(Node $node, string $problem): void
