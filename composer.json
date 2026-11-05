@@ -48,13 +48,16 @@
     "scripts": {
         "test": "phpunit",
         "test:unit": "phpunit --testsuite unit",
-        "analyse": "phpstan analyse --no-progress",
+        "analyse": "phpstan analyse --no-progress --memory-limit=1G",
         "lint": "php-cs-fixer check --diff",
         "format": "php-cs-fixer fix",
         "spec:check": "@php generator/spec.php check",
+        "generate": "@php generator/generate.php",
+        "generate:check": "@php generator/generate.php --check",
         "check": [
             "@composer validate --strict",
             "@spec:check",
+            "@generate:check",
             "@lint",
             "@analyse",
             "@test"
@@ -67,6 +70,8 @@
         "lint": "Check the code style without changing files.",
         "format": "Fix the code style.",
         "spec:check": "Check the pinned spec against its lock, offline.",
+        "generate": "Regenerate src/Generated/ from the pinned spec.",
+        "generate:check": "Check that src/Generated/ is what the pinned spec and the generator produce.",
         "check": "Run everything a pull request runs."
     }
 }

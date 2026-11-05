@@ -19,3 +19,4 @@
 /phpstan.neon.dist export-ignore
 /phpunit.xml.dist export-ignore
 /release-please-config.json export-ignore
+/src/Generated/** linguist-generated=true
