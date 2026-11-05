@@ -21,12 +21,14 @@ if ! docker info --format '{{.SecurityOptions}}' 2>/dev/null | grep -q rootless;
     user_args=(--user "$(id -u):$(id -g)")
 fi
 
+# Standard input is always passed through, so `bin/php < script.php` works;
+# a TTY only when there is a terminal on both ends.
 tty_args=()
 if [ -t 0 ] && [ -t 1 ]; then
-    tty_args=(--interactive --tty)
+    tty_args=(--tty)
 fi
 
-exec docker run --rm \
+exec docker run --rm --interactive \
     "${user_args[@]}" \
     "${tty_args[@]}" \
     --volume "${root}:/app" \
