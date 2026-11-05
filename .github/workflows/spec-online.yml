@@ -1,0 +1,24 @@
+name: Pinned spec
+
+# Checks that the pinned spec is still the release the CDN publishes. The CDN
+# is public, so the job needs no secrets; it runs weekly and on demand rather
+# than on every pull request, which checks the pin offline.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 6 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  online:
+    name: Pinned spec matches the CDN
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: bin/composer install --no-interaction --no-progress
+      - run: bin/spec check --online

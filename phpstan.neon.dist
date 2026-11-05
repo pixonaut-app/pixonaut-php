@@ -2,6 +2,7 @@ parameters:
     level: max
     paths:
         - src
+        - generator
         - tests
     excludePaths:
         # Deliberately bad code the guard test is run against.

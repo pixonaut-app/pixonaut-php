@@ -1,0 +1,79 @@
+{
+  "scheme": "v1",
+  "toleranceSeconds": 300,
+  "now": 1791892800,
+  "valid": [
+    {
+      "name": "an event delivery",
+      "secret": "pixonaut-signature-vector-secret",
+      "body": "{\"id\":\"1791892799000-6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c\",\"type\":\"design.committed\",\"payload\":{\"designId\":\"6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c\",\"templateId\":\"tshirt-basic@2\",\"apiKeyId\":null},\"createdAt\":1791892799000}",
+      "headers": {
+        "content-type": "application/json",
+        "x-pixonaut-timestamp": "1791892800",
+        "x-pixonaut-signature": "v1=2f1922e363bf8df762b84449466f8f81c4898129d3547be32fb5d7afbd29a05c"
+      }
+    },
+    {
+      "name": "a ping",
+      "secret": "pixonaut-signature-vector-secret",
+      "body": "{\"id\":\"ping_0a1b2c3d4e5f6a7b8c9d0e1f\",\"type\":\"webhook.ping\",\"payload\":{\"endpointId\":\"wh_0a1b2c3d4e5f6a7b8c9d0e1f\"},\"createdAt\":1791892800000}",
+      "headers": {
+        "content-type": "application/json",
+        "x-pixonaut-timestamp": "1791892800",
+        "x-pixonaut-signature": "v1=cd6da98e0f20a3ed60cf34d2cbe8228278e0b650095ab0626a1c4dae9684b383"
+      }
+    },
+    {
+      "name": "a body with characters outside ASCII, signed as UTF-8 bytes",
+      "secret": "pixonaut-signature-vector-secret",
+      "body": "{\"id\":\"1791892799000-6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c\",\"type\":\"design.committed\",\"payload\":{\"designId\":\"6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c\",\"templateId\":\"Zoë’s tee – ”été” 🎨\",\"apiKeyId\":null},\"createdAt\":1791892799000}",
+      "headers": {
+        "content-type": "application/json",
+        "x-pixonaut-timestamp": "1791892800",
+        "x-pixonaut-signature": "v1=e852e805c46d1f0667ff46fab75b548b3272a4dea79766a63f2bc1e1579a254f"
+      }
+    }
+  ],
+  "invalid": [
+    {
+      "name": "the body changed after signing",
+      "secret": "pixonaut-signature-vector-secret",
+      "body": "{\"id\":\"1791892799000-6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c\",\"type\":\"design.committed\",\"payload\":{\"designId\":\"6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c\",\"templateId\":\"tshirt-basic@3\",\"apiKeyId\":null},\"createdAt\":1791892799000}",
+      "headers": {
+        "content-type": "application/json",
+        "x-pixonaut-timestamp": "1791892800",
+        "x-pixonaut-signature": "v1=2f1922e363bf8df762b84449466f8f81c4898129d3547be32fb5d7afbd29a05c"
+      }
+    },
+    {
+      "name": "signed with another endpoint's secret",
+      "secret": "pixonaut-signature-vector-secret",
+      "body": "{\"id\":\"1791892799000-6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c\",\"type\":\"design.committed\",\"payload\":{\"designId\":\"6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c\",\"templateId\":\"tshirt-basic@2\",\"apiKeyId\":null},\"createdAt\":1791892799000}",
+      "headers": {
+        "content-type": "application/json",
+        "x-pixonaut-timestamp": "1791892800",
+        "x-pixonaut-signature": "v1=b1aa9154b7408507a9a087a0ab295195b7ab0ffca72921dbd641906b6776f62f"
+      }
+    },
+    {
+      "name": "sent longer ago than the tolerance",
+      "secret": "pixonaut-signature-vector-secret",
+      "body": "{\"id\":\"1791892799000-6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c\",\"type\":\"design.committed\",\"payload\":{\"designId\":\"6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c\",\"templateId\":\"tshirt-basic@2\",\"apiKeyId\":null},\"createdAt\":1791892799000}",
+      "headers": {
+        "content-type": "application/json",
+        "x-pixonaut-timestamp": "1791892499",
+        "x-pixonaut-signature": "v1=ad0856ab5faf7d64953cd328e987d2cac8309a4716629164e8f528020b58cd70"
+      }
+    },
+    {
+      "name": "a signature header without its scheme",
+      "secret": "pixonaut-signature-vector-secret",
+      "body": "{\"id\":\"1791892799000-6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c\",\"type\":\"design.committed\",\"payload\":{\"designId\":\"6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c\",\"templateId\":\"tshirt-basic@2\",\"apiKeyId\":null},\"createdAt\":1791892799000}",
+      "headers": {
+        "content-type": "application/json",
+        "x-pixonaut-timestamp": "1791892800",
+        "x-pixonaut-signature": "2f1922e363bf8df762b84449466f8f81c4898129d3547be32fb5d7afbd29a05c"
+      }
+    }
+  ]
+}
