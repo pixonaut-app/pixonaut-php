@@ -36,7 +36,8 @@ next version and write `CHANGELOG.md`.
 
 Integrations prefix the package with Strauss or PHP-Scoper, which rewrite
 class names they can see in the source. Code in `src/` names every class
-statically: no `new $class`, no `$class::method()`, no `instanceof $class`, no callable built from a string, no class name in a string.
+statically: no `new $class`, no `$class::method()`, no `instanceof $class`,
+no callable built from a string, no class name in a string.
 `tests/Guard/NoDynamicClassNamesTest.php` enforces it.
 
 ## Releases
