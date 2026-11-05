@@ -1,0 +1,72 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Pixonaut\Sdk\Http;
+
+use InvalidArgumentException;
+
+/**
+ * A request as it is sent, kept so it can be sent again unchanged.
+ *
+ * The body is encoded and the idempotency key chosen once, when the request is
+ * prepared. A host that stores the snapshot (`toArray()`) and later sends
+ * `fromArray()` of it sends the same bytes under the same key, so Pixonaut
+ * recognises a repeat. The credential is not part of it; it is added at every
+ * send.
+ */
+final class PreparedRequest
+{
+    private const FIELDS = ['operation', 'target', 'body', 'idempotencyKey'];
+
+    /**
+     * @param string      $operation      Operation id, e.g. `designs.commit`.
+     * @param string      $target         Path and query, e.g. `/v1/designs/d_1?v=2`.
+     * @param string|null $body           JSON body, or null for none.
+     * @param string|null $idempotencyKey `Idempotency-Key`, or null when the operation takes none.
+     */
+    public function __construct(
+        public readonly string $operation,
+        public readonly string $target,
+        public readonly ?string $body = null,
+        public readonly ?string $idempotencyKey = null,
+    ) {}
+
+    /**
+     * @return array{operation: string, target: string, body: string|null, idempotencyKey: string|null}
+     */
+    public function toArray(): array
+    {
+        return [
+            'operation' => $this->operation,
+            'target' => $this->target,
+            'body' => $this->body,
+            'idempotencyKey' => $this->idempotencyKey,
+        ];
+    }
+
+    /**
+     * @param array<mixed> $data What `toArray()` returned.
+     *
+     * @throws InvalidArgumentException When a field is missing or has the wrong type.
+     */
+    public static function fromArray(array $data): self
+    {
+        foreach (self::FIELDS as $field) {
+            // A lost key would turn a repeat into a second write, so a null
+            // must be stored, not implied by a missing field.
+            if (!array_key_exists($field, $data)) {
+                throw new InvalidArgumentException(sprintf('The request snapshot has no "%s".', $field));
+            }
+        }
+        $operation = $data['operation'];
+        $target = $data['target'];
+        $body = $data['body'];
+        $key = $data['idempotencyKey'];
+        if (!is_string($operation) || !is_string($target) || !($body === null || is_string($body)) || !($key === null || is_string($key))) {
+            throw new InvalidArgumentException('The request snapshot is malformed.');
+        }
+
+        return new self($operation, $target, $body, $key);
+    }
+}
