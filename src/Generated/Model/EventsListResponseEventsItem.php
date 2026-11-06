@@ -25,6 +25,7 @@ final class EventsListResponseEventsItem
      */
     public static function decode(mixed $data, string $path = '$'): \Pixonaut\Sdk\Model\Model
     {
+        \Pixonaut\Sdk\Webhooks\Event::fromArray(Decode::object($data, $path), $path);
         $tag = Decode::discriminator($data, $path, 'type');
         return match ($tag) {
             'asset.created' => AssetCreatedEvent::fromArray(Decode::object($data, $path), $path),

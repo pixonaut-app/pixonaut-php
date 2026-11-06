@@ -11,6 +11,7 @@ use Pixonaut\Sdk\Generated\EventType;
 use Pixonaut\Sdk\Generated\Model\AutomationWebhookEvent;
 use Pixonaut\Sdk\Generated\Model\EventsListResponse;
 use Pixonaut\Sdk\Generated\Model\OrderStatusChangedEvent;
+use Pixonaut\Sdk\Generated\Model\WebhookEvent;
 use Pixonaut\Sdk\Webhooks\Event;
 use Pixonaut\Sdk\Webhooks\UnknownEvent;
 use UnexpectedValueException;
@@ -128,6 +129,38 @@ final class EventTest extends TestCase
             self::assertInstanceOf(UnexpectedValueException::class, $e);
             self::assertSame($path, $e->jsonPath);
         }
+    }
+
+    public function testAPayloadObjectWithNumberKeysIsStillAnObject(): void
+    {
+        $unknown = Event::fromJson('{"id":"evt_3","type":"pigment.mixed","createdAt":1,"payload":{"0":"value"}}');
+        $automation = Event::fromJson('{"id":"awh_1","type":"automation.webhook","createdAt":1,"via":"automation","automation":{"id":"aut_1","name":"A"},"payload":{"0":"value"}}');
+
+        $typed = $unknown->typed();
+        self::assertInstanceOf(UnknownEvent::class, $typed);
+        self::assertSame([0 => 'value'], $typed->payload);
+        self::assertSame([0 => 'value'], $automation->payload);
+    }
+
+    public function testAnEmptyJsonObjectIsAPayloadAndAnEmptyListIsNot(): void
+    {
+        self::assertSame([], Event::fromJson('{"id":"evt_4","type":"pigment.mixed","createdAt":1,"payload":{}}')->payload);
+        self::assertSame([], Event::fromJson('{"id":"awh_1","type":"automation.webhook","createdAt":1,"payload":[]}')->payload);
+
+        $this->expectExceptionObject(new UnexpectedResponse('$.payload', 'expected object'));
+        Event::fromJson('{"id":"evt_4","type":"pigment.mixed","createdAt":1,"payload":[]}');
+    }
+
+    public function testAKnownEventIsHeldToTheSameEnvelopeRules(): void
+    {
+        $this->expectExceptionObject(new UnexpectedResponse('$.events[0].id', 'expected a non-empty string'));
+        EventsListResponse::fromArray(['events' => [['id' => ''] + self::STATUS_CHANGED], 'nextCursor' => null]);
+    }
+
+    public function testADeliveryOfAKnownTypeIsHeldToTheSameEnvelopeRules(): void
+    {
+        $this->expectExceptionObject(new UnexpectedResponse('$.id', 'expected a non-empty string'));
+        WebhookEvent::decode(['id' => ''] + self::STATUS_CHANGED);
     }
 
     /**

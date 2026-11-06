@@ -10,6 +10,7 @@ use Pixonaut\Sdk\Generated\EventType;
 use Pixonaut\Sdk\Generated\Model\WebhookEvent;
 use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
+use stdClass;
 use UnexpectedValueException;
 
 /**
@@ -44,22 +45,34 @@ final class Event
     /**
      * Reads a delivery's body.
      *
+     * The body is read as JSON objects as well, so a payload object whose
+     * keys are all numbers (`{"0": …}`) is still an object, and an empty
+     * list (`[]`) is not one.
+     *
      * @throws UnexpectedValueException When it is not JSON, or not an event envelope.
      */
     public static function fromJson(string $body): self
     {
         try {
+            $objects = json_decode($body, false, self::MAX_DEPTH, JSON_THROW_ON_ERROR);
             $data = json_decode($body, true, self::MAX_DEPTH, JSON_THROW_ON_ERROR);
         } catch (JsonException $e) {
             throw new UnexpectedValueException('The body is not JSON: ' . $e->getMessage(), 0, $e);
         }
+        if (!$objects instanceof stdClass || !is_array($data)) {
+            throw new UnexpectedResponse('$', 'expected object');
+        }
+        /** @var array<string, mixed> $data */
 
-        return self::fromArray(Decode::object($data, '$'));
+        return self::read($data, '$', property_exists($objects, 'payload') ? $objects->payload instanceof stdClass : null);
     }
 
     /**
      * Reads a decoded envelope, as a delivery's body or an item of
      * `GET /v1/events` holds it.
+     *
+     * Decoded into PHP arrays, a payload object whose keys are all numbers
+     * cannot be told from a list, and is refused; `fromJson()` tells them apart.
      *
      * @param array<string, mixed> $data
      * @param string               $path Where the envelope is in the document, for the error.
@@ -68,16 +81,28 @@ final class Event
      */
     public static function fromArray(array $data, string $path = '$'): self
     {
+        return self::read($data, $path, null);
+    }
+
+    /**
+     * @param array<string, mixed> $data
+     * @param bool|null            $payloadIsObject Whether the JSON payload was an object; null when only the arrays are known.
+     */
+    private static function read(array $data, string $path, ?bool $payloadIsObject): self
+    {
         $id = self::nonEmpty(Decode::string(Decode::required($data, 'id', $path), $path . '.id'), $path . '.id');
         $type = self::nonEmpty(Decode::string(Decode::required($data, 'type', $path), $path . '.type'), $path . '.type');
         $createdAt = Decode::int(Decode::required($data, 'createdAt', $path), $path . '.createdAt');
-        if ($type === EventType::AUTOMATION_WEBHOOK) {
-            $payload = $data['payload'] ?? null;
-            $payload = is_array($payload) && ($payload === [] || !array_is_list($payload)) ? $payload : [];
-        } else {
-            $payload = Decode::object(Decode::required($data, 'payload', $path), $path . '.payload');
+        $payload = $data['payload'] ?? null;
+        $isObject = $payloadIsObject ?? (is_array($payload) && ($payload === [] || !array_is_list($payload)));
+        if ($type !== EventType::AUTOMATION_WEBHOOK) {
+            Decode::required($data, 'payload', $path);
+            if (!$isObject || !is_array($payload)) {
+                throw new UnexpectedResponse($path . '.payload', 'expected object');
+            }
         }
         /** @var array<string, mixed> $payload */
+        $payload = $isObject && is_array($payload) ? $payload : [];
 
         return new self($id, $type, $createdAt, $payload, $data);
     }
@@ -110,7 +135,10 @@ final class Event
      */
     public function typed(): Model
     {
-        return WebhookEvent::decode($this->envelope);
+        // Built from this envelope, not decoded again, so a payload `fromJson()` read as an object stays one.
+        return in_array($this->type, EventType::KNOWN, true)
+            ? WebhookEvent::decode($this->envelope)
+            : UnknownEvent::fromEvent($this);
     }
 
     private static function nonEmpty(string $value, string $path): string

@@ -37,8 +37,14 @@ final class UnknownEvent implements Model
      */
     public static function fromArray(array $data, string $path = '$'): self
     {
-        $event = Event::fromArray($data, $path);
+        return self::fromEvent(Event::fromArray($data, $path));
+    }
 
+    /**
+     * The envelope `Event` read, as an event of a type this release does not know.
+     */
+    public static function fromEvent(Event $event): self
+    {
         return new self($event->id, $event->type, $event->createdAt, $event->payload, $event->raw());
     }
 
