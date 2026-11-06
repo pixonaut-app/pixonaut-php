@@ -7,6 +7,7 @@ namespace Pixonaut\Sdk\Http;
 use Closure;
 use Pixonaut\Sdk\Exception\ApiException;
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
+use Psr\Http\Message\StreamInterface;
 use stdClass;
 use Throwable;
 
@@ -22,9 +23,10 @@ final class Result
      * @param string                $operation   Operation id.
      * @param int                   $status      HTTP status.
      * @param array<string, string> $headers     Response headers; names are matched case-insensitively.
-     * @param string                $body        Raw body.
+     * @param string                $body        Raw body; empty when it is left unread in `$stream`.
      * @param Deprecation|null      $deprecation The deprecation notice the response carried.
      * @param bool                  $sensitive   Whether the operation's answers carry secrets.
+     * @param StreamInterface|null  $stream      The unread body of an answer read as it arrives, e.g. server-sent events.
      */
     public function __construct(
         public readonly string $operation,
@@ -33,6 +35,7 @@ final class Result
         public readonly string $body,
         public readonly ?Deprecation $deprecation = null,
         private readonly bool $sensitive = false,
+        private readonly ?StreamInterface $stream = null,
     ) {
         $this->headers = array_change_key_case($headers, CASE_LOWER);
     }
@@ -101,6 +104,14 @@ final class Result
     public function binary(): Binary
     {
         return new Binary($this->header('Content-Type') ?? '', $this->body, $this->requestId());
+    }
+
+    /**
+     * The body as server-sent events, read as the caller iterates.
+     */
+    public function eventStream(): EventStream
+    {
+        return new EventStream($this->stream ?? $this->body, $this->requestId(), $this->operation);
     }
 
     /**

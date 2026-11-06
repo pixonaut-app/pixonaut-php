@@ -13,6 +13,7 @@ use PhpParser\Node\Stmt;
 use PhpParser\ParserFactory;
 use Pixonaut\Sdk\Exception\ApiException;
 use Pixonaut\Sdk\Http\Binary;
+use Pixonaut\Sdk\Http\EventStream;
 use Pixonaut\Sdk\Http\PreparedRequest;
 use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Pixonaut;
@@ -143,7 +144,7 @@ final class ResourcePrinter
                 $code = sprintf("public function %s(%s): void\n{\n\$this->pixonaut->call(%s);\n}", $name, $declared, $request);
             }
 
-            return [$this->method($code, [$summary, '', $route, '', ...$docs, ...$this->returnDoc($returnType), '', ...$throws])];
+            return [$this->method($code, [$summary, '', $route, ...self::streamDoc($operation), '', ...$docs, ...$this->returnDoc($returnType), '', ...$throws])];
         }
 
         $uses[] = PreparedRequest::class;
@@ -180,6 +181,7 @@ final class ResourcePrinter
                 '',
                 $route . ', with an `Idempotency-Key`: a repeat with the same key is answered with what the first one made.',
                 'To send the same request again later, keep {@see ' . $prepare . '()} and send it with {@see ' . $send . '()}.',
+                ...self::streamDoc($operation),
                 '',
                 ...$docs,
                 ...$this->returnDoc($returnType),
@@ -299,6 +301,14 @@ final class ResourcePrinter
      */
     private function answer(OperationDef $operation, array &$uses): array
     {
+        if ($operation->streamStatuses !== []) {
+            if ($operation->responses !== [] || $operation->emptyStatuses !== [] || $operation->binaryStatuses !== []) {
+                throw new GeneratorException(sprintf('%s answers both server-sent events and something else, which is not supported.', $operation->id));
+            }
+            $uses[] = EventStream::class;
+
+            return [new Type(Type::MODEL, class: 'EventStream'), 'return ' . self::RESULT . '->eventStream();'];
+        }
         if ($operation->binaryStatuses !== []) {
             if ($operation->responses !== [] || $operation->emptyStatuses !== []) {
                 throw new GeneratorException(sprintf('%s answers both a file and something else, which is not supported.', $operation->id));
@@ -370,6 +380,25 @@ final class ResourcePrinter
     }
 
     /**
+     * What the caller of an operation answering server-sent events needs to
+     * know about when they arrive.
+     *
+     * @return list<string>
+     */
+    private static function streamDoc(OperationDef $operation): array
+    {
+        if ($operation->streamStatuses === []) {
+            return [];
+        }
+
+        return [
+            '',
+            'The answer is read as you iterate the returned stream. Whether its events arrive while Pixonaut is',
+            'still sending depends on the PSR-18 client: one that buffers whole responses hands them over at the end.',
+        ];
+    }
+
+    /**
      * @return list<string>
      */
     private function throws(OperationDef $operation): array
@@ -415,7 +444,7 @@ final class ResourcePrinter
 
     private function collectModels(Type $type): void
     {
-        if (($type->kind === Type::MODEL || $type->kind === Type::UNION) && $type->class !== '' && $type->class !== 'Binary') {
+        if (($type->kind === Type::MODEL || $type->kind === Type::UNION) && !in_array($type->class, ['', 'Binary', 'EventStream'], true)) {
             $this->models[] = $type->class;
         }
         foreach ([$type->item, ...$type->items, ...$type->variants] as $inner) {

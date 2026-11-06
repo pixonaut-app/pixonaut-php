@@ -6,15 +6,20 @@ declare(strict_types=1);
 
 namespace Pixonaut\Sdk\Generated;
 
+use Pixonaut\Sdk\Generated\Resource\ApiKeys;
+use Pixonaut\Sdk\Generated\Resource\Assets;
+use Pixonaut\Sdk\Generated\Resource\Automations;
 use Pixonaut\Sdk\Generated\Resource\Blanks;
 use Pixonaut\Sdk\Generated\Resource\Connect;
 use Pixonaut\Sdk\Generated\Resource\DesignerLinks;
 use Pixonaut\Sdk\Generated\Resource\Designs;
 use Pixonaut\Sdk\Generated\Resource\Events;
 use Pixonaut\Sdk\Generated\Resource\Orders;
+use Pixonaut\Sdk\Generated\Resource\Pixel;
 use Pixonaut\Sdk\Generated\Resource\Prints;
 use Pixonaut\Sdk\Generated\Resource\Printshops;
 use Pixonaut\Sdk\Generated\Resource\Proofs;
+use Pixonaut\Sdk\Generated\Resource\Sessions;
 use Pixonaut\Sdk\Generated\Resource\ShareLinks;
 use Pixonaut\Sdk\Generated\Resource\Templates;
 use Pixonaut\Sdk\Generated\Resource\Webhooks;
@@ -24,6 +29,30 @@ use Pixonaut\Sdk\Generated\Resource\Webhooks;
  */
 trait Resources
 {
+    /**
+     * The api keys operations.
+     */
+    public function apiKeys(): ApiKeys
+    {
+        return new ApiKeys($this);
+    }
+
+    /**
+     * The assets operations.
+     */
+    public function assets(): Assets
+    {
+        return new Assets($this);
+    }
+
+    /**
+     * The automations operations.
+     */
+    public function automations(): Automations
+    {
+        return new Automations($this);
+    }
+
     /**
      * The blanks operations.
      */
@@ -73,6 +102,14 @@ trait Resources
     }
 
     /**
+     * The pixel operations.
+     */
+    public function pixel(): Pixel
+    {
+        return new Pixel($this);
+    }
+
+    /**
      * The prints operations.
      */
     public function prints(): Prints
@@ -94,6 +131,14 @@ trait Resources
     public function proofs(): Proofs
     {
         return new Proofs($this);
+    }
+
+    /**
+     * The sessions operations.
+     */
+    public function sessions(): Sessions
+    {
+        return new Sessions($this);
     }
 
     /**

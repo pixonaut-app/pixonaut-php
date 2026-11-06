@@ -377,11 +377,20 @@ final class Pixonaut
             $headers[strtolower((string) $name)] = implode(', ', $values);
         }
         $status = $response->getStatusCode();
-        $body = (string) $response->getBody();
         $deprecation = $this->deprecation($operation, $headers);
+        $success = $status >= self::SUCCESS_MIN && $status <= self::SUCCESS_MAX;
 
-        if ($status >= self::SUCCESS_MIN && $status <= self::SUCCESS_MAX) {
-            if ($operation->accept === Operation::JSON && $body !== '' && !self::isJson($body)) {
+        if ($success && $operation->accept === Operation::EVENT_STREAM && self::isEventStream($headers['content-type'] ?? '')) {
+            // Left unread: the caller reads the events as they arrive.
+            $result = new Result($operation->id, $status, $headers, '', $deprecation, $operation->sensitive, $response->getBody());
+            $this->listener->after($request, $result, null);
+
+            return $result;
+        }
+        $body = (string) $response->getBody();
+        if ($success) {
+            // A success that is not what the operation answers, e.g. a proxy's page.
+            if (($operation->accept === Operation::JSON && $body !== '' && !self::isJson($body)) || $operation->accept === Operation::EVENT_STREAM) {
                 $error = (new Result($operation->id, $status, $headers, $body, $deprecation, $operation->sensitive))->unexpected();
                 $this->listener->after($request, null, $error);
 
@@ -397,6 +406,14 @@ final class Pixonaut
         $this->listener->after($request, null, $error);
 
         return $error;
+    }
+
+    /**
+     * Whether a `Content-Type` is `text/event-stream`, parameters and case aside.
+     */
+    private static function isEventStream(string $contentType): bool
+    {
+        return strtolower(trim(explode(';', $contentType)[0])) === Operation::EVENT_STREAM;
     }
 
     private static function isJson(string $body): bool

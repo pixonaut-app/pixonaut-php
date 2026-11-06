@@ -9,6 +9,9 @@ use Pixonaut\Sdk\Generator\Codegen\Config;
 use Pixonaut\Sdk\Generator\Codegen\Generator;
 use Pixonaut\Sdk\Generator\Codegen\GeneratorException;
 use Pixonaut\Sdk\Http\Binary;
+use Pixonaut\Sdk\Http\Catalogue;
+use Pixonaut\Sdk\Http\EventStream;
+use Pixonaut\Sdk\Http\Operation;
 use Pixonaut\Sdk\Http\PreparedRequest;
 use Pixonaut\Sdk\Tests\Generator\Support\Calls;
 use Pixonaut\Sdk\Tests\Generator\Support\GeneratesCode;
@@ -68,6 +71,29 @@ final class ResourcesTest extends TestCase
         self::assertSame(Binary::class, (string) (new ReflectionMethod($designs, 'getProof'))->getReturnType());
         self::assertSame('void', (string) (new ReflectionMethod($designs, 'delete'))->getReturnType());
         self::assertSame('?' . $namespace . '\\Model\\DesignsErasePersonalDataResponse', (string) (new ReflectionMethod($designs, 'erase'))->getReturnType());
+    }
+
+    public function testReturnsAnEventStreamForServerSentEvents(): void
+    {
+        $namespace = $this->load($this->streaming(['text/event-stream' => ['schema' => ['type' => 'string']]]), $this->config());
+        $designs = $namespace . '\\Resource\\Designs';
+
+        self::assertSame(EventStream::class, (string) (new ReflectionMethod($designs, 'watch'))->getReturnType());
+        $catalogue = Calls::call($namespace . '\\Operations', 'catalogue');
+        self::assertInstanceOf(Catalogue::class, $catalogue);
+        self::assertSame(Operation::EVENT_STREAM, $catalogue->operation('designs.watch')->accept);
+        self::assertStringContainsString('depends on the PSR-18 client', (string) (new ReflectionMethod($designs, 'watch'))->getDocComment());
+    }
+
+    public function testRefusesServerSentEventsBesideAnotherAnswer(): void
+    {
+        $this->expectException(GeneratorException::class);
+        $this->expectExceptionMessage('designs.watch answers both server-sent events and something else, which is not supported.');
+
+        (new Generator('Pixonaut\\Sdk\\Tests\\Generator\\MixedStream', $this->config()))->files(self::json($this->streaming(
+            ['text/event-stream' => ['schema' => ['type' => 'string']]],
+            ['201' => ['description' => 'Nothing yet']],
+        )));
     }
 
     public function testDocumentsTheSummaryAndTheErrorCodes(): void
@@ -155,6 +181,38 @@ final class ResourcesTest extends TestCase
             resourcePrefixes: ['connect' => 'connectedStore'],
             methodNames: $methodNames,
         );
+    }
+
+    public function testRefusesServerSentEventsBesideAnotherMediaType(): void
+    {
+        $this->expectException(GeneratorException::class);
+        $this->expectExceptionMessage('designs.watch answers both server-sent events and something else, which is not supported.');
+
+        (new Generator('Pixonaut\\Sdk\\Tests\\Generator\\MixedType', $this->config()))->files(self::json($this->streaming(
+            ['text/event-stream' => ['schema' => ['type' => 'string']], 'image/png' => []],
+        )));
+    }
+
+    /**
+     * The fixture with `designs.watch` answering 200 with the content given.
+     *
+     * @param array<string, mixed>     $content
+     * @param array<int|string, mixed> $more    Further successful answers, by status.
+     *
+     * @return array<string, mixed>
+     */
+    private function streaming(array $content, array $more = []): array
+    {
+        $spec = $this->fixture();
+        $paths = $spec['paths'];
+        self::assertIsArray($paths);
+        $paths['/v1/designs/watch'] = ['post' => [
+            'tags' => ['Designs'],
+            'operationId' => 'designs.watch',
+            'responses' => ['200' => ['description' => 'Events', 'content' => $content]] + $more,
+        ]];
+
+        return ['paths' => $paths] + $spec;
     }
 
     /**

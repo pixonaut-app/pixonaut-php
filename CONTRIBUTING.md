@@ -86,8 +86,10 @@ It holds:
   `getRevision()`). Path parameters come first and are required; query
   parameters, the body and declared headers (`Prefer`,
   `x-pixonaut-session`) are typed parameters. A method returns the
-  operation's response model, `Binary` for a file, `void` for an empty
-  answer, or a union when statuses answer differently. An idempotent
+  operation's response model, `Binary` for a file, an `EventStream` for
+  server-sent events (read as the caller iterates, the body left unread
+  until then), `void` for an empty answer, or a union when statuses answer
+  differently. An idempotent
   operation also has `prepare…()`, returning the `PreparedRequest` to store,
   and `send…()`, sending a stored one.
 - `ErrorCode`, `Operations` (with `Operations::catalogue()` for the client)
@@ -97,7 +99,8 @@ It holds:
 reason: which operations answer secrets (so an error keeps none of their
 body), which `x-sdk-skip` operations the SDK still calls, which resource each
 tag's operations are on, and the method names where the derived one reads
-badly. An operation in a tag the config does not map stops the generator. A test fails on
+badly. An operation in a tag the config does not map stops the generator,
+and a test fails when an operation the SDK generates has no method. A test fails on
 an answer field named like a secret (`key`, `secret`, `token`) on an
 operation that is not listed, unless the config says why it is not one.
 

@@ -14,6 +14,9 @@ final class Operation
 {
     public const JSON = 'application/json';
 
+    /** What an operation answering server-sent events accepts; its body is read as the caller iterates. */
+    public const EVENT_STREAM = 'text/event-stream';
+
     /**
      * @param string           $id          The spec's `operationId`, e.g. `designs.commit`.
      * @param string           $method      HTTP method, upper case.

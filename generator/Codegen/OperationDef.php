@@ -18,6 +18,7 @@ final class OperationDef
      * @param list<int>          $binaryStatuses Successful statuses that answer a file rather than JSON.
      * @param list<int>          $emptyStatuses  Successful statuses that answer nothing.
      * @param list<string>       $errorCodes     The error codes its unsuccessful answers document, sorted.
+     * @param list<int>          $streamStatuses Successful statuses that answer server-sent events.
      */
     public function __construct(
         public readonly string $id,
@@ -37,6 +38,7 @@ final class OperationDef
         public readonly array $binaryStatuses = [],
         public readonly array $emptyStatuses = [],
         public readonly array $errorCodes = [],
+        public readonly array $streamStatuses = [],
     ) {}
 
     /**

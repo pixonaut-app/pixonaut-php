@@ -34,7 +34,8 @@ abstract class Listener
 
     /**
      * Called after every send, including each resend, with the result or the
-     * error it ended in.
+     * error it ended in. The result of an operation answering server-sent
+     * events has its body still unread: it is read as the caller iterates.
      */
     public function after(PreparedRequest $request, ?Result $result, ?ApiException $error): void {}
 
