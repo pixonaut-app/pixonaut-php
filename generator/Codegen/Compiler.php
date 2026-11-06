@@ -23,6 +23,12 @@ final class Compiler
 
     private const JSON = 'application/json';
 
+    /** The class decoding a webhook delivery's body by its `type`. */
+    public const WEBHOOK_EVENT = 'WebhookEvent';
+
+    /** The envelope field naming an event's type. */
+    private const EVENT_TYPE_FIELD = 'type';
+
     private const IDEMPOTENCY_HEADER = 'idempotency-key';
 
     /** The lowest status of an answer that is not a success. */
@@ -52,6 +58,9 @@ final class Compiler
     /** @var array<string, true> */
     private array $componentsInProgress = [];
 
+    /** @var array<string, true> Every component a webhook's body refers to. */
+    private array $eventComponents = [];
+
     /**
      * @param array<string, mixed> $spec
      */
@@ -62,6 +71,12 @@ final class Compiler
 
     public function compile(): Api
     {
+        foreach ($this->webhooks() as $webhook) {
+            $ref = self::map($webhook['schema'])['$ref'] ?? null;
+            if (is_string($ref)) {
+                $this->eventComponents[$ref] = true;
+            }
+        }
         foreach (array_keys(self::map(self::map($this->spec['components'] ?? [])['schemas'] ?? [])) as $name) {
             $this->component(self::COMPONENT_REF . $name);
         }
@@ -88,6 +103,7 @@ final class Compiler
             $this->markRequest($request);
         }
         [$codes, $descriptions, $statuses] = $this->errors();
+        $eventTypes = $this->eventTypes();
 
         return new Api(
             self::text(self::map($this->spec['info'] ?? [])['version'] ?? null),
@@ -98,7 +114,63 @@ final class Compiler
             $codes,
             $descriptions,
             $statuses,
+            $eventTypes,
         );
+    }
+
+    /**
+     * Every webhook the spec describes, by its event type, with its body's
+     * schema and its description.
+     *
+     * @return array<string, array{schema: array<string, mixed>, description: string}>
+     */
+    private function webhooks(): array
+    {
+        $webhooks = [];
+        foreach (self::map($this->spec['webhooks'] ?? []) as $type => $item) {
+            $post = self::map(self::map($item)['post'] ?? []);
+            $schema = self::map(self::map(self::map(self::map($post['requestBody'] ?? [])['content'] ?? [])[self::JSON] ?? [])['schema'] ?? []);
+            if ($schema === []) {
+                throw new GeneratorException(sprintf('Webhook %s has no JSON body.', $type));
+            }
+            $webhooks[(string) $type] = ['schema' => $schema, 'description' => self::text($post['description'] ?? '')];
+        }
+
+        return $webhooks;
+    }
+
+    /**
+     * Compiles each webhook's body into its event class, and the decoder
+     * choosing among them by `type`.
+     *
+     * @return array<string, string> Event type → its description.
+     */
+    private function eventTypes(): array
+    {
+        $types = [];
+        $mapping = [];
+        foreach ($this->webhooks() as $type => $webhook) {
+            $name = Naming::className(Naming::pascal($type) . 'Event');
+            $mapping[$type] = $this->schema($webhook['schema'], $name, 'webhook ' . $type . ': $');
+            $types[$type] = $webhook['description'];
+        }
+        if ($mapping === []) {
+            return [];
+        }
+        $this->claim(self::WEBHOOK_EVENT, 'webhooks');
+        $this->unions[self::WEBHOOK_EVENT] = new UnionDef(
+            self::WEBHOOK_EVENT,
+            UnionDef::DISCRIMINATED,
+            'A webhook delivery\'s body, as the event class its type names.',
+            [],
+            'webhooks',
+            self::EVENT_TYPE_FIELD,
+            $mapping,
+            events: true,
+        );
+        ksort($types, SORT_STRING);
+
+        return $types;
     }
 
     /**
@@ -419,7 +491,11 @@ final class Compiler
             if ($mapping === []) {
                 throw new GeneratorException(sprintf('%s: a discriminator without a mapping is not supported.', $origin));
             }
-            $union = new UnionDef($name, UnionDef::DISCRIMINATED, $description, [], $origin, self::text($discriminator['propertyName'] ?? ''), $mapping);
+            $property = self::text($discriminator['propertyName'] ?? '');
+            // A list of events, such as `GET /v1/events` answers: a type added after this release is an `UnknownEvent`.
+            $events = $property === self::EVENT_TYPE_FIELD
+                && array_diff(array_map(self::text(...), array_values(self::map($discriminator['mapping']))), array_keys($this->eventComponents)) === [];
+            $union = new UnionDef($name, UnionDef::DISCRIMINATED, $description, [], $origin, $property, $mapping, $events);
             $this->unions[$name] = $union;
 
             return $union->type();

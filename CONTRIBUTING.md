@@ -73,6 +73,13 @@ It holds:
 - `Enum/`: the known values of each enum as constants. The fields stay
   strings, since a later API release may answer a value this one does not
   know.
+- `Model/WebhookEvent`: decodes a webhook delivery's body into the event
+  class its `type` names, one per entry of the spec's `webhooks` section
+  (`OrderStatusChangedEvent`). A list of events, such as `GET /v1/events`
+  answers, decodes the same way. A type this release does not know becomes
+  `Webhooks\UnknownEvent`, never an error, so an API that adds an event type
+  does not break an older SDK.
+- `EventType`: each webhook's event type as a constant.
 - `ErrorCode`, `Operations` (with `Operations::catalogue()` for the client)
   and `ApiVersion`.
 
