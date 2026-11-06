@@ -5,13 +5,16 @@ targets one release of the Pixonaut API.
 
 ## Which API a release targets
 
-Three places name it, and a test holds them equal:
+Three places name it:
 
 - `Pixonaut\Sdk\Generated\ApiVersion::TARGET`, at run time;
 - `extra.pixonaut.api-version` in `composer.json`, for tools that read the
   package without loading it;
 - the first line of the release's notes in `CHANGELOG.md` and on the GitHub
   Release, e.g. *Targets the Pixonaut API 1.0.0.*
+
+A test holds `ApiVersion::TARGET` and `composer.json` equal, and the release
+workflow writes the notes' first line from `composer.json`.
 
 The SDK is generated from that API release's published spec, pinned by
 version and sha256 in `spec/spec.lock.json`.

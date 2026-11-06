@@ -29,18 +29,38 @@ final class ReleaseNotesTest extends TestCase
         This PR was generated with [Release Please](https://github.com/googleapis/release-please).
         MD;
 
-    public function testTheSdkTheComposerFileAndTheChangelogNameTheSameApiRelease(): void
+    public function testTheSdkAndTheComposerFileNameTheSameApiRelease(): void
     {
         $apiVersion = ReleaseNotes::apiVersion((string) file_get_contents(self::ROOT . '/composer.json'));
 
         self::assertSame(ApiVersion::TARGET, $apiVersion, 'composer.json extra.pixonaut.api-version is not the API release the SDK is generated from.');
-        if (is_file(self::ROOT . '/CHANGELOG.md')) {
-            self::assertSame(
-                ReleaseNotes::line(ApiVersion::TARGET),
-                ReleaseNotes::newestFirstLine((string) file_get_contents(self::ROOT . '/CHANGELOG.md')),
-                'The newest CHANGELOG.md entry does not open with the API release it targets.',
-            );
+    }
+
+    /**
+     * The newest entry names the API of the last published release, which
+     * a pull request pinning a newer API rightly leaves alone: only its
+     * shape is checked.
+     */
+    public function testTheNewestChangelogEntryNamesAnApiRelease(): void
+    {
+        if (!is_file(self::ROOT . '/CHANGELOG.md')) {
+            $this->markTestSkipped('No release yet.');
         }
+
+        self::assertNotNull(
+            ReleaseNotes::newestApiVersion((string) file_get_contents(self::ROOT . '/CHANGELOG.md')),
+            'The newest CHANGELOG.md entry does not open with the API release it targets.',
+        );
+    }
+
+    public function testTheNewestEntryNamesItsOwnApiReleaseWhateverTheSdkTargets(): void
+    {
+        $changelog = "# Changelog\n\n## [1.0.0](https://example.test) (2026-11-06)\n\nTargets the Pixonaut API 1.0.0.\n\n### Features\n\n* first\n";
+
+        self::assertSame('1.0.0', ReleaseNotes::newestApiVersion($changelog));
+        self::assertSame('2.3.4', ReleaseNotes::newestApiVersion(ReleaseNotes::annotate(self::RELEASE_PULL_REQUEST, '2.3.4')));
+        self::assertNull(ReleaseNotes::newestApiVersion(self::RELEASE_PULL_REQUEST));
+        self::assertNull(ReleaseNotes::newestApiVersion("### Features\n"));
     }
 
     public function testTheLineOpensTheNewestVersionsNotes(): void

@@ -199,10 +199,11 @@ no callable built from a string, no class name in a string.
 ## Releases
 
 The SDK has its own semver, and each release targets one API release
-([docs/versioning.md](docs/versioning.md)). `ApiVersion::TARGET`,
-`extra.pixonaut.api-version` in `composer.json` and the first line of the
-newest `CHANGELOG.md` entry name it, and a test holds them equal: after
-pinning another API release, set `extra.pixonaut.api-version` too.
+([docs/versioning.md](docs/versioning.md)). `ApiVersion::TARGET` and
+`extra.pixonaut.api-version` in `composer.json` name it, and a test holds
+them equal: after pinning another API release, set
+`extra.pixonaut.api-version` too. The release workflow writes the first
+line of the release's notes from `composer.json`.
 
 Release-please keeps a release pull request open from the commits on
 `main`; merging it tags the version and creates the GitHub Release. The

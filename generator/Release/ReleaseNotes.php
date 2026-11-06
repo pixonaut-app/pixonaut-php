@@ -19,12 +19,18 @@ final class ReleaseNotes
     /** A release-please version heading: `## [1.0.0](…) (2026-11-06)` or `## 1.0.0 (…)`. */
     private const HEADING = '/^##\s+\[?\d+\.\d+\.\d+[^\n]*$/m';
 
+    /** The line that names the API release, `%s` the release. */
+    private const LINE = 'Targets the Pixonaut API %s.';
+
+    /** Matches a line `line()` writes, capturing the API release it names. */
+    public const LINE_PATTERN = '/^Targets the Pixonaut API (\d+\.\d+\.\d+)\.$/';
+
     /**
      * The line that names the API release.
      */
     public static function line(string $apiVersion): string
     {
-        return sprintf('Targets the Pixonaut API %s.', $apiVersion);
+        return sprintf(self::LINE, $apiVersion);
     }
 
     /**
@@ -76,6 +82,17 @@ final class ReleaseNotes
         }
 
         return self::firstLine(substr($notes, $heading[0][1] + strlen($heading[0][0])));
+    }
+
+    /**
+     * The API release the newest version's notes open with, or null when
+     * their first line names none.
+     */
+    public static function newestApiVersion(string $notes): ?string
+    {
+        $line = self::newestFirstLine($notes);
+
+        return $line !== null && preg_match(self::LINE_PATTERN, $line, $match) === 1 ? $match[1] : null;
     }
 
     private static function firstLine(string $text): string
