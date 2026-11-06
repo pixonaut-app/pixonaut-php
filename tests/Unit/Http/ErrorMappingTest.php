@@ -7,6 +7,7 @@ namespace Pixonaut\Sdk\Tests\Unit\Http;
 use Http\Client\Exception\NetworkException;
 use Http\Message\RequestMatcher\CallbackRequestMatcher;
 use Nyholm\Psr7\Request;
+use Nyholm\Psr7\Response;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Pixonaut\Sdk\Credentials\StaticCredentials;
@@ -14,6 +15,8 @@ use Pixonaut\Sdk\Exception\ApiException;
 use Pixonaut\Sdk\Exception\IdempotencyBugException;
 use Pixonaut\Sdk\Tests\Unit\Support\Harness;
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\StreamInterface;
+use RuntimeException;
 
 final class ErrorMappingTest extends TestCase
 {
@@ -157,6 +160,28 @@ final class ErrorMappingTest extends TestCase
         }
         self::assertSame(['before designs.get', 'after designs.get'], $harness->listener->calls);
         self::assertSame([], $harness->logger->records);
+    }
+
+    public function testABodyCutShortWhileReadIsATransportFailure(): void
+    {
+        $harness = new Harness();
+        $body = self::createStub(StreamInterface::class);
+        $cut = new RuntimeException('End of response body reached before all of it was received.');
+        $body->method('__toString')->willThrowException($cut);
+        $body->method('getContents')->willThrowException($cut);
+        $harness->http->addResponse(new Response(200, ['Content-Type' => 'application/json'], $body));
+
+        try {
+            $harness->pixonaut->call('designs.get', ['id' => 'd_1']);
+            self::fail('Expected transport_failed.');
+        } catch (ApiException $e) {
+            self::assertSame(ApiException::TRANSPORT_FAILED, $e->errorCode);
+            self::assertSame(0, $e->status);
+            self::assertTrue($e->retryable);
+            self::assertSame($cut, $e->getPrevious());
+        }
+        self::assertSame(['before designs.get', 'after designs.get'], $harness->listener->calls);
+        self::assertNull($harness->listener->after[0][2]?->getPrevious());
     }
 
     public function testTheListenerNeverSeesTheRequestATransportFailureCarries(): void
