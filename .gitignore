@@ -2,3 +2,5 @@
 /.cache/
 /.phpunit.cache/
 /.php-cs-fixer.cache
+/docs/examples/pixonaut-keys.json
+/docs/examples/snapshots/
