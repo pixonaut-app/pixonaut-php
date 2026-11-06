@@ -47,6 +47,41 @@ together with the regenerated SDK.
 
 A scheduled workflow runs `bin/spec check --online` weekly.
 
+## The generated code
+
+`src/Generated/` is printed from the pinned spec by the generator in
+`generator/Codegen/` and is committed. Never edit it by hand: change the
+generator or pin another spec, then regenerate.
+
+```sh
+bin/generate           # regenerate src/Generated/, removing files the spec no longer produces
+bin/generate --check   # fail, listing each file, when src/Generated/ is stale (part of `composer check`)
+```
+
+It holds:
+
+- `Model/`: one `final class` per component schema and per object schema of
+  a request or response body, named after the operation and its place
+  (`OrdersCreateRequestPrint`). `fromArray()` checks the fields this release
+  knows and throws `UnexpectedResponse` naming the JSON path; unknown fields
+  stay in `raw()`. `toArray()` gives what a request sends: an optional field
+  that may be `null` defaults to `Omitted::Field` and is left out, so `null`
+  is sent only when set. A `oneOf`/`anyOf` gets a decoder class with a
+  `decode()` method and a class per variant. A value whose tags (required
+  fields a variant allows one value for) name one variant is that variant;
+  otherwise the variants are tried most specific first.
+- `Enum/`: the known values of each enum as constants. The fields stay
+  strings, since a later API release may answer a value this one does not
+  know.
+- `ErrorCode`, `Operations` (with `Operations::catalogue()` for the client)
+  and `ApiVersion`.
+
+`generator/config.php` holds what the spec does not say, each entry with its
+reason: which operations answer secrets (so an error keeps none of their
+body), and which `x-sdk-skip` operations the SDK still calls. A test fails on
+an answer field named like a secret (`key`, `secret`, `token`) on an
+operation that is not listed, unless the config says why it is not one.
+
 ## Commits
 
 Commits follow [Conventional Commits](https://www.conventionalcommits.org/):

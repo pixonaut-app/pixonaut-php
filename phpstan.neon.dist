@@ -1,5 +1,9 @@
 parameters:
     level: max
+    parallel:
+        # Each worker analyses part of the ~4,000 generated classes, within
+        # the memory limit `composer analyse` gives it.
+        maximumNumberOfProcesses: 4
     paths:
         - src
         - generator

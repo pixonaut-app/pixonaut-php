@@ -9,11 +9,16 @@
          failOnDeprecation="true"
          failOnNotice="true"
          beStrictAboutOutputDuringTests="true">
+    <php>
+        <!-- The pinned spec, decoded, and the generator's model of it. -->
+        <ini name="memory_limit" value="2G"/>
+    </php>
     <testsuites>
         <testsuite name="unit">
             <directory>tests/Guard</directory>
             <directory>tests/Spec</directory>
             <directory>tests/Unit</directory>
+            <directory>tests/Generator</directory>
         </testsuite>
     </testsuites>
     <source>

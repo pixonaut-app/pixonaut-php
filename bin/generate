@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Generates src/Generated/ from the pinned spec, in the package's container.
+#
+#   bin/generate           regenerate, removing files the spec no longer produces
+#   bin/generate --check   fail, listing each file, when the committed tree is stale
+exec "$(dirname "${BASH_SOURCE[0]}")/docker-run" php generator/generate.php "$@"
