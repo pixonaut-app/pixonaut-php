@@ -21,6 +21,7 @@
         "guzzlehttp/guzzle": "^7.9",
         "nikic/php-parser": "^5.0",
         "nyholm/psr7": "^1.8",
+        "opis/json-schema": "^2.4",
         "php-http/mock-client": "^1.6",
         "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^10.5"
@@ -48,6 +49,8 @@
     "scripts": {
         "test": "phpunit",
         "test:unit": "phpunit --testsuite unit",
+        "test:contract": "phpunit --testsuite contract",
+        "test:live": "phpunit --testsuite live --display-skipped",
         "analyse": "phpstan analyse --no-progress --memory-limit=1G",
         "lint": "php-cs-fixer check --diff",
         "format": "php-cs-fixer fix",
@@ -64,8 +67,10 @@
         ]
     },
     "scripts-descriptions": {
-        "test": "Run every test suite.",
+        "test": "Run the unit and contract tests.",
         "test:unit": "Run the unit tests.",
+        "test:contract": "Run the SDK against the fake Pixonaut API.",
+        "test:live": "Run the read-only smoke against a Pixonaut on this machine; skipped unless PIXONAUT_LIVE_API_URL and PIXONAUT_LIVE_SECRET_KEY are set.",
         "analyse": "Run PHPStan.",
         "lint": "Check the code style without changing files.",
         "format": "Fix the code style.",

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd"
-         bootstrap="vendor/autoload.php"
+         bootstrap="tests/bootstrap.php"
+         defaultTestSuite="unit,contract"
          cacheDirectory=".phpunit.cache"
          colors="true"
          failOnRisky="true"
@@ -19,6 +20,13 @@
             <directory>tests/Spec</directory>
             <directory>tests/Unit</directory>
             <directory>tests/Generator</directory>
+        </testsuite>
+        <testsuite name="contract">
+            <directory>tests/Contract</directory>
+        </testsuite>
+        <!-- Only through `composer test:live`, against a Pixonaut on this machine. -->
+        <testsuite name="live">
+            <directory>tests/Live</directory>
         </testsuite>
     </testsuites>
     <source>

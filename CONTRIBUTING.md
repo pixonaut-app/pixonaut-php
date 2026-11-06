@@ -9,7 +9,9 @@ the checkout mounted at `/app`.
 ```sh
 bin/composer install
 bin/composer check       # validate, lint, analyse, test: what a pull request runs
+bin/composer test        # the unit and contract tests
 bin/composer test:unit   # the unit tests
+bin/composer test:contract  # the SDK against the fake Pixonaut API
 bin/composer analyse     # PHPStan, level max
 bin/composer lint        # PHP-CS-Fixer (PER-CS 2.0), without changing files
 bin/composer format      # PHP-CS-Fixer, fixing files
@@ -46,6 +48,42 @@ runs it again. Commit the new pin
 together with the regenerated SDK.
 
 A scheduled workflow runs `bin/spec check --online` weekly.
+
+## Tests
+
+No test reaches a real Pixonaut. The test bootstrap points every HTTP
+client and PHP's stream wrapper at a proxy that refuses all connections, and
+lets only loopback through; pull requests also run the suites in a container
+with no network but loopback (`DOCKER_NETWORK=none bin/composer test` does
+the same locally).
+
+- `tests/Unit/` proves each piece against scripted answers.
+- `tests/Contract/` runs the SDK end to end against `tests/Fake/`, a fake of
+  the API driven by the pinned spec. `FakePixonaut` is a PSR-18 client in
+  memory: it routes each request by method and path template, checks its
+  path values, query, headers, body and credential against the operation's
+  schema with `opis/json-schema`, and answers with the spec's example, or
+  with what a test set (`answer()`, `answerExample()`). It answers a
+  repeated `Idempotency-Key` as Pixonaut does, and a test can script faults
+  (`Fault::serverError()`, `rateLimited()`, `deprecated()`,
+  `transportFailure()`, `lostAnswer()`, `notJson()`) and a key still in
+  flight (`keyInFlight()`). Every answer it gives is checked against the
+  spec's response schema too. What a request breaks is a violation, and a
+  contract test fails with it. `OperationsTest` calls every operation the
+  SDK sends through its resource method, with arguments built from the
+  spec's examples; `WireTest` runs the same fake behind `php -S`
+  (`tests/Fake/router.php`) and Guzzle, on `FAKE_PIXONAUT_PORT` when it is
+  set and on a free loopback port otherwise.
+- `tests/Live/` is a read-only smoke against a Pixonaut on this machine, not
+  part of `composer test` or CI. It skips unless `PIXONAUT_LIVE_API_URL` and
+  `PIXONAUT_LIVE_SECRET_KEY` (and optionally `PIXONAUT_LIVE_INTEGRATION_KEY`)
+  are set, and refuses any host that is not loopback. The container reaches
+  the host's loopback only on the host network:
+
+  ```sh
+  DOCKER_NETWORK=host PIXONAUT_LIVE_API_URL=http://127.0.0.1:<port> \
+      PIXONAUT_LIVE_SECRET_KEY=sk_... bin/composer test:live
+  ```
 
 ## The generated code
 
