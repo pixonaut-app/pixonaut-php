@@ -53,6 +53,14 @@ final class Generator
         foreach ($api->enums as $enum) {
             $files['Enum/' . $enum->name . '.php'] = $models->enum($enum);
         }
+        $resources = (new ResourcePlanner($this->config))->plan($api->operations);
+        if ($resources !== []) {
+            $printer = new ResourcePrinter($this->namespace, $models);
+            $files['Resources.php'] = $printer->trait($resources);
+            foreach ($resources as $resource) {
+                $files['Resource/' . $resource->class . '.php'] = $printer->resource($resource);
+            }
+        }
         ksort($files, SORT_STRING);
 
         return $files;

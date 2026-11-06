@@ -80,12 +80,24 @@ It holds:
   `Webhooks\UnknownEvent`, never an error, so an API that adds an event type
   does not break an older SDK.
 - `EventType`: each webhook's event type as a constant.
+- `Resource/`: one class per resource, reached from the client
+  (`$pixonaut->designs()`, through the `Resources` trait), with one method per
+  operation named after its `operationId` (`designs.revisions.get` →
+  `getRevision()`). Path parameters come first and are required; query
+  parameters, the body and declared headers (`Prefer`,
+  `x-pixonaut-session`) are typed parameters. A method returns the
+  operation's response model, `Binary` for a file, `void` for an empty
+  answer, or a union when statuses answer differently. An idempotent
+  operation also has `prepare…()`, returning the `PreparedRequest` to store,
+  and `send…()`, sending a stored one.
 - `ErrorCode`, `Operations` (with `Operations::catalogue()` for the client)
   and `ApiVersion`.
 
 `generator/config.php` holds what the spec does not say, each entry with its
 reason: which operations answer secrets (so an error keeps none of their
-body), and which `x-sdk-skip` operations the SDK still calls. A test fails on
+body), which `x-sdk-skip` operations the SDK still calls, which resource each
+tag's operations are on, and the method names where the derived one reads
+badly. An operation in a tag the config does not map stops the generator. A test fails on
 an answer field named like a secret (`key`, `secret`, `token`) on an
 operation that is not listed, unless the config says why it is not one.
 

@@ -28,6 +28,65 @@ return [
         'templates.preview.get' => 'A server renders a template\'s preview with its key, e.g. for a product image.',
     ],
 
+    // The resource (`$pixonaut->designs()`) each tag's operations are on, or
+    // null for a tag whose operations the SDK sends only through `call()`
+    // so far. An operation in a tag not listed here stops the generator.
+    'resources' => [
+        'API keys' => 'connect',
+        'Assets' => null,
+        'Automations' => null,
+        'Blanks' => 'blanks',
+        'Designs' => 'designs',
+        'Events' => 'events',
+        'Orders' => 'orders',
+        'Pixel' => null,
+        'Printshops' => 'printshops',
+        'Prints' => 'prints',
+        'Proofs' => 'proofs',
+        'Sessions' => null,
+        'Share links' => 'shareLinks',
+        'Templates' => 'templates',
+        'Webhook endpoints' => 'webhooks',
+    ],
+
+    // Operations on another resource than their tag's, or on none.
+    'operationResources' => [
+        // The workspace's own keys are administration; `API keys` maps to
+        // `connect()` for the connected store's operations.
+        'apiKeys.create' => null,
+        'apiKeys.delete' => null,
+        'apiKeys.list' => null,
+        'apiKeys.update' => null,
+        // A designer link opens the designer on a template, not a share link.
+        'templates.designerLinks.create' => 'designerLinks',
+    ],
+
+    // The `operationId` prefix a resource's method names leave out, where it
+    // is not the resource's own name (`designs.revisions.get` →
+    // `designs()->getRevision()`).
+    'resourcePrefixes' => [
+        'connect' => 'connectedStore',
+        'designerLinks' => 'templates.designerLinks',
+        'webhooks' => 'webhookEndpoints',
+    ],
+
+    // Method names where the one derived from the `operationId` reads badly.
+    'methodNames' => [
+        // One answer holding every constraint, not one of several.
+        'templates.constraints.get' => 'getConstraints',
+        'blanks.previewTables.get' => 'getPreviewTables',
+        // A ZIP of every file, not one.
+        'prints.files.bundle' => 'bundleFiles',
+        'orders.job.files.bundle' => 'bundleJobFiles',
+        'webhookEndpoints.deliveries.redeliverFailed' => 'redeliverFailed',
+        'webhookEndpoints.deliveries.redeliver' => 'redeliver',
+        // A noun alone does not say the method lists.
+        'orders.rerouteTargets' => 'listRerouteTargets',
+        'printshopConnections.list' => 'listConnections',
+        // `createPrintOrder` would read as making a print.
+        'prints.orders.create' => 'createForPrint',
+    ],
+
     // Fields of an answer named like a secret (`key`, `secret`, `token`)
     // that are not one, by operation and field path.
     'notSecret' => [

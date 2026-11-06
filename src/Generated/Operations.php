@@ -190,6 +190,7 @@ final class Operations
                 idempotent: false,
                 accept: 'application/json',
                 sensitive: false,
+                headers: ['x-pixonaut-session'],
             ),
             new Operation(
                 id: 'assets.bulkUpdate',
@@ -250,6 +251,7 @@ final class Operations
                 idempotent: false,
                 accept: 'image/heic, image/heif, image/jpeg, image/png, image/webp',
                 sensitive: false,
+                headers: ['x-pixonaut-session'],
             ),
             new Operation(
                 id: 'assets.cutOutStatus',
@@ -260,6 +262,7 @@ final class Operations
                 idempotent: false,
                 accept: 'application/json',
                 sensitive: false,
+                headers: ['x-pixonaut-session'],
             ),
             new Operation(
                 id: 'assets.cutOut',
@@ -270,6 +273,7 @@ final class Operations
                 idempotent: false,
                 accept: 'application/json',
                 sensitive: false,
+                headers: ['x-pixonaut-session'],
             ),
             new Operation(
                 id: 'assets.improveResolution',
@@ -280,6 +284,7 @@ final class Operations
                 idempotent: false,
                 accept: 'application/json',
                 sensitive: false,
+                headers: ['x-pixonaut-session'],
             ),
             new Operation(
                 id: 'assets.original.get',
@@ -800,6 +805,7 @@ final class Operations
                 idempotent: false,
                 accept: 'application/json',
                 sensitive: false,
+                headers: ['x-pixonaut-sdk-version'],
             ),
             new Operation(
                 id: 'designs.duplicate',
@@ -1130,6 +1136,7 @@ final class Operations
                 idempotent: false,
                 accept: 'application/json',
                 sensitive: false,
+                headers: ['x-pixonaut-session'],
             ),
             new Operation(
                 id: 'pixelDismissals.create',
@@ -1180,6 +1187,7 @@ final class Operations
                 idempotent: true,
                 accept: 'application/json',
                 sensitive: false,
+                headers: ['prefer'],
             ),
             new Operation(
                 id: 'prints.get',
@@ -1250,6 +1258,7 @@ final class Operations
                 idempotent: false,
                 accept: 'application/json',
                 sensitive: false,
+                headers: ['x-pixonaut-session'],
             ),
             new Operation(
                 id: 'proofs.createThroughLayout',
@@ -1260,6 +1269,7 @@ final class Operations
                 idempotent: false,
                 accept: 'application/json',
                 sensitive: false,
+                headers: ['x-pixonaut-session'],
             ),
             new Operation(
                 id: 'scenes.list',
@@ -1390,6 +1400,7 @@ final class Operations
                 idempotent: false,
                 accept: 'application/json',
                 sensitive: false,
+                headers: ['x-pixonaut-sdk-version'],
             ),
             new Operation(
                 id: 'templates.constraints.get',

@@ -123,6 +123,6 @@ final class TreeTest extends TestCase
 
     private function generator(): Generator
     {
-        return new Generator(self::NAMESPACE, new Config());
+        return new Generator(self::NAMESPACE, self::noResources());
     }
 }

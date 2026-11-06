@@ -223,6 +223,23 @@ final class Compiler
         }
 
         $accept = [];
+        $binaryStatuses = [];
+        $emptyStatuses = [];
+        $errorCodes = [];
+        foreach (self::map($operation['responses'] ?? []) as $status => $response) {
+            $content = self::map(self::map($response)['content'] ?? []);
+            if (self::isSuccess((string) $status)) {
+                if ($content === []) {
+                    $emptyStatuses[] = (int) $status;
+                } elseif (array_diff(array_keys($content), [self::JSON]) !== []) {
+                    $binaryStatuses[] = (int) $status;
+                }
+            } elseif ((int) $status >= self::FIRST_ERROR_STATUS) {
+                $errorCodes = [...$errorCodes, ...self::documentedCodes($content)];
+            }
+        }
+        $errorCodes = array_values(array_unique($errorCodes));
+        sort($errorCodes);
         $jsonStatuses = [];
         foreach (self::map($operation['responses'] ?? []) as $status => $response) {
             if (self::isSuccess((string) $status) && isset(self::map(self::map($response)['content'] ?? [])[self::JSON])) {
@@ -261,7 +278,91 @@ final class Compiler
             self::text($operation['summary'] ?? ''),
             $request,
             $responses,
+            self::text(self::list($operation['tags'] ?? [])[0] ?? ''),
+            $this->parameters($id, $operation),
+            (self::map($operation['requestBody'] ?? [])['required'] ?? false) === true,
+            $binaryStatuses,
+            $emptyStatuses,
+            $errorCodes,
         );
+    }
+
+    /**
+     * @param array<string, mixed> $operation
+     *
+     * @return list<ParameterDef>
+     */
+    private function parameters(string $id, array $operation): array
+    {
+        $parameters = [];
+        foreach (self::list($operation['parameters'] ?? []) as $parameter) {
+            $parameter = self::map($parameter);
+            $name = self::text($parameter['name'] ?? '');
+            $in = self::text($parameter['in'] ?? '');
+            if ($in === ParameterDef::HEADER && strtolower($name) === self::IDEMPOTENCY_HEADER) {
+                continue;
+            }
+            if (!in_array($in, [ParameterDef::PATH, ParameterDef::QUERY, ParameterDef::HEADER], true)) {
+                throw new GeneratorException(sprintf('%s: parameter %s is in %s, which the SDK cannot send.', $id, $name, $in));
+            }
+            $schema = self::map($parameter['schema'] ?? []);
+            $variable = Naming::parameter($name, $in);
+            $parameters[] = new ParameterDef(
+                $name,
+                $in,
+                $variable,
+                $this->parameterType($id . ' parameter ' . $name, $schema),
+                $in === ParameterDef::PATH || ($parameter['required'] ?? false) === true,
+                self::text($parameter['description'] ?? $schema['description'] ?? ''),
+            );
+        }
+
+        return $parameters;
+    }
+
+    /**
+     * A parameter's type: a scalar, a list of scalars, or a union of those.
+     *
+     * @param array<string, mixed> $schema
+     */
+    private function parameterType(string $origin, array $schema): Type
+    {
+        foreach ([UnionDef::ONE_OF, UnionDef::ANY_OF] as $keyword) {
+            if (isset($schema[$keyword])) {
+                $variants = array_map(fn(mixed $variant): Type => $this->parameterType($origin, self::map($variant)), self::list($schema[$keyword]));
+
+                return count($variants) === 1 ? $variants[0] : new Type(Type::UNION, variants: $variants);
+            }
+        }
+        $types = $schema['type'] ?? 'string';
+        $types = array_values(array_diff(is_array($types) ? array_map(self::text(...), $types) : [self::text($types)], ['null']));
+        if (count($types) !== 1) {
+            throw new GeneratorException(sprintf('%s: a parameter of several types is not supported.', $origin));
+        }
+
+        return match ($types[0]) {
+            'string' => new Type(Type::STRING),
+            'integer' => new Type(Type::INT),
+            'number' => new Type(Type::FLOAT),
+            'boolean' => new Type(Type::BOOL),
+            'array' => new Type(Type::LIST, item: $this->parameterType($origin . '[]', self::map($schema['items'] ?? []))),
+            default => throw new GeneratorException(sprintf('%s: a parameter of type %s is not supported.', $origin, $types[0])),
+        };
+    }
+
+    /**
+     * The `error` values an error answer's schema lists.
+     *
+     * @param array<string, mixed> $content
+     *
+     * @return list<string>
+     */
+    private static function documentedCodes(array $content): array
+    {
+        $schema = self::map(self::map($content[self::JSON] ?? [])['schema'] ?? []);
+        $error = self::map(self::map($schema['properties'] ?? [])['error'] ?? []);
+
+        return array_values(array_filter(self::list($error['enum'] ?? $error['x-extensible-enum'] ?? []), is_string(...)));
     }
 
     /**
@@ -329,12 +430,8 @@ final class Compiler
                 if ((int) $status < self::FIRST_ERROR_STATUS) {
                     continue;
                 }
-                $schema = self::map(self::map(self::map(self::map($response)['content'] ?? [])[self::JSON] ?? [])['schema'] ?? []);
-                $error = self::map(self::map($schema['properties'] ?? [])['error'] ?? []);
-                foreach (self::list($error['enum'] ?? $error['x-extensible-enum'] ?? []) as $code) {
-                    if (is_string($code)) {
-                        $codes[$code][(int) $status] = true;
-                    }
+                foreach (self::documentedCodes(self::map(self::map($response)['content'] ?? [])) as $code) {
+                    $codes[$code][(int) $status] = true;
                 }
             }
         }
