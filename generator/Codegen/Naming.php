@@ -37,11 +37,30 @@ final class Naming
     }
 
     /**
-     * A class name, kept clear of PHP's reserved words.
+     * The runtime classes every generated model imports, compared lower
+     * case: a component of the same name would clash with its import.
+     */
+    private const RUNTIME_CLASS_NAMES = ['decode', 'encode', 'model', 'omitted', 'unexpectedresponse'];
+
+    /**
+     * A class name, kept clear of PHP's reserved words and of the runtime
+     * classes models import.
      */
     public static function className(string $name): string
     {
-        return in_array(strtolower($name), self::RESERVED_CLASS_NAMES, true) ? $name . 'Model' : $name;
+        $lower = strtolower($name);
+
+        return in_array($lower, self::RESERVED_CLASS_NAMES, true) || in_array($lower, self::RUNTIME_CLASS_NAMES, true)
+            ? $name . 'Model'
+            : $name;
+    }
+
+    /**
+     * Whether a class name is one of the runtime classes models import.
+     */
+    public static function isRuntimeClass(string $name): bool
+    {
+        return in_array(strtolower($name), self::RUNTIME_CLASS_NAMES, true);
     }
 
     /**

@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -71,7 +70,7 @@ final class OrdersGetResponseBlank implements Model
     {
         $data = [];
         $data['name'] = $this->name;
-        $data['optionAxes'] = Encode::value($this->optionAxes);
+        $data['optionAxes'] = $this->optionAxes;
         $data['variants'] = $this->variants;
         return $data;
     }

@@ -31,15 +31,18 @@ final class AutomationsTestRunResponseStepsItemPrintshopsItem
             [
                 [
                     static fn(mixed $v, string $p): AutomationsTestRunResponseStepsItemPrintshopsItemNo => AutomationsTestRunResponseStepsItemPrintshopsItemNo::fromArray(Decode::object($v, $p), $p),
-                    1003,
+                    1004,
+                    ['can' => 'no'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsTestRunResponseStepsItemPrintshopsItemConditional => AutomationsTestRunResponseStepsItemPrintshopsItemConditional::fromArray(Decode::object($v, $p), $p),
-                    1003,
+                    1004,
+                    ['can' => 'conditional'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsTestRunResponseStepsItemPrintshopsItemYes => AutomationsTestRunResponseStepsItemPrintshopsItemYes::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['can' => 'yes'],
                 ],
             ],
         );

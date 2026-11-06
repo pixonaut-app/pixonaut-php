@@ -62,10 +62,7 @@ final class ShareLinksUpdateResponseSubjectMetaTemplate implements Model
                 $path . '.sides',
                 static fn(mixed $v, string $p): ShareLinksUpdateResponseSubjectMetaTemplateSidesItem => ShareLinksUpdateResponseSubjectMetaTemplateSidesItem::fromArray(Decode::object($v, $p), $p),
             ),
-            type: Decode::string(
-                Decode::constant(Decode::required($data, 'type', $path), 'template', $path . '.type'),
-                $path . '.type',
-            ),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;
@@ -85,10 +82,13 @@ final class ShareLinksUpdateResponseSubjectMetaTemplate implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['blank'] = Encode::value($this->blank);
+        $data['blank'] = $this->blank === null ? null : Encode::model($this->blank);
         $data['carriesVisit'] = $this->carriesVisit;
         $data['returnHost'] = $this->returnHost;
-        $data['sides'] = Encode::value($this->sides);
+        $data['sides'] = array_map(
+            static fn(ShareLinksUpdateResponseSubjectMetaTemplateSidesItem $v): mixed => Encode::model($v),
+            $this->sides,
+        );
         $data['type'] = $this->type;
         return $data;
     }

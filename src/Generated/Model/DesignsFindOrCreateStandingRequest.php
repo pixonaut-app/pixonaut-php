@@ -113,7 +113,7 @@ final class DesignsFindOrCreateStandingRequest implements Model
             $data['variant'] = $this->variant;
         }
         if ($this->variantRow !== null) {
-            $data['variantRow'] = Encode::map($this->variantRow);
+            $data['variantRow'] = Encode::object($this->variantRow);
         }
         if ($this->widthMm !== null) {
             $data['widthMm'] = $this->widthMm;

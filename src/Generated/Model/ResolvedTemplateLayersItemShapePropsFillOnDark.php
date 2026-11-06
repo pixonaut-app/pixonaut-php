@@ -34,26 +34,32 @@ final class ResolvedTemplateLayersItemShapePropsFillOnDark
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillOnDarkOption4 => ResolvedTemplateLayersItemShapePropsFillOnDarkOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillOnDarkOption1 => ResolvedTemplateLayersItemShapePropsFillOnDarkOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillOnDarkOption2 => ResolvedTemplateLayersItemShapePropsFillOnDarkOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillOnDarkOption3 => ResolvedTemplateLayersItemShapePropsFillOnDarkOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillOnDarkOption5 => ResolvedTemplateLayersItemShapePropsFillOnDarkOption5::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillOnDarkOption6 => ResolvedTemplateLayersItemShapePropsFillOnDarkOption6::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

@@ -45,10 +45,7 @@ final class PixelConversationGetResponseConversationMessagesItemAssistantContent
                 $path . '.tool_references',
                 static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemAssistantContentItemToolSearchToolResultContentToolSearchToolSearchResultToolReferencesItem => PixelConversationGetResponseConversationMessagesItemAssistantContentItemToolSearchToolResultContentToolSearchToolSearchResultToolReferencesItem::fromArray(Decode::object($v, $p), $p),
             ),
-            type: Decode::string(
-                Decode::constant(Decode::required($data, 'type', $path), 'tool_search_tool_search_result', $path . '.type'),
-                $path . '.type',
-            ),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;
@@ -68,7 +65,10 @@ final class PixelConversationGetResponseConversationMessagesItemAssistantContent
     public function toArray(): array
     {
         $data = [];
-        $data['tool_references'] = Encode::value($this->tool_references);
+        $data['tool_references'] = array_map(
+            static fn(PixelConversationGetResponseConversationMessagesItemAssistantContentItemToolSearchToolResultContentToolSearchToolSearchResultToolReferencesItem $v): mixed => Encode::model($v),
+            $this->tool_references,
+        );
         $data['type'] = $this->type;
         return $data;
     }

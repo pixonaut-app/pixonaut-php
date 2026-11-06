@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -72,7 +71,7 @@ final class BlankDriftedEventPayload implements Model
         $data = [];
         $data['blankId'] = $this->blankId;
         $data['blankName'] = $this->blankName;
-        $data['kinds'] = Encode::value($this->kinds);
+        $data['kinds'] = $this->kinds;
         $data['severity'] = $this->severity;
         return $data;
     }

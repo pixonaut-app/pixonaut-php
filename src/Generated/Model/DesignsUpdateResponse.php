@@ -79,7 +79,10 @@ final class DesignsUpdateResponse implements Model
     {
         $data = [];
         $data['edited'] = $this->edited;
-        $data['lowResolution'] = Encode::value($this->lowResolution);
+        $data['lowResolution'] = array_map(
+            static fn(DesignsUpdateResponseLowResolutionItem $v): mixed => Encode::model($v),
+            $this->lowResolution,
+        );
         $data['printFloorDpi'] = $this->printFloorDpi;
         $data['proofId'] = $this->proofId;
         $data['revision'] = $this->revision;

@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -65,7 +64,7 @@ final class PrintshopConnectionsListResponseOption1AdaptersItemCredentialGuide i
     public function toArray(): array
     {
         $data = [];
-        $data['requiredPermissions'] = Encode::value($this->requiredPermissions);
+        $data['requiredPermissions'] = $this->requiredPermissions;
         $data['tokenPageUrl'] = $this->tokenPageUrl;
         return $data;
     }

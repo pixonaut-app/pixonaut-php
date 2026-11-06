@@ -69,7 +69,7 @@ final class AutomationsTestRunEventsRequest implements Model
             $data['automationId'] = $this->automationId;
         }
         if ($this->draft !== null) {
-            $data['draft'] = Encode::value($this->draft);
+            $data['draft'] = Encode::model($this->draft);
         }
         if ($this->eventId !== null) {
             $data['eventId'] = $this->eventId;

@@ -34,22 +34,27 @@ final class TemplateInputLayersItemImagePropsDuotoneHighlightValue
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsDuotoneHighlightValueOption5 => TemplateInputLayersItemImagePropsDuotoneHighlightValueOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsDuotoneHighlightValueOption1 => TemplateInputLayersItemImagePropsDuotoneHighlightValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsDuotoneHighlightValueOption2 => TemplateInputLayersItemImagePropsDuotoneHighlightValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsDuotoneHighlightValueOption3 => TemplateInputLayersItemImagePropsDuotoneHighlightValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsDuotoneHighlightValueOption4 => TemplateInputLayersItemImagePropsDuotoneHighlightValueOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

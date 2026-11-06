@@ -114,7 +114,7 @@ final class PayloadsValidateRequest implements Model
             $data['placementId'] = $this->placementId;
         }
         if ($this->linked !== null) {
-            $data['linked'] = Encode::value($this->linked);
+            $data['linked'] = Encode::model($this->linked);
         }
         if ($this->heightMm !== null) {
             $data['heightMm'] = $this->heightMm;
@@ -129,13 +129,13 @@ final class PayloadsValidateRequest implements Model
             $data['variant'] = $this->variant;
         }
         if ($this->variantRow !== null) {
-            $data['variantRow'] = Encode::map($this->variantRow);
+            $data['variantRow'] = Encode::object($this->variantRow);
         }
         if ($this->garmentVariant !== null) {
             $data['garmentVariant'] = $this->garmentVariant;
         }
         if (!$this->repeat instanceof Omitted) {
-            $data['repeat'] = Encode::value($this->repeat);
+            $data['repeat'] = $this->repeat === null ? null : Encode::model($this->repeat);
         }
         return $data;
     }

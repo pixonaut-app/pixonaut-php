@@ -103,7 +103,10 @@ final class BlanksMockupsListResponsePlacementsItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['areas'] = Encode::value($this->areas);
+        $data['areas'] = array_map(
+            static fn(BlanksMockupsListResponsePlacementsItemAreasItem $v): mixed => Encode::model($v),
+            $this->areas,
+        );
         $data['bleedMm'] = $this->bleedMm;
         $data['coverage'] = $this->coverage;
         $data['defaultHeightMm'] = $this->defaultHeightMm;
@@ -113,18 +116,21 @@ final class BlanksMockupsListResponsePlacementsItem implements Model
         $data['maxWidthMm'] = $this->maxWidthMm;
         $data['name'] = $this->name;
         $data['safeAreaMm'] = $this->safeAreaMm;
-        $data['views'] = Encode::value($this->views);
+        $data['views'] = array_map(
+            static fn(BlanksMockupsListResponsePlacementsItemViewsItem $v): mixed => Encode::model($v),
+            $this->views,
+        );
         if ($this->fillColour !== null) {
             $data['fillColour'] = $this->fillColour;
         }
         if ($this->linkWith !== null) {
-            $data['linkWith'] = Encode::value($this->linkWith);
+            $data['linkWith'] = Encode::model($this->linkWith);
         }
         if ($this->printMethod !== null) {
             $data['printMethod'] = $this->printMethod;
         }
         if ($this->shape !== null) {
-            $data['shape'] = Encode::value($this->shape);
+            $data['shape'] = Encode::model($this->shape);
         }
         return $data;
     }

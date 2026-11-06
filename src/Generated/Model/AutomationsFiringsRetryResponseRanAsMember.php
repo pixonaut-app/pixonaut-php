@@ -40,7 +40,7 @@ final class AutomationsFiringsRetryResponseRanAsMember implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'member', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             name: Decode::nullable(
                 Decode::required($data, 'name', $path),
                 $path . '.name',

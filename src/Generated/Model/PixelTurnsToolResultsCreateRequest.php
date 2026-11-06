@@ -32,10 +32,12 @@ final class PixelTurnsToolResultsCreateRequest
                 [
                     static fn(mixed $v, string $p): PixelTurnsToolResultsCreateRequestOption1 => PixelTurnsToolResultsCreateRequestOption1::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelTurnsToolResultsCreateRequestOption2 => PixelTurnsToolResultsCreateRequestOption2::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
             ],
         );

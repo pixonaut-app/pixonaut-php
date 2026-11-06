@@ -103,7 +103,7 @@ final class ShareLinksCreateRequest implements Model
             $data['brandId'] = $this->brandId;
         }
         if ($this->designLimit !== null) {
-            $data['designLimit'] = Encode::value($this->designLimit);
+            $data['designLimit'] = Encode::model($this->designLimit);
         }
         if ($this->expiresInDays !== null) {
             $data['expiresInDays'] = $this->expiresInDays;

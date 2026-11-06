@@ -34,18 +34,22 @@ final class ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorValue
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorValueOption4 => ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorValueOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorValueOption1 => ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorValueOption2 => ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorValueOption3 => ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

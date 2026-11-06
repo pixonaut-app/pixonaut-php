@@ -74,7 +74,7 @@ final class ShareLinksUpdateRequestPrintSizesItem implements Model
         $data['label'] = $this->label;
         $data['widthMm'] = $this->widthMm;
         if ($this->localizedLabels !== null) {
-            $data['localizedLabels'] = Encode::value($this->localizedLabels);
+            $data['localizedLabels'] = Encode::model($this->localizedLabels);
         }
         return $data;
     }

@@ -68,13 +68,13 @@ final class ResolvedTemplateCustomerLayers implements Model
     {
         $data = [];
         if ($this->image !== null) {
-            $data['image'] = Encode::value($this->image);
+            $data['image'] = Encode::model($this->image);
         }
         if ($this->shape !== null) {
-            $data['shape'] = Encode::value($this->shape);
+            $data['shape'] = Encode::model($this->shape);
         }
         if ($this->text !== null) {
-            $data['text'] = Encode::value($this->text);
+            $data['text'] = Encode::model($this->text);
         }
         return $data;
     }

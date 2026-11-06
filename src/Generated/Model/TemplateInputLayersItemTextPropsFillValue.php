@@ -34,26 +34,32 @@ final class TemplateInputLayersItemTextPropsFillValue
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillValueOption5 => TemplateInputLayersItemTextPropsFillValueOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillValueOption1 => TemplateInputLayersItemTextPropsFillValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillValueOption2 => TemplateInputLayersItemTextPropsFillValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillValueOption3 => TemplateInputLayersItemTextPropsFillValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillValueOption4 => TemplateInputLayersItemTextPropsFillValueOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillValueOption6 => TemplateInputLayersItemTextPropsFillValueOption6::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

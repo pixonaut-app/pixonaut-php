@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -68,7 +67,7 @@ final class ConnectedStoreExchangeCodeResponseOption1PublishableKey implements M
     public function toArray(): array
     {
         $data = [];
-        $data['allowedOrigins'] = Encode::value($this->allowedOrigins);
+        $data['allowedOrigins'] = $this->allowedOrigins;
         $data['id'] = $this->id;
         $data['key'] = $this->key;
         return $data;

@@ -33,15 +33,18 @@ final class ResolvedTemplateBackgroundColorColorConstraints
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateBackgroundColorColorConstraintsOption1 => ResolvedTemplateBackgroundColorColorConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateBackgroundColorColorConstraintsOption3 => ResolvedTemplateBackgroundColorColorConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateBackgroundColorColorConstraintsOption2 => ResolvedTemplateBackgroundColorColorConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

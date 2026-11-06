@@ -118,15 +118,15 @@ final class AutomationsFiringsCancelResponseStepsItem implements Model
         $data = [];
         $data['at'] = $this->at;
         $data['attempts'] = $this->attempts;
-        $data['branch'] = Encode::value($this->branch);
+        $data['branch'] = $this->branch;
         $data['label'] = $this->label;
         $data['nextTryAt'] = $this->nextTryAt;
         $data['reason'] = $this->reason;
         $data['state'] = $this->state;
         $data['stepId'] = $this->stepId;
-        $data['subjects'] = Encode::value($this->subjects);
+        $data['subjects'] = Encode::model($this->subjects);
         $data['type'] = $this->type;
-        $data['unsent'] = Encode::value($this->unsent);
+        $data['unsent'] = $this->unsent === null ? null : Encode::model($this->unsent);
         $data['waitingUntil'] = $this->waitingUntil;
         return $data;
     }

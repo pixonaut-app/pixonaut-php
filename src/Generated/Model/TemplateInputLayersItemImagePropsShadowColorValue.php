@@ -34,22 +34,27 @@ final class TemplateInputLayersItemImagePropsShadowColorValue
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsShadowColorValueOption5 => TemplateInputLayersItemImagePropsShadowColorValueOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsShadowColorValueOption1 => TemplateInputLayersItemImagePropsShadowColorValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsShadowColorValueOption2 => TemplateInputLayersItemImagePropsShadowColorValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsShadowColorValueOption3 => TemplateInputLayersItemImagePropsShadowColorValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsShadowColorValueOption4 => TemplateInputLayersItemImagePropsShadowColorValueOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

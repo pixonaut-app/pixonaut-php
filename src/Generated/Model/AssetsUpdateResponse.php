@@ -120,12 +120,12 @@ final class AssetsUpdateResponse implements Model
         $data['createdAt'] = $this->createdAt;
         $data['heightPx'] = $this->heightPx;
         $data['id'] = $this->id;
-        $data['localizedNames'] = Encode::map($this->localizedNames);
+        $data['localizedNames'] = Encode::object($this->localizedNames);
         $data['mime'] = $this->mime;
         $data['name'] = $this->name;
         $data['role'] = $this->role;
         $data['sizeBytes'] = $this->sizeBytes;
-        $data['tags'] = Encode::value($this->tags);
+        $data['tags'] = $this->tags;
         $data['updatedAt'] = $this->updatedAt;
         $data['visibility'] = $this->visibility;
         $data['widthPx'] = $this->widthPx;

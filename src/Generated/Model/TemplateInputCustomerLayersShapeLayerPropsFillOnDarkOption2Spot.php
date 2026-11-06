@@ -67,10 +67,10 @@ final class TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption2Spot impl
     public function toArray(): array
     {
         $data = [];
-        $data['fallback'] = Encode::value($this->fallback);
+        $data['fallback'] = Encode::model($this->fallback);
         $data['name'] = $this->name;
         if ($this->preview !== null) {
-            $data['preview'] = Encode::value($this->preview);
+            $data['preview'] = Encode::model($this->preview);
         }
         return $data;
     }

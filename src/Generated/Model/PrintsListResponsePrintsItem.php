@@ -207,7 +207,7 @@ final class PrintsListResponsePrintsItem implements Model
         $data['currentRevision'] = $this->currentRevision;
         $data['designId'] = $this->designId;
         $data['designRevision'] = $this->designRevision;
-        $data['failure'] = Encode::value($this->failure);
+        $data['failure'] = $this->failure === null ? null : Encode::model($this->failure);
         $data['fileForm'] = $this->fileForm;
         $data['filesBytes'] = $this->filesBytes;
         $data['filesCount'] = $this->filesCount;
@@ -218,7 +218,7 @@ final class PrintsListResponsePrintsItem implements Model
         $data['liveTextFallback'] = $this->liveTextFallback;
         $data['number'] = $this->number;
         $data['orderCount'] = $this->orderCount;
-        $data['printshops'] = Encode::value($this->printshops);
+        $data['printshops'] = $this->printshops;
         $data['status'] = $this->status;
         $data['templateName'] = $this->templateName;
         $data['templateVersion'] = $this->templateVersion;

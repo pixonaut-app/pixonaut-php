@@ -33,11 +33,13 @@ final class PrintsFilesListResponseCounted
             [
                 [
                     static fn(mixed $v, string $p): PrintsFilesListResponseCountedFiles => PrintsFilesListResponseCountedFiles::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'files'],
                 ],
                 [
                     static fn(mixed $v, string $p): PrintsFilesListResponseCountedOrder => PrintsFilesListResponseCountedOrder::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'order'],
                 ],
             ],
         );

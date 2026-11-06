@@ -105,13 +105,16 @@ final class AutomationsTestRunResponseStepsItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['branch'] = Encode::value($this->branch);
+        $data['branch'] = $this->branch;
         $data['label'] = $this->label;
         $data['outcome'] = $this->outcome;
-        $data['printshops'] = Encode::value($this->printshops);
+        $data['printshops'] = array_map(
+            static fn(AutomationsTestRunResponseStepsItemPrintshopsItemNo|AutomationsTestRunResponseStepsItemPrintshopsItemConditional|AutomationsTestRunResponseStepsItemPrintshopsItemYes $v): mixed => Encode::value($v),
+            $this->printshops,
+        );
         $data['reason'] = $this->reason;
-        $data['rendered'] = Encode::map($this->rendered);
-        $data['spend'] = Encode::value($this->spend);
+        $data['rendered'] = Encode::object($this->rendered);
+        $data['spend'] = $this->spend === null ? null : Encode::model($this->spend);
         $data['stepId'] = $this->stepId;
         $data['type'] = $this->type;
         return $data;

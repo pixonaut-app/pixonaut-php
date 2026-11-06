@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -67,7 +66,7 @@ final class WebhookEndpointsCreateRequest implements Model
         $data = [];
         $data['url'] = $this->url;
         if ($this->eventTypes !== null) {
-            $data['eventTypes'] = Encode::value($this->eventTypes);
+            $data['eventTypes'] = $this->eventTypes;
         }
         return $data;
     }

@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -77,10 +76,10 @@ final class InkDeletedEventPayload implements Model
         $data['inkId'] = $this->inkId;
         $data['inkName'] = $this->inkName;
         if ($this->unlinked !== null) {
-            $data['unlinked'] = Encode::value($this->unlinked);
+            $data['unlinked'] = $this->unlinked;
         }
         if ($this->unlinkedPalettes !== null) {
-            $data['unlinkedPalettes'] = Encode::value($this->unlinkedPalettes);
+            $data['unlinkedPalettes'] = $this->unlinkedPalettes;
         }
         return $data;
     }

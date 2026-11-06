@@ -31,15 +31,18 @@ final class TemplatesPrintSizeValidateResponse
             [
                 [
                     static fn(mixed $v, string $p): TemplatesPrintSizeValidateResponseFalse => TemplatesPrintSizeValidateResponseFalse::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['legal' => false],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplatesPrintSizeValidateResponseTrue => TemplatesPrintSizeValidateResponseTrue::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['legal' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplatesPrintSizeValidateResponseOption3 => TemplatesPrintSizeValidateResponseOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

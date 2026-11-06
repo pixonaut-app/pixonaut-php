@@ -70,7 +70,10 @@ final class AutomationsListResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['automations'] = Encode::value($this->automations);
+        $data['automations'] = array_map(
+            static fn(AutomationsListResponseAutomationsItem $v): mixed => Encode::model($v),
+            $this->automations,
+        );
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;
         $data['total'] = $this->total;

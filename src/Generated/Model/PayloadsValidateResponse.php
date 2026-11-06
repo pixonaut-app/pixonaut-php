@@ -71,7 +71,10 @@ final class PayloadsValidateResponse implements Model
     {
         $data = [];
         $data['docHash'] = $this->docHash;
-        $data['lowResolution'] = Encode::value($this->lowResolution);
+        $data['lowResolution'] = array_map(
+            static fn(PayloadsValidateResponseLowResolutionItem $v): mixed => Encode::model($v),
+            $this->lowResolution,
+        );
         $data['ok'] = $this->ok;
         $data['printFloorDpi'] = $this->printFloorDpi;
         return $data;

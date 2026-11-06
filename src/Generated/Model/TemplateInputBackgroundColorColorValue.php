@@ -34,22 +34,27 @@ final class TemplateInputBackgroundColorColorValue
                 [
                     static fn(mixed $v, string $p): TemplateInputBackgroundColorColorValueOption5 => TemplateInputBackgroundColorColorValueOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputBackgroundColorColorValueOption1 => TemplateInputBackgroundColorColorValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputBackgroundColorColorValueOption2 => TemplateInputBackgroundColorColorValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputBackgroundColorColorValueOption3 => TemplateInputBackgroundColorColorValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputBackgroundColorColorValueOption4 => TemplateInputBackgroundColorColorValueOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

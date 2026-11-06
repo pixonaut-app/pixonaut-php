@@ -43,7 +43,7 @@ final class ResolvedTemplateLayersItemShapePropsFillOnDarkOption5GradientLinear 
     {
         $model = new self(
             angleDeg: Decode::float(Decode::required($data, 'angleDeg', $path), $path . '.angleDeg'),
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'linear', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             stops: Decode::list(
                 Decode::required($data, 'stops', $path),
                 $path . '.stops',
@@ -70,7 +70,10 @@ final class ResolvedTemplateLayersItemShapePropsFillOnDarkOption5GradientLinear 
         $data = [];
         $data['angleDeg'] = $this->angleDeg;
         $data['kind'] = $this->kind;
-        $data['stops'] = Encode::value($this->stops);
+        $data['stops'] = array_map(
+            static fn(ResolvedTemplateLayersItemShapePropsFillOnDarkOption5GradientLinearStopsItem $v): mixed => Encode::model($v),
+            $this->stops,
+        );
         return $data;
     }
 }

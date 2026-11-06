@@ -33,11 +33,13 @@ final class TemplateInputLayersItemTextTextBox
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextTextBoxFill => TemplateInputLayersItemTextTextBoxFill::fromArray(Decode::object($v, $p), $p),
-                    1003,
+                    1004,
+                    ['mode' => 'fill'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextTextBoxAdapt => TemplateInputLayersItemTextTextBoxAdapt::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['mode' => 'adapt'],
                 ],
             ],
         );

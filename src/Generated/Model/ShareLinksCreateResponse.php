@@ -124,7 +124,7 @@ final class ShareLinksCreateResponse implements Model
         $data = [];
         $data['brandId'] = $this->brandId;
         $data['createdAt'] = $this->createdAt;
-        $data['designLimit'] = Encode::value($this->designLimit);
+        $data['designLimit'] = $this->designLimit === null ? null : Encode::model($this->designLimit);
         $data['expiresAt'] = $this->expiresAt;
         $data['id'] = $this->id;
         $data['kind'] = $this->kind;

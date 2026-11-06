@@ -90,12 +90,24 @@ final class AssetsUsageGetResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['blanks'] = Encode::value($this->blanks);
-        $data['designs'] = Encode::value($this->designs);
+        $data['blanks'] = array_map(
+            static fn(AssetsUsageGetResponseBlanksItem $v): mixed => Encode::model($v),
+            $this->blanks,
+        );
+        $data['designs'] = array_map(
+            static fn(AssetsUsageGetResponseDesignsItem $v): mixed => Encode::model($v),
+            $this->designs,
+        );
         $data['logo'] = $this->logo;
-        $data['orders'] = Encode::value($this->orders);
-        $data['templates'] = Encode::value($this->templates);
-        $data['withheld'] = Encode::value($this->withheld);
+        $data['orders'] = array_map(
+            static fn(AssetsUsageGetResponseOrdersItem $v): mixed => Encode::model($v),
+            $this->orders,
+        );
+        $data['templates'] = array_map(
+            static fn(AssetsUsageGetResponseTemplatesItem $v): mixed => Encode::model($v),
+            $this->templates,
+        );
+        $data['withheld'] = Encode::model($this->withheld);
         return $data;
     }
 }

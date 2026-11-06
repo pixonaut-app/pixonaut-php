@@ -72,8 +72,11 @@ final class ShareLinksListResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['counts'] = Encode::value($this->counts);
-        $data['links'] = Encode::value($this->links);
+        $data['counts'] = Encode::model($this->counts);
+        $data['links'] = array_map(
+            static fn(ShareLinksListResponseLinksItem $v): mixed => Encode::model($v),
+            $this->links,
+        );
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;
         $data['total'] = $this->total;

@@ -72,7 +72,12 @@ final class PixelDesignerRequest implements Model
         $data['prompt'] = $this->prompt;
         $data['templateId'] = $this->templateId;
         if ($this->values !== null) {
-            $data['values'] = Encode::map($this->values);
+            $data['values'] = Encode::object(
+                array_map(
+                    static fn(array $v): mixed => Encode::value($v, true),
+                    $this->values,
+                ),
+            );
         }
         return $data;
     }

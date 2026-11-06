@@ -70,8 +70,14 @@ final class CustomerSessionsGetResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['assets'] = Encode::value($this->assets);
-        $data['proofs'] = Encode::value($this->proofs);
+        $data['assets'] = array_map(
+            static fn(CustomerSessionsGetResponseAssetsItem $v): mixed => Encode::model($v),
+            $this->assets,
+        );
+        $data['proofs'] = array_map(
+            static fn(CustomerSessionsGetResponseProofsItem $v): mixed => Encode::model($v),
+            $this->proofs,
+        );
         return $data;
     }
 }

@@ -33,11 +33,13 @@ final class ResolvedTemplateCustomerLayersTextLayerMat
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerMatShape => ResolvedTemplateCustomerLayersTextLayerMatShape::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'shape'],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerMatColor => ResolvedTemplateCustomerLayersTextLayerMatColor::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'color'],
                 ],
             ],
         );

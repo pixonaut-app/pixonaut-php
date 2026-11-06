@@ -36,7 +36,7 @@ final class AutomationsVersionsResponseVersionsItemSavedByKey implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'key', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             label: Decode::string(Decode::required($data, 'label', $path), $path . '.label'),
         );
         $model->decoded = $data;

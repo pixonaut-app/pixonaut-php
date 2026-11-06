@@ -32,14 +32,17 @@ final class TemplatesListResponse
                 [
                     static fn(mixed $v, string $p): TemplatesListResponseOption2 => TemplatesListResponseOption2::fromArray(Decode::object($v, $p), $p),
                     7,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplatesListResponseOption1 => TemplatesListResponseOption1::fromArray(Decode::object($v, $p), $p),
                     4,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplatesListResponseOption3 => TemplatesListResponseOption3::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
             ],
         );

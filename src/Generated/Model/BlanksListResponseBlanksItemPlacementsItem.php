@@ -145,9 +145,15 @@ final class BlanksListResponseBlanksItemPlacementsItem implements Model
         $data['maxHeightMm'] = $this->maxHeightMm;
         $data['maxWidthMm'] = $this->maxWidthMm;
         $data['name'] = $this->name;
-        $data['views'] = Encode::value($this->views);
+        $data['views'] = array_map(
+            static fn(BlanksListResponseBlanksItemPlacementsItemViewsItem $v): mixed => Encode::model($v),
+            $this->views,
+        );
         if ($this->areas !== null) {
-            $data['areas'] = Encode::value($this->areas);
+            $data['areas'] = array_map(
+                static fn(BlanksListResponseBlanksItemPlacementsItemAreasItem $v): mixed => Encode::model($v),
+                $this->areas,
+            );
         }
         if ($this->bleedMm !== null) {
             $data['bleedMm'] = $this->bleedMm;
@@ -162,10 +168,10 @@ final class BlanksListResponseBlanksItemPlacementsItem implements Model
             $data['fillColour'] = $this->fillColour;
         }
         if ($this->garment !== null) {
-            $data['garment'] = Encode::value($this->garment);
+            $data['garment'] = Encode::model($this->garment);
         }
         if ($this->linkWith !== null) {
-            $data['linkWith'] = Encode::value($this->linkWith);
+            $data['linkWith'] = Encode::model($this->linkWith);
         }
         if ($this->printMethod !== null) {
             $data['printMethod'] = $this->printMethod;
@@ -177,7 +183,7 @@ final class BlanksListResponseBlanksItemPlacementsItem implements Model
             $data['safeAreaMm'] = $this->safeAreaMm;
         }
         if ($this->shape !== null) {
-            $data['shape'] = Encode::value($this->shape);
+            $data['shape'] = Encode::model($this->shape);
         }
         if ($this->shopName !== null) {
             $data['shopName'] = $this->shopName;

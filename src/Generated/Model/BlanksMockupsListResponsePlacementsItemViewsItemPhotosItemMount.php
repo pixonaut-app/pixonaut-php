@@ -97,8 +97,8 @@ final class BlanksMockupsListResponsePlacementsItemViewsItemPhotosItemMount impl
     public function toArray(): array
     {
         $data = [];
-        $data['photoSizePx'] = Encode::value($this->photoSizePx);
-        $data['placementRectPx'] = Encode::value($this->placementRectPx);
+        $data['photoSizePx'] = Encode::model($this->photoSizePx);
+        $data['placementRectPx'] = Encode::model($this->placementRectPx);
         $data['url'] = $this->url;
         if ($this->displacementStrength !== null) {
             $data['displacementStrength'] = $this->displacementStrength;
@@ -110,7 +110,7 @@ final class BlanksMockupsListResponsePlacementsItemViewsItemPhotosItemMount impl
             $data['textureStrength'] = $this->textureStrength;
         }
         if ($this->warp !== null) {
-            $data['warp'] = Encode::value($this->warp);
+            $data['warp'] = Encode::model($this->warp);
         }
         return $data;
     }

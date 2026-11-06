@@ -109,19 +109,22 @@ final class PixelApplicationsCreateResponseConversationCardsValue implements Mod
         $data['status'] = $this->status;
         $data['tool'] = $this->tool;
         if ($this->change !== null) {
-            $data['change'] = Encode::value($this->change);
+            $data['change'] = Encode::model($this->change);
         }
         if ($this->current !== null) {
-            $data['current'] = Encode::value($this->current);
+            $data['current'] = Encode::model($this->current);
         }
         if ($this->estimate !== null) {
-            $data['estimate'] = Encode::value($this->estimate);
+            $data['estimate'] = Encode::model($this->estimate);
         }
         if ($this->input !== null) {
             $data['input'] = $this->input;
         }
         if ($this->pictures !== null) {
-            $data['pictures'] = Encode::value($this->pictures);
+            $data['pictures'] = array_map(
+                static fn(PixelApplicationsCreateResponseConversationCardsValuePicturesItem $v): mixed => Encode::model($v),
+                $this->pictures,
+            );
         }
         if ($this->refusedWith !== null) {
             $data['refusedWith'] = $this->refusedWith;
@@ -130,13 +133,16 @@ final class PixelApplicationsCreateResponseConversationCardsValue implements Mod
             $data['runId'] = $this->runId;
         }
         if ($this->savedRevisions !== null) {
-            $data['savedRevisions'] = Encode::map($this->savedRevisions);
+            $data['savedRevisions'] = Encode::object($this->savedRevisions);
         }
         if ($this->showcases !== null) {
-            $data['showcases'] = Encode::value($this->showcases);
+            $data['showcases'] = array_map(
+                static fn(PixelApplicationsCreateResponseConversationCardsValueShowcasesItem $v): mixed => Encode::model($v),
+                $this->showcases,
+            );
         }
         if ($this->storeRefusal !== null) {
-            $data['storeRefusal'] = Encode::value($this->storeRefusal);
+            $data['storeRefusal'] = Encode::model($this->storeRefusal);
         }
         if ($this->upscaleId !== null) {
             $data['upscaleId'] = $this->upscaleId;

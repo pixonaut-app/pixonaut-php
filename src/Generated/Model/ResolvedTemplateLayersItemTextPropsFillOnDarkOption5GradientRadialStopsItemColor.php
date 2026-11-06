@@ -34,18 +34,22 @@ final class ResolvedTemplateLayersItemTextPropsFillOnDarkOption5GradientRadialSt
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillOnDarkOption5GradientRadialStopsItemColorOption4 => ResolvedTemplateLayersItemTextPropsFillOnDarkOption5GradientRadialStopsItemColorOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillOnDarkOption5GradientRadialStopsItemColorOption1 => ResolvedTemplateLayersItemTextPropsFillOnDarkOption5GradientRadialStopsItemColorOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillOnDarkOption5GradientRadialStopsItemColorOption2 => ResolvedTemplateLayersItemTextPropsFillOnDarkOption5GradientRadialStopsItemColorOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillOnDarkOption5GradientRadialStopsItemColorOption3 => ResolvedTemplateLayersItemTextPropsFillOnDarkOption5GradientRadialStopsItemColorOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

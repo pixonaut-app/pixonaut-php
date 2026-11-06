@@ -75,7 +75,10 @@ final class OrdersRerouteTargetsResponse implements Model
         $data['fitting'] = $this->fitting;
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;
-        $data['targets'] = Encode::value($this->targets);
+        $data['targets'] = array_map(
+            static fn(OrdersRerouteTargetsResponseTargetsItem $v): mixed => Encode::model($v),
+            $this->targets,
+        );
         $data['total'] = $this->total;
         return $data;
     }

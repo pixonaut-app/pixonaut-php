@@ -104,9 +104,9 @@ final class OrdersGetResponseReroutesItemTo implements Model
         $data = [];
         $data['blankId'] = $this->blankId;
         $data['blankName'] = $this->blankName;
-        $data['optionAxes'] = Encode::value($this->optionAxes);
+        $data['optionAxes'] = $this->optionAxes;
         $data['printshopName'] = $this->printshopName;
-        $data['variantOptions'] = $this->variantOptions === null ? null : Encode::map($this->variantOptions);
+        $data['variantOptions'] = $this->variantOptions === null ? null : Encode::object($this->variantOptions);
         $data['variantRef'] = $this->variantRef;
         return $data;
     }

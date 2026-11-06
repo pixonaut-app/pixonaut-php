@@ -33,11 +33,13 @@ final class ResolvedTemplateCustomerLayersImageLayerMatShapeShape
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerMatShapeShapePath => ResolvedTemplateCustomerLayersImageLayerMatShapeShapePath::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'path'],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerMatShapeShapeShape => ResolvedTemplateCustomerLayersImageLayerMatShapeShapeShape::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'shape'],
                 ],
             ],
         );

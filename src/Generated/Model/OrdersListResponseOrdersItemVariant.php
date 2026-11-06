@@ -74,8 +74,11 @@ final class OrdersListResponseOrdersItemVariant implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['fields'] = Encode::value($this->fields);
-        $data['options'] = Encode::map($this->options);
+        $data['fields'] = array_map(
+            static fn(OrdersListResponseOrdersItemVariantFieldsItem $v): mixed => Encode::model($v),
+            $this->fields,
+        );
+        $data['options'] = Encode::object($this->options);
         $data['ref'] = $this->ref;
         return $data;
     }

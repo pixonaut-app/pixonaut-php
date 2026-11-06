@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -66,7 +65,7 @@ final class BlankUpdatedEventPayload implements Model
     {
         $data = [];
         $data['blankId'] = $this->blankId;
-        $data['fields'] = Encode::value($this->fields);
+        $data['fields'] = $this->fields;
         return $data;
     }
 }

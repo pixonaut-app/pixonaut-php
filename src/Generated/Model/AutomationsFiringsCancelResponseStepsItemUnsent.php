@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -75,7 +74,7 @@ final class AutomationsFiringsCancelResponseStepsItemUnsent implements Model
         $data['filled'] = $this->filled;
         $data['subject'] = $this->subject;
         $data['text'] = $this->text;
-        $data['to'] = Encode::value($this->to);
+        $data['to'] = $this->to;
         return $data;
     }
 }

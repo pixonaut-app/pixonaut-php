@@ -95,10 +95,16 @@ final class OrdersJobFilesListResponse implements Model
         $data = [];
         $data['machineProfileAskedId'] = $this->machineProfileAskedId;
         $data['machineProfileId'] = $this->machineProfileId;
-        $data['machineProfiles'] = Encode::value($this->machineProfiles);
+        $data['machineProfiles'] = array_map(
+            static fn(OrdersJobFilesListResponseMachineProfilesItem $v): mixed => Encode::model($v),
+            $this->machineProfiles,
+        );
         $data['separationMissing'] = $this->separationMissing;
-        $data['settings'] = Encode::value($this->settings);
-        $data['variants'] = Encode::value($this->variants);
+        $data['settings'] = $this->settings === null ? null : Encode::model($this->settings);
+        $data['variants'] = array_map(
+            static fn(OrdersJobFilesListResponseVariantsItem $v): mixed => Encode::model($v),
+            $this->variants,
+        );
         return $data;
     }
 }

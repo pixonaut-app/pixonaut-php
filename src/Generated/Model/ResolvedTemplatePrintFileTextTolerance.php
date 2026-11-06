@@ -33,11 +33,13 @@ final class ResolvedTemplatePrintFileTextTolerance
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplatePrintFileTextTolerancePx => ResolvedTemplatePrintFileTextTolerancePx::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['unit' => 'px'],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplatePrintFileTextToleranceMm => ResolvedTemplatePrintFileTextToleranceMm::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['unit' => 'mm'],
                 ],
             ],
         );

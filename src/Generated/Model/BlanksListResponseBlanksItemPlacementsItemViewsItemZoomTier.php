@@ -85,7 +85,7 @@ final class BlanksListResponseBlanksItemPlacementsItemViewsItemZoomTier implemen
         $data['maskAssetId'] = $this->maskAssetId;
         $data['multiplyAssetId'] = $this->multiplyAssetId;
         $data['photoAssetId'] = $this->photoAssetId;
-        $data['photoSizePx'] = Encode::value($this->photoSizePx);
+        $data['photoSizePx'] = Encode::model($this->photoSizePx);
         $data['screenAssetId'] = $this->screenAssetId;
         $data['uvAssetId'] = $this->uvAssetId;
         if ($this->occluderAssetId !== null) {

@@ -71,7 +71,10 @@ final class AssetTagsListResponseOption1 implements Model
         $data = [];
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;
-        $data['tags'] = Encode::value($this->tags);
+        $data['tags'] = array_map(
+            static fn(AssetTagsListResponseOption1TagsItem $v): mixed => Encode::model($v),
+            $this->tags,
+        );
         $data['total'] = $this->total;
         return $data;
     }

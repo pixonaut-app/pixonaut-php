@@ -31,31 +31,38 @@ final class PixelConversationGetResponseConversationMessagesItemUserContentOptio
             [
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTemplateMockup => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTemplateMockup::fromArray(Decode::object($v, $p), $p),
-                    1003,
+                    1004,
+                    ['kind' => 'template_mockup'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfDesign => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfDesign::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'design'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTrial => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTrial::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'trial'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTemplate => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTemplate::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'template'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfAsset => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfAsset::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'asset'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfUpload => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfUpload::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'upload'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfDesignMockup => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfDesignMockup::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'design_mockup'],
                 ],
             ],
         );

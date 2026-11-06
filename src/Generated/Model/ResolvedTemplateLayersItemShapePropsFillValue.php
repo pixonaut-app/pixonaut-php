@@ -34,26 +34,32 @@ final class ResolvedTemplateLayersItemShapePropsFillValue
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillValueOption4 => ResolvedTemplateLayersItemShapePropsFillValueOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillValueOption1 => ResolvedTemplateLayersItemShapePropsFillValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillValueOption2 => ResolvedTemplateLayersItemShapePropsFillValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillValueOption3 => ResolvedTemplateLayersItemShapePropsFillValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillValueOption5 => ResolvedTemplateLayersItemShapePropsFillValueOption5::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillValueOption6 => ResolvedTemplateLayersItemShapePropsFillValueOption6::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

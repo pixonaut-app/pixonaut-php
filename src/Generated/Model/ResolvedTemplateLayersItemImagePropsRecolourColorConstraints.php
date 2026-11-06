@@ -33,15 +33,18 @@ final class ResolvedTemplateLayersItemImagePropsRecolourColorConstraints
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsRecolourColorConstraintsOption1 => ResolvedTemplateLayersItemImagePropsRecolourColorConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsRecolourColorConstraintsOption3 => ResolvedTemplateLayersItemImagePropsRecolourColorConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsRecolourColorConstraintsOption2 => ResolvedTemplateLayersItemImagePropsRecolourColorConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

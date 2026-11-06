@@ -108,16 +108,16 @@ final class AutomationsDisableResponseAutomation implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['author'] = Encode::value($this->author);
-        $data['body'] = Encode::value($this->body);
+        $data['author'] = $this->author === null ? null : Encode::model($this->author);
+        $data['body'] = Encode::model($this->body);
         $data['createdAt'] = $this->createdAt;
         $data['enabled'] = $this->enabled;
         $data['enabledAt'] = $this->enabledAt;
-        $data['firings'] = Encode::value($this->firings);
+        $data['firings'] = Encode::model($this->firings);
         $data['id'] = $this->id;
         $data['name'] = $this->name;
         $data['runsAs'] = $this->runsAs;
-        $data['sources'] = Encode::value($this->sources);
+        $data['sources'] = Encode::model($this->sources);
         $data['spendLimit'] = $this->spendLimit;
         $data['standing'] = Encode::value($this->standing);
         $data['trigger'] = $this->trigger;

@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -85,7 +84,7 @@ final class AssetsImportRequest implements Model
             $data['name'] = $this->name;
         }
         if ($this->tags !== null) {
-            $data['tags'] = Encode::value($this->tags);
+            $data['tags'] = $this->tags;
         }
         if ($this->url !== null) {
             $data['url'] = $this->url;

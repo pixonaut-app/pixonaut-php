@@ -34,26 +34,32 @@ final class ResolvedTemplateCustomerLayersShapeLayerPropsFillValue
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillValueOption4 => ResolvedTemplateCustomerLayersShapeLayerPropsFillValueOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillValueOption1 => ResolvedTemplateCustomerLayersShapeLayerPropsFillValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillValueOption2 => ResolvedTemplateCustomerLayersShapeLayerPropsFillValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillValueOption3 => ResolvedTemplateCustomerLayersShapeLayerPropsFillValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillValueOption5 => ResolvedTemplateCustomerLayersShapeLayerPropsFillValueOption5::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillValueOption6 => ResolvedTemplateCustomerLayersShapeLayerPropsFillValueOption6::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

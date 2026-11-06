@@ -31,11 +31,13 @@ final class PixelDismissalsCreateResponseConversationMessagesItemUserContentOpti
             [
                 [
                     static fn(mixed $v, string $p): PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemText => PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemText::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'text'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPicture => PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPicture::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'picture'],
                 ],
             ],
         );

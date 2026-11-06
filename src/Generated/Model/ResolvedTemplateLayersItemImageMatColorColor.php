@@ -34,18 +34,22 @@ final class ResolvedTemplateLayersItemImageMatColorColor
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImageMatColorColorOption4 => ResolvedTemplateLayersItemImageMatColorColorOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImageMatColorColorOption1 => ResolvedTemplateLayersItemImageMatColorColorOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImageMatColorColorOption2 => ResolvedTemplateLayersItemImageMatColorColorOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImageMatColorColorOption3 => ResolvedTemplateLayersItemImageMatColorColorOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

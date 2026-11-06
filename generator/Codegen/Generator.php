@@ -33,7 +33,7 @@ final class Generator
         }
         /** @var array<string, mixed> $spec */
         $api = (new Compiler($spec, $this->config))->compile();
-        $models = new ModelPrinter($this->namespace);
+        $models = new ModelPrinter($this->namespace, $api->models, $api->unions);
         $support = new SupportPrinter($this->namespace);
 
         $files = [

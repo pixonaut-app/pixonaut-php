@@ -34,18 +34,22 @@ final class TemplateInputPalettesValueItemColor
                 [
                     static fn(mixed $v, string $p): TemplateInputPalettesValueItemColorOption1 => TemplateInputPalettesValueItemColorOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputPalettesValueItemColorOption2 => TemplateInputPalettesValueItemColorOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputPalettesValueItemColorOption3 => TemplateInputPalettesValueItemColorOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputPalettesValueItemColorOption4 => TemplateInputPalettesValueItemColorOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

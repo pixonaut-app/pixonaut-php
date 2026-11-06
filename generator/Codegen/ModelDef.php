@@ -9,9 +9,6 @@ namespace Pixonaut\Sdk\Generator\Codegen;
  */
 final class ModelDef
 {
-    /** Outweighs any count of required fields. */
-    private const CONSTANT_WEIGHT = 1000;
-
     /**
      * Whether a request sends it. A request model tells an optional field
      * left out from one set to `null`.
@@ -28,20 +25,4 @@ final class ModelDef
         public readonly array $properties,
         public readonly string $origin,
     ) {}
-
-    /**
-     * How much a union variant says about a value: one point per required
-     * field, and a thousand per field that may take one value only.
-     */
-    public function specificity(): int
-    {
-        $score = 0;
-        foreach ($this->properties as $property) {
-            if ($property->required) {
-                $score += $property->constant !== null ? self::CONSTANT_WEIGHT : 1;
-            }
-        }
-
-        return $score;
-    }
 }

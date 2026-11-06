@@ -42,7 +42,7 @@ final class AssetsBulkUpdateResponseResultsItemOption2 implements Model
         $model = new self(
             error: Decode::string(Decode::required($data, 'error', $path), $path . '.error'),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
-            ok: Decode::bool(Decode::constant(Decode::required($data, 'ok', $path), false, $path . '.ok'), $path . '.ok'),
+            ok: Decode::bool(Decode::required($data, 'ok', $path), $path . '.ok'),
         );
         $model->decoded = $data;
         return $model;

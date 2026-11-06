@@ -60,7 +60,7 @@ final class OrdersRetryRequest implements Model
     {
         $data = [];
         if ($this->reroute !== null) {
-            $data['reroute'] = Encode::value($this->reroute);
+            $data['reroute'] = Encode::model($this->reroute);
         }
         return $data;
     }

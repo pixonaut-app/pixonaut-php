@@ -52,7 +52,7 @@ final class TemplateInputLayersItemTextTextBoxAdapt implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            mode: Decode::string(Decode::constant(Decode::required($data, 'mode', $path), 'adapt', $path . '.mode'), $path . '.mode'),
+            mode: Decode::string(Decode::required($data, 'mode', $path), $path . '.mode'),
             then: Decode::string(Decode::required($data, 'then', $path), $path . '.then'),
             breakWords: array_key_exists('breakWords', $data) ? Decode::bool($data['breakWords'], $path . '.breakWords') : null,
             order: array_key_exists('order', $data) ? Decode::string($data['order'], $path . '.order') : null,

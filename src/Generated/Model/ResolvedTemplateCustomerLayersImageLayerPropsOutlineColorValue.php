@@ -34,18 +34,22 @@ final class ResolvedTemplateCustomerLayersImageLayerPropsOutlineColorValue
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsOutlineColorValueOption4 => ResolvedTemplateCustomerLayersImageLayerPropsOutlineColorValueOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsOutlineColorValueOption1 => ResolvedTemplateCustomerLayersImageLayerPropsOutlineColorValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsOutlineColorValueOption2 => ResolvedTemplateCustomerLayersImageLayerPropsOutlineColorValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsOutlineColorValueOption3 => ResolvedTemplateCustomerLayersImageLayerPropsOutlineColorValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

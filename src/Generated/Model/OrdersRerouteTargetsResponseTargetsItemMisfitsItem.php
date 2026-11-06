@@ -31,27 +31,33 @@ final class OrdersRerouteTargetsResponseTargetsItemMisfitsItem
             [
                 [
                     static fn(mixed $v, string $p): OrdersRerouteTargetsResponseTargetsItemMisfitsItemPrintExceedsPlacement => OrdersRerouteTargetsResponseTargetsItemMisfitsItemPrintExceedsPlacement::fromArray(Decode::object($v, $p), $p),
-                    1004,
+                    1005,
+                    ['kind' => 'print_exceeds_placement'],
                 ],
                 [
                     static fn(mixed $v, string $p): OrdersRerouteTargetsResponseTargetsItemMisfitsItemPrintShortOfArea => OrdersRerouteTargetsResponseTargetsItemMisfitsItemPrintShortOfArea::fromArray(Decode::object($v, $p), $p),
-                    1004,
+                    1005,
+                    ['kind' => 'print_short_of_area'],
                 ],
                 [
                     static fn(mixed $v, string $p): OrdersRerouteTargetsResponseTargetsItemMisfitsItemTechniqueDiffers => OrdersRerouteTargetsResponseTargetsItemMisfitsItemTechniqueDiffers::fromArray(Decode::object($v, $p), $p),
-                    1004,
+                    1005,
+                    ['kind' => 'technique_differs'],
                 ],
                 [
                     static fn(mixed $v, string $p): OrdersRerouteTargetsResponseTargetsItemMisfitsItemTechniqueUnknown => OrdersRerouteTargetsResponseTargetsItemMisfitsItemTechniqueUnknown::fromArray(Decode::object($v, $p), $p),
-                    1004,
+                    1005,
+                    ['kind' => 'technique_unknown'],
                 ],
                 [
                     static fn(mixed $v, string $p): OrdersRerouteTargetsResponseTargetsItemMisfitsItemNoPlacementFits => OrdersRerouteTargetsResponseTargetsItemMisfitsItemNoPlacementFits::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'no_placement_fits'],
                 ],
                 [
                     static fn(mixed $v, string $p): OrdersRerouteTargetsResponseTargetsItemMisfitsItemTooFewPlacements => OrdersRerouteTargetsResponseTargetsItemMisfitsItemTooFewPlacements::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['kind' => 'too_few_placements'],
                 ],
             ],
         );

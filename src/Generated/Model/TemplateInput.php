@@ -145,9 +145,12 @@ final class TemplateInput implements Model
         $data['dpi'] = $this->dpi;
         $data['fit'] = $this->fit;
         $data['id'] = $this->id;
-        $data['layers'] = Encode::value($this->layers);
+        $data['layers'] = array_map(
+            static fn(TemplateInputLayersItemText|TemplateInputLayersItemImage|TemplateInputLayersItemShape $v): mixed => Encode::value($v),
+            $this->layers,
+        );
         $data['name'] = $this->name;
-        $data['ratio'] = Encode::value($this->ratio);
+        $data['ratio'] = Encode::model($this->ratio);
         $data['ratioTolerance'] = $this->ratioTolerance;
         $data['version'] = $this->version;
         if ($this->background !== null) {
@@ -157,22 +160,38 @@ final class TemplateInput implements Model
             $data['coverAlign'] = $this->coverAlign;
         }
         if ($this->customerLayers !== null) {
-            $data['customerLayers'] = Encode::value($this->customerLayers);
+            $data['customerLayers'] = Encode::model($this->customerLayers);
         }
         if ($this->drawAtTemplateRatio !== null) {
             $data['drawAtTemplateRatio'] = $this->drawAtTemplateRatio;
         }
         if ($this->form !== null) {
-            $data['form'] = Encode::value($this->form);
+            $data['form'] = Encode::model($this->form);
         }
         if ($this->groups !== null) {
-            $data['groups'] = Encode::value($this->groups);
+            $data['groups'] = array_map(
+                static fn(TemplateInputGroupsItem $v): mixed => Encode::model($v),
+                $this->groups,
+            );
         }
         if ($this->localized !== null) {
-            $data['localized'] = Encode::map($this->localized);
+            $data['localized'] = Encode::object(
+                array_map(
+                    static fn(TemplateInputLocalizedValue $v): mixed => Encode::model($v),
+                    $this->localized,
+                ),
+            );
         }
         if ($this->palettes !== null) {
-            $data['palettes'] = Encode::map($this->palettes);
+            $data['palettes'] = Encode::object(
+                array_map(
+                    static fn(array $v): mixed => array_map(
+                        static fn(TemplateInputPalettesValueItem $v): mixed => Encode::model($v),
+                        $v,
+                    ),
+                    $this->palettes,
+                ),
+            );
         }
         if ($this->printFileForm !== null) {
             $data['printFileForm'] = $this->printFileForm;
@@ -181,16 +200,16 @@ final class TemplateInput implements Model
             $data['printFileTextTolerance'] = Encode::value($this->printFileTextTolerance);
         }
         if ($this->shape !== null) {
-            $data['shape'] = Encode::value($this->shape);
+            $data['shape'] = Encode::model($this->shape);
         }
         if ($this->snap !== null) {
-            $data['snap'] = Encode::value($this->snap);
+            $data['snap'] = Encode::model($this->snap);
         }
         if ($this->tenantId !== null) {
             $data['tenantId'] = $this->tenantId;
         }
         if ($this->uploads !== null) {
-            $data['uploads'] = Encode::value($this->uploads);
+            $data['uploads'] = Encode::model($this->uploads);
         }
         return $data;
     }

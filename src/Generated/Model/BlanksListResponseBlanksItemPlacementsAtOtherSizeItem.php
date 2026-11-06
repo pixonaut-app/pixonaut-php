@@ -66,7 +66,7 @@ final class BlanksListResponseBlanksItemPlacementsAtOtherSizeItem implements Mod
         $data = [];
         $data['placementId'] = $this->placementId;
         $data['position'] = $this->position;
-        $data['sizeMm'] = Encode::value($this->sizeMm);
+        $data['sizeMm'] = Encode::model($this->sizeMm);
         return $data;
     }
 }

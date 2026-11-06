@@ -63,7 +63,10 @@ final class AutomationsTestRunEventsResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['events'] = Encode::value($this->events);
+        $data['events'] = array_map(
+            static fn(AutomationsTestRunEventsResponseEventsItem $v): mixed => Encode::model($v),
+            $this->events,
+        );
         return $data;
     }
 }

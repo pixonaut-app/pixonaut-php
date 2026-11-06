@@ -34,22 +34,27 @@ final class TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinearStop
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinearStopsItemColorOption5 => TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinearStopsItemColorOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinearStopsItemColorOption1 => TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinearStopsItemColorOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinearStopsItemColorOption2 => TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinearStopsItemColorOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinearStopsItemColorOption3 => TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinearStopsItemColorOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinearStopsItemColorOption4 => TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinearStopsItemColorOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

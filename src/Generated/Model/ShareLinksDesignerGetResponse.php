@@ -192,7 +192,7 @@ final class ShareLinksDesignerGetResponse implements Model
     {
         $data = [];
         $data['brandId'] = $this->brandId;
-        $data['designLimit'] = Encode::value($this->designLimit);
+        $data['designLimit'] = $this->designLimit === null ? null : Encode::model($this->designLimit);
         $data['expiresAt'] = $this->expiresAt;
         $data['id'] = $this->id;
         $data['locale'] = $this->locale;
@@ -215,10 +215,13 @@ final class ShareLinksDesignerGetResponse implements Model
             $data['layout'] = $this->layout;
         }
         if ($this->linkedPlacements !== null) {
-            $data['linkedPlacements'] = Encode::value($this->linkedPlacements);
+            $data['linkedPlacements'] = Encode::model($this->linkedPlacements);
         }
         if ($this->mockups !== null) {
-            $data['mockups'] = Encode::value($this->mockups);
+            $data['mockups'] = array_map(
+                static fn(ShareLinksDesignerGetResponseMockupsItem $v): mixed => Encode::model($v),
+                $this->mockups,
+            );
         }
         if ($this->panelLayout !== null) {
             $data['panelLayout'] = $this->panelLayout;
@@ -227,10 +230,13 @@ final class ShareLinksDesignerGetResponse implements Model
             $data['placementId'] = $this->placementId;
         }
         if ($this->printSizes !== null) {
-            $data['printSizes'] = Encode::value($this->printSizes);
+            $data['printSizes'] = array_map(
+                static fn(ShareLinksDesignerGetResponsePrintSizesItem $v): mixed => Encode::model($v),
+                $this->printSizes,
+            );
         }
         if ($this->repeat !== null) {
-            $data['repeat'] = Encode::value($this->repeat);
+            $data['repeat'] = Encode::model($this->repeat);
         }
         if ($this->selectedMockupIndex !== null) {
             $data['selectedMockupIndex'] = $this->selectedMockupIndex;
@@ -239,16 +245,19 @@ final class ShareLinksDesignerGetResponse implements Model
             $data['selectedPrintSizeIndex'] = $this->selectedPrintSizeIndex;
         }
         if ($this->sides !== null) {
-            $data['sides'] = Encode::value($this->sides);
+            $data['sides'] = array_map(
+                static fn(ShareLinksDesignerGetResponseSidesItem $v): mixed => Encode::model($v),
+                $this->sides,
+            );
         }
         if ($this->variantRow !== null) {
-            $data['variantRow'] = Encode::map($this->variantRow);
+            $data['variantRow'] = Encode::object($this->variantRow);
         }
         if ($this->variants !== null) {
-            $data['variants'] = Encode::value($this->variants);
+            $data['variants'] = $this->variants;
         }
         if ($this->views !== null) {
-            $data['views'] = Encode::value($this->views);
+            $data['views'] = $this->views;
         }
         return $data;
     }

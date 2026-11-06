@@ -83,9 +83,12 @@ final class DesignsRevisionsGetResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['choices'] = Encode::value($this->choices);
+        $data['choices'] = $this->choices === null ? null : array_map(
+            static fn(DesignsRevisionsGetResponseChoicesItemColor|DesignsRevisionsGetResponseChoicesItemText|DesignsRevisionsGetResponseChoicesItemImage $v): mixed => Encode::value($v),
+            $this->choices,
+        );
         $data['createdAt'] = $this->createdAt;
-        $data['createdBy'] = Encode::value($this->createdBy);
+        $data['createdBy'] = $this->createdBy === null ? null : Encode::model($this->createdBy);
         $data['isCurrent'] = $this->isCurrent;
         $data['revision'] = $this->revision;
         if ($this->doc !== null) {

@@ -33,15 +33,18 @@ final class TemplateInputCustomerLayersTextLayerPropsShadowColorConstraints
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsShadowColorConstraintsOption1 => TemplateInputCustomerLayersTextLayerPropsShadowColorConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsShadowColorConstraintsOption3 => TemplateInputCustomerLayersTextLayerPropsShadowColorConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsShadowColorConstraintsOption2 => TemplateInputCustomerLayersTextLayerPropsShadowColorConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

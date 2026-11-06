@@ -33,11 +33,13 @@ final class TemplateInputCustomerLayersImageLayerMatShapeShape
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerMatShapeShapePath => TemplateInputCustomerLayersImageLayerMatShapeShapePath::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'path'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerMatShapeShapeShape => TemplateInputCustomerLayersImageLayerMatShapeShapeShape::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'shape'],
                 ],
             ],
         );

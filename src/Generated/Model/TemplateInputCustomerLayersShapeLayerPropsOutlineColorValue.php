@@ -34,22 +34,27 @@ final class TemplateInputCustomerLayersShapeLayerPropsOutlineColorValue
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsOutlineColorValueOption5 => TemplateInputCustomerLayersShapeLayerPropsOutlineColorValueOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsOutlineColorValueOption1 => TemplateInputCustomerLayersShapeLayerPropsOutlineColorValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsOutlineColorValueOption2 => TemplateInputCustomerLayersShapeLayerPropsOutlineColorValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsOutlineColorValueOption3 => TemplateInputCustomerLayersShapeLayerPropsOutlineColorValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsOutlineColorValueOption4 => TemplateInputCustomerLayersShapeLayerPropsOutlineColorValueOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

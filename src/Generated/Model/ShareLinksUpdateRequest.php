@@ -186,7 +186,7 @@ final class ShareLinksUpdateRequest implements Model
             $data['blankId'] = $this->blankId;
         }
         if (!$this->designLimit instanceof Omitted) {
-            $data['designLimit'] = Encode::value($this->designLimit);
+            $data['designLimit'] = $this->designLimit === null ? null : Encode::model($this->designLimit);
         }
         if (!$this->expiresInDays instanceof Omitted) {
             $data['expiresInDays'] = $this->expiresInDays;
@@ -201,13 +201,16 @@ final class ShareLinksUpdateRequest implements Model
             $data['layout'] = $this->layout;
         }
         if ($this->linkedPlacements !== null) {
-            $data['linkedPlacements'] = Encode::value($this->linkedPlacements);
+            $data['linkedPlacements'] = Encode::model($this->linkedPlacements);
         }
         if (!$this->locale instanceof Omitted) {
             $data['locale'] = $this->locale;
         }
         if ($this->mockups !== null) {
-            $data['mockups'] = Encode::value($this->mockups);
+            $data['mockups'] = array_map(
+                static fn(ShareLinksUpdateRequestMockupsItem $v): mixed => Encode::model($v),
+                $this->mockups,
+            );
         }
         if (!$this->name instanceof Omitted) {
             $data['name'] = $this->name;
@@ -225,10 +228,13 @@ final class ShareLinksUpdateRequest implements Model
             $data['printAreaFrame'] = $this->printAreaFrame;
         }
         if ($this->printSizes !== null) {
-            $data['printSizes'] = Encode::value($this->printSizes);
+            $data['printSizes'] = array_map(
+                static fn(ShareLinksUpdateRequestPrintSizesItem $v): mixed => Encode::model($v),
+                $this->printSizes,
+            );
         }
         if ($this->repeat !== null) {
-            $data['repeat'] = Encode::value($this->repeat);
+            $data['repeat'] = Encode::model($this->repeat);
         }
         if (!$this->returnUrl instanceof Omitted) {
             $data['returnUrl'] = $this->returnUrl;
@@ -240,7 +246,10 @@ final class ShareLinksUpdateRequest implements Model
             $data['selectedPrintSizeIndex'] = $this->selectedPrintSizeIndex;
         }
         if ($this->sides !== null) {
-            $data['sides'] = Encode::value($this->sides);
+            $data['sides'] = array_map(
+                static fn(ShareLinksUpdateRequestSidesItem $v): mixed => Encode::model($v),
+                $this->sides,
+            );
         }
         if (!$this->state instanceof Omitted) {
             $data['state'] = $this->state;
@@ -249,13 +258,13 @@ final class ShareLinksUpdateRequest implements Model
             $data['templateId'] = $this->templateId;
         }
         if ($this->variantRow !== null) {
-            $data['variantRow'] = Encode::map($this->variantRow);
+            $data['variantRow'] = Encode::object($this->variantRow);
         }
         if ($this->variants !== null) {
-            $data['variants'] = Encode::value($this->variants);
+            $data['variants'] = $this->variants;
         }
         if ($this->views !== null) {
-            $data['views'] = Encode::value($this->views);
+            $data['views'] = $this->views;
         }
         return $data;
     }

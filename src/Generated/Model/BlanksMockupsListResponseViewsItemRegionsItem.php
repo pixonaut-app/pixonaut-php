@@ -85,24 +85,24 @@ final class BlanksMockupsListResponseViewsItemRegionsItem implements Model
     {
         $data = [];
         $data['placementId'] = $this->placementId;
-        $data['rectPx'] = Encode::value($this->rectPx);
+        $data['rectPx'] = $this->rectPx === null ? null : Encode::model($this->rectPx);
         if ($this->maskUrl !== null) {
             $data['maskUrl'] = $this->maskUrl;
         }
         if ($this->mesh !== null) {
-            $data['mesh'] = Encode::value($this->mesh);
+            $data['mesh'] = Encode::model($this->mesh);
         }
         if ($this->piece !== null) {
             $data['piece'] = $this->piece;
         }
         if ($this->pieceSizeMm !== null) {
-            $data['pieceSizeMm'] = Encode::value($this->pieceSizeMm);
+            $data['pieceSizeMm'] = Encode::model($this->pieceSizeMm);
         }
         if ($this->printWindowMm !== null) {
-            $data['printWindowMm'] = Encode::value($this->printWindowMm);
+            $data['printWindowMm'] = Encode::model($this->printWindowMm);
         }
         if ($this->sourceWindowMm !== null) {
-            $data['sourceWindowMm'] = Encode::value($this->sourceWindowMm);
+            $data['sourceWindowMm'] = Encode::model($this->sourceWindowMm);
         }
         return $data;
     }

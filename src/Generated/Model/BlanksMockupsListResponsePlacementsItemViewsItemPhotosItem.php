@@ -91,9 +91,9 @@ final class BlanksMockupsListResponsePlacementsItemViewsItemPhotosItem implement
         $data = [];
         $data['height'] = $this->height;
         $data['id'] = $this->id;
-        $data['mount'] = Encode::value($this->mount);
+        $data['mount'] = $this->mount === null ? null : Encode::model($this->mount);
         $data['thumbnailUrl'] = $this->thumbnailUrl;
-        $data['variantRefs'] = Encode::value($this->variantRefs);
+        $data['variantRefs'] = $this->variantRefs;
         $data['width'] = $this->width;
         return $data;
     }

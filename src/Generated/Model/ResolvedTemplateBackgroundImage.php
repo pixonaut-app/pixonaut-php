@@ -51,7 +51,7 @@ final class ResolvedTemplateBackgroundImage implements Model
                 Decode::object(Decode::required($data, 'imageAssetId', $path), $path . '.imageAssetId'),
                 $path . '.imageAssetId',
             ),
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'image', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             crop: array_key_exists('crop', $data) ? ResolvedTemplateBackgroundImageCrop::fromArray(Decode::object($data['crop'], $path . '.crop'), $path . '.crop') : null,
             fit: array_key_exists('fit', $data) ? ResolvedTemplateBackgroundImageFit::fromArray(Decode::object($data['fit'], $path . '.fit'), $path . '.fit') : null,
             tileScale: array_key_exists('tileScale', $data) ? ResolvedTemplateBackgroundImageTileScale::fromArray(Decode::object($data['tileScale'], $path . '.tileScale'), $path . '.tileScale') : null,
@@ -74,16 +74,16 @@ final class ResolvedTemplateBackgroundImage implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['imageAssetId'] = Encode::value($this->imageAssetId);
+        $data['imageAssetId'] = Encode::model($this->imageAssetId);
         $data['kind'] = $this->kind;
         if ($this->crop !== null) {
-            $data['crop'] = Encode::value($this->crop);
+            $data['crop'] = Encode::model($this->crop);
         }
         if ($this->fit !== null) {
-            $data['fit'] = Encode::value($this->fit);
+            $data['fit'] = Encode::model($this->fit);
         }
         if ($this->tileScale !== null) {
-            $data['tileScale'] = Encode::value($this->tileScale);
+            $data['tileScale'] = Encode::model($this->tileScale);
         }
         return $data;
     }

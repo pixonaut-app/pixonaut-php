@@ -33,15 +33,18 @@ final class ResolvedTemplateCustomerLayersShapeLayerPropsOutlineColorConstraints
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsOutlineColorConstraintsOption1 => ResolvedTemplateCustomerLayersShapeLayerPropsOutlineColorConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsOutlineColorConstraintsOption3 => ResolvedTemplateCustomerLayersShapeLayerPropsOutlineColorConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsOutlineColorConstraintsOption2 => ResolvedTemplateCustomerLayersShapeLayerPropsOutlineColorConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

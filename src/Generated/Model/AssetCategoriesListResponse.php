@@ -32,6 +32,7 @@ final class AssetCategoriesListResponse
                 [
                     static fn(mixed $v, string $p): AssetCategoriesListResponseOption1 => AssetCategoriesListResponseOption1::fromArray(Decode::object($v, $p), $p),
                     4,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): array => Decode::list(
@@ -40,6 +41,7 @@ final class AssetCategoriesListResponse
                         static fn(mixed $v, string $p): AssetCategoriesListResponseOption2Item => AssetCategoriesListResponseOption2Item::fromArray(Decode::object($v, $p), $p),
                     ),
                     0,
+                    [],
                 ],
             ],
         );

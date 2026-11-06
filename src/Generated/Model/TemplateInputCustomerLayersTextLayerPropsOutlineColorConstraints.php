@@ -33,15 +33,18 @@ final class TemplateInputCustomerLayersTextLayerPropsOutlineColorConstraints
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsOutlineColorConstraintsOption1 => TemplateInputCustomerLayersTextLayerPropsOutlineColorConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsOutlineColorConstraintsOption3 => TemplateInputCustomerLayersTextLayerPropsOutlineColorConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsOutlineColorConstraintsOption2 => TemplateInputCustomerLayersTextLayerPropsOutlineColorConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

@@ -31,11 +31,13 @@ final class TemplateInputLayersItemTextTextPathOutlineShape
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextTextPathOutlineShapePath => TemplateInputLayersItemTextTextPathOutlineShapePath::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'path'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextTextPathOutlineShapeShape => TemplateInputLayersItemTextTextPathOutlineShapeShape::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'shape'],
                 ],
             ],
         );

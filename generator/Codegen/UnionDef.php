@@ -14,7 +14,8 @@ final class UnionDef
     public const DISCRIMINATED = 'discriminated';
 
     /**
-     * @param list<array{Type, int}> $variants      Each variant and its specificity, most specific first.
+     * @param list<array{Type, int, array<string, string|int|float|bool>}> $variants Each variant, its specificity
+     *                                                                       and its tags, most specific first.
      * @param array<string, Type>    $mapping       Discriminator value → variant, for a discriminated union.
      */
     public function __construct(

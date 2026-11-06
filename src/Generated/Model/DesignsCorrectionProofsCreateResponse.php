@@ -82,7 +82,10 @@ final class DesignsCorrectionProofsCreateResponse implements Model
         $data = [];
         $data['docHash'] = $this->docHash;
         $data['expiresAt'] = $this->expiresAt;
-        $data['lowResolution'] = Encode::value($this->lowResolution);
+        $data['lowResolution'] = array_map(
+            static fn(DesignsCorrectionProofsCreateResponseLowResolutionItem $v): mixed => Encode::model($v),
+            $this->lowResolution,
+        );
         $data['printFloorDpi'] = $this->printFloorDpi;
         $data['proofToken'] = $this->proofToken;
         $data['proofUrl'] = $this->proofUrl;

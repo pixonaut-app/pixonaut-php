@@ -34,18 +34,22 @@ final class ResolvedTemplateCustomerLayersImageLayerPropsRecolourColorOnDark
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsRecolourColorOnDarkOption4 => ResolvedTemplateCustomerLayersImageLayerPropsRecolourColorOnDarkOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsRecolourColorOnDarkOption1 => ResolvedTemplateCustomerLayersImageLayerPropsRecolourColorOnDarkOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsRecolourColorOnDarkOption2 => ResolvedTemplateCustomerLayersImageLayerPropsRecolourColorOnDarkOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsRecolourColorOnDarkOption3 => ResolvedTemplateCustomerLayersImageLayerPropsRecolourColorOnDarkOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

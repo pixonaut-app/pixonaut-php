@@ -44,7 +44,7 @@ final class TemplateInputLayersItemImageMatShape implements Model
     {
         $model = new self(
             fill: TemplateInputLayersItemImageMatShapeFill::decode(Decode::required($data, 'fill', $path), $path . '.fill'),
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'shape', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             shape: TemplateInputLayersItemImageMatShapeShape::decode(Decode::required($data, 'shape', $path), $path . '.shape'),
         );
         $model->decoded = $data;

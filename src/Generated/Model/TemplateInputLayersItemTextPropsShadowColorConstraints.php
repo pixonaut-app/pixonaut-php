@@ -33,15 +33,18 @@ final class TemplateInputLayersItemTextPropsShadowColorConstraints
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsShadowColorConstraintsOption1 => TemplateInputLayersItemTextPropsShadowColorConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsShadowColorConstraintsOption3 => TemplateInputLayersItemTextPropsShadowColorConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsShadowColorConstraintsOption2 => TemplateInputLayersItemTextPropsShadowColorConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

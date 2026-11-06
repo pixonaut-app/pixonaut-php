@@ -46,10 +46,7 @@ final class PixelApplicationsCreateResponseConversationMessagesItemUserContentOp
         $model = new self(
             blankId: Decode::string(Decode::required($data, 'blankId', $path), $path . '.blankId'),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
-            kind: Decode::string(
-                Decode::constant(Decode::required($data, 'kind', $path), 'template_mockup', $path . '.kind'),
-                $path . '.kind',
-            ),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             placementId: Decode::string(Decode::required($data, 'placementId', $path), $path . '.placementId'),
             mockupId: array_key_exists('mockupId', $data) ? Decode::string($data['mockupId'], $path . '.mockupId') : null,
             viewId: array_key_exists('viewId', $data) ? Decode::string($data['viewId'], $path . '.viewId') : null,

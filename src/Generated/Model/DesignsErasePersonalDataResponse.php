@@ -247,7 +247,7 @@ final class DesignsErasePersonalDataResponse implements Model
     {
         $data = [];
         $data['apiKeyId'] = $this->apiKeyId;
-        $data['approvalConsent'] = Encode::value($this->approvalConsent);
+        $data['approvalConsent'] = $this->approvalConsent === null ? null : Encode::model($this->approvalConsent);
         $data['approveAfter'] = $this->approveAfter;
         $data['approvedAt'] = $this->approvedAt;
         $data['approvedVia'] = $this->approvedVia;
@@ -261,11 +261,11 @@ final class DesignsErasePersonalDataResponse implements Model
         $data['garmentTone'] = $this->garmentTone;
         $data['id'] = $this->id;
         $data['language'] = $this->language;
-        $data['origin'] = Encode::value($this->origin);
+        $data['origin'] = Encode::model($this->origin);
         $data['personalDataErasedAt'] = $this->personalDataErasedAt;
         $data['placementId'] = $this->placementId;
         $data['previewOpened'] = $this->previewOpened;
-        $data['printSize'] = Encode::value($this->printSize);
+        $data['printSize'] = $this->printSize === null ? null : Encode::model($this->printSize);
         $data['proofId'] = $this->proofId;
         $data['proofRevision'] = $this->proofRevision;
         $data['proofVariant'] = $this->proofVariant;
@@ -281,7 +281,7 @@ final class DesignsErasePersonalDataResponse implements Model
         $data['templateName'] = $this->templateName;
         $data['templateVersion'] = $this->templateVersion;
         $data['tenantId'] = $this->tenantId;
-        $data['variantRow'] = $this->variantRow === null ? null : Encode::map($this->variantRow);
+        $data['variantRow'] = $this->variantRow === null ? null : Encode::object($this->variantRow);
         return $data;
     }
 }

@@ -75,7 +75,7 @@ final class TemplatesGetResponseFormSchemaStepsItemFieldsItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['constraints'] = Encode::map($this->constraints);
+        $data['constraints'] = Encode::object($this->constraints);
         $data['label'] = $this->label;
         $data['layerId'] = $this->layerId;
         $data['prop'] = $this->prop;

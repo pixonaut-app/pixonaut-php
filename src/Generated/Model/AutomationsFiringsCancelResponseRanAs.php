@@ -33,11 +33,13 @@ final class AutomationsFiringsCancelResponseRanAs
             [
                 [
                     static fn(mixed $v, string $p): AutomationsFiringsCancelResponseRanAsMember => AutomationsFiringsCancelResponseRanAsMember::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'member'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsFiringsCancelResponseRanAsWorkspace => AutomationsFiringsCancelResponseRanAsWorkspace::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['kind' => 'workspace'],
                 ],
             ],
         );

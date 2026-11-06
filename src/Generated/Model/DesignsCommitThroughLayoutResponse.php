@@ -73,8 +73,14 @@ final class DesignsCommitThroughLayoutResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['designs'] = Encode::value($this->designs);
-        $data['lowResolution'] = Encode::value($this->lowResolution);
+        $data['designs'] = array_map(
+            static fn(DesignsCommitThroughLayoutResponseDesignsItem $v): mixed => Encode::model($v),
+            $this->designs,
+        );
+        $data['lowResolution'] = array_map(
+            static fn(DesignsCommitThroughLayoutResponseLowResolutionItem $v): mixed => Encode::model($v),
+            $this->lowResolution,
+        );
         $data['printFloorDpi'] = $this->printFloorDpi;
         return $data;
     }

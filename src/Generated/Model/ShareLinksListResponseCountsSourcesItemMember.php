@@ -37,10 +37,7 @@ final class ShareLinksListResponseCountsSourcesItemMember implements Model
     {
         $model = new self(
             count: Decode::int(Decode::required($data, 'count', $path), $path . '.count'),
-            source: Decode::string(
-                Decode::constant(Decode::required($data, 'source', $path), 'member', $path . '.source'),
-                $path . '.source',
-            ),
+            source: Decode::string(Decode::required($data, 'source', $path), $path . '.source'),
         );
         $model->decoded = $data;
         return $model;

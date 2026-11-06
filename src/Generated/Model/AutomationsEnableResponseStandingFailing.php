@@ -37,10 +37,7 @@ final class AutomationsEnableResponseStandingFailing implements Model
     {
         $model = new self(
             reason: Decode::string(Decode::required($data, 'reason', $path), $path . '.reason'),
-            state: Decode::string(
-                Decode::constant(Decode::required($data, 'state', $path), 'failing', $path . '.state'),
-                $path . '.state',
-            ),
+            state: Decode::string(Decode::required($data, 'state', $path), $path . '.state'),
         );
         $model->decoded = $data;
         return $model;

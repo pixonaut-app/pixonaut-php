@@ -32,10 +32,12 @@ final class DesignsCommitThroughLayoutRequest
                 [
                     static fn(mixed $v, string $p): DesignsCommitThroughLayoutRequestOption2 => DesignsCommitThroughLayoutRequestOption2::fromArray(Decode::object($v, $p), $p),
                     3,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): DesignsCommitThroughLayoutRequestOption1 => DesignsCommitThroughLayoutRequestOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

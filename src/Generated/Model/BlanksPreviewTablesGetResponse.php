@@ -62,8 +62,8 @@ final class BlanksPreviewTablesGetResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['estimate'] = Encode::value($this->estimate);
-        $data['preview'] = Encode::value($this->preview);
+        $data['estimate'] = Encode::model($this->estimate);
+        $data['preview'] = Encode::model($this->preview);
         return $data;
     }
 }

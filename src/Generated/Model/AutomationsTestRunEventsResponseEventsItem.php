@@ -64,7 +64,7 @@ final class AutomationsTestRunEventsResponseEventsItem implements Model
         $data = [];
         $data['at'] = $this->at;
         $data['id'] = $this->id;
-        $data['subject'] = Encode::value($this->subject);
+        $data['subject'] = Encode::model($this->subject);
         $data['type'] = $this->type;
         return $data;
     }

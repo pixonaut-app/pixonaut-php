@@ -33,11 +33,13 @@ final class ResolvedTemplateLayersItemTextPropsFillValueOption5Gradient
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillValueOption5GradientLinear => ResolvedTemplateLayersItemTextPropsFillValueOption5GradientLinear::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'linear'],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillValueOption5GradientRadial => ResolvedTemplateLayersItemTextPropsFillValueOption5GradientRadial::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'radial'],
                 ],
             ],
         );

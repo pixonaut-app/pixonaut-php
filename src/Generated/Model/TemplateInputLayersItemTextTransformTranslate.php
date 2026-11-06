@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -90,7 +89,7 @@ final class TemplateInputLayersItemTextTransformTranslate implements Model
             $data['label'] = $this->label;
         }
         if ($this->snapTo !== null) {
-            $data['snapTo'] = Encode::value($this->snapTo);
+            $data['snapTo'] = $this->snapTo;
         }
         return $data;
     }

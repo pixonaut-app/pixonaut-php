@@ -34,26 +34,32 @@ final class TemplateInputCustomerLayersTextLayerPropsFillOnDark
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption5 => TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption1 => TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption2 => TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption3 => TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption4 => TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6 => TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

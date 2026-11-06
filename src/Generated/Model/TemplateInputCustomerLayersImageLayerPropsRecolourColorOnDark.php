@@ -34,22 +34,27 @@ final class TemplateInputCustomerLayersImageLayerPropsRecolourColorOnDark
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsRecolourColorOnDarkOption5 => TemplateInputCustomerLayersImageLayerPropsRecolourColorOnDarkOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsRecolourColorOnDarkOption1 => TemplateInputCustomerLayersImageLayerPropsRecolourColorOnDarkOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsRecolourColorOnDarkOption2 => TemplateInputCustomerLayersImageLayerPropsRecolourColorOnDarkOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsRecolourColorOnDarkOption3 => TemplateInputCustomerLayersImageLayerPropsRecolourColorOnDarkOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsRecolourColorOnDarkOption4 => TemplateInputCustomerLayersImageLayerPropsRecolourColorOnDarkOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

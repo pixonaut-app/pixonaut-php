@@ -32,10 +32,12 @@ final class PrintshopConnectionsListResponse
                 [
                     static fn(mixed $v, string $p): PrintshopConnectionsListResponseOption1 => PrintshopConnectionsListResponseOption1::fromArray(Decode::object($v, $p), $p),
                     3,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): PrintshopConnectionsListResponseOption2 => PrintshopConnectionsListResponseOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

@@ -33,11 +33,13 @@ final class ResolvedTemplateBackground
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateBackgroundColor => ResolvedTemplateBackgroundColor::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'color'],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateBackgroundImage => ResolvedTemplateBackgroundImage::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'image'],
                 ],
             ],
         );

@@ -40,10 +40,7 @@ final class PixelDismissalsCreateResponseConversationMessagesItemAssistantConten
         $model = new self(
             content: PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemToolSearchToolResultContent::decode(Decode::required($data, 'content', $path), $path . '.content'),
             tool_use_id: Decode::string(Decode::required($data, 'tool_use_id', $path), $path . '.tool_use_id'),
-            type: Decode::string(
-                Decode::constant(Decode::required($data, 'type', $path), 'tool_search_tool_result', $path . '.type'),
-                $path . '.type',
-            ),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;

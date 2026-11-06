@@ -63,7 +63,10 @@ final class TemplatesPrintSizeValidateResponseOption3 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['verdicts'] = Encode::value($this->verdicts);
+        $data['verdicts'] = array_map(
+            static fn(TemplatesPrintSizeValidateResponseOption3VerdictsItemFalse|TemplatesPrintSizeValidateResponseOption3VerdictsItemTrue $v): mixed => Encode::value($v),
+            $this->verdicts,
+        );
         return $data;
     }
 }

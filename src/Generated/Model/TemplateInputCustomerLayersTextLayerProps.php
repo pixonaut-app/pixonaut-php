@@ -113,46 +113,46 @@ final class TemplateInputCustomerLayersTextLayerProps implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['align'] = Encode::value($this->align);
-        $data['content'] = Encode::value($this->content);
-        $data['fill'] = Encode::value($this->fill);
-        $data['fontFamily'] = Encode::value($this->fontFamily);
-        $data['fontSizeFrac'] = Encode::value($this->fontSizeFrac);
+        $data['align'] = Encode::model($this->align);
+        $data['content'] = Encode::model($this->content);
+        $data['fill'] = Encode::model($this->fill);
+        $data['fontFamily'] = Encode::model($this->fontFamily);
+        $data['fontSizeFrac'] = Encode::model($this->fontSizeFrac);
         if ($this->fontStyle !== null) {
-            $data['fontStyle'] = Encode::value($this->fontStyle);
+            $data['fontStyle'] = Encode::model($this->fontStyle);
         }
         if ($this->fontWeight !== null) {
-            $data['fontWeight'] = Encode::value($this->fontWeight);
+            $data['fontWeight'] = Encode::model($this->fontWeight);
         }
         if ($this->letterSpacingEm !== null) {
-            $data['letterSpacingEm'] = Encode::value($this->letterSpacingEm);
+            $data['letterSpacingEm'] = Encode::model($this->letterSpacingEm);
         }
         if ($this->lineHeight !== null) {
-            $data['lineHeight'] = Encode::value($this->lineHeight);
+            $data['lineHeight'] = Encode::model($this->lineHeight);
         }
         if ($this->outlineColor !== null) {
-            $data['outlineColor'] = Encode::value($this->outlineColor);
+            $data['outlineColor'] = Encode::model($this->outlineColor);
         }
         if ($this->outlineWidthEm !== null) {
-            $data['outlineWidthEm'] = Encode::value($this->outlineWidthEm);
+            $data['outlineWidthEm'] = Encode::model($this->outlineWidthEm);
         }
         if ($this->shadowBlurEm !== null) {
-            $data['shadowBlurEm'] = Encode::value($this->shadowBlurEm);
+            $data['shadowBlurEm'] = Encode::model($this->shadowBlurEm);
         }
         if ($this->shadowColor !== null) {
-            $data['shadowColor'] = Encode::value($this->shadowColor);
+            $data['shadowColor'] = Encode::model($this->shadowColor);
         }
         if ($this->shadowOffsetXEm !== null) {
-            $data['shadowOffsetXEm'] = Encode::value($this->shadowOffsetXEm);
+            $data['shadowOffsetXEm'] = Encode::model($this->shadowOffsetXEm);
         }
         if ($this->shadowOffsetYEm !== null) {
-            $data['shadowOffsetYEm'] = Encode::value($this->shadowOffsetYEm);
+            $data['shadowOffsetYEm'] = Encode::model($this->shadowOffsetYEm);
         }
         if ($this->textCase !== null) {
-            $data['textCase'] = Encode::value($this->textCase);
+            $data['textCase'] = Encode::model($this->textCase);
         }
         if ($this->valign !== null) {
-            $data['valign'] = Encode::value($this->valign);
+            $data['valign'] = Encode::model($this->valign);
         }
         return $data;
     }

@@ -41,7 +41,7 @@ final class DesignsDecideResponseOutcomesItemTrue implements Model
     {
         $model = new self(
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
-            ok: Decode::bool(Decode::constant(Decode::required($data, 'ok', $path), true, $path . '.ok'), $path . '.ok'),
+            ok: Decode::bool(Decode::required($data, 'ok', $path), $path . '.ok'),
             status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
         );
         $model->decoded = $data;

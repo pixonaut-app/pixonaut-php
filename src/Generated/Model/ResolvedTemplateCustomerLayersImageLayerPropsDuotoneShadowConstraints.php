@@ -33,15 +33,18 @@ final class ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowConstraint
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowConstraintsOption1 => ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowConstraintsOption3 => ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowConstraintsOption2 => ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

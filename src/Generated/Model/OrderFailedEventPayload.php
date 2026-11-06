@@ -89,7 +89,7 @@ final class OrderFailedEventPayload implements Model
         $data['printId'] = $this->printId;
         $data['reason'] = $this->reason;
         if ($this->automation !== null) {
-            $data['automation'] = Encode::value($this->automation);
+            $data['automation'] = Encode::model($this->automation);
         }
         if ($this->externalRef !== null) {
             $data['externalRef'] = $this->externalRef;
@@ -98,7 +98,7 @@ final class OrderFailedEventPayload implements Model
             $data['kind'] = $this->kind;
         }
         if ($this->printIds !== null) {
-            $data['printIds'] = Encode::value($this->printIds);
+            $data['printIds'] = $this->printIds;
         }
         if ($this->via !== null) {
             $data['via'] = $this->via;

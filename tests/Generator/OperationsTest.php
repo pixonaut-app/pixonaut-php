@@ -41,6 +41,7 @@ final class OperationsTest extends TestCase
 
         self::assertSame('image/png, image/webp', $operations['designs.preview']->accept);
         self::assertSame([], $operations['designs.preview']->credentials);
+        self::assertTrue($operations['designs.preview']->anonymous, 'No security requirement admits an anonymous call.');
     }
 
     public function testListsTheErrorCodesTheSpecNamesWithTheirStatuses(): void
@@ -135,7 +136,7 @@ final class OperationsTest extends TestCase
                     'responses' => self::json200(['type' => 'object']) + $refused(403, ['forbidden']),
                 ],
             ],
-            '/v1/designs/{id}/preview' => self::operation('designs.preview', ['responses' => ['200' => [
+            '/v1/designs/{id}/preview' => self::operation('designs.preview', ['security' => [], 'responses' => ['200' => [
                 'description' => 'The image',
                 'content' => ['image/png' => [], 'image/webp' => []],
             ]]], 'get'),

@@ -94,7 +94,7 @@ final class BlanksMockupsListResponseViewsItemPhotosItemRegionsItem implements M
             $data['textureStrength'] = $this->textureStrength;
         }
         if ($this->warp !== null) {
-            $data['warp'] = Encode::value($this->warp);
+            $data['warp'] = Encode::model($this->warp);
         }
         return $data;
     }

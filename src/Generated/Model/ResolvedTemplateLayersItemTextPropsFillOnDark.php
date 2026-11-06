@@ -34,22 +34,27 @@ final class ResolvedTemplateLayersItemTextPropsFillOnDark
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillOnDarkOption4 => ResolvedTemplateLayersItemTextPropsFillOnDarkOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillOnDarkOption1 => ResolvedTemplateLayersItemTextPropsFillOnDarkOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillOnDarkOption2 => ResolvedTemplateLayersItemTextPropsFillOnDarkOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillOnDarkOption3 => ResolvedTemplateLayersItemTextPropsFillOnDarkOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillOnDarkOption5 => ResolvedTemplateLayersItemTextPropsFillOnDarkOption5::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

@@ -81,15 +81,15 @@ final class TemplatesPublishRequest implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['template'] = Encode::value($this->template);
+        $data['template'] = Encode::model($this->template);
         if ($this->inkVersions !== null) {
-            $data['inkVersions'] = Encode::map($this->inkVersions);
+            $data['inkVersions'] = Encode::object($this->inkVersions);
         }
         if ($this->paletteVersions !== null) {
-            $data['paletteVersions'] = Encode::map($this->paletteVersions);
+            $data['paletteVersions'] = Encode::object($this->paletteVersions);
         }
         if ($this->shapeVersions !== null) {
-            $data['shapeVersions'] = Encode::map($this->shapeVersions);
+            $data['shapeVersions'] = Encode::object($this->shapeVersions);
         }
         return $data;
     }

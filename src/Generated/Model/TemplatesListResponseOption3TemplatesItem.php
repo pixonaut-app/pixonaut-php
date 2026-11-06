@@ -133,12 +133,12 @@ final class TemplatesListResponseOption3TemplatesItem implements Model
         $data['name'] = $this->name;
         $data['offersProperties'] = $this->offersProperties;
         $data['previewUrl'] = $this->previewUrl;
-        $data['ratio'] = Encode::value($this->ratio);
+        $data['ratio'] = $this->ratio === null ? null : Encode::model($this->ratio);
         $data['ratioTolerance'] = $this->ratioTolerance;
         $data['status'] = $this->status;
-        $data['tags'] = Encode::value($this->tags);
+        $data['tags'] = $this->tags;
         $data['updatedAt'] = $this->updatedAt;
-        $data['versions'] = Encode::value($this->versions);
+        $data['versions'] = $this->versions;
         return $data;
     }
 }

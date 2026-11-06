@@ -68,7 +68,7 @@ final class BlanksGetResponseResolvedPlacementsItemMockupsItemWarp implements Mo
     {
         $data = [];
         $data['source'] = $this->source;
-        $data['value'] = Encode::value($this->value);
+        $data['value'] = $this->value === null ? null : Encode::model($this->value);
         return $data;
     }
 }

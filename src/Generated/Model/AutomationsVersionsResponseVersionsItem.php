@@ -78,9 +78,12 @@ final class AutomationsVersionsResponseVersionsItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['changes'] = Encode::value($this->changes);
+        $data['changes'] = array_map(
+            static fn(AutomationsVersionsResponseVersionsItemChangesItem $v): mixed => Encode::model($v),
+            $this->changes,
+        );
         $data['current'] = $this->current;
-        $data['draft'] = Encode::value($this->draft);
+        $data['draft'] = Encode::model($this->draft);
         $data['savedAt'] = $this->savedAt;
         $data['savedBy'] = Encode::value($this->savedBy);
         $data['unfinishedFirings'] = $this->unfinishedFirings;

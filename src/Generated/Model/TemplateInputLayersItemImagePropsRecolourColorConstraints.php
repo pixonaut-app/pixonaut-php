@@ -33,15 +33,18 @@ final class TemplateInputLayersItemImagePropsRecolourColorConstraints
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsRecolourColorConstraintsOption1 => TemplateInputLayersItemImagePropsRecolourColorConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsRecolourColorConstraintsOption3 => TemplateInputLayersItemImagePropsRecolourColorConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsRecolourColorConstraintsOption2 => TemplateInputLayersItemImagePropsRecolourColorConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

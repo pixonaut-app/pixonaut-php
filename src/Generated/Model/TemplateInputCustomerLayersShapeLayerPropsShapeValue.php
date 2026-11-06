@@ -33,11 +33,13 @@ final class TemplateInputCustomerLayersShapeLayerPropsShapeValue
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsShapeValuePath => TemplateInputCustomerLayersShapeLayerPropsShapeValuePath::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'path'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsShapeValueShape => TemplateInputCustomerLayersShapeLayerPropsShapeValueShape::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'shape'],
                 ],
             ],
         );

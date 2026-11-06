@@ -41,7 +41,7 @@ final class ResolvedTemplateLayersItemImageMatShapeShapePath implements Model
     {
         $model = new self(
             dFrac: Decode::string(Decode::required($data, 'dFrac', $path), $path . '.dFrac'),
-            type: Decode::string(Decode::constant(Decode::required($data, 'type', $path), 'path', $path . '.type'), $path . '.type'),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;

@@ -34,18 +34,22 @@ final class ResolvedTemplateCustomerLayersTextLayerPropsShadowColorValue
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsShadowColorValueOption4 => ResolvedTemplateCustomerLayersTextLayerPropsShadowColorValueOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsShadowColorValueOption1 => ResolvedTemplateCustomerLayersTextLayerPropsShadowColorValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsShadowColorValueOption2 => ResolvedTemplateCustomerLayersTextLayerPropsShadowColorValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsShadowColorValueOption3 => ResolvedTemplateCustomerLayersTextLayerPropsShadowColorValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

@@ -41,7 +41,7 @@ final class PixelConversationGetResponseConversationMessagesItemUser implements 
     {
         $model = new self(
             content: PixelConversationGetResponseConversationMessagesItemUserContent::decode(Decode::required($data, 'content', $path), $path . '.content'),
-            role: Decode::string(Decode::constant(Decode::required($data, 'role', $path), 'user', $path . '.role'), $path . '.role'),
+            role: Decode::string(Decode::required($data, 'role', $path), $path . '.role'),
         );
         $model->decoded = $data;
         return $model;

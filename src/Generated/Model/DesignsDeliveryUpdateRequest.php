@@ -64,8 +64,8 @@ final class DesignsDeliveryUpdateRequest implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['recipient'] = Encode::value($this->recipient);
-        $data['shippingAddress'] = Encode::value($this->shippingAddress);
+        $data['recipient'] = Encode::model($this->recipient);
+        $data['shippingAddress'] = Encode::model($this->shippingAddress);
         return $data;
     }
 }

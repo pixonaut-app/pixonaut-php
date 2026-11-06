@@ -34,22 +34,27 @@ final class TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientLin
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientLinearStopsItemColorOption5 => TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientLinearStopsItemColorOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientLinearStopsItemColorOption1 => TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientLinearStopsItemColorOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientLinearStopsItemColorOption2 => TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientLinearStopsItemColorOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientLinearStopsItemColorOption3 => TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientLinearStopsItemColorOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientLinearStopsItemColorOption4 => TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientLinearStopsItemColorOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -76,7 +75,7 @@ final class OrdersJobUpdateResponseCarriers implements Model
     {
         $data = [];
         $data['last'] = $this->last;
-        $data['saved'] = Encode::value($this->saved);
+        $data['saved'] = $this->saved;
         $data['savedCount'] = $this->savedCount;
         return $data;
     }

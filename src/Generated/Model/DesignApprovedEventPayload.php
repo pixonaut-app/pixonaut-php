@@ -73,7 +73,7 @@ final class DesignApprovedEventPayload implements Model
         $data['approvedVia'] = Encode::value($this->approvedVia);
         $data['designId'] = $this->designId;
         if ($this->consent !== null) {
-            $data['consent'] = Encode::value($this->consent);
+            $data['consent'] = Encode::model($this->consent);
         }
         if ($this->revision !== null) {
             $data['revision'] = $this->revision;

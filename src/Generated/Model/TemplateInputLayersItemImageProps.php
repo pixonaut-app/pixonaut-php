@@ -134,61 +134,61 @@ final class TemplateInputLayersItemImageProps implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['fit'] = Encode::value($this->fit);
-        $data['src'] = Encode::value($this->src);
+        $data['fit'] = Encode::model($this->fit);
+        $data['src'] = Encode::model($this->src);
         if ($this->brightness !== null) {
-            $data['brightness'] = Encode::value($this->brightness);
+            $data['brightness'] = Encode::model($this->brightness);
         }
         if ($this->contrast !== null) {
-            $data['contrast'] = Encode::value($this->contrast);
+            $data['contrast'] = Encode::model($this->contrast);
         }
         if ($this->cornerRadiusShortSide !== null) {
-            $data['cornerRadiusShortSide'] = Encode::value($this->cornerRadiusShortSide);
+            $data['cornerRadiusShortSide'] = Encode::model($this->cornerRadiusShortSide);
         }
         if ($this->crop !== null) {
-            $data['crop'] = Encode::value($this->crop);
+            $data['crop'] = Encode::model($this->crop);
         }
         if ($this->duotoneHighlight !== null) {
-            $data['duotoneHighlight'] = Encode::value($this->duotoneHighlight);
+            $data['duotoneHighlight'] = Encode::model($this->duotoneHighlight);
         }
         if ($this->duotoneShadow !== null) {
-            $data['duotoneShadow'] = Encode::value($this->duotoneShadow);
+            $data['duotoneShadow'] = Encode::model($this->duotoneShadow);
         }
         if ($this->effectsFollow !== null) {
-            $data['effectsFollow'] = Encode::value($this->effectsFollow);
+            $data['effectsFollow'] = Encode::model($this->effectsFollow);
         }
         if ($this->outlineColor !== null) {
-            $data['outlineColor'] = Encode::value($this->outlineColor);
+            $data['outlineColor'] = Encode::model($this->outlineColor);
         }
         if ($this->outlineWidthShare !== null) {
-            $data['outlineWidthShare'] = Encode::value($this->outlineWidthShare);
+            $data['outlineWidthShare'] = Encode::model($this->outlineWidthShare);
         }
         if ($this->outlineWidthShortSide !== null) {
-            $data['outlineWidthShortSide'] = Encode::value($this->outlineWidthShortSide);
+            $data['outlineWidthShortSide'] = Encode::model($this->outlineWidthShortSide);
         }
         if ($this->recolourColor !== null) {
-            $data['recolourColor'] = Encode::value($this->recolourColor);
+            $data['recolourColor'] = Encode::model($this->recolourColor);
         }
         if ($this->saturation !== null) {
-            $data['saturation'] = Encode::value($this->saturation);
+            $data['saturation'] = Encode::model($this->saturation);
         }
         if ($this->shadowBlurShortSide !== null) {
-            $data['shadowBlurShortSide'] = Encode::value($this->shadowBlurShortSide);
+            $data['shadowBlurShortSide'] = Encode::model($this->shadowBlurShortSide);
         }
         if ($this->shadowColor !== null) {
-            $data['shadowColor'] = Encode::value($this->shadowColor);
+            $data['shadowColor'] = Encode::model($this->shadowColor);
         }
         if ($this->shadowOffsetXShortSide !== null) {
-            $data['shadowOffsetXShortSide'] = Encode::value($this->shadowOffsetXShortSide);
+            $data['shadowOffsetXShortSide'] = Encode::model($this->shadowOffsetXShortSide);
         }
         if ($this->shadowOffsetYShortSide !== null) {
-            $data['shadowOffsetYShortSide'] = Encode::value($this->shadowOffsetYShortSide);
+            $data['shadowOffsetYShortSide'] = Encode::model($this->shadowOffsetYShortSide);
         }
         if ($this->tileScale !== null) {
-            $data['tileScale'] = Encode::value($this->tileScale);
+            $data['tileScale'] = Encode::model($this->tileScale);
         }
         if ($this->tone !== null) {
-            $data['tone'] = Encode::value($this->tone);
+            $data['tone'] = Encode::model($this->tone);
         }
         return $data;
     }

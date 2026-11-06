@@ -76,8 +76,14 @@ final class ShareLinksListResponseCounts implements Model
     {
         $data = [];
         $data['carriesVisit'] = $this->carriesVisit;
-        $data['kinds'] = Encode::value($this->kinds);
-        $data['sources'] = Encode::value($this->sources);
+        $data['kinds'] = array_map(
+            static fn(ShareLinksListResponseCountsKindsItem $v): mixed => Encode::model($v),
+            $this->kinds,
+        );
+        $data['sources'] = array_map(
+            static fn(ShareLinksListResponseCountsSourcesItemKey|ShareLinksListResponseCountsSourcesItemMember|ShareLinksListResponseCountsSourcesItemAuto $v): mixed => Encode::value($v),
+            $this->sources,
+        );
         return $data;
     }
 }

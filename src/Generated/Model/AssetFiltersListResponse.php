@@ -84,10 +84,13 @@ final class AssetFiltersListResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['categories'] = Encode::value($this->categories);
-        $data['sessions'] = Encode::value($this->sessions);
-        $data['tags'] = Encode::value($this->tags);
-        $data['templates'] = Encode::value($this->templates);
+        $data['categories'] = array_map(
+            static fn(AssetFiltersListResponseCategoriesItem $v): mixed => Encode::model($v),
+            $this->categories,
+        );
+        $data['sessions'] = $this->sessions;
+        $data['tags'] = $this->tags;
+        $data['templates'] = $this->templates;
         return $data;
     }
 }

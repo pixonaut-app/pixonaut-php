@@ -32,6 +32,7 @@ final class ShareLinksDesignerGetResponseLinkedPlacementsGroupsItem
                 [
                     static fn(mixed $v, string $p): ShareLinksDesignerGetResponseLinkedPlacementsGroupsItemOption2 => ShareLinksDesignerGetResponseLinkedPlacementsGroupsItemOption2::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): array => Decode::list(
@@ -40,6 +41,7 @@ final class ShareLinksDesignerGetResponseLinkedPlacementsGroupsItem
                         static fn(mixed $v, string $p): ShareLinksDesignerGetResponseLinkedPlacementsGroupsItemOption1Item => ShareLinksDesignerGetResponseLinkedPlacementsGroupsItemOption1Item::fromArray(Decode::object($v, $p), $p),
                     ),
                     0,
+                    [],
                 ],
             ],
         );

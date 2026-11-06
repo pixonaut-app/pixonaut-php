@@ -89,12 +89,15 @@ final class AutomationsTestRunResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['conditions'] = Encode::value($this->conditions);
-        $data['event'] = Encode::value($this->event);
+        $data['conditions'] = $this->conditions === null ? null : Encode::model($this->conditions);
+        $data['event'] = Encode::model($this->event);
         $data['fires'] = $this->fires;
         $data['reason'] = $this->reason;
-        $data['steps'] = Encode::value($this->steps);
-        $data['subject'] = Encode::value($this->subject);
+        $data['steps'] = array_map(
+            static fn(AutomationsTestRunResponseStepsItem $v): mixed => Encode::model($v),
+            $this->steps,
+        );
+        $data['subject'] = $this->subject === null ? null : Encode::model($this->subject);
         return $data;
     }
 }

@@ -31,11 +31,13 @@ final class BlanksGetResponseOptionsItemAppearancesValue
             [
                 [
                     static fn(mixed $v, string $p): BlanksGetResponseOptionsItemAppearancesValueFill => BlanksGetResponseOptionsItemAppearancesValueFill::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'fill'],
                 ],
                 [
                     static fn(mixed $v, string $p): BlanksGetResponseOptionsItemAppearancesValueImage => BlanksGetResponseOptionsItemAppearancesValueImage::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'image'],
                 ],
             ],
         );

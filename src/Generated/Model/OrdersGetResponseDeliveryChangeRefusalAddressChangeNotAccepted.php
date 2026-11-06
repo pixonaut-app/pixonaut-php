@@ -34,10 +34,7 @@ final class OrdersGetResponseDeliveryChangeRefusalAddressChangeNotAccepted imple
      */
     public static function fromArray(array $data, string $path = '$'): self
     {
-        $model = new self(code: Decode::string(
-            Decode::constant(Decode::required($data, 'code', $path), 'address_change_not_accepted', $path . '.code'),
-            $path . '.code',
-        ));
+        $model = new self(code: Decode::string(Decode::required($data, 'code', $path), $path . '.code'));
         $model->decoded = $data;
         return $model;
     }

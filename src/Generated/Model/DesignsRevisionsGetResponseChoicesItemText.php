@@ -48,7 +48,7 @@ final class DesignsRevisionsGetResponseChoicesItemText implements Model
             label: Decode::string(Decode::required($data, 'label', $path), $path . '.label'),
             layerId: Decode::string(Decode::required($data, 'layerId', $path), $path . '.layerId'),
             prop: Decode::string(Decode::required($data, 'prop', $path), $path . '.prop'),
-            type: Decode::string(Decode::constant(Decode::required($data, 'type', $path), 'text', $path . '.type'), $path . '.type'),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
             value: Decode::string(Decode::required($data, 'value', $path), $path . '.value'),
         );
         $model->decoded = $data;

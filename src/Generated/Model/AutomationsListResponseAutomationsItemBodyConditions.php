@@ -33,27 +33,33 @@ final class AutomationsListResponseAutomationsItemBodyConditions
             [
                 [
                     static fn(mixed $v, string $p): AutomationsListResponseAutomationsItemBodyConditionsDeliveryAddress => AutomationsListResponseAutomationsItemBodyConditionsDeliveryAddress::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['field' => 'delivery_address'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsListResponseAutomationsItemBodyConditionsQuantity => AutomationsListResponseAutomationsItemBodyConditionsQuantity::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['field' => 'quantity'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsListResponseAutomationsItemBodyConditionsOption4 => AutomationsListResponseAutomationsItemBodyConditionsOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsListResponseAutomationsItemBodyConditionsOption1 => AutomationsListResponseAutomationsItemBodyConditionsOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsListResponseAutomationsItemBodyConditionsOption2 => AutomationsListResponseAutomationsItemBodyConditionsOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsListResponseAutomationsItemBodyConditionsOption3 => AutomationsListResponseAutomationsItemBodyConditionsOption3::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

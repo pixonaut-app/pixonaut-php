@@ -104,8 +104,8 @@ final class OrdersJobGetResponseTicketArtifactCut implements Model
         $data['part'] = $this->part;
         $data['profile'] = $this->profile;
         $data['registrationMarks'] = $this->registrationMarks;
-        $data['underbase'] = Encode::value($this->underbase);
-        $data['varnish'] = Encode::value($this->varnish);
+        $data['underbase'] = $this->underbase === null ? null : Encode::model($this->underbase);
+        $data['varnish'] = $this->varnish === null ? null : Encode::model($this->varnish);
         return $data;
     }
 }

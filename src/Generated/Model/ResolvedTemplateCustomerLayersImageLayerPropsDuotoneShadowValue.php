@@ -34,18 +34,22 @@ final class ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowValue
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowValueOption4 => ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowValueOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowValueOption1 => ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowValueOption2 => ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowValueOption3 => ResolvedTemplateCustomerLayersImageLayerPropsDuotoneShadowValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

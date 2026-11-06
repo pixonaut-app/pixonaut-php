@@ -73,13 +73,13 @@ final class McpRequestRequest implements Model
         $data = [];
         $data['jsonrpc'] = $this->jsonrpc;
         if (!$this->id instanceof Omitted) {
-            $data['id'] = Encode::value($this->id);
+            $data['id'] = $this->id === null ? null : Encode::value($this->id);
         }
         if ($this->method !== null) {
             $data['method'] = $this->method;
         }
         if ($this->params !== null) {
-            $data['params'] = Encode::map($this->params);
+            $data['params'] = Encode::object($this->params);
         }
         return $data;
     }

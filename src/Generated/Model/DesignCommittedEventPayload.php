@@ -81,7 +81,7 @@ final class DesignCommittedEventPayload implements Model
         $data['designId'] = $this->designId;
         $data['templateId'] = $this->templateId;
         if ($this->origin !== null) {
-            $data['origin'] = Encode::value($this->origin);
+            $data['origin'] = Encode::model($this->origin);
         }
         if ($this->shareLinkId !== null) {
             $data['shareLinkId'] = $this->shareLinkId;

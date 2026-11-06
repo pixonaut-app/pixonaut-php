@@ -32,10 +32,12 @@ final class OrdersRetryResponsePrintsItem
                 [
                     static fn(mixed $v, string $p): OrdersRetryResponsePrintsItemOption1 => OrdersRetryResponsePrintsItemOption1::fromArray(Decode::object($v, $p), $p),
                     8,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): OrdersRetryResponsePrintsItemOption2 => OrdersRetryResponsePrintsItemOption2::fromArray(Decode::object($v, $p), $p),
                     8,
+                    [],
                 ],
             ],
         );

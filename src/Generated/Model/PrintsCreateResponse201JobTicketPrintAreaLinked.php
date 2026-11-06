@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -72,7 +71,7 @@ final class PrintsCreateResponse201JobTicketPrintAreaLinked implements Model
     {
         $data = [];
         $data['mirrored'] = $this->mirrored;
-        $data['placements'] = Encode::value($this->placements);
+        $data['placements'] = $this->placements;
         $data['referenceWidthMm'] = $this->referenceWidthMm;
         return $data;
     }

@@ -68,7 +68,10 @@ final class DesignsGetResponseCorrectionForm implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['steps'] = Encode::value($this->steps);
+        $data['steps'] = array_map(
+            static fn(DesignsGetResponseCorrectionFormStepsItem $v): mixed => Encode::model($v),
+            $this->steps,
+        );
         if ($this->layout !== null) {
             $data['layout'] = $this->layout;
         }

@@ -72,7 +72,7 @@ final class BlanksMockupsListResponsePlacementsItemAreasItem implements Model
     {
         $data = [];
         $data['heightMm'] = $this->heightMm;
-        $data['row'] = Encode::map($this->row);
+        $data['row'] = Encode::object($this->row);
         $data['usualHeightMm'] = $this->usualHeightMm;
         $data['usualWidthMm'] = $this->usualWidthMm;
         $data['widthMm'] = $this->widthMm;

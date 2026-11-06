@@ -32,10 +32,12 @@ final class ConnectedStoreExchangeCodeResponse
                 [
                     static fn(mixed $v, string $p): ConnectedStoreExchangeCodeResponseOption1 => ConnectedStoreExchangeCodeResponseOption1::fromArray(Decode::object($v, $p), $p),
                     10,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ConnectedStoreExchangeCodeResponseOption2 => ConnectedStoreExchangeCodeResponseOption2::fromArray(Decode::object($v, $p), $p),
                     4,
+                    [],
                 ],
             ],
         );

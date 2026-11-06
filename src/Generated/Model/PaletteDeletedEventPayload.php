@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -70,7 +69,7 @@ final class PaletteDeletedEventPayload implements Model
         $data['paletteId'] = $this->paletteId;
         $data['paletteName'] = $this->paletteName;
         if ($this->unlinked !== null) {
-            $data['unlinked'] = Encode::value($this->unlinked);
+            $data['unlinked'] = $this->unlinked;
         }
         return $data;
     }

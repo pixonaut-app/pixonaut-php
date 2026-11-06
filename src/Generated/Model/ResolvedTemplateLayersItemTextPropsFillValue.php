@@ -34,22 +34,27 @@ final class ResolvedTemplateLayersItemTextPropsFillValue
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillValueOption4 => ResolvedTemplateLayersItemTextPropsFillValueOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillValueOption1 => ResolvedTemplateLayersItemTextPropsFillValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillValueOption2 => ResolvedTemplateLayersItemTextPropsFillValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillValueOption3 => ResolvedTemplateLayersItemTextPropsFillValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsFillValueOption5 => ResolvedTemplateLayersItemTextPropsFillValueOption5::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

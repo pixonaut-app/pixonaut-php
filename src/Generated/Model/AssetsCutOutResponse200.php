@@ -74,7 +74,7 @@ final class AssetsCutOutResponse200 implements Model
     {
         $data = [];
         $data['attempts'] = $this->attempts;
-        $data['cutOut'] = Encode::value($this->cutOut);
+        $data['cutOut'] = $this->cutOut === null ? null : Encode::model($this->cutOut);
         $data['retryable'] = $this->retryable;
         $data['status'] = $this->status;
         return $data;

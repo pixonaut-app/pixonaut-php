@@ -164,9 +164,9 @@ final class ShareLinksListResponseLinksItem implements Model
         $data = [];
         $data['brandId'] = $this->brandId;
         $data['createdAt'] = $this->createdAt;
-        $data['createdBy'] = Encode::value($this->createdBy);
-        $data['createdByKey'] = Encode::value($this->createdByKey);
-        $data['designLimit'] = Encode::value($this->designLimit);
+        $data['createdBy'] = $this->createdBy === null ? null : Encode::model($this->createdBy);
+        $data['createdByKey'] = $this->createdByKey === null ? null : Encode::model($this->createdByKey);
+        $data['designLimit'] = $this->designLimit === null ? null : Encode::model($this->designLimit);
         $data['designs'] = $this->designs;
         $data['expiresAt'] = $this->expiresAt;
         $data['id'] = $this->id;
@@ -179,7 +179,7 @@ final class ShareLinksListResponseLinksItem implements Model
         $data['printAreaFrame'] = $this->printAreaFrame;
         $data['returnUrl'] = $this->returnUrl;
         $data['source'] = $this->source;
-        $data['subject'] = Encode::value($this->subject);
+        $data['subject'] = $this->subject === null ? null : Encode::model($this->subject);
         $data['subjectId'] = $this->subjectId;
         $data['url'] = $this->url;
         return $data;

@@ -122,22 +122,27 @@ final class TemplateInputLocalizedValueLayersValue implements Model
             $data['name'] = $this->name;
         }
         if ($this->offsetFrac !== null) {
-            $data['offsetFrac'] = Encode::value($this->offsetFrac);
+            $data['offsetFrac'] = Encode::model($this->offsetFrac);
         }
         if ($this->opacity !== null) {
-            $data['opacity'] = Encode::value($this->opacity);
+            $data['opacity'] = Encode::model($this->opacity);
         }
         if ($this->print !== null) {
             $data['print'] = $this->print;
         }
         if ($this->props !== null) {
-            $data['props'] = Encode::map($this->props);
+            $data['props'] = Encode::object(
+                array_map(
+                    static fn(TemplateInputLocalizedValueLayersValuePropsValue $v): mixed => Encode::model($v),
+                    $this->props,
+                ),
+            );
         }
         if (!$this->textBox instanceof Omitted) {
             $data['textBox'] = $this->textBox;
         }
         if ($this->transform !== null) {
-            $data['transform'] = Encode::value($this->transform);
+            $data['transform'] = Encode::model($this->transform);
         }
         if ($this->varnish !== null) {
             $data['varnish'] = $this->varnish;

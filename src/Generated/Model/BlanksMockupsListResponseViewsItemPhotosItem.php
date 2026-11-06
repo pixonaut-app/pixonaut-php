@@ -82,9 +82,12 @@ final class BlanksMockupsListResponseViewsItemPhotosItem implements Model
         $data = [];
         $data['height'] = $this->height;
         $data['id'] = $this->id;
-        $data['regions'] = Encode::value($this->regions);
+        $data['regions'] = array_map(
+            static fn(BlanksMockupsListResponseViewsItemPhotosItemRegionsItem $v): mixed => Encode::model($v),
+            $this->regions,
+        );
         $data['url'] = $this->url;
-        $data['variantRefs'] = Encode::value($this->variantRefs);
+        $data['variantRefs'] = $this->variantRefs;
         $data['width'] = $this->width;
         return $data;
     }

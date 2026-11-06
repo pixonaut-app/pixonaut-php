@@ -73,7 +73,10 @@ final class AutomationsVersionsResponse implements Model
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;
         $data['total'] = $this->total;
-        $data['versions'] = Encode::value($this->versions);
+        $data['versions'] = array_map(
+            static fn(AutomationsVersionsResponseVersionsItem $v): mixed => Encode::model($v),
+            $this->versions,
+        );
         return $data;
     }
 }

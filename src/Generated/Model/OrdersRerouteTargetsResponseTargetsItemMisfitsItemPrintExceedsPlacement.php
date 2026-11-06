@@ -40,10 +40,7 @@ final class OrdersRerouteTargetsResponseTargetsItemMisfitsItemPrintExceedsPlacem
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            kind: Decode::string(
-                Decode::constant(Decode::required($data, 'kind', $path), 'print_exceeds_placement', $path . '.kind'),
-                $path . '.kind',
-            ),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             largestMm: OrdersRerouteTargetsResponseTargetsItemMisfitsItemPrintExceedsPlacementLargestMm::fromArray(
                 Decode::object(Decode::required($data, 'largestMm', $path), $path . '.largestMm'),
                 $path . '.largestMm',
@@ -71,10 +68,10 @@ final class OrdersRerouteTargetsResponseTargetsItemMisfitsItemPrintExceedsPlacem
     {
         $data = [];
         $data['kind'] = $this->kind;
-        $data['largestMm'] = Encode::value($this->largestMm);
+        $data['largestMm'] = Encode::model($this->largestMm);
         $data['placement'] = $this->placement;
         $data['printId'] = $this->printId;
-        $data['printMm'] = Encode::value($this->printMm);
+        $data['printMm'] = Encode::model($this->printMm);
         return $data;
     }
 }

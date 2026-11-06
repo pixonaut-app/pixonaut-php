@@ -36,7 +36,7 @@ final class PixelDismissalsCreateResponseConversationMessagesItemUserContentOpti
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            type: Decode::string(Decode::constant(Decode::required($data, 'type', $path), 'upload', $path . '.type'), $path . '.type'),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
             uploadId: Decode::string(Decode::required($data, 'uploadId', $path), $path . '.uploadId'),
         );
         $model->decoded = $data;

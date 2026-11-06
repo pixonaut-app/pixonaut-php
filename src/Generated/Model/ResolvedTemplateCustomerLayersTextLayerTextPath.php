@@ -33,11 +33,13 @@ final class ResolvedTemplateCustomerLayersTextLayerTextPath
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerTextPathArc => ResolvedTemplateCustomerLayersTextLayerTextPathArc::fromArray(Decode::object($v, $p), $p),
-                    1003,
+                    1004,
+                    ['type' => 'arc'],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerTextPathOutline => ResolvedTemplateCustomerLayersTextLayerTextPathOutline::fromArray(Decode::object($v, $p), $p),
-                    1003,
+                    1004,
+                    ['type' => 'outline'],
                 ],
             ],
         );

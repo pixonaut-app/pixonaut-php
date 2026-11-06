@@ -65,7 +65,10 @@ final class PayloadsValidateRequestLinked implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['placements'] = Encode::value($this->placements);
+        $data['placements'] = array_map(
+            static fn(PayloadsValidateRequestLinkedPlacementsItem $v): mixed => Encode::model($v),
+            $this->placements,
+        );
         return $data;
     }
 }

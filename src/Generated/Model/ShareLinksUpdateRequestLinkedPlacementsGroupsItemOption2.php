@@ -72,8 +72,11 @@ final class ShareLinksUpdateRequestLinkedPlacementsGroupsItemOption2 implements 
     public function toArray(): array
     {
         $data = [];
-        $data['placements'] = Encode::value($this->placements);
-        $data['repeat'] = Encode::value($this->repeat);
+        $data['placements'] = array_map(
+            static fn(ShareLinksUpdateRequestLinkedPlacementsGroupsItemOption2PlacementsItem $v): mixed => Encode::model($v),
+            $this->placements,
+        );
+        $data['repeat'] = $this->repeat === null ? null : Encode::model($this->repeat);
         return $data;
     }
 }

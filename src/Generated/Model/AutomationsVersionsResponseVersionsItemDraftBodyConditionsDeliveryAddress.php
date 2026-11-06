@@ -40,10 +40,7 @@ final class AutomationsVersionsResponseVersionsItemDraftBodyConditionsDeliveryAd
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            field: Decode::string(
-                Decode::constant(Decode::required($data, 'field', $path), 'delivery_address', $path . '.field'),
-                $path . '.field',
-            ),
+            field: Decode::string(Decode::required($data, 'field', $path), $path . '.field'),
             present: Decode::bool(Decode::required($data, 'present', $path), $path . '.present'),
         );
         $model->decoded = $data;

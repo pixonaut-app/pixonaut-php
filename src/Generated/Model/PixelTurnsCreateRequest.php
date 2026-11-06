@@ -92,11 +92,11 @@ final class PixelTurnsCreateRequest implements Model
     {
         $data = [];
         $data['conversationId'] = $this->conversationId;
-        $data['openTemplate'] = Encode::value($this->openTemplate);
-        $data['page'] = Encode::value($this->page);
-        $data['words'] = Encode::value($this->words);
+        $data['openTemplate'] = $this->openTemplate === null ? null : Encode::model($this->openTemplate);
+        $data['page'] = $this->page === null ? null : Encode::model($this->page);
+        $data['words'] = $this->words === null ? null : Encode::model($this->words);
         if ($this->tools !== null) {
-            $data['tools'] = Encode::value($this->tools);
+            $data['tools'] = $this->tools;
         }
         return $data;
     }

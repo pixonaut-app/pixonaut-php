@@ -79,9 +79,18 @@ final class PixelDismissalsCreateResponseConversationCardsValueChange implements
     public function toArray(): array
     {
         $data = [];
-        $data['added'] = Encode::value($this->added);
-        $data['changed'] = Encode::value($this->changed);
-        $data['removed'] = Encode::value($this->removed);
+        $data['added'] = array_map(
+            static fn(PixelDismissalsCreateResponseConversationCardsValueChangeAddedItem $v): mixed => Encode::model($v),
+            $this->added,
+        );
+        $data['changed'] = array_map(
+            static fn(PixelDismissalsCreateResponseConversationCardsValueChangeChangedItem $v): mixed => Encode::model($v),
+            $this->changed,
+        );
+        $data['removed'] = array_map(
+            static fn(PixelDismissalsCreateResponseConversationCardsValueChangeRemovedItem $v): mixed => Encode::model($v),
+            $this->removed,
+        );
         $data['restyled'] = $this->restyled;
         return $data;
     }

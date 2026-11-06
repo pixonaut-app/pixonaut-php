@@ -74,9 +74,15 @@ final class TemplatesListResponseOption3Counts implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['categories'] = Encode::value($this->categories);
-        $data['statuses'] = Encode::value($this->statuses);
-        $data['tags'] = Encode::value($this->tags);
+        $data['categories'] = array_map(
+            static fn(TemplatesListResponseOption3CountsCategoriesItem $v): mixed => Encode::model($v),
+            $this->categories,
+        );
+        $data['statuses'] = Encode::model($this->statuses);
+        $data['tags'] = array_map(
+            static fn(TemplatesListResponseOption3CountsTagsItem $v): mixed => Encode::model($v),
+            $this->tags,
+        );
         $data['uncategorised'] = $this->uncategorised;
         return $data;
     }

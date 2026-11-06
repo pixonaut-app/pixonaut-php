@@ -33,11 +33,13 @@ final class PrintsListResponsePrintsItemTextTolerance
             [
                 [
                     static fn(mixed $v, string $p): PrintsListResponsePrintsItemTextTolerancePx => PrintsListResponsePrintsItemTextTolerancePx::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['unit' => 'px'],
                 ],
                 [
                     static fn(mixed $v, string $p): PrintsListResponsePrintsItemTextToleranceMm => PrintsListResponsePrintsItemTextToleranceMm::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['unit' => 'mm'],
                 ],
             ],
         );

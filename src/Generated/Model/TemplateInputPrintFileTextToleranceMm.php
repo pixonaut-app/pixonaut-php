@@ -40,7 +40,7 @@ final class TemplateInputPrintFileTextToleranceMm implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            unit: Decode::string(Decode::constant(Decode::required($data, 'unit', $path), 'mm', $path . '.unit'), $path . '.unit'),
+            unit: Decode::string(Decode::required($data, 'unit', $path), $path . '.unit'),
             value: Decode::float(Decode::required($data, 'value', $path), $path . '.value'),
         );
         $model->decoded = $data;

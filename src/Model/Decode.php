@@ -59,7 +59,9 @@ final class Decode
         if (is_int($value)) {
             return $value;
         }
-        if (is_float($value) && floor($value) === $value && abs($value) <= PHP_INT_MAX) {
+        // `(float) PHP_INT_MAX` rounds up to 2^63, the first float past the
+        // integers, so the upper bound is exclusive.
+        if (is_float($value) && floor($value) === $value && $value >= (float) PHP_INT_MIN && $value < (float) PHP_INT_MAX) {
             return (int) $value;
         }
 
@@ -86,19 +88,6 @@ final class Decode
     public static function null(mixed $value, string $path): mixed
     {
         return $value === null ? null : self::fail($path, 'expected null, got ' . self::describe($value));
-    }
-
-    /**
-     * A field whose schema allows one value only: how a union's variant is
-     * told apart.
-     */
-    public static function constant(mixed $value, string|int|float|bool $expected, string $path): mixed
-    {
-        if ($value === $expected || (is_int($value) && is_float($expected) && (float) $value === $expected)) {
-            return $value;
-        }
-
-        return self::fail($path, sprintf('expected %s, got %s', json_encode($expected), self::describe($value)));
     }
 
     /**
@@ -195,68 +184,107 @@ final class Decode
     /**
      * The value decoded by the one variant it matches (`oneOf`).
      *
-     * Variants come most specific first: a variant whose fields allow one
-     * value only, or that requires more fields, is tried before one that
-     * would also accept the value but says less about it. Each variant comes
-     * with its specificity; matching two variants of the same specificity is
-     * an error, matching a more and a less specific one picks the former.
+     * Each variant comes with its specificity and its tags: the required
+     * fields its schema allows one value only. When the tags of exactly one
+     * variant match, the value is that variant, and a field it gets wrong is
+     * an error rather than a reason to try another. Otherwise the variants
+     * whose tags do not rule them out are tried most specific first; matching
+     * two of the same specificity is an error, matching a more and a less
+     * specific one picks the former.
      *
      * @template T
      *
-     * @param list<array{Closure(mixed, string): T, int}> $variants
+     * @param list<array{Closure(mixed, string): T, int, array<string, string|int|float|bool>}> $variants
      *
      * @return T
      */
     public static function oneOf(mixed $value, string $path, array $variants): mixed
     {
+        return self::choose($value, $path, $variants, true);
+    }
+
+    /**
+     * The value decoded by the first variant it matches (`anyOf`), chosen as
+     * for `oneOf()`.
+     *
+     * @template T
+     *
+     * @param list<array{Closure(mixed, string): T, int, array<string, string|int|float|bool>}> $variants
+     *
+     * @return T
+     */
+    public static function anyOf(mixed $value, string $path, array $variants): mixed
+    {
+        return self::choose($value, $path, $variants, false);
+    }
+
+    /**
+     * @template T
+     *
+     * @param list<array{Closure(mixed, string): T, int, array<string, string|int|float|bool>}> $variants
+     *
+     * @return T
+     */
+    private static function choose(mixed $value, string $path, array $variants, bool $onlyOne): mixed
+    {
+        $tagged = array_values(array_filter($variants, static fn(array $variant): bool => $variant[2] !== [] && self::hasTags($value, $variant[2])));
+        if (count($tagged) === 1) {
+            return $tagged[0][0]->__invoke($value, $path);
+        }
+        $candidates = array_values(array_filter($variants, static fn(array $variant): bool => $variant[2] === [] || self::hasTags($value, $variant[2])));
+
         $problems = [];
-        foreach ($variants as $index => [$variant, $specificity]) {
+        foreach ($candidates as $index => [$variant, $specificity]) {
             try {
                 $decoded = $variant->__invoke($value, $path);
             } catch (UnexpectedResponse $e) {
                 $problems[] = $e->getMessage();
                 continue;
             }
-            foreach (array_slice($variants, $index + 1) as [$other, $otherSpecificity]) {
-                if ($otherSpecificity !== $specificity) {
-                    break;
+            if ($onlyOne) {
+                foreach (array_slice($candidates, $index + 1) as [$other, $otherSpecificity]) {
+                    if ($otherSpecificity !== $specificity) {
+                        break;
+                    }
+                    try {
+                        $other->__invoke($value, $path);
+                    } catch (UnexpectedResponse) {
+                        continue;
+                    }
+                    self::fail($path, 'matches more than one of the variants it may take');
                 }
-                try {
-                    $other->__invoke($value, $path);
-                } catch (UnexpectedResponse) {
-                    continue;
-                }
-                self::fail($path, 'matches more than one of the variants it may take');
             }
 
             return $decoded;
         }
 
-        return self::fail($path, 'matches none of the variants it may take (' . implode('; ', $problems) . ')');
+        return self::fail($path, 'matches none of the variants it may take' . ($problems === [] ? '' : ' (' . implode('; ', $problems) . ')'));
     }
 
     /**
-     * The value decoded by the first variant it matches (`anyOf`), most
-     * specific first, as for `oneOf()`.
+     * Whether `$value` is an object holding each tag's value.
      *
-     * @template T
-     *
-     * @param list<array{Closure(mixed, string): T, int}> $variants
-     *
-     * @return T
+     * @param array<string, string|int|float|bool> $tags
      */
-    public static function anyOf(mixed $value, string $path, array $variants): mixed
+    private static function hasTags(mixed $value, array $tags): bool
     {
-        $problems = [];
-        foreach ($variants as [$variant]) {
-            try {
-                return $variant->__invoke($value, $path);
-            } catch (UnexpectedResponse $e) {
-                $problems[] = $e->getMessage();
+        if (!is_array($value)) {
+            return false;
+        }
+        foreach ($tags as $field => $expected) {
+            if (!array_key_exists($field, $value) || !self::same($value[$field], $expected)) {
+                return false;
             }
         }
 
-        return self::fail($path, 'matches none of the variants it may take (' . implode('; ', $problems) . ')');
+        return true;
+    }
+
+    private static function same(mixed $value, string|int|float|bool $expected): bool
+    {
+        return $value === $expected
+            || (is_int($value) && is_float($expected) && (float) $value === $expected)
+            || (is_float($value) && is_int($expected) && $value === (float) $expected);
     }
 
     /**

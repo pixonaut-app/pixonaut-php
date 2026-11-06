@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -41,10 +40,7 @@ final class ResolvedTemplateCustomerLayersTextLayerPropsShadowColorConstraintsOp
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            anyColor: Decode::bool(
-                Decode::constant(Decode::required($data, 'anyColor', $path), true, $path . '.anyColor'),
-                $path . '.anyColor',
-            ),
+            anyColor: Decode::bool(Decode::required($data, 'anyColor', $path), $path . '.anyColor'),
             oneOf: array_key_exists('oneOf', $data) ? Decode::list(
                 $data['oneOf'],
                 $path . '.oneOf',
@@ -71,7 +67,7 @@ final class ResolvedTemplateCustomerLayersTextLayerPropsShadowColorConstraintsOp
         $data = [];
         $data['anyColor'] = $this->anyColor;
         if ($this->oneOf !== null) {
-            $data['oneOf'] = Encode::value($this->oneOf);
+            $data['oneOf'] = $this->oneOf;
         }
         return $data;
     }

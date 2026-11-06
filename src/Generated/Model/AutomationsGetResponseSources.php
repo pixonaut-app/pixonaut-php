@@ -91,9 +91,9 @@ final class AutomationsGetResponseSources implements Model
         $data['includeNewKeys'] = $this->includeNewKeys;
         $data['includeNewLinks'] = $this->includeNewLinks;
         $data['includeNewStores'] = $this->includeNewStores;
-        $data['keys'] = Encode::value($this->keys);
-        $data['links'] = Encode::value($this->links);
-        $data['stores'] = Encode::value($this->stores);
+        $data['keys'] = $this->keys === null ? null : Encode::model($this->keys);
+        $data['links'] = $this->links === null ? null : Encode::model($this->links);
+        $data['stores'] = $this->stores === null ? null : Encode::model($this->stores);
         return $data;
     }
 }

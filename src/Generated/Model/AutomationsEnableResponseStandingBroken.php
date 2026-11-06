@@ -39,10 +39,7 @@ final class AutomationsEnableResponseStandingBroken implements Model
         $model = new self(
             code: Decode::string(Decode::required($data, 'code', $path), $path . '.code'),
             reason: Decode::string(Decode::required($data, 'reason', $path), $path . '.reason'),
-            state: Decode::string(
-                Decode::constant(Decode::required($data, 'state', $path), 'broken', $path . '.state'),
-                $path . '.state',
-            ),
+            state: Decode::string(Decode::required($data, 'state', $path), $path . '.state'),
         );
         $model->decoded = $data;
         return $model;

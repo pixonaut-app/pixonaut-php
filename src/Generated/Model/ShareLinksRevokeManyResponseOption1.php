@@ -63,7 +63,10 @@ final class ShareLinksRevokeManyResponseOption1 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['results'] = Encode::value($this->results);
+        $data['results'] = array_map(
+            static fn(ShareLinksRevokeManyResponseOption1ResultsItem $v): mixed => Encode::model($v),
+            $this->results,
+        );
         return $data;
     }
 }

@@ -47,7 +47,7 @@ final class ShareLinksListResponseLinksItemSubjectMetaOrder implements Model
                 static fn(mixed $v, string $p): ShareLinksListResponseLinksItemSubjectMetaOrderPrintshop => ShareLinksListResponseLinksItemSubjectMetaOrderPrintshop::fromArray(Decode::object($v, $p), $p),
             ),
             status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
-            type: Decode::string(Decode::constant(Decode::required($data, 'type', $path), 'order', $path . '.type'), $path . '.type'),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;
@@ -67,7 +67,7 @@ final class ShareLinksListResponseLinksItemSubjectMetaOrder implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['printshop'] = Encode::value($this->printshop);
+        $data['printshop'] = $this->printshop === null ? null : Encode::model($this->printshop);
         $data['status'] = $this->status;
         $data['type'] = $this->type;
         return $data;

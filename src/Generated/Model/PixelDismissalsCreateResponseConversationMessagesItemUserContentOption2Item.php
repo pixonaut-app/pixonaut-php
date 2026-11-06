@@ -31,19 +31,23 @@ final class PixelDismissalsCreateResponseConversationMessagesItemUserContentOpti
             [
                 [
                     static fn(mixed $v, string $p): PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemToolResult => PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemToolResult::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['type' => 'tool_result'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemText => PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemText::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'text'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemAttachment => PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemAttachment::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'attachment'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemUpload => PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemUpload::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'upload'],
                 ],
             ],
         );

@@ -105,10 +105,10 @@ final class TemplateInputCustomerLayersTextLayer implements Model
         $data = [];
         $data['anchor'] = $this->anchor;
         $data['hFrac'] = $this->hFrac;
-        $data['offsetFrac'] = Encode::value($this->offsetFrac);
-        $data['props'] = Encode::value($this->props);
+        $data['offsetFrac'] = Encode::model($this->offsetFrac);
+        $data['props'] = Encode::model($this->props);
         $data['textBox'] = Encode::value($this->textBox);
-        $data['transform'] = Encode::value($this->transform);
+        $data['transform'] = Encode::model($this->transform);
         $data['type'] = $this->type;
         $data['wFrac'] = $this->wFrac;
         if ($this->blend !== null) {
@@ -118,7 +118,7 @@ final class TemplateInputCustomerLayersTextLayer implements Model
             $data['mat'] = Encode::value($this->mat);
         }
         if ($this->opacity !== null) {
-            $data['opacity'] = Encode::value($this->opacity);
+            $data['opacity'] = Encode::model($this->opacity);
         }
         if ($this->textPath !== null) {
             $data['textPath'] = Encode::value($this->textPath);

@@ -31,15 +31,18 @@ final class ShareLinksListResponseLinksItemSubjectMeta
             [
                 [
                     static fn(mixed $v, string $p): ShareLinksListResponseLinksItemSubjectMetaTemplate => ShareLinksListResponseLinksItemSubjectMetaTemplate::fromArray(Decode::object($v, $p), $p),
-                    1004,
+                    1005,
+                    ['type' => 'template'],
                 ],
                 [
                     static fn(mixed $v, string $p): ShareLinksListResponseLinksItemSubjectMetaOrder => ShareLinksListResponseLinksItemSubjectMetaOrder::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['type' => 'order'],
                 ],
                 [
                     static fn(mixed $v, string $p): ShareLinksListResponseLinksItemSubjectMetaDesign => ShareLinksListResponseLinksItemSubjectMetaDesign::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'design'],
                 ],
             ],
         );

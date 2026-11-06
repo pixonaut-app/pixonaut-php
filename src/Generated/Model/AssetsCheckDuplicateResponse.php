@@ -31,11 +31,13 @@ final class AssetsCheckDuplicateResponse
             [
                 [
                     static fn(mixed $v, string $p): AssetsCheckDuplicateResponseTrue => AssetsCheckDuplicateResponseTrue::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['exists' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): AssetsCheckDuplicateResponseFalse => AssetsCheckDuplicateResponseFalse::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['exists' => false],
                 ],
             ],
         );

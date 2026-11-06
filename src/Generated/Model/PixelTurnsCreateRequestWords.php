@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -75,10 +74,10 @@ final class PixelTurnsCreateRequestWords implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['attachments'] = Encode::value($this->attachments);
+        $data['attachments'] = $this->attachments;
         $data['text'] = $this->text;
         if ($this->uploads !== null) {
-            $data['uploads'] = Encode::value($this->uploads);
+            $data['uploads'] = $this->uploads;
         }
         return $data;
     }

@@ -33,27 +33,33 @@ final class AutomationsVersionsResponseVersionsItemDraftBodyConditions
             [
                 [
                     static fn(mixed $v, string $p): AutomationsVersionsResponseVersionsItemDraftBodyConditionsDeliveryAddress => AutomationsVersionsResponseVersionsItemDraftBodyConditionsDeliveryAddress::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['field' => 'delivery_address'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsVersionsResponseVersionsItemDraftBodyConditionsQuantity => AutomationsVersionsResponseVersionsItemDraftBodyConditionsQuantity::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['field' => 'quantity'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsVersionsResponseVersionsItemDraftBodyConditionsOption4 => AutomationsVersionsResponseVersionsItemDraftBodyConditionsOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsVersionsResponseVersionsItemDraftBodyConditionsOption1 => AutomationsVersionsResponseVersionsItemDraftBodyConditionsOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsVersionsResponseVersionsItemDraftBodyConditionsOption2 => AutomationsVersionsResponseVersionsItemDraftBodyConditionsOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsVersionsResponseVersionsItemDraftBodyConditionsOption3 => AutomationsVersionsResponseVersionsItemDraftBodyConditionsOption3::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

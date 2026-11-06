@@ -32,6 +32,7 @@ final class PixelDesignerRequestValuesValue
                 [
                     static fn(mixed $v, string $p): array => Decode::object($v, $p),
                     0,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): array => Decode::list(
@@ -40,6 +41,7 @@ final class PixelDesignerRequestValuesValue
                         static fn(mixed $v, string $p): string => Decode::string($v, $p),
                     ),
                     0,
+                    [],
                 ],
             ],
         );

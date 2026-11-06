@@ -33,11 +33,13 @@ final class ConnectedStoreUpdateRequestPrintFileTextTolerance
             [
                 [
                     static fn(mixed $v, string $p): ConnectedStoreUpdateRequestPrintFileTextTolerancePx => ConnectedStoreUpdateRequestPrintFileTextTolerancePx::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['unit' => 'px'],
                 ],
                 [
                     static fn(mixed $v, string $p): ConnectedStoreUpdateRequestPrintFileTextToleranceMm => ConnectedStoreUpdateRequestPrintFileTextToleranceMm::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['unit' => 'mm'],
                 ],
             ],
         );

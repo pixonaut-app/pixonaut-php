@@ -33,11 +33,13 @@ final class ResolvedTemplateLayersItemShapePropsFillValueOption5Gradient
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillValueOption5GradientLinear => ResolvedTemplateLayersItemShapePropsFillValueOption5GradientLinear::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'linear'],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShapePropsFillValueOption5GradientRadial => ResolvedTemplateLayersItemShapePropsFillValueOption5GradientRadial::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'radial'],
                 ],
             ],
         );

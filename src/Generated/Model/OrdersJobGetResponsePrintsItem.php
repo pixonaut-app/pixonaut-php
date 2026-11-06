@@ -82,7 +82,7 @@ final class OrdersJobGetResponsePrintsItem implements Model
         $data['placementId'] = $this->placementId;
         $data['printId'] = $this->printId;
         $data['printedAs'] = $this->printedAs;
-        $data['ticket'] = Encode::value($this->ticket);
+        $data['ticket'] = $this->ticket === null ? null : Encode::model($this->ticket);
         return $data;
     }
 }

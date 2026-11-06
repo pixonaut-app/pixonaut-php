@@ -73,7 +73,7 @@ final class AutomationsCheckRequest implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['body'] = Encode::value($this->body);
+        $data['body'] = Encode::model($this->body);
         $data['trigger'] = $this->trigger;
         if ($this->automationId !== null) {
             $data['automationId'] = $this->automationId;

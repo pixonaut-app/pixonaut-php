@@ -71,7 +71,10 @@ final class DesignsRevisionsListResponse implements Model
     {
         $data = [];
         $data['nextBefore'] = $this->nextBefore;
-        $data['revisions'] = Encode::value($this->revisions);
+        $data['revisions'] = array_map(
+            static fn(DesignsRevisionsListResponseRevisionsItem $v): mixed => Encode::model($v),
+            $this->revisions,
+        );
         return $data;
     }
 }

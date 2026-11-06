@@ -75,10 +75,10 @@ final class AutomationsPastEventsPreviewResponseTestRunConditionsLeavesItem impl
     {
         $data = [];
         $data['field'] = $this->field;
-        $data['has'] = Encode::value($this->has);
+        $data['has'] = $this->has === null ? null : Encode::value($this->has);
         $data['holds'] = $this->holds;
         $data['path'] = $this->path;
-        $data['wants'] = Encode::map($this->wants);
+        $data['wants'] = Encode::object($this->wants);
         return $data;
     }
 }

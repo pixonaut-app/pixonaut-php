@@ -71,7 +71,10 @@ final class AutomationsPlaceholdersResponseNamespacesItem implements Model
         $data = [];
         $data['description'] = $this->description;
         $data['namespace'] = $this->namespace;
-        $data['placeholders'] = Encode::value($this->placeholders);
+        $data['placeholders'] = array_map(
+            static fn(AutomationsPlaceholdersResponseNamespacesItemPlaceholdersItem $v): mixed => Encode::model($v),
+            $this->placeholders,
+        );
         return $data;
     }
 }

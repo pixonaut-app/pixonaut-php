@@ -32,6 +32,7 @@ final class PixelConversationGetResponseConversationMessagesItemUserContentOptio
                 [
                     static fn(mixed $v, string $p): string => Decode::string($v, $p),
                     0,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): array => Decode::list(
@@ -40,6 +41,7 @@ final class PixelConversationGetResponseConversationMessagesItemUserContentOptio
                         static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemText|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPicture => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2Item::decode($v, $p),
                     ),
                     0,
+                    [],
                 ],
             ],
         );

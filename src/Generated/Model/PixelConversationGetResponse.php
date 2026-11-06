@@ -66,7 +66,7 @@ final class PixelConversationGetResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['conversation'] = Encode::value($this->conversation);
+        $data['conversation'] = $this->conversation === null ? null : Encode::model($this->conversation);
         $data['working'] = $this->working;
         return $data;
     }

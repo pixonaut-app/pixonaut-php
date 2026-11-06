@@ -72,8 +72,14 @@ final class OrdersDeliveriesListResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['addressChanges'] = Encode::value($this->addressChanges);
-        $data['deliveries'] = Encode::value($this->deliveries);
+        $data['addressChanges'] = array_map(
+            static fn(OrdersDeliveriesListResponseAddressChangesItem $v): mixed => Encode::model($v),
+            $this->addressChanges,
+        );
+        $data['deliveries'] = array_map(
+            static fn(OrdersDeliveriesListResponseDeliveriesItem $v): mixed => Encode::model($v),
+            $this->deliveries,
+        );
         $data['deliverySteps'] = $this->deliverySteps;
         return $data;
     }

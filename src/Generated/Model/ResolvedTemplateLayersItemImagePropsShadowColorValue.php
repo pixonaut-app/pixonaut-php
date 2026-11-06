@@ -34,18 +34,22 @@ final class ResolvedTemplateLayersItemImagePropsShadowColorValue
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsShadowColorValueOption4 => ResolvedTemplateLayersItemImagePropsShadowColorValueOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsShadowColorValueOption1 => ResolvedTemplateLayersItemImagePropsShadowColorValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsShadowColorValueOption2 => ResolvedTemplateLayersItemImagePropsShadowColorValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsShadowColorValueOption3 => ResolvedTemplateLayersItemImagePropsShadowColorValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

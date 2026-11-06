@@ -66,7 +66,7 @@ final class OrdersErasePersonalDataResponseShipTo implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['address'] = Encode::value($this->address);
+        $data['address'] = Encode::model($this->address);
         $data['name'] = $this->name;
         $data['savedAddressId'] = $this->savedAddressId;
         return $data;

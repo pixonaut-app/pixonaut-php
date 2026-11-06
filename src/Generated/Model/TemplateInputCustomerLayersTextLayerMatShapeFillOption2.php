@@ -57,7 +57,7 @@ final class TemplateInputCustomerLayersTextLayerMatShapeFillOption2 implements M
     public function toArray(): array
     {
         $data = [];
-        $data['spot'] = Encode::value($this->spot);
+        $data['spot'] = Encode::model($this->spot);
         return $data;
     }
 }

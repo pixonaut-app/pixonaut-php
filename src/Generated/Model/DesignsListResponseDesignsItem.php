@@ -179,8 +179,8 @@ final class DesignsListResponseDesignsItem implements Model
         $data['hasOrder'] = $this->hasOrder;
         $data['hasPrintFile'] = $this->hasPrintFile;
         $data['id'] = $this->id;
-        $data['origin'] = Encode::value($this->origin);
-        $data['printSize'] = Encode::value($this->printSize);
+        $data['origin'] = Encode::model($this->origin);
+        $data['printSize'] = $this->printSize === null ? null : Encode::model($this->printSize);
         $data['proofId'] = $this->proofId;
         $data['proofRevision'] = $this->proofRevision;
         $data['revision'] = $this->revision;

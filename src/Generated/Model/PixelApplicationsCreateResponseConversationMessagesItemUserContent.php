@@ -32,6 +32,7 @@ final class PixelApplicationsCreateResponseConversationMessagesItemUserContent
                 [
                     static fn(mixed $v, string $p): string => Decode::string($v, $p),
                     0,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): array => Decode::list(
@@ -40,6 +41,7 @@ final class PixelApplicationsCreateResponseConversationMessagesItemUserContent
                         static fn(mixed $v, string $p): PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemToolResult|PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemText|PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemAttachment|PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemUpload => PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2Item::decode($v, $p),
                     ),
                     0,
+                    [],
                 ],
             ],
         );

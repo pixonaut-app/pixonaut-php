@@ -32,6 +32,7 @@ final class PixelDismissalsCreateResponseConversationMessagesItemUserContent
                 [
                     static fn(mixed $v, string $p): string => Decode::string($v, $p),
                     0,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): array => Decode::list(
@@ -40,6 +41,7 @@ final class PixelDismissalsCreateResponseConversationMessagesItemUserContent
                         static fn(mixed $v, string $p): PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemToolResult|PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemText|PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemAttachment|PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemUpload => PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2Item::decode($v, $p),
                     ),
                     0,
+                    [],
                 ],
             ],
         );

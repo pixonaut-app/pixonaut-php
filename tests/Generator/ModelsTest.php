@@ -155,6 +155,57 @@ final class ModelsTest extends TestCase
         self::assertSame(['reason' => 'typo'], Calls::fromArray($class, ['reason' => 'typo'])->toArray());
     }
 
+    public function testAnEmptyObjectStaysAnObjectBelowListsAndMaps(): void
+    {
+        $namespace = $this->load(self::spec([], [
+            '/v1/things' => self::operation('things.create', [
+                'requestBody' => ['content' => ['application/json' => ['schema' => [
+                    'type' => 'object',
+                    'properties' => [
+                        'names' => ['type' => 'object', 'additionalProperties' => ['type' => 'object', 'additionalProperties' => ['type' => 'string']]],
+                        'parts' => ['type' => 'array', 'items' => ['type' => 'object', 'properties' => ['x' => ['type' => 'integer']]]],
+                        'values' => ['type' => 'object', 'additionalProperties' => ['anyOf' => [
+                            ['type' => 'object', 'additionalProperties' => new \stdClass()],
+                            ['type' => 'array', 'items' => ['type' => 'string']],
+                        ]]],
+                    ],
+                ]]]],
+            ]),
+        ]));
+
+        $body = Calls::fromArray($namespace . '\\Model\\ThingsCreateRequest', [
+            'names' => ['red' => []],
+            'parts' => [[]],
+            'values' => ['layer' => [], 'tags' => ['a']],
+        ]);
+
+        self::assertSame(
+            '{"names":{"red":{}},"parts":[{}],"values":{"layer":{},"tags":["a"]}}',
+            json_encode($body->toArray()),
+        );
+    }
+
+    public function testAllOfPartsAddUpToOneModel(): void
+    {
+        $namespace = $this->load(self::spec(['Base' => [
+            'type' => 'object',
+            'required' => ['id'],
+            'properties' => ['id' => ['type' => 'string']],
+        ]], [
+            '/v1/proofs' => self::operation('proofs.create', [
+                'requestBody' => ['content' => ['application/json' => ['schema' => ['allOf' => [
+                    ['$ref' => '#/components/schemas/Base'],
+                    ['type' => 'object', 'required' => ['size'], 'properties' => ['size' => ['type' => 'integer']]],
+                ]]]]],
+            ]),
+        ]));
+        $class = $namespace . '\\Model\\ProofsCreateRequest';
+
+        self::assertSame(['id' => 'p', 'size' => 3], Calls::fromArray($class, ['id' => 'p', 'size' => 3])->toArray());
+        $this->expectExceptionObject(new UnexpectedResponse('$', 'missing required field "size"'));
+        Calls::fromArray($class, ['id' => 'p']);
+    }
+
     public function testNestedModelsOfARequestAreRequestModelsToo(): void
     {
         $namespace = $this->load(self::spec([], [

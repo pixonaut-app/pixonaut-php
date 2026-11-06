@@ -75,9 +75,9 @@ final class BlanksMockupsListResponsePlacementsItemViewsItemZoomTier implements 
     {
         $data = [];
         $data['maskUrl'] = $this->maskUrl;
-        $data['photoSizePx'] = Encode::value($this->photoSizePx);
+        $data['photoSizePx'] = Encode::model($this->photoSizePx);
         $data['url'] = $this->url;
-        $data['uvPassUrls'] = Encode::value($this->uvPassUrls);
+        $data['uvPassUrls'] = Encode::model($this->uvPassUrls);
         return $data;
     }
 }

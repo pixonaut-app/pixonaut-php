@@ -31,15 +31,18 @@ final class AssetsBulkUpdateResponseResultsItem
             [
                 [
                     static fn(mixed $v, string $p): AssetsBulkUpdateResponseResultsItemOption3 => AssetsBulkUpdateResponseResultsItemOption3::fromArray(Decode::object($v, $p), $p),
-                    1003,
+                    1004,
+                    ['ok' => false],
                 ],
                 [
                     static fn(mixed $v, string $p): AssetsBulkUpdateResponseResultsItemOption2 => AssetsBulkUpdateResponseResultsItemOption2::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['ok' => false],
                 ],
                 [
                     static fn(mixed $v, string $p): AssetsBulkUpdateResponseResultsItemOption1 => AssetsBulkUpdateResponseResultsItemOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['ok' => true],
                 ],
             ],
         );

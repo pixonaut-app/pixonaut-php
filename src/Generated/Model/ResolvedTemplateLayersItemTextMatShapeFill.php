@@ -34,18 +34,22 @@ final class ResolvedTemplateLayersItemTextMatShapeFill
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextMatShapeFillOption4 => ResolvedTemplateLayersItemTextMatShapeFillOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextMatShapeFillOption1 => ResolvedTemplateLayersItemTextMatShapeFillOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextMatShapeFillOption2 => ResolvedTemplateLayersItemTextMatShapeFillOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextMatShapeFillOption3 => ResolvedTemplateLayersItemTextMatShapeFillOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

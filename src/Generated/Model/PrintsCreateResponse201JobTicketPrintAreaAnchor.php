@@ -67,7 +67,7 @@ final class PrintsCreateResponse201JobTicketPrintAreaAnchor implements Model
     {
         $data = [];
         $data['align'] = $this->align;
-        $data['offsetMm'] = Encode::value($this->offsetMm);
+        $data['offsetMm'] = Encode::model($this->offsetMm);
         $data['reference'] = $this->reference;
         return $data;
     }

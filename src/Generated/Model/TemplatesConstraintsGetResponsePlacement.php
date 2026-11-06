@@ -105,12 +105,12 @@ final class TemplatesConstraintsGetResponsePlacement implements Model
         $data['printHeightMm'] = $this->printHeightMm;
         $data['printWidthMm'] = $this->printWidthMm;
         $data['safeAreaMm'] = $this->safeAreaMm;
-        $data['sizes'] = Encode::value($this->sizes);
+        $data['sizes'] = Encode::model($this->sizes);
         if ($this->cmykPreviewTables !== null) {
             $data['cmykPreviewTables'] = $this->cmykPreviewTables;
         }
         if ($this->shape !== null) {
-            $data['shape'] = Encode::value($this->shape);
+            $data['shape'] = Encode::model($this->shape);
         }
         return $data;
     }

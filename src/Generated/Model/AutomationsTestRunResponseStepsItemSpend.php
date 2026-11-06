@@ -66,8 +66,8 @@ final class AutomationsTestRunResponseStepsItemSpend implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['automation'] = Encode::value($this->automation);
-        $data['workspace'] = Encode::value($this->workspace);
+        $data['automation'] = Encode::model($this->automation);
+        $data['workspace'] = Encode::model($this->workspace);
         return $data;
     }
 }

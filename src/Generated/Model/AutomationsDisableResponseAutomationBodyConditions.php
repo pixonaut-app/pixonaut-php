@@ -33,27 +33,33 @@ final class AutomationsDisableResponseAutomationBodyConditions
             [
                 [
                     static fn(mixed $v, string $p): AutomationsDisableResponseAutomationBodyConditionsDeliveryAddress => AutomationsDisableResponseAutomationBodyConditionsDeliveryAddress::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['field' => 'delivery_address'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsDisableResponseAutomationBodyConditionsQuantity => AutomationsDisableResponseAutomationBodyConditionsQuantity::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['field' => 'quantity'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsDisableResponseAutomationBodyConditionsOption4 => AutomationsDisableResponseAutomationBodyConditionsOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsDisableResponseAutomationBodyConditionsOption1 => AutomationsDisableResponseAutomationBodyConditionsOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsDisableResponseAutomationBodyConditionsOption2 => AutomationsDisableResponseAutomationBodyConditionsOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsDisableResponseAutomationBodyConditionsOption3 => AutomationsDisableResponseAutomationBodyConditionsOption3::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

@@ -45,10 +45,7 @@ final class PixelApplicationsCreateResponseConversationMessagesItemUserContentOp
         $model = new self(
             content: PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemToolResultContent::decode(Decode::required($data, 'content', $path), $path . '.content'),
             tool_use_id: Decode::string(Decode::required($data, 'tool_use_id', $path), $path . '.tool_use_id'),
-            type: Decode::string(
-                Decode::constant(Decode::required($data, 'type', $path), 'tool_result', $path . '.type'),
-                $path . '.type',
-            ),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
             is_error: array_key_exists('is_error', $data) ? Decode::bool($data['is_error'], $path . '.is_error') : null,
         );
         $model->decoded = $data;

@@ -80,7 +80,7 @@ final class TemplateInputLayersItemTextPropsValign implements Model
         $data['editable'] = $this->editable;
         $data['value'] = $this->value;
         if ($this->constraints !== null) {
-            $data['constraints'] = Encode::value($this->constraints);
+            $data['constraints'] = Encode::model($this->constraints);
         }
         if ($this->description !== null) {
             $data['description'] = $this->description;

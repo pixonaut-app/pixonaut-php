@@ -33,15 +33,18 @@ final class ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorConstraints
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorConstraintsOption1 => ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorConstraintsOption3 => ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorConstraintsOption2 => ResolvedTemplateCustomerLayersShapeLayerPropsShadowColorConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

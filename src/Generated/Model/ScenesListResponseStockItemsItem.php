@@ -70,7 +70,10 @@ final class ScenesListResponseStockItemsItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['areas'] = Encode::value($this->areas);
+        $data['areas'] = array_map(
+            static fn(ScenesListResponseStockItemsItemAreasItem $v): mixed => Encode::model($v),
+            $this->areas,
+        );
         $data['family'] = $this->family;
         $data['key'] = $this->key;
         $data['name'] = $this->name;

@@ -87,7 +87,7 @@ final class ConnectedStoreUpdateRequest implements Model
     {
         $data = [];
         if ($this->additionalOrigins !== null) {
-            $data['additionalOrigins'] = Encode::value($this->additionalOrigins);
+            $data['additionalOrigins'] = $this->additionalOrigins;
         }
         if (!$this->brandId instanceof Omitted) {
             $data['brandId'] = $this->brandId;
@@ -96,7 +96,7 @@ final class ConnectedStoreUpdateRequest implements Model
             $data['printFileForm'] = $this->printFileForm;
         }
         if (!$this->printFileTextTolerance instanceof Omitted) {
-            $data['printFileTextTolerance'] = Encode::value($this->printFileTextTolerance);
+            $data['printFileTextTolerance'] = $this->printFileTextTolerance === null ? null : Encode::value($this->printFileTextTolerance);
         }
         return $data;
     }

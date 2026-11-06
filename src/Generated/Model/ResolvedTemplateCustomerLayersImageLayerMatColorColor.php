@@ -34,18 +34,22 @@ final class ResolvedTemplateCustomerLayersImageLayerMatColorColor
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerMatColorColorOption4 => ResolvedTemplateCustomerLayersImageLayerMatColorColorOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerMatColorColorOption1 => ResolvedTemplateCustomerLayersImageLayerMatColorColorOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerMatColorColorOption2 => ResolvedTemplateCustomerLayersImageLayerMatColorColorOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerMatColorColorOption3 => ResolvedTemplateCustomerLayersImageLayerMatColorColorOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

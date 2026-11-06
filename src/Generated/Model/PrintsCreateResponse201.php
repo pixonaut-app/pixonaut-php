@@ -61,7 +61,7 @@ final class PrintsCreateResponse201 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['jobTicket'] = Encode::value($this->jobTicket);
+        $data['jobTicket'] = Encode::model($this->jobTicket);
         $data['printId'] = $this->printId;
         return $data;
     }

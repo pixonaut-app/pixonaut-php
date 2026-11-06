@@ -10,6 +10,7 @@ use PhpParser\Node\Expr;
 use PhpParser\Node\Identifier;
 use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
+use PhpParser\NodeFinder;
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Encode;
@@ -27,8 +28,14 @@ final class ModelPrinter
     /** The class constant listing every value of an enum. */
     private const KNOWN_VALUES = 'KNOWN';
 
+    /**
+     * @param array<string, ModelDef> $models
+     * @param array<string, UnionDef> $unions
+     */
     public function __construct(
         private readonly string $namespace,
+        private readonly array $models = [],
+        private readonly array $unions = [],
     ) {}
 
     public function modelNamespace(): string
@@ -121,7 +128,7 @@ final class ModelPrinter
         $class->setDocComment(self::requireDoc(self::classText($model->description, $model->origin)));
 
         $uses = [Decode::class, Model::class, UnexpectedResponse::class];
-        if ($this->usesEncode($properties)) {
+        if ((new NodeFinder())->findFirst($toArray, static fn(Node $node): bool => $node instanceof Expr\StaticCall && $node->class instanceof Name && $node->class->toString() === 'Encode') !== null) {
             $uses[] = Encode::class;
         }
         if ($model->request) {
@@ -155,10 +162,11 @@ final class ModelPrinter
             $text = sprintf('Decodes the variant its `%s` names.', $union->discriminator);
         } else {
             $variants = [];
-            foreach ($union->variants as [$variant, $specificity]) {
+            foreach ($union->variants as [$variant, $specificity, $tags]) {
                 $variants[] = Ast::list([
                     Ast::decoder($variant->native(), $this->decode($variant, Ast::var('v'), Ast::var('p'))),
                     new Node\Scalar\Int_($specificity),
+                    Ast::value($tags),
                 ]);
             }
             $statements = [new Stmt\Return_(Ast::call('Decode', $union->kind, [$data, $path, Ast::list($variants)]))];
@@ -277,9 +285,6 @@ final class ModelPrinter
         $key = Ast::string($property->key);
         if ($property->required) {
             $value = Ast::call('Decode', 'required', [Ast::var('data'), $key, Ast::var('path')]);
-            if ($property->constant !== null) {
-                $value = Ast::call('Decode', 'constant', [$value, Ast::value($property->constant), $path]);
-            }
 
             return $this->decode($property->type, $value, $path);
         }
@@ -343,12 +348,14 @@ final class ModelPrinter
         foreach ($properties as $property) {
             $target = new Expr\ArrayDimFetch(Ast::var('data'), Ast::string($property->key));
             $value = Ast::this($property->name);
-            $assign = new Stmt\Expression(new Expr\Assign($target, $this->encode($property->type, $value)));
             if ($property->required) {
-                $statements[] = $assign;
+                $statements[] = new Stmt\Expression(new Expr\Assign($target, $this->encode($property->type, $value)));
                 continue;
             }
-            $condition = $model->request && $property->type->allowsNull()
+            $omittable = $model->request && $property->type->allowsNull();
+            // Left out when unset: past the check, a field that defaults to `null` is not null.
+            $assign = new Stmt\Expression(new Expr\Assign($target, $this->encode($omittable ? $property->type : $property->type->notNull(), $value)));
+            $condition = $omittable
                 ? new Expr\BooleanNot(new Expr\Instanceof_($value, new Name('Omitted')))
                 : new Expr\BinaryOp\NotIdentical($value, Ast::null());
             $statements[] = new Stmt\If_($condition, ['stmts' => [$assign]]);
@@ -358,35 +365,113 @@ final class ModelPrinter
         return $statements;
     }
 
+    /**
+     * The expression turning `$value`, of `$type`, into what a request
+     * sends: an object stays an object at every level, even when empty.
+     */
     private function encode(Type $type, Expr $value): Expr
     {
-        $encoded = match ($type->kind) {
-            Type::STRING, Type::INT, Type::FLOAT, Type::BOOL, Type::NULL, Type::MIXED => null,
-            Type::OBJECT, Type::MAP => Ast::call('Encode', 'map', [$value]),
-            default => Ast::call('Encode', 'value', [$value]),
-        };
-        if ($encoded === null) {
-            return $value;
-        }
-        if (($type->kind === Type::OBJECT || $type->kind === Type::MAP) && $type->nullable) {
-            return new Expr\Ternary(new Expr\BinaryOp\Identical($value, Ast::null()), Ast::null(), $encoded);
+        if ($type->nullable && $type->kind !== Type::MIXED && $type->kind !== Type::NULL) {
+            $encoded = $this->encode($type->notNull(), $value);
+
+            return $encoded === $value ? $value : new Expr\Ternary(new Expr\BinaryOp\Identical($value, Ast::null()), Ast::null(), $encoded);
         }
 
-        return $encoded;
+        return match ($type->kind) {
+            Type::OBJECT => $this->encodeCall('object', [$value]),
+            Type::MODEL => $this->encodeCall('model', [$value]),
+            Type::LIST => $this->encodeItems($type->item, $value),
+            Type::MAP => $this->encodeCall('object', [$this->encodeItems($type->item, $value)]),
+            Type::TUPLE => $this->tupleIsPlain($type) ? $value : $this->encodeCall('value', [$value]),
+            Type::UNION => $this->encodeCall('value', $this->emptyIsObject($type) ? [$value, Ast::value(true)] : [$value]),
+            default => $value,
+        };
+    }
+
+    private function encodeItems(?Type $item, Expr $value): Expr
+    {
+        $item ??= new Type(Type::MIXED);
+        $element = Ast::var('v');
+        $encoded = $this->encode($item, $element);
+        if ($encoded === $element) {
+            return $value;
+        }
+
+        return Ast::func('array_map', [
+            new Expr\ArrowFunction([
+                'static' => true,
+                'params' => [new Node\Param($element, null, Ast::type($item->native()))],
+                'returnType' => new Identifier('mixed'),
+                'expr' => $encoded,
+            ]),
+            $value,
+        ]);
+    }
+
+    private function tupleIsPlain(Type $type): bool
+    {
+        foreach ([...$type->items, ...($type->item === null ? [] : [$type->item])] as $item) {
+            $element = Ast::var('v');
+            if ($this->encode($item, $element) !== $element) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
-     * @param list<PropertyDef> $properties
+     * Whether a union decodes an empty JSON container as an object: then an
+     * empty array it holds is sent as `{}`.
      */
-    private function usesEncode(array $properties): bool
+    private function emptyIsObject(Type $type): bool
     {
-        foreach ($properties as $property) {
-            if (!$property->type->isScalar() && !in_array($property->type->kind, [Type::NULL, Type::MIXED], true)) {
-                return true;
+        $union = $this->unions[$type->class] ?? null;
+        if ($union === null || $union->kind === UnionDef::DISCRIMINATED) {
+            return false;
+        }
+        foreach ($union->variants as [$variant, , $tags]) {
+            if ($variant->nullable || $tags !== []) {
+                continue;
+            }
+            switch ($variant->kind) {
+                case Type::OBJECT:
+                case Type::MAP:
+                    return true;
+                case Type::MODEL:
+                    if ($this->acceptsEmpty($variant->class)) {
+                        return true;
+                    }
+                    break;
+                case Type::UNION:
+                    return $this->emptyIsObject($variant);
+                case Type::LIST:
+                case Type::TUPLE:
+                case Type::MIXED:
+                    return false;
             }
         }
 
         return false;
+    }
+
+    private function acceptsEmpty(string $model): bool
+    {
+        foreach ($this->models[$model]->properties ?? [] as $property) {
+            if ($property->required) {
+                return false;
+            }
+        }
+
+        return isset($this->models[$model]);
+    }
+
+    /**
+     * @param list<Expr> $args
+     */
+    private function encodeCall(string $method, array $args): Expr
+    {
+        return Ast::call('Encode', $method, $args);
     }
 
     /**

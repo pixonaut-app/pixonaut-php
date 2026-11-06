@@ -70,8 +70,14 @@ final class BlanksMockupsListResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['placements'] = Encode::value($this->placements);
-        $data['views'] = Encode::value($this->views);
+        $data['placements'] = array_map(
+            static fn(BlanksMockupsListResponsePlacementsItem $v): mixed => Encode::model($v),
+            $this->placements,
+        );
+        $data['views'] = array_map(
+            static fn(BlanksMockupsListResponseViewsItem $v): mixed => Encode::model($v),
+            $this->views,
+        );
         return $data;
     }
 }

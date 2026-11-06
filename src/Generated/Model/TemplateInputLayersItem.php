@@ -31,15 +31,18 @@ final class TemplateInputLayersItem
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemText => TemplateInputLayersItemText::fromArray(Decode::object($v, $p), $p),
-                    1009,
+                    1010,
+                    ['type' => 'text'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImage => TemplateInputLayersItemImage::fromArray(Decode::object($v, $p), $p),
-                    1008,
+                    1009,
+                    ['type' => 'image'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShape => TemplateInputLayersItemShape::fromArray(Decode::object($v, $p), $p),
-                    1008,
+                    1009,
+                    ['type' => 'shape'],
                 ],
             ],
         );

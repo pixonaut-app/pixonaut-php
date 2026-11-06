@@ -75,7 +75,7 @@ final class DesignsDeliveryGetResponse implements Model
     {
         $data = [];
         $data['changeable'] = $this->changeable;
-        $data['delivery'] = Encode::value($this->delivery);
+        $data['delivery'] = $this->delivery === null ? null : Encode::model($this->delivery);
         $data['state'] = $this->state;
         if ($this->orderClosed !== null) {
             $data['orderClosed'] = $this->orderClosed;

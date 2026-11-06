@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -68,7 +67,7 @@ final class AutomationsEnableResponseSourcesStores implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['sources'] = Encode::value($this->sources);
+        $data['sources'] = $this->sources;
         $data['takenAt'] = $this->takenAt;
         return $data;
     }

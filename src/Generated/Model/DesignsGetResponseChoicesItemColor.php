@@ -58,7 +58,7 @@ final class DesignsGetResponseChoicesItemColor implements Model
             ),
             prop: Decode::string(Decode::required($data, 'prop', $path), $path . '.prop'),
             swatch: Decode::string(Decode::required($data, 'swatch', $path), $path . '.swatch'),
-            type: Decode::string(Decode::constant(Decode::required($data, 'type', $path), 'color', $path . '.type'), $path . '.type'),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
             color: array_key_exists('color', $data) ? $data['color'] : null,
         );
         $model->decoded = $data;

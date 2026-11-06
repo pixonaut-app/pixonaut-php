@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -89,7 +88,7 @@ final class ApiKeysCreateResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['allowedOrigins'] = Encode::value($this->allowedOrigins);
+        $data['allowedOrigins'] = $this->allowedOrigins;
         $data['createdAt'] = $this->createdAt;
         $data['expiresAt'] = $this->expiresAt;
         $data['id'] = $this->id;

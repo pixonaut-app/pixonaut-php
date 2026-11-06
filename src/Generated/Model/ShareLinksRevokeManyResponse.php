@@ -32,10 +32,12 @@ final class ShareLinksRevokeManyResponse
                 [
                     static fn(mixed $v, string $p): ShareLinksRevokeManyResponseOption1 => ShareLinksRevokeManyResponseOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ShareLinksRevokeManyResponseOption2 => ShareLinksRevokeManyResponseOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

@@ -77,9 +77,9 @@ final class TemplateInputLayersItemImagePropsCrop implements Model
     {
         $data = [];
         $data['editable'] = $this->editable;
-        $data['value'] = Encode::value($this->value);
+        $data['value'] = Encode::model($this->value);
         if ($this->constraints !== null) {
-            $data['constraints'] = Encode::value($this->constraints);
+            $data['constraints'] = Encode::model($this->constraints);
         }
         if ($this->description !== null) {
             $data['description'] = $this->description;

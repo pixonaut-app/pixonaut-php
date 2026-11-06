@@ -31,15 +31,18 @@ final class ShareLinksListResponseCountsSourcesItem
             [
                 [
                     static fn(mixed $v, string $p): ShareLinksListResponseCountsSourcesItemKey => ShareLinksListResponseCountsSourcesItemKey::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['source' => 'key'],
                 ],
                 [
                     static fn(mixed $v, string $p): ShareLinksListResponseCountsSourcesItemMember => ShareLinksListResponseCountsSourcesItemMember::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['source' => 'member'],
                 ],
                 [
                     static fn(mixed $v, string $p): ShareLinksListResponseCountsSourcesItemAuto => ShareLinksListResponseCountsSourcesItemAuto::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['source' => 'auto'],
                 ],
             ],
         );

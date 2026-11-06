@@ -127,20 +127,23 @@ final class BlanksGetResponsePlacementsItemViewsItem implements Model
         $data = [];
         $data['id'] = $this->id;
         $data['label'] = $this->label;
-        $data['photoSizePx'] = Encode::value($this->photoSizePx);
-        $data['photos'] = Encode::value($this->photos);
-        $data['placementRectPx'] = Encode::value($this->placementRectPx);
+        $data['photoSizePx'] = $this->photoSizePx === null ? null : Encode::model($this->photoSizePx);
+        $data['photos'] = array_map(
+            static fn(BlanksGetResponsePlacementsItemViewsItemPhotosItem $v): mixed => Encode::model($v),
+            $this->photos,
+        );
+        $data['placementRectPx'] = $this->placementRectPx === null ? null : Encode::model($this->placementRectPx);
         if ($this->fromPrintshop !== null) {
             $data['fromPrintshop'] = $this->fromPrintshop;
         }
         if ($this->localizedLabels !== null) {
-            $data['localizedLabels'] = Encode::value($this->localizedLabels);
+            $data['localizedLabels'] = Encode::model($this->localizedLabels);
         }
         if ($this->maskAssetId !== null) {
             $data['maskAssetId'] = $this->maskAssetId;
         }
         if ($this->mesh !== null) {
-            $data['mesh'] = Encode::value($this->mesh);
+            $data['mesh'] = Encode::model($this->mesh);
         }
         if ($this->partnerStyleKey !== null) {
             $data['partnerStyleKey'] = $this->partnerStyleKey;
@@ -149,7 +152,7 @@ final class BlanksGetResponsePlacementsItemViewsItem implements Model
             $data['piece'] = $this->piece;
         }
         if ($this->printWindowMm !== null) {
-            $data['printWindowMm'] = Encode::value($this->printWindowMm);
+            $data['printWindowMm'] = Encode::model($this->printWindowMm);
         }
         if ($this->sceneId !== null) {
             $data['sceneId'] = $this->sceneId;
@@ -158,19 +161,19 @@ final class BlanksGetResponsePlacementsItemViewsItem implements Model
             $data['scenePosition'] = $this->scenePosition;
         }
         if ($this->sourceWindowMm !== null) {
-            $data['sourceWindowMm'] = Encode::value($this->sourceWindowMm);
+            $data['sourceWindowMm'] = Encode::model($this->sourceWindowMm);
         }
         if ($this->takesDye !== null) {
             $data['takesDye'] = $this->takesDye;
         }
         if ($this->uvPasses !== null) {
-            $data['uvPasses'] = Encode::value($this->uvPasses);
+            $data['uvPasses'] = Encode::model($this->uvPasses);
         }
         if ($this->webPhotoAssetId !== null) {
             $data['webPhotoAssetId'] = $this->webPhotoAssetId;
         }
         if ($this->zoomTier !== null) {
-            $data['zoomTier'] = Encode::value($this->zoomTier);
+            $data['zoomTier'] = Encode::model($this->zoomTier);
         }
         return $data;
     }

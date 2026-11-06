@@ -37,10 +37,7 @@ final class PixelDismissalsCreateResponseConversationMessagesItemUserContentOpti
     {
         $model = new self(
             assetId: Decode::string(Decode::required($data, 'assetId', $path), $path . '.assetId'),
-            type: Decode::string(
-                Decode::constant(Decode::required($data, 'type', $path), 'attachment', $path . '.type'),
-                $path . '.type',
-            ),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;

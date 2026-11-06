@@ -34,18 +34,22 @@ final class ResolvedTemplateLayersItemImagePropsRecolourColorValue
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsRecolourColorValueOption4 => ResolvedTemplateLayersItemImagePropsRecolourColorValueOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsRecolourColorValueOption1 => ResolvedTemplateLayersItemImagePropsRecolourColorValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsRecolourColorValueOption2 => ResolvedTemplateLayersItemImagePropsRecolourColorValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsRecolourColorValueOption3 => ResolvedTemplateLayersItemImagePropsRecolourColorValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

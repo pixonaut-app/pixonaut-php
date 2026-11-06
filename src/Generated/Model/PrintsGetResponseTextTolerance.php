@@ -33,11 +33,13 @@ final class PrintsGetResponseTextTolerance
             [
                 [
                     static fn(mixed $v, string $p): PrintsGetResponseTextTolerancePx => PrintsGetResponseTextTolerancePx::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['unit' => 'px'],
                 ],
                 [
                     static fn(mixed $v, string $p): PrintsGetResponseTextToleranceMm => PrintsGetResponseTextToleranceMm::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['unit' => 'mm'],
                 ],
             ],
         );

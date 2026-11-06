@@ -41,10 +41,7 @@ final class OrdersGetResponseDeliveryChangeRefusalOrderPastAddressChange impleme
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            code: Decode::string(
-                Decode::constant(Decode::required($data, 'code', $path), 'order_past_address_change', $path . '.code'),
-                $path . '.code',
-            ),
+            code: Decode::string(Decode::required($data, 'code', $path), $path . '.code'),
             status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
             unanswered: Decode::bool(Decode::required($data, 'unanswered', $path), $path . '.unanswered'),
         );

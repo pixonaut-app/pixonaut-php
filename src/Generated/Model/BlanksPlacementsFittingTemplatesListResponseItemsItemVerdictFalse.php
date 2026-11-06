@@ -39,7 +39,7 @@ final class BlanksPlacementsFittingTemplatesListResponseItemsItemVerdictFalse im
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            legal: Decode::bool(Decode::constant(Decode::required($data, 'legal', $path), false, $path . '.legal'), $path . '.legal'),
+            legal: Decode::bool(Decode::required($data, 'legal', $path), $path . '.legal'),
             reason: Decode::string(Decode::required($data, 'reason', $path), $path . '.reason'),
         );
         $model->decoded = $data;

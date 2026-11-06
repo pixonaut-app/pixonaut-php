@@ -104,13 +104,19 @@ final class OrdersCreateRequest implements Model
     {
         $data = [];
         if ($this->designs !== null) {
-            $data['designs'] = Encode::value($this->designs);
+            $data['designs'] = array_map(
+                static fn(OrdersCreateRequestDesignsItem $v): mixed => Encode::model($v),
+                $this->designs,
+            );
         }
         if ($this->externalRef !== null) {
             $data['externalRef'] = $this->externalRef;
         }
         if ($this->prints !== null) {
-            $data['prints'] = Encode::value($this->prints);
+            $data['prints'] = array_map(
+                static fn(OrdersCreateRequestPrintsItem $v): mixed => Encode::model($v),
+                $this->prints,
+            );
         }
         if (!$this->printshopId instanceof Omitted) {
             $data['printshopId'] = $this->printshopId;
@@ -119,7 +125,7 @@ final class OrdersCreateRequest implements Model
             $data['quantity'] = $this->quantity;
         }
         if ($this->recipient !== null) {
-            $data['recipient'] = Encode::value($this->recipient);
+            $data['recipient'] = Encode::model($this->recipient);
         }
         if ($this->reorder !== null) {
             $data['reorder'] = $this->reorder;
@@ -128,7 +134,7 @@ final class OrdersCreateRequest implements Model
             $data['shipToAddressId'] = $this->shipToAddressId;
         }
         if ($this->shippingAddress !== null) {
-            $data['shippingAddress'] = Encode::value($this->shippingAddress);
+            $data['shippingAddress'] = Encode::model($this->shippingAddress);
         }
         if ($this->variant !== null) {
             $data['variant'] = $this->variant;

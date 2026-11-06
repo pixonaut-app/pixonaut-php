@@ -94,16 +94,16 @@ final class OrderStatusChangedEventPayload implements Model
         $data['printId'] = $this->printId;
         $data['status'] = $this->status;
         if ($this->automation !== null) {
-            $data['automation'] = Encode::value($this->automation);
+            $data['automation'] = Encode::model($this->automation);
         }
         if ($this->externalRef !== null) {
             $data['externalRef'] = $this->externalRef;
         }
         if ($this->printIds !== null) {
-            $data['printIds'] = Encode::value($this->printIds);
+            $data['printIds'] = $this->printIds;
         }
         if ($this->tracking !== null) {
-            $data['tracking'] = Encode::value($this->tracking);
+            $data['tracking'] = Encode::model($this->tracking);
         }
         if ($this->via !== null) {
             $data['via'] = $this->via;

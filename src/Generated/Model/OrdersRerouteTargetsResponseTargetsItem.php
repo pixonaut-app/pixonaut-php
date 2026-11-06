@@ -94,12 +94,18 @@ final class OrdersRerouteTargetsResponseTargetsItem implements Model
     {
         $data = [];
         $data['blankId'] = $this->blankId;
-        $data['candidates'] = Encode::value($this->candidates);
+        $data['candidates'] = array_map(
+            static fn(OrdersRerouteTargetsResponseTargetsItemCandidatesItem $v): mixed => Encode::model($v),
+            $this->candidates,
+        );
         $data['fits'] = $this->fits;
-        $data['misfits'] = Encode::value($this->misfits);
+        $data['misfits'] = array_map(
+            static fn(\Pixonaut\Sdk\Model\Model $v): mixed => Encode::value($v),
+            $this->misfits,
+        );
         $data['name'] = $this->name;
-        $data['placements'] = Encode::value($this->placements);
-        $data['printshop'] = Encode::value($this->printshop);
+        $data['placements'] = $this->placements;
+        $data['printshop'] = $this->printshop === null ? null : Encode::model($this->printshop);
         $data['variants'] = $this->variants;
         return $data;
     }

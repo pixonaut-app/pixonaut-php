@@ -226,14 +226,17 @@ final class PrintsGetResponse implements Model
         $data = [];
         $data['apiKeyId'] = $this->apiKeyId;
         $data['artifacts'] = $this->artifacts;
-        $data['attempts'] = Encode::value($this->attempts);
+        $data['attempts'] = array_map(
+            static fn(PrintsGetResponseAttemptsItem $v): mixed => Encode::model($v),
+            $this->attempts,
+        );
         $data['bleedMm'] = $this->bleedMm;
         $data['completedAt'] = $this->completedAt;
         $data['createdAt'] = $this->createdAt;
         $data['currentRevision'] = $this->currentRevision;
         $data['designId'] = $this->designId;
         $data['designRevision'] = $this->designRevision;
-        $data['failure'] = Encode::value($this->failure);
+        $data['failure'] = $this->failure === null ? null : Encode::model($this->failure);
         $data['fileForm'] = $this->fileForm;
         $data['fileUrl'] = $this->fileUrl;
         $data['filesBytes'] = $this->filesBytes;
@@ -241,7 +244,7 @@ final class PrintsGetResponse implements Model
         $data['filesErasedAt'] = $this->filesErasedAt;
         $data['heightMm'] = $this->heightMm;
         $data['id'] = $this->id;
-        $data['jobTicket'] = Encode::value($this->jobTicket);
+        $data['jobTicket'] = $this->jobTicket === null ? null : Encode::model($this->jobTicket);
         $data['jobTicketStale'] = $this->jobTicketStale;
         $data['layeredFallback'] = $this->layeredFallback;
         $data['liveTextFallback'] = $this->liveTextFallback;
@@ -255,7 +258,7 @@ final class PrintsGetResponse implements Model
         $data['textTolerance'] = Encode::value($this->textTolerance);
         $data['widthMm'] = $this->widthMm;
         if ($this->orderPrintshop !== null) {
-            $data['orderPrintshop'] = Encode::value($this->orderPrintshop);
+            $data['orderPrintshop'] = Encode::model($this->orderPrintshop);
         }
         return $data;
     }

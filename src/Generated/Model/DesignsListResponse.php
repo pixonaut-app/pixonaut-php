@@ -72,8 +72,11 @@ final class DesignsListResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['counts'] = Encode::value($this->counts);
-        $data['designs'] = Encode::value($this->designs);
+        $data['counts'] = Encode::model($this->counts);
+        $data['designs'] = array_map(
+            static fn(DesignsListResponseDesignsItem $v): mixed => Encode::model($v),
+            $this->designs,
+        );
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;
         $data['total'] = $this->total;

@@ -119,19 +119,25 @@ final class AutomationsFiringResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['chain'] = Encode::value($this->chain);
-        $data['event'] = Encode::value($this->event);
+        $data['chain'] = Encode::model($this->chain);
+        $data['event'] = Encode::model($this->event);
         $data['finishedAt'] = $this->finishedAt;
         $data['id'] = $this->id;
-        $data['manualActions'] = Encode::value($this->manualActions);
+        $data['manualActions'] = array_map(
+            static fn(AutomationsFiringResponseManualActionsItem $v): mixed => Encode::model($v),
+            $this->manualActions,
+        );
         $data['ranAs'] = Encode::value($this->ranAs);
         $data['reason'] = $this->reason;
         $data['startedAt'] = $this->startedAt;
         $data['state'] = $this->state;
-        $data['step'] = Encode::value($this->step);
-        $data['steps'] = Encode::value($this->steps);
-        $data['subject'] = Encode::value($this->subject);
-        $data['touched'] = Encode::value($this->touched);
+        $data['step'] = $this->step === null ? null : Encode::model($this->step);
+        $data['steps'] = array_map(
+            static fn(AutomationsFiringResponseStepsItem $v): mixed => Encode::model($v),
+            $this->steps,
+        );
+        $data['subject'] = Encode::model($this->subject);
+        $data['touched'] = $this->touched;
         $data['version'] = $this->version;
         return $data;
     }

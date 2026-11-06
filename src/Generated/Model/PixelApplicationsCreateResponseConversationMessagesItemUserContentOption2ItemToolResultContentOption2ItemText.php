@@ -37,7 +37,7 @@ final class PixelApplicationsCreateResponseConversationMessagesItemUserContentOp
     {
         $model = new self(
             text: Decode::string(Decode::required($data, 'text', $path), $path . '.text'),
-            type: Decode::string(Decode::constant(Decode::required($data, 'type', $path), 'text', $path . '.type'), $path . '.type'),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;

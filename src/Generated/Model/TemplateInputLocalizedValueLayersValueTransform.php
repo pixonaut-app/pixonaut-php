@@ -77,22 +77,22 @@ final class TemplateInputLocalizedValueLayersValueTransform implements Model
     {
         $data = [];
         if ($this->flip !== null) {
-            $data['flip'] = Encode::value($this->flip);
+            $data['flip'] = Encode::model($this->flip);
         }
         if ($this->resize !== null) {
-            $data['resize'] = Encode::value($this->resize);
+            $data['resize'] = Encode::model($this->resize);
         }
         if ($this->rotate !== null) {
-            $data['rotate'] = Encode::value($this->rotate);
+            $data['rotate'] = Encode::model($this->rotate);
         }
         if ($this->scale !== null) {
-            $data['scale'] = Encode::value($this->scale);
+            $data['scale'] = Encode::model($this->scale);
         }
         if ($this->translate !== null) {
-            $data['translate'] = Encode::value($this->translate);
+            $data['translate'] = Encode::model($this->translate);
         }
         if ($this->value !== null) {
-            $data['value'] = Encode::value($this->value);
+            $data['value'] = Encode::model($this->value);
         }
         return $data;
     }

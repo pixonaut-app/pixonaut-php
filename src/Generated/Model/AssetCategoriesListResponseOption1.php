@@ -69,7 +69,10 @@ final class AssetCategoriesListResponseOption1 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['categories'] = Encode::value($this->categories);
+        $data['categories'] = array_map(
+            static fn(AssetCategoriesListResponseOption1CategoriesItem $v): mixed => Encode::model($v),
+            $this->categories,
+        );
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;
         $data['total'] = $this->total;

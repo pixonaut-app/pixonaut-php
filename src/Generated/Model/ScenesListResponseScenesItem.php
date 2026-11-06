@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -97,7 +96,7 @@ final class ScenesListResponseScenesItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['areas'] = Encode::value($this->areas);
+        $data['areas'] = $this->areas;
         $data['colour'] = $this->colour;
         $data['hasPerson'] = $this->hasPerson;
         $data['id'] = $this->id;

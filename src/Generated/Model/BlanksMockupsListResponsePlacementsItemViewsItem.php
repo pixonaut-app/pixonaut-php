@@ -116,23 +116,26 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
         $data = [];
         $data['id'] = $this->id;
         $data['label'] = $this->label;
-        $data['photoSizePx'] = Encode::value($this->photoSizePx);
-        $data['photos'] = Encode::value($this->photos);
-        $data['placementRectPx'] = Encode::value($this->placementRectPx);
+        $data['photoSizePx'] = $this->photoSizePx === null ? null : Encode::model($this->photoSizePx);
+        $data['photos'] = array_map(
+            static fn(BlanksMockupsListResponsePlacementsItemViewsItemPhotosItem $v): mixed => Encode::model($v),
+            $this->photos,
+        );
+        $data['placementRectPx'] = $this->placementRectPx === null ? null : Encode::model($this->placementRectPx);
         if ($this->maskUrl !== null) {
             $data['maskUrl'] = $this->maskUrl;
         }
         if ($this->mesh !== null) {
-            $data['mesh'] = Encode::value($this->mesh);
+            $data['mesh'] = Encode::model($this->mesh);
         }
         if ($this->piece !== null) {
             $data['piece'] = $this->piece;
         }
         if ($this->pieceSizeMm !== null) {
-            $data['pieceSizeMm'] = Encode::value($this->pieceSizeMm);
+            $data['pieceSizeMm'] = Encode::model($this->pieceSizeMm);
         }
         if ($this->printWindowMm !== null) {
-            $data['printWindowMm'] = Encode::value($this->printWindowMm);
+            $data['printWindowMm'] = Encode::model($this->printWindowMm);
         }
         if ($this->sceneId !== null) {
             $data['sceneId'] = $this->sceneId;
@@ -141,16 +144,16 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
             $data['scenePosition'] = $this->scenePosition;
         }
         if ($this->sourceWindowMm !== null) {
-            $data['sourceWindowMm'] = Encode::value($this->sourceWindowMm);
+            $data['sourceWindowMm'] = Encode::model($this->sourceWindowMm);
         }
         if ($this->takesDye !== null) {
             $data['takesDye'] = $this->takesDye;
         }
         if ($this->uvPassUrls !== null) {
-            $data['uvPassUrls'] = Encode::value($this->uvPassUrls);
+            $data['uvPassUrls'] = Encode::model($this->uvPassUrls);
         }
         if ($this->zoomTier !== null) {
-            $data['zoomTier'] = Encode::value($this->zoomTier);
+            $data['zoomTier'] = Encode::model($this->zoomTier);
         }
         return $data;
     }

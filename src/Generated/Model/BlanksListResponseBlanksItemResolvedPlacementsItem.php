@@ -85,14 +85,17 @@ final class BlanksListResponseBlanksItemResolvedPlacementsItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['bleedMm'] = Encode::value($this->bleedMm);
-        $data['dpi'] = Encode::value($this->dpi);
+        $data['bleedMm'] = Encode::model($this->bleedMm);
+        $data['dpi'] = Encode::model($this->dpi);
         $data['id'] = $this->id;
-        $data['mockups'] = Encode::value($this->mockups);
-        $data['printMethod'] = Encode::value($this->printMethod);
+        $data['mockups'] = array_map(
+            static fn(BlanksListResponseBlanksItemResolvedPlacementsItemMockupsItem $v): mixed => Encode::model($v),
+            $this->mockups,
+        );
+        $data['printMethod'] = Encode::model($this->printMethod);
         $data['printedAs'] = $this->printedAs;
         $data['printedAsLinked'] = $this->printedAsLinked;
-        $data['safeAreaMm'] = Encode::value($this->safeAreaMm);
+        $data['safeAreaMm'] = Encode::model($this->safeAreaMm);
         return $data;
     }
 }

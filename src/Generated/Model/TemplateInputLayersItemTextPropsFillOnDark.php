@@ -34,26 +34,32 @@ final class TemplateInputLayersItemTextPropsFillOnDark
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillOnDarkOption5 => TemplateInputLayersItemTextPropsFillOnDarkOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillOnDarkOption1 => TemplateInputLayersItemTextPropsFillOnDarkOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillOnDarkOption2 => TemplateInputLayersItemTextPropsFillOnDarkOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillOnDarkOption3 => TemplateInputLayersItemTextPropsFillOnDarkOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillOnDarkOption4 => TemplateInputLayersItemTextPropsFillOnDarkOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillOnDarkOption6 => TemplateInputLayersItemTextPropsFillOnDarkOption6::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

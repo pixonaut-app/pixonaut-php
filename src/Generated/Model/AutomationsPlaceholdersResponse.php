@@ -63,7 +63,10 @@ final class AutomationsPlaceholdersResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['namespaces'] = Encode::value($this->namespaces);
+        $data['namespaces'] = array_map(
+            static fn(AutomationsPlaceholdersResponseNamespacesItem $v): mixed => Encode::model($v),
+            $this->namespaces,
+        );
         return $data;
     }
 }

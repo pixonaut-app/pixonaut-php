@@ -65,8 +65,11 @@ final class TemplatesListResponseOption3 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['counts'] = Encode::value($this->counts);
-        $data['templates'] = Encode::value($this->templates);
+        $data['counts'] = Encode::model($this->counts);
+        $data['templates'] = array_map(
+            static fn(TemplatesListResponseOption3TemplatesItem $v): mixed => Encode::model($v),
+            $this->templates,
+        );
         return $data;
     }
 }

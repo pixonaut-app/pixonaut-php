@@ -34,18 +34,22 @@ final class ApiKeysCreateRequestExpiresInDays
                 [
                     static fn(mixed $v, string $p): float => Decode::float($v, $p),
                     0,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): float => Decode::float($v, $p),
                     0,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): float => Decode::float($v, $p),
                     0,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): float => Decode::float($v, $p),
                     0,
+                    [],
                 ],
             ],
         );

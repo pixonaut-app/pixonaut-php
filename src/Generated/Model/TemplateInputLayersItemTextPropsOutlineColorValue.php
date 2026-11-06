@@ -34,22 +34,27 @@ final class TemplateInputLayersItemTextPropsOutlineColorValue
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsOutlineColorValueOption5 => TemplateInputLayersItemTextPropsOutlineColorValueOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsOutlineColorValueOption1 => TemplateInputLayersItemTextPropsOutlineColorValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsOutlineColorValueOption2 => TemplateInputLayersItemTextPropsOutlineColorValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsOutlineColorValueOption3 => TemplateInputLayersItemTextPropsOutlineColorValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsOutlineColorValueOption4 => TemplateInputLayersItemTextPropsOutlineColorValueOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

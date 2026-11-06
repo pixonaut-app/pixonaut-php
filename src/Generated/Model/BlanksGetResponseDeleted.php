@@ -69,7 +69,7 @@ final class BlanksGetResponseDeleted implements Model
     {
         $data = [];
         $data['at'] = $this->at;
-        $data['by'] = Encode::value($this->by);
+        $data['by'] = $this->by === null ? null : Encode::model($this->by);
         return $data;
     }
 }

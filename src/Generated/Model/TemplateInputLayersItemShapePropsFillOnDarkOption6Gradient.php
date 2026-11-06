@@ -33,11 +33,13 @@ final class TemplateInputLayersItemShapePropsFillOnDarkOption6Gradient
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinear => TemplateInputLayersItemShapePropsFillOnDarkOption6GradientLinear::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'linear'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption6GradientRadial => TemplateInputLayersItemShapePropsFillOnDarkOption6GradientRadial::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'radial'],
                 ],
             ],
         );

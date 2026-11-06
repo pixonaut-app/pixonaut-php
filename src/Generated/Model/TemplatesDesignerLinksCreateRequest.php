@@ -171,7 +171,7 @@ final class TemplatesDesignerLinksCreateRequest implements Model
             $data['brandId'] = $this->brandId;
         }
         if ($this->designLimit !== null) {
-            $data['designLimit'] = Encode::value($this->designLimit);
+            $data['designLimit'] = Encode::model($this->designLimit);
         }
         if ($this->expiresInDays !== null) {
             $data['expiresInDays'] = $this->expiresInDays;
@@ -186,13 +186,16 @@ final class TemplatesDesignerLinksCreateRequest implements Model
             $data['layout'] = $this->layout;
         }
         if ($this->linkedPlacements !== null) {
-            $data['linkedPlacements'] = Encode::value($this->linkedPlacements);
+            $data['linkedPlacements'] = Encode::model($this->linkedPlacements);
         }
         if ($this->locale !== null) {
             $data['locale'] = $this->locale;
         }
         if ($this->mockups !== null) {
-            $data['mockups'] = Encode::value($this->mockups);
+            $data['mockups'] = array_map(
+                static fn(TemplatesDesignerLinksCreateRequestMockupsItem $v): mixed => Encode::model($v),
+                $this->mockups,
+            );
         }
         if ($this->name !== null) {
             $data['name'] = $this->name;
@@ -210,10 +213,13 @@ final class TemplatesDesignerLinksCreateRequest implements Model
             $data['printAreaFrame'] = $this->printAreaFrame;
         }
         if ($this->printSizes !== null) {
-            $data['printSizes'] = Encode::value($this->printSizes);
+            $data['printSizes'] = array_map(
+                static fn(TemplatesDesignerLinksCreateRequestPrintSizesItem $v): mixed => Encode::model($v),
+                $this->printSizes,
+            );
         }
         if ($this->repeat !== null) {
-            $data['repeat'] = Encode::value($this->repeat);
+            $data['repeat'] = Encode::model($this->repeat);
         }
         if ($this->returnUrl !== null) {
             $data['returnUrl'] = $this->returnUrl;
@@ -225,19 +231,22 @@ final class TemplatesDesignerLinksCreateRequest implements Model
             $data['selectedPrintSizeIndex'] = $this->selectedPrintSizeIndex;
         }
         if ($this->sides !== null) {
-            $data['sides'] = Encode::value($this->sides);
+            $data['sides'] = array_map(
+                static fn(TemplatesDesignerLinksCreateRequestSidesItem $v): mixed => Encode::model($v),
+                $this->sides,
+            );
         }
         if ($this->state !== null) {
             $data['state'] = $this->state;
         }
         if ($this->variantRow !== null) {
-            $data['variantRow'] = Encode::map($this->variantRow);
+            $data['variantRow'] = Encode::object($this->variantRow);
         }
         if ($this->variants !== null) {
-            $data['variants'] = Encode::value($this->variants);
+            $data['variants'] = $this->variants;
         }
         if ($this->views !== null) {
-            $data['views'] = Encode::value($this->views);
+            $data['views'] = $this->views;
         }
         return $data;
     }

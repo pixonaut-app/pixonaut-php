@@ -32,6 +32,7 @@ final class ShareLinksUpdateRequestLinkedPlacementsGroupsItem
                 [
                     static fn(mixed $v, string $p): ShareLinksUpdateRequestLinkedPlacementsGroupsItemOption2 => ShareLinksUpdateRequestLinkedPlacementsGroupsItemOption2::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): array => Decode::list(
@@ -40,6 +41,7 @@ final class ShareLinksUpdateRequestLinkedPlacementsGroupsItem
                         static fn(mixed $v, string $p): ShareLinksUpdateRequestLinkedPlacementsGroupsItemOption1Item => ShareLinksUpdateRequestLinkedPlacementsGroupsItemOption1Item::fromArray(Decode::object($v, $p), $p),
                     ),
                     0,
+                    [],
                 ],
             ],
         );

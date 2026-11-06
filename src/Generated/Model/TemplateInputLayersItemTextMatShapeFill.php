@@ -34,22 +34,27 @@ final class TemplateInputLayersItemTextMatShapeFill
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextMatShapeFillOption5 => TemplateInputLayersItemTextMatShapeFillOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextMatShapeFillOption1 => TemplateInputLayersItemTextMatShapeFillOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextMatShapeFillOption2 => TemplateInputLayersItemTextMatShapeFillOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextMatShapeFillOption3 => TemplateInputLayersItemTextMatShapeFillOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextMatShapeFillOption4 => TemplateInputLayersItemTextMatShapeFillOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

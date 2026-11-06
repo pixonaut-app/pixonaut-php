@@ -34,22 +34,27 @@ final class TemplateInputCustomerLayersImageLayerPropsDuotoneHighlightOnDark
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsDuotoneHighlightOnDarkOption5 => TemplateInputCustomerLayersImageLayerPropsDuotoneHighlightOnDarkOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsDuotoneHighlightOnDarkOption1 => TemplateInputCustomerLayersImageLayerPropsDuotoneHighlightOnDarkOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsDuotoneHighlightOnDarkOption2 => TemplateInputCustomerLayersImageLayerPropsDuotoneHighlightOnDarkOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsDuotoneHighlightOnDarkOption3 => TemplateInputCustomerLayersImageLayerPropsDuotoneHighlightOnDarkOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsDuotoneHighlightOnDarkOption4 => TemplateInputCustomerLayersImageLayerPropsDuotoneHighlightOnDarkOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

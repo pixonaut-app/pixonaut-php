@@ -33,11 +33,13 @@ final class TemplateInputShapeValue
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputShapeValuePath => TemplateInputShapeValuePath::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'path'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputShapeValueShape => TemplateInputShapeValueShape::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'shape'],
                 ],
             ],
         );

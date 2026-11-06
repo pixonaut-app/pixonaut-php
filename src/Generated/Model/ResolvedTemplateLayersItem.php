@@ -31,15 +31,18 @@ final class ResolvedTemplateLayersItem
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemText => ResolvedTemplateLayersItemText::fromArray(Decode::object($v, $p), $p),
-                    1009,
+                    1010,
+                    ['type' => 'text'],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImage => ResolvedTemplateLayersItemImage::fromArray(Decode::object($v, $p), $p),
-                    1008,
+                    1009,
+                    ['type' => 'image'],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemShape => ResolvedTemplateLayersItemShape::fromArray(Decode::object($v, $p), $p),
-                    1008,
+                    1009,
+                    ['type' => 'shape'],
                 ],
             ],
         );

@@ -70,10 +70,10 @@ final class ResolvedTemplateSnap implements Model
     {
         $data = [];
         if ($this->grid !== null) {
-            $data['grid'] = Encode::value($this->grid);
+            $data['grid'] = Encode::model($this->grid);
         }
         if ($this->targets !== null) {
-            $data['targets'] = Encode::value($this->targets);
+            $data['targets'] = $this->targets;
         }
         return $data;
     }

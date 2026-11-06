@@ -33,11 +33,13 @@ final class TemplateInputPrintFileTextTolerance
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputPrintFileTextTolerancePx => TemplateInputPrintFileTextTolerancePx::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['unit' => 'px'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputPrintFileTextToleranceMm => TemplateInputPrintFileTextToleranceMm::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['unit' => 'mm'],
                 ],
             ],
         );

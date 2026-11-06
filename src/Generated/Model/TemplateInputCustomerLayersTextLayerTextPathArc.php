@@ -48,7 +48,7 @@ final class TemplateInputCustomerLayersTextLayerTextPathArc implements Model
             centerDeg: Decode::float(Decode::required($data, 'centerDeg', $path), $path . '.centerDeg'),
             side: Decode::string(Decode::required($data, 'side', $path), $path . '.side'),
             sweepDeg: Decode::float(Decode::required($data, 'sweepDeg', $path), $path . '.sweepDeg'),
-            type: Decode::string(Decode::constant(Decode::required($data, 'type', $path), 'arc', $path . '.type'), $path . '.type'),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;

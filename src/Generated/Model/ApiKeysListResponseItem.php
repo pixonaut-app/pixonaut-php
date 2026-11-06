@@ -104,10 +104,10 @@ final class ApiKeysListResponseItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['allowedOrigins'] = Encode::value($this->allowedOrigins);
+        $data['allowedOrigins'] = $this->allowedOrigins;
         $data['connectionId'] = $this->connectionId;
         $data['createdAt'] = $this->createdAt;
-        $data['createdBy'] = Encode::value($this->createdBy);
+        $data['createdBy'] = $this->createdBy === null ? null : Encode::model($this->createdBy);
         $data['expiresAt'] = $this->expiresAt;
         $data['id'] = $this->id;
         $data['kind'] = $this->kind;

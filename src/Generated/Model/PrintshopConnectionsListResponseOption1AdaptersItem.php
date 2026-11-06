@@ -96,12 +96,12 @@ final class PrintshopConnectionsListResponseOption1AdaptersItem implements Model
         $data['adapter'] = $this->adapter;
         $data['catalogue'] = $this->catalogue;
         $data['categories'] = $this->categories;
-        $data['consent'] = Encode::value($this->consent);
-        $data['credentialGuide'] = Encode::value($this->credentialGuide);
+        $data['consent'] = $this->consent === null ? null : Encode::model($this->consent);
+        $data['credentialGuide'] = $this->credentialGuide === null ? null : Encode::model($this->credentialGuide);
         $data['deliverySteps'] = $this->deliverySteps;
         $data['machineProfiles'] = $this->machineProfiles;
         $data['partnerPhotos'] = $this->partnerPhotos;
-        $data['placeholders'] = Encode::value($this->placeholders);
+        $data['placeholders'] = $this->placeholders;
         $data['spotPlates'] = $this->spotPlates;
         $data['takesContact'] = $this->takesContact;
         return $data;

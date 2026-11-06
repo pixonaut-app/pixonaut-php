@@ -85,7 +85,7 @@ final class AutomationsCreateRequest implements Model
     {
         $data = [];
         if ($this->body !== null) {
-            $data['body'] = Encode::value($this->body);
+            $data['body'] = Encode::model($this->body);
         }
         if ($this->confirmSpend !== null) {
             $data['confirmSpend'] = $this->confirmSpend;
@@ -97,7 +97,7 @@ final class AutomationsCreateRequest implements Model
             $data['runsAs'] = $this->runsAs;
         }
         if ($this->sources !== null) {
-            $data['sources'] = Encode::value($this->sources);
+            $data['sources'] = Encode::model($this->sources);
         }
         if ($this->spendLimit !== null) {
             $data['spendLimit'] = $this->spendLimit;

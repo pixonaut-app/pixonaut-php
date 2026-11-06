@@ -40,10 +40,7 @@ final class OrdersRerouteTargetsResponseTargetsItemMisfitsItemNoPlacementFits im
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            kind: Decode::string(
-                Decode::constant(Decode::required($data, 'kind', $path), 'no_placement_fits', $path . '.kind'),
-                $path . '.kind',
-            ),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             placement: Decode::nullable(
                 Decode::required($data, 'placement', $path),
                 $path . '.placement',

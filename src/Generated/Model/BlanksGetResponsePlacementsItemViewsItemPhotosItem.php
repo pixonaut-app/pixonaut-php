@@ -106,7 +106,7 @@ final class BlanksGetResponsePlacementsItemViewsItemPhotosItem implements Model
             $data['displacementStrength'] = $this->displacementStrength;
         }
         if ($this->row !== null) {
-            $data['row'] = Encode::map($this->row);
+            $data['row'] = Encode::object($this->row);
         }
         if ($this->shadingStrength !== null) {
             $data['shadingStrength'] = $this->shadingStrength;
@@ -115,10 +115,10 @@ final class BlanksGetResponsePlacementsItemViewsItemPhotosItem implements Model
             $data['textureStrength'] = $this->textureStrength;
         }
         if ($this->variantRefs !== null) {
-            $data['variantRefs'] = Encode::value($this->variantRefs);
+            $data['variantRefs'] = $this->variantRefs;
         }
         if ($this->warp !== null) {
-            $data['warp'] = Encode::value($this->warp);
+            $data['warp'] = Encode::model($this->warp);
         }
         return $data;
     }

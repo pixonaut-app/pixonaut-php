@@ -33,11 +33,13 @@ final class TemplateInputCustomerLayersTextLayerMat
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerMatShape => TemplateInputCustomerLayersTextLayerMatShape::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'shape'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerMatColor => TemplateInputCustomerLayersTextLayerMatColor::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'color'],
                 ],
             ],
         );

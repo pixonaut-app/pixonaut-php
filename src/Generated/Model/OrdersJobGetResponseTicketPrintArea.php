@@ -89,20 +89,20 @@ final class OrdersJobGetResponseTicketPrintArea implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['cutShape'] = Encode::value($this->cutShape);
+        $data['cutShape'] = Encode::model($this->cutShape);
         $data['heightMm'] = $this->heightMm;
         $data['widthMm'] = $this->widthMm;
         if ($this->anchor !== null) {
-            $data['anchor'] = Encode::value($this->anchor);
+            $data['anchor'] = Encode::model($this->anchor);
         }
         if ($this->bleedMm !== null) {
             $data['bleedMm'] = $this->bleedMm;
         }
         if ($this->linked !== null) {
-            $data['linked'] = Encode::value($this->linked);
+            $data['linked'] = Encode::model($this->linked);
         }
         if ($this->placementMm !== null) {
-            $data['placementMm'] = Encode::value($this->placementMm);
+            $data['placementMm'] = Encode::model($this->placementMm);
         }
         if ($this->printMethod !== null) {
             $data['printMethod'] = $this->printMethod;
@@ -111,13 +111,13 @@ final class OrdersJobGetResponseTicketPrintArea implements Model
             $data['printedAs'] = $this->printedAs;
         }
         if ($this->repeat !== null) {
-            $data['repeat'] = Encode::value($this->repeat);
+            $data['repeat'] = Encode::model($this->repeat);
         }
         if ($this->safeAreaMm !== null) {
             $data['safeAreaMm'] = $this->safeAreaMm;
         }
         if ($this->shape !== null) {
-            $data['shape'] = Encode::value($this->shape);
+            $data['shape'] = Encode::model($this->shape);
         }
         return $data;
     }

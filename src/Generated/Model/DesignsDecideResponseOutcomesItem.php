@@ -31,11 +31,13 @@ final class DesignsDecideResponseOutcomesItem
             [
                 [
                     static fn(mixed $v, string $p): DesignsDecideResponseOutcomesItemTrue => DesignsDecideResponseOutcomesItemTrue::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['ok' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): DesignsDecideResponseOutcomesItemFalse => DesignsDecideResponseOutcomesItemFalse::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['ok' => false],
                 ],
             ],
         );

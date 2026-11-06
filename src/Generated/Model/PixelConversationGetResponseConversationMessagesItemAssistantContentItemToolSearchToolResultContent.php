@@ -31,11 +31,13 @@ final class PixelConversationGetResponseConversationMessagesItemAssistantContent
             [
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemAssistantContentItemToolSearchToolResultContentToolSearchToolSearchResult => PixelConversationGetResponseConversationMessagesItemAssistantContentItemToolSearchToolResultContentToolSearchToolSearchResult::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'tool_search_tool_search_result'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemAssistantContentItemToolSearchToolResultContentToolSearchToolResultError => PixelConversationGetResponseConversationMessagesItemAssistantContentItemToolSearchToolResultContentToolSearchToolResultError::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'tool_search_tool_result_error'],
                 ],
             ],
         );

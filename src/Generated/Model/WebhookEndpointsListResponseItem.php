@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -106,7 +105,7 @@ final class WebhookEndpointsListResponseItem implements Model
         $data['connectionId'] = $this->connectionId;
         $data['createdAt'] = $this->createdAt;
         $data['cursor'] = $this->cursor;
-        $data['eventTypes'] = Encode::value($this->eventTypes);
+        $data['eventTypes'] = $this->eventTypes;
         $data['failedCount'] = $this->failedCount;
         $data['failing'] = $this->failing;
         $data['id'] = $this->id;

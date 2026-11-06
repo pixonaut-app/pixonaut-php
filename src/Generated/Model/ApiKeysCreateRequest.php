@@ -74,7 +74,7 @@ final class ApiKeysCreateRequest implements Model
         $data = [];
         $data['kind'] = $this->kind;
         if ($this->allowedOrigins !== null) {
-            $data['allowedOrigins'] = Encode::value($this->allowedOrigins);
+            $data['allowedOrigins'] = $this->allowedOrigins;
         }
         if ($this->expiresInDays !== null) {
             $data['expiresInDays'] = Encode::value($this->expiresInDays);

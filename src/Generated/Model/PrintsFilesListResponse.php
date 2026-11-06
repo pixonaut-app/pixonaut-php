@@ -120,17 +120,26 @@ final class PrintsFilesListResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['counted'] = Encode::value($this->counted);
+        $data['counted'] = $this->counted === null ? null : Encode::value($this->counted);
         $data['fileForm'] = $this->fileForm;
         $data['formAsked'] = $this->formAsked;
-        $data['forms'] = Encode::value($this->forms);
+        $data['forms'] = array_map(
+            static fn(PrintsFilesListResponseFormsItem $v): mixed => Encode::model($v),
+            $this->forms,
+        );
         $data['layeredFallback'] = $this->layeredFallback;
         $data['liveTextFallback'] = $this->liveTextFallback;
         $data['machineProfileAskedId'] = $this->machineProfileAskedId;
-        $data['machineProfiles'] = Encode::value($this->machineProfiles);
+        $data['machineProfiles'] = array_map(
+            static fn(PrintsFilesListResponseMachineProfilesItem $v): mixed => Encode::model($v),
+            $this->machineProfiles,
+        );
         $data['separationMissing'] = $this->separationMissing;
-        $data['settings'] = Encode::value($this->settings);
-        $data['variants'] = Encode::value($this->variants);
+        $data['settings'] = $this->settings === null ? null : Encode::model($this->settings);
+        $data['variants'] = array_map(
+            static fn(PrintsFilesListResponseVariantsItem $v): mixed => Encode::model($v),
+            $this->variants,
+        );
         return $data;
     }
 }

@@ -190,7 +190,7 @@ final class AssetsListResponseAssetsItem implements Model
         $data['heightPx'] = $this->heightPx;
         $data['id'] = $this->id;
         $data['kind'] = $this->kind;
-        $data['localizedNames'] = Encode::map($this->localizedNames);
+        $data['localizedNames'] = Encode::object($this->localizedNames);
         $data['mime'] = $this->mime;
         $data['name'] = $this->name;
         $data['pictureUrl'] = $this->pictureUrl;
@@ -198,10 +198,10 @@ final class AssetsListResponseAssetsItem implements Model
         $data['role'] = $this->role;
         $data['sessionId'] = $this->sessionId;
         $data['sizeBytes'] = $this->sizeBytes;
-        $data['tags'] = Encode::value($this->tags);
+        $data['tags'] = $this->tags;
         $data['templateId'] = $this->templateId;
         $data['updatedAt'] = $this->updatedAt;
-        $data['upscaledFrom'] = Encode::value($this->upscaledFrom);
+        $data['upscaledFrom'] = $this->upscaledFrom === null ? null : Encode::model($this->upscaledFrom);
         $data['visibility'] = $this->visibility;
         $data['widthPx'] = $this->widthPx;
         return $data;

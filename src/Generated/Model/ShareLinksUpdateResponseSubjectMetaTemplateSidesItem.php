@@ -79,7 +79,10 @@ final class ShareLinksUpdateResponseSubjectMetaTemplateSidesItem implements Mode
         $data = [];
         $data['key'] = $this->key;
         $data['label'] = $this->label;
-        $data['printSizes'] = Encode::value($this->printSizes);
+        $data['printSizes'] = array_map(
+            static fn(ShareLinksUpdateResponseSubjectMetaTemplateSidesItemPrintSizesItem $v): mixed => Encode::model($v),
+            $this->printSizes,
+        );
         return $data;
     }
 }

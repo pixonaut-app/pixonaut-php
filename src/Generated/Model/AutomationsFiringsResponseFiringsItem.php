@@ -106,9 +106,9 @@ final class AutomationsFiringsResponseFiringsItem implements Model
         $data['reason'] = $this->reason;
         $data['startedAt'] = $this->startedAt;
         $data['state'] = $this->state;
-        $data['step'] = Encode::value($this->step);
-        $data['subject'] = Encode::value($this->subject);
-        $data['touched'] = Encode::value($this->touched);
+        $data['step'] = $this->step === null ? null : Encode::model($this->step);
+        $data['subject'] = Encode::model($this->subject);
+        $data['touched'] = $this->touched;
         $data['version'] = $this->version;
         return $data;
     }

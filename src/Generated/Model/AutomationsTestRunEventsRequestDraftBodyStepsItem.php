@@ -79,10 +79,10 @@ final class AutomationsTestRunEventsRequestDraftBodyStepsItem implements Model
         $data['id'] = $this->id;
         $data['type'] = $this->type;
         if ($this->branches !== null) {
-            $data['branches'] = Encode::map($this->branches);
+            $data['branches'] = Encode::object($this->branches);
         }
         if ($this->settings !== null) {
-            $data['settings'] = Encode::map($this->settings);
+            $data['settings'] = Encode::object($this->settings);
         }
         return $data;
     }

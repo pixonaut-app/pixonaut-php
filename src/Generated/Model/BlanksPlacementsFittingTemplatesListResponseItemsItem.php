@@ -87,9 +87,9 @@ final class BlanksPlacementsFittingTemplatesListResponseItemsItem implements Mod
         $data['previewUrl'] = $this->previewUrl;
         $data['printHeightMm'] = $this->printHeightMm;
         $data['printWidthMm'] = $this->printWidthMm;
-        $data['ratio'] = Encode::value($this->ratio);
+        $data['ratio'] = Encode::model($this->ratio);
         $data['ratioTolerance'] = $this->ratioTolerance;
-        $data['sizes'] = Encode::value($this->sizes);
+        $data['sizes'] = Encode::model($this->sizes);
         $data['status'] = $this->status;
         $data['templateId'] = $this->templateId;
         $data['verdict'] = Encode::value($this->verdict);

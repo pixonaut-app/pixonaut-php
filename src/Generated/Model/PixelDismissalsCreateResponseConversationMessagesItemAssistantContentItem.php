@@ -31,19 +31,23 @@ final class PixelDismissalsCreateResponseConversationMessagesItemAssistantConten
             [
                 [
                     static fn(mixed $v, string $p): PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemToolUse => PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemToolUse::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['type' => 'tool_use'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemServerToolUse => PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemServerToolUse::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['type' => 'server_tool_use'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemToolSearchToolResult => PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemToolSearchToolResult::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['type' => 'tool_search_tool_result'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemText => PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemText::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'text'],
                 ],
             ],
         );

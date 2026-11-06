@@ -67,8 +67,9 @@ It holds:
   stay in `raw()`. `toArray()` gives what a request sends: an optional field
   that may be `null` defaults to `Omitted::Field` and is left out, so `null`
   is sent only when set. A `oneOf`/`anyOf` gets a decoder class with a
-  `decode()` method and a class per variant; a variant whose fields allow
-  one value only is tried before one that would also accept the value.
+  `decode()` method and a class per variant. A value whose tags (required
+  fields a variant allows one value for) name one variant is that variant;
+  otherwise the variants are tried most specific first.
 - `Enum/`: the known values of each enum as constants. The fields stay
   strings, since a later API release may answer a value this one does not
   know.

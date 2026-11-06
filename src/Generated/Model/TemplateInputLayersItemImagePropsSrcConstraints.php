@@ -87,7 +87,7 @@ final class TemplateInputLayersItemImagePropsSrcConstraints implements Model
             $data['cutOut'] = $this->cutOut;
         }
         if ($this->oneOf !== null) {
-            $data['oneOf'] = Encode::value($this->oneOf);
+            $data['oneOf'] = $this->oneOf;
         }
         if ($this->requireChange !== null) {
             $data['requireChange'] = $this->requireChange;
@@ -96,7 +96,7 @@ final class TemplateInputLayersItemImagePropsSrcConstraints implements Model
             $data['required'] = $this->required;
         }
         if ($this->upscale !== null) {
-            $data['upscale'] = Encode::value($this->upscale);
+            $data['upscale'] = Encode::model($this->upscale);
         }
         return $data;
     }

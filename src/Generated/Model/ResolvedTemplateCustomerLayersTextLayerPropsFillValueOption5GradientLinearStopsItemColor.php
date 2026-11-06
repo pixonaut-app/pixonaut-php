@@ -34,18 +34,22 @@ final class ResolvedTemplateCustomerLayersTextLayerPropsFillValueOption5Gradient
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsFillValueOption5GradientLinearStopsItemColorOption4 => ResolvedTemplateCustomerLayersTextLayerPropsFillValueOption5GradientLinearStopsItemColorOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsFillValueOption5GradientLinearStopsItemColorOption1 => ResolvedTemplateCustomerLayersTextLayerPropsFillValueOption5GradientLinearStopsItemColorOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsFillValueOption5GradientLinearStopsItemColorOption2 => ResolvedTemplateCustomerLayersTextLayerPropsFillValueOption5GradientLinearStopsItemColorOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsFillValueOption5GradientLinearStopsItemColorOption3 => ResolvedTemplateCustomerLayersTextLayerPropsFillValueOption5GradientLinearStopsItemColorOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

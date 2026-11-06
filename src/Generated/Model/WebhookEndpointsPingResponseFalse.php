@@ -36,10 +36,7 @@ final class WebhookEndpointsPingResponseFalse implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            delivered: Decode::bool(
-                Decode::constant(Decode::required($data, 'delivered', $path), false, $path . '.delivered'),
-                $path . '.delivered',
-            ),
+            delivered: Decode::bool(Decode::required($data, 'delivered', $path), $path . '.delivered'),
             error: Decode::string(Decode::required($data, 'error', $path), $path . '.error'),
         );
         $model->decoded = $data;

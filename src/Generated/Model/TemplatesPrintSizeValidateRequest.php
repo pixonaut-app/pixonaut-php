@@ -32,10 +32,12 @@ final class TemplatesPrintSizeValidateRequest
                 [
                     static fn(mixed $v, string $p): TemplatesPrintSizeValidateRequestOption1 => TemplatesPrintSizeValidateRequestOption1::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplatesPrintSizeValidateRequestOption2 => TemplatesPrintSizeValidateRequestOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

@@ -32,10 +32,12 @@ final class DesignsCommitRequest
                 [
                     static fn(mixed $v, string $p): DesignsCommitRequestOption1 => DesignsCommitRequestOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): DesignsCommitRequestOption2 => DesignsCommitRequestOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

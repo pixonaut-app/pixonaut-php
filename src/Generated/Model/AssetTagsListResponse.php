@@ -32,6 +32,7 @@ final class AssetTagsListResponse
                 [
                     static fn(mixed $v, string $p): AssetTagsListResponseOption1 => AssetTagsListResponseOption1::fromArray(Decode::object($v, $p), $p),
                     4,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): array => Decode::list(
@@ -40,6 +41,7 @@ final class AssetTagsListResponse
                         static fn(mixed $v, string $p): AssetTagsListResponseOption2Item => AssetTagsListResponseOption2Item::fromArray(Decode::object($v, $p), $p),
                     ),
                     0,
+                    [],
                 ],
             ],
         );

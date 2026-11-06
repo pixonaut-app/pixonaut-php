@@ -101,34 +101,34 @@ final class ResolvedTemplateLayersItemShapeProps implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['fill'] = Encode::value($this->fill);
-        $data['shape'] = Encode::value($this->shape);
+        $data['fill'] = Encode::model($this->fill);
+        $data['shape'] = Encode::model($this->shape);
         if ($this->crop !== null) {
-            $data['crop'] = Encode::value($this->crop);
+            $data['crop'] = Encode::model($this->crop);
         }
         if ($this->fit !== null) {
-            $data['fit'] = Encode::value($this->fit);
+            $data['fit'] = Encode::model($this->fit);
         }
         if ($this->outlineColor !== null) {
-            $data['outlineColor'] = Encode::value($this->outlineColor);
+            $data['outlineColor'] = Encode::model($this->outlineColor);
         }
         if ($this->outlineWidthShortSide !== null) {
-            $data['outlineWidthShortSide'] = Encode::value($this->outlineWidthShortSide);
+            $data['outlineWidthShortSide'] = Encode::model($this->outlineWidthShortSide);
         }
         if ($this->shadowBlurShortSide !== null) {
-            $data['shadowBlurShortSide'] = Encode::value($this->shadowBlurShortSide);
+            $data['shadowBlurShortSide'] = Encode::model($this->shadowBlurShortSide);
         }
         if ($this->shadowColor !== null) {
-            $data['shadowColor'] = Encode::value($this->shadowColor);
+            $data['shadowColor'] = Encode::model($this->shadowColor);
         }
         if ($this->shadowOffsetXShortSide !== null) {
-            $data['shadowOffsetXShortSide'] = Encode::value($this->shadowOffsetXShortSide);
+            $data['shadowOffsetXShortSide'] = Encode::model($this->shadowOffsetXShortSide);
         }
         if ($this->shadowOffsetYShortSide !== null) {
-            $data['shadowOffsetYShortSide'] = Encode::value($this->shadowOffsetYShortSide);
+            $data['shadowOffsetYShortSide'] = Encode::model($this->shadowOffsetYShortSide);
         }
         if ($this->tileScale !== null) {
-            $data['tileScale'] = Encode::value($this->tileScale);
+            $data['tileScale'] = Encode::model($this->tileScale);
         }
         return $data;
     }

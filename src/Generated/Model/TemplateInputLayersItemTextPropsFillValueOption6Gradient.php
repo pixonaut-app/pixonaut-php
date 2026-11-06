@@ -33,11 +33,13 @@ final class TemplateInputLayersItemTextPropsFillValueOption6Gradient
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillValueOption6GradientLinear => TemplateInputLayersItemTextPropsFillValueOption6GradientLinear::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'linear'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillValueOption6GradientRadial => TemplateInputLayersItemTextPropsFillValueOption6GradientRadial::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'radial'],
                 ],
             ],
         );

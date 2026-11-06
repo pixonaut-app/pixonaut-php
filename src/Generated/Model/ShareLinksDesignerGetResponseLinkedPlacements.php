@@ -76,7 +76,10 @@ final class ShareLinksDesignerGetResponseLinkedPlacements implements Model
             $data['designSeparately'] = $this->designSeparately;
         }
         if ($this->groups !== null) {
-            $data['groups'] = Encode::value($this->groups);
+            $data['groups'] = array_map(
+                static fn(ShareLinksDesignerGetResponseLinkedPlacementsGroupsItemOption2|array $v): mixed => Encode::value($v),
+                $this->groups,
+            );
         }
         if ($this->preset !== null) {
             $data['preset'] = $this->preset;

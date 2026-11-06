@@ -40,7 +40,7 @@ final class TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientRad
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'radial', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             stops: Decode::list(
                 Decode::required($data, 'stops', $path),
                 $path . '.stops',
@@ -66,7 +66,10 @@ final class TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientRad
     {
         $data = [];
         $data['kind'] = $this->kind;
-        $data['stops'] = Encode::value($this->stops);
+        $data['stops'] = array_map(
+            static fn(TemplateInputCustomerLayersTextLayerPropsFillValueOption6GradientRadialStopsItem $v): mixed => Encode::model($v),
+            $this->stops,
+        );
         return $data;
     }
 }

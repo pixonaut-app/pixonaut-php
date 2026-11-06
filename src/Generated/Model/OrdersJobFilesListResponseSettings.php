@@ -104,8 +104,8 @@ final class OrdersJobFilesListResponseSettings implements Model
         $data['markOffsetMm'] = $this->markOffsetMm;
         $data['mirror'] = $this->mirror;
         $data['registrationMarks'] = $this->registrationMarks;
-        $data['underbase'] = Encode::value($this->underbase);
-        $data['varnish'] = Encode::value($this->varnish);
+        $data['underbase'] = $this->underbase === null ? null : Encode::model($this->underbase);
+        $data['varnish'] = $this->varnish === null ? null : Encode::model($this->varnish);
         return $data;
     }
 }

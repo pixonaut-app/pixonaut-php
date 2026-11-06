@@ -37,7 +37,7 @@ final class AutomationsCheckResponseStepsItemPrintshopsItemYes implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            can: Decode::string(Decode::constant(Decode::required($data, 'can', $path), 'yes', $path . '.can'), $path . '.can'),
+            can: Decode::string(Decode::required($data, 'can', $path), $path . '.can'),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             name: Decode::string(Decode::required($data, 'name', $path), $path . '.name'),
         );

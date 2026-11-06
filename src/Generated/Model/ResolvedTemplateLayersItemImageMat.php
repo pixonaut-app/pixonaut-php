@@ -33,11 +33,13 @@ final class ResolvedTemplateLayersItemImageMat
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImageMatShape => ResolvedTemplateLayersItemImageMatShape::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'shape'],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImageMatColor => ResolvedTemplateLayersItemImageMatColor::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'color'],
                 ],
             ],
         );

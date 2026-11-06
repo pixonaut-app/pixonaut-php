@@ -53,7 +53,7 @@ final class ResolvedTemplateLayersItemTextTextBoxFill implements Model
                 static fn(mixed $v, string $p): float => Decode::float($v, $p),
             ),
             min: Decode::float(Decode::required($data, 'min', $path), $path . '.min'),
-            mode: Decode::string(Decode::constant(Decode::required($data, 'mode', $path), 'fill', $path . '.mode'), $path . '.mode'),
+            mode: Decode::string(Decode::required($data, 'mode', $path), $path . '.mode'),
             then: Decode::string(Decode::required($data, 'then', $path), $path . '.then'),
             breakWords: array_key_exists('breakWords', $data) ? Decode::bool($data['breakWords'], $path . '.breakWords') : null,
         );

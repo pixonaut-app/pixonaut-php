@@ -86,21 +86,21 @@ final class OrdersJobUpdateResponseTicket implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['artifact'] = Encode::value($this->artifact);
+        $data['artifact'] = Encode::model($this->artifact);
         $data['artwork'] = Encode::value($this->artwork);
         $data['externalRef'] = $this->externalRef;
-        $data['manifest'] = Encode::value($this->manifest);
-        $data['printArea'] = Encode::value($this->printArea);
-        $data['product'] = Encode::value($this->product);
+        $data['manifest'] = Encode::model($this->manifest);
+        $data['printArea'] = Encode::model($this->printArea);
+        $data['product'] = Encode::model($this->product);
         $data['quantity'] = $this->quantity;
         if ($this->fulfilmentPayload !== null) {
             $data['fulfilmentPayload'] = $this->fulfilmentPayload;
         }
         if ($this->recipient !== null) {
-            $data['recipient'] = Encode::value($this->recipient);
+            $data['recipient'] = Encode::model($this->recipient);
         }
         if ($this->shippingAddress !== null) {
-            $data['shippingAddress'] = Encode::value($this->shippingAddress);
+            $data['shippingAddress'] = Encode::model($this->shippingAddress);
         }
         return $data;
     }

@@ -33,11 +33,13 @@ final class TemplateInputLayersItemTextTextPath
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextTextPathArc => TemplateInputLayersItemTextTextPathArc::fromArray(Decode::object($v, $p), $p),
-                    1003,
+                    1004,
+                    ['type' => 'arc'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextTextPathOutline => TemplateInputLayersItemTextTextPathOutline::fromArray(Decode::object($v, $p), $p),
-                    1003,
+                    1004,
+                    ['type' => 'outline'],
                 ],
             ],
         );

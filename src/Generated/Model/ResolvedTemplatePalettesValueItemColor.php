@@ -34,14 +34,17 @@ final class ResolvedTemplatePalettesValueItemColor
                 [
                     static fn(mixed $v, string $p): ResolvedTemplatePalettesValueItemColorOption1 => ResolvedTemplatePalettesValueItemColorOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplatePalettesValueItemColorOption2 => ResolvedTemplatePalettesValueItemColorOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplatePalettesValueItemColorOption3 => ResolvedTemplatePalettesValueItemColorOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

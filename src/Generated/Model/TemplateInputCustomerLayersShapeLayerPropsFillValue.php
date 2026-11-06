@@ -34,30 +34,37 @@ final class TemplateInputCustomerLayersShapeLayerPropsFillValue
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillValueOption5 => TemplateInputCustomerLayersShapeLayerPropsFillValueOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillValueOption1 => TemplateInputCustomerLayersShapeLayerPropsFillValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillValueOption2 => TemplateInputCustomerLayersShapeLayerPropsFillValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillValueOption3 => TemplateInputCustomerLayersShapeLayerPropsFillValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillValueOption4 => TemplateInputCustomerLayersShapeLayerPropsFillValueOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillValueOption6 => TemplateInputCustomerLayersShapeLayerPropsFillValueOption6::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillValueOption7 => TemplateInputCustomerLayersShapeLayerPropsFillValueOption7::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

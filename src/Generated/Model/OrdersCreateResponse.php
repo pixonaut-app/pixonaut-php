@@ -246,37 +246,40 @@ final class OrdersCreateResponse implements Model
     {
         $data = [];
         $data['adapter'] = $this->adapter;
-        $data['blank'] = Encode::value($this->blank);
+        $data['blank'] = $this->blank === null ? null : Encode::model($this->blank);
         $data['blankId'] = $this->blankId;
-        $data['delivery'] = Encode::value($this->delivery);
+        $data['delivery'] = $this->delivery === null ? null : Encode::model($this->delivery);
         $data['designId'] = $this->designId;
         $data['externalOrderRef'] = $this->externalOrderRef;
         $data['externalRef'] = $this->externalRef;
         $data['failureKind'] = $this->failureKind;
-        $data['hold'] = Encode::value($this->hold);
+        $data['hold'] = $this->hold === null ? null : Encode::model($this->hold);
         $data['id'] = $this->id;
         $data['lastCheckedAt'] = $this->lastCheckedAt;
         $data['lastError'] = $this->lastError;
         $data['personalDataErasedAt'] = $this->personalDataErasedAt;
         $data['printId'] = $this->printId;
-        $data['printIds'] = Encode::value($this->printIds);
-        $data['prints'] = Encode::value($this->prints);
-        $data['printshopAsPlaced'] = Encode::value($this->printshopAsPlaced);
+        $data['printIds'] = $this->printIds;
+        $data['prints'] = array_map(
+            static fn(OrdersCreateResponsePrintsItemOption1|OrdersCreateResponsePrintsItemOption2 $v): mixed => Encode::value($v),
+            $this->prints,
+        );
+        $data['printshopAsPlaced'] = $this->printshopAsPlaced === null ? null : Encode::model($this->printshopAsPlaced);
         $data['printshopConnectionId'] = $this->printshopConnectionId;
         $data['printshopName'] = $this->printshopName;
         $data['quantity'] = $this->quantity;
-        $data['recipient'] = Encode::value($this->recipient);
+        $data['recipient'] = $this->recipient === null ? null : Encode::model($this->recipient);
         $data['replacedByOrderId'] = $this->replacedByOrderId;
         $data['replacesOrderId'] = $this->replacesOrderId;
-        $data['shipTo'] = Encode::value($this->shipTo);
-        $data['shippingAddress'] = Encode::value($this->shippingAddress);
+        $data['shipTo'] = $this->shipTo === null ? null : Encode::model($this->shipTo);
+        $data['shippingAddress'] = $this->shippingAddress === null ? null : Encode::model($this->shippingAddress);
         $data['spotOutput'] = $this->spotOutput;
         $data['status'] = $this->status;
         $data['submittedAt'] = $this->submittedAt;
         $data['tenantId'] = $this->tenantId;
-        $data['tracking'] = Encode::value($this->tracking);
+        $data['tracking'] = $this->tracking === null ? null : Encode::model($this->tracking);
         $data['updatedAt'] = $this->updatedAt;
-        $data['variant'] = Encode::value($this->variant);
+        $data['variant'] = $this->variant === null ? null : Encode::model($this->variant);
         $data['variantRef'] = $this->variantRef;
         return $data;
     }

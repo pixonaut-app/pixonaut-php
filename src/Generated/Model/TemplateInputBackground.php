@@ -33,11 +33,13 @@ final class TemplateInputBackground
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputBackgroundColor => TemplateInputBackgroundColor::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'color'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputBackgroundImage => TemplateInputBackgroundImage::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'image'],
                 ],
             ],
         );

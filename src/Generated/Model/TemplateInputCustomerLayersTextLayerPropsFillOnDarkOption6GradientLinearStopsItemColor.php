@@ -34,22 +34,27 @@ final class TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6GradientLi
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6GradientLinearStopsItemColorOption5 => TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6GradientLinearStopsItemColorOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6GradientLinearStopsItemColorOption1 => TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6GradientLinearStopsItemColorOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6GradientLinearStopsItemColorOption2 => TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6GradientLinearStopsItemColorOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6GradientLinearStopsItemColorOption3 => TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6GradientLinearStopsItemColorOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6GradientLinearStopsItemColorOption4 => TemplateInputCustomerLayersTextLayerPropsFillOnDarkOption6GradientLinearStopsItemColorOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

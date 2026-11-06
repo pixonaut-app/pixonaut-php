@@ -42,7 +42,7 @@ final class PixelApplicationsCreateResponseConversationMessagesItemUserContentOp
     {
         $model = new self(
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'trial', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             values: Decode::map(
                 Decode::required($data, 'values', $path),
                 $path . '.values',
@@ -69,7 +69,12 @@ final class PixelApplicationsCreateResponseConversationMessagesItemUserContentOp
         $data = [];
         $data['id'] = $this->id;
         $data['kind'] = $this->kind;
-        $data['values'] = Encode::map($this->values);
+        $data['values'] = Encode::object(
+            array_map(
+                static fn(array $v): mixed => Encode::object($v),
+                $this->values,
+            ),
+        );
         return $data;
     }
 }

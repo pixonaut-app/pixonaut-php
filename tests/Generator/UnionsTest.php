@@ -33,6 +33,35 @@ final class UnionsTest extends TestCase
         Calls::decode($decoder, ['reason' => 'timeout']);
     }
 
+    public function testAVariantNamedByItsTagReportsItsOwnErrors(): void
+    {
+        $decoder = $this->load(self::spec(['Standing' => self::STANDING])) . '\\Model\\Standing';
+
+        try {
+            Calls::decode($decoder, ['state' => 'failing', 'reason' => 42]);
+            self::fail('A failing standing with a wrong reason decoded.');
+        } catch (UnexpectedResponse $e) {
+            self::assertSame('$.reason', $e->jsonPath);
+        }
+    }
+
+    public function testTagsOfReferencedComponentsTellTheVariantsApart(): void
+    {
+        $tagged = static fn(string $kind): array => [
+            'type' => 'object',
+            'required' => ['kind', 'id'],
+            'properties' => ['kind' => ['type' => 'string', 'enum' => [$kind]], 'id' => ['type' => 'string']],
+        ];
+        $namespace = $this->load(self::spec([
+            'Alpha' => $tagged('a'),
+            'Beta' => $tagged('b'),
+            'Either' => ['oneOf' => [['$ref' => '#/components/schemas/Alpha'], ['$ref' => '#/components/schemas/Beta']]],
+        ]));
+
+        self::assertInstanceOf(Calls::class($namespace . '\\Model\\Beta'), Calls::decode($namespace . '\\Model\\Either', ['kind' => 'b', 'id' => 'x']));
+        self::assertInstanceOf(Calls::class($namespace . '\\Model\\Alpha'), Calls::decode($namespace . '\\Model\\Either', ['kind' => 'a', 'id' => 'x']));
+    }
+
     public function testOneOfRefusesAValueTwoEquallySpecificVariantsMatch(): void
     {
         $decoder = $this->load(self::spec(['Either' => ['oneOf' => [

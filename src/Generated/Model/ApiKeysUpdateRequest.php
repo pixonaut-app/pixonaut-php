@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -67,7 +66,7 @@ final class ApiKeysUpdateRequest implements Model
     {
         $data = [];
         if ($this->allowedOrigins !== null) {
-            $data['allowedOrigins'] = Encode::value($this->allowedOrigins);
+            $data['allowedOrigins'] = $this->allowedOrigins;
         }
         if ($this->label !== null) {
             $data['label'] = $this->label;

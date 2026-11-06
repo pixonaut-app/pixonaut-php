@@ -95,13 +95,19 @@ final class TemplatesGetResponseFormSchemaStepsItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['deletableLayerIds'] = Encode::value($this->deletableLayerIds);
-        $data['fields'] = Encode::value($this->fields);
+        $data['deletableLayerIds'] = $this->deletableLayerIds;
+        $data['fields'] = array_map(
+            static fn(TemplatesGetResponseFormSchemaStepsItemFieldsItem $v): mixed => Encode::model($v),
+            $this->fields,
+        );
         $data['groupId'] = $this->groupId;
         $data['index'] = $this->index;
         $data['label'] = $this->label;
-        $data['layerIds'] = Encode::value($this->layerIds);
-        $data['transforms'] = Encode::value($this->transforms);
+        $data['layerIds'] = $this->layerIds;
+        $data['transforms'] = array_map(
+            static fn(TemplatesGetResponseFormSchemaStepsItemTransformsItem $v): mixed => Encode::model($v),
+            $this->transforms,
+        );
         return $data;
     }
 }

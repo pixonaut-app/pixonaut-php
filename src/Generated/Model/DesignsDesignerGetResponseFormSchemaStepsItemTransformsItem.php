@@ -62,7 +62,7 @@ final class DesignsDesignerGetResponseFormSchemaStepsItemTransformsItem implemen
     {
         $data = [];
         $data['layerId'] = $this->layerId;
-        $data['transform'] = Encode::map($this->transform);
+        $data['transform'] = Encode::object($this->transform);
         return $data;
     }
 }

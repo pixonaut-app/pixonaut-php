@@ -102,7 +102,10 @@ final class PrintsOrdersCreateResponsePrintsItemOption1 implements Model
         $data = [];
         $data['designId'] = $this->designId;
         $data['designRevision'] = $this->designRevision;
-        $data['placementFields'] = Encode::value($this->placementFields);
+        $data['placementFields'] = $this->placementFields === null ? null : array_map(
+            static fn(PrintsOrdersCreateResponsePrintsItemOption1PlacementFieldsItem $v): mixed => Encode::model($v),
+            $this->placementFields,
+        );
         $data['placementId'] = $this->placementId;
         $data['printId'] = $this->printId;
         $data['printedAs'] = $this->printedAs;

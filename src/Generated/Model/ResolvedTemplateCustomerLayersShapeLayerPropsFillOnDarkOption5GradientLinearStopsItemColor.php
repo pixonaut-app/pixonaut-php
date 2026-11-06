@@ -34,18 +34,22 @@ final class ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption5Gradie
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption5GradientLinearStopsItemColorOption4 => ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption5GradientLinearStopsItemColorOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption5GradientLinearStopsItemColorOption1 => ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption5GradientLinearStopsItemColorOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption5GradientLinearStopsItemColorOption2 => ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption5GradientLinearStopsItemColorOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption5GradientLinearStopsItemColorOption3 => ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption5GradientLinearStopsItemColorOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

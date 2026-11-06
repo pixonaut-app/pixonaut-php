@@ -71,7 +71,7 @@ final class DesignsDeliveryUpdateResponse implements Model
         $data = [];
         $data['capturedAt'] = $this->capturedAt;
         if ($this->delivery !== null) {
-            $data['delivery'] = Encode::value($this->delivery);
+            $data['delivery'] = Encode::model($this->delivery);
         }
         if ($this->orderId !== null) {
             $data['orderId'] = $this->orderId;

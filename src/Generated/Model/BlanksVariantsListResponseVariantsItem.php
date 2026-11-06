@@ -79,10 +79,13 @@ final class BlanksVariantsListResponseVariantsItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['options'] = Encode::map($this->options);
+        $data['options'] = Encode::object($this->options);
         $data['ref'] = $this->ref;
-        $data['retired'] = Encode::value($this->retired);
-        $data['views'] = Encode::value($this->views);
+        $data['retired'] = $this->retired === null ? null : Encode::model($this->retired);
+        $data['views'] = array_map(
+            static fn(BlanksVariantsListResponseVariantsItemViewsItem $v): mixed => Encode::model($v),
+            $this->views,
+        );
         return $data;
     }
 }

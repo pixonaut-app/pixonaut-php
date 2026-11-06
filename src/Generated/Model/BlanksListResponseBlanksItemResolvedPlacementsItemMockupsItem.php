@@ -73,11 +73,11 @@ final class BlanksListResponseBlanksItemResolvedPlacementsItemMockupsItem implem
     public function toArray(): array
     {
         $data = [];
-        $data['displacementStrength'] = Encode::value($this->displacementStrength);
+        $data['displacementStrength'] = Encode::model($this->displacementStrength);
         $data['id'] = $this->id;
-        $data['shadingStrength'] = Encode::value($this->shadingStrength);
-        $data['textureStrength'] = Encode::value($this->textureStrength);
-        $data['warp'] = Encode::value($this->warp);
+        $data['shadingStrength'] = Encode::model($this->shadingStrength);
+        $data['textureStrength'] = Encode::model($this->textureStrength);
+        $data['warp'] = Encode::model($this->warp);
         return $data;
     }
 }

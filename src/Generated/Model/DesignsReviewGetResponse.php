@@ -95,7 +95,7 @@ final class DesignsReviewGetResponse implements Model
         $data = [];
         $data['approveAfter'] = $this->approveAfter;
         $data['canDecide'] = $this->canDecide;
-        $data['changeRequest'] = Encode::value($this->changeRequest);
+        $data['changeRequest'] = $this->changeRequest === null ? null : Encode::model($this->changeRequest);
         $data['hasProof'] = $this->hasProof;
         $data['id'] = $this->id;
         $data['proofIsCurrent'] = $this->proofIsCurrent;

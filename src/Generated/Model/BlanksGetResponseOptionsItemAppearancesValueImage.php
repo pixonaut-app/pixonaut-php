@@ -45,7 +45,7 @@ final class BlanksGetResponseOptionsItemAppearancesValueImage implements Model
     {
         $model = new self(
             assetId: Decode::string(Decode::required($data, 'assetId', $path), $path . '.assetId'),
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'image', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             tone: array_key_exists('tone', $data) ? Decode::string($data['tone'], $path . '.tone') : null,
         );
         $model->decoded = $data;

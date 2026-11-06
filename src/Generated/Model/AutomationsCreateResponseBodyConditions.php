@@ -33,27 +33,33 @@ final class AutomationsCreateResponseBodyConditions
             [
                 [
                     static fn(mixed $v, string $p): AutomationsCreateResponseBodyConditionsDeliveryAddress => AutomationsCreateResponseBodyConditionsDeliveryAddress::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['field' => 'delivery_address'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsCreateResponseBodyConditionsQuantity => AutomationsCreateResponseBodyConditionsQuantity::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['field' => 'quantity'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsCreateResponseBodyConditionsOption4 => AutomationsCreateResponseBodyConditionsOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsCreateResponseBodyConditionsOption1 => AutomationsCreateResponseBodyConditionsOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsCreateResponseBodyConditionsOption2 => AutomationsCreateResponseBodyConditionsOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsCreateResponseBodyConditionsOption3 => AutomationsCreateResponseBodyConditionsOption3::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

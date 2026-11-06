@@ -33,15 +33,18 @@ final class AutomationsDisableResponseAutomationStanding
             [
                 [
                     static fn(mixed $v, string $p): AutomationsDisableResponseAutomationStandingBroken => AutomationsDisableResponseAutomationStandingBroken::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['state' => 'broken'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsDisableResponseAutomationStandingFailing => AutomationsDisableResponseAutomationStandingFailing::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['state' => 'failing'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsDisableResponseAutomationStandingOption1 => AutomationsDisableResponseAutomationStandingOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

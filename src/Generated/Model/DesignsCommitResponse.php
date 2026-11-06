@@ -69,7 +69,10 @@ final class DesignsCommitResponse implements Model
     {
         $data = [];
         $data['designId'] = $this->designId;
-        $data['lowResolution'] = Encode::value($this->lowResolution);
+        $data['lowResolution'] = array_map(
+            static fn(DesignsCommitResponseLowResolutionItem $v): mixed => Encode::model($v),
+            $this->lowResolution,
+        );
         $data['printFloorDpi'] = $this->printFloorDpi;
         return $data;
     }

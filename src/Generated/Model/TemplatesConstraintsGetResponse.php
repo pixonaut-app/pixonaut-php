@@ -68,14 +68,14 @@ final class TemplatesConstraintsGetResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['ratio'] = Encode::value($this->ratio);
+        $data['ratio'] = Encode::model($this->ratio);
         $data['ratioTolerance'] = $this->ratioTolerance;
         $data['templateId'] = $this->templateId;
         if ($this->fit !== null) {
             $data['fit'] = $this->fit;
         }
         if ($this->placement !== null) {
-            $data['placement'] = Encode::value($this->placement);
+            $data['placement'] = Encode::model($this->placement);
         }
         return $data;
     }

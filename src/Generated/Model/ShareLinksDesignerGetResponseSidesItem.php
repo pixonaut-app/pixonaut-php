@@ -133,16 +133,22 @@ final class ShareLinksDesignerGetResponseSidesItem implements Model
             $data['initialView'] = $this->initialView;
         }
         if ($this->localizedLabels !== null) {
-            $data['localizedLabels'] = Encode::value($this->localizedLabels);
+            $data['localizedLabels'] = Encode::model($this->localizedLabels);
         }
         if ($this->mockups !== null) {
-            $data['mockups'] = Encode::value($this->mockups);
+            $data['mockups'] = array_map(
+                static fn(ShareLinksDesignerGetResponseSidesItemMockupsItem $v): mixed => Encode::model($v),
+                $this->mockups,
+            );
         }
         if ($this->placementId !== null) {
             $data['placementId'] = $this->placementId;
         }
         if ($this->printSizes !== null) {
-            $data['printSizes'] = Encode::value($this->printSizes);
+            $data['printSizes'] = array_map(
+                static fn(ShareLinksDesignerGetResponseSidesItemPrintSizesItem $v): mixed => Encode::model($v),
+                $this->printSizes,
+            );
         }
         if ($this->selectedMockupIndex !== null) {
             $data['selectedMockupIndex'] = $this->selectedMockupIndex;
@@ -154,13 +160,13 @@ final class ShareLinksDesignerGetResponseSidesItem implements Model
             $data['templateId'] = $this->templateId;
         }
         if ($this->variantRow !== null) {
-            $data['variantRow'] = Encode::map($this->variantRow);
+            $data['variantRow'] = Encode::object($this->variantRow);
         }
         if ($this->variants !== null) {
-            $data['variants'] = Encode::value($this->variants);
+            $data['variants'] = $this->variants;
         }
         if ($this->views !== null) {
-            $data['views'] = Encode::value($this->views);
+            $data['views'] = $this->views;
         }
         return $data;
     }

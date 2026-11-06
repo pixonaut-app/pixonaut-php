@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -63,7 +62,7 @@ final class AutomationsVersionsResponseVersionsItemDraftBodyConditionsOption2 im
     public function toArray(): array
     {
         $data = [];
-        $data['any'] = Encode::value($this->any);
+        $data['any'] = $this->any;
         return $data;
     }
 }

@@ -69,7 +69,12 @@ final class PixelApplicationsCreateResponseConversationCardsValueShowcasesItemBe
         $data = [];
         $data['id'] = $this->id;
         $data['name'] = $this->name;
-        $data['values'] = Encode::map($this->values);
+        $data['values'] = Encode::object(
+            array_map(
+                static fn(array $v): mixed => Encode::object($v),
+                $this->values,
+            ),
+        );
         return $data;
     }
 }

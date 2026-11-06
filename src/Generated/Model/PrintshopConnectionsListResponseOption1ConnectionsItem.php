@@ -152,14 +152,14 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
         $data['acceptsAddressUpdates'] = $this->acceptsAddressUpdates;
         $data['active'] = $this->active;
         $data['adapter'] = $this->adapter;
-        $data['address'] = Encode::value($this->address);
+        $data['address'] = $this->address === null ? null : Encode::model($this->address);
         $data['addressChanges'] = $this->addressChanges;
-        $data['asksOfDesigns'] = Encode::value($this->asksOfDesigns);
+        $data['asksOfDesigns'] = Encode::model($this->asksOfDesigns);
         $data['contactEmail'] = $this->contactEmail;
         $data['contactEmailBounced'] = $this->contactEmailBounced;
         $data['contactName'] = $this->contactName;
         $data['contactPhone'] = $this->contactPhone;
-        $data['counts'] = Encode::value($this->counts);
+        $data['counts'] = Encode::model($this->counts);
         $data['createdAt'] = $this->createdAt;
         $data['credentialsLapsed'] = $this->credentialsLapsed;
         $data['id'] = $this->id;
@@ -167,9 +167,9 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
         $data['name'] = $this->name;
         $data['needsPositions'] = $this->needsPositions;
         $data['paused'] = $this->paused;
-        $data['printMethods'] = Encode::value($this->printMethods);
+        $data['printMethods'] = $this->printMethods;
         $data['printMethodsFixed'] = $this->printMethodsFixed;
-        $data['secretNames'] = Encode::value($this->secretNames);
+        $data['secretNames'] = $this->secretNames;
         $data['updatedAt'] = $this->updatedAt;
         if ($this->config !== null) {
             $data['config'] = $this->config;

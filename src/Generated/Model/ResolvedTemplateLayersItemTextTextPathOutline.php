@@ -48,10 +48,7 @@ final class ResolvedTemplateLayersItemTextTextPathOutline implements Model
             centerDeg: Decode::float(Decode::required($data, 'centerDeg', $path), $path . '.centerDeg'),
             shape: ResolvedTemplateLayersItemTextTextPathOutlineShape::decode(Decode::required($data, 'shape', $path), $path . '.shape'),
             side: Decode::string(Decode::required($data, 'side', $path), $path . '.side'),
-            type: Decode::string(
-                Decode::constant(Decode::required($data, 'type', $path), 'outline', $path . '.type'),
-                $path . '.type',
-            ),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;

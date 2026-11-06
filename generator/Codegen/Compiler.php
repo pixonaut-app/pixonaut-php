@@ -31,6 +31,9 @@ final class Compiler
     /** Statuses from here on are refusals, whose body names an error code. */
     private const FIRST_ERROR_STATUS = 400;
 
+    /** What a variant's tag (a required field allowing one value) outweighs: any count of required fields. */
+    private const TAG_WEIGHT = 1000;
+
     /** @var array<string, ModelDef> */
     private array $models = [];
 
@@ -197,8 +200,10 @@ final class Compiler
     private function security(string $id, array $operation): array
     {
         $credentials = [];
-        $anonymous = false;
-        foreach (self::list($operation['security'] ?? $this->spec['security'] ?? []) as $requirement) {
+        $requirements = self::list($operation['security'] ?? $this->spec['security'] ?? []);
+        // No requirement at all, like an empty one among several, admits a call without a credential.
+        $anonymous = $requirements === [];
+        foreach ($requirements as $requirement) {
             $schemes = array_keys(self::map($requirement));
             if ($schemes === []) {
                 $anonymous = true;
@@ -277,13 +282,13 @@ final class Compiler
     /**
      * @param array<string, mixed> $schema
      */
-    private function schema(array $schema, string $name, string $origin, bool $variant = false): Type
+    private function schema(array $schema, string $name, string $origin): Type
     {
         if (isset($schema['$ref'])) {
             return $this->component(self::text($schema['$ref']));
         }
         if (isset($schema['allOf'])) {
-            return $this->schema($this->merge($schema), $name, $origin, $variant);
+            return $this->schema($this->merge($schema), $name, $origin);
         }
         foreach ([UnionDef::ONE_OF, UnionDef::ANY_OF] as $keyword) {
             if (isset($schema[$keyword])) {
@@ -311,7 +316,7 @@ final class Compiler
             'integer' => new Type(Type::INT),
             'number' => new Type(Type::FLOAT),
             'boolean' => new Type(Type::BOOL),
-            'object' => $this->object($schema, $name, $origin, $variant),
+            'object' => $this->object($schema, $name, $origin),
             'array' => $this->array($schema, $name, $origin),
             default => throw new GeneratorException(sprintf('%s: unknown type "%s".', $origin, $types[0])),
         };
@@ -420,27 +425,46 @@ final class Compiler
             return $union->type();
         }
 
-        $names = $this->variantNames($variants, $name);
+        $resolved = array_map($this->resolve(...), $variants);
+        $names = $this->variantNames($resolved, $name);
         $compiled = [];
         foreach ($variants as $index => $variant) {
-            $type = $this->schema($variant, $names[$index], sprintf('%s (%s #%d)', $origin, $keyword, $index + 1), true);
-            $specificity = $type->kind === Type::MODEL && isset($this->models[$type->class]) && !$type->nullable
-                ? $this->models[$type->class]->specificity()
+            $type = $this->schema($variant, $names[$index], sprintf('%s (%s #%d)', $origin, $keyword, $index + 1));
+            $tags = $type->kind === Type::MODEL && !$type->nullable ? self::tags($resolved[$index]) : [];
+            $specificity = $type->kind === Type::MODEL && !$type->nullable
+                ? count($tags) * self::TAG_WEIGHT + count(self::list($resolved[$index]['required'] ?? []))
                 : 0;
-            $compiled[] = [$type, $specificity, $index];
+            $compiled[] = [$type, $specificity, $tags, $index];
         }
         // Most specific first; the spec's order among equals.
-        usort($compiled, static fn(array $a, array $b): int => [$b[1], $a[2]] <=> [$a[1], $b[2]]);
+        usort($compiled, static fn(array $a, array $b): int => [$b[1], $a[3]] <=> [$a[1], $b[3]]);
         $union = new UnionDef(
             $name,
             $keyword === UnionDef::ONE_OF ? UnionDef::ONE_OF : UnionDef::ANY_OF,
             $description,
-            array_map(static fn(array $variant): array => [$variant[0], $variant[1]], $compiled),
+            array_map(static fn(array $variant): array => [$variant[0], $variant[1], $variant[2]], $compiled),
             $origin,
         );
         $this->unions[$name] = $union;
 
         return $union->type();
+    }
+
+    /**
+     * A schema with its `$ref` followed and its `allOf` merged, as the
+     * object it describes.
+     *
+     * @param array<string, mixed> $schema
+     *
+     * @return array<string, mixed>
+     */
+    private function resolve(array $schema): array
+    {
+        if (isset($schema['$ref'])) {
+            $schema = $this->componentSchema(self::text($schema['$ref']));
+        }
+
+        return isset($schema['allOf']) ? $this->merge($schema) : $schema;
     }
 
     /**
@@ -518,7 +542,7 @@ final class Compiler
     /**
      * @param array<string, mixed> $schema
      */
-    private function object(array $schema, string $name, string $origin, bool $variant): Type
+    private function object(array $schema, string $name, string $origin): Type
     {
         $properties = self::map($schema['properties'] ?? []);
         if ($properties === []) {
@@ -542,14 +566,12 @@ final class Compiler
                 throw new GeneratorException(sprintf('%s: fields "%s" and "%s" are both property $%s.', $origin, $names[$phpName], $key, $phpName));
             }
             $names[$phpName] = $key;
-            $isRequired = in_array($key, $required, true);
             $definitions[] = new PropertyDef(
                 $key,
                 $phpName,
                 $this->schema($property, $name . Naming::pascal($key), Decode::field($origin, $key)),
-                $isRequired,
+                in_array($key, $required, true),
                 self::text($property['description'] ?? ''),
-                $variant && $isRequired ? self::constantOf($property) : null,
             );
         }
         $this->models[$name] = new ModelDef($name, self::text($schema['description'] ?? ''), $definitions, $origin);
@@ -591,8 +613,10 @@ final class Compiler
         if (count($values) < 2) {
             return '';
         }
-        if (isset($this->enums[$name])) {
-            throw new GeneratorException(sprintf('%s and %s are both enum %s.', $this->enums[$name]->origin, $origin, $name));
+        foreach ($this->enums as $existing) {
+            if (strcasecmp($existing->name, $name) === 0) {
+                throw new GeneratorException(sprintf('%s and %s are both enum %s.', $existing->origin, $origin, $name));
+            }
         }
         $this->enums[$name] = new EnumDef($name, self::text($schema['description'] ?? ''), $values, $extensible, $origin);
 
@@ -655,12 +679,20 @@ final class Compiler
         }
     }
 
+    /**
+     * Reserves a model namespace class name. PHP compares class names
+     * without case, and the runtime classes every model imports are taken.
+     */
     private function claim(string $name, string $origin): void
     {
-        if (isset($this->classes[$name])) {
-            throw new GeneratorException(sprintf('%s and %s would both be class %s.', $this->classes[$name], $origin, $name));
+        $key = strtolower($name);
+        if (isset($this->classes[$key])) {
+            throw new GeneratorException(sprintf('%s and %s would both be class %s.', $this->classes[$key], $origin, $name));
         }
-        $this->classes[$name] = $origin;
+        if (Naming::isRuntimeClass($name)) {
+            throw new GeneratorException(sprintf('%s would be class %s, which every model imports from the runtime.', $origin, $name));
+        }
+        $this->classes[$key] = $origin;
     }
 
     /**

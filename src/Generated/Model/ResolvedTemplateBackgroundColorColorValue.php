@@ -34,18 +34,22 @@ final class ResolvedTemplateBackgroundColorColorValue
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateBackgroundColorColorValueOption4 => ResolvedTemplateBackgroundColorColorValueOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateBackgroundColorColorValueOption1 => ResolvedTemplateBackgroundColorColorValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateBackgroundColorColorValueOption2 => ResolvedTemplateBackgroundColorColorValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateBackgroundColorColorValueOption3 => ResolvedTemplateBackgroundColorColorValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

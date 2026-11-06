@@ -71,7 +71,10 @@ final class BlanksListResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['blanks'] = Encode::value($this->blanks);
+        $data['blanks'] = array_map(
+            static fn(BlanksListResponseBlanksItem $v): mixed => Encode::model($v),
+            $this->blanks,
+        );
         $data['orderedFirst'] = $this->orderedFirst;
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;

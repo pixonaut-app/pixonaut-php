@@ -62,7 +62,7 @@ final class PixelTurnsToolResultsCreateRequestOption2 implements Model
     {
         $data = [];
         $data['callId'] = $this->callId;
-        $data['error'] = Encode::value($this->error);
+        $data['error'] = Encode::model($this->error);
         return $data;
     }
 }

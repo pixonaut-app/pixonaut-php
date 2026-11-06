@@ -95,16 +95,16 @@ final class ShareLinksDesignerGetResponseMockupsItem implements Model
     {
         $data = [];
         $data['label'] = $this->label;
-        $data['placementRectPx'] = Encode::value($this->placementRectPx);
+        $data['placementRectPx'] = Encode::model($this->placementRectPx);
         $data['url'] = $this->url;
         if ($this->displacementStrength !== null) {
             $data['displacementStrength'] = $this->displacementStrength;
         }
         if ($this->localizedLabels !== null) {
-            $data['localizedLabels'] = Encode::value($this->localizedLabels);
+            $data['localizedLabels'] = Encode::model($this->localizedLabels);
         }
         if ($this->photoSizePx !== null) {
-            $data['photoSizePx'] = Encode::value($this->photoSizePx);
+            $data['photoSizePx'] = Encode::model($this->photoSizePx);
         }
         if ($this->shadingStrength !== null) {
             $data['shadingStrength'] = $this->shadingStrength;
@@ -113,7 +113,7 @@ final class ShareLinksDesignerGetResponseMockupsItem implements Model
             $data['viewId'] = $this->viewId;
         }
         if ($this->warp !== null) {
-            $data['warp'] = Encode::value($this->warp);
+            $data['warp'] = Encode::model($this->warp);
         }
         return $data;
     }

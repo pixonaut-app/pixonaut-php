@@ -40,10 +40,7 @@ final class PixelDismissalsCreateResponseConversationMessagesItemAssistantConten
         $model = new self(
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             name: Decode::string(Decode::required($data, 'name', $path), $path . '.name'),
-            type: Decode::string(
-                Decode::constant(Decode::required($data, 'type', $path), 'tool_use', $path . '.type'),
-                $path . '.type',
-            ),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
             input: array_key_exists('input', $data) ? $data['input'] : null,
         );
         $model->decoded = $data;

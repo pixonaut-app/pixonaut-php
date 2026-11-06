@@ -79,10 +79,10 @@ final class ShareLinksUpdateRequestRepeat implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['modes'] = Encode::value($this->modes);
+        $data['modes'] = $this->modes;
         $data['shopperMayChange'] = $this->shopperMayChange;
         $data['shopperMayTurnOff'] = $this->shopperMayTurnOff;
-        $data['start'] = Encode::value($this->start);
+        $data['start'] = $this->start === null ? null : Encode::model($this->start);
         return $data;
     }
 }

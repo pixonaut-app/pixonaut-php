@@ -32,10 +32,12 @@ final class TemplatesGetResponseFieldTextsValueItem
                 [
                     static fn(mixed $v, string $p): TemplatesGetResponseFieldTextsValueItemOption1 => TemplatesGetResponseFieldTextsValueItemOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplatesGetResponseFieldTextsValueItemOption2 => TemplatesGetResponseFieldTextsValueItemOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

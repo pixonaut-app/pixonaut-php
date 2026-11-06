@@ -63,7 +63,7 @@ final class DesignsCorrectionProofsCreateRequest implements Model
     {
         $data = [];
         $data['expectedRevision'] = $this->expectedRevision;
-        $data['values'] = Encode::map($this->values);
+        $data['values'] = Encode::object($this->values);
         return $data;
     }
 }

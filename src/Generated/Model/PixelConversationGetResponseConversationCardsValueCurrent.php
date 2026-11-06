@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -70,7 +69,7 @@ final class PixelConversationGetResponseConversationCardsValueCurrent implements
             $data['name'] = $this->name;
         }
         if ($this->names !== null) {
-            $data['names'] = Encode::value($this->names);
+            $data['names'] = $this->names;
         }
         return $data;
     }

@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -81,7 +80,7 @@ final class TemplateInputCustomerLayersTextLayerPropsShadowBlurEmConstraints imp
             $data['min'] = $this->min;
         }
         if ($this->oneOf !== null) {
-            $data['oneOf'] = Encode::value($this->oneOf);
+            $data['oneOf'] = $this->oneOf;
         }
         if ($this->step !== null) {
             $data['step'] = $this->step;

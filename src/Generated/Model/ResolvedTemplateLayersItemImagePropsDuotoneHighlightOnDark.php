@@ -34,18 +34,22 @@ final class ResolvedTemplateLayersItemImagePropsDuotoneHighlightOnDark
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsDuotoneHighlightOnDarkOption4 => ResolvedTemplateLayersItemImagePropsDuotoneHighlightOnDarkOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsDuotoneHighlightOnDarkOption1 => ResolvedTemplateLayersItemImagePropsDuotoneHighlightOnDarkOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsDuotoneHighlightOnDarkOption2 => ResolvedTemplateLayersItemImagePropsDuotoneHighlightOnDarkOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsDuotoneHighlightOnDarkOption3 => ResolvedTemplateLayersItemImagePropsDuotoneHighlightOnDarkOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

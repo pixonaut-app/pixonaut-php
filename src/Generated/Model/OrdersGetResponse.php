@@ -302,48 +302,60 @@ final class OrdersGetResponse implements Model
     {
         $data = [];
         $data['adapter'] = $this->adapter;
-        $data['blank'] = Encode::value($this->blank);
+        $data['blank'] = $this->blank === null ? null : Encode::model($this->blank);
         $data['blankId'] = $this->blankId;
         $data['canErase'] = $this->canErase;
         $data['canRetry'] = $this->canRetry;
-        $data['delivery'] = Encode::value($this->delivery);
-        $data['deliveryChangeRefusal'] = Encode::value($this->deliveryChangeRefusal);
-        $data['deliveryChanges'] = Encode::value($this->deliveryChanges);
+        $data['delivery'] = $this->delivery === null ? null : Encode::model($this->delivery);
+        $data['deliveryChangeRefusal'] = $this->deliveryChangeRefusal === null ? null : Encode::value($this->deliveryChangeRefusal);
+        $data['deliveryChanges'] = array_map(
+            static fn(OrdersGetResponseDeliveryChangesItem $v): mixed => Encode::model($v),
+            $this->deliveryChanges,
+        );
         $data['designId'] = $this->designId;
         $data['erasable'] = $this->erasable;
         $data['externalOrderRef'] = $this->externalOrderRef;
         $data['externalRef'] = $this->externalRef;
         $data['failureKind'] = $this->failureKind;
-        $data['fallbackSpots'] = Encode::value($this->fallbackSpots);
-        $data['history'] = Encode::value($this->history);
-        $data['hold'] = Encode::value($this->hold);
+        $data['fallbackSpots'] = $this->fallbackSpots;
+        $data['history'] = array_map(
+            static fn(OrdersGetResponseHistoryItem $v): mixed => Encode::model($v),
+            $this->history,
+        );
+        $data['hold'] = $this->hold === null ? null : Encode::model($this->hold);
         $data['id'] = $this->id;
         $data['lastCheckedAt'] = $this->lastCheckedAt;
         $data['lastError'] = $this->lastError;
         $data['personalDataErasedAt'] = $this->personalDataErasedAt;
         $data['printId'] = $this->printId;
-        $data['printIds'] = Encode::value($this->printIds);
-        $data['prints'] = Encode::value($this->prints);
-        $data['printshopAsPlaced'] = Encode::value($this->printshopAsPlaced);
+        $data['printIds'] = $this->printIds;
+        $data['prints'] = array_map(
+            static fn(OrdersGetResponsePrintsItemOption1|OrdersGetResponsePrintsItemOption2 $v): mixed => Encode::value($v),
+            $this->prints,
+        );
+        $data['printshopAsPlaced'] = $this->printshopAsPlaced === null ? null : Encode::model($this->printshopAsPlaced);
         $data['printshopConnectionId'] = $this->printshopConnectionId;
         $data['printshopName'] = $this->printshopName;
         $data['quantity'] = $this->quantity;
-        $data['recipient'] = Encode::value($this->recipient);
+        $data['recipient'] = $this->recipient === null ? null : Encode::model($this->recipient);
         $data['recipientEmailBounced'] = $this->recipientEmailBounced;
         $data['replacedByOrderId'] = $this->replacedByOrderId;
         $data['replacesOrderId'] = $this->replacesOrderId;
-        $data['reroutes'] = Encode::value($this->reroutes);
+        $data['reroutes'] = array_map(
+            static fn(OrdersGetResponseReroutesItem $v): mixed => Encode::model($v),
+            $this->reroutes,
+        );
         $data['retryable'] = $this->retryable;
-        $data['shipTo'] = Encode::value($this->shipTo);
-        $data['shippingAddress'] = Encode::value($this->shippingAddress);
+        $data['shipTo'] = $this->shipTo === null ? null : Encode::model($this->shipTo);
+        $data['shippingAddress'] = $this->shippingAddress === null ? null : Encode::model($this->shippingAddress);
         $data['spotOutput'] = $this->spotOutput;
         $data['status'] = $this->status;
-        $data['statusMoves'] = Encode::value($this->statusMoves);
+        $data['statusMoves'] = $this->statusMoves;
         $data['submittedAt'] = $this->submittedAt;
         $data['tenantId'] = $this->tenantId;
-        $data['tracking'] = Encode::value($this->tracking);
+        $data['tracking'] = $this->tracking === null ? null : Encode::model($this->tracking);
         $data['updatedAt'] = $this->updatedAt;
-        $data['variant'] = Encode::value($this->variant);
+        $data['variant'] = $this->variant === null ? null : Encode::model($this->variant);
         $data['variantRef'] = $this->variantRef;
         $data['varnishLeftOut'] = $this->varnishLeftOut;
         return $data;

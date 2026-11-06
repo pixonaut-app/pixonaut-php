@@ -57,7 +57,7 @@ final class PixelDismissalsCreateResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['conversation'] = Encode::value($this->conversation);
+        $data['conversation'] = Encode::model($this->conversation);
         return $data;
     }
 }

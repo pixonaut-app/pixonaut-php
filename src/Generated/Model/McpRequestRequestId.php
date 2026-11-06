@@ -32,10 +32,12 @@ final class McpRequestRequestId
                 [
                     static fn(mixed $v, string $p): string => Decode::string($v, $p),
                     0,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): int => Decode::int($v, $p),
                     0,
+                    [],
                 ],
             ],
         );

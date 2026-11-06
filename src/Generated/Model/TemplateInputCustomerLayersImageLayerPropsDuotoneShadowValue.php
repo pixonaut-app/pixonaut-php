@@ -34,22 +34,27 @@ final class TemplateInputCustomerLayersImageLayerPropsDuotoneShadowValue
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsDuotoneShadowValueOption5 => TemplateInputCustomerLayersImageLayerPropsDuotoneShadowValueOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsDuotoneShadowValueOption1 => TemplateInputCustomerLayersImageLayerPropsDuotoneShadowValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsDuotoneShadowValueOption2 => TemplateInputCustomerLayersImageLayerPropsDuotoneShadowValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsDuotoneShadowValueOption3 => TemplateInputCustomerLayersImageLayerPropsDuotoneShadowValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsDuotoneShadowValueOption4 => TemplateInputCustomerLayersImageLayerPropsDuotoneShadowValueOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

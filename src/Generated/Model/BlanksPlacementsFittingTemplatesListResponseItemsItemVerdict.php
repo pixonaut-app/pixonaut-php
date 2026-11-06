@@ -31,11 +31,13 @@ final class BlanksPlacementsFittingTemplatesListResponseItemsItemVerdict
             [
                 [
                     static fn(mixed $v, string $p): BlanksPlacementsFittingTemplatesListResponseItemsItemVerdictFalse => BlanksPlacementsFittingTemplatesListResponseItemsItemVerdictFalse::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['legal' => false],
                 ],
                 [
                     static fn(mixed $v, string $p): BlanksPlacementsFittingTemplatesListResponseItemsItemVerdictTrue => BlanksPlacementsFittingTemplatesListResponseItemsItemVerdictTrue::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['legal' => true],
                 ],
             ],
         );

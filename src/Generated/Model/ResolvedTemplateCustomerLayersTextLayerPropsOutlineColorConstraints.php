@@ -33,15 +33,18 @@ final class ResolvedTemplateCustomerLayersTextLayerPropsOutlineColorConstraints
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsOutlineColorConstraintsOption1 => ResolvedTemplateCustomerLayersTextLayerPropsOutlineColorConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsOutlineColorConstraintsOption3 => ResolvedTemplateCustomerLayersTextLayerPropsOutlineColorConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsOutlineColorConstraintsOption2 => ResolvedTemplateCustomerLayersTextLayerPropsOutlineColorConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

@@ -33,15 +33,18 @@ final class TemplateInputLayersItemImagePropsOutlineColorConstraints
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsOutlineColorConstraintsOption1 => TemplateInputLayersItemImagePropsOutlineColorConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsOutlineColorConstraintsOption3 => TemplateInputLayersItemImagePropsOutlineColorConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImagePropsOutlineColorConstraintsOption2 => TemplateInputLayersItemImagePropsOutlineColorConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

@@ -86,7 +86,7 @@ final class PrintsGetResponseAttemptsItem implements Model
         $data = [];
         $data['attempt'] = $this->attempt;
         $data['endedAt'] = $this->endedAt;
-        $data['failure'] = Encode::value($this->failure);
+        $data['failure'] = $this->failure === null ? null : Encode::model($this->failure);
         $data['outcome'] = $this->outcome;
         $data['startedAt'] = $this->startedAt;
         return $data;

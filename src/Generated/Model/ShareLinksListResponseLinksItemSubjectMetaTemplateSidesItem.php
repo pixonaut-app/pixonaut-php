@@ -79,7 +79,10 @@ final class ShareLinksListResponseLinksItemSubjectMetaTemplateSidesItem implemen
         $data = [];
         $data['key'] = $this->key;
         $data['label'] = $this->label;
-        $data['printSizes'] = Encode::value($this->printSizes);
+        $data['printSizes'] = array_map(
+            static fn(ShareLinksListResponseLinksItemSubjectMetaTemplateSidesItemPrintSizesItem $v): mixed => Encode::model($v),
+            $this->printSizes,
+        );
         return $data;
     }
 }

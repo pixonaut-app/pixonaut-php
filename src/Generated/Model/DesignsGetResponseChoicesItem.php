@@ -31,15 +31,18 @@ final class DesignsGetResponseChoicesItem
             [
                 [
                     static fn(mixed $v, string $p): DesignsGetResponseChoicesItemColor => DesignsGetResponseChoicesItemColor::fromArray(Decode::object($v, $p), $p),
-                    1005,
+                    1006,
+                    ['type' => 'color'],
                 ],
                 [
                     static fn(mixed $v, string $p): DesignsGetResponseChoicesItemText => DesignsGetResponseChoicesItemText::fromArray(Decode::object($v, $p), $p),
-                    1004,
+                    1005,
+                    ['type' => 'text'],
                 ],
                 [
                     static fn(mixed $v, string $p): DesignsGetResponseChoicesItemImage => DesignsGetResponseChoicesItemImage::fromArray(Decode::object($v, $p), $p),
-                    1004,
+                    1005,
+                    ['type' => 'image'],
                 ],
             ],
         );

@@ -79,15 +79,15 @@ final class ResolvedTemplateCustomerLayersImageLayerTransform implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['rotate'] = Encode::value($this->rotate);
-        $data['scale'] = Encode::value($this->scale);
-        $data['translate'] = Encode::value($this->translate);
-        $data['value'] = Encode::value($this->value);
+        $data['rotate'] = Encode::model($this->rotate);
+        $data['scale'] = Encode::model($this->scale);
+        $data['translate'] = Encode::model($this->translate);
+        $data['value'] = Encode::model($this->value);
         if ($this->flip !== null) {
-            $data['flip'] = Encode::value($this->flip);
+            $data['flip'] = Encode::model($this->flip);
         }
         if ($this->resize !== null) {
-            $data['resize'] = Encode::value($this->resize);
+            $data['resize'] = Encode::model($this->resize);
         }
         return $data;
     }

@@ -47,7 +47,7 @@ final class PrintsFilesListResponseCountedFiles implements Model
                 $path . '.by',
                 static fn(mixed $v, string $p): PrintsFilesListResponseCountedFilesBy => PrintsFilesListResponseCountedFilesBy::fromArray(Decode::object($v, $p), $p),
             ),
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'files', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
         );
         $model->decoded = $data;
         return $model;
@@ -68,7 +68,7 @@ final class PrintsFilesListResponseCountedFiles implements Model
     {
         $data = [];
         $data['at'] = $this->at;
-        $data['by'] = Encode::value($this->by);
+        $data['by'] = $this->by === null ? null : Encode::model($this->by);
         $data['kind'] = $this->kind;
         return $data;
     }

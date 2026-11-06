@@ -73,8 +73,11 @@ final class AutomationsFiringsResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['counts'] = Encode::value($this->counts);
-        $data['firings'] = Encode::value($this->firings);
+        $data['counts'] = Encode::model($this->counts);
+        $data['firings'] = array_map(
+            static fn(AutomationsFiringsResponseFiringsItem $v): mixed => Encode::model($v),
+            $this->firings,
+        );
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;
         $data['total'] = $this->total;

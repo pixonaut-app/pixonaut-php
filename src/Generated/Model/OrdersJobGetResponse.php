@@ -108,16 +108,22 @@ final class OrdersJobGetResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['carriers'] = Encode::value($this->carriers);
+        $data['carriers'] = Encode::model($this->carriers);
         $data['id'] = $this->id;
         $data['machineProfileAskedId'] = $this->machineProfileAskedId;
         $data['machineProfileId'] = $this->machineProfileId;
-        $data['machineProfiles'] = Encode::value($this->machineProfiles);
-        $data['prints'] = Encode::value($this->prints);
+        $data['machineProfiles'] = array_map(
+            static fn(OrdersJobGetResponseMachineProfilesItem $v): mixed => Encode::model($v),
+            $this->machineProfiles,
+        );
+        $data['prints'] = array_map(
+            static fn(OrdersJobGetResponsePrintsItem $v): mixed => Encode::model($v),
+            $this->prints,
+        );
         $data['status'] = $this->status;
         $data['submittedAt'] = $this->submittedAt;
-        $data['ticket'] = Encode::value($this->ticket);
-        $data['tracking'] = Encode::value($this->tracking);
+        $data['ticket'] = $this->ticket === null ? null : Encode::model($this->ticket);
+        $data['tracking'] = $this->tracking === null ? null : Encode::model($this->tracking);
         return $data;
     }
 }

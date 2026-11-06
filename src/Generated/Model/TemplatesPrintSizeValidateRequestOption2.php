@@ -69,7 +69,10 @@ final class TemplatesPrintSizeValidateRequestOption2 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['sizes'] = Encode::value($this->sizes);
+        $data['sizes'] = array_map(
+            static fn(TemplatesPrintSizeValidateRequestOption2SizesItem $v): mixed => Encode::model($v),
+            $this->sizes,
+        );
         if ($this->blankId !== null) {
             $data['blankId'] = $this->blankId;
         }

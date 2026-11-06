@@ -47,10 +47,7 @@ final class ShareLinksListResponseCountsSourcesItemKey implements Model
                 $path . '.key',
                 static fn(mixed $v, string $p): ShareLinksListResponseCountsSourcesItemKeyKey => ShareLinksListResponseCountsSourcesItemKeyKey::fromArray(Decode::object($v, $p), $p),
             ),
-            source: Decode::string(
-                Decode::constant(Decode::required($data, 'source', $path), 'key', $path . '.source'),
-                $path . '.source',
-            ),
+            source: Decode::string(Decode::required($data, 'source', $path), $path . '.source'),
         );
         $model->decoded = $data;
         return $model;
@@ -71,7 +68,7 @@ final class ShareLinksListResponseCountsSourcesItemKey implements Model
     {
         $data = [];
         $data['count'] = $this->count;
-        $data['key'] = Encode::value($this->key);
+        $data['key'] = $this->key === null ? null : Encode::model($this->key);
         $data['source'] = $this->source;
         return $data;
     }

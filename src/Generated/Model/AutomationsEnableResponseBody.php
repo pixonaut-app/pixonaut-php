@@ -68,9 +68,12 @@ final class AutomationsEnableResponseBody implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['steps'] = Encode::value($this->steps);
+        $data['steps'] = array_map(
+            static fn(AutomationsEnableResponseBodyStepsItem $v): mixed => Encode::model($v),
+            $this->steps,
+        );
         if ($this->conditions !== null) {
-            $data['conditions'] = Encode::value($this->conditions);
+            $data['conditions'] = Encode::value($this->conditions, true);
         }
         return $data;
     }

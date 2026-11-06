@@ -63,7 +63,10 @@ final class PrintshopConnectionsListResponseOption2 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['connections'] = Encode::value($this->connections);
+        $data['connections'] = array_map(
+            static fn(PrintshopConnectionsListResponseOption2ConnectionsItem $v): mixed => Encode::model($v),
+            $this->connections,
+        );
         return $data;
     }
 }

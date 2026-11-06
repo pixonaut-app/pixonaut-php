@@ -33,15 +33,18 @@ final class ResolvedTemplateLayersItemImagePropsDuotoneHighlightConstraints
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsDuotoneHighlightConstraintsOption1 => ResolvedTemplateLayersItemImagePropsDuotoneHighlightConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsDuotoneHighlightConstraintsOption3 => ResolvedTemplateLayersItemImagePropsDuotoneHighlightConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsDuotoneHighlightConstraintsOption2 => ResolvedTemplateLayersItemImagePropsDuotoneHighlightConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

@@ -32,10 +32,12 @@ final class OrdersJobUpdateResponseTicketArtwork
                 [
                     static fn(mixed $v, string $p): OrdersJobUpdateResponseTicketArtworkOption2 => OrdersJobUpdateResponseTicketArtworkOption2::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): OrdersJobUpdateResponseTicketArtworkOption1 => OrdersJobUpdateResponseTicketArtworkOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

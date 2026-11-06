@@ -33,11 +33,13 @@ final class ResolvedTemplateShapeValue
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateShapeValuePath => ResolvedTemplateShapeValuePath::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'path'],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateShapeValueShape => ResolvedTemplateShapeValueShape::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'shape'],
                 ],
             ],
         );

@@ -94,15 +94,25 @@ final class BlanksListResponseBlanksItemOptionsItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['appearances'] = Encode::map($this->appearances);
+        $data['appearances'] = Encode::object(
+            array_map(
+                static fn(BlanksListResponseBlanksItemOptionsItemAppearancesValueFill|BlanksListResponseBlanksItemOptionsItemAppearancesValueImage|null $v): mixed => $v === null ? null : Encode::value($v),
+                $this->appearances,
+            ),
+        );
         $data['name'] = $this->name;
-        $data['tones'] = Encode::map($this->tones);
-        $data['values'] = Encode::value($this->values);
+        $data['tones'] = Encode::object($this->tones);
+        $data['values'] = $this->values;
         if ($this->localizedNames !== null) {
-            $data['localizedNames'] = Encode::value($this->localizedNames);
+            $data['localizedNames'] = Encode::model($this->localizedNames);
         }
         if ($this->localizedValues !== null) {
-            $data['localizedValues'] = Encode::map($this->localizedValues);
+            $data['localizedValues'] = Encode::object(
+                array_map(
+                    static fn(BlanksListResponseBlanksItemOptionsItemLocalizedValuesValue $v): mixed => Encode::model($v),
+                    $this->localizedValues,
+                ),
+            );
         }
         return $data;
     }

@@ -95,7 +95,7 @@ final class AssetsUpdateRequest implements Model
             $data['expectedUpdatedAt'] = $this->expectedUpdatedAt;
         }
         if ($this->localizedNames !== null) {
-            $data['localizedNames'] = Encode::value($this->localizedNames);
+            $data['localizedNames'] = Encode::model($this->localizedNames);
         }
         if ($this->name !== null) {
             $data['name'] = $this->name;
@@ -104,7 +104,7 @@ final class AssetsUpdateRequest implements Model
             $data['role'] = $this->role;
         }
         if ($this->tags !== null) {
-            $data['tags'] = Encode::value($this->tags);
+            $data['tags'] = $this->tags;
         }
         if ($this->visibility !== null) {
             $data['visibility'] = $this->visibility;

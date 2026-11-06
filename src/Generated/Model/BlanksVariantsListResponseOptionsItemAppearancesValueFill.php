@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -45,7 +44,7 @@ final class BlanksVariantsListResponseOptionsItemAppearancesValueFill implements
                 $path . '.colours',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'fill', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
         );
         $model->decoded = $data;
         return $model;
@@ -65,7 +64,7 @@ final class BlanksVariantsListResponseOptionsItemAppearancesValueFill implements
     public function toArray(): array
     {
         $data = [];
-        $data['colours'] = Encode::value($this->colours);
+        $data['colours'] = $this->colours;
         $data['kind'] = $this->kind;
         return $data;
     }

@@ -69,7 +69,10 @@ final class StorageGetResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['categories'] = Encode::value($this->categories);
+        $data['categories'] = array_map(
+            static fn(StorageGetResponseCategoriesItem $v): mixed => Encode::model($v),
+            $this->categories,
+        );
         $data['fileCount'] = $this->fileCount;
         $data['quotaBytes'] = $this->quotaBytes;
         $data['usedBytes'] = $this->usedBytes;

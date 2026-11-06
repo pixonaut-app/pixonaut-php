@@ -32,10 +32,12 @@ final class DesignsDesignerGetResponseFieldTextsValueItem
                 [
                     static fn(mixed $v, string $p): DesignsDesignerGetResponseFieldTextsValueItemOption1 => DesignsDesignerGetResponseFieldTextsValueItemOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): DesignsDesignerGetResponseFieldTextsValueItemOption2 => DesignsDesignerGetResponseFieldTextsValueItemOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

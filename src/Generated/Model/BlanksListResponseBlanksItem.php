@@ -225,45 +225,57 @@ final class BlanksListResponseBlanksItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['areasVaryBy'] = Encode::value($this->areasVaryBy);
-        $data['axes'] = Encode::value($this->axes);
+        $data['areasVaryBy'] = $this->areasVaryBy;
+        $data['axes'] = $this->axes;
         $data['categoryId'] = $this->categoryId;
-        $data['copiedFrom'] = Encode::value($this->copiedFrom);
+        $data['copiedFrom'] = $this->copiedFrom === null ? null : Encode::model($this->copiedFrom);
         $data['createdAt'] = $this->createdAt;
         $data['defaultPrintshopId'] = $this->defaultPrintshopId;
-        $data['deleted'] = Encode::value($this->deleted);
+        $data['deleted'] = $this->deleted === null ? null : Encode::model($this->deleted);
         $data['id'] = $this->id;
         $data['importFailure'] = $this->importFailure;
         $data['machineProfileId'] = $this->machineProfileId;
         $data['name'] = $this->name;
-        $data['options'] = Encode::value($this->options);
+        $data['options'] = array_map(
+            static fn(BlanksListResponseBlanksItemOptionsItem $v): mixed => Encode::model($v),
+            $this->options,
+        );
         $data['optionsConfirmedAt'] = $this->optionsConfirmedAt;
         $data['partnerLocked'] = $this->partnerLocked;
         $data['photoSource'] = $this->photoSource;
-        $data['photosVaryBy'] = Encode::value($this->photosVaryBy);
-        $data['placements'] = Encode::value($this->placements);
-        $data['referenceRow'] = $this->referenceRow === null ? null : Encode::map($this->referenceRow);
-        $data['resolved'] = Encode::value($this->resolved);
+        $data['photosVaryBy'] = $this->photosVaryBy;
+        $data['placements'] = array_map(
+            static fn(BlanksListResponseBlanksItemPlacementsItem $v): mixed => Encode::model($v),
+            $this->placements,
+        );
+        $data['referenceRow'] = $this->referenceRow === null ? null : Encode::object($this->referenceRow);
+        $data['resolved'] = Encode::model($this->resolved);
         $data['status'] = $this->status;
         $data['stockItemKey'] = $this->stockItemKey;
         $data['updatedAt'] = $this->updatedAt;
         if ($this->boundProduct !== null) {
-            $data['boundProduct'] = Encode::value($this->boundProduct);
+            $data['boundProduct'] = Encode::model($this->boundProduct);
         }
         if ($this->orderCount !== null) {
             $data['orderCount'] = $this->orderCount;
         }
         if ($this->photoCoverage !== null) {
-            $data['photoCoverage'] = Encode::value($this->photoCoverage);
+            $data['photoCoverage'] = Encode::model($this->photoCoverage);
         }
         if ($this->placementsAtOtherSize !== null) {
-            $data['placementsAtOtherSize'] = Encode::value($this->placementsAtOtherSize);
+            $data['placementsAtOtherSize'] = array_map(
+                static fn(BlanksListResponseBlanksItemPlacementsAtOtherSizeItem $v): mixed => Encode::model($v),
+                $this->placementsAtOtherSize,
+            );
         }
         if ($this->scenes !== null) {
-            $data['scenes'] = Encode::value($this->scenes);
+            $data['scenes'] = array_map(
+                static fn(BlanksListResponseBlanksItemScenesItem $v): mixed => Encode::model($v),
+                $this->scenes,
+            );
         }
         if ($this->sharedViewPhoto !== null) {
-            $data['sharedViewPhoto'] = Encode::value($this->sharedViewPhoto);
+            $data['sharedViewPhoto'] = Encode::model($this->sharedViewPhoto);
         }
         if ($this->thumbnailUrl !== null) {
             $data['thumbnailUrl'] = $this->thumbnailUrl;
@@ -272,7 +284,10 @@ final class BlanksListResponseBlanksItem implements Model
             $data['variantCount'] = $this->variantCount;
         }
         if ($this->variants !== null) {
-            $data['variants'] = Encode::value($this->variants);
+            $data['variants'] = array_map(
+                static fn(BlanksListResponseBlanksItemVariantsItem $v): mixed => Encode::model($v),
+                $this->variants,
+            );
         }
         return $data;
     }

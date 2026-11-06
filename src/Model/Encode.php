@@ -12,30 +12,48 @@ use stdClass;
 final class Encode
 {
     /**
-     * A model becomes its array, an empty one `{}` so that it is still sent
-     * as an object; arrays are encoded item by item.
+     * A model as its fields, `{}` when it has none set.
+     *
+     * @return array<string, mixed>|stdClass
      */
-    public static function value(mixed $value): mixed
+    public static function model(Model $model): array|stdClass
     {
-        if ($value instanceof Model) {
-            $data = $value->toArray();
+        $data = $model->toArray();
 
-            return $data === [] ? new stdClass() : $data;
-        }
-        if (is_array($value)) {
-            return array_map(self::value(...), $value);
-        }
-
-        return $value;
+        return $data === [] ? new stdClass() : $data;
     }
 
     /**
-     * A JSON object of values, `{}` when it is empty.
+     * A JSON object, `{}` when it is empty.
      *
-     * @param array<string, mixed> $map
+     * @param array<string, mixed> $object
+     *
+     * @return array<string, mixed>|stdClass
      */
-    public static function map(array $map): mixed
+    public static function object(array $object): array|stdClass
     {
-        return $map === [] ? new stdClass() : array_map(self::value(...), $map);
+        return $object === [] ? new stdClass() : $object;
+    }
+
+    /**
+     * A value whose schema is a union: models become their fields, arrays
+     * are encoded item by item.
+     *
+     * @param bool $emptyIsObject Whether an empty array is the union's object
+     *                            variant, sent as `{}`, rather than a list.
+     */
+    public static function value(mixed $value, bool $emptyIsObject = false): mixed
+    {
+        if ($value instanceof Model) {
+            return self::model($value);
+        }
+        if ($value === [] && $emptyIsObject) {
+            return new stdClass();
+        }
+        if (is_array($value)) {
+            return array_map(static fn(mixed $item): mixed => self::value($item), $value);
+        }
+
+        return $value;
     }
 }

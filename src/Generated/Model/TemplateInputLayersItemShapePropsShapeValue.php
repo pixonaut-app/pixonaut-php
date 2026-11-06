@@ -33,11 +33,13 @@ final class TemplateInputLayersItemShapePropsShapeValue
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsShapeValuePath => TemplateInputLayersItemShapePropsShapeValuePath::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'path'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsShapeValueShape => TemplateInputLayersItemShapePropsShapeValueShape::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'shape'],
                 ],
             ],
         );

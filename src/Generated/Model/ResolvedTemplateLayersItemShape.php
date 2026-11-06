@@ -83,7 +83,7 @@ final class ResolvedTemplateLayersItemShape implements Model
                 Decode::object(Decode::required($data, 'transform', $path), $path . '.transform'),
                 $path . '.transform',
             ),
-            type: Decode::string(Decode::constant(Decode::required($data, 'type', $path), 'shape', $path . '.type'), $path . '.type'),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
             wFrac: Decode::float(Decode::required($data, 'wFrac', $path), $path . '.wFrac'),
             z: Decode::int(Decode::required($data, 'z', $path), $path . '.z'),
             anchorTo: array_key_exists('anchorTo', $data) ? Decode::string($data['anchorTo'], $path . '.anchorTo') : null,
@@ -116,9 +116,9 @@ final class ResolvedTemplateLayersItemShape implements Model
         $data['anchor'] = $this->anchor;
         $data['hFrac'] = $this->hFrac;
         $data['id'] = $this->id;
-        $data['offsetFrac'] = Encode::value($this->offsetFrac);
-        $data['props'] = Encode::value($this->props);
-        $data['transform'] = Encode::value($this->transform);
+        $data['offsetFrac'] = Encode::model($this->offsetFrac);
+        $data['props'] = Encode::model($this->props);
+        $data['transform'] = Encode::model($this->transform);
         $data['type'] = $this->type;
         $data['wFrac'] = $this->wFrac;
         $data['z'] = $this->z;
@@ -138,7 +138,7 @@ final class ResolvedTemplateLayersItemShape implements Model
             $data['name'] = $this->name;
         }
         if ($this->opacity !== null) {
-            $data['opacity'] = Encode::value($this->opacity);
+            $data['opacity'] = Encode::model($this->opacity);
         }
         if ($this->print !== null) {
             $data['print'] = $this->print;

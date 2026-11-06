@@ -107,14 +107,32 @@ final class PixelConversationGetResponseConversation implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['cards'] = Encode::map($this->cards);
-        $data['contentKeys'] = Encode::map($this->contentKeys);
+        $data['cards'] = Encode::object(
+            array_map(
+                static fn(PixelConversationGetResponseConversationCardsValue $v): mixed => Encode::model($v),
+                $this->cards,
+            ),
+        );
+        $data['contentKeys'] = Encode::object($this->contentKeys);
         $data['id'] = $this->id;
-        $data['messages'] = Encode::value($this->messages);
-        $data['unavailable'] = Encode::value($this->unavailable);
-        $data['unseen'] = Encode::value($this->unseen);
-        $data['uploads'] = Encode::map($this->uploads);
-        $data['upscaled'] = Encode::map($this->upscaled);
+        $data['messages'] = array_map(
+            static fn(PixelConversationGetResponseConversationMessagesItemUser|PixelConversationGetResponseConversationMessagesItemAssistant $v): mixed => Encode::value($v),
+            $this->messages,
+        );
+        $data['unavailable'] = $this->unavailable;
+        $data['unseen'] = $this->unseen;
+        $data['uploads'] = Encode::object(
+            array_map(
+                static fn(PixelConversationGetResponseConversationUploadsValue $v): mixed => Encode::model($v),
+                $this->uploads,
+            ),
+        );
+        $data['upscaled'] = Encode::object(
+            array_map(
+                static fn(PixelConversationGetResponseConversationUpscaledValue $v): mixed => Encode::model($v),
+                $this->upscaled,
+            ),
+        );
         return $data;
     }
 }

@@ -70,7 +70,10 @@ final class EventsListResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['events'] = Encode::value($this->events);
+        $data['events'] = array_map(
+            static fn(\Pixonaut\Sdk\Model\Model $v): mixed => Encode::value($v),
+            $this->events,
+        );
         $data['nextCursor'] = $this->nextCursor;
         return $data;
     }

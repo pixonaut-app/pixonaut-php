@@ -68,7 +68,10 @@ final class AutomationsTestRunResponseConditions implements Model
     {
         $data = [];
         $data['holds'] = $this->holds;
-        $data['leaves'] = Encode::value($this->leaves);
+        $data['leaves'] = array_map(
+            static fn(AutomationsTestRunResponseConditionsLeavesItem $v): mixed => Encode::model($v),
+            $this->leaves,
+        );
         return $data;
     }
 }

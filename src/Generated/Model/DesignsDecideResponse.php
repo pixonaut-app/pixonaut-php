@@ -63,7 +63,10 @@ final class DesignsDecideResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['outcomes'] = Encode::value($this->outcomes);
+        $data['outcomes'] = array_map(
+            static fn(DesignsDecideResponseOutcomesItemTrue|DesignsDecideResponseOutcomesItemFalse $v): mixed => Encode::value($v),
+            $this->outcomes,
+        );
         return $data;
     }
 }

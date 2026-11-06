@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -99,7 +98,7 @@ final class OrderDeliveryChangedEventPayload implements Model
             $data['externalRef'] = $this->externalRef;
         }
         if ($this->printIds !== null) {
-            $data['printIds'] = Encode::value($this->printIds);
+            $data['printIds'] = $this->printIds;
         }
         return $data;
     }

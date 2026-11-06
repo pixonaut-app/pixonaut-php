@@ -83,15 +83,21 @@ final class TemplatesListResponseOption2 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['counts'] = Encode::value($this->counts);
-        $data['facets'] = Encode::value($this->facets);
+        $data['counts'] = Encode::model($this->counts);
+        $data['facets'] = Encode::model($this->facets);
         $data['matched'] = $this->matched;
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;
-        $data['templates'] = Encode::value($this->templates);
+        $data['templates'] = array_map(
+            static fn(TemplatesListResponseOption2TemplatesItem $v): mixed => Encode::model($v),
+            $this->templates,
+        );
         $data['total'] = $this->total;
         if ($this->groups !== null) {
-            $data['groups'] = Encode::value($this->groups);
+            $data['groups'] = array_map(
+                static fn(TemplatesListResponseOption2GroupsItem $v): mixed => Encode::model($v),
+                $this->groups,
+            );
         }
         return $data;
     }

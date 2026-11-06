@@ -74,7 +74,7 @@ final class DesignsRevisionsListResponseRevisionsItem implements Model
     {
         $data = [];
         $data['createdAt'] = $this->createdAt;
-        $data['createdBy'] = Encode::value($this->createdBy);
+        $data['createdBy'] = $this->createdBy === null ? null : Encode::model($this->createdBy);
         $data['isCurrent'] = $this->isCurrent;
         $data['printed'] = $this->printed;
         $data['revision'] = $this->revision;

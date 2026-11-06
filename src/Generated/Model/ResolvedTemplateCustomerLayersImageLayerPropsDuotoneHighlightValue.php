@@ -34,18 +34,22 @@ final class ResolvedTemplateCustomerLayersImageLayerPropsDuotoneHighlightValue
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsDuotoneHighlightValueOption4 => ResolvedTemplateCustomerLayersImageLayerPropsDuotoneHighlightValueOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsDuotoneHighlightValueOption1 => ResolvedTemplateCustomerLayersImageLayerPropsDuotoneHighlightValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsDuotoneHighlightValueOption2 => ResolvedTemplateCustomerLayersImageLayerPropsDuotoneHighlightValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersImageLayerPropsDuotoneHighlightValueOption3 => ResolvedTemplateCustomerLayersImageLayerPropsDuotoneHighlightValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

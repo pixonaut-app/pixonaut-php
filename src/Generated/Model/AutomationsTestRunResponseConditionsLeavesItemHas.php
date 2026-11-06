@@ -38,14 +38,17 @@ final class AutomationsTestRunResponseConditionsLeavesItemHas
                         static fn(mixed $v, string $p): string => Decode::string($v, $p),
                     ),
                     0,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): float => Decode::float($v, $p),
                     0,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): bool => Decode::bool($v, $p),
                     0,
+                    [],
                 ],
             ],
         );

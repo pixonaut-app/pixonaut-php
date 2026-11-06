@@ -32,10 +32,12 @@ final class ShareLinksRevokeManyRequest
                 [
                     static fn(mixed $v, string $p): ShareLinksRevokeManyRequestOption1 => ShareLinksRevokeManyRequestOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ShareLinksRevokeManyRequestOption2 => ShareLinksRevokeManyRequestOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

@@ -42,10 +42,7 @@ final class DesignsDecideRequestReject implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            action: Decode::string(
-                Decode::constant(Decode::required($data, 'action', $path), 'reject', $path . '.action'),
-                $path . '.action',
-            ),
+            action: Decode::string(Decode::required($data, 'action', $path), $path . '.action'),
             designs: Decode::list(
                 Decode::required($data, 'designs', $path),
                 $path . '.designs',
@@ -72,7 +69,10 @@ final class DesignsDecideRequestReject implements Model
     {
         $data = [];
         $data['action'] = $this->action;
-        $data['designs'] = Encode::value($this->designs);
+        $data['designs'] = array_map(
+            static fn(DesignsDecideRequestRejectDesignsItem $v): mixed => Encode::model($v),
+            $this->designs,
+        );
         if ($this->reason !== null) {
             $data['reason'] = $this->reason;
         }

@@ -34,30 +34,37 @@ final class TemplateInputCustomerLayersShapeLayerPropsFillOnDark
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption5 => TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption1 => TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption2 => TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption3 => TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption4 => TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption6 => TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption6::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption7 => TemplateInputCustomerLayersShapeLayerPropsFillOnDarkOption7::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

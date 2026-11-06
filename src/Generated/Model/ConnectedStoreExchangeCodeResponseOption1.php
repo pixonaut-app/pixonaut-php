@@ -92,14 +92,14 @@ final class ConnectedStoreExchangeCodeResponseOption1 implements Model
         $data = [];
         $data['connectionId'] = $this->connectionId;
         $data['environment'] = $this->environment;
-        $data['integrationKey'] = Encode::value($this->integrationKey);
-        $data['memberKey'] = Encode::value($this->memberKey);
-        $data['publishableKey'] = Encode::value($this->publishableKey);
+        $data['integrationKey'] = Encode::model($this->integrationKey);
+        $data['memberKey'] = Encode::model($this->memberKey);
+        $data['publishableKey'] = Encode::model($this->publishableKey);
         $data['reachable'] = $this->reachable;
         $data['tenantId'] = $this->tenantId;
         $data['tenantName'] = $this->tenantName;
         $data['tenantSlug'] = $this->tenantSlug;
-        $data['webhook'] = Encode::value($this->webhook);
+        $data['webhook'] = Encode::model($this->webhook);
         return $data;
     }
 }

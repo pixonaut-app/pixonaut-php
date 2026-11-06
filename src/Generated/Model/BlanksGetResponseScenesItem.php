@@ -75,7 +75,7 @@ final class BlanksGetResponseScenesItem implements Model
         $data = [];
         $data['colour'] = $this->colour;
         $data['id'] = $this->id;
-        $data['rowOptions'] = Encode::map($this->rowOptions);
+        $data['rowOptions'] = Encode::object($this->rowOptions);
         return $data;
     }
 }

@@ -96,7 +96,7 @@ final class OrdersGetResponseHistoryItem implements Model
     {
         $data = [];
         $data['at'] = $this->at;
-        $data['automation'] = Encode::value($this->automation);
+        $data['automation'] = $this->automation === null ? null : Encode::model($this->automation);
         $data['reason'] = $this->reason;
         $data['releasedBy'] = $this->releasedBy;
         $data['seq'] = $this->seq;

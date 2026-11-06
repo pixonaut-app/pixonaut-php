@@ -42,7 +42,7 @@ final class ResolvedTemplateBackgroundColor implements Model
     {
         $model = new self(
             color: ResolvedTemplateBackgroundColorColor::fromArray(Decode::object(Decode::required($data, 'color', $path), $path . '.color'), $path . '.color'),
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'color', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
         );
         $model->decoded = $data;
         return $model;
@@ -62,7 +62,7 @@ final class ResolvedTemplateBackgroundColor implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['color'] = Encode::value($this->color);
+        $data['color'] = Encode::model($this->color);
         $data['kind'] = $this->kind;
         return $data;
     }

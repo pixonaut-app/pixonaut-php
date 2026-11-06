@@ -42,10 +42,7 @@ final class AutomationsListResponseAutomationsItemBodyConditionsQuantity impleme
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            field: Decode::string(
-                Decode::constant(Decode::required($data, 'field', $path), 'quantity', $path . '.field'),
-                $path . '.field',
-            ),
+            field: Decode::string(Decode::required($data, 'field', $path), $path . '.field'),
             atLeast: array_key_exists('atLeast', $data) ? Decode::int($data['atLeast'], $path . '.atLeast') : null,
             atMost: array_key_exists('atMost', $data) ? Decode::int($data['atMost'], $path . '.atMost') : null,
         );

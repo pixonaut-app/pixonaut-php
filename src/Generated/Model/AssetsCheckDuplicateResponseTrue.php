@@ -41,10 +41,7 @@ final class AssetsCheckDuplicateResponseTrue implements Model
     {
         $model = new self(
             assetId: Decode::string(Decode::required($data, 'assetId', $path), $path . '.assetId'),
-            exists: Decode::bool(
-                Decode::constant(Decode::required($data, 'exists', $path), true, $path . '.exists'),
-                $path . '.exists',
-            ),
+            exists: Decode::bool(Decode::required($data, 'exists', $path), $path . '.exists'),
             name: Decode::nullable(
                 Decode::required($data, 'name', $path),
                 $path . '.name',

@@ -79,13 +79,13 @@ final class AutomationsTestRunRequestDraft implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['body'] = Encode::value($this->body);
+        $data['body'] = Encode::model($this->body);
         $data['trigger'] = $this->trigger;
         if ($this->runsAs !== null) {
             $data['runsAs'] = $this->runsAs;
         }
         if ($this->sources !== null) {
-            $data['sources'] = Encode::value($this->sources);
+            $data['sources'] = Encode::model($this->sources);
         }
         if ($this->spendLimit !== null) {
             $data['spendLimit'] = $this->spendLimit;

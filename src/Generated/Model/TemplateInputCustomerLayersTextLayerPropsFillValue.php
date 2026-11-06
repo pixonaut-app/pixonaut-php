@@ -34,26 +34,32 @@ final class TemplateInputCustomerLayersTextLayerPropsFillValue
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillValueOption5 => TemplateInputCustomerLayersTextLayerPropsFillValueOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillValueOption1 => TemplateInputCustomerLayersTextLayerPropsFillValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillValueOption2 => TemplateInputCustomerLayersTextLayerPropsFillValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillValueOption3 => TemplateInputCustomerLayersTextLayerPropsFillValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillValueOption4 => TemplateInputCustomerLayersTextLayerPropsFillValueOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersTextLayerPropsFillValueOption6 => TemplateInputCustomerLayersTextLayerPropsFillValueOption6::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

@@ -75,9 +75,12 @@ final class BlanksListResponseBlanksItemResolved implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['defaultPrintshopId'] = Encode::value($this->defaultPrintshopId);
-        $data['machineProfileId'] = Encode::value($this->machineProfileId);
-        $data['placements'] = Encode::value($this->placements);
+        $data['defaultPrintshopId'] = Encode::model($this->defaultPrintshopId);
+        $data['machineProfileId'] = Encode::model($this->machineProfileId);
+        $data['placements'] = array_map(
+            static fn(BlanksListResponseBlanksItemResolvedPlacementsItem $v): mixed => Encode::model($v),
+            $this->placements,
+        );
         return $data;
     }
 }

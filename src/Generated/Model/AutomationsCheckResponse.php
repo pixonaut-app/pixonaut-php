@@ -77,9 +77,18 @@ final class AutomationsCheckResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['refusals'] = Encode::value($this->refusals);
-        $data['steps'] = Encode::value($this->steps);
-        $data['warnings'] = Encode::value($this->warnings);
+        $data['refusals'] = array_map(
+            static fn(AutomationsCheckResponseRefusalsItem $v): mixed => Encode::model($v),
+            $this->refusals,
+        );
+        $data['steps'] = array_map(
+            static fn(AutomationsCheckResponseStepsItem $v): mixed => Encode::model($v),
+            $this->steps,
+        );
+        $data['warnings'] = array_map(
+            static fn(AutomationsCheckResponseWarningsItem $v): mixed => Encode::model($v),
+            $this->warnings,
+        );
         return $data;
     }
 }

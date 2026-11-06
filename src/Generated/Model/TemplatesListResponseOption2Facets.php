@@ -65,8 +65,11 @@ final class TemplatesListResponseOption2Facets implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['categories'] = Encode::value($this->categories);
-        $data['statuses'] = Encode::value($this->statuses);
+        $data['categories'] = array_map(
+            static fn(TemplatesListResponseOption2FacetsCategoriesItem $v): mixed => Encode::model($v),
+            $this->categories,
+        );
+        $data['statuses'] = Encode::model($this->statuses);
         return $data;
     }
 }

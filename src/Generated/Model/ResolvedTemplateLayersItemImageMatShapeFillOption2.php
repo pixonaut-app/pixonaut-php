@@ -57,7 +57,7 @@ final class ResolvedTemplateLayersItemImageMatShapeFillOption2 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['spot'] = Encode::value($this->spot);
+        $data['spot'] = Encode::model($this->spot);
         return $data;
     }
 }

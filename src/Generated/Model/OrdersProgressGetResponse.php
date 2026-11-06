@@ -79,9 +79,12 @@ final class OrdersProgressGetResponse implements Model
         $data = [];
         $data['id'] = $this->id;
         $data['status'] = $this->status;
-        $data['steps'] = Encode::value($this->steps);
+        $data['steps'] = array_map(
+            static fn(OrdersProgressGetResponseStepsItem $v): mixed => Encode::model($v),
+            $this->steps,
+        );
         $data['submittedAt'] = $this->submittedAt;
-        $data['tracking'] = Encode::value($this->tracking);
+        $data['tracking'] = $this->tracking === null ? null : Encode::model($this->tracking);
         return $data;
     }
 }

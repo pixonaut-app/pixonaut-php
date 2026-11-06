@@ -69,7 +69,7 @@ final class DesignsApproveRequest implements Model
             $data['afterDays'] = $this->afterDays;
         }
         if ($this->consent !== null) {
-            $data['consent'] = Encode::value($this->consent);
+            $data['consent'] = Encode::model($this->consent);
         }
         if ($this->expectedRevision !== null) {
             $data['expectedRevision'] = $this->expectedRevision;

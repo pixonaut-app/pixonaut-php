@@ -177,8 +177,8 @@ final class DesignsDesignerGetResponse implements Model
         $data['backgroundSeeThrough'] = $this->backgroundSeeThrough;
         $data['blankId'] = $this->blankId;
         $data['doc'] = $this->doc;
-        $data['fieldKeys'] = Encode::value($this->fieldKeys);
-        $data['formSchema'] = Encode::value($this->formSchema);
+        $data['fieldKeys'] = $this->fieldKeys;
+        $data['formSchema'] = Encode::model($this->formSchema);
         $data['language'] = $this->language;
         $data['offersProperties'] = $this->offersProperties;
         $data['pixel'] = $this->pixel;
@@ -186,29 +186,45 @@ final class DesignsDesignerGetResponse implements Model
         $data['poweredBy'] = $this->poweredBy;
         $data['previewUrl'] = $this->previewUrl;
         $data['printFloorDpi'] = $this->printFloorDpi;
-        $data['printMargins'] = Encode::value($this->printMargins);
+        $data['printMargins'] = Encode::model($this->printMargins);
         $data['revision'] = $this->revision;
-        $data['showcases'] = Encode::value($this->showcases);
+        $data['showcases'] = array_map(
+            static fn(DesignsDesignerGetResponseShowcasesItem $v): mixed => Encode::model($v),
+            $this->showcases,
+        );
         $data['status'] = $this->status;
-        $data['template'] = Encode::value($this->template);
+        $data['template'] = Encode::model($this->template);
         $data['workspaceLanguage'] = $this->workspaceLanguage;
         if ($this->colourNames !== null) {
-            $data['colourNames'] = Encode::map($this->colourNames);
+            $data['colourNames'] = Encode::object(
+                array_map(
+                    static fn(array $v): mixed => Encode::object($v),
+                    $this->colourNames,
+                ),
+            );
         }
         if ($this->dieShapeId !== null) {
             $data['dieShapeId'] = $this->dieShapeId;
         }
         if ($this->fieldTexts !== null) {
-            $data['fieldTexts'] = Encode::map($this->fieldTexts);
+            $data['fieldTexts'] = Encode::object(
+                array_map(
+                    static fn(array $v): mixed => array_map(
+                        static fn(DesignsDesignerGetResponseFieldTextsValueItemOption1|DesignsDesignerGetResponseFieldTextsValueItemOption2 $v): mixed => Encode::value($v),
+                        $v,
+                    ),
+                    $this->fieldTexts,
+                ),
+            );
         }
         if ($this->layerShapeIds !== null) {
-            $data['layerShapeIds'] = Encode::map($this->layerShapeIds);
+            $data['layerShapeIds'] = Encode::object($this->layerShapeIds);
         }
         if ($this->offeredShapes !== null) {
-            $data['offeredShapes'] = Encode::map($this->offeredShapes);
+            $data['offeredShapes'] = Encode::object($this->offeredShapes);
         }
         if ($this->optionLabels !== null) {
-            $data['optionLabels'] = Encode::map($this->optionLabels);
+            $data['optionLabels'] = Encode::object($this->optionLabels);
         }
         return $data;
     }

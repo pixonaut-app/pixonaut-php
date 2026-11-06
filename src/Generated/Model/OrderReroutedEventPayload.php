@@ -87,17 +87,17 @@ final class OrderReroutedEventPayload implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['from'] = Encode::value($this->from);
+        $data['from'] = Encode::model($this->from);
         $data['orderId'] = $this->orderId;
         $data['printId'] = $this->printId;
         $data['replacedOrderId'] = $this->replacedOrderId;
-        $data['to'] = Encode::value($this->to);
+        $data['to'] = Encode::model($this->to);
         $data['via'] = $this->via;
         if ($this->externalRef !== null) {
             $data['externalRef'] = $this->externalRef;
         }
         if ($this->printIds !== null) {
-            $data['printIds'] = Encode::value($this->printIds);
+            $data['printIds'] = $this->printIds;
         }
         return $data;
     }

@@ -40,10 +40,7 @@ final class PixelConversationGetResponseConversationMessagesItemAssistantContent
     {
         $model = new self(
             error_code: Decode::string(Decode::required($data, 'error_code', $path), $path . '.error_code'),
-            type: Decode::string(
-                Decode::constant(Decode::required($data, 'type', $path), 'tool_search_tool_result_error', $path . '.type'),
-                $path . '.type',
-            ),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;

@@ -115,7 +115,7 @@ final class TemplatesDesignerLinksCreateResponse implements Model
     {
         $data = [];
         $data['brandId'] = $this->brandId;
-        $data['designLimit'] = Encode::value($this->designLimit);
+        $data['designLimit'] = $this->designLimit === null ? null : Encode::model($this->designLimit);
         $data['expiresAt'] = $this->expiresAt;
         $data['id'] = $this->id;
         $data['locale'] = $this->locale;
@@ -125,7 +125,10 @@ final class TemplatesDesignerLinksCreateResponse implements Model
         $data['token'] = $this->token;
         $data['url'] = $this->url;
         if ($this->warnings !== null) {
-            $data['warnings'] = Encode::value($this->warnings);
+            $data['warnings'] = array_map(
+                static fn(TemplatesDesignerLinksCreateResponseWarningsItem $v): mixed => Encode::model($v),
+                $this->warnings,
+            );
         }
         return $data;
     }

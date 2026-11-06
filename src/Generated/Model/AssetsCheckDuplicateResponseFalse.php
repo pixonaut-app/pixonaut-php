@@ -34,10 +34,7 @@ final class AssetsCheckDuplicateResponseFalse implements Model
      */
     public static function fromArray(array $data, string $path = '$'): self
     {
-        $model = new self(exists: Decode::bool(
-            Decode::constant(Decode::required($data, 'exists', $path), false, $path . '.exists'),
-            $path . '.exists',
-        ));
+        $model = new self(exists: Decode::bool(Decode::required($data, 'exists', $path), $path . '.exists'));
         $model->decoded = $data;
         return $model;
     }

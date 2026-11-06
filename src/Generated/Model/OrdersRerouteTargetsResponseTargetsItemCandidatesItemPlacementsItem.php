@@ -70,7 +70,7 @@ final class OrdersRerouteTargetsResponseTargetsItemCandidatesItemPlacementsItem 
     {
         $data = [];
         $data['id'] = $this->id;
-        $data['largestMm'] = Encode::value($this->largestMm);
+        $data['largestMm'] = Encode::model($this->largestMm);
         $data['name'] = $this->name;
         $data['sameName'] = $this->sameName;
         return $data;

@@ -41,7 +41,7 @@ final class BlanksVariantsListResponseOptionsItemAppearancesValueImage implement
     {
         $model = new self(
             assetId: Decode::string(Decode::required($data, 'assetId', $path), $path . '.assetId'),
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'image', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             url: Decode::string(Decode::required($data, 'url', $path), $path . '.url'),
         );
         $model->decoded = $data;

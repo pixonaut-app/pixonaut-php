@@ -34,18 +34,22 @@ final class ResolvedTemplateLayersItemTextPropsOutlineColorValue
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsOutlineColorValueOption4 => ResolvedTemplateLayersItemTextPropsOutlineColorValueOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsOutlineColorValueOption1 => ResolvedTemplateLayersItemTextPropsOutlineColorValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsOutlineColorValueOption2 => ResolvedTemplateLayersItemTextPropsOutlineColorValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextPropsOutlineColorValueOption3 => ResolvedTemplateLayersItemTextPropsOutlineColorValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

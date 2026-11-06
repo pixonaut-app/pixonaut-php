@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -71,7 +70,7 @@ final class ResolvedTemplateGroupsItem implements Model
         $data = [];
         $data['id'] = $this->id;
         $data['label'] = $this->label;
-        $data['layerIds'] = Encode::value($this->layerIds);
+        $data['layerIds'] = $this->layerIds;
         $data['order'] = $this->order;
         return $data;
     }

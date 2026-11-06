@@ -34,26 +34,32 @@ final class ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDark
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption4 => ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption1 => ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption2 => ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption3 => ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption5 => ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption5::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption6 => ResolvedTemplateCustomerLayersShapeLayerPropsFillOnDarkOption6::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

@@ -33,15 +33,18 @@ final class ResolvedTemplateLayersItemImagePropsOutlineColorConstraints
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsOutlineColorConstraintsOption1 => ResolvedTemplateLayersItemImagePropsOutlineColorConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsOutlineColorConstraintsOption3 => ResolvedTemplateLayersItemImagePropsOutlineColorConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImagePropsOutlineColorConstraintsOption2 => ResolvedTemplateLayersItemImagePropsOutlineColorConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

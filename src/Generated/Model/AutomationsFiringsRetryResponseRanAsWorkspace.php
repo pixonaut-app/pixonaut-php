@@ -34,10 +34,7 @@ final class AutomationsFiringsRetryResponseRanAsWorkspace implements Model
      */
     public static function fromArray(array $data, string $path = '$'): self
     {
-        $model = new self(kind: Decode::string(
-            Decode::constant(Decode::required($data, 'kind', $path), 'workspace', $path . '.kind'),
-            $path . '.kind',
-        ));
+        $model = new self(kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'));
         $model->decoded = $data;
         return $model;
     }

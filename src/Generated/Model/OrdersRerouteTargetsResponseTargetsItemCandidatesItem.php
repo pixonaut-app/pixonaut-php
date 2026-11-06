@@ -65,7 +65,10 @@ final class OrdersRerouteTargetsResponseTargetsItemCandidatesItem implements Mod
     public function toArray(): array
     {
         $data = [];
-        $data['placements'] = Encode::value($this->placements);
+        $data['placements'] = array_map(
+            static fn(OrdersRerouteTargetsResponseTargetsItemCandidatesItemPlacementsItem $v): mixed => Encode::model($v),
+            $this->placements,
+        );
         $data['printId'] = $this->printId;
         return $data;
     }

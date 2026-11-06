@@ -32,10 +32,12 @@ final class DesignsUpdateRequest
                 [
                     static fn(mixed $v, string $p): DesignsUpdateRequestOption2 => DesignsUpdateRequestOption2::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): DesignsUpdateRequestOption1 => DesignsUpdateRequestOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

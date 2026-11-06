@@ -68,7 +68,10 @@ final class AutomationsPastEventsPreviewResponseTestRunConditions implements Mod
     {
         $data = [];
         $data['holds'] = $this->holds;
-        $data['leaves'] = Encode::value($this->leaves);
+        $data['leaves'] = array_map(
+            static fn(AutomationsPastEventsPreviewResponseTestRunConditionsLeavesItem $v): mixed => Encode::model($v),
+            $this->leaves,
+        );
         return $data;
     }
 }

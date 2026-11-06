@@ -90,13 +90,13 @@ final class TemplatesListResponseOption1ItemsItem implements Model
         $data = [];
         $data['backgroundSeeThrough'] = $this->backgroundSeeThrough;
         $data['baseId'] = $this->baseId;
-        $data['fieldKeys'] = Encode::value($this->fieldKeys);
+        $data['fieldKeys'] = $this->fieldKeys;
         $data['id'] = $this->id;
         $data['latestVersion'] = $this->latestVersion;
         $data['name'] = $this->name;
         $data['offersProperties'] = $this->offersProperties;
         $data['previewUrl'] = $this->previewUrl;
-        $data['ratio'] = Encode::value($this->ratio);
+        $data['ratio'] = Encode::model($this->ratio);
         $data['ratioTolerance'] = $this->ratioTolerance;
         return $data;
     }

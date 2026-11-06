@@ -72,10 +72,13 @@ final class PrintsListResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['counts'] = Encode::value($this->counts);
+        $data['counts'] = Encode::model($this->counts);
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;
-        $data['prints'] = Encode::value($this->prints);
+        $data['prints'] = array_map(
+            static fn(PrintsListResponsePrintsItem $v): mixed => Encode::model($v),
+            $this->prints,
+        );
         $data['total'] = $this->total;
         return $data;
     }

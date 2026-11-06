@@ -33,11 +33,13 @@ final class OrdersGetResponseDeliveryChangeRefusal
             [
                 [
                     static fn(mixed $v, string $p): OrdersGetResponseDeliveryChangeRefusalOrderPastAddressChange => OrdersGetResponseDeliveryChangeRefusalOrderPastAddressChange::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['code' => 'order_past_address_change'],
                 ],
                 [
                     static fn(mixed $v, string $p): OrdersGetResponseDeliveryChangeRefusalAddressChangeNotAccepted => OrdersGetResponseDeliveryChangeRefusalAddressChangeNotAccepted::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['code' => 'address_change_not_accepted'],
                 ],
             ],
         );

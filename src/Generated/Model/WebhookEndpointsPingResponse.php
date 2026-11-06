@@ -31,11 +31,13 @@ final class WebhookEndpointsPingResponse
             [
                 [
                     static fn(mixed $v, string $p): WebhookEndpointsPingResponseFalse => WebhookEndpointsPingResponseFalse::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['delivered' => false],
                 ],
                 [
                     static fn(mixed $v, string $p): WebhookEndpointsPingResponseTrue => WebhookEndpointsPingResponseTrue::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['delivered' => true],
                 ],
             ],
         );

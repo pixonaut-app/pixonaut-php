@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -67,7 +66,7 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItemAsksOfDesigns 
     public function toArray(): array
     {
         $data = [];
-        $data['commitKeys'] = Encode::value($this->commitKeys);
+        $data['commitKeys'] = $this->commitKeys;
         $data['needsBlank'] = $this->needsBlank;
         return $data;
     }

@@ -69,8 +69,8 @@ final class DesignsDeliveryGetResponseDelivery implements Model
     {
         $data = [];
         $data['capturedAt'] = $this->capturedAt;
-        $data['recipient'] = Encode::value($this->recipient);
-        $data['shippingAddress'] = Encode::value($this->shippingAddress);
+        $data['recipient'] = Encode::model($this->recipient);
+        $data['shippingAddress'] = Encode::model($this->shippingAddress);
         return $data;
     }
 }

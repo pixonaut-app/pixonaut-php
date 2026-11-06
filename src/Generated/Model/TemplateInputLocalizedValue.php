@@ -71,10 +71,20 @@ final class TemplateInputLocalizedValue implements Model
     {
         $data = [];
         if ($this->groups !== null) {
-            $data['groups'] = Encode::map($this->groups);
+            $data['groups'] = Encode::object(
+                array_map(
+                    static fn(TemplateInputLocalizedValueGroupsValue $v): mixed => Encode::model($v),
+                    $this->groups,
+                ),
+            );
         }
         if ($this->layers !== null) {
-            $data['layers'] = Encode::map($this->layers);
+            $data['layers'] = Encode::object(
+                array_map(
+                    static fn(TemplateInputLocalizedValueLayersValue $v): mixed => Encode::model($v),
+                    $this->layers,
+                ),
+            );
         }
         return $data;
     }

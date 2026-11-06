@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -75,7 +74,7 @@ final class TemplateInputShapeConstraints implements Model
             $data['allowEmpty'] = $this->allowEmpty;
         }
         if ($this->oneOf !== null) {
-            $data['oneOf'] = Encode::value($this->oneOf);
+            $data['oneOf'] = $this->oneOf;
         }
         if ($this->requireChange !== null) {
             $data['requireChange'] = $this->requireChange;

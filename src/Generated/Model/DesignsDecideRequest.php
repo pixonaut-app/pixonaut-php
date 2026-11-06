@@ -31,11 +31,13 @@ final class DesignsDecideRequest
             [
                 [
                     static fn(mixed $v, string $p): DesignsDecideRequestApprove => DesignsDecideRequestApprove::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['action' => 'approve'],
                 ],
                 [
                     static fn(mixed $v, string $p): DesignsDecideRequestReject => DesignsDecideRequestReject::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['action' => 'reject'],
                 ],
             ],
         );

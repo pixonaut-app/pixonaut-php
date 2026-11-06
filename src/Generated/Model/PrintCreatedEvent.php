@@ -74,10 +74,10 @@ final class PrintCreatedEvent implements Model
         $data = [];
         $data['createdAt'] = $this->createdAt;
         $data['id'] = $this->id;
-        $data['payload'] = Encode::value($this->payload);
+        $data['payload'] = Encode::model($this->payload);
         $data['type'] = $this->type;
         if ($this->automation !== null) {
-            $data['automation'] = Encode::value($this->automation);
+            $data['automation'] = Encode::model($this->automation);
         }
         if ($this->via !== null) {
             $data['via'] = $this->via;

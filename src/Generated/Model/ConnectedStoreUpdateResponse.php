@@ -141,26 +141,29 @@ final class ConnectedStoreUpdateResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['allowedOrigins'] = Encode::value($this->allowedOrigins);
+        $data['allowedOrigins'] = $this->allowedOrigins;
         $data['assetTtlHours'] = $this->assetTtlHours;
         $data['brandId'] = $this->brandId;
-        $data['branding'] = Encode::value($this->branding);
-        $data['brands'] = Encode::value($this->brands);
+        $data['branding'] = Encode::model($this->branding);
+        $data['brands'] = array_map(
+            static fn(ConnectedStoreUpdateResponseBrandsItem $v): mixed => Encode::model($v),
+            $this->brands,
+        );
         $data['connectionId'] = $this->connectionId;
         $data['defaultLanguage'] = $this->defaultLanguage;
-        $data['deliverOrdersTo'] = Encode::value($this->deliverOrdersTo);
+        $data['deliverOrdersTo'] = $this->deliverOrdersTo === null ? null : Encode::model($this->deliverOrdersTo);
         $data['environment'] = $this->environment;
         $data['name'] = $this->name;
         $data['printFileForm'] = $this->printFileForm;
-        $data['printFileTextTolerance'] = Encode::value($this->printFileTextTolerance);
-        $data['printing'] = Encode::value($this->printing);
+        $data['printFileTextTolerance'] = $this->printFileTextTolerance === null ? null : Encode::value($this->printFileTextTolerance);
+        $data['printing'] = Encode::model($this->printing);
         $data['proofWatermark'] = $this->proofWatermark;
         $data['reachable'] = $this->reachable;
         $data['siteUrl'] = $this->siteUrl;
         $data['tenantId'] = $this->tenantId;
         $data['tenantName'] = $this->tenantName;
         $data['tenantSlug'] = $this->tenantSlug;
-        $data['webhook'] = Encode::value($this->webhook);
+        $data['webhook'] = Encode::model($this->webhook);
         $data['webhookEndpointId'] = $this->webhookEndpointId;
         return $data;
     }

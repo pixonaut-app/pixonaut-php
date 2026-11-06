@@ -85,14 +85,17 @@ final class BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses implemen
     {
         $data = [];
         $data['multiplyAssetId'] = $this->multiplyAssetId;
-        $data['pieces'] = Encode::value($this->pieces);
+        $data['pieces'] = $this->pieces;
         $data['screenAssetId'] = $this->screenAssetId;
         $data['uvAssetId'] = $this->uvAssetId;
         if ($this->occluderAssetId !== null) {
             $data['occluderAssetId'] = $this->occluderAssetId;
         }
         if ($this->pieceSizesMm !== null) {
-            $data['pieceSizesMm'] = Encode::value($this->pieceSizesMm);
+            $data['pieceSizesMm'] = array_map(
+                static fn(BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesPieceSizesMmItem $v): mixed => Encode::model($v),
+                $this->pieceSizesMm,
+            );
         }
         return $data;
     }

@@ -44,10 +44,7 @@ final class OrdersRerouteTargetsResponseTargetsItemMisfitsItemPrintShortOfArea i
     {
         $model = new self(
             areaMm: OrdersRerouteTargetsResponseTargetsItemMisfitsItemPrintShortOfAreaAreaMm::fromArray(Decode::object(Decode::required($data, 'areaMm', $path), $path . '.areaMm'), $path . '.areaMm'),
-            kind: Decode::string(
-                Decode::constant(Decode::required($data, 'kind', $path), 'print_short_of_area', $path . '.kind'),
-                $path . '.kind',
-            ),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             placement: Decode::string(Decode::required($data, 'placement', $path), $path . '.placement'),
             printId: Decode::string(Decode::required($data, 'printId', $path), $path . '.printId'),
             printMm: OrdersRerouteTargetsResponseTargetsItemMisfitsItemPrintShortOfAreaPrintMm::fromArray(Decode::object(Decode::required($data, 'printMm', $path), $path . '.printMm'), $path . '.printMm'),
@@ -70,11 +67,11 @@ final class OrdersRerouteTargetsResponseTargetsItemMisfitsItemPrintShortOfArea i
     public function toArray(): array
     {
         $data = [];
-        $data['areaMm'] = Encode::value($this->areaMm);
+        $data['areaMm'] = Encode::model($this->areaMm);
         $data['kind'] = $this->kind;
         $data['placement'] = $this->placement;
         $data['printId'] = $this->printId;
-        $data['printMm'] = Encode::value($this->printMm);
+        $data['printMm'] = Encode::model($this->printMm);
         return $data;
     }
 }

@@ -98,16 +98,16 @@ final class ProofsCreateThroughLayoutRequest implements Model
             $data['garmentVariant'] = $this->garmentVariant;
         }
         if (!$this->repeat instanceof Omitted) {
-            $data['repeat'] = Encode::value($this->repeat);
+            $data['repeat'] = $this->repeat === null ? null : Encode::model($this->repeat);
         }
         if ($this->values !== null) {
-            $data['values'] = Encode::map($this->values);
+            $data['values'] = Encode::object($this->values);
         }
         if ($this->variant !== null) {
             $data['variant'] = $this->variant;
         }
         if ($this->variantRow !== null) {
-            $data['variantRow'] = Encode::map($this->variantRow);
+            $data['variantRow'] = Encode::object($this->variantRow);
         }
         if ($this->viewId !== null) {
             $data['viewId'] = $this->viewId;

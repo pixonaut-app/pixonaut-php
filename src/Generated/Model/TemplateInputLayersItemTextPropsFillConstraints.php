@@ -33,15 +33,18 @@ final class TemplateInputLayersItemTextPropsFillConstraints
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillConstraintsOption1 => TemplateInputLayersItemTextPropsFillConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillConstraintsOption3 => TemplateInputLayersItemTextPropsFillConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextPropsFillConstraintsOption2 => TemplateInputLayersItemTextPropsFillConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

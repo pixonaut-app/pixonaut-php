@@ -77,7 +77,7 @@ final class OrdersUpdateRequest implements Model
             $data['reason'] = $this->reason;
         }
         if ($this->tracking !== null) {
-            $data['tracking'] = Encode::value($this->tracking);
+            $data['tracking'] = Encode::model($this->tracking);
         }
         return $data;
     }

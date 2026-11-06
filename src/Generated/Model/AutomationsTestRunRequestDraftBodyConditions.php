@@ -33,27 +33,33 @@ final class AutomationsTestRunRequestDraftBodyConditions
             [
                 [
                     static fn(mixed $v, string $p): AutomationsTestRunRequestDraftBodyConditionsDeliveryAddress => AutomationsTestRunRequestDraftBodyConditionsDeliveryAddress::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['field' => 'delivery_address'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsTestRunRequestDraftBodyConditionsQuantity => AutomationsTestRunRequestDraftBodyConditionsQuantity::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['field' => 'quantity'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsTestRunRequestDraftBodyConditionsOption4 => AutomationsTestRunRequestDraftBodyConditionsOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsTestRunRequestDraftBodyConditionsOption1 => AutomationsTestRunRequestDraftBodyConditionsOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsTestRunRequestDraftBodyConditionsOption2 => AutomationsTestRunRequestDraftBodyConditionsOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsTestRunRequestDraftBodyConditionsOption3 => AutomationsTestRunRequestDraftBodyConditionsOption3::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

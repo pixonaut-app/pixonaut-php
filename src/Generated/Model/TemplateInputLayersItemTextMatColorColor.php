@@ -34,22 +34,27 @@ final class TemplateInputLayersItemTextMatColorColor
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextMatColorColorOption5 => TemplateInputLayersItemTextMatColorColorOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextMatColorColorOption1 => TemplateInputLayersItemTextMatColorColorOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextMatColorColorOption2 => TemplateInputLayersItemTextMatColorColorOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextMatColorColorOption3 => TemplateInputLayersItemTextMatColorColorOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemTextMatColorColorOption4 => TemplateInputLayersItemTextMatColorColorOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

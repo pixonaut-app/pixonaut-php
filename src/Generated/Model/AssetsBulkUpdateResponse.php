@@ -63,7 +63,10 @@ final class AssetsBulkUpdateResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['results'] = Encode::value($this->results);
+        $data['results'] = array_map(
+            static fn(AssetsBulkUpdateResponseResultsItemOption3|AssetsBulkUpdateResponseResultsItemOption2|AssetsBulkUpdateResponseResultsItemOption1 $v): mixed => Encode::value($v),
+            $this->results,
+        );
         return $data;
     }
 }

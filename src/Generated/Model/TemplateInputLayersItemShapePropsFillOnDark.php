@@ -34,30 +34,37 @@ final class TemplateInputLayersItemShapePropsFillOnDark
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption5 => TemplateInputLayersItemShapePropsFillOnDarkOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption1 => TemplateInputLayersItemShapePropsFillOnDarkOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption2 => TemplateInputLayersItemShapePropsFillOnDarkOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption3 => TemplateInputLayersItemShapePropsFillOnDarkOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption4 => TemplateInputLayersItemShapePropsFillOnDarkOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption6 => TemplateInputLayersItemShapePropsFillOnDarkOption6::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemShapePropsFillOnDarkOption7 => TemplateInputLayersItemShapePropsFillOnDarkOption7::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

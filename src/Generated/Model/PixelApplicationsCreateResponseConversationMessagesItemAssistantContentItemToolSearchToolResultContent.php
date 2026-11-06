@@ -31,11 +31,13 @@ final class PixelApplicationsCreateResponseConversationMessagesItemAssistantCont
             [
                 [
                     static fn(mixed $v, string $p): PixelApplicationsCreateResponseConversationMessagesItemAssistantContentItemToolSearchToolResultContentToolSearchToolSearchResult => PixelApplicationsCreateResponseConversationMessagesItemAssistantContentItemToolSearchToolResultContentToolSearchToolSearchResult::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'tool_search_tool_search_result'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelApplicationsCreateResponseConversationMessagesItemAssistantContentItemToolSearchToolResultContentToolSearchToolResultError => PixelApplicationsCreateResponseConversationMessagesItemAssistantContentItemToolSearchToolResultContentToolSearchToolResultError::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'tool_search_tool_result_error'],
                 ],
             ],
         );

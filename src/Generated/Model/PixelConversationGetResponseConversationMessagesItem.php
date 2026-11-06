@@ -31,11 +31,13 @@ final class PixelConversationGetResponseConversationMessagesItem
             [
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUser => PixelConversationGetResponseConversationMessagesItemUser::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['role' => 'user'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemAssistant => PixelConversationGetResponseConversationMessagesItemAssistant::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['role' => 'assistant'],
                 ],
             ],
         );

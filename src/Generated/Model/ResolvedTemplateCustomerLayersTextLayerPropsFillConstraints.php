@@ -33,15 +33,18 @@ final class ResolvedTemplateCustomerLayersTextLayerPropsFillConstraints
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsFillConstraintsOption1 => ResolvedTemplateCustomerLayersTextLayerPropsFillConstraintsOption1::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsFillConstraintsOption3 => ResolvedTemplateCustomerLayersTextLayerPropsFillConstraintsOption3::fromArray(Decode::object($v, $p), $p),
-                    1000,
+                    1001,
+                    ['anyColor' => true],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsFillConstraintsOption2 => ResolvedTemplateCustomerLayersTextLayerPropsFillConstraintsOption2::fromArray(Decode::object($v, $p), $p),
                     0,
+                    [],
                 ],
             ],
         );

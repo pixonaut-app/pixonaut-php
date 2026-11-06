@@ -91,11 +91,11 @@ final class PrintsGetResponseJobTicketArtifact implements Model
         $data['format'] = $this->format;
         $data['iccProfile'] = $this->iccProfile;
         $data['includesBleed'] = $this->includesBleed;
-        $data['spotColors'] = Encode::value($this->spotColors);
+        $data['spotColors'] = $this->spotColors;
         $data['spotOutput'] = $this->spotOutput;
         $data['trimMarks'] = $this->trimMarks;
         if ($this->cut !== null) {
-            $data['cut'] = Encode::value($this->cut);
+            $data['cut'] = Encode::model($this->cut);
         }
         return $data;
     }

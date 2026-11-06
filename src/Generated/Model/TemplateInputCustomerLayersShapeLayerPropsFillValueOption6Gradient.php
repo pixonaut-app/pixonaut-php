@@ -33,11 +33,13 @@ final class TemplateInputCustomerLayersShapeLayerPropsFillValueOption6Gradient
             [
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillValueOption6GradientLinear => TemplateInputCustomerLayersShapeLayerPropsFillValueOption6GradientLinear::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'linear'],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersShapeLayerPropsFillValueOption6GradientRadial => TemplateInputCustomerLayersShapeLayerPropsFillValueOption6GradientRadial::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'radial'],
                 ],
             ],
         );

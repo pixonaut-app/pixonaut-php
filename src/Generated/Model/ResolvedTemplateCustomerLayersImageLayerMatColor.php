@@ -42,7 +42,7 @@ final class ResolvedTemplateCustomerLayersImageLayerMatColor implements Model
     {
         $model = new self(
             color: ResolvedTemplateCustomerLayersImageLayerMatColorColor::decode(Decode::required($data, 'color', $path), $path . '.color'),
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'color', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
         );
         $model->decoded = $data;
         return $model;

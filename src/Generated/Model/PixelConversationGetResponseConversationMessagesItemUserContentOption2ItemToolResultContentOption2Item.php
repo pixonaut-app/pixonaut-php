@@ -31,11 +31,13 @@ final class PixelConversationGetResponseConversationMessagesItemUserContentOptio
             [
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemText => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemText::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'text'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPicture => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPicture::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'picture'],
                 ],
             ],
         );

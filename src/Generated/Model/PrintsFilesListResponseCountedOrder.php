@@ -38,7 +38,7 @@ final class PrintsFilesListResponseCountedOrder implements Model
     {
         $model = new self(
             at: Decode::float(Decode::required($data, 'at', $path), $path . '.at'),
-            kind: Decode::string(Decode::constant(Decode::required($data, 'kind', $path), 'order', $path . '.kind'), $path . '.kind'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             orderId: Decode::string(Decode::required($data, 'orderId', $path), $path . '.orderId'),
         );
         $model->decoded = $data;

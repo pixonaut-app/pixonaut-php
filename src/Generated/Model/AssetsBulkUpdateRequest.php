@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -67,7 +66,7 @@ final class AssetsBulkUpdateRequest implements Model
     {
         $data = [];
         $data['action'] = $this->action;
-        $data['ids'] = Encode::value($this->ids);
+        $data['ids'] = $this->ids;
         return $data;
     }
 }

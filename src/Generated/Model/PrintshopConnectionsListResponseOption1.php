@@ -77,9 +77,15 @@ final class PrintshopConnectionsListResponseOption1 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['adapters'] = Encode::value($this->adapters);
-        $data['available'] = Encode::value($this->available);
-        $data['connections'] = Encode::value($this->connections);
+        $data['adapters'] = array_map(
+            static fn(PrintshopConnectionsListResponseOption1AdaptersItem $v): mixed => Encode::model($v),
+            $this->adapters,
+        );
+        $data['available'] = $this->available;
+        $data['connections'] = array_map(
+            static fn(PrintshopConnectionsListResponseOption1ConnectionsItem $v): mixed => Encode::model($v),
+            $this->connections,
+        );
         return $data;
     }
 }

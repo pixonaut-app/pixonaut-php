@@ -68,7 +68,10 @@ final class AssetsRoundShapesGetResponse implements Model
     {
         $data = [];
         $data['heightPx'] = $this->heightPx;
-        $data['shapes'] = Encode::value($this->shapes);
+        $data['shapes'] = array_map(
+            static fn(AssetsRoundShapesGetResponseShapesItem $v): mixed => Encode::model($v),
+            $this->shapes,
+        );
         $data['widthPx'] = $this->widthPx;
         return $data;
     }

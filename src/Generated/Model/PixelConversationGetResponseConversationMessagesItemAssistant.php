@@ -45,10 +45,7 @@ final class PixelConversationGetResponseConversationMessagesItemAssistant implem
                 $path . '.content',
                 static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemAssistantContentItemToolUse|PixelConversationGetResponseConversationMessagesItemAssistantContentItemServerToolUse|PixelConversationGetResponseConversationMessagesItemAssistantContentItemToolSearchToolResult|PixelConversationGetResponseConversationMessagesItemAssistantContentItemText => PixelConversationGetResponseConversationMessagesItemAssistantContentItem::decode($v, $p),
             ),
-            role: Decode::string(
-                Decode::constant(Decode::required($data, 'role', $path), 'assistant', $path . '.role'),
-                $path . '.role',
-            ),
+            role: Decode::string(Decode::required($data, 'role', $path), $path . '.role'),
         );
         $model->decoded = $data;
         return $model;
@@ -68,7 +65,10 @@ final class PixelConversationGetResponseConversationMessagesItemAssistant implem
     public function toArray(): array
     {
         $data = [];
-        $data['content'] = Encode::value($this->content);
+        $data['content'] = array_map(
+            static fn(PixelConversationGetResponseConversationMessagesItemAssistantContentItemToolUse|PixelConversationGetResponseConversationMessagesItemAssistantContentItemServerToolUse|PixelConversationGetResponseConversationMessagesItemAssistantContentItemToolSearchToolResult|PixelConversationGetResponseConversationMessagesItemAssistantContentItemText $v): mixed => Encode::value($v),
+            $this->content,
+        );
         $data['role'] = $this->role;
         return $data;
     }

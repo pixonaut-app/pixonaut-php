@@ -72,7 +72,10 @@ final class OrdersRetryRequestReroute implements Model
     {
         $data = [];
         $data['blankId'] = $this->blankId;
-        $data['placements'] = Encode::value($this->placements);
+        $data['placements'] = array_map(
+            static fn(OrdersRetryRequestReroutePlacementsItem $v): mixed => Encode::model($v),
+            $this->placements,
+        );
         if ($this->variant !== null) {
             $data['variant'] = $this->variant;
         }

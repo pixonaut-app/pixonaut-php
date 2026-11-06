@@ -72,8 +72,11 @@ final class OrdersListResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['counts'] = Encode::value($this->counts);
-        $data['orders'] = Encode::value($this->orders);
+        $data['counts'] = Encode::model($this->counts);
+        $data['orders'] = array_map(
+            static fn(OrdersListResponseOrdersItem $v): mixed => Encode::model($v),
+            $this->orders,
+        );
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;
         $data['total'] = $this->total;

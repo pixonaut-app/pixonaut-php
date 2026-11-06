@@ -87,11 +87,25 @@ final class PixelDesignerResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['changed'] = Encode::value($this->changed);
-        $data['cutOuts'] = Encode::value($this->cutOuts);
-        $data['layers'] = Encode::value($this->layers);
+        $data['changed'] = array_map(
+            static fn(PixelDesignerResponseChangedItem $v): mixed => Encode::model($v),
+            $this->changed,
+        );
+        $data['cutOuts'] = array_map(
+            static fn(PixelDesignerResponseCutOutsItem $v): mixed => Encode::model($v),
+            $this->cutOuts,
+        );
+        $data['layers'] = array_map(
+            static fn(PixelDesignerResponseLayersItem $v): mixed => Encode::model($v),
+            $this->layers,
+        );
         $data['reply'] = $this->reply;
-        $data['values'] = Encode::map($this->values);
+        $data['values'] = Encode::object(
+            array_map(
+                static fn(array $v): mixed => Encode::value($v, true),
+                $this->values,
+            ),
+        );
         return $data;
     }
 }

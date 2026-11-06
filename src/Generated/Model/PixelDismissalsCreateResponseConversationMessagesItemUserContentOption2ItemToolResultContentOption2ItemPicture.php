@@ -41,10 +41,7 @@ final class PixelDismissalsCreateResponseConversationMessagesItemUserContentOpti
     {
         $model = new self(
             of: PixelDismissalsCreateResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOf::decode(Decode::required($data, 'of', $path), $path . '.of'),
-            type: Decode::string(
-                Decode::constant(Decode::required($data, 'type', $path), 'picture', $path . '.type'),
-                $path . '.type',
-            ),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;

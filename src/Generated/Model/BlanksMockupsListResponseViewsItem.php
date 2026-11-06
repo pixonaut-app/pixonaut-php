@@ -101,9 +101,15 @@ final class BlanksMockupsListResponseViewsItem implements Model
         $data = [];
         $data['id'] = $this->id;
         $data['label'] = $this->label;
-        $data['photoSizePx'] = Encode::value($this->photoSizePx);
-        $data['photos'] = Encode::value($this->photos);
-        $data['regions'] = Encode::value($this->regions);
+        $data['photoSizePx'] = $this->photoSizePx === null ? null : Encode::model($this->photoSizePx);
+        $data['photos'] = array_map(
+            static fn(BlanksMockupsListResponseViewsItemPhotosItem $v): mixed => Encode::model($v),
+            $this->photos,
+        );
+        $data['regions'] = array_map(
+            static fn(BlanksMockupsListResponseViewsItemRegionsItem $v): mixed => Encode::model($v),
+            $this->regions,
+        );
         if ($this->sceneId !== null) {
             $data['sceneId'] = $this->sceneId;
         }
@@ -114,10 +120,10 @@ final class BlanksMockupsListResponseViewsItem implements Model
             $data['takesDye'] = $this->takesDye;
         }
         if ($this->uvPassUrls !== null) {
-            $data['uvPassUrls'] = Encode::value($this->uvPassUrls);
+            $data['uvPassUrls'] = Encode::model($this->uvPassUrls);
         }
         if ($this->zoomTier !== null) {
-            $data['zoomTier'] = Encode::value($this->zoomTier);
+            $data['zoomTier'] = Encode::model($this->zoomTier);
         }
         return $data;
     }

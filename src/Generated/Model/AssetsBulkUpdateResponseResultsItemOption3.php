@@ -44,7 +44,7 @@ final class AssetsBulkUpdateResponseResultsItemOption3 implements Model
         $model = new self(
             error: Decode::string(Decode::required($data, 'error', $path), $path . '.error'),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
-            ok: Decode::bool(Decode::constant(Decode::required($data, 'ok', $path), false, $path . '.ok'), $path . '.ok'),
+            ok: Decode::bool(Decode::required($data, 'ok', $path), $path . '.ok'),
             referencedBy: Decode::list(
                 Decode::required($data, 'referencedBy', $path),
                 $path . '.referencedBy',
@@ -72,7 +72,10 @@ final class AssetsBulkUpdateResponseResultsItemOption3 implements Model
         $data['error'] = $this->error;
         $data['id'] = $this->id;
         $data['ok'] = $this->ok;
-        $data['referencedBy'] = Encode::value($this->referencedBy);
+        $data['referencedBy'] = array_map(
+            static fn(AssetsBulkUpdateResponseResultsItemOption3ReferencedByItem $v): mixed => Encode::model($v),
+            $this->referencedBy,
+        );
         return $data;
     }
 }

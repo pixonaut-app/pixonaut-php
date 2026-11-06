@@ -31,19 +31,23 @@ final class PixelApplicationsCreateResponseConversationMessagesItemUserContentOp
             [
                 [
                     static fn(mixed $v, string $p): PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemToolResult => PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemToolResult::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['type' => 'tool_result'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemText => PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemText::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'text'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemAttachment => PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemAttachment::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'attachment'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemUpload => PixelApplicationsCreateResponseConversationMessagesItemUserContentOption2ItemUpload::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'upload'],
                 ],
             ],
         );

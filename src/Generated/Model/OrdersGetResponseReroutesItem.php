@@ -75,10 +75,10 @@ final class OrdersGetResponseReroutesItem implements Model
     {
         $data = [];
         $data['at'] = $this->at;
-        $data['from'] = Encode::value($this->from);
+        $data['from'] = Encode::model($this->from);
         $data['otherOrderId'] = $this->otherOrderId;
         $data['side'] = $this->side;
-        $data['to'] = Encode::value($this->to);
+        $data['to'] = Encode::model($this->to);
         $data['via'] = $this->via;
         return $data;
     }

@@ -71,7 +71,7 @@ final class AutomationsPastEventsPreviewResponse implements Model
         $data = [];
         $data['events'] = $this->events;
         $data['spends'] = $this->spends;
-        $data['testRun'] = Encode::value($this->testRun);
+        $data['testRun'] = $this->testRun === null ? null : Encode::model($this->testRun);
         return $data;
     }
 }

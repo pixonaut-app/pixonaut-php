@@ -108,7 +108,7 @@ final class PrintsOrdersCreateRequest implements Model
             $data['quantity'] = $this->quantity;
         }
         if ($this->recipient !== null) {
-            $data['recipient'] = Encode::value($this->recipient);
+            $data['recipient'] = Encode::model($this->recipient);
         }
         if ($this->reorder !== null) {
             $data['reorder'] = $this->reorder;
@@ -120,7 +120,7 @@ final class PrintsOrdersCreateRequest implements Model
             $data['shipToAddressId'] = $this->shipToAddressId;
         }
         if ($this->shippingAddress !== null) {
-            $data['shippingAddress'] = Encode::value($this->shippingAddress);
+            $data['shippingAddress'] = Encode::model($this->shippingAddress);
         }
         if ($this->variant !== null) {
             $data['variant'] = $this->variant;

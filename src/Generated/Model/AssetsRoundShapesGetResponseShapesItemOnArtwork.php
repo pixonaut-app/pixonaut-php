@@ -74,10 +74,10 @@ final class AssetsRoundShapesGetResponseShapesItemOnArtwork implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['box'] = Encode::value($this->box);
-        $data['center'] = Encode::value($this->center);
-        $data['innerRadius'] = Encode::value($this->innerRadius);
-        $data['radius'] = Encode::value($this->radius);
+        $data['box'] = Encode::model($this->box);
+        $data['center'] = Encode::model($this->center);
+        $data['innerRadius'] = $this->innerRadius === null ? null : Encode::model($this->innerRadius);
+        $data['radius'] = Encode::model($this->radius);
         return $data;
     }
 }

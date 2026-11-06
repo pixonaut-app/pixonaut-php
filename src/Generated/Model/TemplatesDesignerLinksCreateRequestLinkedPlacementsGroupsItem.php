@@ -32,6 +32,7 @@ final class TemplatesDesignerLinksCreateRequestLinkedPlacementsGroupsItem
                 [
                     static fn(mixed $v, string $p): TemplatesDesignerLinksCreateRequestLinkedPlacementsGroupsItemOption2 => TemplatesDesignerLinksCreateRequestLinkedPlacementsGroupsItemOption2::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): array => Decode::list(
@@ -40,6 +41,7 @@ final class TemplatesDesignerLinksCreateRequestLinkedPlacementsGroupsItem
                         static fn(mixed $v, string $p): TemplatesDesignerLinksCreateRequestLinkedPlacementsGroupsItemOption1Item => TemplatesDesignerLinksCreateRequestLinkedPlacementsGroupsItemOption1Item::fromArray(Decode::object($v, $p), $p),
                     ),
                     0,
+                    [],
                 ],
             ],
         );

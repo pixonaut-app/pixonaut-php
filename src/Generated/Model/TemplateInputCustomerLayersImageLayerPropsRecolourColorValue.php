@@ -34,22 +34,27 @@ final class TemplateInputCustomerLayersImageLayerPropsRecolourColorValue
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsRecolourColorValueOption5 => TemplateInputCustomerLayersImageLayerPropsRecolourColorValueOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsRecolourColorValueOption1 => TemplateInputCustomerLayersImageLayerPropsRecolourColorValueOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsRecolourColorValueOption2 => TemplateInputCustomerLayersImageLayerPropsRecolourColorValueOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsRecolourColorValueOption3 => TemplateInputCustomerLayersImageLayerPropsRecolourColorValueOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputCustomerLayersImageLayerPropsRecolourColorValueOption4 => TemplateInputCustomerLayersImageLayerPropsRecolourColorValueOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

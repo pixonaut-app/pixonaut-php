@@ -73,7 +73,7 @@ final class BlanksGetResponseSharedViewPhoto implements Model
         $data = [];
         $data['assetId'] = $this->assetId;
         $data['mockupId'] = $this->mockupId;
-        $data['photoSizePx'] = Encode::value($this->photoSizePx);
+        $data['photoSizePx'] = $this->photoSizePx === null ? null : Encode::model($this->photoSizePx);
         $data['viewId'] = $this->viewId;
         return $data;
     }

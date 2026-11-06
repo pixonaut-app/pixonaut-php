@@ -33,11 +33,13 @@ final class AutomationsVersionsResponseVersionsItemSavedBy
             [
                 [
                     static fn(mixed $v, string $p): AutomationsVersionsResponseVersionsItemSavedByMember => AutomationsVersionsResponseVersionsItemSavedByMember::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
+                    ['kind' => 'member'],
                 ],
                 [
                     static fn(mixed $v, string $p): AutomationsVersionsResponseVersionsItemSavedByKey => AutomationsVersionsResponseVersionsItemSavedByKey::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['kind' => 'key'],
                 ],
             ],
         );

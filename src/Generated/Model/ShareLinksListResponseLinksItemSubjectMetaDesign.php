@@ -37,7 +37,7 @@ final class ShareLinksListResponseLinksItemSubjectMetaDesign implements Model
     {
         $model = new self(
             status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
-            type: Decode::string(Decode::constant(Decode::required($data, 'type', $path), 'design', $path . '.type'), $path . '.type'),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;

@@ -83,13 +83,13 @@ final class OrderCancelledEventPayload implements Model
         $data['orderId'] = $this->orderId;
         $data['printId'] = $this->printId;
         if ($this->automation !== null) {
-            $data['automation'] = Encode::value($this->automation);
+            $data['automation'] = Encode::model($this->automation);
         }
         if ($this->externalRef !== null) {
             $data['externalRef'] = $this->externalRef;
         }
         if ($this->printIds !== null) {
-            $data['printIds'] = Encode::value($this->printIds);
+            $data['printIds'] = $this->printIds;
         }
         if ($this->via !== null) {
             $data['via'] = $this->via;

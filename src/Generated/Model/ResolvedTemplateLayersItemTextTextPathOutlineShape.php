@@ -31,11 +31,13 @@ final class ResolvedTemplateLayersItemTextTextPathOutlineShape
             [
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextTextPathOutlineShapePath => ResolvedTemplateLayersItemTextTextPathOutlineShapePath::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'path'],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemTextTextPathOutlineShapeShape => ResolvedTemplateLayersItemTextTextPathOutlineShapeShape::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
+                    ['type' => 'shape'],
                 ],
             ],
         );

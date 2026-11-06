@@ -53,7 +53,7 @@ final class DesignsRevisionsGetResponseChoicesItemImage implements Model
             label: Decode::string(Decode::required($data, 'label', $path), $path . '.label'),
             layerId: Decode::string(Decode::required($data, 'layerId', $path), $path . '.layerId'),
             prop: Decode::string(Decode::required($data, 'prop', $path), $path . '.prop'),
-            type: Decode::string(Decode::constant(Decode::required($data, 'type', $path), 'image', $path . '.type'), $path . '.type'),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;

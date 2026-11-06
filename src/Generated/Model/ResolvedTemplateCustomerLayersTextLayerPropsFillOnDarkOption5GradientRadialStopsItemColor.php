@@ -34,18 +34,22 @@ final class ResolvedTemplateCustomerLayersTextLayerPropsFillOnDarkOption5Gradien
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsFillOnDarkOption5GradientRadialStopsItemColorOption4 => ResolvedTemplateCustomerLayersTextLayerPropsFillOnDarkOption5GradientRadialStopsItemColorOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsFillOnDarkOption5GradientRadialStopsItemColorOption1 => ResolvedTemplateCustomerLayersTextLayerPropsFillOnDarkOption5GradientRadialStopsItemColorOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsFillOnDarkOption5GradientRadialStopsItemColorOption2 => ResolvedTemplateCustomerLayersTextLayerPropsFillOnDarkOption5GradientRadialStopsItemColorOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateCustomerLayersTextLayerPropsFillOnDarkOption5GradientRadialStopsItemColorOption3 => ResolvedTemplateCustomerLayersTextLayerPropsFillOnDarkOption5GradientRadialStopsItemColorOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

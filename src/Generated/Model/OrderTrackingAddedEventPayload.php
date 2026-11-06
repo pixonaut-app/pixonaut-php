@@ -82,8 +82,8 @@ final class OrderTrackingAddedEventPayload implements Model
         $data['externalRef'] = $this->externalRef;
         $data['orderId'] = $this->orderId;
         $data['printId'] = $this->printId;
-        $data['printIds'] = Encode::value($this->printIds);
-        $data['tracking'] = Encode::value($this->tracking);
+        $data['printIds'] = $this->printIds;
+        $data['tracking'] = Encode::model($this->tracking);
         $data['via'] = $this->via;
         return $data;
     }

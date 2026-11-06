@@ -34,22 +34,27 @@ final class TemplateInputLayersItemImageMatShapeFill
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImageMatShapeFillOption5 => TemplateInputLayersItemImageMatShapeFillOption5::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImageMatShapeFillOption1 => TemplateInputLayersItemImageMatShapeFillOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImageMatShapeFillOption2 => TemplateInputLayersItemImageMatShapeFillOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImageMatShapeFillOption3 => TemplateInputLayersItemImageMatShapeFillOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplateInputLayersItemImageMatShapeFillOption4 => TemplateInputLayersItemImageMatShapeFillOption4::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );

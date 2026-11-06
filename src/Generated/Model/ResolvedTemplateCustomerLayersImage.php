@@ -67,10 +67,10 @@ final class ResolvedTemplateCustomerLayersImage implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['layer'] = Encode::value($this->layer);
+        $data['layer'] = Encode::model($this->layer);
         $data['max'] = $this->max;
         if ($this->place !== null) {
-            $data['place'] = Encode::value($this->place);
+            $data['place'] = Encode::model($this->place);
         }
         return $data;
     }

@@ -32,10 +32,12 @@ final class OrdersErasePersonalDataResponsePrintsItem
                 [
                     static fn(mixed $v, string $p): OrdersErasePersonalDataResponsePrintsItemOption1 => OrdersErasePersonalDataResponsePrintsItemOption1::fromArray(Decode::object($v, $p), $p),
                     8,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): OrdersErasePersonalDataResponsePrintsItemOption2 => OrdersErasePersonalDataResponsePrintsItemOption2::fromArray(Decode::object($v, $p), $p),
                     8,
+                    [],
                 ],
             ],
         );

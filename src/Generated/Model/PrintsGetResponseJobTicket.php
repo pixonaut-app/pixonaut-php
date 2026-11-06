@@ -69,11 +69,11 @@ final class PrintsGetResponseJobTicket implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['artifact'] = Encode::value($this->artifact);
+        $data['artifact'] = Encode::model($this->artifact);
         $data['artwork'] = Encode::value($this->artwork);
-        $data['manifest'] = Encode::value($this->manifest);
-        $data['printArea'] = Encode::value($this->printArea);
-        $data['product'] = Encode::value($this->product);
+        $data['manifest'] = Encode::model($this->manifest);
+        $data['printArea'] = Encode::model($this->printArea);
+        $data['product'] = Encode::model($this->product);
         if ($this->fulfilmentPayload !== null) {
             $data['fulfilmentPayload'] = $this->fulfilmentPayload;
         }

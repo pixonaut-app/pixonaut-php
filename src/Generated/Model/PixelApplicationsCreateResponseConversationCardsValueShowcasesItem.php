@@ -68,7 +68,10 @@ final class PixelApplicationsCreateResponseConversationCardsValueShowcasesItem i
     {
         $data = [];
         $data['baseId'] = $this->baseId;
-        $data['before'] = Encode::value($this->before);
+        $data['before'] = array_map(
+            static fn(PixelApplicationsCreateResponseConversationCardsValueShowcasesItemBeforeItem $v): mixed => Encode::model($v),
+            $this->before,
+        );
         $data['name'] = $this->name;
         return $data;
     }

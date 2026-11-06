@@ -89,11 +89,11 @@ final class AutomationsSaveRequest implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['body'] = Encode::value($this->body);
+        $data['body'] = Encode::model($this->body);
         $data['expectedUpdatedAt'] = $this->expectedUpdatedAt;
         $data['name'] = $this->name;
         $data['runsAs'] = $this->runsAs;
-        $data['sources'] = Encode::value($this->sources);
+        $data['sources'] = Encode::model($this->sources);
         $data['spendLimit'] = $this->spendLimit;
         $data['trigger'] = $this->trigger;
         if ($this->confirmSpend !== null) {

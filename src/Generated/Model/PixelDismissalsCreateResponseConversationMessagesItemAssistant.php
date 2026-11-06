@@ -45,10 +45,7 @@ final class PixelDismissalsCreateResponseConversationMessagesItemAssistant imple
                 $path . '.content',
                 static fn(mixed $v, string $p): PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemToolUse|PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemServerToolUse|PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemToolSearchToolResult|PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemText => PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItem::decode($v, $p),
             ),
-            role: Decode::string(
-                Decode::constant(Decode::required($data, 'role', $path), 'assistant', $path . '.role'),
-                $path . '.role',
-            ),
+            role: Decode::string(Decode::required($data, 'role', $path), $path . '.role'),
         );
         $model->decoded = $data;
         return $model;
@@ -68,7 +65,10 @@ final class PixelDismissalsCreateResponseConversationMessagesItemAssistant imple
     public function toArray(): array
     {
         $data = [];
-        $data['content'] = Encode::value($this->content);
+        $data['content'] = array_map(
+            static fn(PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemToolUse|PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemServerToolUse|PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemToolSearchToolResult|PixelDismissalsCreateResponseConversationMessagesItemAssistantContentItemText $v): mixed => Encode::value($v),
+            $this->content,
+        );
         $data['role'] = $this->role;
         return $data;
     }

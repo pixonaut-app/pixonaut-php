@@ -69,7 +69,10 @@ final class TemplatesListResponseOption1 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['items'] = Encode::value($this->items);
+        $data['items'] = array_map(
+            static fn(TemplatesListResponseOption1ItemsItem $v): mixed => Encode::model($v),
+            $this->items,
+        );
         $data['page'] = $this->page;
         $data['pageSize'] = $this->pageSize;
         $data['total'] = $this->total;

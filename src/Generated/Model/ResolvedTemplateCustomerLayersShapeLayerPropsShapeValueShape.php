@@ -41,7 +41,7 @@ final class ResolvedTemplateCustomerLayersShapeLayerPropsShapeValueShape impleme
     {
         $model = new self(
             shapeId: Decode::string(Decode::required($data, 'shapeId', $path), $path . '.shapeId'),
-            type: Decode::string(Decode::constant(Decode::required($data, 'type', $path), 'shape', $path . '.type'), $path . '.type'),
+            type: Decode::string(Decode::required($data, 'type', $path), $path . '.type'),
         );
         $model->decoded = $data;
         return $model;

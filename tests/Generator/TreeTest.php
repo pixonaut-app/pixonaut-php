@@ -55,6 +55,22 @@ final class TreeTest extends TestCase
         ])));
     }
 
+    public function testClassNamesCollideWithoutRegardToCase(): void
+    {
+        $this->expectException(GeneratorException::class);
+        $this->expectExceptionMessageMatches('/would both be class THING/');
+
+        $this->generator()->files(self::json(self::spec(['Thing' => self::THING, 'THING' => self::THING])));
+    }
+
+    public function testAComponentNamedLikeARuntimeClassIsRenamed(): void
+    {
+        $files = $this->generator()->files(self::json(self::spec(['Model' => self::THING, 'decode' => self::THING])));
+
+        self::assertArrayHasKey('Model/ModelModel.php', $files);
+        self::assertArrayHasKey('Model/DecodeModel.php', $files);
+    }
+
     public function testOutputIsTheSameBytesEveryRun(): void
     {
         $spec = self::json(self::spec(['Thing' => self::THING, 'Other' => self::THING]));

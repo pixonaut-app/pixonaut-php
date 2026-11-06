@@ -70,7 +70,7 @@ final class AutomationsTestRunRequest implements Model
             $data['automationId'] = $this->automationId;
         }
         if ($this->draft !== null) {
-            $data['draft'] = Encode::value($this->draft);
+            $data['draft'] = Encode::model($this->draft);
         }
         return $data;
     }

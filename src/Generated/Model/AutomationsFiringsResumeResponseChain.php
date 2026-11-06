@@ -69,7 +69,7 @@ final class AutomationsFiringsResumeResponseChain implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['causedBy'] = Encode::value($this->causedBy);
+        $data['causedBy'] = $this->causedBy === null ? null : Encode::model($this->causedBy);
         $data['depth'] = $this->depth;
         $data['rootEventId'] = $this->rootEventId;
         return $data;

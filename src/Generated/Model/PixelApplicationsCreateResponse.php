@@ -69,7 +69,7 @@ final class PixelApplicationsCreateResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['conversation'] = Encode::value($this->conversation);
+        $data['conversation'] = $this->conversation === null ? null : Encode::model($this->conversation);
         $data['outcome'] = $this->outcome;
         $data['status'] = $this->status;
         if ($this->result !== null) {

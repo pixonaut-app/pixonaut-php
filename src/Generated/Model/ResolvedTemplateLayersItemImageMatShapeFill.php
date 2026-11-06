@@ -34,18 +34,22 @@ final class ResolvedTemplateLayersItemImageMatShapeFill
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImageMatShapeFillOption4 => ResolvedTemplateLayersItemImageMatShapeFillOption4::fromArray(Decode::object($v, $p), $p),
                     2,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImageMatShapeFillOption1 => ResolvedTemplateLayersItemImageMatShapeFillOption1::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImageMatShapeFillOption2 => ResolvedTemplateLayersItemImageMatShapeFillOption2::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
                 [
                     static fn(mixed $v, string $p): ResolvedTemplateLayersItemImageMatShapeFillOption3 => ResolvedTemplateLayersItemImageMatShapeFillOption3::fromArray(Decode::object($v, $p), $p),
                     1,
+                    [],
                 ],
             ],
         );
