@@ -6,11 +6,13 @@ namespace Pixonaut\Sdk\Tests\Contract;
 
 use GuzzleHttp\Client;
 use PHPUnit\Framework\TestCase;
+use Pixonaut\Sdk\Exception\ApiException;
 use Pixonaut\Sdk\Http\Binary;
 use Pixonaut\Sdk\Tests\Contract\Support\Arguments;
 use Pixonaut\Sdk\Tests\Contract\Support\ContractClient;
 use Pixonaut\Sdk\Tests\Fake\FakePixonaut;
 use Pixonaut\Sdk\Tests\Fake\FakeServer;
+use Pixonaut\Sdk\Tests\Fake\Fault;
 use Pixonaut\Sdk\Tests\Fake\Spec;
 use ReflectionMethod;
 
@@ -72,6 +74,27 @@ final class WireTest extends TestCase
         self::assertInstanceOf(Binary::class, $image);
         self::assertSame('image/png', $image->contentType);
         self::assertSame(FakePixonaut::binary('templates.mockup.get', 'image/png'), $image->bytes);
+    }
+
+    public function testALostAnswerIsAFailedTransferAndTheResendIsReplayed(): void
+    {
+        $client = self::client();
+        self::server()->script(static function (FakePixonaut $fake): void {
+            $fake->fault(Fault::lostAnswer(), 'designs.commit');
+        });
+        $prepared = $client->pixonaut->prepare('designs.commit', body: ['proofToken' => 'proof_lost'], idempotencyKey: 'wire-lost');
+
+        try {
+            $client->pixonaut->send($prepared);
+            self::fail('The lost answer was read.');
+        } catch (ApiException $e) {
+            self::assertSame([ApiException::TRANSPORT_FAILED, true], [$e->errorCode, $e->retryable]);
+        }
+        $again = $client->pixonaut->send($prepared);
+
+        self::assertTrue($again->replayed());
+        $commits = array_values(array_filter(self::server()->state()->log, static fn(array $entry): bool => $entry['target'] === '/v1/designs' && $entry['operation'] === 'designs.commit'));
+        self::assertSame([false, true], array_column(array_slice($commits, -2), 'replayed'));
     }
 
     private static function client(): ContractClient

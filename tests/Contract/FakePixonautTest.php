@@ -29,6 +29,25 @@ final class FakePixonautTest extends TestCase
         self::assertSame(['events.list query afterr: the operation has no such query parameter'], $client->fake()->violations());
     }
 
+    public function testAQueryNameInAnotherCaseIsAViolation(): void
+    {
+        $client = new ContractClient();
+
+        $this->callRefused($client, 'events.list', query: ['After' => 'evt_1']);
+
+        self::assertSame(['events.list query After: the operation has no such query parameter'], $client->fake()->violations());
+    }
+
+    public function testAHeaderNameIsMatchedWhateverItsCase(): void
+    {
+        $fake = new FakePixonaut();
+
+        $answer = $fake->sendRequest(new Request('POST', '/v1/designs', ['authorization' => 'Bearer sk_1', 'IDEMPOTENCY-KEY' => 'k1', 'content-type' => 'application/json'], '{"proofToken":"proof_1"}'));
+
+        self::assertSame(201, $answer->getStatusCode());
+        self::assertSame([], $fake->violations());
+    }
+
     public function testAValueOfAnotherTypeIsAViolationWithTheSchemaError(): void
     {
         $client = new ContractClient();
@@ -209,6 +228,25 @@ final class FakePixonautTest extends TestCase
         self::assertCount(2, $violations);
         self::assertStringStartsWith('events.list answer 200 /events: ', $violations[0]);
         self::assertSame('events.list answer 418: the spec documents no such status', $violations[1]);
+    }
+
+    public function testAnAnswerATestSetMustHaveTheBodyAndMediaTypeTheSpecDocuments(): void
+    {
+        $fake = new FakePixonaut();
+        $request = static fn(string $method, string $path): Request => new Request($method, $path, ['Authorization' => 'Bearer sk_1']);
+        $fake->answer('events.list', 200);
+        $fake->answer('events.list', 200, ['events' => [], 'nextCursor' => null], ['Content-Type' => 'text/plain']);
+        $fake->answer('webhookEndpoints.delete', 204, ['deleted' => true]);
+
+        $fake->sendRequest($request('GET', '/v1/events'));
+        $fake->sendRequest($request('GET', '/v1/events'));
+        $fake->sendRequest($request('DELETE', '/v1/webhooks/we_1'));
+
+        self::assertSame([
+            'events.list answer 200: the spec documents a body for it, and none was given',
+            'events.list answer 200: Content-Type "text/plain", not one the spec documents (application/json)',
+            'webhookEndpoints.delete answer 204: the spec documents no body for it',
+        ], $fake->violations());
     }
 
     /**

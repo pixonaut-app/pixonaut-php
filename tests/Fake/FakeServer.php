@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Pixonaut\Sdk\Tests\Fake;
 
+use Closure;
 use RuntimeException;
 
 /**
@@ -73,9 +74,17 @@ final class FakeServer
      */
     public function state(): FakeState
     {
-        $state = unserialize((string) file_get_contents($this->stateFile), ['allowed_classes' => [FakeState::class, Fault::class]]);
+        return (new FakeStateFile($this->stateFile))->read();
+    }
 
-        return $state instanceof FakeState ? $state : new FakeState();
+    /**
+     * Scripts the served fake: answers, faults, keys in flight.
+     *
+     * @param Closure(FakePixonaut): void $script
+     */
+    public function script(Closure $script): void
+    {
+        (new FakeStateFile($this->stateFile))->update($script);
     }
 
     public function stop(): void

@@ -108,10 +108,15 @@ final class SpecOperation
         return in_array([], $this->security, true);
     }
 
+    /**
+     * The parameter by name: exactly for a path or query name, ignoring
+     * case only for a header, whose name HTTP does not distinguish by case.
+     */
     public function parameter(string $in, string $name): ?SpecParameter
     {
         foreach ($this->parameters as $parameter) {
-            if ($parameter->in === $in && strtolower($parameter->name) === strtolower($name)) {
+            $same = $in === 'header' ? strtolower($parameter->name) === strtolower($name) : $parameter->name === $name;
+            if ($parameter->in === $in && $same) {
                 return $parameter;
             }
         }

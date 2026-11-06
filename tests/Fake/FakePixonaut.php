@@ -410,7 +410,25 @@ final class FakePixonaut implements ClientInterface
                 $type = strtolower(trim(explode(';', $value)[0]));
             }
         }
-        if ($body === '' || $type !== SpecOperation::JSON) {
+        $documented = $operation->mediaTypes($status);
+        if ($documented === []) {
+            if ($body !== '') {
+                $this->violation(sprintf('%s answer %d: the spec documents no body for it', $operation->id, $status));
+            }
+
+            return;
+        }
+        if ($body === '') {
+            $this->violation(sprintf('%s answer %d: the spec documents a body for it, and none was given', $operation->id, $status));
+
+            return;
+        }
+        if (!in_array($type, $documented, true)) {
+            $this->violation(sprintf('%s answer %d: Content-Type "%s", not one the spec documents (%s)', $operation->id, $status, $type, implode(', ', $documented)));
+
+            return;
+        }
+        if ($type !== SpecOperation::JSON) {
             return;
         }
         try {
