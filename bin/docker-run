@@ -28,9 +28,26 @@ if [ -t 0 ] && [ -t 1 ]; then
     tty_args=(--tty)
 fi
 
+# DOCKER_NETWORK picks the container's network: `none` leaves it loopback
+# only, `host` lets it reach a server on the host's loopback.
+network_args=()
+if [ -n "${DOCKER_NETWORK:-}" ]; then
+    network_args=(--network "${DOCKER_NETWORK}")
+fi
+
+# The live smoke's target, passed through only when set.
+live_args=()
+for name in PIXONAUT_LIVE_API_URL PIXONAUT_LIVE_SECRET_KEY PIXONAUT_LIVE_INTEGRATION_KEY; do
+    if [ -n "${!name:-}" ]; then
+        live_args+=(--env "${name}")
+    fi
+done
+
 exec docker run --rm --interactive \
     "${user_args[@]}" \
     "${tty_args[@]}" \
+    "${network_args[@]}" \
+    "${live_args[@]}" \
     --volume "${root}:/app" \
     --workdir /app \
     --env HOME=/tmp \

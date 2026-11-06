@@ -53,4 +53,8 @@ jobs:
       - run: bin/generate --check
       - run: bin/composer lint
       - run: bin/composer analyse
-      - run: bin/composer test:unit
+      # The unit and contract suites, in a container with no network but
+      # loopback, so no test can reach a real host.
+      - run: bin/composer test
+        env:
+          DOCKER_NETWORK: none
