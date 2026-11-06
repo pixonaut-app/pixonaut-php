@@ -1,8 +1,8 @@
 name: Release please
 
 # Opens or updates the release pull request from the Conventional Commits on
-# main; merging it tags the version and creates the GitHub Release. The only
-# workflow with write access, and only in its one job.
+# main; merging it tags the version and creates the GitHub Release. Each
+# release's notes open with the API release it targets.
 #
 # A pull request opened with the default GITHUB_TOKEN starts no workflows, so
 # the release pull request would get no checks. Set the RELEASE_PLEASE_TOKEN
@@ -26,9 +26,68 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+    outputs:
+      pr: ${{ steps.release.outputs.pr }}
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
       - uses: googleapis/release-please-action@v4
+        id: release
         with:
           config-file: release-please-config.json
           manifest-file: .release-please-manifest.json
           token: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
+
+  # Release-please writes the notes from the commits; this puts the API
+  # release first under the version's heading, in CHANGELOG.md and the
+  # release pull request, and in the GitHub Release once it exists.
+  # generator/release-notes.php needs only PHP, which the runner has.
+  api-version:
+    name: Name the API release in the notes
+    needs: release-please
+    if: needs.release-please.outputs.pr != '' || needs.release-please.outputs.release_created == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.release-please.outputs.pr != '' && fromJSON(needs.release-please.outputs.pr).headBranchName || github.sha }}
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
+      - name: Release pull request
+        if: needs.release-please.outputs.pr != ''
+        env:
+          BRANCH: ${{ fromJSON(needs.release-please.outputs.pr).headBranchName }}
+          NUMBER: ${{ fromJSON(needs.release-please.outputs.pr).number }}
+        run: |
+          php generator/release-notes.php CHANGELOG.md
+          if ! git diff --quiet -- CHANGELOG.md; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit --quiet -m 'chore: name the API release in the changelog' -- CHANGELOG.md
+            git push origin "HEAD:${BRANCH}"
+          fi
+          body="${RUNNER_TEMP}/body.md"
+          gh pr view "${NUMBER}" --json body --jq .body > "${body}"
+          cp "${body}" "${body}.before"
+          php generator/release-notes.php "${body}"
+          if ! cmp -s "${body}" "${body}.before"; then
+            gh pr edit "${NUMBER}" --body-file "${body}"
+          fi
+      - name: GitHub Release
+        if: needs.release-please.outputs.release_created == 'true'
+        env:
+          TAG: ${{ needs.release-please.outputs.tag_name }}
+        run: |
+          notes="${RUNNER_TEMP}/notes.md"
+          gh release view "${TAG}" --json body --jq .body > "${notes}"
+          cp "${notes}" "${notes}.before"
+          php generator/release-notes.php "${notes}"
+          if ! cmp -s "${notes}" "${notes}.before"; then
+            gh release edit "${TAG}" --notes-file "${notes}"
+          fi

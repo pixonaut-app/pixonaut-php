@@ -74,6 +74,25 @@ the same locally).
   spec's examples; `WireTest` runs the same fake behind `php -S`
   (`tests/Fake/router.php`) and Guzzle, on `FAKE_PIXONAUT_PORT` when it is
   set and on a free loopback port otherwise.
+- `tests/Docs/` runs the quick-start's examples (`docs/examples/`) as a
+  host would, each in its own PHP process with Symfony's PSR-18 client,
+  against the fake behind `php -S`; the webhook example is served too, and
+  sent signed deliveries. It also holds `docs/quick-start.md`'s snippets to
+  the example files, byte for byte. Change an example and its snippet
+  together.
+- `tests/Prefixed/` prefixes the package the way an integration does, with
+  Strauss or PHP-Scoper, together with its dependencies and the examples,
+  then runs the examples and the webhook signature vectors on the prefixed
+  copy. It installs from the network, so it is not part of `composer test`;
+  pull requests run it for both tools:
+
+  ```sh
+  tests/Prefixed/run strauss
+  tests/Prefixed/run scoper
+  ```
+
+  It installs the package from `git archive` of the tracked files, so stage
+  a new file before running it.
 - `tests/Live/` is a read-only smoke against a Pixonaut on this machine, not
   part of `composer test` or CI. It skips unless `PIXONAUT_LIVE_API_URL` and
   `PIXONAUT_LIVE_SECRET_KEY` (and optionally `PIXONAUT_LIVE_INTEGRATION_KEY`)
@@ -142,6 +161,21 @@ and a test fails when an operation the SDK generates has no method. A test fails
 an answer field named like a secret (`key`, `secret`, `token`) on an
 operation that is not listed, unless the config says why it is not one.
 
+## The public surface
+
+`api-surface.txt` lists every public class, constant, property and method
+signature in `src/` (classes marked `@internal` aside), one per line, the
+same on every PHP version. A pull request that removes or changes a line is
+a breaking change, and the pull request check fails unless its title is
+marked breaking (`feat!:`); adding lines is not.
+
+```sh
+bin/surface           # write api-surface.txt from src/
+bin/surface --check   # fail, listing each line, when it is stale (part of `composer check`)
+```
+
+Commit it with the change that moves it.
+
 ## Commits
 
 Commits follow [Conventional Commits](https://www.conventionalcommits.org/):
@@ -164,9 +198,21 @@ no callable built from a string, no class name in a string.
 
 ## Releases
 
-Release-please keeps a release pull request open from the commits on `main`;
-merging it tags the version and creates the GitHub Release. For the pull
-request checks to run on that release pull request, the repository needs a
-`RELEASE_PLEASE_TOKEN` secret (a GitHub App token or fine-grained token with
-contents and pull requests write access): a pull request opened with the
-default `GITHUB_TOKEN` starts no workflows.
+The SDK has its own semver, and each release targets one API release
+([docs/versioning.md](docs/versioning.md)). `ApiVersion::TARGET` and
+`extra.pixonaut.api-version` in `composer.json` name it, and a test holds
+them equal: after pinning another API release, set
+`extra.pixonaut.api-version` too. The release workflow writes the first
+line of the release's notes from `composer.json`.
+
+Release-please keeps a release pull request open from the commits on
+`main`; merging it tags the version and creates the GitHub Release. The
+release workflow then opens the release's notes, in `CHANGELOG.md`, the
+release pull request and the GitHub Release, with the API release it
+targets (`generator/release-notes.php`). Packagist publishes each tag.
+
+The workflow needs the repository allowed to create pull requests from
+GitHub Actions. For the pull request checks to run on the release pull
+request, it also needs a `RELEASE_PLEASE_TOKEN` secret (a GitHub App token
+or fine-grained token with contents and pull requests write access): a pull
+request opened with the default `GITHUB_TOKEN` starts no workflows.

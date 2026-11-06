@@ -21,10 +21,12 @@
         "guzzlehttp/guzzle": "^7.9",
         "nikic/php-parser": "^5.0",
         "nyholm/psr7": "^1.8",
+        "nyholm/psr7-server": "^1.1",
         "opis/json-schema": "^2.4",
         "php-http/mock-client": "^1.6",
         "phpstan/phpstan": "^2.0",
-        "phpunit/phpunit": "^10.5"
+        "phpunit/phpunit": "^10.5",
+        "symfony/http-client": "^6.4"
     },
     "autoload": {
         "psr-4": {
@@ -57,10 +59,13 @@
         "spec:check": "@php generator/spec.php check",
         "generate": "@php generator/generate.php",
         "generate:check": "@php generator/generate.php --check",
+        "surface": "@php generator/surface.php",
+        "surface:check": "@php generator/surface.php --check",
         "check": [
             "@composer validate --strict",
             "@spec:check",
             "@generate:check",
+            "@surface:check",
             "@lint",
             "@analyse",
             "@test"
@@ -77,6 +82,13 @@
         "spec:check": "Check the pinned spec against its lock, offline.",
         "generate": "Regenerate src/Generated/ from the pinned spec.",
         "generate:check": "Check that src/Generated/ is what the pinned spec and the generator produce.",
+        "surface": "Write api-surface.txt, the public surface of src/.",
+        "surface:check": "Check that api-surface.txt is what src/ declares.",
         "check": "Run everything a pull request runs."
+    },
+    "extra": {
+        "pixonaut": {
+            "api-version": "1.0.0"
+        }
     }
 }

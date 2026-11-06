@@ -27,6 +27,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
+use RuntimeException;
 
 /**
  * The Pixonaut API client. It holds no static state: two instances with
@@ -387,7 +388,16 @@ final class Pixonaut
 
             return $result;
         }
-        $body = (string) $response->getBody();
+        try {
+            $body = (string) $response->getBody();
+        } catch (RuntimeException $failure) {
+            // A client that streams the body, as Symfony's does, reports a
+            // connection cut mid-answer here rather than from sendRequest().
+            $error = ErrorMapper::transportFailed($operation, $failure);
+            $this->listener->after($request, null, ErrorMapper::withoutPrevious($error));
+
+            return $error;
+        }
         if ($success) {
             // A success that is not what the operation answers, e.g. a proxy's page.
             if (($operation->accept === Operation::JSON && $body !== '' && !self::isJson($body)) || $operation->accept === Operation::EVENT_STREAM) {

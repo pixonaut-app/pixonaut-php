@@ -23,6 +23,7 @@
         </testsuite>
         <testsuite name="contract">
             <directory>tests/Contract</directory>
+            <directory>tests/Docs</directory>
         </testsuite>
         <!-- Only through `composer test:live`, against a Pixonaut on this machine. -->
         <testsuite name="live">

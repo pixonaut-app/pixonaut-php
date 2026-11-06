@@ -7,6 +7,7 @@ namespace Pixonaut\Sdk\Http;
 use Pixonaut\Sdk\Exception\ApiException;
 use Pixonaut\Sdk\Exception\IdempotencyBugException;
 use Psr\Http\Client\ClientExceptionInterface;
+use RuntimeException;
 
 /**
  * Turns an unsuccessful response, or a request that got none, into the
@@ -70,7 +71,11 @@ final class ErrorMapper
             : new ApiException($operation->id, $status, $code, $retryable, $retryAfter, $requestId, $details);
     }
 
-    public static function transportFailed(Operation $operation, ClientExceptionInterface $failure): ApiException
+    /**
+     * No answer arrived, or it was cut short: the PSR-18 client failed to
+     * send the request, or the body failed to read.
+     */
+    public static function transportFailed(Operation $operation, ClientExceptionInterface|RuntimeException $failure): ApiException
     {
         $details = $operation->sensitive ? self::REDACTED : ['message' => $failure->getMessage()];
 

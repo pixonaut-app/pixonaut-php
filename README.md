@@ -5,51 +5,64 @@ integrations such as WooCommerce plugins. It depends only on the PSR HTTP
 and logging interfaces, so it works with any PSR-18 client, and it can be
 prefixed with Strauss or PHP-Scoper.
 
-**Pre-release.** Nothing is published yet and the API may change until 1.0.0.
+Each release targets one release of the Pixonaut API, named in its release
+notes and in `Pixonaut\Sdk\Generated\ApiVersion::TARGET`.
 
-## Requirements
+## Install
 
-PHP 8.1 or newer.
+PHP 8.1 or newer, and any PSR-18 client with PSR-17 factories:
 
 ```sh
-composer require pixonaut/pixonaut-php
+composer require pixonaut/pixonaut-php symfony/http-client nyholm/psr7
 ```
 
-## Webhooks
-
-Check that a delivery was signed by Pixonaut recently, then read its event:
+## Use
 
 ```php
-use Pixonaut\Sdk\Exception\InvalidSignature;
-use Pixonaut\Sdk\Generated\Model\OrderStatusChangedEvent;
-use Pixonaut\Sdk\Webhooks\Verifier;
+use Nyholm\Psr7\Factory\Psr17Factory;
+use Pixonaut\Sdk\Config;
+use Pixonaut\Sdk\Credentials\StaticCredentials;
+use Pixonaut\Sdk\Generated\Operations;
+use Pixonaut\Sdk\Pixonaut;
+use Symfony\Component\HttpClient\Psr18Client;
 
-try {
-    $event = (new Verifier($endpointSecret))->verify($request); // a PSR-7 ServerRequestInterface
-} catch (InvalidSignature) {
-    // Answer 401, and do not act on the body.
-    return;
-}
+$factory = new Psr17Factory();
+$pixonaut = new Pixonaut(
+    new Config(product: 'my-shop/1.0'),
+    new Psr18Client(),
+    $factory,
+    $factory,
+    new StaticCredentials(integrationKey: $integrationKey),
+    Operations::catalogue(),
+);
 
-$typed = $event->typed();
-if ($typed instanceof OrderStatusChangedEvent) {
-    $status = $typed->payload->status;
-}
+$template = $pixonaut->templates()->get('tshirt-basic@2');
 ```
 
-Without PSR-7, `Signature::verify($secret, $timestamp, $signatureHeader,
-$rawBody, time())` checks the `x-pixonaut-timestamp` and
-`x-pixonaut-signature` headers against the raw body, and
-`Event::fromJson($rawBody)` reads it. A delivery more than five minutes
-from now, either way, fails, so a captured one cannot be replayed.
+Every operation is a method on its resource (`templates()`, `designs()`,
+`orders()`, …), taking typed arguments and returning a typed model. A call
+that does not succeed throws `Pixonaut\Sdk\Exception\ApiException`.
 
-`$event->typed()` gives the event's class with its typed payload, or an
-`UnknownEvent` with the payload as sent for a type added to the API after
-this release; `EventType` names the types. A retry or a redelivery carries
-the same `$event->id`: drop one you have already handled. An
-`automation.webhook` delivery carries whatever JSON its automation wrote:
-`$event->payload` holds it when it is an object, and `$event->rawPayload()`
-is what was sent.
+## Documentation
+
+- [Quick start](docs/quick-start.md): connect a store, read templates,
+  commit a design, handle errors and take a webhook delivery. Every snippet
+  runs in the package's tests.
+- [Errors](docs/errors.md): the codes, what is retryable, and what to retry.
+- [Idempotency](docs/idempotency.md): snapshots, resends, what to store.
+- [Webhooks](docs/webhooks.md): the signature, its window, rotation, unknown
+  events.
+- [Versioning](docs/versioning.md): how releases are numbered and which API
+  each targets.
+
+## Prefixing
+
+Plugins that ship their dependencies prefix them, so two plugins with
+different versions do not clash. The SDK names every class statically, and
+each pull request prefixes the package and its dependencies with
+[Strauss](https://github.com/BrianHenryIE/strauss) and with
+[PHP-Scoper](https://github.com/humbug/php-scoper), then runs the quick-start
+and the webhook signature vectors on the prefixed copy.
 
 ## Working on the package
 
@@ -63,7 +76,8 @@ bin/composer format         # fix the code style
 PHP_VERSION=8.5 bin/composer check   # on another PHP version
 ```
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the commit convention.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the tests, the generated code
+and the commit convention.
 
 ## License
 

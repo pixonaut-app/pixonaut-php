@@ -1,0 +1,45 @@
+{
+    "name": "pixonaut/prefixed-with-strauss",
+    "description": "An integration that prefixes the SDK and its dependencies with Strauss.",
+    "type": "project",
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "package",
+            "options": {
+                "symlink": false,
+                "versions": {
+                    "pixonaut/pixonaut-php": "1.0.0"
+                }
+            }
+        }
+    ],
+    "require": {
+        "pixonaut/pixonaut-php": "1.0.0",
+        "nyholm/psr7": "^1.8",
+        "nyholm/psr7-server": "^1.1",
+        "symfony/http-client": "^6.4 || ^7.0"
+    },
+    "require-dev": {
+        "brianhenryie/strauss": "0.31.1"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": false
+        }
+    },
+    "extra": {
+        "strauss": {
+            "target_directory": "vendor-prefixed",
+            "namespace_prefix": "Pixonaut\\Fixture\\Vendor\\",
+            "classmap_prefix": "Pixonaut_Fixture_Vendor_",
+            "constant_prefix": "PIXONAUT_FIXTURE_VENDOR_",
+            "delete_vendor_packages": true,
+            "update_call_sites": ["app"],
+            "include_modified_date": false,
+            "include_author": false
+        }
+    }
+}

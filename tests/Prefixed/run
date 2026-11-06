@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+# Prefixes the package the way an integration does, with Strauss or with
+# PHP-Scoper, together with its dependencies and the quick-start examples,
+# then runs the examples and the webhook signature vectors against the
+# prefixed copy, with the fake Pixonaut.
+#
+#   tests/Prefixed/run strauss
+#   tests/Prefixed/run scoper
+#
+# The package is installed from what `git archive` gives of the tracked
+# files (export-ignore applied), as Composer installs a release. Work goes
+# to .cache/prefixed/<tool>/. Installing needs the network; the checks do not.
+set -euo pipefail
+
+tool="${1:-}"
+case "${tool}" in
+    strauss | scoper) ;;
+    *)
+        echo 'Usage: tests/Prefixed/run strauss|scoper' >&2
+        exit 2
+        ;;
+esac
+
+root="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+run="${root}/bin/docker-run"
+fixture="tests/Prefixed"
+# Relative to the checkout, which the container mounts as its working directory.
+work=".cache/prefixed/${tool}"
+
+# The prefixing tools need a newer PHP than the package's minimum.
+export PHP_VERSION="${PHP_VERSION:-8.5}"
+# The tools hold every scanned file in memory.
+TOOL_MEMORY=2G
+
+rm -rf "${root:?}/${work}"
+mkdir -p "${root}/${work}/package" "${root}/${work}/app"
+
+# Uncommitted changes to tracked files are included; new files must be staged.
+tree="$(git -C "${root}" stash create)"
+git -C "${root}" archive "${tree:-HEAD}" | tar -x -C "${root}/${work}/package"
+
+cp "${root}/docs/examples/"*.php "${root}/${fixture}/app/"*.php "${root}/${work}/app/"
+cp "${root}/${fixture}/${tool}/composer.json" "${root}/${work}/"
+
+"${run}" composer install --working-dir "${work}" --no-interaction --no-progress
+
+case "${tool}" in
+    strauss)
+        "${run}" sh -c "cd ${work} && php -d memory_limit=${TOOL_MEMORY} vendor/bin/strauss"
+        autoload="${work}/vendor-prefixed/autoload.php"
+        app="${work}/app"
+        ;;
+    scoper)
+        mkdir -p "${root}/${work}/tools"
+        cp "${root}/${fixture}/scoper/tools.json" "${root}/${work}/tools/composer.json"
+        cp "${root}/${fixture}/scoper/scoper.inc.php" "${root}/${work}/"
+        "${run}" composer install --working-dir "${work}/tools" --no-interaction --no-progress
+        "${run}" sh -c "cd ${work} && php -d memory_limit=${TOOL_MEMORY} tools/vendor/bin/php-scoper add-prefix --output-dir build --force --no-interaction"
+        "${run}" composer dump-autoload --working-dir "${work}/build" --classmap-authoritative --no-interaction
+        autoload="${work}/build/vendor/autoload.php"
+        app="${work}/build/app"
+        ;;
+esac
+
+# The checks run on the package's own dependencies, which serve the fake;
+# the examples run in processes of their own, on the prefixed autoloader.
+"${run}" php "${fixture}/check.php" "${app}" "${autoload}"

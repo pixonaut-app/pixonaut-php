@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 $finder = (new PhpCsFixer\Finder())
-    ->in([__DIR__ . '/src', __DIR__ . '/tests', __DIR__ . '/generator'])
+    ->in([__DIR__ . '/src', __DIR__ . '/tests', __DIR__ . '/generator', __DIR__ . '/docs/examples'])
     // Printed by bin/generate, which `bin/generate --check` holds it to.
     ->exclude('Generated')
     ->append([__FILE__]);
