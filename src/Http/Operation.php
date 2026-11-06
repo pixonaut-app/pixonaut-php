@@ -23,6 +23,7 @@ final class Operation
      * @param bool             $idempotent  Whether it takes an `Idempotency-Key`.
      * @param string           $accept      The `Accept` header: what a successful answer is.
      * @param bool             $sensitive   Whether its answers carry secrets, so an error keeps none of the body.
+     * @param list<string>     $headers     The request headers it declares, lower case, other than `idempotency-key`.
      */
     public function __construct(
         public readonly string $id,
@@ -33,6 +34,7 @@ final class Operation
         public readonly bool $idempotent = false,
         public readonly string $accept = self::JSON,
         public readonly bool $sensitive = false,
+        public readonly array $headers = [],
     ) {
         if (!str_starts_with($path, '/')) {
             throw new InvalidArgumentException(sprintf('%s: the path template must start with "/".', $id));
@@ -64,6 +66,11 @@ final class Operation
         }
 
         return true;
+    }
+
+    public function declares(string $header): bool
+    {
+        return in_array(strtolower($header), $this->headers, true);
     }
 
     public function accepts(Credential $credential): bool

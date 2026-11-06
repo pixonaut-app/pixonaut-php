@@ -17,23 +17,40 @@ use InvalidArgumentException;
  */
 final class PreparedRequest
 {
-    private const FIELDS = ['operation', 'target', 'body', 'idempotencyKey'];
+    private const FIELDS = ['operation', 'target', 'body', 'idempotencyKey', 'headers'];
 
     /**
      * @param string      $operation      Operation id, e.g. `designs.commit`.
      * @param string      $target         Path and query, e.g. `/v1/designs/d_1?v=2`.
      * @param string|null $body           JSON body, or null for none.
      * @param string|null $idempotencyKey `Idempotency-Key`, or null when the operation takes none.
+     * @param array<string, string> $headers Headers the operation declares, by lower-case name, e.g. `prefer`.
      */
     public function __construct(
         public readonly string $operation,
         public readonly string $target,
         public readonly ?string $body = null,
         public readonly ?string $idempotencyKey = null,
+        public readonly array $headers = [],
     ) {}
 
     /**
-     * @return array{operation: string, target: string, body: string|null, idempotencyKey: string|null}
+     * The request, when it is one of `$operation`'s: a typed method sending a
+     * stored request checks it before decoding the answer as its own.
+     *
+     * @throws InvalidArgumentException When it was prepared for another operation.
+     */
+    public function expect(string $operation): self
+    {
+        if ($this->operation !== $operation) {
+            throw new InvalidArgumentException(sprintf('The request was prepared for %s, not %s.', $this->operation, $operation));
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return array{operation: string, target: string, body: string|null, idempotencyKey: string|null, headers: array<string, string>}
      */
     public function toArray(): array
     {
@@ -42,6 +59,7 @@ final class PreparedRequest
             'target' => $this->target,
             'body' => $this->body,
             'idempotencyKey' => $this->idempotencyKey,
+            'headers' => $this->headers,
         ];
     }
 
@@ -63,10 +81,28 @@ final class PreparedRequest
         $target = $data['target'];
         $body = $data['body'];
         $key = $data['idempotencyKey'];
-        if (!is_string($operation) || !is_string($target) || !($body === null || is_string($body)) || !($key === null || is_string($key))) {
+        $headers = $data['headers'];
+        if (!is_string($operation) || !is_string($target) || !($body === null || is_string($body)) || !($key === null || is_string($key)) || !self::isHeaderMap($headers)) {
             throw new InvalidArgumentException('The request snapshot is malformed.');
         }
 
-        return new self($operation, $target, $body, $key);
+        return new self($operation, $target, $body, $key, $headers);
+    }
+
+    /**
+     * @phpstan-assert-if-true array<string, string> $headers
+     */
+    private static function isHeaderMap(mixed $headers): bool
+    {
+        if (!is_array($headers)) {
+            return false;
+        }
+        foreach ($headers as $name => $value) {
+            if (!is_string($name) || !is_string($value)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -87,6 +87,7 @@ final class Harness
                 new Operation('templates.list', 'GET', '/v1/templates', [Credential::PublishableKey, Credential::IntegrationKey], anonymous: true),
                 new Operation('apiKeys.create', 'POST', '/v1/api-keys', [Credential::SecretKey, Credential::IntegrationKey], idempotent: true, sensitive: true),
                 new Operation('designs.proof.get', 'GET', '/v1/designs/{id}/proof', [Credential::IntegrationKey], accept: 'image/png'),
+                new Operation('prints.create', 'POST', '/v1/prints', [Credential::IntegrationKey], idempotent: true, headers: ['prefer', 'x-pixonaut-session']),
             ],
             ['not_found', 'unauthorized', 'rate_limited', 'idempotency_key_in_use', 'idempotency_key_reused', 'invalid_idempotency_key', 'bad_request'],
             [400, 401, 404, 408, 409, 422, 429, 500, 503],

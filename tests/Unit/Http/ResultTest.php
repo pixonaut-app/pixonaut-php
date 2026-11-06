@@ -27,6 +27,23 @@ final class ResultTest extends TestCase
         self::assertNull((new Result('designs.get', 200, [], '{}'))->requestId());
     }
 
+    public function testDecodesAnyJsonValue(): void
+    {
+        self::assertSame([1, 'a'], (new Result('a', 200, [], '[1,"a"]'))->json());
+        self::assertNull((new Result('a', 200, [], 'null'))->json());
+        $this->expectException(ApiException::class);
+        (new Result('a', 200, [], '{nope'))->json();
+    }
+
+    public function testGivesAFileWithItsTypeAndRequestId(): void
+    {
+        $binary = (new Result('a', 200, ['Content-Type' => 'image/png', 'X-Request-Id' => 'req_1'], "\x89PNG"))->binary();
+
+        self::assertSame('image/png', $binary->contentType);
+        self::assertSame("\x89PNG", $binary->bytes);
+        self::assertSame('req_1', $binary->requestId);
+    }
+
     public function testDecodesAnObject(): void
     {
         self::assertSame(['a' => 1], (new Result('x', 200, [], '{"a":1}'))->object());

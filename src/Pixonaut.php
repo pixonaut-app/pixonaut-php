@@ -9,6 +9,7 @@ use JsonException;
 use Pixonaut\Sdk\Credentials\Credential;
 use Pixonaut\Sdk\Credentials\CredentialProvider;
 use Pixonaut\Sdk\Exception\ApiException;
+use Pixonaut\Sdk\Generated\Resources;
 use Pixonaut\Sdk\Http\Catalogue;
 use Pixonaut\Sdk\Http\Deprecation;
 use Pixonaut\Sdk\Http\ErrorMapper;
@@ -33,6 +34,8 @@ use Psr\Log\NullLogger;
  */
 final class Pixonaut
 {
+    use Resources;
+
     public const VERSION = '0.0.0'; // x-release-please-version
 
     /**
@@ -52,6 +55,9 @@ final class Pixonaut
 
     /** What Pixonaut accepts as an `Idempotency-Key`: 1 to 255 printable ASCII characters. */
     private const IDEMPOTENCY_KEY_PATTERN = '/^[\x21-\x7e]{1,255}\z/';
+
+    /** A header value: printable characters and spaces, no line break. */
+    private const HEADER_VALUE_PATTERN = '/^[\x20-\x7e\x80-\xff]*\z/';
 
     private const JSON_FLAGS = JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
 
@@ -85,31 +91,33 @@ final class Pixonaut
     /**
      * Prepares and sends a request.
      *
-     * @param array<string, string|int>        $path           Values for the path template's `{name}`s.
-     * @param array<string, scalar|null>       $query          Query parameters; null ones are left out.
-     * @param array<array-key, mixed>|null     $body           JSON body, or null for none.
-     * @param string|null                      $idempotencyKey Key for an idempotent operation; a UUID when null.
+     * @param array<string, string|int>                     $path           Values for the path template's `{name}`s.
+     * @param array<string, scalar|list<scalar>|null>       $query          Query parameters; null ones are left out, a list is sent as the name repeated.
+     * @param array<array-key, mixed>|null                  $body           JSON body, or null for none.
+     * @param string|null                                   $idempotencyKey Key for an idempotent operation; a UUID when null.
+     * @param array<string, string|null>                    $headers        Headers the operation declares, e.g. `Prefer`; null ones are left out.
      *
      * @throws ApiException             When Pixonaut refused the request or could not be reached.
      * @throws InvalidArgumentException When the request does not fit its operation; nothing is sent.
      */
-    public function call(string $operation, array $path = [], array $query = [], ?array $body = null, ?string $idempotencyKey = null): Result
+    public function call(string $operation, array $path = [], array $query = [], ?array $body = null, ?string $idempotencyKey = null, array $headers = []): Result
     {
-        return $this->send($this->prepare($operation, $path, $query, $body, $idempotencyKey));
+        return $this->send($this->prepare($operation, $path, $query, $body, $idempotencyKey, $headers));
     }
 
     /**
      * Builds a request once: target, encoded body and idempotency key. Keep
      * its `toArray()` to send the same request again later.
      *
-     * @param array<string, string|int>    $path           Values for the path template's `{name}`s.
-     * @param array<string, scalar|null>   $query          Query parameters; null ones are left out.
-     * @param array<array-key, mixed>|null $body           JSON body, or null for none.
-     * @param string|null                  $idempotencyKey Key for an idempotent operation; a UUID when null.
+     * @param array<string, string|int>               $path           Values for the path template's `{name}`s.
+     * @param array<string, scalar|list<scalar>|null> $query          Query parameters; null ones are left out, a list is sent as the name repeated.
+     * @param array<array-key, mixed>|null            $body           JSON body, or null for none.
+     * @param string|null                             $idempotencyKey Key for an idempotent operation; a UUID when null.
+     * @param array<string, string|null>              $headers        Headers the operation declares, e.g. `Prefer`; null ones are left out.
      *
-     * @throws InvalidArgumentException When the operation is unknown, a path value is missing or empty, the body is not encodable, or the key does not fit the operation.
+     * @throws InvalidArgumentException When the operation is unknown, a path value is missing or empty, the body is not encodable, or the key or a header does not fit the operation.
      */
-    public function prepare(string $operation, array $path = [], array $query = [], ?array $body = null, ?string $idempotencyKey = null): PreparedRequest
+    public function prepare(string $operation, array $path = [], array $query = [], ?array $body = null, ?string $idempotencyKey = null, array $headers = []): PreparedRequest
     {
         $descriptor = $this->catalogue->operation($operation);
 
@@ -129,7 +137,14 @@ final class Pixonaut
             $idempotencyKey = Uuid::v4();
         }
 
-        $request = new PreparedRequest($operation, $target, $encoded, $idempotencyKey);
+        $declared = [];
+        foreach ($headers as $name => $value) {
+            if ($value !== null) {
+                $declared[strtolower($name)] = $value;
+            }
+        }
+
+        $request = new PreparedRequest($operation, $target, $encoded, $idempotencyKey, $declared);
         $this->assertSendable($descriptor, $request);
 
         return $request;
@@ -212,8 +227,8 @@ final class Pixonaut
     }
 
     /**
-     * @param array<string, string|int>  $path
-     * @param array<string, scalar|null> $query
+     * @param array<string, string|int>               $path
+     * @param array<string, scalar|list<scalar>|null> $query
      */
     private function target(Operation $operation, array $path, array $query): string
     {
@@ -242,15 +257,17 @@ final class Pixonaut
             }
         }
 
-        $parameters = [];
+        $pairs = [];
         foreach ($query as $name => $value) {
-            if ($value === null) {
-                continue;
+            // A list repeats the name, the way the API reads several values.
+            foreach (is_array($value) ? $value : [$value] as $item) {
+                if ($item !== null) {
+                    $pairs[] = rawurlencode($name) . '=' . rawurlencode(is_bool($item) ? ($item ? 'true' : 'false') : (string) $item);
+                }
             }
-            $parameters[$name] = is_bool($value) ? ($value ? 'true' : 'false') : $value;
         }
-        if ($parameters !== []) {
-            $target .= '?' . http_build_query($parameters, '', '&', PHP_QUERY_RFC3986);
+        if ($pairs !== []) {
+            $target .= '?' . implode('&', $pairs);
         }
 
         return (string) $target;
@@ -266,6 +283,15 @@ final class Pixonaut
     {
         if (!$operation->matches($request->target)) {
             throw new InvalidArgumentException(sprintf('%s cannot be sent to %s.', $request->operation, $request->target));
+        }
+        foreach ($request->headers as $name => $value) {
+            // Only what the operation declares: never a credential or a header the client sets itself.
+            if (!$operation->declares($name)) {
+                throw new InvalidArgumentException(sprintf('%s takes no %s header.', $request->operation, $name));
+            }
+            if (preg_match(self::HEADER_VALUE_PATTERN, $value) !== 1) {
+                throw new InvalidArgumentException(sprintf('%s: the %s header holds a character a header cannot.', $request->operation, $name));
+            }
         }
         if (!$operation->idempotent) {
             if ($request->idempotencyKey !== null) {
@@ -293,6 +319,9 @@ final class Pixonaut
         }
         if ($request->idempotencyKey !== null) {
             $psr = $psr->withHeader('Idempotency-Key', $request->idempotencyKey);
+        }
+        foreach ($request->headers as $name => $value) {
+            $psr = $psr->withHeader($name, $value);
         }
 
         foreach ($this->credentialOrder($operation) as $credential) {

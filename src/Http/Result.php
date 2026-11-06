@@ -54,6 +54,29 @@ final class Result
     }
 
     /**
+     * The body decoded as JSON, whatever value it holds.
+     *
+     * @throws ApiException `unexpected_response` when the body is not JSON.
+     */
+    public function json(): mixed
+    {
+        $decoded = json_decode($this->body, true);
+        if ($decoded === null && json_last_error() !== JSON_ERROR_NONE) {
+            throw $this->unexpected();
+        }
+
+        return $decoded;
+    }
+
+    /**
+     * The body as the file it is, with its content type.
+     */
+    public function binary(): Binary
+    {
+        return new Binary($this->header('Content-Type') ?? '', $this->body, $this->requestId());
+    }
+
+    /**
      * The body decoded as a JSON object (`{}` included; `[]` is not one).
      *
      * @return array<string, mixed>

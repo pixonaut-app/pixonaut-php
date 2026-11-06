@@ -55,6 +55,69 @@ final class PrepareTest extends TestCase
         self::assertSame('/v1/templates?q=a%20b%2Bc&limit=10&archived=false', $request->target);
     }
 
+    public function testRepeatsTheNameForAListValue(): void
+    {
+        $request = (new Harness())->pixonaut->prepare('templates.list', [], ['ids' => ['a@1', 'b@2'], 'tag' => [], 'q' => 'x']);
+
+        self::assertSame('/v1/templates?ids=a%401&ids=b%402&q=x', $request->target);
+    }
+
+    public function testSendsTheHeadersTheOperationDeclaresAndKeepsThemInTheSnapshot(): void
+    {
+        $harness = new Harness();
+        $harness->answer(201);
+        $request = $harness->pixonaut->prepare('prints.create', body: [], headers: ['Prefer' => 'wait', 'x-pixonaut-session' => null]);
+
+        $harness->pixonaut->send(PreparedRequest::fromArray($request->toArray()));
+
+        self::assertSame(['prefer' => 'wait'], $request->headers);
+        self::assertSame('wait', $harness->lastSent()->getHeaderLine('Prefer'));
+        self::assertFalse($harness->lastSent()->hasHeader('x-pixonaut-session'));
+    }
+
+    /**
+     * @return iterable<string, array{array<string, string>}>
+     */
+    public static function badHeaders(): iterable
+    {
+        yield 'not declared' => [['x-other' => 'a']];
+        yield 'a credential' => [['authorization' => 'Bearer sk_other']];
+        yield 'a line break' => [['prefer' => "wait
+X-Injected: 1"]];
+    }
+
+    /**
+     * @param array<string, string> $headers
+     */
+    #[DataProvider('badHeaders')]
+    public function testRefusesAHeaderTheOperationDoesNotTake(array $headers): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        (new Harness())->pixonaut->prepare('prints.create', body: [], headers: $headers);
+    }
+
+    public function testNeverSendsASnapshotWithAHeaderTheOperationDoesNotTake(): void
+    {
+        $harness = new Harness();
+
+        try {
+            $harness->pixonaut->send(new PreparedRequest('designs.get', '/v1/designs/d_1', headers: ['authorization' => 'Bearer x']));
+            self::fail('The request was sent.');
+        } catch (InvalidArgumentException) {
+            self::assertSame([], $harness->sent());
+        }
+    }
+
+    public function testExpectsTheOperationItWasPreparedFor(): void
+    {
+        $request = new PreparedRequest('designs.get', '/v1/designs/d_1');
+
+        self::assertSame($request, $request->expect('designs.get'));
+        $this->expectException(InvalidArgumentException::class);
+        $request->expect('designs.update');
+    }
+
     public function testEncodesAnEmptyBodyAsAnObject(): void
     {
         $harness = new Harness(listener: new \Pixonaut\Sdk\Http\NullListener());
@@ -165,16 +228,18 @@ final class PrepareTest extends TestCase
      */
     public static function malformedSnapshots(): iterable
     {
-        $good = ['operation' => 'designs.commit', 'target' => '/v1/designs/d_1/commit', 'body' => '{}', 'idempotencyKey' => 'k'];
+        $good = ['operation' => 'designs.commit', 'target' => '/v1/designs/d_1/commit', 'body' => '{}', 'idempotencyKey' => 'k', 'headers' => []];
         foreach (array_keys($good) as $field) {
             $missing = $good;
             unset($missing[$field]);
             yield 'no ' . $field => [$missing];
         }
-        yield 'implied null key' => [['operation' => 'designs.get', 'target' => '/v1/designs/d_1', 'body' => null]];
+        yield 'implied null key' => [['operation' => 'designs.get', 'target' => '/v1/designs/d_1', 'body' => null, 'headers' => []]];
         yield 'operation not a string' => [['operation' => 1] + $good];
         yield 'body not a string' => [['body' => []] + $good];
         yield 'key not a string' => [['idempotencyKey' => 5] + $good];
+        yield 'headers not a map' => [['headers' => 'prefer: wait'] + $good];
+        yield 'header value not a string' => [['headers' => ['prefer' => 1]] + $good];
     }
 
     /**
