@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# The package's public surface in api-surface.txt, in the package's container.
+#
+#   bin/surface           write api-surface.txt from src/
+#   bin/surface --check   fail, listing each line, when api-surface.txt is stale
+exec "$(dirname "${BASH_SOURCE[0]}")/docker-run" php generator/surface.php "$@"

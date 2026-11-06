@@ -13,6 +13,7 @@ use Pixonaut\Sdk\Generated\Model\OrderStatusChangedEvent;
 use Pixonaut\Sdk\Webhooks\Verifier;
 
 $keysFile = getenv('PIXONAUT_KEYS_FILE') ?: __DIR__ . '/pixonaut-keys.json';
+/** @var array{integrationKey: string, webhookSecret: string} $keys */
 $keys = json_decode((string) file_get_contents($keysFile), true, flags: JSON_THROW_ON_ERROR);
 
 $factory = new Psr17Factory();

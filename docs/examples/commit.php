@@ -39,7 +39,7 @@ try {
     // Later, from a scheduled job: send the stored request again. Pixonaut
     // answers a key it has seen with the first answer, so the design is
     // committed once.
-    $stored = PreparedRequest::fromArray(json_decode($snapshot, true, flags: JSON_THROW_ON_ERROR));
+    $stored = PreparedRequest::fromArray((array) json_decode($snapshot, true, flags: JSON_THROW_ON_ERROR));
     $design = $pixonaut->designs()->sendCommit($stored);
 }
 

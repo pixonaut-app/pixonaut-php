@@ -8,6 +8,9 @@ parameters:
         - src
         - generator
         - tests
+        - docs/examples
     excludePaths:
         # Deliberately bad code the guard test is run against.
         - tests/Guard/fixtures
+        # Classes the surface test reads, not code that runs.
+        - tests/Generator/Surface/Fixtures

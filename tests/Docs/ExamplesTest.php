@@ -20,6 +20,8 @@ final class ExamplesTest extends TestCase
 
     private const AUTOLOAD = __DIR__ . '/../../vendor/autoload.php';
 
+    private const VECTORS = __DIR__ . '/../../spec/webhook-signature-vectors.json';
+
     /** The code a merchant comes back from Pixonaut with. */
     private const CONNECT_CODE = 'code_1';
 
@@ -58,10 +60,9 @@ final class ExamplesTest extends TestCase
         $printed = self::examples()->run('connect.php', [self::CONNECT_CODE]);
 
         self::assertSame("Connected to Acme.\n", $printed);
-        $keys = json_decode((string) file_get_contents(self::examples()->keysFile), true);
-        self::assertIsArray($keys);
-        self::assertStringStartsWith('ik_', (string) $keys['integrationKey']);
-        self::assertStringStartsWith('whsec_', (string) $keys['webhookSecret']);
+        $keys = self::keys();
+        self::assertStringStartsWith('ik_', $keys['integrationKey']);
+        self::assertStringStartsWith('whsec_', $keys['webhookSecret']);
         self::assertSame(0600, fileperms(self::examples()->keysFile) & 0777);
     }
 
@@ -103,13 +104,11 @@ final class ExamplesTest extends TestCase
     #[Depends('testConnectingStoresTheKeys')]
     public function testTheWebhookEndpointActsOnlyOnSignedDeliveries(): void
     {
-        $keys = json_decode((string) file_get_contents(self::examples()->keysFile), true);
-        self::assertIsArray($keys);
-        $secret = (string) $keys['webhookSecret'];
-        $vectors = json_decode((string) file_get_contents(__DIR__ . '/../../spec/webhook-signature-vectors.json'), true);
-        self::assertIsArray($vectors);
-        $committed = (string) $vectors['valid'][0]['body'];
-        $ping = (string) $vectors['valid'][1]['body'];
+        $secret = self::keys()['webhookSecret'];
+        /** @var array{valid: list<array{body: string}>} $vectors */
+        $vectors = json_decode((string) file_get_contents(self::VECTORS), true, flags: JSON_THROW_ON_ERROR);
+        $committed = $vectors['valid'][0]['body'];
+        $ping = $vectors['valid'][1]['body'];
         $unknown = '{"id":"evt_new","type":"something.added_later","payload":{"a":1},"createdAt":1791892800000}';
 
         self::examples()->serveWebhook(static function (WebhookEndpoint $endpoint) use ($secret, $committed, $ping, $unknown): void {
@@ -122,6 +121,21 @@ final class ExamplesTest extends TestCase
 
             self::assertStringContainsString('Design 6f1c8a2b-3d4e-4f5a-8b6c-7d8e9f0a1b2c committed.', $endpoint->log());
         });
+    }
+
+    /**
+     * What `connect.php` stored.
+     *
+     * @return array{integrationKey: string, webhookSecret: string}
+     */
+    private static function keys(): array
+    {
+        $keys = json_decode((string) file_get_contents(self::examples()->keysFile), true, flags: JSON_THROW_ON_ERROR);
+        self::assertIsArray($keys);
+        self::assertIsString($keys['integrationKey'] ?? null);
+        self::assertIsString($keys['webhookSecret'] ?? null);
+
+        return ['integrationKey' => $keys['integrationKey'], 'webhookSecret' => $keys['webhookSecret']];
     }
 
     /**
