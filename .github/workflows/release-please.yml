@@ -31,7 +31,7 @@ jobs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
-      - uses: googleapis/release-please-action@v4
+      - uses: googleapis/release-please-action@v5
         id: release
         with:
           config-file: release-please-config.json
@@ -55,16 +55,20 @@ jobs:
       GH_TOKEN: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
       GH_REPO: ${{ github.repository }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ needs.release-please.outputs.pr != '' && fromJSON(needs.release-please.outputs.pr).headBranchName || github.sha }}
           token: ${{ secrets.RELEASE_PLEASE_TOKEN || github.token }}
       - name: Release pull request
         if: needs.release-please.outputs.pr != ''
+        # The pull request is read here, not with fromJSON in env: a step's
+        # env is evaluated even when its `if` skips it, and fromJSON('')
+        # fails the whole job on the run that tags the release.
         env:
-          BRANCH: ${{ fromJSON(needs.release-please.outputs.pr).headBranchName }}
-          NUMBER: ${{ fromJSON(needs.release-please.outputs.pr).number }}
+          PR: ${{ needs.release-please.outputs.pr }}
         run: |
+          BRANCH="$(jq -r .headBranchName <<<"${PR}")"
+          NUMBER="$(jq -r .number <<<"${PR}")"
           php generator/release-notes.php CHANGELOG.md
           if ! git diff --quiet -- CHANGELOG.md; then
             git config user.name 'github-actions[bot]'
