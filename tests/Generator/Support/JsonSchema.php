@@ -51,6 +51,10 @@ final class JsonSchema
         if (isset($schema['enum']) && is_array($schema['enum']) && !in_array($value, $schema['enum'], false)) {
             $problems[] = $path . ': not one of the enum';
         }
+        foreach ((array) ($schema['allOf'] ?? []) as $part) {
+            /** @var array<string, mixed> $part */
+            $problems = [...$problems, ...$this->validate($part, $value, $path)];
+        }
         foreach (['oneOf', 'anyOf'] as $keyword) {
             if (!isset($schema[$keyword]) || !is_array($schema[$keyword])) {
                 continue;
