@@ -28,35 +28,34 @@ return [
         'templates.preview.get' => 'A server renders a template\'s preview with its key, e.g. for a product image.',
     ],
 
-    // The resource (`$pixonaut->designs()`) each tag's operations are on, or
-    // null for a tag whose operations the SDK sends only through `call()`
-    // so far. An operation in a tag not listed here stops the generator.
+    // The resource (`$pixonaut->designs()`) each tag's operations are on. An
+    // operation in a tag not listed here stops the generator.
     'resources' => [
         'API keys' => 'connect',
-        'Assets' => null,
-        'Automations' => null,
+        'Assets' => 'assets',
+        'Automations' => 'automations',
         'Blanks' => 'blanks',
         'Designs' => 'designs',
         'Events' => 'events',
         'Orders' => 'orders',
-        'Pixel' => null,
+        'Pixel' => 'pixel',
         'Printshops' => 'printshops',
         'Prints' => 'prints',
         'Proofs' => 'proofs',
-        'Sessions' => null,
+        'Sessions' => 'sessions',
         'Share links' => 'shareLinks',
         'Templates' => 'templates',
         'Webhook endpoints' => 'webhooks',
     ],
 
-    // Operations on another resource than their tag's, or on none.
+    // Operations on another resource than their tag's.
     'operationResources' => [
-        // The workspace's own keys are administration; `API keys` maps to
-        // `connect()` for the connected store's operations.
-        'apiKeys.create' => null,
-        'apiKeys.delete' => null,
-        'apiKeys.list' => null,
-        'apiKeys.update' => null,
+        // The workspace's own keys, apart from the connected store's
+        // operations the `API keys` tag also holds.
+        'apiKeys.create' => 'apiKeys',
+        'apiKeys.delete' => 'apiKeys',
+        'apiKeys.list' => 'apiKeys',
+        'apiKeys.update' => 'apiKeys',
         // A designer link opens the designer on a template, not a share link.
         'templates.designerLinks.create' => 'designerLinks',
     ],
@@ -67,6 +66,7 @@ return [
     'resourcePrefixes' => [
         'connect' => 'connectedStore',
         'designerLinks' => 'templates.designerLinks',
+        'sessions' => 'customerSessions',
         'webhooks' => 'webhookEndpoints',
     ],
 
@@ -85,6 +85,23 @@ return [
         'printshopConnections.list' => 'listConnections',
         // `createPrintOrder` would read as making a print.
         'prints.orders.create' => 'createForPrint',
+        // Every round shape the picture holds; a status, not a verb.
+        'assets.roundShapes.get' => 'getRoundShapes',
+        'assets.cutOutStatus' => 'getCutOutStatus',
+        // The operation ids name nouns, not what the method does.
+        'automations.firing' => 'getFiring',
+        'automations.firings' => 'listFirings',
+        'automations.versions' => 'listVersions',
+        'automations.placeholders' => 'listPlaceholders',
+        'automations.pastEventsPreview' => 'previewPastEvents',
+        'automations.testRunEvents' => 'findTestRunEvents',
+        'mcp.request' => 'mcp',
+        'pixel.designer' => 'changeDesign',
+        'pixelApplications.create' => 'apply',
+        'pixelConversation.get' => 'getConversation',
+        'pixelDismissals.create' => 'dismiss',
+        'pixelTurns.create' => 'createTurn',
+        'pixelTurns.toolResults.create' => 'createToolResults',
     ],
 
     // Fields of an answer named like a secret (`key`, `secret`, `token`)

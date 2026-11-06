@@ -10,7 +10,10 @@ use PHPUnit\Framework\TestCase;
 use Pixonaut\Sdk\Generated\Resource;
 use Pixonaut\Sdk\Generator\Codegen\Naming;
 use Pixonaut\Sdk\Http\Binary;
+use Pixonaut\Sdk\Http\EventStream;
+use Pixonaut\Sdk\Http\Operation;
 use Pixonaut\Sdk\Http\PreparedRequest;
+use Pixonaut\Sdk\Http\StreamEvent;
 use Pixonaut\Sdk\Model\Model;
 use Pixonaut\Sdk\Pixonaut;
 use Pixonaut\Sdk\Tests\Generator\Support\Calls;
@@ -35,6 +38,9 @@ final class ResourceMethodsTest extends TestCase
     /** What the test passes as an idempotent operation's key. */
     private const KEY = 'key-1';
 
+    /** The body an operation answering server-sent events is answered with. */
+    private const EVENTS = "event: turn.started\nid: 1\ndata: {\"turnId\":\"t_1\"}\n\n: a comment\ndata: two\ndata: lines\n\n";
+
     /**
      * Each resource the client reaches, by its accessor.
      *
@@ -43,15 +49,20 @@ final class ResourceMethodsTest extends TestCase
     private static function resources(): array
     {
         return [
+            'apiKeys' => static fn(Pixonaut $p): object => $p->apiKeys(),
+            'assets' => static fn(Pixonaut $p): object => $p->assets(),
+            'automations' => static fn(Pixonaut $p): object => $p->automations(),
             'blanks' => static fn(Pixonaut $p): object => $p->blanks(),
             'connect' => static fn(Pixonaut $p): object => $p->connect(),
             'designerLinks' => static fn(Pixonaut $p): object => $p->designerLinks(),
             'designs' => static fn(Pixonaut $p): object => $p->designs(),
             'events' => static fn(Pixonaut $p): object => $p->events(),
             'orders' => static fn(Pixonaut $p): object => $p->orders(),
+            'pixel' => static fn(Pixonaut $p): object => $p->pixel(),
             'printshops' => static fn(Pixonaut $p): object => $p->printshops(),
             'prints' => static fn(Pixonaut $p): object => $p->prints(),
             'proofs' => static fn(Pixonaut $p): object => $p->proofs(),
+            'sessions' => static fn(Pixonaut $p): object => $p->sessions(),
             'shareLinks' => static fn(Pixonaut $p): object => $p->shareLinks(),
             'templates' => static fn(Pixonaut $p): object => $p->templates(),
             'webhooks' => static fn(Pixonaut $p): object => $p->webhooks(),
@@ -64,22 +75,27 @@ final class ResourceMethodsTest extends TestCase
     private static function methods(): array
     {
         return [
+            'apiKeys' => Resource\ApiKeys::OPERATIONS,
+            'assets' => Resource\Assets::OPERATIONS,
+            'automations' => Resource\Automations::OPERATIONS,
             'blanks' => Resource\Blanks::OPERATIONS,
             'connect' => Resource\Connect::OPERATIONS,
             'designerLinks' => Resource\DesignerLinks::OPERATIONS,
             'designs' => Resource\Designs::OPERATIONS,
             'events' => Resource\Events::OPERATIONS,
             'orders' => Resource\Orders::OPERATIONS,
+            'pixel' => Resource\Pixel::OPERATIONS,
             'printshops' => Resource\Printshops::OPERATIONS,
             'prints' => Resource\Prints::OPERATIONS,
             'proofs' => Resource\Proofs::OPERATIONS,
+            'sessions' => Resource\Sessions::OPERATIONS,
             'shareLinks' => Resource\ShareLinks::OPERATIONS,
             'templates' => Resource\Templates::OPERATIONS,
             'webhooks' => Resource\Webhooks::OPERATIONS,
         ];
     }
 
-    public function testEveryOperationOfAMappedTagHasAMethod(): void
+    public function testEveryOperationHasAMethod(): void
     {
         /** @var array{resources: array<string, string|null>, operationResources: array<string, string|null>, generateSkipped: array<string, string>} $config */
         $config = require self::CONFIG;
@@ -92,9 +108,8 @@ final class ResourceMethodsTest extends TestCase
             $tag = is_array($tags) && is_string($tags[0] ?? null) ? $tags[0] : '';
             self::assertArrayHasKey($tag, $config['resources'], $id . ' is in a tag the config does not map.');
             $resource = array_key_exists($id, $config['operationResources']) ? $config['operationResources'][$id] : $config['resources'][$tag];
-            if ($resource !== null) {
-                $expected[$id] = $resource;
-            }
+            self::assertNotNull($resource, $id . ' is on no resource.');
+            $expected[$id] = $resource;
         }
 
         $covered = [];
@@ -284,6 +299,11 @@ final class ResourceMethodsTest extends TestCase
 
             return null;
         }
+        if (array_keys($content) === [Operation::EVENT_STREAM]) {
+            $client->answer($status, self::EVENTS, ['Content-Type' => Operation::EVENT_STREAM, 'X-Request-Id' => 'req_1']);
+
+            return [new StreamEvent('turn.started', '{"turnId":"t_1"}', '1'), new StreamEvent(StreamEvent::DEFAULT_TYPE, "two\nlines", '1')];
+        }
         if (isset($content[SpecExamples::JSON])) {
             $example = SpecExamples::answer($id, $status);
             $client->answerJson($status, $example);
@@ -330,6 +350,10 @@ final class ResourceMethodsTest extends TestCase
         self::assertTrue(array_filter($names, static fn(string $name): bool => $name === 'array' ? is_array($returned) : $returned instanceof $name) !== [], 'Returns one of ' . implode('|', $names) . ', got ' . get_debug_type($returned));
         if (is_array($returned)) {
             self::assertTrue(self::same($answer, array_map(static fn(mixed $item): mixed => $item instanceof Model ? $item->raw() : $item, $returned)), 'The list holds the example.');
+        }
+        if ($returned instanceof EventStream) {
+            self::assertSame('req_1', $returned->requestId);
+            self::assertEquals($answer, iterator_to_array($returned, false));
         }
         if ($returned instanceof Binary) {
             self::assertEquals($answer, $returned);

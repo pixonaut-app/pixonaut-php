@@ -23,6 +23,8 @@ final class Compiler
 
     private const JSON = 'application/json';
 
+    private const EVENT_STREAM = 'text/event-stream';
+
     /** The class decoding a webhook delivery's body by its `type`. */
     public const WEBHOOK_EVENT = 'WebhookEvent';
 
@@ -224,6 +226,7 @@ final class Compiler
 
         $accept = [];
         $binaryStatuses = [];
+        $streamStatuses = [];
         $emptyStatuses = [];
         $errorCodes = [];
         foreach (self::map($operation['responses'] ?? []) as $status => $response) {
@@ -231,6 +234,8 @@ final class Compiler
             if (self::isSuccess((string) $status)) {
                 if ($content === []) {
                     $emptyStatuses[] = (int) $status;
+                } elseif (array_keys($content) === [self::EVENT_STREAM]) {
+                    $streamStatuses[] = (int) $status;
                 } elseif (array_diff(array_keys($content), [self::JSON]) !== []) {
                     $binaryStatuses[] = (int) $status;
                 }
@@ -284,6 +289,7 @@ final class Compiler
             $binaryStatuses,
             $emptyStatuses,
             $errorCodes,
+            $streamStatuses,
         );
     }
 
