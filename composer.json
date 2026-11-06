@@ -3,7 +3,12 @@
     "description": "PHP SDK for the Pixonaut public API.",
     "type": "library",
     "license": "MIT",
-    "keywords": ["pixonaut", "sdk", "api", "psr-18"],
+    "keywords": [
+        "pixonaut",
+        "sdk",
+        "api",
+        "psr-18"
+    ],
     "homepage": "https://github.com/pixonaut-app/pixonaut-php",
     "support": {
         "issues": "https://github.com/pixonaut-app/pixonaut-php/issues",
