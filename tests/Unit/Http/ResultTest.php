@@ -8,6 +8,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Pixonaut\Sdk\Exception\ApiException;
 use Pixonaut\Sdk\Http\Result;
+use Pixonaut\Sdk\Http\StreamEvent;
 
 final class ResultTest extends TestCase
 {
@@ -42,6 +43,14 @@ final class ResultTest extends TestCase
         self::assertSame('image/png', $binary->contentType);
         self::assertSame("\x89PNG", $binary->bytes);
         self::assertSame('req_1', $binary->requestId);
+    }
+
+    public function testReadsABodyAsServerSentEvents(): void
+    {
+        $stream = (new Result('a', 200, ['X-Request-Id' => 'req_1'], "data: a\n\n"))->eventStream();
+
+        self::assertSame('req_1', $stream->requestId);
+        self::assertEquals([new StreamEvent(StreamEvent::DEFAULT_TYPE, 'a')], iterator_to_array($stream, false));
     }
 
     public function testDecodesAnObject(): void
