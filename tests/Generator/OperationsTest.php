@@ -69,7 +69,7 @@ final class OperationsTest extends TestCase
         $this->expectException(GeneratorException::class);
         $this->expectExceptionMessage('generator/config.php names orders.delete, which the spec does not have.');
 
-        (new Generator('Pixonaut\\Sdk\\Tests\\Generator\\Config', new Config(sensitive: ['orders.delete' => 'gone'])))
+        (new Generator('Pixonaut\\Sdk\\Tests\\Generator\\Config', new Config(sensitive: ['orders.delete' => 'gone'], resources: [self::fixtureTag() => null])))
             ->files(self::json($this->fixture()));
     }
 
@@ -104,6 +104,7 @@ final class OperationsTest extends TestCase
         return new Config(
             sensitive: ['orders.create' => 'Answers a token.'],
             generateSkipped: ['templates.mockup.get' => 'A server calls it.'],
+            resources: [self::fixtureTag() => null],
         );
     }
 

@@ -37,12 +37,40 @@ trait GeneratesCode
      */
     protected static function spec(array $schemas = [], array $paths = [], array $extra = []): array
     {
+        foreach ($paths as $path => $item) {
+            if (!is_array($item)) {
+                continue;
+            }
+            foreach ($item as $method => $operation) {
+                if (is_array($operation) && !isset($operation['tags'])) {
+                    $item[$method] = $operation + ['tags' => [self::fixtureTag()]];
+                }
+            }
+            $paths[$path] = $item;
+        }
+
         return [
             'openapi' => '3.1.0',
             'info' => ['title' => 'Fixture', 'version' => '9.9.9'],
             'paths' => $paths === [] ? new \stdClass() : $paths,
             'components' => ['schemas' => $schemas === [] ? new \stdClass() : $schemas],
         ] + $extra;
+    }
+
+    /**
+     * The tag `spec()` gives an operation that names none.
+     */
+    protected static function fixtureTag(): string
+    {
+        return 'Fixture';
+    }
+
+    /**
+     * A config placing the fixture's operations on no resource.
+     */
+    protected static function noResources(): Config
+    {
+        return new Config(resources: [self::fixtureTag() => null]);
     }
 
     /**
@@ -54,7 +82,7 @@ trait GeneratesCode
     {
         $namespace = 'Pixonaut\\Sdk\\Tests\\Generator\\Out\\Run' . bin2hex(random_bytes(8));
         $directory = $this->directory();
-        (new Generator($namespace, $config ?? new Config()))->write(self::json($spec), $directory);
+        (new Generator($namespace, $config ?? self::noResources()))->write(self::json($spec), $directory);
         foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS)) as $file) {
             /** @var SplFileInfo $file */
             require_once $file->getPathname();

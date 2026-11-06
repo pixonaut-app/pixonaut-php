@@ -78,7 +78,7 @@ final class SupportPrinter
                 $credential = Credential::tryFrom($scheme) ?? throw new GeneratorException(sprintf('%s accepts credential %s, which Credential does not have.', $operation->id, $scheme));
                 $credentials[] = Ast::constant('Credential', $credential->name);
             }
-            $operations[] = new Expr\New_(new Name('Operation'), [
+            $args = [
                 Ast::named('id', Ast::string($operation->id)),
                 Ast::named('method', Ast::string($operation->method)),
                 Ast::named('path', Ast::string($operation->path)),
@@ -87,7 +87,11 @@ final class SupportPrinter
                 Ast::named('idempotent', Ast::value($operation->idempotent)),
                 Ast::named('accept', Ast::string($operation->accept)),
                 Ast::named('sensitive', Ast::value($operation->sensitive)),
-            ]);
+            ];
+            if ($operation->headers() !== []) {
+                $args[] = Ast::named('headers', Ast::value($operation->headers()));
+            }
+            $operations[] = new Expr\New_(new Name('Operation'), $args);
         }
         $all = new Stmt\ClassMethod('all', [
             'flags' => Modifiers::PUBLIC | Modifiers::STATIC,

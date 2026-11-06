@@ -148,11 +148,11 @@ final class Ast
     }
 
     /**
-     * A file holding one class.
+     * A file holding one class or trait.
      *
      * @param list<string> $uses Fully qualified classes to import.
      */
-    public static function file(string $namespace, array $uses, Stmt\Class_ $class): string
+    public static function file(string $namespace, array $uses, Stmt\ClassLike $class): string
     {
         sort($uses);
         $statements = array_map(static fn(string $use): Stmt\Use_ => new Stmt\Use_([new Node\UseItem(new Name($use))]), array_values(array_unique($uses)));

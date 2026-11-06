@@ -82,8 +82,7 @@ final class PrepareTest extends TestCase
     {
         yield 'not declared' => [['x-other' => 'a']];
         yield 'a credential' => [['authorization' => 'Bearer sk_other']];
-        yield 'a line break' => [['prefer' => "wait
-X-Injected: 1"]];
+        yield 'a line break' => [['prefer' => "wait\r\nX-Injected: 1"]];
     }
 
     /**

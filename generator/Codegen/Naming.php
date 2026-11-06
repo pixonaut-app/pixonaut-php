@@ -77,6 +77,20 @@ final class Naming
     }
 
     /**
+     * A method parameter for an operation parameter: a query or path
+     * parameter keeps its name (`pageSize`), a header loses Pixonaut's prefix
+     * (`x-pixonaut-session` → `session`, `prefer` → `prefer`).
+     */
+    public static function parameter(string $name, string $in): string
+    {
+        if ($in === ParameterDef::HEADER) {
+            return lcfirst(self::pascal((string) preg_replace('/^x-pixonaut-/i', '', $name)));
+        }
+
+        return self::property($name);
+    }
+
+    /**
      * A value as a constant name: `order.created` → `ORDER_CREATED`,
      * `designId` → `DESIGN_ID`.
      */

@@ -311,7 +311,7 @@ final class ModelPrinter
     /**
      * The expression decoding `$value`, found at `$path`, as `$type`.
      */
-    private function decode(Type $type, Expr $value, Expr $path): Expr
+    public function decode(Type $type, Expr $value, Expr $path): Expr
     {
         if ($type->nullable && $type->kind !== Type::MIXED && $type->kind !== Type::NULL) {
             $inner = $type->notNull();
