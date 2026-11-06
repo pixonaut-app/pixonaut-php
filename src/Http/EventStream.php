@@ -7,7 +7,9 @@ namespace Pixonaut\Sdk\Http;
 use Generator;
 use IteratorAggregate;
 use LogicException;
+use Pixonaut\Sdk\Exception\ApiException;
 use Psr\Http\Message\StreamInterface;
+use RuntimeException;
 
 /**
  * A `text/event-stream` answer, read as the caller iterates: each step reads
@@ -20,8 +22,10 @@ use Psr\Http\Message\StreamInterface;
  * hands every event over at once, after the answer has ended.
  *
  * The stream is read once. An event the answer was cut off in the middle of
- * is not yielded, as the SSE format prescribes. The body is closed when the
- * iteration ends, also when the caller stops early.
+ * is not yielded, as the SSE format prescribes. A body that fails while it
+ * is read, or stops giving bytes before it has ended (a read timeout), ends
+ * the iteration with an `ApiException` `transport_failed`. The body is
+ * closed when the iteration ends, also when the caller stops early.
  *
  * @implements IteratorAggregate<int, StreamEvent>
  */
@@ -42,16 +46,20 @@ final class EventStream implements IteratorAggregate
     /**
      * @param StreamInterface|string $body      The answer's body, unread.
      * @param string|null            $requestId The answer's `X-Request-Id`.
+     * @param string                 $operation The operation it answers, for the error a failed read raises.
      */
     public function __construct(
         private readonly StreamInterface|string $body,
         public readonly ?string $requestId = null,
+        public readonly string $operation = '',
     ) {}
 
     /**
      * @return Generator<int, StreamEvent>
      *
      * @throws LogicException When the stream was already read.
+     * @throws ApiException   `transport_failed`, not retryable, when the body fails or stalls before it has ended:
+     *                        the events read so far may have had effects, so the request is not sent again.
      */
     public function getIterator(): Generator
     {
@@ -103,6 +111,8 @@ final class EventStream implements IteratorAggregate
     {
         $buffer = '';
         $bomChecked = false;
+        // A CR that ended the last read may be the first half of a CRLF.
+        $skipLineFeed = false;
         foreach ($this->chunks() as [$chunk, $ended]) {
             $buffer .= $chunk;
             if (!$bomChecked) {
@@ -114,6 +124,12 @@ final class EventStream implements IteratorAggregate
                 }
                 $bomChecked = true;
             }
+            if ($skipLineFeed && $buffer !== '') {
+                if ($buffer[0] === self::LINE_FEED) {
+                    $buffer = substr($buffer, 1);
+                }
+                $skipLineFeed = false;
+            }
             while (true) {
                 $end = strcspn($buffer, self::CARRIAGE_RETURN . self::LINE_FEED);
                 if ($end === strlen($buffer)) {
@@ -121,11 +137,10 @@ final class EventStream implements IteratorAggregate
                 }
                 $length = 1;
                 if ($buffer[$end] === self::CARRIAGE_RETURN) {
-                    if ($end + 1 === strlen($buffer) && !$ended) {
-                        // The next chunk may start with the LF of a CRLF.
-                        break;
-                    }
-                    if (($buffer[$end + 1] ?? '') === self::LINE_FEED) {
+                    if ($end + 1 === strlen($buffer)) {
+                        // The line has ended; the next read may start with the LF of a CRLF.
+                        $skipLineFeed = true;
+                    } elseif ($buffer[$end + 1] === self::LINE_FEED) {
                         $length = 2;
                     }
                 }
@@ -148,17 +163,37 @@ final class EventStream implements IteratorAggregate
             return;
         }
         try {
-            while (!$this->body->eof()) {
-                $chunk = $this->body->read(self::CHUNK_BYTES);
-                // A blocking stream reads nothing only once it has ended.
+            while (true) {
+                try {
+                    $chunk = $this->body->read(self::CHUNK_BYTES);
+                    $ended = $this->body->eof();
+                } catch (RuntimeException $e) {
+                    throw $this->failed($e->getMessage(), $e);
+                }
                 if ($chunk === '') {
+                    // A blocking stream reads nothing before its end only when a read timed out.
+                    if (!$ended) {
+                        throw $this->failed('The body gave no bytes before it ended.');
+                    }
                     break;
                 }
                 yield [$chunk, false];
+                if ($ended) {
+                    break;
+                }
             }
             yield ['', true];
         } finally {
             $this->body->close();
         }
+    }
+
+    /**
+     * The error a body that failed or stalled while being read ends the
+     * iteration with.
+     */
+    private function failed(string $message, ?RuntimeException $cause = null): ApiException
+    {
+        return new ApiException($this->operation, 0, ApiException::TRANSPORT_FAILED, false, null, $this->requestId, ['message' => $message], $cause);
     }
 }

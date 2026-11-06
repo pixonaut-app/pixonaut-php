@@ -13,6 +13,7 @@ use Pixonaut\Sdk\Http\EventStream;
 use Pixonaut\Sdk\Http\StreamEvent;
 use Pixonaut\Sdk\Tests\Unit\Support\ChunkedStream;
 use Pixonaut\Sdk\Tests\Unit\Support\Harness;
+use RuntimeException;
 
 final class EventStreamTest extends TestCase
 {
@@ -92,6 +93,53 @@ final class EventStreamTest extends TestCase
         self::assertTrue($body->closed, 'Stopping early closes the body.');
     }
 
+    public function testYieldsACarriageReturnEndedEventWithoutWaitingForTheNextRead(): void
+    {
+        $body = new ChunkedStream(["data: first\r\r", "\ndata: second\r\n\r\n"]);
+        $events = (new EventStream($body))->getIterator();
+
+        self::assertSame('first', $events->current()->data);
+        self::assertSame(1, $body->reads);
+        $events->next();
+        self::assertSame('second', $events->current()->data);
+    }
+
+    public function testATimedOutReadEndsWithATransportError(): void
+    {
+        $body = new ChunkedStream(["data: one\n\n", null, "data: two\n\n"]);
+        $events = [];
+
+        try {
+            foreach (new EventStream($body, 'req_1', 'pixelTurns.create') as $event) {
+                $events[] = $event->data;
+            }
+            self::fail('No error.');
+        } catch (ApiException $e) {
+            self::assertSame(ApiException::TRANSPORT_FAILED, $e->errorCode);
+            self::assertSame('pixelTurns.create', $e->operation);
+            self::assertSame('req_1', $e->requestId);
+            self::assertFalse($e->retryable, 'A turn read in part is not sent again.');
+        }
+        self::assertSame(['one'], $events);
+        self::assertTrue($body->closed);
+    }
+
+    public function testAFailedReadEndsWithATransportErrorCarryingItsCause(): void
+    {
+        $cause = new RuntimeException('Connection reset');
+        $body = new ChunkedStream(["data: one\n\n", $cause]);
+
+        try {
+            iterator_to_array(new EventStream($body, 'req_1', 'pixelTurns.create'));
+            self::fail('No error.');
+        } catch (ApiException $e) {
+            self::assertSame(ApiException::TRANSPORT_FAILED, $e->errorCode);
+            self::assertSame($cause, $e->getPrevious());
+            self::assertSame(['message' => 'Connection reset'], $e->details);
+        }
+        self::assertTrue($body->closed);
+    }
+
     public function testIsReadOnce(): void
     {
         $stream = new EventStream("data: a\n\n");
@@ -129,6 +177,43 @@ final class EventStreamTest extends TestCase
         } catch (ApiException $e) {
             self::assertSame('turn_in_progress', $e->errorCode);
         }
+    }
+
+    /**
+     * @return iterable<string, array{string}>
+     */
+    public static function otherContentTypes(): iterable
+    {
+        yield 'a proxy page' => ['text/html'];
+        yield 'JSON' => ['application/json'];
+        yield 'none' => [''];
+    }
+
+    #[DataProvider('otherContentTypes')]
+    public function testAnOperationAnsweringEventsRefusesASuccessOfAnotherType(string $contentType): void
+    {
+        $harness = new Harness();
+        $harness->http->addResponse(new Response(200, $contentType === '' ? [] : ['Content-Type' => $contentType], '<html>Bad gateway</html>'));
+
+        try {
+            $harness->pixonaut->call('pixelTurns.create', body: ['message' => 'Hi']);
+            self::fail('No error.');
+        } catch (ApiException $e) {
+            self::assertSame(ApiException::UNEXPECTED_RESPONSE, $e->errorCode);
+            self::assertSame(['body' => '<html>Bad gateway</html>'], $e->details);
+        }
+    }
+
+    public function testHandleReadsAnEventStreamAndChecksItsType(): void
+    {
+        $harness = new Harness();
+        $request = $harness->pixonaut->prepare('pixelTurns.create', body: ['message' => 'Hi']);
+
+        $stream = $harness->pixonaut->handle($request, new Response(200, ['Content-Type' => 'Text/Event-Stream; charset=utf-8'], "data: a\n\n"))->eventStream();
+        self::assertSame(['a'], array_map(static fn(StreamEvent $event): string => $event->data, iterator_to_array($stream, false)));
+
+        $this->expectException(ApiException::class);
+        $harness->pixonaut->handle($request, new Response(200, ['Content-Type' => 'text/plain'], 'data: a'));
     }
 
     /**

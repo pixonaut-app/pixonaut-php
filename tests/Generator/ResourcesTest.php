@@ -183,6 +183,16 @@ final class ResourcesTest extends TestCase
         );
     }
 
+    public function testRefusesServerSentEventsBesideAnotherMediaType(): void
+    {
+        $this->expectException(GeneratorException::class);
+        $this->expectExceptionMessage('designs.watch answers both server-sent events and something else, which is not supported.');
+
+        (new Generator('Pixonaut\\Sdk\\Tests\\Generator\\MixedType', $this->config()))->files(self::json($this->streaming(
+            ['text/event-stream' => ['schema' => ['type' => 'string']], 'image/png' => []],
+        )));
+    }
+
     /**
      * The fixture with `designs.watch` answering 200 with the content given.
      *

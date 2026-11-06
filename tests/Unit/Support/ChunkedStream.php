@@ -10,6 +10,7 @@ use Psr\Http\Message\StreamInterface;
 /**
  * A body that arrives in pieces, one per read, recording how far it was
  * read: a response a streaming PSR-18 client returns before it has ended.
+ * A `null` piece is a read that timed out, a `Throwable` one that failed.
  */
 final class ChunkedStream implements StreamInterface
 {
@@ -19,7 +20,7 @@ final class ChunkedStream implements StreamInterface
     public bool $closed = false;
 
     /**
-     * @param list<string> $chunks
+     * @param list<string|\Throwable|null> $chunks
      */
     public function __construct(
         private array $chunks,
@@ -91,8 +92,12 @@ final class ChunkedStream implements StreamInterface
             throw new LogicException('Read after close.');
         }
         ++$this->reads;
+        $chunk = array_shift($this->chunks);
+        if ($chunk instanceof \Throwable) {
+            throw $chunk;
+        }
 
-        return (string) array_shift($this->chunks);
+        return (string) $chunk;
     }
 
     public function getContents(): string

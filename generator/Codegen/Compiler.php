@@ -234,7 +234,10 @@ final class Compiler
             if (self::isSuccess((string) $status)) {
                 if ($content === []) {
                     $emptyStatuses[] = (int) $status;
-                } elseif (array_keys($content) === [self::EVENT_STREAM]) {
+                } elseif (isset($content[self::EVENT_STREAM])) {
+                    if (count($content) > 1) {
+                        throw new GeneratorException(sprintf('%s answers both server-sent events and something else, which is not supported.', $id));
+                    }
                     $streamStatuses[] = (int) $status;
                 } elseif (array_diff(array_keys($content), [self::JSON]) !== []) {
                     $binaryStatuses[] = (int) $status;

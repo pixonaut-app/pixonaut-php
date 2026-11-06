@@ -111,7 +111,7 @@ final class Result
      */
     public function eventStream(): EventStream
     {
-        return new EventStream($this->stream ?? $this->body, $this->requestId());
+        return new EventStream($this->stream ?? $this->body, $this->requestId(), $this->operation);
     }
 
     /**
