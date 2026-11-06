@@ -37,10 +37,20 @@ if (!$connection instanceof ConnectedStoreExchangeCodeResponseOption1) {
 // The keys are shown in this answer only: keep them where your host keeps
 // secrets. This example writes them to a file outside the web root.
 $keysFile = getenv('PIXONAUT_KEYS_FILE') ?: __DIR__ . '/pixonaut-keys.json';
-file_put_contents($keysFile, json_encode([
+$keys = json_encode([
     'integrationKey' => $connection->integrationKey->key,
     'webhookSecret' => $connection->webhook->secret,
-], JSON_THROW_ON_ERROR));
-chmod($keysFile, 0600);
+], JSON_THROW_ON_ERROR);
+// Created readable by its owner only (umask 0077, mode 0600), never briefly
+// readable by others.
+$umask = umask(0077);
+try {
+    $written = file_put_contents($keysFile, $keys);
+} finally {
+    umask($umask);
+}
+if ($written !== strlen($keys) || !chmod($keysFile, 0600)) {
+    throw new RuntimeException("The store's keys were not stored in {$keysFile}: connect the store again from Pixonaut.");
+}
 
 echo "Connected to {$connection->tenantName}.\n";

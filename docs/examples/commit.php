@@ -25,10 +25,24 @@ $prepared = $pixonaut->designs()->prepareCommit(
 );
 
 // Store it before sending: it is everything needed to send the same request
-// again, key included. Here it goes to a file; a host keeps it with the
-// cart line it commits.
+// again, key included. Here it goes to a file in a directory only this user
+// can read (mode 0700, files umask 0077); a host keeps it with the cart line
+// it commits.
+$snapshots = getenv('PIXONAUT_SNAPSHOT_DIR') ?: __DIR__ . '/snapshots';
+if (!is_dir($snapshots) && !mkdir($snapshots, 0700, true)) {
+    throw new RuntimeException("No directory {$snapshots} to store the commit in: not sent.");
+}
+$snapshotFile = "{$snapshots}/commit-{$cartLine}.json";
 $snapshot = json_encode($prepared->toArray(), JSON_THROW_ON_ERROR);
-file_put_contents(sys_get_temp_dir() . "/pixonaut-commit-{$cartLine}.json", $snapshot);
+$umask = umask(0077);
+try {
+    $written = file_put_contents($snapshotFile, $snapshot);
+} finally {
+    umask($umask);
+}
+if ($written !== strlen($snapshot)) {
+    throw new RuntimeException("The commit was not stored in {$snapshotFile}: not sent.");
+}
 
 try {
     $design = $pixonaut->designs()->sendCommit($prepared);
@@ -39,8 +53,15 @@ try {
     // Later, from a scheduled job: send the stored request again. Pixonaut
     // answers a key it has seen with the first answer, so the design is
     // committed once.
-    $stored = PreparedRequest::fromArray((array) json_decode($snapshot, true, flags: JSON_THROW_ON_ERROR));
-    $design = $pixonaut->designs()->sendCommit($stored);
+    $stored = file_get_contents($snapshotFile);
+    if ($stored === false) {
+        throw new RuntimeException("The stored commit {$snapshotFile} cannot be read.");
+    }
+    $restored = PreparedRequest::fromArray((array) json_decode($stored, true, flags: JSON_THROW_ON_ERROR));
+    $design = $pixonaut->designs()->sendCommit($restored);
 }
+
+// Kept until the commit succeeded; it is not needed any more.
+unlink($snapshotFile);
 
 echo "Committed design {$design->designId}.\n";

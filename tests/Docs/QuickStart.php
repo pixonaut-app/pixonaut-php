@@ -20,7 +20,12 @@ final class QuickStart
     /** The code a merchant comes back from Pixonaut with. */
     private const CONNECT_CODE = 'code_1';
 
+    private const OK = 200;
+
     private const NO_CONTENT = 204;
+
+    /** The page size `templates.php` asks for. */
+    private const PAGE_SIZE = 50;
 
     private const UNAUTHORIZED = 401;
 
@@ -60,6 +65,13 @@ final class QuickStart
 
     public function connect(): void
     {
+        $unwritable = $this->examples->storage . '/missing/pixonaut-keys.json';
+        self::fails(
+            fn(): string => $this->examples->run('connect.php', [self::CONNECT_CODE], ['PIXONAUT_KEYS_FILE' => $unwritable]),
+            'Connected',
+            'connect.php when the keys cannot be stored',
+        );
+
         self::same("Connected to Acme.\n", $this->examples->run('connect.php', [self::CONNECT_CODE]), 'connect.php');
         $keys = $this->keys();
         self::check(str_starts_with($keys['integrationKey'], 'ik_'), 'connect.php stored no integration key.');
@@ -69,6 +81,11 @@ final class QuickStart
 
     public function templates(): void
     {
+        // A store with no live templates yet: answered once, then the example again.
+        $this->server->script(static fn(FakePixonaut $fake) => $fake->answer('templates.list', self::OK, ['items' => [], 'page' => 1, 'pageSize' => self::PAGE_SIZE, 'total' => 0]));
+        self::same("No live templates yet.\n", $this->examples->run('templates.php'), 'templates.php with no templates');
+        self::same(['templates.list'], array_slice($this->operations(), -1), 'templates.php calls with no templates');
+
         $printed = $this->examples->run('templates.php');
 
         self::matches('/^\S+@\d+: .+\nRead .+, version \d+\.\n$/', $printed, 'templates.php');
@@ -77,10 +94,19 @@ final class QuickStart
 
     public function commit(): void
     {
+        $before = $this->commits();
+        // A directory under a regular file cannot be created.
+        self::fails(
+            fn(): string => $this->examples->run('commit.php', [], ['PIXONAUT_SNAPSHOT_DIR' => $this->examples->keysFile . '/snapshots']),
+            'Committed',
+            'commit.php when the commit cannot be stored',
+        );
+        self::same(count($before), count($this->commits()), 'commit.php sends when the commit cannot be stored');
+
         $this->server->script(static fn(FakePixonaut $fake) => $fake->fault(Fault::lostAnswer(), 'designs.commit'));
 
         self::matches('/^Committed design \S+\.\n$/', $this->examples->run('commit.php'), 'commit.php');
-        $commits = array_values(array_filter($this->server->state()->log, static fn(array $entry): bool => $entry['operation'] === 'designs.commit'));
+        $commits = array_slice($this->commits(), count($before));
         self::same(2, count($commits), 'commit.php sends');
         self::check($commits[1]['replayed'], 'commit.php\'s second send was not answered as a replay.');
     }
@@ -140,6 +166,16 @@ final class QuickStart
     }
 
     /**
+     * Every commit the fake was sent, in order.
+     *
+     * @return list<array{operation: string, method: string, target: string, status: int, replayed: bool}>
+     */
+    private function commits(): array
+    {
+        return array_values(array_filter($this->server->state()->log, static fn(array $entry): bool => $entry['operation'] === 'designs.commit'));
+    }
+
+    /**
      * @return list<string>
      */
     private function operations(): array
@@ -152,6 +188,24 @@ final class QuickStart
         if ($expected !== $actual) {
             throw new RuntimeException(sprintf("%s: expected %s, got %s", $what, var_export($expected, true), var_export($actual, true)));
         }
+    }
+
+    /**
+     * The example run by `$run` fails, and says nothing of `$claim`.
+     *
+     * @param \Closure(): string $run
+     */
+    private static function fails(\Closure $run, string $claim, string $what): void
+    {
+        try {
+            $printed = $run();
+        } catch (RuntimeException $e) {
+            self::check(!str_contains($e->getMessage(), $claim), sprintf('%s failed, yet said %s: %s', $what, var_export($claim, true), $e->getMessage()));
+
+            return;
+        }
+
+        throw new RuntimeException(sprintf('%s did not fail; it printed %s', $what, var_export($printed, true)));
     }
 
     private static function matches(string $pattern, string $actual, string $what): void

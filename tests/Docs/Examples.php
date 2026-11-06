@@ -29,26 +29,44 @@ final class Examples
 
     private const SUCCESS = 0;
 
+    /** Readable by its owner only, as a host keeps the keys and snapshots. */
+    private const PRIVATE_DIRECTORY_MODE = 0700;
+
+    /** Random bytes in the storage directory's name, so no two runs share it. */
+    private const NAME_BYTES = 8;
+
+    /** Where the examples keep what they store, removed by `cleanUp()`. */
+    public readonly string $storage;
+
+    /** Not there until `connect.php` creates it. */
     public readonly string $keysFile;
+
+    public readonly string $snapshotDirectory;
 
     public function __construct(
         private readonly string $directory,
         private readonly string $autoload,
         private readonly string $apiUrl,
     ) {
-        $this->keysFile = (string) tempnam(sys_get_temp_dir(), 'pixonaut-keys-');
+        $this->storage = sys_get_temp_dir() . '/pixonaut-examples-' . bin2hex(random_bytes(self::NAME_BYTES));
+        if (!mkdir($this->storage, self::PRIVATE_DIRECTORY_MODE)) {
+            throw new RuntimeException('No directory for the examples to store in.');
+        }
+        $this->keysFile = $this->storage . '/pixonaut-keys.json';
+        $this->snapshotDirectory = $this->storage . '/snapshots';
     }
 
     /**
      * Runs an example to its end.
      *
-     * @param list<string> $arguments
+     * @param list<string>          $arguments
+     * @param array<string, string> $environment Over the settings the examples are run with.
      *
      * @return string What it printed.
      *
      * @throws RuntimeException When it fails, with what it wrote to standard error.
      */
-    public function run(string $example, array $arguments = []): string
+    public function run(string $example, array $arguments = [], array $environment = []): string
     {
         $output = (string) tempnam(sys_get_temp_dir(), 'pixonaut-example-out-');
         $errors = (string) tempnam(sys_get_temp_dir(), 'pixonaut-example-err-');
@@ -57,7 +75,7 @@ final class Examples
             [0 => ['pipe', 'r'], 1 => ['file', $output, 'w'], 2 => ['file', $errors, 'w']],
             $pipes,
             $this->directory,
-            $this->environment(),
+            [...$this->environment(), ...$environment],
         );
         if (!is_resource($process)) {
             throw new RuntimeException($example . ' did not start.');
@@ -116,7 +134,7 @@ final class Examples
 
     public function cleanUp(): void
     {
-        @unlink($this->keysFile);
+        self::remove($this->storage);
     }
 
     private function path(string $example): string
@@ -137,6 +155,7 @@ final class Examples
         $environment = getenv();
         $environment['PIXONAUT_API_URL'] = $this->apiUrl;
         $environment['PIXONAUT_KEYS_FILE'] = $this->keysFile;
+        $environment['PIXONAUT_SNAPSHOT_DIR'] = $this->snapshotDirectory;
 
         return $environment;
     }
@@ -182,6 +201,19 @@ final class Examples
         }
 
         throw new RuntimeException('The webhook endpoint is not listening: ' . file_get_contents($log));
+    }
+
+    private static function remove(string $path): void
+    {
+        if (is_dir($path) && !is_link($path)) {
+            foreach (array_diff((array) scandir($path), ['.', '..']) as $entry) {
+                self::remove($path . '/' . $entry);
+            }
+            @rmdir($path);
+
+            return;
+        }
+        @unlink($path);
     }
 
     private static function freePort(): int

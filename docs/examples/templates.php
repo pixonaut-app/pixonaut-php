@@ -15,6 +15,11 @@ $list = $pixonaut->templates()->list(status: 'live', page: 1, pageSize: 50);
 if (!$list instanceof TemplatesListResponseOption1) {
     throw new UnexpectedValueException('A key reads its templates a page at a time.');
 }
+if ($list->items === []) {
+    echo "No live templates yet.\n";
+
+    return;
+}
 foreach ($list->items as $item) {
     echo "{$item->id}: {$item->name}\n";
 }

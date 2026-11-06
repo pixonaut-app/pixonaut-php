@@ -19,13 +19,16 @@ composer require pixonaut/pixonaut-php symfony/http-client nyholm/psr7 nyholm/ps
 Load Composer's autoloader once, as usual (`require 'vendor/autoload.php';`).
 The examples leave that line out.
 
-The examples read two settings from the environment:
+The examples read three settings from the environment:
 
 - `PIXONAUT_API_URL`: the API to talk to, `https://api.pixonaut.app` when it
   is not set.
 - `PIXONAUT_KEYS_FILE`: where `connect.php` stores the store's keys and the
   others read them, `pixonaut-keys.json` next to the examples when it is not
   set. Keep it outside the web root.
+- `PIXONAUT_SNAPSHOT_DIR`: the private directory `commit.php` stores each
+  commit in before sending it, `snapshots` next to the examples when it is
+  not set. Keep it outside the web root.
 
 ## Connect the store
 
@@ -75,11 +78,21 @@ if (!$connection instanceof ConnectedStoreExchangeCodeResponseOption1) {
 // The keys are shown in this answer only: keep them where your host keeps
 // secrets. This example writes them to a file outside the web root.
 $keysFile = getenv('PIXONAUT_KEYS_FILE') ?: __DIR__ . '/pixonaut-keys.json';
-file_put_contents($keysFile, json_encode([
+$keys = json_encode([
     'integrationKey' => $connection->integrationKey->key,
     'webhookSecret' => $connection->webhook->secret,
-], JSON_THROW_ON_ERROR));
-chmod($keysFile, 0600);
+], JSON_THROW_ON_ERROR);
+// Created readable by its owner only (umask 0077, mode 0600), never briefly
+// readable by others.
+$umask = umask(0077);
+try {
+    $written = file_put_contents($keysFile, $keys);
+} finally {
+    umask($umask);
+}
+if ($written !== strlen($keys) || !chmod($keysFile, 0600)) {
+    throw new RuntimeException("The store's keys were not stored in {$keysFile}: connect the store again from Pixonaut.");
+}
 
 echo "Connected to {$connection->tenantName}.\n";
 ```
@@ -156,6 +169,11 @@ $list = $pixonaut->templates()->list(status: 'live', page: 1, pageSize: 50);
 if (!$list instanceof TemplatesListResponseOption1) {
     throw new UnexpectedValueException('A key reads its templates a page at a time.');
 }
+if ($list->items === []) {
+    echo "No live templates yet.\n";
+
+    return;
+}
 foreach ($list->items as $item) {
     echo "{$item->id}: {$item->name}\n";
 }
@@ -201,10 +219,24 @@ $prepared = $pixonaut->designs()->prepareCommit(
 );
 
 // Store it before sending: it is everything needed to send the same request
-// again, key included. Here it goes to a file; a host keeps it with the
-// cart line it commits.
+// again, key included. Here it goes to a file in a directory only this user
+// can read (mode 0700, files umask 0077); a host keeps it with the cart line
+// it commits.
+$snapshots = getenv('PIXONAUT_SNAPSHOT_DIR') ?: __DIR__ . '/snapshots';
+if (!is_dir($snapshots) && !mkdir($snapshots, 0700, true)) {
+    throw new RuntimeException("No directory {$snapshots} to store the commit in: not sent.");
+}
+$snapshotFile = "{$snapshots}/commit-{$cartLine}.json";
 $snapshot = json_encode($prepared->toArray(), JSON_THROW_ON_ERROR);
-file_put_contents(sys_get_temp_dir() . "/pixonaut-commit-{$cartLine}.json", $snapshot);
+$umask = umask(0077);
+try {
+    $written = file_put_contents($snapshotFile, $snapshot);
+} finally {
+    umask($umask);
+}
+if ($written !== strlen($snapshot)) {
+    throw new RuntimeException("The commit was not stored in {$snapshotFile}: not sent.");
+}
 
 try {
     $design = $pixonaut->designs()->sendCommit($prepared);
@@ -215,9 +247,16 @@ try {
     // Later, from a scheduled job: send the stored request again. Pixonaut
     // answers a key it has seen with the first answer, so the design is
     // committed once.
-    $stored = PreparedRequest::fromArray((array) json_decode($snapshot, true, flags: JSON_THROW_ON_ERROR));
-    $design = $pixonaut->designs()->sendCommit($stored);
+    $stored = file_get_contents($snapshotFile);
+    if ($stored === false) {
+        throw new RuntimeException("The stored commit {$snapshotFile} cannot be read.");
+    }
+    $restored = PreparedRequest::fromArray((array) json_decode($stored, true, flags: JSON_THROW_ON_ERROR));
+    $design = $pixonaut->designs()->sendCommit($restored);
 }
+
+// Kept until the commit succeeded; it is not needed any more.
+unlink($snapshotFile);
 
 echo "Committed design {$design->designId}.\n";
 ```
