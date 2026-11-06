@@ -15,16 +15,17 @@ use Pixonaut\Sdk\Model\Decode;
 final class EventsListResponseEventsItem
 {
     /**
-     * Decodes the variant its `type` names.
+     * Decodes the variant its `type` names. A type this release does not know is an `UnknownEvent`, so a newer API does not break it.
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return AssetCreatedEvent|AssetDeletedEvent|AssetUpdatedEvent|BlankCreatedEvent|BlankDeletedEvent|BlankDriftedEvent|BlankRestoredEvent|BlankUpdatedEvent|CreditsLowEvent|DesignApprovalScheduledEvent|DesignApprovedEvent|DesignChangesRequestedEvent|DesignCommittedEvent|DesignDeletedEvent|DesignDeliveryCapturedEvent|DesignDuplicatedEvent|DesignEditedEvent|DesignPersonalDataErasedEvent|DesignRejectedEvent|InkCreatedEvent|InkDeletedEvent|InkUpdatedEvent|OrderCancelledEvent|OrderCreatedEvent|OrderDeliveryChangedEvent|OrderFailedEvent|OrderHeldEvent|OrderReleasedEvent|OrderReroutedEvent|OrderStatusChangedEvent|OrderSubmittedEvent|OrderTrackingAddedEvent|OrderTrackingChangedEvent|OrderBalanceEmptyEvent|PaletteCreatedEvent|PaletteDeletedEvent|PaletteUpdatedEvent|PrintCompletedEvent|PrintCreatedEvent|PrintFailedEvent|PrintshopConnectedEvent|PrintshopDeletedEvent|PrintshopDisconnectedEvent|PrintshopReconnectedEvent|PrintshopRestoredEvent|PrintshopUpdatedEvent|RunCancelledEvent|RunCompletedEvent|RunExhaustedEvent|RunFailedEvent|RunStartedEvent|ShapeCreatedEvent|ShapeDeletedEvent|ShapeUpdatedEvent|ShareLinkRegeneratedEvent|ShareLinkRevokedEvent|StoreAccessOffEvent|StoreAccessRequestedEvent|TemplateDeletedEvent|TemplateLiveChangedEvent|TemplatePublishedEvent|TextMessagesLowEvent
+     * @return AssetCreatedEvent|AssetDeletedEvent|AssetUpdatedEvent|BlankCreatedEvent|BlankDeletedEvent|BlankDriftedEvent|BlankRestoredEvent|BlankUpdatedEvent|CreditsLowEvent|DesignApprovalScheduledEvent|DesignApprovedEvent|DesignChangesRequestedEvent|DesignCommittedEvent|DesignDeletedEvent|DesignDeliveryCapturedEvent|DesignDuplicatedEvent|DesignEditedEvent|DesignPersonalDataErasedEvent|DesignRejectedEvent|InkCreatedEvent|InkDeletedEvent|InkUpdatedEvent|OrderCancelledEvent|OrderCreatedEvent|OrderDeliveryChangedEvent|OrderFailedEvent|OrderHeldEvent|OrderReleasedEvent|OrderReroutedEvent|OrderStatusChangedEvent|OrderSubmittedEvent|OrderTrackingAddedEvent|OrderTrackingChangedEvent|OrderBalanceEmptyEvent|PaletteCreatedEvent|PaletteDeletedEvent|PaletteUpdatedEvent|PrintCompletedEvent|PrintCreatedEvent|PrintFailedEvent|PrintshopConnectedEvent|PrintshopDeletedEvent|PrintshopDisconnectedEvent|PrintshopReconnectedEvent|PrintshopRestoredEvent|PrintshopUpdatedEvent|RunCancelledEvent|RunCompletedEvent|RunExhaustedEvent|RunFailedEvent|RunStartedEvent|ShapeCreatedEvent|ShapeDeletedEvent|ShapeUpdatedEvent|ShareLinkRegeneratedEvent|ShareLinkRevokedEvent|StoreAccessOffEvent|StoreAccessRequestedEvent|TemplateDeletedEvent|TemplateLiveChangedEvent|TemplatePublishedEvent|TextMessagesLowEvent|\Pixonaut\Sdk\Webhooks\UnknownEvent
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
     public static function decode(mixed $data, string $path = '$'): \Pixonaut\Sdk\Model\Model
     {
+        \Pixonaut\Sdk\Webhooks\Event::fromArray(Decode::object($data, $path), $path);
         $tag = Decode::discriminator($data, $path, 'type');
         return match ($tag) {
             'asset.created' => AssetCreatedEvent::fromArray(Decode::object($data, $path), $path),
@@ -89,7 +90,7 @@ final class EventsListResponseEventsItem
             'template.live_changed' => TemplateLiveChangedEvent::fromArray(Decode::object($data, $path), $path),
             'template.published' => TemplatePublishedEvent::fromArray(Decode::object($data, $path), $path),
             'text_messages.low' => TextMessagesLowEvent::fromArray(Decode::object($data, $path), $path),
-            default => Decode::unknownVariant($path, 'type', $tag),
+            default => \Pixonaut\Sdk\Webhooks\UnknownEvent::fromArray(Decode::object($data, $path), $path),
         };
     }
 }

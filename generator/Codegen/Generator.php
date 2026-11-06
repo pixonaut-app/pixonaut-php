@@ -41,6 +41,9 @@ final class Generator
             'ErrorCode.php' => $support->errorCode($api),
             'Operations.php' => $support->operations($api),
         ];
+        if ($api->eventTypes !== []) {
+            $files['EventType.php'] = $support->eventType($api);
+        }
         foreach ($api->models as $model) {
             $files['Model/' . $model->name . '.php'] = $models->model($model);
         }

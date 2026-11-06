@@ -20,6 +20,9 @@ use Pixonaut\Sdk\Http\Operation;
  */
 final class SupportPrinter
 {
+    /** The constant listing every event type. */
+    private const KNOWN_EVENT_TYPES = 'KNOWN';
+
     public function __construct(
         private readonly string $namespace,
     ) {}
@@ -111,6 +114,36 @@ final class SupportPrinter
         $class->setDocComment(self::doc(['The operations of the API ' . $api->version . ' spec, as the client sends them.']));
 
         return Ast::file($this->namespace, [ArrayCatalogue::class, Catalogue::class, Credential::class, Operation::class], $class);
+    }
+
+    public function eventType(Api $api): string
+    {
+        $statements = [];
+        $names = [];
+        foreach ($api->eventTypes as $type => $description) {
+            $name = Naming::constant($type);
+            if (isset($names[$name]) || $name === self::KNOWN_EVENT_TYPES) {
+                throw new GeneratorException(sprintf('Event types "%s" and "%s" are both constant %s.', $names[$name] ?? self::KNOWN_EVENT_TYPES, $type, $name));
+            }
+            $names[$name] = $type;
+            $constant = new Stmt\ClassConst([new Node\Const_($name, Ast::string($type))], Modifiers::PUBLIC);
+            $constant->setDocComment(self::doc([$description !== '' ? $description : 'Delivered as `' . $type . '`.']));
+            $statements[] = $constant;
+        }
+        $known = new Stmt\ClassConst([new Node\Const_(self::KNOWN_EVENT_TYPES, Ast::list(array_map(
+            static fn(string $name): Expr => Ast::constant('self', $name),
+            array_keys($names),
+        )))], Modifiers::PUBLIC);
+        $known->setDocComment(self::doc(['Every event type this release knows.', '', '@var list<string>']));
+        $statements[] = $known;
+
+        $class = new Stmt\Class_('EventType', ['flags' => Modifiers::FINAL, 'stmts' => $statements]);
+        $class->setDocComment(self::doc([
+            'The event types the API ' . $api->version . ' spec delivers to webhooks. The API may send a type',
+            'added after this release: it decodes to `UnknownEvent`.',
+        ]));
+
+        return Ast::file($this->namespace, [], $class);
     }
 
     public function apiVersion(Api $api, string $sha256): string

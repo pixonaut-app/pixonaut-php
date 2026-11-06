@@ -17,6 +17,7 @@ final class Api
      * @param array<string, list<int>>   $errorCodes   Error code → the statuses it is documented with.
      * @param array<string, string>      $errorDescriptions Error code → the spec's description, where it has one.
      * @param list<int>                  $errorStatuses Every status the spec documents an unsuccessful answer with.
+     * @param array<string, string>      $eventTypes   Each webhook's event type → its description, in type order.
      */
     public function __construct(
         public readonly string $version,
@@ -27,5 +28,6 @@ final class Api
         public readonly array $errorCodes,
         public readonly array $errorDescriptions,
         public readonly array $errorStatuses,
+        public readonly array $eventTypes = [],
     ) {}
 }

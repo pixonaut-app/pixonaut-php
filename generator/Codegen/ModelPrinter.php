@@ -16,6 +16,8 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 use Pixonaut\Sdk\Model\Omitted;
+use Pixonaut\Sdk\Webhooks\Event;
+use Pixonaut\Sdk\Webhooks\UnknownEvent;
 
 /**
  * Prints models, union decoders and enum constants classes.
@@ -154,12 +156,21 @@ final class ModelPrinter
             foreach ($union->mapping as $value => $variant) {
                 $arms[] = new Node\MatchArm([Ast::string($value)], $this->decode($variant, $data, $path));
             }
-            $arms[] = new Node\MatchArm(null, Ast::call('Decode', 'unknownVariant', [$path, Ast::string($union->discriminator), $tag]));
+            $arms[] = new Node\MatchArm(null, $union->events
+                ? new Expr\StaticCall(new Name\FullyQualified(UnknownEvent::class), 'fromArray', [new Node\Arg(Ast::call('Decode', 'object', [$data, $path])), new Node\Arg($path)])
+                : Ast::call('Decode', 'unknownVariant', [$path, Ast::string($union->discriminator), $tag]));
             $statements = [
                 new Stmt\Expression(new Expr\Assign($tag, Ast::call('Decode', 'discriminator', [$data, $path, Ast::string($union->discriminator)]))),
                 new Stmt\Return_(new Expr\Match_($tag, $arms)),
             ];
-            $text = sprintf('Decodes the variant its `%s` names.', $union->discriminator);
+            if ($union->events) {
+                // Every event's envelope is held to the same rules, whatever class its type names.
+                array_unshift($statements, new Stmt\Expression(
+                    new Expr\StaticCall(new Name\FullyQualified(Event::class), 'fromArray', [new Node\Arg(Ast::call('Decode', 'object', [$data, $path])), new Node\Arg($path)]),
+                ));
+            }
+            $text = sprintf('Decodes the variant its `%s` names.', $union->discriminator)
+                . ($union->events ? ' A type this release does not know is an `UnknownEvent`, so a newer API does not break it.' : '');
         } else {
             $variants = [];
             foreach ($union->variants as [$variant, $specificity, $tags]) {
