@@ -36,7 +36,7 @@ match (true) {
     $typed instanceof DesignCommittedEvent => error_log("Design {$typed->payload->designId} committed."),
     $typed instanceof OrderStatusChangedEvent => error_log("Order {$typed->payload->orderId} is {$typed->payload->status}."),
     // An event this store does not act on, or a type added to the API after
-    // this release (an `UnknownEvent`): acknowledge it, or Pixonaut resends it.
+    // this release (an `UnknownEvent`): acknowledge it all the same.
     default => null,
 };
 
