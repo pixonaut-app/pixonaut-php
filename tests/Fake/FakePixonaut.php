@@ -36,6 +36,15 @@ final class FakePixonaut implements ClientInterface
     /** Bytes of a binary answer: a PNG signature, then text naming what it stands for. */
     public const BINARY_PREFIX = "\x89PNG\r\n\x1a\n\x00";
 
+    public const EVENT_STREAM = 'text/event-stream';
+
+    /**
+     * The answer of an operation that streams events: the spec gives the
+     * body as a string, so two events of no particular shape, the second
+     * of two `data` lines.
+     */
+    public const EVENTS = "id: 1\nevent: delta\ndata: {\"text\":\"Hel\"}\n\nid: 2\nevent: done\ndata: {\"text\":\"lo\"}\ndata: {}\n\n";
+
     private const ANY_OPERATION = '*';
 
     private const KEY_IN_USE = 'idempotency_key_in_use';
@@ -101,7 +110,8 @@ final class FakePixonaut implements ClientInterface
 
             return;
         }
-        $this->state->answers[$operation][] = ['status' => $status, 'body' => self::binary($operation, $types[0]), 'headers' => ['Content-Type' => $types[0]]];
+        $body = $types[0] === self::EVENT_STREAM ? self::EVENTS : self::binary($operation, $types[0]);
+        $this->state->answers[$operation][] = ['status' => $status, 'body' => $body, 'headers' => ['Content-Type' => $types[0]]];
     }
 
     /**
