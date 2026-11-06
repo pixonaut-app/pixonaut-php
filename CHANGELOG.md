@@ -2,6 +2,7 @@
 
 ## 1.0.0 (2026-11-06)
 
+Targets the Pixonaut API 1.0.0.
 
 ### Features
 
