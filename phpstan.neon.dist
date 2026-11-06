@@ -14,3 +14,5 @@ parameters:
         - tests/Guard/fixtures
         # Classes the surface test reads, not code that runs.
         - tests/Generator/Surface/Fixtures
+        # PHP-Scoper's configuration, read by the tool with its own classes.
+        - tests/Prefixed/scoper/scoper.inc.php
