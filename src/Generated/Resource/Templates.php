@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Resource;
 
 use Pixonaut\Sdk\Exception\ApiException;
-use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponse;
 use Pixonaut\Sdk\Generated\Model\TemplatesFittingPlacementsListResponse;
 use Pixonaut\Sdk\Generated\Model\TemplatesGetResponse;
@@ -137,8 +136,7 @@ final class Templates
      * @param string|null $groupBy A member's page: the rows ordered by their group (live, paused, draft; categories by name, none last; tags the most used first, none last), `sort` within each, each row naming its `group`. Under `tag` a template is listed under each of its tags.
      * @param string|null $pageOf A member's page: with no `page`, the page that holds this template, the first place it is listed; page 1 when the filter leaves it out.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `invalid_status`, `origin_forbidden`, `secret_key_required`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `invalid_status`, `origin_forbidden`, `secret_key_required`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function list(?string $status = null, ?string $q = null, string|array|null $ids = null, ?int $page = null, ?int $pageSize = null, ?string $category = null, string|array|null $tag = null, ?string $sort = null, ?string $groupBy = null, ?string $pageOf = null): TemplatesListResponseOption2|TemplatesListResponseOption1|TemplatesListResponseOption3
     {
@@ -157,9 +155,8 @@ final class Templates
                 'pageOf' => $pageOf,
             ],
         );
-        return TemplatesListResponse::decode(
-            $result->json(),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): TemplatesListResponseOption2|TemplatesListResponseOption1|TemplatesListResponseOption3 => TemplatesListResponse::decode($json, '$'),
         );
     }
 
@@ -170,8 +167,7 @@ final class Templates
      *
      * @param TemplatesPublishRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `base_id_deleted`, `db_error`, `feature_disabled`, `font_changed`, `forbidden`, `ink_changed`, `invalid_publish`, `invalid_template`, `lock_timeout`, `origin_forbidden`, `palette_changed`, `payload_too_large`, `plan_limit_reached`, `print_box_unavailable`, `publish_gate_failed`, `publish_references_unavailable`, `secret_key_required`, `shape_changed`, `showcases_changed`, `template_renderer_failed`, `template_required`, `unauthorized`, `version_exists`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `base_id_deleted`, `db_error`, `feature_disabled`, `font_changed`, `forbidden`, `ink_changed`, `invalid_publish`, `invalid_template`, `lock_timeout`, `origin_forbidden`, `palette_changed`, `payload_too_large`, `plan_limit_reached`, `print_box_unavailable`, `publish_gate_failed`, `publish_references_unavailable`, `secret_key_required`, `shape_changed`, `showcases_changed`, `template_renderer_failed`, `template_required`, `unauthorized`, `version_exists`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function publish(TemplatesPublishRequest $body): TemplatesPublishResponse
     {
@@ -179,12 +175,8 @@ final class Templates
             'templates.publish',
             body: $body->toArray(),
         );
-        return TemplatesPublishResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): TemplatesPublishResponse => TemplatesPublishResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -198,8 +190,7 @@ final class Templates
      * @param string|null $lang The language the template's dynamic values are written in when their name names none, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the workspace's default language. A value whose name carries a language, `{date.long:sv}`, keeps it.
      * @param string|null $sdkVersion The SDK release making the request, which the SDK sends itself. A release that cannot draw the template is refused `sdk_outdated`; a request naming none is served.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `rate_limited`, `sdk_outdated`, `sdk_version_invalid`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `rate_limited`, `sdk_outdated`, `sdk_version_invalid`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function get(string $id, ?string $tz = null, ?string $lang = null, ?string $sdkVersion = null): TemplatesGetResponse
     {
@@ -209,12 +200,8 @@ final class Templates
             query: ['tz' => $tz, 'lang' => $lang],
             headers: ['x-pixonaut-sdk-version' => $sdkVersion],
         );
-        return TemplatesGetResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): TemplatesGetResponse => TemplatesGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -227,8 +214,7 @@ final class Templates
      * @param string|null $blankId
      * @param string|null $placementId
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `print_box_unavailable`, `rate_limited`, `unauthorized`, `unknown_placement`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `print_box_unavailable`, `rate_limited`, `unauthorized`, `unknown_placement`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function getConstraints(string $id, ?string $blankId = null, ?string $placementId = null): TemplatesConstraintsGetResponse
     {
@@ -237,12 +223,8 @@ final class Templates
             path: ['id' => $id],
             query: ['blankId' => $blankId, 'placementId' => $placementId],
         );
-        return TemplatesConstraintsGetResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): TemplatesConstraintsGetResponse => TemplatesConstraintsGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -256,8 +238,7 @@ final class Templates
      * @param int|null $pageSize
      * @param string|null $q
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `rate_limited`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `rate_limited`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function listFittingPlacements(string $id, ?int $page = null, ?int $pageSize = null, ?string $q = null): TemplatesFittingPlacementsListResponse
     {
@@ -266,12 +247,8 @@ final class Templates
             path: ['id' => $id],
             query: ['page' => $page, 'pageSize' => $pageSize, 'q' => $q],
         );
-        return TemplatesFittingPlacementsListResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): TemplatesFittingPlacementsListResponse => TemplatesFittingPlacementsListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -283,8 +260,7 @@ final class Templates
      * @param string $id A template id, `baseId@version`.
      * @param TemplatesPrintSizeValidateRequestOption1|TemplatesPrintSizeValidateRequestOption2 $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_json`, `db_error`, `feature_disabled`, `forbidden`, `invalid_body`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_json`, `db_error`, `feature_disabled`, `forbidden`, `invalid_body`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function validatePrintSize(string $id, TemplatesPrintSizeValidateRequestOption1|TemplatesPrintSizeValidateRequestOption2 $body): TemplatesPrintSizeValidateResponseFalse|TemplatesPrintSizeValidateResponseTrue|TemplatesPrintSizeValidateResponseOption3
     {
@@ -293,9 +269,8 @@ final class Templates
             path: ['id' => $id],
             body: $body->toArray(),
         );
-        return TemplatesPrintSizeValidateResponse::decode(
-            $result->json(),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): TemplatesPrintSizeValidateResponseFalse|TemplatesPrintSizeValidateResponseTrue|TemplatesPrintSizeValidateResponseOption3 => TemplatesPrintSizeValidateResponse::decode($json, '$'),
         );
     }
 }

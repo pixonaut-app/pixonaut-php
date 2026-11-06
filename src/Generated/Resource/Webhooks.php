@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Resource;
 
 use Pixonaut\Sdk\Exception\ApiException;
-use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Generated\Model\WebhookEndpointsCreateRequest;
 use Pixonaut\Sdk\Generated\Model\WebhookEndpointsCreateResponse;
 use Pixonaut\Sdk\Generated\Model\WebhookEndpointsDeliveriesListResponseItem;
@@ -54,16 +53,17 @@ final class Webhooks
      *
      * @return list<WebhookEndpointsListResponseItem>
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `origin_forbidden`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `origin_forbidden`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function list(): array
     {
         $result = $this->pixonaut->call('webhookEndpoints.list');
-        return Decode::list(
-            $result->json(),
-            '$',
-            static fn(mixed $v, string $p): WebhookEndpointsListResponseItem => WebhookEndpointsListResponseItem::fromArray(Decode::object($v, $p), $p),
+        return $result->decode(
+            static fn(mixed $json): array => Decode::list(
+                $json,
+                '$',
+                static fn(mixed $v, string $p): WebhookEndpointsListResponseItem => WebhookEndpointsListResponseItem::fromArray(Decode::object($v, $p), $p),
+            ),
         );
     }
 
@@ -74,8 +74,7 @@ final class Webhooks
      *
      * @param WebhookEndpointsCreateRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_event_type`, `invalid_input`, `invalid_url`, `origin_forbidden`, `payload_too_large`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_event_type`, `invalid_input`, `invalid_url`, `origin_forbidden`, `payload_too_large`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function create(WebhookEndpointsCreateRequest $body): WebhookEndpointsCreateResponse
     {
@@ -83,12 +82,8 @@ final class Webhooks
             'webhookEndpoints.create',
             body: $body->toArray(),
         );
-        return WebhookEndpointsCreateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): WebhookEndpointsCreateResponse => WebhookEndpointsCreateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -117,8 +112,7 @@ final class Webhooks
      * @param string $id
      * @param WebhookEndpointsUpdateRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_event_type`, `invalid_input`, `invalid_webhook_url`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_event_type`, `invalid_input`, `invalid_webhook_url`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function update(string $id, WebhookEndpointsUpdateRequest $body): WebhookEndpointsUpdateResponse
     {
@@ -127,12 +121,8 @@ final class Webhooks
             path: ['id' => $id],
             body: $body->toArray(),
         );
-        return WebhookEndpointsUpdateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): WebhookEndpointsUpdateResponse => WebhookEndpointsUpdateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -145,8 +135,7 @@ final class Webhooks
      *
      * @return list<WebhookEndpointsDeliveriesListResponseItem>
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function listDeliveries(string $id): array
     {
@@ -154,10 +143,12 @@ final class Webhooks
             'webhookEndpoints.deliveries.list',
             path: ['id' => $id],
         );
-        return Decode::list(
-            $result->json(),
-            '$',
-            static fn(mixed $v, string $p): WebhookEndpointsDeliveriesListResponseItem => WebhookEndpointsDeliveriesListResponseItem::fromArray(Decode::object($v, $p), $p),
+        return $result->decode(
+            static fn(mixed $json): array => Decode::list(
+                $json,
+                '$',
+                static fn(mixed $v, string $p): WebhookEndpointsDeliveriesListResponseItem => WebhookEndpointsDeliveriesListResponseItem::fromArray(Decode::object($v, $p), $p),
+            ),
         );
     }
 
@@ -168,8 +159,7 @@ final class Webhooks
      *
      * @param string $id
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `endpoint_inactive`, `endpoint_unreachable`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `payload_too_large`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `endpoint_inactive`, `endpoint_unreachable`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `payload_too_large`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function redeliverFailed(string $id): WebhookEndpointsDeliveriesRedeliverFailedResponse
     {
@@ -177,12 +167,8 @@ final class Webhooks
             'webhookEndpoints.deliveries.redeliverFailed',
             path: ['id' => $id],
         );
-        return WebhookEndpointsDeliveriesRedeliverFailedResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): WebhookEndpointsDeliveriesRedeliverFailedResponse => WebhookEndpointsDeliveriesRedeliverFailedResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -194,8 +180,7 @@ final class Webhooks
      * @param string $id
      * @param string $deliveryId
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `endpoint_inactive`, `endpoint_unreachable`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `payload_too_large`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `endpoint_inactive`, `endpoint_unreachable`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `payload_too_large`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function redeliver(string $id, string $deliveryId): WebhookEndpointsDeliveriesRedeliverResponse
     {
@@ -203,12 +188,8 @@ final class Webhooks
             'webhookEndpoints.deliveries.redeliver',
             path: ['id' => $id, 'deliveryId' => $deliveryId],
         );
-        return WebhookEndpointsDeliveriesRedeliverResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): WebhookEndpointsDeliveriesRedeliverResponse => WebhookEndpointsDeliveriesRedeliverResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -219,8 +200,7 @@ final class Webhooks
      *
      * @param string $id
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function ping(string $id): WebhookEndpointsPingResponseFalse|WebhookEndpointsPingResponseTrue
     {
@@ -228,9 +208,8 @@ final class Webhooks
             'webhookEndpoints.ping',
             path: ['id' => $id],
         );
-        return WebhookEndpointsPingResponse::decode(
-            $result->json(),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): WebhookEndpointsPingResponseFalse|WebhookEndpointsPingResponseTrue => WebhookEndpointsPingResponse::decode($json, '$'),
         );
     }
 }

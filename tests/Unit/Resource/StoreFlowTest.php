@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Tests\Unit\Resource;
 
 use PHPUnit\Framework\TestCase;
+use Pixonaut\Sdk\Exception\ApiException;
+use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Generated\Model\ConnectedStoreExchangeCodeRequest;
 use Pixonaut\Sdk\Generated\Model\DesignsApproveRequest;
 use Pixonaut\Sdk\Generated\Model\DesignsApproveRequestConsent;
@@ -16,6 +18,7 @@ use Pixonaut\Sdk\Generated\Model\OrdersCreateRequestShippingAddress;
 use Pixonaut\Sdk\Http\PreparedRequest;
 use Pixonaut\Sdk\Tests\Unit\Resource\Support\SpecClient;
 use Pixonaut\Sdk\Tests\Unit\Resource\Support\SpecExamples;
+use Pixonaut\Sdk\Webhooks\UnknownEvent;
 
 /**
  * A connected store's day, written against the SDK the way a host would.
@@ -84,6 +87,35 @@ final class StoreFlowTest extends TestCase
         $this->expectExceptionMessage('The request was prepared for designs.commit, not orders.create.');
 
         $client->pixonaut->orders()->sendCreate($prepared);
+    }
+
+    public function testReadsAnEventTypeThisReleaseDoesNotKnowAsAnUnknownEvent(): void
+    {
+        $client = new SpecClient();
+        $client->answerJson(200, ['events' => [['id' => 'evt_9', 'type' => 'galaxy.discovered', 'createdAt' => 1_790_000_000_000, 'payload' => ['a' => 1]]], 'nextCursor' => null]);
+
+        $events = $client->pixonaut->events()->list();
+
+        self::assertCount(1, $events->events);
+        self::assertInstanceOf(UnknownEvent::class, $events->events[0]);
+        self::assertSame('galaxy.discovered', $events->events[0]->type);
+    }
+
+    public function testAnAnswerOfAnotherShapeKeepsTheRequestId(): void
+    {
+        $client = new SpecClient();
+        $client->answerJson(201, ['orderId' => 'o_1']);
+
+        try {
+            $client->pixonaut->orders()->create(new OrdersCreateRequest(externalRef: 'WEB-1'));
+            self::fail('The answer was read.');
+        } catch (ApiException $e) {
+            self::assertSame(ApiException::UNEXPECTED_RESPONSE, $e->errorCode);
+            self::assertSame('orders.create', $e->operation);
+            self::assertSame(201, $e->status);
+            self::assertSame('req_1', $e->requestId);
+            self::assertInstanceOf(UnexpectedResponse::class, $e->getPrevious());
+        }
     }
 
     private static function line(SpecClient $client): string

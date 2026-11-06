@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Resource;
 
 use Pixonaut\Sdk\Exception\ApiException;
-use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Generated\Model\ShareLinksCreateRequest;
 use Pixonaut\Sdk\Generated\Model\ShareLinksCreateResponse;
 use Pixonaut\Sdk\Generated\Model\ShareLinksDesignerGetResponse;
@@ -67,8 +66,7 @@ final class ShareLinks
      * @param string|null $q Only links whose name, subject's name, link id, or member or key that handed it out holds this text, case aside.
      * @param string|null $sort `created` (the default), newest first; `expires`, the soonest to stop working first, those that never do last.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `invalid_query`, `origin_forbidden`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `invalid_query`, `origin_forbidden`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function list(?int $page = null, ?int $pageSize = null, ?string $pageOf = null, ?string $name = null, ?string $subjectId = null, ?string $kind = null, ?string $source = null, ?string $createdBy = null, ?string $carriesVisit = null, ?int $expiresWithin = null, ?string $neverExpires = null, ?string $q = null, ?string $sort = null): ShareLinksListResponse
     {
@@ -90,12 +88,8 @@ final class ShareLinks
                 'sort' => $sort,
             ],
         );
-        return ShareLinksListResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): ShareLinksListResponse => ShareLinksListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -106,8 +100,7 @@ final class ShareLinks
      *
      * @param ShareLinksCreateRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `brand_not_found`, `db_error`, `decide_not_allowed`, `design_limit_not_allowed`, `expiry_too_long`, `feature_disabled`, `invalid_input`, `locale_not_allowed`, `lock_timeout`, `not_found`, `order_closed`, `order_not_allowed`, `order_not_found`, `origin_forbidden`, `payload_too_large`, `placement_frame_not_allowed`, `plan_limit_reached`, `print_area_frame_not_allowed`, `rate_limited`, `return_url_not_allowed`, `return_url_not_https`, `return_url_off_store`, `share_link_name_taken`, `share_link_name_too_long`, `subject_not_found`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `brand_not_found`, `db_error`, `decide_not_allowed`, `design_limit_not_allowed`, `expiry_too_long`, `feature_disabled`, `invalid_input`, `locale_not_allowed`, `lock_timeout`, `not_found`, `order_closed`, `order_not_allowed`, `order_not_found`, `origin_forbidden`, `payload_too_large`, `placement_frame_not_allowed`, `plan_limit_reached`, `print_area_frame_not_allowed`, `rate_limited`, `return_url_not_allowed`, `return_url_not_https`, `return_url_off_store`, `share_link_name_taken`, `share_link_name_too_long`, `subject_not_found`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function create(ShareLinksCreateRequest $body): ShareLinksCreateResponse
     {
@@ -115,12 +108,8 @@ final class ShareLinks
             'shareLinks.create',
             body: $body->toArray(),
         );
-        return ShareLinksCreateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): ShareLinksCreateResponse => ShareLinksCreateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -131,8 +120,7 @@ final class ShareLinks
      *
      * @param ShareLinksRevokeManyRequestOption1|ShareLinksRevokeManyRequestOption2 $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `invalid_input`, `origin_forbidden`, `payload_too_large`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `invalid_input`, `origin_forbidden`, `payload_too_large`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function revokeMany(ShareLinksRevokeManyRequestOption1|ShareLinksRevokeManyRequestOption2 $body): ShareLinksRevokeManyResponseOption1|ShareLinksRevokeManyResponseOption2
     {
@@ -140,9 +128,8 @@ final class ShareLinks
             'shareLinks.revokeMany',
             body: $body->toArray(),
         );
-        return ShareLinksRevokeManyResponse::decode(
-            $result->json(),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): ShareLinksRevokeManyResponseOption1|ShareLinksRevokeManyResponseOption2 => ShareLinksRevokeManyResponse::decode($json, '$'),
         );
     }
 
@@ -171,8 +158,7 @@ final class ShareLinks
      * @param string $id
      * @param ShareLinksUpdateRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `design_limit_not_allowed`, `designer_settings_not_allowed`, `expiry_fixed_by_state`, `feature_disabled`, `invalid_input`, `layout_out_of_date`, `layout_wrong_ratio`, `linked_templates_differ`, `not_found`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `print_size_illegal`, `return_url_not_https`, `return_url_off_store`, `share_link_name_taken`, `share_link_name_too_long`, `state_needs_return_url`, `subject_not_found`, `unauthorized`, `unknown_layout`, `unknown_placement`, `variant_row_invalid`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `design_limit_not_allowed`, `designer_settings_not_allowed`, `expiry_fixed_by_state`, `feature_disabled`, `invalid_input`, `layout_out_of_date`, `layout_wrong_ratio`, `linked_templates_differ`, `not_found`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `print_size_illegal`, `return_url_not_https`, `return_url_off_store`, `share_link_name_taken`, `share_link_name_too_long`, `state_needs_return_url`, `subject_not_found`, `unauthorized`, `unknown_layout`, `unknown_placement`, `variant_row_invalid`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function update(string $id, ShareLinksUpdateRequest $body): ShareLinksUpdateResponse
     {
@@ -181,12 +167,8 @@ final class ShareLinks
             path: ['id' => $id],
             body: $body->toArray(),
         );
-        return ShareLinksUpdateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): ShareLinksUpdateResponse => ShareLinksUpdateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -197,8 +179,7 @@ final class ShareLinks
      *
      * @param string $id
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `not_found`, `origin_forbidden`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `not_found`, `origin_forbidden`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function getDesigner(string $id): ShareLinksDesignerGetResponse
     {
@@ -206,12 +187,8 @@ final class ShareLinks
             'shareLinks.designer.get',
             path: ['id' => $id],
         );
-        return ShareLinksDesignerGetResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): ShareLinksDesignerGetResponse => ShareLinksDesignerGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -222,8 +199,7 @@ final class ShareLinks
      *
      * @param string $id
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `address_kept`, `db_error`, `feature_disabled`, `not_found`, `origin_forbidden`, `payload_too_large`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `address_kept`, `db_error`, `feature_disabled`, `not_found`, `origin_forbidden`, `payload_too_large`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function regenerate(string $id): ShareLinksRegenerateResponse
     {
@@ -231,12 +207,8 @@ final class ShareLinks
             'shareLinks.regenerate',
             path: ['id' => $id],
         );
-        return ShareLinksRegenerateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): ShareLinksRegenerateResponse => ShareLinksRegenerateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 }

@@ -17,7 +17,7 @@ use InvalidArgumentException;
  */
 final class PreparedRequest
 {
-    private const FIELDS = ['operation', 'target', 'body', 'idempotencyKey', 'headers'];
+    private const FIELDS = ['operation', 'target', 'body', 'idempotencyKey'];
 
     /**
      * @param string      $operation      Operation id, e.g. `designs.commit`.
@@ -81,7 +81,8 @@ final class PreparedRequest
         $target = $data['target'];
         $body = $data['body'];
         $key = $data['idempotencyKey'];
-        $headers = $data['headers'];
+        // A snapshot taken before requests carried headers has none.
+        $headers = $data['headers'] ?? [];
         if (!is_string($operation) || !is_string($target) || !($body === null || is_string($body)) || !($key === null || is_string($key)) || !self::isHeaderMap($headers)) {
             throw new InvalidArgumentException('The request snapshot is malformed.');
         }

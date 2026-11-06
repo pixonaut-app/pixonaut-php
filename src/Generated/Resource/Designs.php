@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Resource;
 
 use InvalidArgumentException;
 use Pixonaut\Sdk\Exception\ApiException;
-use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Generated\Model\DesignsApproveRequest;
 use Pixonaut\Sdk\Generated\Model\DesignsApproveResponse;
 use Pixonaut\Sdk\Generated\Model\DesignsCommitRequest;
@@ -119,8 +118,7 @@ final class Designs
      * @param string|null $standing `true` lists only standing designs, `false` only the rest; left out, both.
      * @param string|null $pageOf
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function list(?int $page = null, ?int $pageSize = null, ?string $status = null, ?string $q = null, ?int $receivedFrom = null, ?int $receivedTo = null, ?string $order = null, ?string $template = null, ?string $externalRef = null, ?string $standing = null, ?string $pageOf = null): DesignsListResponse
     {
@@ -140,12 +138,8 @@ final class Designs
                 'pageOf' => $pageOf,
             ],
         );
-        return DesignsListResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsListResponse => DesignsListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -160,8 +154,7 @@ final class Designs
      * @param string|null $lang The language the template's dynamic values are written in when their name names none, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the workspace's default language. A value whose name carries a language, `{date.long:sv}`, keeps it.
      * @param string|null $idempotencyKey Your key for the request; a new UUID when null.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `bad_request`, `constraint_violation`, `correction_proof`, `db_error`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_doc`, `invalid_fulfilment_payload`, `invalid_idempotency_key`, `invalid_query`, `layout_proof`, `link_design_limit`, `missing_fulfilment_keys`, `not_found`, `origin_forbidden`, `payload_too_large`, `placement_not_committable`, `print_size_not_committable`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_unavailable`, `proof_already_committed`, `proof_expired`, `rate_limited`, `repeat_not_committable`, `secret_key_required`, `spot_plate_required`, `unauthorized`, `unknown_placement`, `unknown_printshop`, `unknown_proof`, `variant_not_of_blank`, `variant_required`, `variant_row_invalid`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `bad_request`, `constraint_violation`, `correction_proof`, `db_error`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_doc`, `invalid_fulfilment_payload`, `invalid_idempotency_key`, `invalid_query`, `layout_proof`, `link_design_limit`, `missing_fulfilment_keys`, `not_found`, `origin_forbidden`, `payload_too_large`, `placement_not_committable`, `print_size_not_committable`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_unavailable`, `proof_already_committed`, `proof_expired`, `rate_limited`, `repeat_not_committable`, `secret_key_required`, `spot_plate_required`, `unauthorized`, `unknown_placement`, `unknown_printshop`, `unknown_proof`, `variant_not_of_blank`, `variant_required`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      * @throws InvalidArgumentException When the request does not fit the operation; nothing is sent.
      */
     public function commit(DesignsCommitRequestOption1|DesignsCommitRequestOption2 $body, ?string $tz = null, ?string $lang = null, ?string $idempotencyKey = null): DesignsCommitResponse
@@ -195,8 +188,7 @@ final class Designs
     /**
      * Sends a request from {@see prepareCommit()}, as prepared or restored with `PreparedRequest::fromArray()`.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `bad_request`, `constraint_violation`, `correction_proof`, `db_error`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_doc`, `invalid_fulfilment_payload`, `invalid_idempotency_key`, `invalid_query`, `layout_proof`, `link_design_limit`, `missing_fulfilment_keys`, `not_found`, `origin_forbidden`, `payload_too_large`, `placement_not_committable`, `print_size_not_committable`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_unavailable`, `proof_already_committed`, `proof_expired`, `rate_limited`, `repeat_not_committable`, `secret_key_required`, `spot_plate_required`, `unauthorized`, `unknown_placement`, `unknown_printshop`, `unknown_proof`, `variant_not_of_blank`, `variant_required`, `variant_row_invalid`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `bad_request`, `constraint_violation`, `correction_proof`, `db_error`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_doc`, `invalid_fulfilment_payload`, `invalid_idempotency_key`, `invalid_query`, `layout_proof`, `link_design_limit`, `missing_fulfilment_keys`, `not_found`, `origin_forbidden`, `payload_too_large`, `placement_not_committable`, `print_size_not_committable`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_unavailable`, `proof_already_committed`, `proof_expired`, `rate_limited`, `repeat_not_committable`, `secret_key_required`, `spot_plate_required`, `unauthorized`, `unknown_placement`, `unknown_printshop`, `unknown_proof`, `variant_not_of_blank`, `variant_required`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      * @throws InvalidArgumentException When the request was prepared for another operation, or does not fit this one.
      */
     public function sendCommit(PreparedRequest $request): DesignsCommitResponse
@@ -204,12 +196,8 @@ final class Designs
         $result = $this->pixonaut->send(
             $request->expect('designs.commit'),
         );
-        return DesignsCommitResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsCommitResponse => DesignsCommitResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -220,8 +208,7 @@ final class Designs
      *
      * @param DesignsDecideRequestApprove|DesignsDecideRequestReject $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `origin_forbidden`, `payload_too_large`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `origin_forbidden`, `payload_too_large`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function decide(DesignsDecideRequestApprove|DesignsDecideRequestReject $body): DesignsDecideResponse
     {
@@ -229,12 +216,8 @@ final class Designs
             'designs.decide',
             body: $body->toArray(),
         );
-        return DesignsDecideResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsDecideResponse => DesignsDecideResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -245,8 +228,7 @@ final class Designs
      *
      * @param DesignsCommitThroughLayoutRequestOption2|DesignsCommitThroughLayoutRequestOption1 $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `bad_request`, `constraint_violation`, `db_error`, `empty_layout`, `feature_disabled`, `forbidden`, `invalid_doc`, `layout_out_of_date`, `link_design_limit`, `not_found`, `not_layout_proof`, `origin_forbidden`, `payload_too_large`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_unavailable`, `proof_already_committed`, `proof_expired`, `rate_limited`, `secret_key_required`, `spot_plate_required`, `unauthorized`, `unknown_layout`, `unknown_placement`, `unknown_printshop`, `unknown_proof`, `variant_not_of_blank`, `variant_required`, `variant_row_invalid`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `bad_request`, `constraint_violation`, `db_error`, `empty_layout`, `feature_disabled`, `forbidden`, `invalid_doc`, `layout_out_of_date`, `link_design_limit`, `not_found`, `not_layout_proof`, `origin_forbidden`, `payload_too_large`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_unavailable`, `proof_already_committed`, `proof_expired`, `rate_limited`, `secret_key_required`, `spot_plate_required`, `unauthorized`, `unknown_layout`, `unknown_placement`, `unknown_printshop`, `unknown_proof`, `variant_not_of_blank`, `variant_required`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function commitThroughLayout(DesignsCommitThroughLayoutRequestOption2|DesignsCommitThroughLayoutRequestOption1 $body): DesignsCommitThroughLayoutResponse
     {
@@ -254,12 +236,8 @@ final class Designs
             'designs.commitThroughLayout',
             body: $body->toArray(),
         );
-        return DesignsCommitThroughLayoutResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsCommitThroughLayoutResponse => DesignsCommitThroughLayoutResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -270,8 +248,7 @@ final class Designs
      *
      * @param DesignsFindOrCreateStandingRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `constraint_violation`, `db_error`, `feature_disabled`, `forbidden`, `invalid_doc`, `layout_proof_mismatch`, `not_a_layout_proof`, `origin_forbidden`, `payload_too_large`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_unavailable`, `proof_expired`, `rate_limited`, `secret_key_required`, `spot_plate_required`, `template_version_required`, `unauthorized`, `unknown_placement`, `unknown_printshop`, `unknown_proof`, `variant_not_of_blank`, `variant_required`, `variant_row_invalid`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `constraint_violation`, `db_error`, `feature_disabled`, `forbidden`, `invalid_doc`, `layout_proof_mismatch`, `not_a_layout_proof`, `origin_forbidden`, `payload_too_large`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_unavailable`, `proof_expired`, `rate_limited`, `secret_key_required`, `spot_plate_required`, `template_version_required`, `unauthorized`, `unknown_placement`, `unknown_printshop`, `unknown_proof`, `variant_not_of_blank`, `variant_required`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function findOrCreateStanding(DesignsFindOrCreateStandingRequest $body): DesignsFindOrCreateStandingResponse200|DesignsFindOrCreateStandingResponse201
     {
@@ -280,19 +257,11 @@ final class Designs
             body: $body->toArray(),
         );
         return match ($result->status) {
-            200 => DesignsFindOrCreateStandingResponse200::fromArray(
-                Decode::object(
-                    $result->json(),
-                    '$',
-                ),
-                '$',
+            200 => $result->decode(
+                static fn(mixed $json): DesignsFindOrCreateStandingResponse200 => DesignsFindOrCreateStandingResponse200::fromArray(Decode::object($json, '$'), '$'),
             ),
-            201 => DesignsFindOrCreateStandingResponse201::fromArray(
-                Decode::object(
-                    $result->json(),
-                    '$',
-                ),
-                '$',
+            201 => $result->decode(
+                static fn(mixed $json): DesignsFindOrCreateStandingResponse201 => DesignsFindOrCreateStandingResponse201::fromArray(Decode::object($json, '$'), '$'),
             ),
             default => throw $result->unexpected(),
         };
@@ -322,8 +291,7 @@ final class Designs
      *
      * @param string $id
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function get(string $id): DesignsGetResponse
     {
@@ -331,12 +299,8 @@ final class Designs
             'designs.get',
             path: ['id' => $id],
         );
-        return DesignsGetResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsGetResponse => DesignsGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -348,8 +312,7 @@ final class Designs
      * @param string $id
      * @param DesignsUpdateRequestOption2|DesignsUpdateRequestOption1 $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `design_doc_unreadable`, `feature_disabled`, `forbidden`, `lock_timeout`, `not_editable`, `not_found`, `origin_forbidden`, `payload_too_large`, `proof_adjusts_layout`, `proof_expired`, `proof_not_for_design`, `rate_limited`, `render_failed`, `revision_changed`, `unauthorized`, `unknown_proof`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `design_doc_unreadable`, `feature_disabled`, `forbidden`, `lock_timeout`, `not_editable`, `not_found`, `origin_forbidden`, `payload_too_large`, `proof_adjusts_layout`, `proof_expired`, `proof_not_for_design`, `rate_limited`, `render_failed`, `revision_changed`, `unauthorized`, `unknown_proof`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function update(string $id, DesignsUpdateRequestOption2|DesignsUpdateRequestOption1 $body): DesignsUpdateResponse
     {
@@ -358,12 +321,8 @@ final class Designs
             path: ['id' => $id],
             body: $body->toArray(),
         );
-        return DesignsUpdateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsUpdateResponse => DesignsUpdateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -375,8 +334,7 @@ final class Designs
      * @param string $id
      * @param DesignsApproveRequest|null $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `not_committed`, `not_found`, `origin_forbidden`, `payload_too_large`, `proof_outdated`, `rate_limited`, `revision_changed`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `not_committed`, `not_found`, `origin_forbidden`, `payload_too_large`, `proof_outdated`, `rate_limited`, `revision_changed`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function approve(string $id, ?DesignsApproveRequest $body = null): DesignsApproveResponse
     {
@@ -385,12 +343,8 @@ final class Designs
             path: ['id' => $id],
             body: $body?->toArray(),
         );
-        return DesignsApproveResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsApproveResponse => DesignsApproveResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -402,8 +356,7 @@ final class Designs
      * @param string $id
      * @param DesignsCorrectionLinksCreateRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `brand_not_found`, `db_error`, `feature_disabled`, `forbidden`, `invalid_input`, `lock_timeout`, `not_editable`, `not_found`, `not_standing`, `origin_forbidden`, `payload_too_large`, `plan_limit_reached`, `rate_limited`, `return_url_not_https`, `return_url_off_store`, `share_link_name_taken`, `share_link_name_too_long`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `brand_not_found`, `db_error`, `feature_disabled`, `forbidden`, `invalid_input`, `lock_timeout`, `not_editable`, `not_found`, `not_standing`, `origin_forbidden`, `payload_too_large`, `plan_limit_reached`, `rate_limited`, `return_url_not_https`, `return_url_off_store`, `share_link_name_taken`, `share_link_name_too_long`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function createCorrectionLink(string $id, DesignsCorrectionLinksCreateRequest $body): DesignsCorrectionLinksCreateResponse
     {
@@ -412,12 +365,8 @@ final class Designs
             path: ['id' => $id],
             body: $body->toArray(),
         );
-        return DesignsCorrectionLinksCreateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsCorrectionLinksCreateResponse => DesignsCorrectionLinksCreateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -429,8 +378,7 @@ final class Designs
      * @param string $id
      * @param DesignsCorrectionProofsCreateRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `design_doc_unreadable`, `feature_disabled`, `forbidden`, `lock_timeout`, `not_editable`, `not_found`, `not_standing`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `render_failed`, `revision_changed`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `design_doc_unreadable`, `feature_disabled`, `forbidden`, `lock_timeout`, `not_editable`, `not_found`, `not_standing`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `render_failed`, `revision_changed`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function createCorrectionProof(string $id, DesignsCorrectionProofsCreateRequest $body): DesignsCorrectionProofsCreateResponse
     {
@@ -439,12 +387,8 @@ final class Designs
             path: ['id' => $id],
             body: $body->toArray(),
         );
-        return DesignsCorrectionProofsCreateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsCorrectionProofsCreateResponse => DesignsCorrectionProofsCreateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -472,8 +416,7 @@ final class Designs
      *
      * @param string $id
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `rate_limited`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `rate_limited`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function getDelivery(string $id): DesignsDeliveryGetResponse
     {
@@ -481,12 +424,8 @@ final class Designs
             'designs.delivery.get',
             path: ['id' => $id],
         );
-        return DesignsDeliveryGetResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsDeliveryGetResponse => DesignsDeliveryGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -498,8 +437,7 @@ final class Designs
      * @param string $id
      * @param DesignsDeliveryUpdateRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `address_change_unavailable`, `bad_request`, `db_error`, `design_erased`, `design_ordered`, `design_rejected`, `feature_disabled`, `forbidden`, `lock_timeout`, `not_found`, `order_closed`, `origin_forbidden`, `payload_too_large`, `postal_code_required`, `rate_limited`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `address_change_unavailable`, `bad_request`, `db_error`, `design_erased`, `design_ordered`, `design_rejected`, `feature_disabled`, `forbidden`, `lock_timeout`, `not_found`, `order_closed`, `origin_forbidden`, `payload_too_large`, `postal_code_required`, `rate_limited`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function updateDelivery(string $id, DesignsDeliveryUpdateRequest $body): DesignsDeliveryUpdateResponse
     {
@@ -508,12 +446,8 @@ final class Designs
             path: ['id' => $id],
             body: $body->toArray(),
         );
-        return DesignsDeliveryUpdateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsDeliveryUpdateResponse => DesignsDeliveryUpdateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -525,8 +459,7 @@ final class Designs
      * @param string $id
      * @param string|null $sdkVersion The SDK release making the request, which the SDK sends itself. A release that cannot draw the template is refused `sdk_outdated`; a request naming none is served.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `design_doc_unreadable`, `feature_disabled`, `forbidden`, `not_editable`, `not_found`, `not_standing`, `origin_forbidden`, `rate_limited`, `render_failed`, `sdk_outdated`, `sdk_version_invalid`, `template_unreadable`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `design_doc_unreadable`, `feature_disabled`, `forbidden`, `not_editable`, `not_found`, `not_standing`, `origin_forbidden`, `rate_limited`, `render_failed`, `sdk_outdated`, `sdk_version_invalid`, `template_unreadable`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function getDesigner(string $id, ?string $sdkVersion = null): DesignsDesignerGetResponse
     {
@@ -535,12 +468,8 @@ final class Designs
             path: ['id' => $id],
             headers: ['x-pixonaut-sdk-version' => $sdkVersion],
         );
-        return DesignsDesignerGetResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsDesignerGetResponse => DesignsDesignerGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -551,8 +480,7 @@ final class Designs
      *
      * @param string $id
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `design_erased`, `feature_disabled`, `forbidden`, `lock_timeout`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `design_erased`, `feature_disabled`, `forbidden`, `lock_timeout`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function duplicate(string $id): DesignsDuplicateResponse
     {
@@ -560,12 +488,8 @@ final class Designs
             'designs.duplicate',
             path: ['id' => $id],
         );
-        return DesignsDuplicateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsDuplicateResponse => DesignsDuplicateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -578,8 +502,7 @@ final class Designs
      *
      * @return DesignsErasePersonalDataResponse|null
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `lock_timeout`, `not_found`, `origin_forbidden`, `payload_too_large`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `lock_timeout`, `not_found`, `origin_forbidden`, `payload_too_large`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function erasePersonalData(string $id): ?DesignsErasePersonalDataResponse
     {
@@ -588,12 +511,8 @@ final class Designs
             path: ['id' => $id],
         );
         return match ($result->status) {
-            200 => DesignsErasePersonalDataResponse::fromArray(
-                Decode::object(
-                    $result->json(),
-                    '$',
-                ),
-                '$',
+            200 => $result->decode(
+                static fn(mixed $json): DesignsErasePersonalDataResponse => DesignsErasePersonalDataResponse::fromArray(Decode::object($json, '$'), '$'),
             ),
             204 => null,
             default => throw $result->unexpected(),
@@ -608,8 +527,7 @@ final class Designs
      * @param string $id
      * @param DesignsExternalRefUpdateRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `payload_too_large`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `payload_too_large`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function updateExternalRef(string $id, DesignsExternalRefUpdateRequest $body): DesignsExternalRefUpdateResponse
     {
@@ -618,12 +536,8 @@ final class Designs
             path: ['id' => $id],
             body: $body->toArray(),
         );
-        return DesignsExternalRefUpdateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsExternalRefUpdateResponse => DesignsExternalRefUpdateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -689,8 +603,7 @@ final class Designs
      * @param string $id
      * @param DesignsRejectRequest|null $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `not_committed`, `not_found`, `origin_forbidden`, `payload_too_large`, `proof_outdated`, `rate_limited`, `revision_changed`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `not_committed`, `not_found`, `origin_forbidden`, `payload_too_large`, `proof_outdated`, `rate_limited`, `revision_changed`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function reject(string $id, ?DesignsRejectRequest $body = null): DesignsRejectResponse
     {
@@ -699,12 +612,8 @@ final class Designs
             path: ['id' => $id],
             body: $body?->toArray(),
         );
-        return DesignsRejectResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsRejectResponse => DesignsRejectResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -716,8 +625,7 @@ final class Designs
      * @param string $id
      * @param DesignsRequestChangesRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_erased`, `feature_disabled`, `forbidden`, `not_committed`, `not_found`, `origin_forbidden`, `payload_too_large`, `proof_outdated`, `rate_limited`, `revision_changed`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_erased`, `feature_disabled`, `forbidden`, `not_committed`, `not_found`, `origin_forbidden`, `payload_too_large`, `proof_outdated`, `rate_limited`, `revision_changed`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function requestChanges(string $id, DesignsRequestChangesRequest $body): DesignsRequestChangesResponse
     {
@@ -726,12 +634,8 @@ final class Designs
             path: ['id' => $id],
             body: $body->toArray(),
         );
-        return DesignsRequestChangesResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsRequestChangesResponse => DesignsRequestChangesResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -742,8 +646,7 @@ final class Designs
      *
      * @param string $id
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `rate_limited`, `secret_key_required`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `rate_limited`, `secret_key_required`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function getReview(string $id): DesignsReviewGetResponse
     {
@@ -751,12 +654,8 @@ final class Designs
             'designs.review.get',
             path: ['id' => $id],
         );
-        return DesignsReviewGetResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsReviewGetResponse => DesignsReviewGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -769,8 +668,7 @@ final class Designs
      * @param int|null $pageSize
      * @param string|null $before Only revisions older than this one: a page's `nextBefore`.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function listRevisions(string $id, ?int $pageSize = null, ?string $before = null): DesignsRevisionsListResponse
     {
@@ -779,12 +677,8 @@ final class Designs
             path: ['id' => $id],
             query: ['pageSize' => $pageSize, 'before' => $before],
         );
-        return DesignsRevisionsListResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsRevisionsListResponse => DesignsRevisionsListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -796,8 +690,7 @@ final class Designs
      * @param string $id
      * @param string $revision A revision number.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_id`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_id`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function getRevision(string $id, string $revision): DesignsRevisionsGetResponse
     {
@@ -805,12 +698,8 @@ final class Designs
             'designs.revisions.get',
             path: ['id' => $id, 'revision' => $revision],
         );
-        return DesignsRevisionsGetResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsRevisionsGetResponse => DesignsRevisionsGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -846,8 +735,7 @@ final class Designs
      * @param string $revision A revision number.
      * @param DesignsRevisionsRestoreRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_request`, `client_closed_request`, `db_error`, `design_doc_unreadable`, `feature_disabled`, `forbidden`, `invalid_id`, `lock_timeout`, `not_editable`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `render_failed`, `revision_changed`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_request`, `client_closed_request`, `db_error`, `design_doc_unreadable`, `feature_disabled`, `forbidden`, `invalid_id`, `lock_timeout`, `not_editable`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `render_failed`, `revision_changed`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function restoreRevision(string $id, string $revision, DesignsRevisionsRestoreRequest $body): DesignsRevisionsRestoreResponse
     {
@@ -856,12 +744,8 @@ final class Designs
             path: ['id' => $id, 'revision' => $revision],
             body: $body->toArray(),
         );
-        return DesignsRevisionsRestoreResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): DesignsRevisionsRestoreResponse => DesignsRevisionsRestoreResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 }

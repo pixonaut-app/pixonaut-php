@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Pixonaut\Sdk\Http;
 
+use Closure;
 use Pixonaut\Sdk\Exception\ApiException;
+use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use stdClass;
+use Throwable;
 
 /**
  * A successful answer.
@@ -69,6 +72,30 @@ final class Result
     }
 
     /**
+     * The body decoded as JSON and turned into what the operation answers,
+     * e.g. its model.
+     *
+     * @template T
+     *
+     * @param Closure(mixed): T $decoder
+     *
+     * @return T
+     *
+     * @throws ApiException `unexpected_response` when the body is not JSON, or
+     *                      not the shape the decoder knows; the
+     *                      `UnexpectedResponse` naming the JSON path is its previous.
+     */
+    public function decode(Closure $decoder): mixed
+    {
+        $json = $this->json();
+        try {
+            return $decoder->__invoke($json);
+        } catch (UnexpectedResponse $e) {
+            throw $this->unexpected($e);
+        }
+    }
+
+    /**
      * The body as the file it is, with its content type.
      */
     public function binary(): Binary
@@ -118,7 +145,7 @@ final class Result
      * The error for an answer that does not decode into what the operation
      * answers.
      */
-    public function unexpected(): ApiException
+    public function unexpected(?Throwable $previous = null): ApiException
     {
         return new ApiException(
             $this->operation,
@@ -128,6 +155,7 @@ final class Result
             null,
             $this->requestId(),
             $this->sensitive ? ErrorMapper::REDACTED : ErrorMapper::excerpt($this->body),
+            $previous,
         );
     }
 }

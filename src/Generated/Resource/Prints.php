@@ -8,7 +8,6 @@ namespace Pixonaut\Sdk\Generated\Resource;
 
 use InvalidArgumentException;
 use Pixonaut\Sdk\Exception\ApiException;
-use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Generated\Model\PrintsCreateRequest;
 use Pixonaut\Sdk\Generated\Model\PrintsCreateResponse201;
 use Pixonaut\Sdk\Generated\Model\PrintsCreateResponse202;
@@ -57,8 +56,7 @@ final class Prints
      * @param string|null $sort How the list sorts: `newest` first (the default), `oldest` first, or by what each print's files take in storage, `largest` or `smallest` first. A print with no stored size sorts last either way.
      * @param string|null $pageOf
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function list(?int $page = null, ?int $pageSize = null, string|array|null $status = null, ?string $apiKeyId = null, ?string $designId = null, ?string $q = null, ?string $sort = null, ?string $pageOf = null): PrintsListResponse
     {
@@ -75,12 +73,8 @@ final class Prints
                 'pageOf' => $pageOf,
             ],
         );
-        return PrintsListResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): PrintsListResponse => PrintsListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -94,8 +88,7 @@ final class Prints
      * @param string|null $prefer `wait` answers once the print has rendered: `201` with its job ticket, or `render_failed`. Without it the print is answered `202` as soon as it is reserved, and renders after the answer.
      * @param string|null $idempotencyKey Your key for the request; a new UUID when null.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `already_printed`, `bad_request`, `db_error`, `design_erased`, `design_not_approved`, `design_not_found`, `external_ref_moved_to_order`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `not_found`, `origin_forbidden`, `payload_too_large`, `plan_limit_reached`, `quantity_moved_to_order`, `render_failed`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `already_printed`, `bad_request`, `db_error`, `design_erased`, `design_not_approved`, `design_not_found`, `external_ref_moved_to_order`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `not_found`, `origin_forbidden`, `payload_too_large`, `plan_limit_reached`, `quantity_moved_to_order`, `render_failed`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      * @throws InvalidArgumentException When the request does not fit the operation; nothing is sent.
      */
     public function create(PrintsCreateRequest $body, ?string $prefer = null, ?string $idempotencyKey = null): PrintsCreateResponse201|PrintsCreateResponse202
@@ -128,8 +121,7 @@ final class Prints
     /**
      * Sends a request from {@see prepareCreate()}, as prepared or restored with `PreparedRequest::fromArray()`.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `already_printed`, `bad_request`, `db_error`, `design_erased`, `design_not_approved`, `design_not_found`, `external_ref_moved_to_order`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `not_found`, `origin_forbidden`, `payload_too_large`, `plan_limit_reached`, `quantity_moved_to_order`, `render_failed`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `already_printed`, `bad_request`, `db_error`, `design_erased`, `design_not_approved`, `design_not_found`, `external_ref_moved_to_order`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `not_found`, `origin_forbidden`, `payload_too_large`, `plan_limit_reached`, `quantity_moved_to_order`, `render_failed`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      * @throws InvalidArgumentException When the request was prepared for another operation, or does not fit this one.
      */
     public function sendCreate(PreparedRequest $request): PrintsCreateResponse201|PrintsCreateResponse202
@@ -138,19 +130,11 @@ final class Prints
             $request->expect('prints.create'),
         );
         return match ($result->status) {
-            201 => PrintsCreateResponse201::fromArray(
-                Decode::object(
-                    $result->json(),
-                    '$',
-                ),
-                '$',
+            201 => $result->decode(
+                static fn(mixed $json): PrintsCreateResponse201 => PrintsCreateResponse201::fromArray(Decode::object($json, '$'), '$'),
             ),
-            202 => PrintsCreateResponse202::fromArray(
-                Decode::object(
-                    $result->json(),
-                    '$',
-                ),
-                '$',
+            202 => $result->decode(
+                static fn(mixed $json): PrintsCreateResponse202 => PrintsCreateResponse202::fromArray(Decode::object($json, '$'), '$'),
             ),
             default => throw $result->unexpected(),
         };
@@ -163,8 +147,7 @@ final class Prints
      *
      * @param string $id
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function get(string $id): PrintsGetResponse
     {
@@ -172,12 +155,8 @@ final class Prints
             'prints.get',
             path: ['id' => $id],
         );
-        return PrintsGetResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): PrintsGetResponse => PrintsGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -241,8 +220,7 @@ final class Prints
      * @param string|null $settings
      * @param string|null $form Which form of the print's files: `flat`, `layered` (each printed layer its own optional content group, every glyph a path) or `layered_live_text` (plain text live as well). Left out, the form the print was made in. Another form is made from the print's document when it is first asked for, and kept.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `machine_profile_not_found`, `not_found`, `origin_forbidden`, `print_not_found`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `machine_profile_not_found`, `not_found`, `origin_forbidden`, `print_not_found`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function listFiles(string $id, ?string $machineProfile = null, ?string $settings = null, ?string $form = null): PrintsFilesListResponse
     {
@@ -251,12 +229,8 @@ final class Prints
             path: ['id' => $id],
             query: ['machineProfile' => $machineProfile, 'settings' => $settings, 'form' => $form],
         );
-        return PrintsFilesListResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): PrintsFilesListResponse => PrintsFilesListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 }

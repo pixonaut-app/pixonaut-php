@@ -33,20 +33,28 @@ final class ResourcePlanner
 
         /** @var array<string, array<string, OperationDef>> $resources */
         $resources = [];
+        /** @var array<string, array<string, string>> $reserved Resource → lower-case method name → the operation printing it. */
+        $reserved = [];
         foreach ($operations as $operation) {
             $resource = $this->resourceOf($operation);
             if ($resource === null) {
                 continue;
             }
             $method = $this->methodName($operation, $resource);
-            if (isset($resources[$resource][$method])) {
-                throw new GeneratorException(sprintf(
-                    '%s and %s would both be %s()->%s(); name one in generator/config.php under methodNames.',
-                    $resources[$resource][$method]->id,
-                    $operation->id,
-                    $resource,
-                    $method,
-                ));
+            // PHP method names are case-insensitive, and an idempotent operation also prints prepare…() and send…().
+            foreach (self::printedNames($method, $operation) as $printed) {
+                $key = strtolower($printed);
+                $taken = $printed === '__construct' ? 'the constructor' : ($reserved[$resource][$key] ?? null);
+                if ($taken !== null) {
+                    throw new GeneratorException(sprintf(
+                        '%s and %s would both be %s()->%s(); name one in generator/config.php under methodNames.',
+                        $taken,
+                        $operation->id,
+                        $resource,
+                        $printed,
+                    ));
+                }
+                $reserved[$resource][$key] = $operation->id;
             }
             $resources[$resource][$method] = $operation;
         }
@@ -63,6 +71,16 @@ final class ResourcePlanner
         }
 
         return $plan;
+    }
+
+    /**
+     * Every method the operation prints.
+     *
+     * @return list<string>
+     */
+    private static function printedNames(string $method, OperationDef $operation): array
+    {
+        return $operation->idempotent ? [$method, 'prepare' . ucfirst($method), 'send' . ucfirst($method)] : [$method];
     }
 
     private function resourceOf(OperationDef $operation): ?string

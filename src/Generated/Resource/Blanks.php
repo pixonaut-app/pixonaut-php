@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Resource;
 
 use Pixonaut\Sdk\Exception\ApiException;
-use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Generated\Model\BlanksGetResponse;
 use Pixonaut\Sdk\Generated\Model\BlanksListResponse;
 use Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponse;
@@ -59,8 +58,7 @@ final class Blanks
      * @param string|null $deleted
      * @param string|null $orderedFirstFor
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function list(?int $page = null, ?int $pageSize = null, ?string $q = null, ?string $hasPlacements = null, ?string $printshop = null, ?string $category = null, ?string $pageOf = null, ?string $deleted = null, ?string $orderedFirstFor = null): BlanksListResponse
     {
@@ -78,12 +76,8 @@ final class Blanks
                 'orderedFirstFor' => $orderedFirstFor,
             ],
         );
-        return BlanksListResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): BlanksListResponse => BlanksListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -94,8 +88,7 @@ final class Blanks
      *
      * @param string $id
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function get(string $id): BlanksGetResponse
     {
@@ -103,12 +96,8 @@ final class Blanks
             'blanks.get',
             path: ['id' => $id],
         );
-        return BlanksGetResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): BlanksGetResponse => BlanksGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -120,8 +109,7 @@ final class Blanks
      * @param string $id
      * @param string|null $lang The language the blank's options, their values and its views are named in, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`: each name the blank has in it, else its own. Absent, every name is its own.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `print_box_unavailable`, `rate_limited`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `print_box_unavailable`, `rate_limited`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function listMockups(string $id, ?string $lang = null): BlanksMockupsListResponse
     {
@@ -130,12 +118,8 @@ final class Blanks
             path: ['id' => $id],
             query: ['lang' => $lang],
         );
-        return BlanksMockupsListResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): BlanksMockupsListResponse => BlanksMockupsListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -151,8 +135,7 @@ final class Blanks
      * @param string|null $status
      * @param string|null $q
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `rate_limited`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `rate_limited`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function listPlacementFittingTemplates(string $id, string $placementId, ?int $page = null, ?int $pageSize = null, ?string $status = null, ?string $q = null): BlanksPlacementsFittingTemplatesListResponse
     {
@@ -161,12 +144,8 @@ final class Blanks
             path: ['id' => $id, 'placementId' => $placementId],
             query: ['page' => $page, 'pageSize' => $pageSize, 'status' => $status, 'q' => $q],
         );
-        return BlanksPlacementsFittingTemplatesListResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): BlanksPlacementsFittingTemplatesListResponse => BlanksPlacementsFittingTemplatesListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -178,8 +157,7 @@ final class Blanks
      * @param string $id
      * @param string $placementId
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `no_preview_tables`, `not_found`, `origin_forbidden`, `rate_limited`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `no_preview_tables`, `not_found`, `origin_forbidden`, `rate_limited`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function getPreviewTables(string $id, string $placementId): BlanksPreviewTablesGetResponse
     {
@@ -187,12 +165,8 @@ final class Blanks
             'blanks.previewTables.get',
             path: ['id' => $id, 'placementId' => $placementId],
         );
-        return BlanksPreviewTablesGetResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): BlanksPreviewTablesGetResponse => BlanksPreviewTablesGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -204,8 +178,7 @@ final class Blanks
      * @param string $id
      * @param string|null $lang The language the blank's options, their values and its views are named in, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`: each name the blank has in it, else its own. Absent, every name is its own.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `rate_limited`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `rate_limited`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function listVariants(string $id, ?string $lang = null): BlanksVariantsListResponse
     {
@@ -214,12 +187,8 @@ final class Blanks
             path: ['id' => $id],
             query: ['lang' => $lang],
         );
-        return BlanksVariantsListResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): BlanksVariantsListResponse => BlanksVariantsListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -253,8 +222,7 @@ final class Blanks
      *
      * @param string|null $stockItem Only this stock item's scenes, by its key.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function listScenes(?string $stockItem = null): ScenesListResponse
     {
@@ -262,12 +230,8 @@ final class Blanks
             'scenes.list',
             query: ['stockItem' => $stockItem],
         );
-        return ScenesListResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): ScenesListResponse => ScenesListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 }

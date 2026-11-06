@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Resource;
 
 use Pixonaut\Sdk\Exception\ApiException;
-use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Generated\Model\EventsListResponse;
 use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Pixonaut;
@@ -37,8 +36,7 @@ final class Events
      * @param string|null $types Comma-separated event types to narrow the answer to. Omitted, every type.
      * @param int|null $limit The most events to answer.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_event_type`, `invalid_query`, `origin_forbidden`, `secret_key_required`, `unauthorized`, `unknown_event`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_event_type`, `invalid_query`, `origin_forbidden`, `secret_key_required`, `unauthorized`, `unknown_event`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function list(?string $after = null, ?string $types = null, ?int $limit = null): EventsListResponse
     {
@@ -46,12 +44,8 @@ final class Events
             'events.list',
             query: ['after' => $after, 'types' => $types, 'limit' => $limit],
         );
-        return EventsListResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): EventsListResponse => EventsListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 }

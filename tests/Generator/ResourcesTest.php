@@ -96,6 +96,33 @@ final class ResourcesTest extends TestCase
             ->files(self::json($this->fixture()));
     }
 
+    public function testRefusesANameAnIdempotentOperationsPrepareMethodTakes(): void
+    {
+        $this->expectException(GeneratorException::class);
+        $this->expectExceptionMessage('designs.commit and designs.revisions.list would both be designs()->prepareCommit()');
+
+        (new Generator('Pixonaut\\Sdk\\Tests\\Generator\\Helper', $this->config(['designs.revisions.list' => 'prepareCommit'])))
+            ->files(self::json($this->fixture()));
+    }
+
+    public function testRefusesNamesThatDifferOnlyInCase(): void
+    {
+        $this->expectException(GeneratorException::class);
+        $this->expectExceptionMessage('designs.list and designs.revisions.list would both be designs()->List()');
+
+        (new Generator('Pixonaut\\Sdk\\Tests\\Generator\\Case', $this->config(['designs.revisions.list' => 'List'])))
+            ->files(self::json($this->fixture()));
+    }
+
+    public function testRefusesTheConstructorAsAMethodName(): void
+    {
+        $this->expectException(GeneratorException::class);
+        $this->expectExceptionMessage('the constructor and designs.list would both be designs()->__construct()');
+
+        (new Generator('Pixonaut\\Sdk\\Tests\\Generator\\Constructor', $this->config(['designs.list' => '__construct'])))
+            ->files(self::json($this->fixture()));
+    }
+
     public function testRefusesAMethodNameForAnOperationTheSpecDoesNotHave(): void
     {
         $this->expectException(GeneratorException::class);

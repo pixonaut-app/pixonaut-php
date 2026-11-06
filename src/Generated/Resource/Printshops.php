@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Resource;
 
 use Pixonaut\Sdk\Exception\ApiException;
-use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponse;
 use Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1;
 use Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2;
@@ -37,8 +36,7 @@ final class Printshops
      *
      * @param string|null $q
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function listConnections(?string $q = null): PrintshopConnectionsListResponseOption1|PrintshopConnectionsListResponseOption2
     {
@@ -46,9 +44,8 @@ final class Printshops
             'printshopConnections.list',
             query: ['q' => $q],
         );
-        return PrintshopConnectionsListResponse::decode(
-            $result->json(),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): PrintshopConnectionsListResponseOption1|PrintshopConnectionsListResponseOption2 => PrintshopConnectionsListResponse::decode($json, '$'),
         );
     }
 }

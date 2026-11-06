@@ -215,6 +215,17 @@ final class PrepareTest extends TestCase
         self::assertSame(['body designs.commit', 'before designs.commit', 'after designs.commit', 'before designs.commit', 'after designs.commit'], $harness->listener->calls);
     }
 
+    public function testRestoresASnapshotTakenBeforeRequestsCarriedHeaders(): void
+    {
+        $harness = new Harness();
+        $harness->answer(201);
+
+        $harness->pixonaut->send(PreparedRequest::fromArray(['operation' => 'designs.commit', 'target' => '/v1/designs/d_1/commit', 'body' => '{"a":1}', 'idempotencyKey' => 'k_1']));
+
+        self::assertSame('{"a":1}', (string) $harness->lastSent()->getBody());
+        self::assertSame('k_1', $harness->lastSent()->getHeaderLine('Idempotency-Key'));
+    }
+
     public function testSnapshotHoldsNoCredential(): void
     {
         $request = (new Harness())->pixonaut->prepare('designs.commit', ['id' => 'd_1'], [], []);
@@ -228,7 +239,7 @@ final class PrepareTest extends TestCase
     public static function malformedSnapshots(): iterable
     {
         $good = ['operation' => 'designs.commit', 'target' => '/v1/designs/d_1/commit', 'body' => '{}', 'idempotencyKey' => 'k', 'headers' => []];
-        foreach (array_keys($good) as $field) {
+        foreach (['operation', 'target', 'body', 'idempotencyKey'] as $field) {
             $missing = $good;
             unset($missing[$field]);
             yield 'no ' . $field => [$missing];

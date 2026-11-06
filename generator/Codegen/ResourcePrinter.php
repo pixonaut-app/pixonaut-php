@@ -12,7 +12,6 @@ use PhpParser\Node\Name;
 use PhpParser\Node\Stmt;
 use PhpParser\ParserFactory;
 use Pixonaut\Sdk\Exception\ApiException;
-use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Http\Binary;
 use Pixonaut\Sdk\Http\PreparedRequest;
 use Pixonaut\Sdk\Model\Decode;
@@ -313,7 +312,6 @@ final class ResourcePrinter
         }
 
         $uses[] = Decode::class;
-        $uses[] = UnexpectedResponse::class;
         /** @var array<string, array{Type, list<int>}> $byType */
         $byType = [];
         foreach ($operation->responses as $status => $type) {
@@ -342,13 +340,20 @@ final class ResourcePrinter
         return [$type, "return match (" . self::RESULT . "->status) {\n" . implode("\n", $arms) . "\n};"];
     }
 
+    /**
+     * `$result->decode(static fn(mixed $json): X => …)`: the result turns a
+     * shape the model refuses into an `ApiException` carrying the request id.
+     */
     private function decodeText(Type $type): string
     {
-        return $this->printer->prettyPrintExpr($this->modelPrinter->decode(
-            $type,
-            new Expr\MethodCall(Ast::var('result'), 'json'),
-            Ast::string('$'),
-        ));
+        $decoder = new Expr\ArrowFunction([
+            'static' => true,
+            'params' => [new Node\Param(Ast::var('json'), null, new Node\Identifier('mixed'))],
+            'returnType' => Ast::type($type->native()),
+            'expr' => $this->modelPrinter->decode($type, Ast::var('json'), Ast::string('$')),
+        ]);
+
+        return $this->printer->prettyPrintExpr(new Expr\MethodCall(Ast::var('result'), 'decode', [new Node\Arg($decoder)]));
     }
 
     /**
@@ -372,12 +377,9 @@ final class ResourcePrinter
         $codes = $operation->errorCodes === []
             ? ''
             : ' (documented: `' . implode('`, `', $operation->errorCodes) . '`)';
-        $throws = ['@throws ApiException When Pixonaut refuses the request' . $codes . ', or cannot be reached.'];
-        if ($operation->responses !== []) {
-            $throws[] = '@throws UnexpectedResponse When the answer does not have the shape this release knows.';
-        }
+        $answer = $operation->responses !== [] ? ', cannot be reached, or answers what this release cannot read (`unexpected_response`).' : ', or cannot be reached.';
 
-        return $throws;
+        return ['@throws ApiException When Pixonaut refuses the request' . $codes . $answer];
     }
 
     /**

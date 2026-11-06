@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Resource;
 
 use Pixonaut\Sdk\Exception\ApiException;
-use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Generated\Model\ConnectedStoreExchangeCodeRequest;
 use Pixonaut\Sdk\Generated\Model\ConnectedStoreExchangeCodeResponse;
 use Pixonaut\Sdk\Generated\Model\ConnectedStoreExchangeCodeResponseOption1;
@@ -60,18 +59,13 @@ final class Connect
      *
      * `GET /v1/connect`
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function get(): ConnectedStoreGetResponse
     {
         $result = $this->pixonaut->call('connectedStore.get');
-        return ConnectedStoreGetResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): ConnectedStoreGetResponse => ConnectedStoreGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -82,8 +76,7 @@ final class Connect
      *
      * @param ConnectedStoreUpdateRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `brand_not_found`, `db_error`, `feature_disabled`, `forbidden`, `invalid_input`, `invalid_origin`, `not_found`, `origin_forbidden`, `payload_too_large`, `too_many_origins`, `unauthorized`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `brand_not_found`, `db_error`, `feature_disabled`, `forbidden`, `invalid_input`, `invalid_origin`, `not_found`, `origin_forbidden`, `payload_too_large`, `too_many_origins`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function update(ConnectedStoreUpdateRequest $body): ConnectedStoreUpdateResponse
     {
@@ -91,12 +84,8 @@ final class Connect
             'connectedStore.update',
             body: $body->toArray(),
         );
-        return ConnectedStoreUpdateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): ConnectedStoreUpdateResponse => ConnectedStoreUpdateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -148,8 +137,7 @@ final class Connect
      *
      * @param ConnectedStoreExchangeCodeRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `invalid_grant`, `payload_too_large`, `plan_limit_reached`, `rate_limited`, `unauthorized`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `invalid_grant`, `payload_too_large`, `plan_limit_reached`, `rate_limited`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function exchangeCode(ConnectedStoreExchangeCodeRequest $body): ConnectedStoreExchangeCodeResponseOption1|ConnectedStoreExchangeCodeResponseOption2
     {
@@ -157,9 +145,8 @@ final class Connect
             'connectedStore.exchangeCode',
             body: $body->toArray(),
         );
-        return ConnectedStoreExchangeCodeResponse::decode(
-            $result->json(),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): ConnectedStoreExchangeCodeResponseOption1|ConnectedStoreExchangeCodeResponseOption2 => ConnectedStoreExchangeCodeResponse::decode($json, '$'),
         );
     }
 }

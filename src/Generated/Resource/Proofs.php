@@ -7,7 +7,6 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Resource;
 
 use Pixonaut\Sdk\Exception\ApiException;
-use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Generated\Model\PayloadsValidateRequest;
 use Pixonaut\Sdk\Generated\Model\PayloadsValidateResponse;
 use Pixonaut\Sdk\Generated\Model\ProofsCreateRequest;
@@ -47,8 +46,7 @@ final class Proofs
      * @param string|null $lang The language the template's dynamic values are written in when their name names none, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the workspace's default language. A value whose name carries a language, `{date.long:sv}`, keeps it.
      * @param string|null $session The designer's browser session, which the SDK sends so one visitor's uploads and proofs are told apart from another's on the same key: 6 to 64 letters, digits, `_` or `-`. Any other value is ignored.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_json`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `link_design_limit`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_json`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `link_design_limit`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function create(ProofsCreateRequest $body, ?string $tz = null, ?string $lang = null, ?string $session = null): ProofsCreateResponse
     {
@@ -58,12 +56,8 @@ final class Proofs
             body: $body->toArray(),
             headers: ['x-pixonaut-session' => $session],
         );
-        return ProofsCreateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): ProofsCreateResponse => ProofsCreateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -77,8 +71,7 @@ final class Proofs
      * @param string|null $lang The language the template's dynamic values are written in when their name names none, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the workspace's default language. A value whose name carries a language, `{date.long:sv}`, keeps it.
      * @param string|null $session The designer's browser session, which the SDK sends so one visitor's uploads and proofs are told apart from another's on the same key: 6 to 64 letters, digits, `_` or `-`. Any other value is ignored.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `empty_layout`, `feature_disabled`, `forbidden`, `invalid_query`, `layout_out_of_date`, `link_design_limit`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_layout`, `unknown_placement`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `empty_layout`, `feature_disabled`, `forbidden`, `invalid_query`, `layout_out_of_date`, `link_design_limit`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_layout`, `unknown_placement`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function createThroughLayout(ProofsCreateThroughLayoutRequest $body, ?string $tz = null, ?string $lang = null, ?string $session = null): ProofsCreateThroughLayoutResponse
     {
@@ -88,12 +81,8 @@ final class Proofs
             body: $body->toArray(),
             headers: ['x-pixonaut-session' => $session],
         );
-        return ProofsCreateThroughLayoutResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): ProofsCreateThroughLayoutResponse => ProofsCreateThroughLayoutResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -106,8 +95,7 @@ final class Proofs
      * @param string|null $tz The IANA timezone the template's dynamic values are resolved in, such as `Europe/Stockholm`: today's date there. Absent, the workspace's timezone.
      * @param string|null $lang The language the template's dynamic values are written in when their name names none, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the workspace's default language. A value whose name carries a language, `{date.long:sv}`, keeps it.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_json`, `bad_request`, `constraint_violation`, `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), or cannot be reached.
-     * @throws UnexpectedResponse When the answer does not have the shape this release knows.
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_json`, `bad_request`, `constraint_violation`, `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function validatePayload(PayloadsValidateRequest $body, ?string $tz = null, ?string $lang = null): PayloadsValidateResponse
     {
@@ -116,12 +104,8 @@ final class Proofs
             query: ['tz' => $tz, 'lang' => $lang],
             body: $body->toArray(),
         );
-        return PayloadsValidateResponse::fromArray(
-            Decode::object(
-                $result->json(),
-                '$',
-            ),
-            '$',
+        return $result->decode(
+            static fn(mixed $json): PayloadsValidateResponse => PayloadsValidateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 }
