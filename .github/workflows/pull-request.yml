@@ -51,6 +51,7 @@ jobs:
       - run: bin/composer install --no-interaction --no-progress
       - run: bin/spec check
       - run: bin/generate --check
+      - run: bin/surface --check
       - run: bin/composer lint
       - run: bin/composer analyse
       # The unit and contract suites, in a container with no network but
@@ -58,3 +59,51 @@ jobs:
       - run: bin/composer test
         env:
           DOCKER_NETWORK: none
+
+  surface:
+    name: Breaking change marked
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      # A line of api-surface.txt the pull request removes or changes is a
+      # change a caller may have to follow: the title must mark it breaking
+      # (`feat!:`), so release-please releases a major.
+      - name: Check the title marks a removed or changed public signature
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          removed="$(git diff --unified=0 "${BASE}" HEAD -- api-surface.txt | grep '^-[^-]' | cut -c2- || true)"
+          if [ -z "${removed}" ]; then
+            echo 'No public signature is removed or changed.'
+            exit 0
+          fi
+          echo 'Removed or changed in api-surface.txt:'
+          printf '%s\n' "${removed}"
+          if printf '%s' "${TITLE}" | grep -Eq '^[a-z]+(\([a-z0-9._/-]+\))?!: '; then
+            echo 'The title marks the change breaking.'
+            exit 0
+          fi
+          echo "::error::This pull request removes or changes a public signature. Mark the title breaking, e.g. 'feat!: ...', or keep the old signature."
+          exit 1
+
+  prefixed:
+    name: Prefixed with ${{ matrix.tool }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        tool: [strauss, scoper]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: bin/composer install --no-interaction --no-progress
+      # Prefixes the package, its dependencies and the quick-start examples,
+      # then runs the examples and the webhook vectors on the prefixed copy.
+      - run: tests/Prefixed/run ${{ matrix.tool }}
