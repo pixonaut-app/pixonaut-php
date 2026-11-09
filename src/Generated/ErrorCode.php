@@ -200,6 +200,11 @@ final class ErrorCode
     /**
      * Documented with status 409.
      */
+    public const COPY_IN_PROGRESS = 'copy_in_progress';
+
+    /**
+     * Documented with status 409.
+     */
     public const CORRECTION_PROOF = 'correction_proof';
 
     /**
@@ -268,6 +273,11 @@ final class ErrorCode
     public const DESIGN_NOT_FOUND = 'design_not_found';
 
     /**
+     * Documented with status 422.
+     */
+    public const DESIGN_NOT_STITCHABLE = 'design_not_stitchable';
+
+    /**
      * Documented with status 409.
      */
     public const DESIGN_ORDERED = 'design_ordered';
@@ -281,6 +291,11 @@ final class ErrorCode
      * Documented with status 409.
      */
     public const DESIGN_REJECTED = 'design_rejected';
+
+    /**
+     * Documented with status 422.
+     */
+    public const DESIGN_UNREADABLE = 'design_unreadable';
 
     /**
      * Documented with status 400.
@@ -316,6 +331,11 @@ final class ErrorCode
      * Documented with status 422.
      */
     public const DUPLICATE_PLACEMENT = 'duplicate_placement';
+
+    /**
+     * Documented with status 422.
+     */
+    public const EMBROIDERY_FEE_UNACKNOWLEDGED = 'embroidery_fee_unacknowledged';
 
     /**
      * Documented with status 422.
@@ -1485,6 +1505,7 @@ final class ErrorCode
         'constraint_violation' => [422],
         'conversation_moved' => [409],
         'conversation_not_found' => [404],
+        'copy_in_progress' => [409],
         'correction_proof' => [409],
         'cut_out_exhausted' => [409],
         'cut_out_not_offered' => [422],
@@ -1499,9 +1520,11 @@ final class ErrorCode
         'design_limit_not_allowed' => [400],
         'design_not_approved' => [409],
         'design_not_found' => [404],
+        'design_not_stitchable' => [422],
         'design_ordered' => [409],
         'design_printed' => [409],
         'design_rejected' => [409],
+        'design_unreadable' => [422],
         'designer_settings_not_allowed' => [400],
         'downscale_size_overflow' => [500],
         'draft_has_no_artwork' => [422],
@@ -1509,6 +1532,7 @@ final class ErrorCode
         'draft_refused' => [422],
         'duplicate_category' => [409],
         'duplicate_placement' => [422],
+        'embroidery_fee_unacknowledged' => [422],
         'empty_layout' => [422],
         'encode_failed' => [500],
         'endpoint_inactive' => [409],

@@ -29,9 +29,12 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
      * @param BlanksMockupsListResponsePlacementsItemViewsItemMesh|null $mesh Control points the print is laid through or, marked cut, cut to, rows from its top edge and points from its left, as [x, y] in the photo's original pixels; at least 2 and at most 33 along each side. Absent, the print is laid in the rect.
      * @param int|null $piece A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.
      * @param BlanksMockupsListResponsePlacementsItemViewsItemPieceSizeMm|null $pieceSizeMm The print size on the model of the piece the region's `printWindowMm` lies on, in mm. Present with a print window only.
+     * @param int|null $position The view's place in the blank's one list of views and scenes, from 0. The first with a photo is the blank's picture. Read only.
      * @param BlanksMockupsListResponsePlacementsItemViewsItemPrintWindowMm|null $printWindowMm The part of the region's piece its print covers, in millimetres on the piece's unwrapped surface from its top-left corner, such as a square on the side of a cup: the print is read inside it, at the window's size, and the product shows plain outside it. It lies inside its piece, and needs the piece's size on the view. Absent, the print covers the whole piece.
      * @param string|null $sceneId The scene this view shows. A scene's view is built from the blank's chosen scenes and is read only.
-     * @param int|null $scenePosition On a scene's view, its place among the blank's chosen scenes.
+     * @param int|null $scenePosition On a scene's view, its `position`, for a reader that orders scenes by it.
+     * @param string|null $source Where the view's photos come from: `stock` (a scene from the library), `catalogue` (the printshop's) or `own` (the merchant's). Read only.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemViewsItemSource}.
      * @param BlanksMockupsListResponsePlacementsItemViewsItemSourceWindowMm|null $sourceWindowMm The piece of the placement's print the region shows, in millimetres from the print's top-left corner, such as a roll's window; clamped to the print when the print is smaller. Absent, the region shows the whole print at the size of the render's variant.
      * @param bool|null $takesDye On a scene's view, whether a variant's colour recolours it. One that takes none shows only the variants of its colour.
      * @param BlanksMockupsListResponsePlacementsItemViewsItemUvPassUrls|null $uvPassUrls The maps the view was rendered with from a 3D model of the product, each the view's photo size, opened with no key: a region naming a `piece` is read through them. Absent on a view of photos. Valid as long as a photo's `url`.
@@ -47,9 +50,11 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
         public readonly ?BlanksMockupsListResponsePlacementsItemViewsItemMesh $mesh = null,
         public readonly ?int $piece = null,
         public readonly ?BlanksMockupsListResponsePlacementsItemViewsItemPieceSizeMm $pieceSizeMm = null,
+        public readonly ?int $position = null,
         public readonly ?BlanksMockupsListResponsePlacementsItemViewsItemPrintWindowMm $printWindowMm = null,
         public readonly ?string $sceneId = null,
         public readonly ?int $scenePosition = null,
+        public readonly ?string $source = null,
         public readonly ?BlanksMockupsListResponsePlacementsItemViewsItemSourceWindowMm $sourceWindowMm = null,
         public readonly ?bool $takesDye = null,
         public readonly ?BlanksMockupsListResponsePlacementsItemViewsItemUvPassUrls $uvPassUrls = null,
@@ -88,9 +93,11 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
             mesh: array_key_exists('mesh', $data) ? BlanksMockupsListResponsePlacementsItemViewsItemMesh::fromArray(Decode::object($data['mesh'], $path . '.mesh'), $path . '.mesh') : null,
             piece: array_key_exists('piece', $data) ? Decode::int($data['piece'], $path . '.piece') : null,
             pieceSizeMm: array_key_exists('pieceSizeMm', $data) ? BlanksMockupsListResponsePlacementsItemViewsItemPieceSizeMm::fromArray(Decode::object($data['pieceSizeMm'], $path . '.pieceSizeMm'), $path . '.pieceSizeMm') : null,
+            position: array_key_exists('position', $data) ? Decode::int($data['position'], $path . '.position') : null,
             printWindowMm: array_key_exists('printWindowMm', $data) ? BlanksMockupsListResponsePlacementsItemViewsItemPrintWindowMm::fromArray(Decode::object($data['printWindowMm'], $path . '.printWindowMm'), $path . '.printWindowMm') : null,
             sceneId: array_key_exists('sceneId', $data) ? Decode::string($data['sceneId'], $path . '.sceneId') : null,
             scenePosition: array_key_exists('scenePosition', $data) ? Decode::int($data['scenePosition'], $path . '.scenePosition') : null,
+            source: array_key_exists('source', $data) ? Decode::string($data['source'], $path . '.source') : null,
             sourceWindowMm: array_key_exists('sourceWindowMm', $data) ? BlanksMockupsListResponsePlacementsItemViewsItemSourceWindowMm::fromArray(Decode::object($data['sourceWindowMm'], $path . '.sourceWindowMm'), $path . '.sourceWindowMm') : null,
             takesDye: array_key_exists('takesDye', $data) ? Decode::bool($data['takesDye'], $path . '.takesDye') : null,
             uvPassUrls: array_key_exists('uvPassUrls', $data) ? BlanksMockupsListResponsePlacementsItemViewsItemUvPassUrls::fromArray(Decode::object($data['uvPassUrls'], $path . '.uvPassUrls'), $path . '.uvPassUrls') : null,
@@ -134,6 +141,9 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
         if ($this->pieceSizeMm !== null) {
             $data['pieceSizeMm'] = Encode::model($this->pieceSizeMm);
         }
+        if ($this->position !== null) {
+            $data['position'] = $this->position;
+        }
         if ($this->printWindowMm !== null) {
             $data['printWindowMm'] = Encode::model($this->printWindowMm);
         }
@@ -142,6 +152,9 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
         }
         if ($this->scenePosition !== null) {
             $data['scenePosition'] = $this->scenePosition;
+        }
+        if ($this->source !== null) {
+            $data['source'] = $this->source;
         }
         if ($this->sourceWindowMm !== null) {
             $data['sourceWindowMm'] = Encode::model($this->sourceWindowMm);

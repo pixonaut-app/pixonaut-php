@@ -8,6 +8,7 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
+use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -22,23 +23,28 @@ final class ScenesListResponseScenesItem implements Model
 
     /**
      * @param list<string> $areas The keys of the garment areas the scene shows truthfully.
-     * @param string|null $colour The colour a scene that takes no dye was photographed in; null when it takes dye.
      * @param bool $hasPerson Whether a person is in the scene.
+     * @param ScenesListResponseScenesItemLayerUrls|null $layerUrls The passes the preview picture is drawn through, each its size: where a garment area's print lands, and how a colour paints its grey base. Null when the scene has no preview passes.
+     * @param string $person Who is in the scene, or `none`: one of the selects a stock item's scenes are chosen by.
+     * @param ScenesListResponseScenesItemPictureSizePx|null $pictureSizePx The preview picture's size, which each of `layerUrls` shares; null when it has none.
      * @param string|null $pictureUrl A link to the scene's picture, opening with no key.
-     * @param string $printCoverage What print the scene's base suits: a white glaze a logo, a dark gloss an all-over print, and a dyed scene either (`any`).
-     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemPrintCoverage}.
+     * @param string $pose How the product is shown, such as `front` or `back`: one of the selects a stock item's scenes are chosen by.
+     * @param string $setting Where the scene is photographed, such as `studio` or `street`: one of the selects a stock item's scenes are chosen by.
      * @param string $stockItem The stock item the scene shows.
-     * @param bool $studio Whether this is a studio scene, which comes first and is a product's default picture.
-     * @param bool $takesDye Whether a variant's colour recolours the scene. One that does not was photographed in `colour`.
+     * @param bool $studio Whether this is a studio scene: the product alone, on a plain ground.
+     * @param bool $takesDye Whether a variant's colour paints the scene's grey base. One that does not shows a material that is the point, such as bare metal, on every variant as photographed.
      */
     public function __construct(
         public readonly array $areas,
-        public readonly ?string $colour,
         public readonly bool $hasPerson,
         public readonly string $id,
         public readonly string $label,
+        public readonly ?ScenesListResponseScenesItemLayerUrls $layerUrls,
+        public readonly string $person,
+        public readonly ?ScenesListResponseScenesItemPictureSizePx $pictureSizePx,
         public readonly ?string $pictureUrl,
-        public readonly string $printCoverage,
+        public readonly string $pose,
+        public readonly string $setting,
         public readonly string $stockItem,
         public readonly bool $studio,
         public readonly bool $takesDye,
@@ -60,20 +66,27 @@ final class ScenesListResponseScenesItem implements Model
                 $path . '.areas',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
-            colour: Decode::nullable(
-                Decode::required($data, 'colour', $path),
-                $path . '.colour',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
             hasPerson: Decode::bool(Decode::required($data, 'hasPerson', $path), $path . '.hasPerson'),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             label: Decode::string(Decode::required($data, 'label', $path), $path . '.label'),
+            layerUrls: Decode::nullable(
+                Decode::required($data, 'layerUrls', $path),
+                $path . '.layerUrls',
+                static fn(mixed $v, string $p): ScenesListResponseScenesItemLayerUrls => ScenesListResponseScenesItemLayerUrls::fromArray(Decode::object($v, $p), $p),
+            ),
+            person: Decode::string(Decode::required($data, 'person', $path), $path . '.person'),
+            pictureSizePx: Decode::nullable(
+                Decode::required($data, 'pictureSizePx', $path),
+                $path . '.pictureSizePx',
+                static fn(mixed $v, string $p): ScenesListResponseScenesItemPictureSizePx => ScenesListResponseScenesItemPictureSizePx::fromArray(Decode::object($v, $p), $p),
+            ),
             pictureUrl: Decode::nullable(
                 Decode::required($data, 'pictureUrl', $path),
                 $path . '.pictureUrl',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
-            printCoverage: Decode::string(Decode::required($data, 'printCoverage', $path), $path . '.printCoverage'),
+            pose: Decode::string(Decode::required($data, 'pose', $path), $path . '.pose'),
+            setting: Decode::string(Decode::required($data, 'setting', $path), $path . '.setting'),
             stockItem: Decode::string(Decode::required($data, 'stockItem', $path), $path . '.stockItem'),
             studio: Decode::bool(Decode::required($data, 'studio', $path), $path . '.studio'),
             takesDye: Decode::bool(Decode::required($data, 'takesDye', $path), $path . '.takesDye'),
@@ -97,12 +110,15 @@ final class ScenesListResponseScenesItem implements Model
     {
         $data = [];
         $data['areas'] = $this->areas;
-        $data['colour'] = $this->colour;
         $data['hasPerson'] = $this->hasPerson;
         $data['id'] = $this->id;
         $data['label'] = $this->label;
+        $data['layerUrls'] = $this->layerUrls === null ? null : Encode::model($this->layerUrls);
+        $data['person'] = $this->person;
+        $data['pictureSizePx'] = $this->pictureSizePx === null ? null : Encode::model($this->pictureSizePx);
         $data['pictureUrl'] = $this->pictureUrl;
-        $data['printCoverage'] = $this->printCoverage;
+        $data['pose'] = $this->pose;
+        $data['setting'] = $this->setting;
         $data['stockItem'] = $this->stockItem;
         $data['studio'] = $this->studio;
         $data['takesDye'] = $this->takesDye;

@@ -12,9 +12,9 @@ use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `GET /v1/blanks answer 200: $.blanks[].scenes[]`.
+ * Schema: `GET /v1/blanks/{id} answer 200: $.order[] (anyOf #2)`.
  */
-final class BlanksListResponseBlanksItemScenesItem implements Model
+final class BlanksGetResponseOrderItemOption2 implements Model
 {
     /**
      * @var array<string, mixed>|null The object as decoded, unknown fields included.
@@ -22,14 +22,14 @@ final class BlanksListResponseBlanksItemScenesItem implements Model
     private ?array $decoded = null;
 
     /**
-     * @param string|null $colour The colour a scene that takes no dye was photographed in; null when it takes dye.
-     * @param string $id The scene's id, as list_scenes returns it.
-     * @param array<string, string> $rowOptions For a scene that takes no dye, the option value it shows, by option name, since its base is one colour. Omitted or empty, it shows the blank's colour nearest its own by swatch, or no variant when no swatch is near. On a blank with no colour option it shows every variant.
+     * @param string $sceneId The scene's id.
+     * @param string $source A scene from the library.
+     * @param array<string, string>|null $row The option values the stock photo shows, by option name, of the options the blank's photos change with (`photosVaryBy`): shoppers see it only for the variants with these values. Absent or empty: every variant.
      */
     public function __construct(
-        public readonly ?string $colour,
-        public readonly string $id,
-        public readonly array $rowOptions,
+        public readonly string $sceneId,
+        public readonly string $source,
+        public readonly ?array $row = null,
     ) {}
 
     /**
@@ -43,17 +43,13 @@ final class BlanksListResponseBlanksItemScenesItem implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            colour: Decode::nullable(
-                Decode::required($data, 'colour', $path),
-                $path . '.colour',
+            sceneId: Decode::string(Decode::required($data, 'sceneId', $path), $path . '.sceneId'),
+            source: Decode::string(Decode::required($data, 'source', $path), $path . '.source'),
+            row: array_key_exists('row', $data) ? Decode::map(
+                $data['row'],
+                $path . '.row',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
-            id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
-            rowOptions: Decode::map(
-                Decode::required($data, 'rowOptions', $path),
-                $path . '.rowOptions',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -73,9 +69,11 @@ final class BlanksListResponseBlanksItemScenesItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['colour'] = $this->colour;
-        $data['id'] = $this->id;
-        $data['rowOptions'] = Encode::object($this->rowOptions);
+        $data['sceneId'] = $this->sceneId;
+        $data['source'] = $this->source;
+        if ($this->row !== null) {
+            $data['row'] = Encode::object($this->row);
+        }
         return $data;
     }
 }

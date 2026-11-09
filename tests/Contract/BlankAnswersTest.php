@@ -1,0 +1,194 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Pixonaut\Sdk\Tests\Contract;
+
+use PHPUnit\Framework\TestCase;
+use Pixonaut\Sdk\Tests\Contract\Support\ContractClient;
+use Pixonaut\Sdk\Tests\Fake\Spec;
+use stdClass;
+
+/**
+ * A blank as the API answers it: no blank-wide `photoSource`, each view
+ * saying its own `source` and `position`, one blank's `order` mixing stored
+ * views and scenes, placements and print areas that fold. Every answer is one
+ * the spec allows (the fake checks it), and the SDK reads it.
+ */
+final class BlankAnswersTest extends TestCase
+{
+    private const HTTP_OK = 200;
+
+    /** A print method no release names yet: the field stays a string. */
+    private const UNKNOWN_PRINT_METHOD = 'foil-transfer';
+
+    public function testAListOfBlanksWithoutAPhotoSourceIsRead(): void
+    {
+        $client = new ContractClient();
+        $answer = self::example('blanks.list');
+        self::withPhotoSources(self::items($answer->blanks)[0]);
+        $client->fake()->answer('blanks.list', self::HTTP_OK, $answer);
+
+        $blanks = $client->pixonaut->blanks()->list(hasPlacements: 'true');
+
+        self::assertSame([], $client->fake()->violations());
+        $blank = $blanks->blanks[0];
+        self::assertArrayNotHasKey('photoSource', $blank->raw());
+        self::assertSame(['own', 'stock'], array_map(static fn(object $view): ?string => $view->source, $blank->placements[0]->views));
+        self::assertSame([0, 1], array_map(static fn(object $view): ?int => $view->position, $blank->placements[0]->views));
+        self::assertSame(self::UNKNOWN_PRINT_METHOD, $blank->placements[0]->printMethod);
+        self::assertSame(20.0, $blank->placements[0]->foldMm);
+    }
+
+    public function testOneBlankWithoutAPhotoSourceIsReadWithItsOrder(): void
+    {
+        $client = new ContractClient();
+        $answer = self::example('blanks.get');
+        self::withPhotoSources($answer);
+        $answer->order = [
+            (object) ['source' => 'own', 'viewId' => 'view-front-flat'],
+            (object) ['source' => 'stock', 'sceneId' => 'scene_kitchen', 'row' => (object) ['Color' => 'White']],
+            (object) ['source' => 'catalogue', 'viewId' => 'view-front-model'],
+        ];
+        $client->fake()->answer('blanks.get', self::HTTP_OK, $answer);
+
+        $blank = $client->pixonaut->blanks()->get('blank_tshirt');
+
+        self::assertSame([], $client->fake()->violations());
+        self::assertArrayNotHasKey('photoSource', $blank->raw());
+        self::assertSame(
+            ['own', 'stock', 'catalogue'],
+            array_map(static fn(object $entry): string => $entry->source, $blank->order ?? []),
+        );
+        self::assertSame(20.0, $blank->placements[0]->foldMm);
+        self::assertSame(15.0, $blank->placements[0]->areas[0]->foldMm ?? null);
+    }
+
+    public function testABlankFromAnOlderApiThatStillSendsAPhotoSourceIsRead(): void
+    {
+        $answer = self::example('blanks.get');
+        $answer->photoSource = 'scenes';
+        $answer->scenes = [(object) ['id' => 'scene_kitchen', 'colour' => null, 'rowOptions' => []]];
+        $client = new ContractClient();
+        $client->fake()->answer('blanks.get', self::HTTP_OK, $answer);
+
+        $blank = $client->pixonaut->blanks()->get('blank_tshirt');
+
+        self::assertSame('scenes', $blank->raw()['photoSource']);
+    }
+
+    public function testAFoldingPlacementsConstraintsAreRead(): void
+    {
+        $client = new ContractClient();
+        $answer = self::example('templates.constraints.get');
+        self::obj($answer->placement)->foldMm = 20;
+        $client->fake()->answer('templates.constraints.get', self::HTTP_OK, $answer);
+
+        $constraints = $client->pixonaut->templates()->getConstraints('tshirt-basic@2', 'blank_tshirt', 'front');
+
+        self::assertSame([], $client->fake()->violations());
+        self::assertSame(20.0, $constraints->placement?->foldMm);
+    }
+
+    public function testVariantsOnAnAxisOfAnyNameAreRead(): void
+    {
+        $client = new ContractClient();
+        $answer = self::example('blanks.variants.list');
+        $answer->axes = [...self::values($answer->axes), 'Paper'];
+        $answer->options = [...self::items($answer->options), (object) ['appearances' => (object) ['Matte' => null], 'name' => 'Paper', 'tones' => (object) ['Matte' => 'light'], 'values' => ['Matte']]];
+        foreach (self::items($answer->variants) as $variant) {
+            self::obj($variant->options)->Paper = 'Matte';
+        }
+        $client->fake()->answer('blanks.variants.list', self::HTTP_OK, $answer);
+
+        $variants = $client->pixonaut->blanks()->listVariants('blank_tshirt');
+
+        self::assertSame([], $client->fake()->violations());
+        self::assertSame(['Color', 'Size', 'Paper'], $variants->axes);
+        self::assertSame('Matte', $variants->variants[0]->options['Paper']);
+    }
+
+    public function testMockupViewsEachWithTheirSourceAreRead(): void
+    {
+        $client = new ContractClient();
+        $answer = self::example('blanks.mockups.list');
+        $placement = self::items($answer->placements)[0];
+        foreach (self::items($placement->views) as $position => $view) {
+            $view->source = $position === 0 ? 'stock' : 'own';
+            $view->position = $position;
+        }
+        $placement->foldMm = 20;
+        $client->fake()->answer('blanks.mockups.list', self::HTTP_OK, $answer);
+
+        $mockups = $client->pixonaut->blanks()->listMockups('blank_tshirt');
+
+        self::assertSame([], $client->fake()->violations());
+        self::assertSame('stock', $mockups->placements[0]->views[0]->source);
+    }
+
+    /**
+     * `$blank` with a second view on its first placement, from a scene, and a
+     * print area on that placement; the placement and the area fold, and the
+     * placement prints by a method the SDK does not know.
+     */
+    private static function withPhotoSources(stdClass $blank): void
+    {
+        unset($blank->photoSource, $blank->scenes);
+        $placement = self::items($blank->placements)[0];
+        $views = self::items($placement->views);
+        $view = clone $views[0];
+        $view->id = 'view-kitchen';
+        $view->label = 'Kitchen';
+        $view->source = 'stock';
+        $view->position = 1;
+        $placement->views = [...$views, $view];
+        $placement->foldMm = 20;
+        $placement->printMethod = self::UNKNOWN_PRINT_METHOD;
+        $placement->areas = [(object) [
+            'foldMm' => 15,
+            'heightMm' => 360,
+            'row' => (object) [],
+            'usualHeightMm' => 360,
+            'usualWidthMm' => 280,
+            'widthMm' => 280,
+        ]];
+    }
+
+    private static function obj(mixed $value): stdClass
+    {
+        self::assertInstanceOf(stdClass::class, $value);
+
+        return $value;
+    }
+
+    /**
+     * @return list<stdClass>
+     */
+    private static function items(mixed $value): array
+    {
+        return array_map(self::obj(...), self::values($value));
+    }
+
+    /**
+     * @return list<mixed>
+     */
+    private static function values(mixed $value): array
+    {
+        self::assertIsArray($value);
+        self::assertTrue(array_is_list($value));
+
+        return $value;
+    }
+
+    /**
+     * A copy of the spec's success example for `$operation`.
+     */
+    private static function example(string $operation): stdClass
+    {
+        $example = Spec::pinned()->operation($operation)->answerExample(self::HTTP_OK);
+        $copy = json_decode(json_encode($example, JSON_THROW_ON_ERROR), flags: JSON_THROW_ON_ERROR);
+        self::assertInstanceOf(stdClass::class, $copy);
+
+        return $copy;
+    }
+}

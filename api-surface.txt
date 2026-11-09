@@ -66,6 +66,7 @@ Pixonaut\Sdk\Generated\Enum\ApiKeysListResponseItemKind::SK const
 final class Pixonaut\Sdk\Generated\Enum\ApiKeysListResponseItemNeedsFeature
 Pixonaut\Sdk\Generated\Enum\ApiKeysListResponseItemNeedsFeature::API const
 Pixonaut\Sdk\Generated\Enum\ApiKeysListResponseItemNeedsFeature::AUTOMATIONS const
+Pixonaut\Sdk\Generated\Enum\ApiKeysListResponseItemNeedsFeature::EMBROIDERY const
 Pixonaut\Sdk\Generated\Enum\ApiKeysListResponseItemNeedsFeature::KNOWN const
 Pixonaut\Sdk\Generated\Enum\ApiKeysListResponseItemNeedsFeature::MCP const
 final class Pixonaut\Sdk\Generated\Enum\ApiKeysUpdateResponseKind
@@ -881,11 +882,10 @@ final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemTonesValue
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemTonesValue::DARK const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemTonesValue::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemTonesValue::LIGHT const
-final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePhotoSource
-Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePhotoSource::KNOWN const
-Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePhotoSource::OWN const
-Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePhotoSource::PRINTSHOP const
-Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePhotoSource::SCENES const
+final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOrderItemOption1Source
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOrderItemOption1Source::CATALOGUE const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOrderItemOption1Source::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOrderItemOption1Source::OWN const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemCoverage
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemCoverage::FULL const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemCoverage::KNOWN const
@@ -893,6 +893,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemCoverage::WITHIN cons
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemPrintMethod
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemPrintMethod::CUT_SEW const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemPrintMethod::DIGITAL const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemPrintMethod::DIRECT_TO_FABRIC const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemPrintMethod::DTF const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemPrintMethod::DTG const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemPrintMethod::EMBROIDERY const
@@ -904,6 +905,11 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemPrintMethod::PAD cons
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemPrintMethod::SCREEN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemPrintMethod::SUBLIMATION const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemPrintMethod::UV const
+final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemSource
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemSource::CATALOGUE const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemSource::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemSource::OWN const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemSource::STOCK const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedDefaultPrintshopIdSource
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedDefaultPrintshopIdSource::CATEGORY const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedDefaultPrintshopIdSource::KNOWN const
@@ -961,6 +967,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedPlacementsItemPrintMethodSo
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedPlacementsItemPrintMethodValue
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedPlacementsItemPrintMethodValue::CUT_SEW const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedPlacementsItemPrintMethodValue::DIGITAL const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedPlacementsItemPrintMethodValue::DIRECT_TO_FABRIC const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedPlacementsItemPrintMethodValue::DTF const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedPlacementsItemPrintMethodValue::DTG const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedPlacementsItemPrintMethodValue::EMBROIDERY const
@@ -999,11 +1006,10 @@ final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemT
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemTonesValue::DARK const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemTonesValue::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemTonesValue::LIGHT const
-final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPhotoSource
-Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPhotoSource::KNOWN const
-Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPhotoSource::OWN const
-Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPhotoSource::PRINTSHOP const
-Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPhotoSource::SCENES const
+final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOrderItemOption1Source
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOrderItemOption1Source::CATALOGUE const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOrderItemOption1Source::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOrderItemOption1Source::OWN const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemCoverage
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemCoverage::FULL const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemCoverage::KNOWN const
@@ -1011,6 +1017,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemCoverage::
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemPrintMethod
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemPrintMethod::CUT_SEW const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemPrintMethod::DIGITAL const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemPrintMethod::DIRECT_TO_FABRIC const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemPrintMethod::DTF const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemPrintMethod::DTG const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemPrintMethod::EMBROIDERY const
@@ -1022,6 +1029,11 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemPrintMetho
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemPrintMethod::SCREEN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemPrintMethod::SUBLIMATION const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemPrintMethod::UV const
+final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemSource
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemSource::CATALOGUE const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemSource::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemSource::OWN const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemSource::STOCK const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedDefaultPrintshopIdSource
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedDefaultPrintshopIdSource::CATEGORY const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedDefaultPrintshopIdSource::KNOWN const
@@ -1079,6 +1091,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedPlacementsItemPr
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedPlacementsItemPrintMethodValue
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedPlacementsItemPrintMethodValue::CUT_SEW const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedPlacementsItemPrintMethodValue::DIGITAL const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedPlacementsItemPrintMethodValue::DIRECT_TO_FABRIC const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedPlacementsItemPrintMethodValue::DTF const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedPlacementsItemPrintMethodValue::DTG const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedPlacementsItemPrintMethodValue::EMBROIDERY const
@@ -1112,6 +1125,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemCoverage::WIT
 final class Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemPrintMethod
 Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemPrintMethod::CUT_SEW const
 Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemPrintMethod::DIGITAL const
+Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemPrintMethod::DIRECT_TO_FABRIC const
 Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemPrintMethod::DTF const
 Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemPrintMethod::DTG const
 Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemPrintMethod::EMBROIDERY const
@@ -1123,6 +1137,16 @@ Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemPrintMethod::
 Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemPrintMethod::SCREEN const
 Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemPrintMethod::SUBLIMATION const
 Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemPrintMethod::UV const
+final class Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemViewsItemSource
+Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemViewsItemSource::CATALOGUE const
+Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemViewsItemSource::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemViewsItemSource::OWN const
+Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemViewsItemSource::STOCK const
+final class Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponseViewsItemSource
+Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponseViewsItemSource::CATALOGUE const
+Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponseViewsItemSource::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponseViewsItemSource::OWN const
+Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponseViewsItemSource::STOCK const
 final class Pixonaut\Sdk\Generated\Enum\BlanksPlacementsFittingTemplatesListResponseItemsItemStatus
 Pixonaut\Sdk\Generated\Enum\BlanksPlacementsFittingTemplatesListResponseItemsItemStatus::DRAFT const
 Pixonaut\Sdk\Generated\Enum\BlanksPlacementsFittingTemplatesListResponseItemsItemStatus::KNOWN const
@@ -2529,7 +2553,7 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::REVOKE_SHARE_LINKS const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SAVE_UPLOAD const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_BLANK_CATEGORY_DEFAULTS const
-Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_BLANK_PHOTO_SOURCE const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_BLANK_VIEW_ORDER const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_DEFAULT_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_DESIGN_DELIVERY const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_DESIGN_EXTERNAL_REF const
@@ -2708,7 +2732,7 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::REVOKE_SHARE_LINKS const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SAVE_UPLOAD const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_BLANK_CATEGORY_DEFAULTS const
-Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_BLANK_PHOTO_SOURCE const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_BLANK_VIEW_ORDER const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_DEFAULT_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_DESIGN_DELIVERY const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_DESIGN_EXTERNAL_REF const
@@ -2896,7 +2920,7 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::REVOKE_SHARE_LINKS const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SAVE_UPLOAD const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_BLANK_CATEGORY_DEFAULTS const
-Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_BLANK_PHOTO_SOURCE const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_BLANK_VIEW_ORDER const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_DEFAULT_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_DESIGN_DELIVERY const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_DESIGN_EXTERNAL_REF const
@@ -3230,6 +3254,7 @@ Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsIt
 final class Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem::CUT_SEW const
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem::DIGITAL const
+Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem::DIRECT_TO_FABRIC const
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem::DTF const
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem::DTG const
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem::EMBROIDERY const
@@ -3614,11 +3639,6 @@ Pixonaut\Sdk\Generated\Enum\ResolvedTemplateUploadsFormatsItem::JPEG const
 Pixonaut\Sdk\Generated\Enum\ResolvedTemplateUploadsFormatsItem::KNOWN const
 Pixonaut\Sdk\Generated\Enum\ResolvedTemplateUploadsFormatsItem::PNG const
 Pixonaut\Sdk\Generated\Enum\ResolvedTemplateUploadsFormatsItem::WEBP const
-final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemPrintCoverage
-Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemPrintCoverage::ALL_OVER const
-Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemPrintCoverage::ANY const
-Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemPrintCoverage::KNOWN const
-Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemPrintCoverage::LOGO const
 final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemFamily
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemFamily::CLOTH const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemFamily::CYLINDER const
@@ -4479,6 +4499,7 @@ Pixonaut\Sdk\Generated\ErrorCode::CONNECTION_KEY const
 Pixonaut\Sdk\Generated\ErrorCode::CONSTRAINT_VIOLATION const
 Pixonaut\Sdk\Generated\ErrorCode::CONVERSATION_MOVED const
 Pixonaut\Sdk\Generated\ErrorCode::CONVERSATION_NOT_FOUND const
+Pixonaut\Sdk\Generated\ErrorCode::COPY_IN_PROGRESS const
 Pixonaut\Sdk\Generated\ErrorCode::CORRECTION_PROOF const
 Pixonaut\Sdk\Generated\ErrorCode::CUT_OUT_EXHAUSTED const
 Pixonaut\Sdk\Generated\ErrorCode::CUT_OUT_NOT_OFFERED const
@@ -4494,15 +4515,18 @@ Pixonaut\Sdk\Generated\ErrorCode::DESIGN_ERASED const
 Pixonaut\Sdk\Generated\ErrorCode::DESIGN_LIMIT_NOT_ALLOWED const
 Pixonaut\Sdk\Generated\ErrorCode::DESIGN_NOT_APPROVED const
 Pixonaut\Sdk\Generated\ErrorCode::DESIGN_NOT_FOUND const
+Pixonaut\Sdk\Generated\ErrorCode::DESIGN_NOT_STITCHABLE const
 Pixonaut\Sdk\Generated\ErrorCode::DESIGN_ORDERED const
 Pixonaut\Sdk\Generated\ErrorCode::DESIGN_PRINTED const
 Pixonaut\Sdk\Generated\ErrorCode::DESIGN_REJECTED const
+Pixonaut\Sdk\Generated\ErrorCode::DESIGN_UNREADABLE const
 Pixonaut\Sdk\Generated\ErrorCode::DOWNSCALE_SIZE_OVERFLOW const
 Pixonaut\Sdk\Generated\ErrorCode::DRAFT_HAS_NO_ARTWORK const
 Pixonaut\Sdk\Generated\ErrorCode::DRAFT_INVALID const
 Pixonaut\Sdk\Generated\ErrorCode::DRAFT_REFUSED const
 Pixonaut\Sdk\Generated\ErrorCode::DUPLICATE_CATEGORY const
 Pixonaut\Sdk\Generated\ErrorCode::DUPLICATE_PLACEMENT const
+Pixonaut\Sdk\Generated\ErrorCode::EMBROIDERY_FEE_UNACKNOWLEDGED const
 Pixonaut\Sdk\Generated\ErrorCode::EMPTY_LAYOUT const
 Pixonaut\Sdk\Generated\ErrorCode::ENCODE_FAILED const
 Pixonaut\Sdk\Generated\ErrorCode::ENDPOINT_INACTIVE const
@@ -5371,6 +5395,264 @@ Pixonaut\Sdk\Generated\Model\AssetsRoundShapesGetResponseShapesItemRadius::__con
 Pixonaut\Sdk\Generated\Model\AssetsRoundShapesGetResponseShapesItemRadius::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsRoundShapesGetResponseShapesItemRadius static
 Pixonaut\Sdk\Generated\Model\AssetsRoundShapesGetResponseShapesItemRadius::raw(): array
 Pixonaut\Sdk\Generated\Model\AssetsRoundShapesGetResponseShapesItemRadius::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest::$maxThreads readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest::$threads readonly array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest::__construct(int $maxThreads, array $threads)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequestThreadsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequestThreadsItem::$cmyk readonly array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequestThreadsItem::$hex readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequestThreadsItem::$id readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequestThreadsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequestThreadsItem::__construct(array $cmyk, string $hex, string $id, string $name)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequestThreadsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequestThreadsItem static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequestThreadsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequestThreadsItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200 implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200::$colours readonly Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200::$copy readonly ?Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200::$threads readonly array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200::__construct(Pixonaut\Sdk\Model\Model $colours, ?Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy $copy, array $threads)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200 static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Colours
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Colours::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlat implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlat::$colours readonly array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlat::$exact readonly bool
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlat::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlat::__construct(array $colours, bool $exact, string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlat::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlat static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlat::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlat::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlatColoursItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlatColoursItem::$hex readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlatColoursItem::$share readonly float
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlatColoursItem::__construct(string $hex, float $share)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlatColoursItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlatColoursItem static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlatColoursItem::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursFlatColoursItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursManyColours implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursManyColours::$count readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursManyColours::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursManyColours::__construct(int $count, string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursManyColours::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursManyColours static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursManyColours::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursManyColours::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursPhoto implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursPhoto::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursPhoto::__construct(string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursPhoto::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursPhoto static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursPhoto::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursPhoto::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursTooLarge implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursTooLarge::$heightPx readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursTooLarge::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursTooLarge::$widthPx readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursTooLarge::__construct(int $heightPx, string $kind, int $widthPx)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursTooLarge::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursTooLarge static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursTooLarge::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursTooLarge::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursUnreadable implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursUnreadable::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursUnreadable::__construct(string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursUnreadable::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursUnreadable static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursUnreadable::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ColoursUnreadable::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy::$assetId readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy::$colours readonly Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy::$contentKey readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy::$heightPx readonly float
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy::$widthPx readonly float
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy::__construct(string $assetId, Pixonaut\Sdk\Model\Model $colours, string $contentKey, float $heightPx, float $widthPx)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200Copy::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColours
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColours::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlat implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlat::$colours readonly array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlat::$exact readonly bool
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlat::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlat::__construct(array $colours, bool $exact, string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlat::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlat static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlat::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlat::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlatColoursItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlatColoursItem::$hex readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlatColoursItem::$share readonly float
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlatColoursItem::__construct(string $hex, float $share)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlatColoursItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlatColoursItem static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlatColoursItem::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursFlatColoursItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursManyColours implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursManyColours::$count readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursManyColours::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursManyColours::__construct(int $count, string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursManyColours::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursManyColours static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursManyColours::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursManyColours::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursPhoto implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursPhoto::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursPhoto::__construct(string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursPhoto::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursPhoto static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursPhoto::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursPhoto::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursTooLarge implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursTooLarge::$heightPx readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursTooLarge::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursTooLarge::$widthPx readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursTooLarge::__construct(int $heightPx, string $kind, int $widthPx)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursTooLarge::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursTooLarge static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursTooLarge::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursTooLarge::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursUnreadable implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursUnreadable::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursUnreadable::__construct(string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursUnreadable::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursUnreadable static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursUnreadable::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200CopyColoursUnreadable::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItem::$hex readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItem::$thread readonly Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItemThread
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItem::__construct(string $hex, Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItemThread $thread)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItem static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItemThread implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItemThread::$hex readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItemThread::$id readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItemThread::$name readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItemThread::__construct(string $hex, string $id, string $name)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItemThread::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItemThread static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItemThread::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200ThreadsItemThread::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201 implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201::$colours readonly Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201::$copy readonly ?Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201::$threads readonly array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201::__construct(Pixonaut\Sdk\Model\Model $colours, ?Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy $copy, array $threads)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201 static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Colours
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Colours::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlat implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlat::$colours readonly array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlat::$exact readonly bool
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlat::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlat::__construct(array $colours, bool $exact, string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlat::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlat static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlat::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlat::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlatColoursItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlatColoursItem::$hex readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlatColoursItem::$share readonly float
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlatColoursItem::__construct(string $hex, float $share)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlatColoursItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlatColoursItem static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlatColoursItem::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursFlatColoursItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursManyColours implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursManyColours::$count readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursManyColours::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursManyColours::__construct(int $count, string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursManyColours::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursManyColours static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursManyColours::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursManyColours::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursPhoto implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursPhoto::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursPhoto::__construct(string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursPhoto::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursPhoto static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursPhoto::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursPhoto::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursTooLarge implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursTooLarge::$heightPx readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursTooLarge::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursTooLarge::$widthPx readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursTooLarge::__construct(int $heightPx, string $kind, int $widthPx)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursTooLarge::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursTooLarge static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursTooLarge::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursTooLarge::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursUnreadable implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursUnreadable::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursUnreadable::__construct(string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursUnreadable::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursUnreadable static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursUnreadable::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ColoursUnreadable::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy::$assetId readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy::$colours readonly Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy::$contentKey readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy::$heightPx readonly float
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy::$widthPx readonly float
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy::__construct(string $assetId, Pixonaut\Sdk\Model\Model $colours, string $contentKey, float $heightPx, float $widthPx)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201Copy::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColours
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColours::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlat implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlat::$colours readonly array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlat::$exact readonly bool
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlat::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlat::__construct(array $colours, bool $exact, string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlat::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlat static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlat::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlat::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlatColoursItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlatColoursItem::$hex readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlatColoursItem::$share readonly float
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlatColoursItem::__construct(string $hex, float $share)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlatColoursItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlatColoursItem static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlatColoursItem::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursFlatColoursItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursManyColours implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursManyColours::$count readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursManyColours::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursManyColours::__construct(int $count, string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursManyColours::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursManyColours static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursManyColours::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursManyColours::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursPhoto implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursPhoto::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursPhoto::__construct(string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursPhoto::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursPhoto static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursPhoto::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursPhoto::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursTooLarge implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursTooLarge::$heightPx readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursTooLarge::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursTooLarge::$widthPx readonly int
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursTooLarge::__construct(int $heightPx, string $kind, int $widthPx)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursTooLarge::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursTooLarge static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursTooLarge::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursTooLarge::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursUnreadable implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursUnreadable::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursUnreadable::__construct(string $kind)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursUnreadable::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursUnreadable static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursUnreadable::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201CopyColoursUnreadable::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItem::$hex readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItem::$thread readonly Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItemThread
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItem::__construct(string $hex, Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItemThread $thread)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItem static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItemThread implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItemThread::$hex readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItemThread::$id readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItemThread::$name readonly string
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItemThread::__construct(string $hex, string $id, string $name)
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItemThread::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItemThread static
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItemThread::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201ThreadsItemThread::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AssetsUpdateRequest implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AssetsUpdateRequest::$categoryId readonly Pixonaut\Sdk\Model\Omitted|null|string
 Pixonaut\Sdk\Generated\Model\AssetsUpdateRequest::$expectedUpdatedAt readonly ?int
@@ -8324,16 +8606,16 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$machineProfileId readonly ?stri
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$name readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$options readonly array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$optionsConfirmedAt readonly ?float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$order readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$orderCount readonly ?int
+Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$paintBy readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$partnerLocked readonly bool
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$photoCoverage readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePhotoCoverage
-Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$photoSource readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$photosVaryBy readonly array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$placements readonly array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$placementsAtOtherSize readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$referenceRow readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$resolved readonly Pixonaut\Sdk\Generated\Model\BlanksGetResponseResolved
-Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$scenes readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$sharedViewPhoto readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseSharedViewPhoto
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$status readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$stockItemKey readonly ?string
@@ -8341,7 +8623,7 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$thumbnailUrl readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$variantCount readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$variants readonly ?array
-Pixonaut\Sdk\Generated\Model\BlanksGetResponse::__construct(array $areasVaryBy, array $axes, ?string $categoryId, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseCopiedFrom $copiedFrom, float $createdAt, string $defaultPrintshopId, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseDeleted $deleted, string $id, ?string $importFailure, ?string $machineProfileId, string $name, array $options, ?float $optionsConfirmedAt, bool $partnerLocked, string $photoSource, array $photosVaryBy, array $placements, ?array $referenceRow, Pixonaut\Sdk\Generated\Model\BlanksGetResponseResolved $resolved, string $status, ?string $stockItemKey, float $updatedAt, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct $boundProduct = null, ?int $orderCount = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePhotoCoverage $photoCoverage = null, ?array $placementsAtOtherSize = null, ?array $scenes = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseSharedViewPhoto $sharedViewPhoto = null, ?string $thumbnailUrl = null, ?int $variantCount = null, ?array $variants = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponse::__construct(array $areasVaryBy, array $axes, ?string $categoryId, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseCopiedFrom $copiedFrom, float $createdAt, string $defaultPrintshopId, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseDeleted $deleted, string $id, ?string $importFailure, ?string $machineProfileId, string $name, array $options, ?float $optionsConfirmedAt, ?string $paintBy, bool $partnerLocked, array $photosVaryBy, array $placements, ?array $referenceRow, Pixonaut\Sdk\Generated\Model\BlanksGetResponseResolved $resolved, string $status, ?string $stockItemKey, float $updatedAt, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct $boundProduct = null, ?array $order = null, ?int $orderCount = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePhotoCoverage $photoCoverage = null, ?array $placementsAtOtherSize = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseSharedViewPhoto $sharedViewPhoto = null, ?string $thumbnailUrl = null, ?int $variantCount = null, ?array $variants = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponse static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::toArray(): array
@@ -8430,6 +8712,23 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItemLocalizedValuesValue::_
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItemLocalizedValuesValue::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItemLocalizedValuesValue static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItemLocalizedValuesValue::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItemLocalizedValuesValue::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItem
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItem::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption1|Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2 static
+final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption1 implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption1::$source readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption1::$viewId readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption1::__construct(string $source, string $viewId)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption1::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption1 static
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption1::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption1::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2 implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$row readonly ?array
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$sceneId readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$source readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::__construct(string $sceneId, string $source, ?array $row = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2 static
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponsePhotoCoverage implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePhotoCoverage::$cells readonly int
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePhotoCoverage::$filled readonly int
@@ -8460,7 +8759,8 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$defaultHeightMm r
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$defaultWidthMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$dpi readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$fillColour readonly ?string
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$garment readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarment
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$foldMm readonly ?float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$garments readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$linkWith readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemLinkWith
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$maxHeightMm readonly float
@@ -8472,32 +8772,34 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$safeAreaMm readon
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$shape readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemShape
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$shopName readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::$views readonly array
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::__construct(float $defaultHeightMm, float $defaultWidthMm, string $id, float $maxHeightMm, float $maxWidthMm, string $name, array $views, ?array $areas = null, ?float $bleedMm = null, ?string $coverage = null, ?int $dpi = null, ?string $fillColour = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarment $garment = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemLinkWith $linkWith = null, ?string $printMethod = null, ?bool $required = null, ?float $safeAreaMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemShape $shape = null, ?string $shopName = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::__construct(float $defaultHeightMm, float $defaultWidthMm, string $id, float $maxHeightMm, float $maxWidthMm, string $name, array $views, ?array $areas = null, ?float $bleedMm = null, ?string $coverage = null, ?int $dpi = null, ?string $fillColour = null, ?float $foldMm = null, ?array $garments = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemLinkWith $linkWith = null, ?string $printMethod = null, ?bool $required = null, ?float $safeAreaMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemShape $shape = null, ?string $shopName = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$bleedMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$dpi readonly ?int
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$foldMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$row readonly array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$safeAreaMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$usualHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$usualWidthMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$widthMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $bleedMm = null, ?int $dpi = null, ?float $safeAreaMm = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $bleedMm = null, ?int $dpi = null, ?float $foldMm = null, ?float $safeAreaMm = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::toArray(): array
-final class Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarment implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarment::$area readonly string
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarment::$widthMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarment::$xMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarment::$yMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarment::__construct(string $area, float $widthMm, float $xMm, float $yMm)
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarment::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarment static
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarment::raw(): array
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarment::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarmentsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarmentsItem::$area readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarmentsItem::$stockItem readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarmentsItem::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarmentsItem::$xMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarmentsItem::$yMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarmentsItem::__construct(string $area, string $stockItem, float $widthMm, float $xMm, float $yMm)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarmentsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarmentsItem static
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarmentsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemGarmentsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemLinkWith implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemLinkWith::$mirror readonly bool
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemLinkWith::$placementId readonly string
@@ -8524,15 +8826,17 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$photoSiz
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$photos readonly array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$piece readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$placementRectPx readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemPlacementRectPx
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$position readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$printWindowMm readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemPrintWindowMm
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$sceneId readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$scenePosition readonly ?int
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$source readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$sourceWindowMm readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemSourceWindowMm
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$takesDye readonly ?bool
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$uvPasses readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$webPhotoAssetId readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::$zoomTier readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemZoomTier
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::__construct(string $id, string $label, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemPhotoSizePx $photoSizePx, array $photos, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemPlacementRectPx $placementRectPx, ?bool $fromPrintshop = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemLocalizedLabels $localizedLabels = null, ?string $maskAssetId = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemMesh $mesh = null, ?string $partnerStyleKey = null, ?int $piece = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemPrintWindowMm $printWindowMm = null, ?string $sceneId = null, ?int $scenePosition = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemSourceWindowMm $sourceWindowMm = null, ?bool $takesDye = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses $uvPasses = null, ?string $webPhotoAssetId = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemZoomTier $zoomTier = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::__construct(string $id, string $label, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemPhotoSizePx $photoSizePx, array $photos, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemPlacementRectPx $placementRectPx, ?bool $fromPrintshop = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemLocalizedLabels $localizedLabels = null, ?string $maskAssetId = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemMesh $mesh = null, ?string $partnerStyleKey = null, ?int $piece = null, ?int $position = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemPrintWindowMm $printWindowMm = null, ?string $sceneId = null, ?int $scenePosition = null, ?string $source = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemSourceWindowMm $sourceWindowMm = null, ?bool $takesDye = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses $uvPasses = null, ?string $webPhotoAssetId = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemZoomTier $zoomTier = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItem::toArray(): array
@@ -8759,14 +9063,6 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponseResolvedPlacementsItemSafeAreaMm::
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseResolvedPlacementsItemSafeAreaMm::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseResolvedPlacementsItemSafeAreaMm static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseResolvedPlacementsItemSafeAreaMm::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseResolvedPlacementsItemSafeAreaMm::toArray(): array
-final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseScenesItem implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseScenesItem::$colour readonly ?string
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseScenesItem::$id readonly string
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseScenesItem::$rowOptions readonly array
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseScenesItem::__construct(?string $colour, string $id, array $rowOptions)
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseScenesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseScenesItem static
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseScenesItem::raw(): array
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseScenesItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseSharedViewPhoto implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseSharedViewPhoto::$assetId readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseSharedViewPhoto::$mockupId readonly string
@@ -8827,16 +9123,16 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$machineProfileId rea
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$name readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$options readonly array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$optionsConfirmedAt readonly ?float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$order readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$orderCount readonly ?int
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$paintBy readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$partnerLocked readonly bool
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$photoCoverage readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPhotoCoverage
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$photoSource readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$photosVaryBy readonly array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$placements readonly array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$placementsAtOtherSize readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$referenceRow readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$resolved readonly Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemResolved
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$scenes readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$sharedViewPhoto readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSharedViewPhoto
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$status readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$stockItemKey readonly ?string
@@ -8844,7 +9140,7 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$thumbnailUrl readonl
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$variantCount readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$variants readonly ?array
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::__construct(array $areasVaryBy, array $axes, ?string $categoryId, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemCopiedFrom $copiedFrom, float $createdAt, string $defaultPrintshopId, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemDeleted $deleted, string $id, ?string $importFailure, ?string $machineProfileId, string $name, array $options, ?float $optionsConfirmedAt, bool $partnerLocked, string $photoSource, array $photosVaryBy, array $placements, ?array $referenceRow, Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemResolved $resolved, string $status, ?string $stockItemKey, float $updatedAt, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct $boundProduct = null, ?int $orderCount = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPhotoCoverage $photoCoverage = null, ?array $placementsAtOtherSize = null, ?array $scenes = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSharedViewPhoto $sharedViewPhoto = null, ?string $thumbnailUrl = null, ?int $variantCount = null, ?array $variants = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::__construct(array $areasVaryBy, array $axes, ?string $categoryId, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemCopiedFrom $copiedFrom, float $createdAt, string $defaultPrintshopId, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemDeleted $deleted, string $id, ?string $importFailure, ?string $machineProfileId, string $name, array $options, ?float $optionsConfirmedAt, ?string $paintBy, bool $partnerLocked, array $photosVaryBy, array $placements, ?array $referenceRow, Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemResolved $resolved, string $status, ?string $stockItemKey, float $updatedAt, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct $boundProduct = null, ?array $order = null, ?int $orderCount = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPhotoCoverage $photoCoverage = null, ?array $placementsAtOtherSize = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSharedViewPhoto $sharedViewPhoto = null, ?string $thumbnailUrl = null, ?int $variantCount = null, ?array $variants = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::toArray(): array
@@ -8933,6 +9229,23 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItemLocalizedVal
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItemLocalizedValuesValue::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItemLocalizedValuesValue static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItemLocalizedValuesValue::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItemLocalizedValuesValue::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItem
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItem::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption1|Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2 static
+final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption1 implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption1::$source readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption1::$viewId readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption1::__construct(string $source, string $viewId)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption1::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption1 static
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption1::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption1::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2 implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$row readonly ?array
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$sceneId readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$source readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::__construct(string $sceneId, string $source, ?array $row = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2 static
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPhotoCoverage implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPhotoCoverage::$cells readonly int
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPhotoCoverage::$filled readonly int
@@ -8963,7 +9276,8 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$defaul
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$defaultWidthMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$dpi readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$fillColour readonly ?string
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$garment readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarment
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$foldMm readonly ?float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$garments readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$linkWith readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemLinkWith
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$maxHeightMm readonly float
@@ -8975,32 +9289,34 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$safeAr
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$shape readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemShape
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$shopName readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::$views readonly array
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::__construct(float $defaultHeightMm, float $defaultWidthMm, string $id, float $maxHeightMm, float $maxWidthMm, string $name, array $views, ?array $areas = null, ?float $bleedMm = null, ?string $coverage = null, ?int $dpi = null, ?string $fillColour = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarment $garment = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemLinkWith $linkWith = null, ?string $printMethod = null, ?bool $required = null, ?float $safeAreaMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemShape $shape = null, ?string $shopName = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::__construct(float $defaultHeightMm, float $defaultWidthMm, string $id, float $maxHeightMm, float $maxWidthMm, string $name, array $views, ?array $areas = null, ?float $bleedMm = null, ?string $coverage = null, ?int $dpi = null, ?string $fillColour = null, ?float $foldMm = null, ?array $garments = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemLinkWith $linkWith = null, ?string $printMethod = null, ?bool $required = null, ?float $safeAreaMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemShape $shape = null, ?string $shopName = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$bleedMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$dpi readonly ?int
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$foldMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$row readonly array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$safeAreaMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$usualHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$usualWidthMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$widthMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $bleedMm = null, ?int $dpi = null, ?float $safeAreaMm = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $bleedMm = null, ?int $dpi = null, ?float $foldMm = null, ?float $safeAreaMm = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::toArray(): array
-final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarment implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarment::$area readonly string
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarment::$widthMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarment::$xMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarment::$yMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarment::__construct(string $area, float $widthMm, float $xMm, float $yMm)
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarment::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarment static
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarment::raw(): array
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarment::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarmentsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarmentsItem::$area readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarmentsItem::$stockItem readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarmentsItem::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarmentsItem::$xMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarmentsItem::$yMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarmentsItem::__construct(string $area, string $stockItem, float $widthMm, float $xMm, float $yMm)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarmentsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarmentsItem static
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarmentsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemGarmentsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemLinkWith implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemLinkWith::$mirror readonly bool
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemLinkWith::$placementId readonly string
@@ -9027,15 +9343,17 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$photos readonly array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$piece readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$placementRectPx readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemPlacementRectPx
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$position readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$printWindowMm readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemPrintWindowMm
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$sceneId readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$scenePosition readonly ?int
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$source readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$sourceWindowMm readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemSourceWindowMm
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$takesDye readonly ?bool
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$uvPasses readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$webPhotoAssetId readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::$zoomTier readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemZoomTier
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::__construct(string $id, string $label, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemPhotoSizePx $photoSizePx, array $photos, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemPlacementRectPx $placementRectPx, ?bool $fromPrintshop = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemLocalizedLabels $localizedLabels = null, ?string $maskAssetId = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemMesh $mesh = null, ?string $partnerStyleKey = null, ?int $piece = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemPrintWindowMm $printWindowMm = null, ?string $sceneId = null, ?int $scenePosition = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemSourceWindowMm $sourceWindowMm = null, ?bool $takesDye = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses $uvPasses = null, ?string $webPhotoAssetId = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemZoomTier $zoomTier = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::__construct(string $id, string $label, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemPhotoSizePx $photoSizePx, array $photos, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemPlacementRectPx $placementRectPx, ?bool $fromPrintshop = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemLocalizedLabels $localizedLabels = null, ?string $maskAssetId = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemMesh $mesh = null, ?string $partnerStyleKey = null, ?int $piece = null, ?int $position = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemPrintWindowMm $printWindowMm = null, ?string $sceneId = null, ?int $scenePosition = null, ?string $source = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemSourceWindowMm $sourceWindowMm = null, ?bool $takesDye = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses $uvPasses = null, ?string $webPhotoAssetId = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemZoomTier $zoomTier = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem::toArray(): array
@@ -9262,14 +9580,6 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemResolvedPlacementsItemS
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemResolvedPlacementsItemSafeAreaMm::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemResolvedPlacementsItemSafeAreaMm static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemResolvedPlacementsItemSafeAreaMm::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemResolvedPlacementsItemSafeAreaMm::toArray(): array
-final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemScenesItem implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemScenesItem::$colour readonly ?string
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemScenesItem::$id readonly string
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemScenesItem::$rowOptions readonly array
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemScenesItem::__construct(?string $colour, string $id, array $rowOptions)
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemScenesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemScenesItem static
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemScenesItem::raw(): array
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemScenesItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSharedViewPhoto implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSharedViewPhoto::$assetId readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSharedViewPhoto::$mockupId readonly string
@@ -9366,14 +9676,16 @@ Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$piece readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$pieceSizeMm readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPieceSizeMm
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$placementRectPx readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPlacementRectPx
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$position readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$printWindowMm readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPrintWindowMm
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$sceneId readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$scenePosition readonly ?int
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$source readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$sourceWindowMm readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemSourceWindowMm
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$takesDye readonly ?bool
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$uvPassUrls readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemUvPassUrls
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$zoomTier readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemZoomTier
-Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::__construct(string $id, string $label, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPhotoSizePx $photoSizePx, array $photos, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPlacementRectPx $placementRectPx, ?string $maskUrl = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemMesh $mesh = null, ?int $piece = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPieceSizeMm $pieceSizeMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPrintWindowMm $printWindowMm = null, ?string $sceneId = null, ?int $scenePosition = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemSourceWindowMm $sourceWindowMm = null, ?bool $takesDye = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemUvPassUrls $uvPassUrls = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemZoomTier $zoomTier = null)
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::__construct(string $id, string $label, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPhotoSizePx $photoSizePx, array $photos, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPlacementRectPx $placementRectPx, ?string $maskUrl = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemMesh $mesh = null, ?int $piece = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPieceSizeMm $pieceSizeMm = null, ?int $position = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPrintWindowMm $printWindowMm = null, ?string $sceneId = null, ?int $scenePosition = null, ?string $source = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemSourceWindowMm $sourceWindowMm = null, ?bool $takesDye = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemUvPassUrls $uvPassUrls = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemZoomTier $zoomTier = null)
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem static
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::toArray(): array
@@ -9511,13 +9823,15 @@ Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$id readonly st
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$label readonly string
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$photoSizePx readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemPhotoSizePx
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$photos readonly array
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$position readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$regions readonly array
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$sceneId readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$scenePosition readonly ?int
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$source readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$takesDye readonly ?bool
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$uvPassUrls readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemUvPassUrls
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$zoomTier readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemZoomTier
-Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::__construct(string $id, string $label, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemPhotoSizePx $photoSizePx, array $photos, array $regions, ?string $sceneId = null, ?int $scenePosition = null, ?bool $takesDye = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemUvPassUrls $uvPassUrls = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemZoomTier $zoomTier = null)
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::__construct(string $id, string $label, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemPhotoSizePx $photoSizePx, array $photos, array $regions, ?int $position = null, ?string $sceneId = null, ?int $scenePosition = null, ?string $source = null, ?bool $takesDye = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemUvPassUrls $uvPassUrls = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemZoomTier $zoomTier = null)
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem static
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::toArray(): array
@@ -9727,8 +10041,9 @@ final class Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse implements P
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::$areasVaryBy readonly array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::$axes readonly array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::$options readonly array
+Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::$paintBy readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::$variants readonly array
-Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::__construct(array $areasVaryBy, array $axes, array $options, array $variants)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::__construct(array $areasVaryBy, array $axes, array $options, ?string $paintBy, array $variants)
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse static
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::toArray(): array
@@ -12727,6 +13042,7 @@ Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponseVariantFieldsItem::r
 Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponseVariantFieldsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersGetResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$approvalHold readonly ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseApprovalHold
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$blank readonly ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseBlank
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$blankId readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$canErase readonly bool
@@ -12735,6 +13051,7 @@ Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$delivery readonly ?Pixonaut\Sdk
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$deliveryChangeRefusal readonly Pixonaut\Sdk\Generated\Model\OrdersGetResponseDeliveryChangeRefusalAddressChangeNotAccepted|Pixonaut\Sdk\Generated\Model\OrdersGetResponseDeliveryChangeRefusalOrderPastAddressChange|null
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$deliveryChanges readonly array
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$designId readonly string
+Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$embroideryFee readonly ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseEmbroideryFee
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$erasable readonly bool
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$externalRef readonly ?string
@@ -12771,10 +13088,17 @@ Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$variant readonly ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseVariant
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$variantRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::$varnishLeftOut readonly bool
-Pixonaut\Sdk\Generated\Model\OrdersGetResponse::__construct(string $adapter, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseBlank $blank, ?string $blankId, bool $canErase, bool $canRetry, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseDelivery $delivery, Pixonaut\Sdk\Generated\Model\OrdersGetResponseDeliveryChangeRefusalAddressChangeNotAccepted|Pixonaut\Sdk\Generated\Model\OrdersGetResponseDeliveryChangeRefusalOrderPastAddressChange|null $deliveryChangeRefusal, array $deliveryChanges, string $designId, bool $erasable, ?string $externalOrderRef, ?string $externalRef, ?string $failureKind, array $fallbackSpots, array $history, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseHold $hold, string $id, ?float $lastCheckedAt, ?string $lastError, ?float $personalDataErasedAt, string $printId, array $printIds, array $prints, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopAsPlaced $printshopAsPlaced, ?string $printshopConnectionId, ?string $printshopName, int $quantity, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseRecipient $recipient, bool $recipientEmailBounced, ?string $replacedByOrderId, ?string $replacesOrderId, array $reroutes, bool $retryable, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseShipTo $shipTo, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseShippingAddress $shippingAddress, ?string $spotOutput, string $status, array $statusMoves, float $submittedAt, string $tenantId, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseTracking $tracking, float $updatedAt, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseVariant $variant, ?string $variantRef, bool $varnishLeftOut)
+Pixonaut\Sdk\Generated\Model\OrdersGetResponse::__construct(string $adapter, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseApprovalHold $approvalHold, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseBlank $blank, ?string $blankId, bool $canErase, bool $canRetry, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseDelivery $delivery, Pixonaut\Sdk\Generated\Model\OrdersGetResponseDeliveryChangeRefusalAddressChangeNotAccepted|Pixonaut\Sdk\Generated\Model\OrdersGetResponseDeliveryChangeRefusalOrderPastAddressChange|null $deliveryChangeRefusal, array $deliveryChanges, string $designId, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseEmbroideryFee $embroideryFee, bool $erasable, ?string $externalOrderRef, ?string $externalRef, ?string $failureKind, array $fallbackSpots, array $history, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseHold $hold, string $id, ?float $lastCheckedAt, ?string $lastError, ?float $personalDataErasedAt, string $printId, array $printIds, array $prints, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopAsPlaced $printshopAsPlaced, ?string $printshopConnectionId, ?string $printshopName, int $quantity, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseRecipient $recipient, bool $recipientEmailBounced, ?string $replacedByOrderId, ?string $replacesOrderId, array $reroutes, bool $retryable, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseShipTo $shipTo, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseShippingAddress $shippingAddress, ?string $spotOutput, string $status, array $statusMoves, float $submittedAt, string $tenantId, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseTracking $tracking, float $updatedAt, ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseVariant $variant, ?string $variantRef, bool $varnishLeftOut)
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersGetResponse static
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersGetResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\OrdersGetResponseApprovalHold implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\OrdersGetResponseApprovalHold::$dueAt readonly int
+Pixonaut\Sdk\Generated\Model\OrdersGetResponseApprovalHold::$url readonly string
+Pixonaut\Sdk\Generated\Model\OrdersGetResponseApprovalHold::__construct(int $dueAt, string $url)
+Pixonaut\Sdk\Generated\Model\OrdersGetResponseApprovalHold::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersGetResponseApprovalHold static
+Pixonaut\Sdk\Generated\Model\OrdersGetResponseApprovalHold::raw(): array
+Pixonaut\Sdk\Generated\Model\OrdersGetResponseApprovalHold::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersGetResponseBlank implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersGetResponseBlank::$name readonly string
 Pixonaut\Sdk\Generated\Model\OrdersGetResponseBlank::$optionAxes readonly array
@@ -12817,6 +13141,13 @@ Pixonaut\Sdk\Generated\Model\OrdersGetResponseDeliveryChangesItem::__construct(b
 Pixonaut\Sdk\Generated\Model\OrdersGetResponseDeliveryChangesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersGetResponseDeliveryChangesItem static
 Pixonaut\Sdk\Generated\Model\OrdersGetResponseDeliveryChangesItem::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersGetResponseDeliveryChangesItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\OrdersGetResponseEmbroideryFee implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\OrdersGetResponseEmbroideryFee::$amountMinor readonly int
+Pixonaut\Sdk\Generated\Model\OrdersGetResponseEmbroideryFee::$currency readonly string
+Pixonaut\Sdk\Generated\Model\OrdersGetResponseEmbroideryFee::__construct(int $amountMinor, string $currency)
+Pixonaut\Sdk\Generated\Model\OrdersGetResponseEmbroideryFee::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersGetResponseEmbroideryFee static
+Pixonaut\Sdk\Generated\Model\OrdersGetResponseEmbroideryFee::raw(): array
+Pixonaut\Sdk\Generated\Model\OrdersGetResponseEmbroideryFee::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersGetResponseHistoryItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersGetResponseHistoryItem::$at readonly float
 Pixonaut\Sdk\Generated\Model\OrdersGetResponseHistoryItem::$automation readonly ?Pixonaut\Sdk\Generated\Model\OrdersGetResponseHistoryItemAutomation
@@ -16805,11 +17136,12 @@ Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::$credentialGuide readonly ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItemCredentialGuide
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::$deliverySteps readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::$machineProfiles readonly bool
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::$orderUpdates readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::$partnerPhotos readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::$placeholders readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::$spotPlates readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::$takesContact readonly bool
-Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::__construct(string $adapter, bool $catalogue, bool $categories, ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItemConsent $consent, ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItemCredentialGuide $credentialGuide, bool $deliverySteps, bool $machineProfiles, bool $partnerPhotos, array $placeholders, bool $spotPlates, bool $takesContact)
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::__construct(string $adapter, bool $catalogue, bool $categories, ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItemConsent $consent, ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItemCredentialGuide $credentialGuide, bool $deliverySteps, bool $machineProfiles, bool $orderUpdates, bool $partnerPhotos, array $placeholders, bool $spotPlates, bool $takesContact)
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem static
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1AdaptersItem::toArray(): array
@@ -16833,6 +17165,7 @@ Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsI
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$address readonly ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAddress
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$addressChanges readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$asksOfDesigns readonly Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAsksOfDesigns
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$callbackUrl readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$config readonly mixed
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$contactEmail readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$contactEmailBounced readonly bool
@@ -16850,7 +17183,7 @@ Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsI
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$printMethodsFixed readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$secretNames readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$updatedAt readonly float
-Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::__construct(bool $acceptsAddressUpdates, bool $active, string $adapter, ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAddress $address, ?string $addressChanges, Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAsksOfDesigns $asksOfDesigns, ?string $contactEmail, bool $contactEmailBounced, ?string $contactName, ?string $contactPhone, Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemCounts $counts, float $createdAt, bool $credentialsLapsed, string $id, bool $isDefault, string $name, bool $needsPositions, bool $paused, array $printMethods, bool $printMethodsFixed, ?array $secretNames, float $updatedAt, mixed $config = null)
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::__construct(bool $acceptsAddressUpdates, bool $active, string $adapter, ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAddress $address, ?string $addressChanges, Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAsksOfDesigns $asksOfDesigns, ?string $callbackUrl, ?string $contactEmail, bool $contactEmailBounced, ?string $contactName, ?string $contactPhone, Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemCounts $counts, float $createdAt, bool $credentialsLapsed, string $id, bool $isDefault, string $name, bool $needsPositions, bool $paused, array $printMethods, bool $printMethodsFixed, ?array $secretNames, float $updatedAt, mixed $config = null)
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::toArray(): array
@@ -24002,19 +24335,38 @@ Pixonaut\Sdk\Generated\Model\ScenesListResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponse::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$areas readonly array
-Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$colour readonly ?string
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$hasPerson readonly bool
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$label readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$layerUrls readonly ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$person readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$pictureSizePx readonly ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$pictureUrl readonly ?string
-Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$printCoverage readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$pose readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$setting readonly string
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$stockItem readonly string
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$studio readonly bool
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$takesDye readonly bool
-Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::__construct(array $areas, ?string $colour, bool $hasPerson, string $id, string $label, ?string $pictureUrl, string $printCoverage, string $stockItem, bool $studio, bool $takesDye)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::__construct(array $areas, bool $hasPerson, string $id, string $label, ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls $layerUrls, string $person, ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx $pictureSizePx, ?string $pictureUrl, string $pose, string $setting, string $stockItem, bool $studio, bool $takesDye)
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem static
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls::$mask readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls::$multiply readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls::$screen readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls::$uv readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls::__construct(string $mask, string $multiply, string $screen, string $uv)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls static
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls::raw(): array
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx::$heightPx readonly int
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx::$widthPx readonly int
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx::__construct(int $heightPx, int $widthPx)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx static
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx::raw(): array
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::$areas readonly array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::$family readonly string
@@ -32850,6 +33202,7 @@ Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$cmykPrev
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$coverage readonly string
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$defaultHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$defaultWidthMm readonly float
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$foldMm readonly ?float
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$maxHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$maxWidthMm readonly float
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$placementId readonly string
@@ -32858,7 +33211,8 @@ Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$printWid
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$safeAreaMm readonly float
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$shape readonly ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementShape
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$sizes readonly Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementSizes
-Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::__construct(string $blankId, float $bleedMm, string $cmykPreviewProfile, string $coverage, float $defaultHeightMm, float $defaultWidthMm, float $maxHeightMm, float $maxWidthMm, string $placementId, float $printHeightMm, float $printWidthMm, float $safeAreaMm, Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementSizes $sizes, ?string $cmykPreviewTables = null, ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementShape $shape = null)
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$stitch readonly ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::__construct(string $blankId, float $bleedMm, string $cmykPreviewProfile, string $coverage, float $defaultHeightMm, float $defaultWidthMm, float $maxHeightMm, float $maxWidthMm, string $placementId, float $printHeightMm, float $printWidthMm, float $safeAreaMm, Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementSizes $sizes, ?string $cmykPreviewTables = null, ?float $foldMm = null, ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementShape $shape = null, ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch $stitch = null)
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement static
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::raw(): array
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::toArray(): array
@@ -32876,6 +33230,24 @@ Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementSizes::__co
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementSizes::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementSizes static
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementSizes::raw(): array
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementSizes::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch::$maxThreads readonly int
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch::$minLineMm readonly float
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch::$minTextHeightMm readonly float
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch::$threads readonly array
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch::__construct(int $maxThreads, float $minLineMm, float $minTextHeightMm, array $threads)
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch static
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch::raw(): array
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitchThreadsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitchThreadsItem::$cmyk readonly array
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitchThreadsItem::$hex readonly string
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitchThreadsItem::$id readonly string
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitchThreadsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitchThreadsItem::__construct(array $cmyk, string $hex, string $id, string $name)
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitchThreadsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitchThreadsItem static
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitchThreadsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitchThreadsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponseRatio implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponseRatio::$h readonly float
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponseRatio::$w readonly float
@@ -33794,6 +34166,7 @@ Pixonaut\Sdk\Generated\Resource\Assets::list(?string $kind = null, ?string $role
 Pixonaut\Sdk\Generated\Resource\Assets::listAssetCategories(?int $page = null, ?int $pageSize = null, ?string $q = null): Pixonaut\Sdk\Generated\Model\AssetCategoriesListResponseOption1|array
 Pixonaut\Sdk\Generated\Resource\Assets::listAssetFilters(): Pixonaut\Sdk\Generated\Model\AssetFiltersListResponse
 Pixonaut\Sdk\Generated\Resource\Assets::listAssetTags(?int $page = null, ?int $pageSize = null, ?string $q = null): Pixonaut\Sdk\Generated\Model\AssetTagsListResponseOption1|array
+Pixonaut\Sdk\Generated\Resource\Assets::threadCopy(string $id, Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest $body, ?string $session = null): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200|Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201
 Pixonaut\Sdk\Generated\Resource\Assets::update(string $id, Pixonaut\Sdk\Generated\Model\AssetsUpdateRequest $body): Pixonaut\Sdk\Generated\Model\AssetsUpdateResponse
 Pixonaut\Sdk\Generated\Resource\Assets::updateAssetCategory(string $id, Pixonaut\Sdk\Generated\Model\AssetCategoriesUpdateRequest $body): Pixonaut\Sdk\Generated\Model\AssetCategoriesUpdateResponse
 final class Pixonaut\Sdk\Generated\Resource\Automations

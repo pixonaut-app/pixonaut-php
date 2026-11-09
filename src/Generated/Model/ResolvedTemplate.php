@@ -29,7 +29,7 @@ final class ResolvedTemplate implements Model
      * @param ResolvedTemplateRatio $ratio The artwork's aspect ratio as two positive numbers ({ w: 3, h: 2 } is landscape): the shape of the plate every fraction is of.
      * @param float $ratioTolerance How far, as a fraction of the ratio, a print size may differ from it: 0.02 is 2 %. 0 or more.
      * @param ResolvedTemplateBackgroundColor|ResolvedTemplateBackgroundImage|null $background What is painted behind every layer, across the bleed. Absent is none.
-     * @param string|null $coverAlign Which of nine points, top-left to bottom-right, a cover crop keeps; read only when fit is cover. Absent is center.
+     * @param string|null $coverAlign Which of nine points, top-left to bottom-right, the artwork is held at in a print box of another shape: what a cover crop keeps, or where a contained artwork sits with the spare space opposite it. Not read under fill. Absent is center.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ResolvedTemplateCoverAlign}.
      * @param ResolvedTemplateCustomerLayers|null $customerLayers The layers a customer may add of their own, per kind: how many, the preset each starts as, and where in the form they show. Added layers paint above the template's layers.
      * @param bool|null $drawAtTemplateRatio true: the customer's canvas keeps the ratio at every print size, and the print is cropped or banded by fit. Absent is false.

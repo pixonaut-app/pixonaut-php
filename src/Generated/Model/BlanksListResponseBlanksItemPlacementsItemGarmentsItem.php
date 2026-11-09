@@ -11,11 +11,9 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Where the placement sits on the product, once for every scene: a garment area of the blank's stock item, and the print's top left and width on it in millimetres. Omitted on a placement with no scenes to draw on. Refused with `placement_garment_area_unknown` when the stock item lacks the area, and `placement_garment_outside_area` when it reaches past it.
- *
- * Schema: `GET /v1/blanks answer 200: $.blanks[].placements[].garment`.
+ * Schema: `GET /v1/blanks answer 200: $.blanks[].placements[].garments[]`.
  */
-final class BlanksListResponseBlanksItemPlacementsItemGarment implements Model
+final class BlanksListResponseBlanksItemPlacementsItemGarmentsItem implements Model
 {
     /**
      * @var array<string, mixed>|null The object as decoded, unknown fields included.
@@ -23,13 +21,15 @@ final class BlanksListResponseBlanksItemPlacementsItemGarment implements Model
     private ?array $decoded = null;
 
     /**
-     * @param string $area The key of a garment area of the blank's stock item.
+     * @param string $area The key of a garment area of the record's stock item.
+     * @param string $stockItem The stock item the record is on, by its key.
      * @param float $widthMm The print's width on the product, in mm. Its height follows from the placement's print area ratio.
      * @param float $xMm The print's left edge, in mm from the area's left.
      * @param float $yMm The print's top edge, in mm from the area's top.
      */
     public function __construct(
         public readonly string $area,
+        public readonly string $stockItem,
         public readonly float $widthMm,
         public readonly float $xMm,
         public readonly float $yMm,
@@ -47,6 +47,7 @@ final class BlanksListResponseBlanksItemPlacementsItemGarment implements Model
     {
         $model = new self(
             area: Decode::string(Decode::required($data, 'area', $path), $path . '.area'),
+            stockItem: Decode::string(Decode::required($data, 'stockItem', $path), $path . '.stockItem'),
             widthMm: Decode::float(Decode::required($data, 'widthMm', $path), $path . '.widthMm'),
             xMm: Decode::float(Decode::required($data, 'xMm', $path), $path . '.xMm'),
             yMm: Decode::float(Decode::required($data, 'yMm', $path), $path . '.yMm'),
@@ -70,6 +71,7 @@ final class BlanksListResponseBlanksItemPlacementsItemGarment implements Model
     {
         $data = [];
         $data['area'] = $this->area;
+        $data['stockItem'] = $this->stockItem;
         $data['widthMm'] = $this->widthMm;
         $data['xMm'] = $this->xMm;
         $data['yMm'] = $this->yMm;

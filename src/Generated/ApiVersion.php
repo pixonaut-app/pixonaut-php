@@ -19,5 +19,5 @@ final class ApiVersion
     /**
      * The sha256 of that release's `openapi.json`.
      */
-    public const SPEC_SHA256 = '437f157e11bcd3b088037613218b44e3f1c2d7a4d0c05150b177439683658725';
+    public const SPEC_SHA256 = 'f583c41e39449564e63d2fd3f727609734f0ba2de4cb5e5e1d7fb090b17ad033';
 }

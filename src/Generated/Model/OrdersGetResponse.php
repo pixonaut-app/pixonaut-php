@@ -22,12 +22,14 @@ final class OrdersGetResponse implements Model
     private ?array $decoded = null;
 
     /**
+     * @param OrdersGetResponseApprovalHold|null $approvalHold The order's printshop holds it until its merchant approves a change to it, such as how its embroidery is stitched; `null` when it does not.
      * @param OrdersGetResponseBlank|null $blank The blank `blankId` names, as it reads now; `null` as `blankId` is.
      * @param string|null $blankId The blank the order's prints are on; `null` for prints on no blank, or an order placed before it was recorded.
      * @param OrdersGetResponseDelivery|null $delivery The order's latest address change, made with `PATCH /v1/orders/{id}/delivery` after the order was sent; `null` for an order whose address never changed.
      * @param OrdersGetResponseDeliveryChangeRefusalOrderPastAddressChange|OrdersGetResponseDeliveryChangeRefusalAddressChangeNotAccepted|null $deliveryChangeRefusal Why `PATCH /v1/orders/{id}/delivery` would refuse a change now, by its error code, or `null` when it would take one. A printshop that is already making the order may still refuse it as `order_past_address_change`: that is known only by asking it.
      * @param list<OrdersGetResponseDeliveryChangesItem> $deliveryChanges The order's address changes, oldest first, each as its `order.delivery_changed` event recorded it. Never the address.
      * @param string $designId The design the lead print was made from.
+     * @param OrdersGetResponseEmbroideryFee|null $embroideryFee What the order's printshop charged to set its embroidery up, as the printshop reported it; `null` when it reported none.
      * @param string|null $externalOrderRef
      * @param string|null $externalRef
      * @param string|null $failureKind Why Pixonaut failed the order rather than its printshop, as a refusal code: `print_failed` (a print of it could not be made; `lastError` names it), `prints_timed_out` (its prints were not finished within three hours of placing it), the refusal an order waiting for its prints met when it was handed on, such as `technique_not_offered`, or what a connected store's order lacked for its printshop: `blank_needed` (its design is on no blank, and the printshop needs one) or `missing_fulfilment_keys`. `null` for an order its printshop refused, or one not failed.
@@ -60,6 +62,7 @@ final class OrdersGetResponse implements Model
      */
     public function __construct(
         public readonly string $adapter,
+        public readonly ?OrdersGetResponseApprovalHold $approvalHold,
         public readonly ?OrdersGetResponseBlank $blank,
         public readonly ?string $blankId,
         public readonly bool $canErase,
@@ -68,6 +71,7 @@ final class OrdersGetResponse implements Model
         public readonly OrdersGetResponseDeliveryChangeRefusalOrderPastAddressChange|OrdersGetResponseDeliveryChangeRefusalAddressChangeNotAccepted|null $deliveryChangeRefusal,
         public readonly array $deliveryChanges,
         public readonly string $designId,
+        public readonly ?OrdersGetResponseEmbroideryFee $embroideryFee,
         public readonly bool $erasable,
         public readonly ?string $externalOrderRef,
         public readonly ?string $externalRef,
@@ -118,6 +122,11 @@ final class OrdersGetResponse implements Model
     {
         $model = new self(
             adapter: Decode::string(Decode::required($data, 'adapter', $path), $path . '.adapter'),
+            approvalHold: Decode::nullable(
+                Decode::required($data, 'approvalHold', $path),
+                $path . '.approvalHold',
+                static fn(mixed $v, string $p): OrdersGetResponseApprovalHold => OrdersGetResponseApprovalHold::fromArray(Decode::object($v, $p), $p),
+            ),
             blank: Decode::nullable(
                 Decode::required($data, 'blank', $path),
                 $path . '.blank',
@@ -146,6 +155,11 @@ final class OrdersGetResponse implements Model
                 static fn(mixed $v, string $p): OrdersGetResponseDeliveryChangesItem => OrdersGetResponseDeliveryChangesItem::fromArray(Decode::object($v, $p), $p),
             ),
             designId: Decode::string(Decode::required($data, 'designId', $path), $path . '.designId'),
+            embroideryFee: Decode::nullable(
+                Decode::required($data, 'embroideryFee', $path),
+                $path . '.embroideryFee',
+                static fn(mixed $v, string $p): OrdersGetResponseEmbroideryFee => OrdersGetResponseEmbroideryFee::fromArray(Decode::object($v, $p), $p),
+            ),
             erasable: Decode::bool(Decode::required($data, 'erasable', $path), $path . '.erasable'),
             externalOrderRef: Decode::nullable(
                 Decode::required($data, 'externalOrderRef', $path),
@@ -302,6 +316,7 @@ final class OrdersGetResponse implements Model
     {
         $data = [];
         $data['adapter'] = $this->adapter;
+        $data['approvalHold'] = $this->approvalHold === null ? null : Encode::model($this->approvalHold);
         $data['blank'] = $this->blank === null ? null : Encode::model($this->blank);
         $data['blankId'] = $this->blankId;
         $data['canErase'] = $this->canErase;
@@ -313,6 +328,7 @@ final class OrdersGetResponse implements Model
             $this->deliveryChanges,
         );
         $data['designId'] = $this->designId;
+        $data['embroideryFee'] = $this->embroideryFee === null ? null : Encode::model($this->embroideryFee);
         $data['erasable'] = $this->erasable;
         $data['externalOrderRef'] = $this->externalOrderRef;
         $data['externalRef'] = $this->externalRef;

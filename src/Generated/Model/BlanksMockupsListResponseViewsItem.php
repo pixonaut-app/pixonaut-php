@@ -28,8 +28,11 @@ final class BlanksMockupsListResponseViewsItem implements Model
      * @param BlanksMockupsListResponseViewsItemPhotoSizePx|null $photoSizePx The pixel size every photo of the view has; null while it has none.
      * @param list<BlanksMockupsListResponseViewsItemPhotosItem> $photos The view's photos whose upload has finished, in stored order.
      * @param list<BlanksMockupsListResponseViewsItemRegionsItem> $regions The view's print regions, in the order they are drawn.
+     * @param int|null $position The view's place in the blank's one list of views and scenes, from 0. The first with a photo is the blank's picture. Read only.
      * @param string|null $sceneId The scene this view shows. A scene's view is built from the blank's chosen scenes and is read only.
-     * @param int|null $scenePosition On a scene's view, its place among the blank's chosen scenes.
+     * @param int|null $scenePosition On a scene's view, its `position`, for a reader that orders scenes by it.
+     * @param string|null $source Where the view's photos come from: `stock` (a scene from the library), `catalogue` (the printshop's) or `own` (the merchant's). Read only.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponseViewsItemSource}.
      * @param bool|null $takesDye On a scene's view, whether a variant's colour recolours it. One that takes none shows only the variants of its colour.
      * @param BlanksMockupsListResponseViewsItemUvPassUrls|null $uvPassUrls The maps the view was rendered with from a 3D model of the product, each the view's photo size, opened with no key: a region naming a `piece` is read through them. Absent on a view of photos. Valid as long as a photo's `url`.
      * @param BlanksMockupsListResponseViewsItemZoomTier|null $zoomTier On a scene's view, its files at the zoom tier: the same view with more pixels, for a preview zoomed past this one's. Each is as large as `photoSizePx`, and a region covers the whole of it.
@@ -40,8 +43,10 @@ final class BlanksMockupsListResponseViewsItem implements Model
         public readonly ?BlanksMockupsListResponseViewsItemPhotoSizePx $photoSizePx,
         public readonly array $photos,
         public readonly array $regions,
+        public readonly ?int $position = null,
         public readonly ?string $sceneId = null,
         public readonly ?int $scenePosition = null,
+        public readonly ?string $source = null,
         public readonly ?bool $takesDye = null,
         public readonly ?BlanksMockupsListResponseViewsItemUvPassUrls $uvPassUrls = null,
         public readonly ?BlanksMockupsListResponseViewsItemZoomTier $zoomTier = null,
@@ -75,8 +80,10 @@ final class BlanksMockupsListResponseViewsItem implements Model
                 $path . '.regions',
                 static fn(mixed $v, string $p): BlanksMockupsListResponseViewsItemRegionsItem => BlanksMockupsListResponseViewsItemRegionsItem::fromArray(Decode::object($v, $p), $p),
             ),
+            position: array_key_exists('position', $data) ? Decode::int($data['position'], $path . '.position') : null,
             sceneId: array_key_exists('sceneId', $data) ? Decode::string($data['sceneId'], $path . '.sceneId') : null,
             scenePosition: array_key_exists('scenePosition', $data) ? Decode::int($data['scenePosition'], $path . '.scenePosition') : null,
+            source: array_key_exists('source', $data) ? Decode::string($data['source'], $path . '.source') : null,
             takesDye: array_key_exists('takesDye', $data) ? Decode::bool($data['takesDye'], $path . '.takesDye') : null,
             uvPassUrls: array_key_exists('uvPassUrls', $data) ? BlanksMockupsListResponseViewsItemUvPassUrls::fromArray(Decode::object($data['uvPassUrls'], $path . '.uvPassUrls'), $path . '.uvPassUrls') : null,
             zoomTier: array_key_exists('zoomTier', $data) ? BlanksMockupsListResponseViewsItemZoomTier::fromArray(Decode::object($data['zoomTier'], $path . '.zoomTier'), $path . '.zoomTier') : null,
@@ -110,11 +117,17 @@ final class BlanksMockupsListResponseViewsItem implements Model
             static fn(BlanksMockupsListResponseViewsItemRegionsItem $v): mixed => Encode::model($v),
             $this->regions,
         );
+        if ($this->position !== null) {
+            $data['position'] = $this->position;
+        }
         if ($this->sceneId !== null) {
             $data['sceneId'] = $this->sceneId;
         }
         if ($this->scenePosition !== null) {
             $data['scenePosition'] = $this->scenePosition;
+        }
+        if ($this->source !== null) {
+            $data['source'] = $this->source;
         }
         if ($this->takesDye !== null) {
             $data['takesDye'] = $this->takesDye;

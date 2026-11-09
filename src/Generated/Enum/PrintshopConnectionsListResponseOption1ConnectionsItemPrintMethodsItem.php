@@ -37,6 +37,8 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsIt
 
     public const CUT_SEW = 'cut-sew';
 
+    public const DIRECT_TO_FABRIC = 'direct-to-fabric';
+
     /**
      * Every value this release knows.
      */
@@ -53,5 +55,6 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsIt
         self::EMBROIDERY,
         self::LASER,
         self::CUT_SEW,
+        self::DIRECT_TO_FABRIC,
     ];
 }

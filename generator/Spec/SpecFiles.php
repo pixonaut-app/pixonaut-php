@@ -88,7 +88,7 @@ final class SpecFiles
      * whole; an interrupted process at worst leaves a lock that no longer
      * matches, which `check` reports.
      */
-    public function write(Release $release): void
+    public function write(Release $release, bool $published = true): void
     {
         if (!is_dir($this->directory) && !@mkdir($this->directory, 0o777, true) && !is_dir($this->directory)) {
             throw new SpecException("Could not create {$this->directory}.");
@@ -97,7 +97,7 @@ final class SpecFiles
         $files = [
             Cdn::SPEC_FILE => $release->spec,
             Cdn::VECTORS_FILE => $release->vectors,
-            self::LOCK_FILE => SpecLock::forRelease($release)->toJson(),
+            self::LOCK_FILE => SpecLock::forRelease($release, $published)->toJson(),
         ];
         /** @var array<string, string> $staged partial file => target */
         $staged = [];

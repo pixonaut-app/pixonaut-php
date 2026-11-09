@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Enum;
 
 /**
- * Which of nine points, top-left to bottom-right, a cover crop keeps; read only when fit is cover. Absent is center.
+ * Which of nine points, top-left to bottom-right, the artwork is held at in a print box of another shape: what a cover crop keeps, or where a contained artwork sits with the spare space opposite it. Not read under fill. Absent is center.
  *
  * The values this release knows. The field is a string, and the API may answer a value added after this release.
  *

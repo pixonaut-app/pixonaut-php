@@ -47,6 +47,19 @@ If that comparison fails, the replaced spec is kept and `bin/spec diff`
 runs it again. Commit the new pin
 together with the regenerated SDK.
 
+When the API answers a reference no release has published yet, and the
+SDK must read it now, pin that reference from a directory in the checkout
+holding its `openapi.json` and `webhook-signature-vectors.json`:
+
+```sh
+bin/spec pin --from <directory>
+```
+
+It pins the version the reference declares and marks the lock
+`"published": false`. `bin/spec check` holds the files to that lock as
+usual; `bin/spec check --online` fails until the published release is
+pinned again with `bin/spec pin <version>`.
+
 A scheduled workflow runs `bin/spec check --online` weekly.
 
 ## Tests

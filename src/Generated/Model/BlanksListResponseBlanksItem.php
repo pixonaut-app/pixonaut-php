@@ -31,20 +31,19 @@ final class BlanksListResponseBlanksItem implements Model
      * @param string|null $machineProfileId
      * @param list<BlanksListResponseBlanksItemOptionsItem> $options The blank's options with their values, in the order the shopper sees them, a value no variant uses yet included. `axes` is their names.
      * @param float|null $optionsConfirmedAt When the blank's options were confirmed: the merchant said it has one version, or added its first option. Null until then. A blank imported from a printshop's catalogue arrives confirmed.
-     * @param string $photoSource Where the blank's photos come from: scenes it has chosen, its printshop's photos or its own. A new blank starts on `own`.
-     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPhotoSource}.
+     * @param string|null $paintBy The option the blank's dyed photos are painted in, such as Colour: a stock photo that takes a dye, or a view drawn from a 3D render, shows each variant in its value's colour. null: the merchant's own photos are not painted and show as photographed, while a stock photo that takes a dye is painted in the first option with colours.
      * @param list<string> $photosVaryBy The options the blank's photos change with, in option order: each photo belongs to one row, its values of these, and shows every variant with them. Empty is All: one photo per view shows every variant.
      * @param list<BlanksListResponseBlanksItemPlacementsItem> $placements The blank's placements: the areas a design is printed into. An update replaces the whole list, so send every placement to keep.
      * @param array<string, string>|null $referenceRow The row a design that names none is made at, such as {"Size": "M"}; null for none, when such a design reads each placement's own print area. Required when the print areas start to change with an option on a blank that has designs or designer links, which keep their size at it.
      * @param BlanksListResponseBlanksItemResolved $resolved Each inheritable field resolved, with where it comes from: the printshop and machine, and every placement's and photo's printing fields and preview looks, in the order of `placements`.
      * @param string $status `importing` while the blank's import, from a printshop's catalogue or a CSV file, runs in the background: it has its name and nothing else yet. `failed` when that import failed for good (`importFailure` says why); remove it and import again. `ready` otherwise.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemStatus}.
-     * @param string|null $stockItemKey The stock item the blank's scenes show, kept while another source is chosen; null for none.
+     * @param string|null $stockItemKey The stock item the blank's scenes photograph; null for none.
      * @param BlanksListResponseBlanksItemBoundProduct|null $boundProduct The partner's product a bound blank (`partnerLocked`) is bound to, or null for a blank bound to none. Answered for one blank, never in a list.
+     * @param list<BlanksListResponseBlanksItemOrderItemOption1|BlanksListResponseBlanksItemOrderItemOption2>|null $order The blank's stored views and the scenes it shows as one ordered list, each saying its source: `stock` (a scene), `catalogue` (the printshop's photos) or `own` (the merchant's). The first with a photo is the blank's picture. Answered for one blank, never in a list.
      * @param int|null $orderCount How many orders name the blank, past ones included. Answered in a list, never for one blank, and only to a caller with `orders:read`.
      * @param BlanksListResponseBlanksItemPhotoCoverage|null $photoCoverage How much of the blank is photographed. Answered in a list.
      * @param list<BlanksListResponseBlanksItemPlacementsAtOtherSizeItem>|null $placementsAtOtherSize The placements printed as a position that prints one size only at the blank's printshop whose default print size is another size: flagged, never refused, since an order of the position's size is still taken. Answered for one blank, never in a list.
-     * @param list<BlanksListResponseBlanksItemScenesItem>|null $scenes The scenes the blank has chosen, in order, kept while another source is chosen. Answered for one blank, never in a list.
      * @param BlanksListResponseBlanksItemSharedViewPhoto|null $sharedViewPhoto The first photo of the blank's first view of several placements that has one, in their order: the view, the photo (a mockup), its asset and the view's photo size. A blank whose views of one placement have no photo is pictured by it. Null for a blank with no such photo. Answered in a list.
      * @param string|null $thumbnailUrl A link to the blank's picture, opening with no key for an hour or two, so a list shows a picture of each blank: its first photo of a view of one placement, else `sharedViewPhoto`. Null for a blank with no photo. Answered in a list.
      * @param int|null $variantCount How many variants the blank has, deleted ones included. Answered in a list.
@@ -64,8 +63,8 @@ final class BlanksListResponseBlanksItem implements Model
         public readonly string $name,
         public readonly array $options,
         public readonly ?float $optionsConfirmedAt,
+        public readonly ?string $paintBy,
         public readonly bool $partnerLocked,
-        public readonly string $photoSource,
         public readonly array $photosVaryBy,
         public readonly array $placements,
         public readonly ?array $referenceRow,
@@ -74,10 +73,10 @@ final class BlanksListResponseBlanksItem implements Model
         public readonly ?string $stockItemKey,
         public readonly float $updatedAt,
         public readonly ?BlanksListResponseBlanksItemBoundProduct $boundProduct = null,
+        public readonly ?array $order = null,
         public readonly ?int $orderCount = null,
         public readonly ?BlanksListResponseBlanksItemPhotoCoverage $photoCoverage = null,
         public readonly ?array $placementsAtOtherSize = null,
-        public readonly ?array $scenes = null,
         public readonly ?BlanksListResponseBlanksItemSharedViewPhoto $sharedViewPhoto = null,
         public readonly ?string $thumbnailUrl = null,
         public readonly ?int $variantCount = null,
@@ -144,8 +143,12 @@ final class BlanksListResponseBlanksItem implements Model
                 $path . '.optionsConfirmedAt',
                 static fn(mixed $v, string $p): float => Decode::float($v, $p),
             ),
+            paintBy: Decode::nullable(
+                Decode::required($data, 'paintBy', $path),
+                $path . '.paintBy',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             partnerLocked: Decode::bool(Decode::required($data, 'partnerLocked', $path), $path . '.partnerLocked'),
-            photoSource: Decode::string(Decode::required($data, 'photoSource', $path), $path . '.photoSource'),
             photosVaryBy: Decode::list(
                 Decode::required($data, 'photosVaryBy', $path),
                 $path . '.photosVaryBy',
@@ -178,17 +181,17 @@ final class BlanksListResponseBlanksItem implements Model
                 $path . '.boundProduct',
                 static fn(mixed $v, string $p): BlanksListResponseBlanksItemBoundProduct => BlanksListResponseBlanksItemBoundProduct::fromArray(Decode::object($v, $p), $p),
             ) : null,
+            order: array_key_exists('order', $data) ? Decode::list(
+                $data['order'],
+                $path . '.order',
+                static fn(mixed $v, string $p): BlanksListResponseBlanksItemOrderItemOption1|BlanksListResponseBlanksItemOrderItemOption2 => BlanksListResponseBlanksItemOrderItem::decode($v, $p),
+            ) : null,
             orderCount: array_key_exists('orderCount', $data) ? Decode::int($data['orderCount'], $path . '.orderCount') : null,
             photoCoverage: array_key_exists('photoCoverage', $data) ? BlanksListResponseBlanksItemPhotoCoverage::fromArray(Decode::object($data['photoCoverage'], $path . '.photoCoverage'), $path . '.photoCoverage') : null,
             placementsAtOtherSize: array_key_exists('placementsAtOtherSize', $data) ? Decode::list(
                 $data['placementsAtOtherSize'],
                 $path . '.placementsAtOtherSize',
                 static fn(mixed $v, string $p): BlanksListResponseBlanksItemPlacementsAtOtherSizeItem => BlanksListResponseBlanksItemPlacementsAtOtherSizeItem::fromArray(Decode::object($v, $p), $p),
-            ) : null,
-            scenes: array_key_exists('scenes', $data) ? Decode::list(
-                $data['scenes'],
-                $path . '.scenes',
-                static fn(mixed $v, string $p): BlanksListResponseBlanksItemScenesItem => BlanksListResponseBlanksItemScenesItem::fromArray(Decode::object($v, $p), $p),
             ) : null,
             sharedViewPhoto: array_key_exists('sharedViewPhoto', $data) ? Decode::nullable(
                 $data['sharedViewPhoto'],
@@ -241,8 +244,8 @@ final class BlanksListResponseBlanksItem implements Model
             $this->options,
         );
         $data['optionsConfirmedAt'] = $this->optionsConfirmedAt;
+        $data['paintBy'] = $this->paintBy;
         $data['partnerLocked'] = $this->partnerLocked;
-        $data['photoSource'] = $this->photoSource;
         $data['photosVaryBy'] = $this->photosVaryBy;
         $data['placements'] = array_map(
             static fn(BlanksListResponseBlanksItemPlacementsItem $v): mixed => Encode::model($v),
@@ -256,6 +259,12 @@ final class BlanksListResponseBlanksItem implements Model
         if ($this->boundProduct !== null) {
             $data['boundProduct'] = Encode::model($this->boundProduct);
         }
+        if ($this->order !== null) {
+            $data['order'] = array_map(
+                static fn(BlanksListResponseBlanksItemOrderItemOption1|BlanksListResponseBlanksItemOrderItemOption2 $v): mixed => Encode::value($v),
+                $this->order,
+            );
+        }
         if ($this->orderCount !== null) {
             $data['orderCount'] = $this->orderCount;
         }
@@ -266,12 +275,6 @@ final class BlanksListResponseBlanksItem implements Model
             $data['placementsAtOtherSize'] = array_map(
                 static fn(BlanksListResponseBlanksItemPlacementsAtOtherSizeItem $v): mixed => Encode::model($v),
                 $this->placementsAtOtherSize,
-            );
-        }
-        if ($this->scenes !== null) {
-            $data['scenes'] = array_map(
-                static fn(BlanksListResponseBlanksItemScenesItem $v): mixed => Encode::model($v),
-                $this->scenes,
             );
         }
         if ($this->sharedViewPhoto !== null) {
