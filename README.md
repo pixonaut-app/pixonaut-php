@@ -10,7 +10,9 @@ notes and in `Pixonaut\Sdk\Generated\ApiVersion::TARGET`.
 
 ## Install
 
-PHP 8.1 or newer, and any PSR-18 client with PSR-17 factories:
+The package is on [Packagist](https://packagist.org/packages/pixonaut/pixonaut-php),
+so Composer needs no `repositories` entry. It takes PHP 8.1 or newer, and any
+PSR-18 client with PSR-17 factories:
 
 ```sh
 composer require pixonaut/pixonaut-php symfony/http-client nyholm/psr7

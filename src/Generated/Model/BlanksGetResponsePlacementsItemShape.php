@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Where on the product a print may go when that is not the whole rectangle: `dFrac`, SVG path data in fractions of the print area (curves, no arcs), its first subpath the outline and every further one a cut-out, filled even-odd, each subpath closed. Nothing is printed outside the outline or in a cut-out. `cutByPrintShop` true adds the outline and the cut-outs to the print file as its cut line; omitted, the product already has the shape. Null or omitted, the whole rectangle.
+ * Where on the product a print may go when that is not the whole rectangle: nothing is printed outside the outline or in a cut-out. Null or omitted, the whole rectangle.
  *
  * Schema: `GET /v1/blanks/{id} answer 200: $.placements[].shape`.
  */

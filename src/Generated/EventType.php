@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The event types the API 1.0.0 spec delivers to webhooks. The API may send a type
+ * The event types the API 2.0.0 spec delivers to webhooks. The API may send a type
  * added after this release: it decodes to `UnknownEvent`.
  */
 final class EventType
