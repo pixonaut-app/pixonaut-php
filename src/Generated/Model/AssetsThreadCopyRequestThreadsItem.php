@@ -8,13 +8,12 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
-use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `GET /v1/blanks/{id} answer 200: $.scenes[]`.
+ * Schema: `POST /v1/assets/{id}/threads request body: $.threads[]`.
  */
-final class BlanksGetResponseScenesItem implements Model
+final class AssetsThreadCopyRequestThreadsItem implements Model
 {
     /**
      * @var array<string, mixed>|null The object as decoded, unknown fields included.
@@ -22,14 +21,13 @@ final class BlanksGetResponseScenesItem implements Model
     private ?array $decoded = null;
 
     /**
-     * @param string|null $colour The colour a scene that takes no dye was photographed in; null when it takes dye.
-     * @param string $id The scene's id, as list_scenes returns it.
-     * @param array<string, string> $rowOptions For a scene that takes no dye, the option value it shows, by option name, since its base is one colour. Omitted or empty, it shows the blank's colour nearest its own by swatch, or no variant when no swatch is near. On a blank with no colour option it shows every variant.
+     * @param list<float> $cmyk The CMYK a design stores the thread as, converted once from its hex.
      */
     public function __construct(
-        public readonly ?string $colour,
+        public readonly array $cmyk,
+        public readonly string $hex,
         public readonly string $id,
-        public readonly array $rowOptions,
+        public readonly string $name,
     ) {}
 
     /**
@@ -43,17 +41,19 @@ final class BlanksGetResponseScenesItem implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            colour: Decode::nullable(
-                Decode::required($data, 'colour', $path),
-                $path . '.colour',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            cmyk: Decode::tuple(
+                Decode::required($data, 'cmyk', $path),
+                $path . '.cmyk',
+                [
+                    static fn(mixed $v, string $p): float => Decode::float($v, $p),
+                    static fn(mixed $v, string $p): float => Decode::float($v, $p),
+                    static fn(mixed $v, string $p): float => Decode::float($v, $p),
+                    static fn(mixed $v, string $p): float => Decode::float($v, $p),
+                ],
             ),
+            hex: Decode::string(Decode::required($data, 'hex', $path), $path . '.hex'),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
-            rowOptions: Decode::map(
-                Decode::required($data, 'rowOptions', $path),
-                $path . '.rowOptions',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
+            name: Decode::string(Decode::required($data, 'name', $path), $path . '.name'),
         );
         $model->decoded = $data;
         return $model;
@@ -73,9 +73,10 @@ final class BlanksGetResponseScenesItem implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['colour'] = $this->colour;
+        $data['cmyk'] = $this->cmyk;
+        $data['hex'] = $this->hex;
         $data['id'] = $this->id;
-        $data['rowOptions'] = Encode::object($this->rowOptions);
+        $data['name'] = $this->name;
         return $data;
     }
 }

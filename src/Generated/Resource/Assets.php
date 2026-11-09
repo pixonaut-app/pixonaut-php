@@ -35,6 +35,9 @@ use Pixonaut\Sdk\Generated\Model\AssetsImproveResolutionResponse200;
 use Pixonaut\Sdk\Generated\Model\AssetsImproveResolutionResponse201;
 use Pixonaut\Sdk\Generated\Model\AssetsListResponse;
 use Pixonaut\Sdk\Generated\Model\AssetsRoundShapesGetResponse;
+use Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest;
+use Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200;
+use Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201;
 use Pixonaut\Sdk\Generated\Model\AssetsUpdateRequest;
 use Pixonaut\Sdk\Generated\Model\AssetsUpdateResponse;
 use Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse;
@@ -74,6 +77,7 @@ final class Assets
         'improveResolution' => 'assets.improveResolution',
         'getOriginal' => 'assets.original.get',
         'getRoundShapes' => 'assets.roundShapes.get',
+        'threadCopy' => 'assets.threadCopy',
         'getUsage' => 'assets.usage.get',
         'getStorage' => 'storage.get',
     ];
@@ -531,6 +535,36 @@ final class Assets
         return $result->decode(
             static fn(mixed $json): AssetsRoundShapesGetResponse => AssetsRoundShapesGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
+    }
+
+    /**
+     * Draw a picture in an embroidery machine's threads.
+     *
+     * `POST /v1/assets/{id}/threads`
+     *
+     * @param string $id
+     * @param AssetsThreadCopyRequest $body
+     * @param string|null $session The designer's browser session, which the SDK sends so one visitor's uploads and proofs are told apart from another's on the same key: 6 to 64 letters, digits, `_` or `-`. Any other value is ignored.
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `copy_in_progress`, `db_error`, `feature_disabled`, `forbidden`, `invalid_input`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `storage_quota_exceeded`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function threadCopy(string $id, AssetsThreadCopyRequest $body, ?string $session = null): AssetsThreadCopyResponse200|AssetsThreadCopyResponse201
+    {
+        $result = $this->pixonaut->call(
+            'assets.threadCopy',
+            path: ['id' => $id],
+            body: $body->toArray(),
+            headers: ['x-pixonaut-session' => $session],
+        );
+        return match ($result->status) {
+            200 => $result->decode(
+                static fn(mixed $json): AssetsThreadCopyResponse200 => AssetsThreadCopyResponse200::fromArray(Decode::object($json, '$'), '$'),
+            ),
+            201 => $result->decode(
+                static fn(mixed $json): AssetsThreadCopyResponse201 => AssetsThreadCopyResponse201::fromArray(Decode::object($json, '$'), '$'),
+            ),
+            default => throw $result->unexpected(),
+        };
     }
 
     /**

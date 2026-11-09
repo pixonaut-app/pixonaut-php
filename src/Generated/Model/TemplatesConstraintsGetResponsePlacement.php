@@ -28,7 +28,9 @@ final class TemplatesConstraintsGetResponsePlacement implements Model
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\TemplatesConstraintsGetResponsePlacementCoverage}.
      * @param TemplatesConstraintsGetResponsePlacementSizes $sizes The blank's sizes the template can and can't print at, on a placement whose print area changes with an option (coverage `full`, or a position that prints one size only). Both empty on a placement whose area doesn't, which the template fits at every size.
      * @param string|null $cmykPreviewTables Where the tables a design on the placement is drawn through are read, when its print goes through an output profile the workspace uploaded and they are made: a path on the api, read with the same key.
+     * @param float|null $foldMm How far in from the print's edge the product folds on every side, in millimetres, on a placement that folds, such as a canvas round its frame: a live preview draws the fold lines there, the product's front inside them. Absent when it does not fold.
      * @param TemplatesConstraintsGetResponsePlacementShape|null $shape Where on the product a print may go, when not the whole rectangle: the outline, then each cut-out, in fractions of the print box, filled even-odd. A live preview clips the design to it and draws it as a guide, as the proof and the print file are cut to it.
+     * @param TemplatesConstraintsGetResponsePlacementStitch|null $stitch The stitch block a design on the placement is held to, on an embroidery placement while the workspace's stitch rules are on: the threads the machine stitches with, the most one design may use, and the least text height and line. A client judges a design against it as it is made; the commit refuses `design_not_stitchable` by the same rule.
      */
     public function __construct(
         public readonly string $blankId,
@@ -45,7 +47,9 @@ final class TemplatesConstraintsGetResponsePlacement implements Model
         public readonly float $safeAreaMm,
         public readonly TemplatesConstraintsGetResponsePlacementSizes $sizes,
         public readonly ?string $cmykPreviewTables = null,
+        public readonly ?float $foldMm = null,
         public readonly ?TemplatesConstraintsGetResponsePlacementShape $shape = null,
+        public readonly ?TemplatesConstraintsGetResponsePlacementStitch $stitch = null,
     ) {}
 
     /**
@@ -73,7 +77,9 @@ final class TemplatesConstraintsGetResponsePlacement implements Model
             safeAreaMm: Decode::float(Decode::required($data, 'safeAreaMm', $path), $path . '.safeAreaMm'),
             sizes: TemplatesConstraintsGetResponsePlacementSizes::fromArray(Decode::object(Decode::required($data, 'sizes', $path), $path . '.sizes'), $path . '.sizes'),
             cmykPreviewTables: array_key_exists('cmykPreviewTables', $data) ? Decode::string($data['cmykPreviewTables'], $path . '.cmykPreviewTables') : null,
+            foldMm: array_key_exists('foldMm', $data) ? Decode::float($data['foldMm'], $path . '.foldMm') : null,
             shape: array_key_exists('shape', $data) ? TemplatesConstraintsGetResponsePlacementShape::fromArray(Decode::object($data['shape'], $path . '.shape'), $path . '.shape') : null,
+            stitch: array_key_exists('stitch', $data) ? TemplatesConstraintsGetResponsePlacementStitch::fromArray(Decode::object($data['stitch'], $path . '.stitch'), $path . '.stitch') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -109,8 +115,14 @@ final class TemplatesConstraintsGetResponsePlacement implements Model
         if ($this->cmykPreviewTables !== null) {
             $data['cmykPreviewTables'] = $this->cmykPreviewTables;
         }
+        if ($this->foldMm !== null) {
+            $data['foldMm'] = $this->foldMm;
+        }
         if ($this->shape !== null) {
             $data['shape'] = Encode::model($this->shape);
+        }
+        if ($this->stitch !== null) {
+            $data['stitch'] = Encode::model($this->stitch);
         }
         return $data;
     }

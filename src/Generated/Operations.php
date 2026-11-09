@@ -307,6 +307,17 @@ final class Operations
                 sensitive: false,
             ),
             new Operation(
+                id: 'assets.threadCopy',
+                method: 'POST',
+                path: '/v1/assets/{id}/threads',
+                credentials: [Credential::PublishableKey, Credential::ShareLink],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+                headers: ['x-pixonaut-session'],
+            ),
+            new Operation(
                 id: 'assets.usage.get',
                 method: 'GET',
                 path: '/v1/assets/{id}/usage',

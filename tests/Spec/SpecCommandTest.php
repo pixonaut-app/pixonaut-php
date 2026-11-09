@@ -26,6 +26,9 @@ final class SpecCommandTest extends TestCase
     /** @var list<string> */
     private array $output = [];
 
+    /** @var list<string> Directories `localReference()` made. */
+    private array $sources = [];
+
     protected function setUp(): void
     {
         $this->directory = sys_get_temp_dir() . '/spec-' . bin2hex(random_bytes(8));
@@ -36,6 +39,12 @@ final class SpecCommandTest extends TestCase
 
     protected function tearDown(): void
     {
+        foreach ($this->sources as $source) {
+            foreach (array_diff(scandir($source) ?: [], ['.', '..']) as $file) {
+                unlink($source . '/' . $file);
+            }
+            rmdir($source);
+        }
         if (!is_dir($this->directory)) {
             return;
         }
@@ -237,6 +246,74 @@ final class SpecCommandTest extends TestCase
 
         self::assertSame(SpecCommand::EXIT_FAILED, $this->binSpec('check', '--online'));
         self::assertStringContainsString('differ from API 1.0.0 on the CDN', implode("\n", $this->output));
+    }
+
+    public function testPinFromADirectoryPinsItsReferenceMarkedUnpublished(): void
+    {
+        $this->binSpec('pin', '1.0.0');
+        $source = $this->localReference(self::specJson('1.0.0', 'ahead'));
+        $previous = $this->directory . '/previous.json';
+
+        self::assertSame(SpecCommand::EXIT_OK, $this->binSpec('pin', '--from', $source, '--previous-out', $previous));
+
+        self::assertSame(self::specJson('1.0.0', 'ahead'), $this->read('openapi.json'));
+        self::assertSame(self::specJson('1.0.0'), file_get_contents($previous));
+        $lock = json_decode($this->read('spec.lock.json'), true);
+        self::assertIsArray($lock);
+        self::assertSame(hash('sha256', self::specJson('1.0.0', 'ahead')), $lock['sha256']);
+        self::assertFalse($lock['published']);
+        self::assertStringContainsString('unpublished API 1.0.0', $this->lastLine());
+        self::assertSame(SpecCommand::EXIT_OK, $this->binSpec('check'));
+    }
+
+    public function testOnlineCheckFailsOnAnUnpublishedPin(): void
+    {
+        $this->binSpec('pin', '--from', $this->localReference(self::specJson('1.0.0', 'ahead')));
+
+        self::assertSame(SpecCommand::EXIT_FAILED, $this->binSpec('check', '--online'));
+        self::assertStringContainsString('unpublished API 1.0.0 reference', implode("\n", $this->output));
+    }
+
+    public function testPinningThePublishedReleaseAgainDropsTheUnpublishedMark(): void
+    {
+        $this->binSpec('pin', '--from', $this->localReference(self::specJson('1.0.0', 'ahead')));
+
+        self::assertSame(SpecCommand::EXIT_OK, $this->binSpec('pin', '1.0.0'));
+
+        self::assertArrayNotHasKey('published', (array) json_decode($this->read('spec.lock.json'), true));
+    }
+
+    public function testPinFromADirectoryRefusesAVersion(): void
+    {
+        self::assertSame(SpecCommand::EXIT_USAGE, $this->binSpec('pin', '1.0.0', '--from', $this->localReference(self::specJson('1.0.0'))));
+    }
+
+    public function testPinFromADirectoryWithoutTheVectorsLeavesThePinIntact(): void
+    {
+        $this->binSpec('pin', '1.0.0');
+        $before = $this->snapshot();
+        $source = $this->localReference(self::specJson('1.0.0', 'ahead'));
+        unlink($source . '/webhook-signature-vectors.json');
+
+        self::assertSame(SpecCommand::EXIT_FAILED, $this->binSpec('pin', '--from', $source));
+        self::assertSame($before, $this->snapshot());
+    }
+
+    /**
+     * A directory beside the pinned one holding `$spec` and the vectors,
+     * which tearDown removes.
+     */
+    private function localReference(string $spec): string
+    {
+        $source = $this->directory . '-source';
+        if (!is_dir($source)) {
+            mkdir($source, 0o777, true);
+        }
+        file_put_contents($source . '/openapi.json', $spec);
+        file_put_contents($source . '/webhook-signature-vectors.json', self::VECTORS);
+        $this->sources[] = $source;
+
+        return $source;
     }
 
     private function binSpec(string ...$arguments): int

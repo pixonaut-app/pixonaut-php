@@ -7,6 +7,10 @@ namespace Pixonaut\Sdk\Generator\Spec;
 /**
  * `spec/spec.lock.json`: the API release the SDK is built from, its address
  * on the CDN, and the sha256 of the two pinned files.
+ *
+ * A reference pinned from a local copy (`bin/spec pin --from`), because the
+ * API answers it before a release publishes it, is marked `published: false`:
+ * the CDN has no copy to check it against.
  */
 final class SpecLock
 {
@@ -23,15 +27,17 @@ final class SpecLock
         public readonly string $baseUrl,
         public readonly string $sha256,
         public readonly string $vectorsSha256,
+        public readonly bool $published = true,
     ) {}
 
-    public static function forRelease(Release $release): self
+    public static function forRelease(Release $release, bool $published = true): self
     {
         return new self(
             $release->version,
             self::baseUrl(self::CDN_ORIGIN, $release->version),
             hash('sha256', $release->spec),
             hash('sha256', $release->vectors),
+            $published,
         );
     }
 
@@ -71,21 +77,31 @@ final class SpecLock
         ) {
             throw new SpecException('The lock is not a spec lock: it needs version, baseUrl, sha256 and webhookSignatureVectors.sha256.');
         }
+        $published = $data['published'] ?? true;
+        if (!is_bool($published)) {
+            throw new SpecException('The lock\'s published, when present, is true or false.');
+        }
 
-        return new self($data['version'], $data['baseUrl'], $data['sha256'], $vectors['sha256']);
+        return new self($data['version'], $data['baseUrl'], $data['sha256'], $vectors['sha256'], $published);
     }
 
     /**
      * The lock as written to disk: the same lock always gives the same bytes,
-     * so pinning the release already pinned changes nothing.
+     * so pinning the release already pinned changes nothing. `published` is
+     * written only when false, so a published pin's lock keeps its bytes.
      */
     public function toJson(): string
     {
-        return json_encode([
+        $lock = [
             'version' => $this->version,
             'baseUrl' => $this->baseUrl,
             'sha256' => $this->sha256,
             'webhookSignatureVectors' => ['sha256' => $this->vectorsSha256],
-        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n";
+        ];
+        if (!$this->published) {
+            $lock['published'] = false;
+        }
+
+        return json_encode($lock, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR) . "\n";
     }
 }

@@ -2,6 +2,8 @@
 # The pinned API spec in spec/.
 #
 #   bin/spec pin [<version>] [--cdn <origin>]   pin a release from the CDN
+#   bin/spec pin --from <directory>             pin an unpublished reference
+#                                               from a directory in the checkout
 #   bin/spec check [--online] [--cdn <origin>]  check the pinned files
 #   bin/spec diff [<old-spec>]                  what the pinned spec changes
 #                                               against <old-spec>

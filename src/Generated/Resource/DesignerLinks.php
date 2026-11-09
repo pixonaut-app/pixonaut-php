@@ -36,7 +36,7 @@ final class DesignerLinks
      * @param string $id The template's base id: the link follows whatever version is live.
      * @param TemplatesDesignerLinksCreateRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `brand_not_found`, `db_error`, `feature_disabled`, `invalid_input`, `layout_out_of_date`, `layout_wrong_ratio`, `linked_templates_differ`, `lock_timeout`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `print_size_illegal`, `rate_limited`, `return_url_not_https`, `return_url_off_store`, `share_link_name_taken`, `share_link_name_too_long`, `subject_not_found`, `unauthorized`, `unknown_layout`, `unknown_placement`, `variant_row_invalid`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `brand_not_found`, `db_error`, `design_not_stitchable`, `design_unreadable`, `feature_disabled`, `invalid_input`, `layout_out_of_date`, `layout_wrong_ratio`, `linked_templates_differ`, `lock_timeout`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `print_size_illegal`, `rate_limited`, `return_url_not_https`, `return_url_off_store`, `share_link_name_taken`, `share_link_name_too_long`, `subject_not_found`, `unauthorized`, `unknown_layout`, `unknown_placement`, `variant_row_invalid`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function create(string $id, TemplatesDesignerLinksCreateRequest $body): TemplatesDesignerLinksCreateResponse
     {

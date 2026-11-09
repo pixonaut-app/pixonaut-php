@@ -35,7 +35,8 @@ final class BlanksGetResponsePlacementsItem implements Model
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemCoverage}.
      * @param int|null $dpi Print resolution in dots per inch. Omitted, its category's, else 300.
      * @param string|null $fillColour The `#rrggbb` colour an optional placement left undesigned is printed or delivered as. Null or omitted for none.
-     * @param BlanksGetResponsePlacementsItemGarment|null $garment Where the placement sits on the product, once for every scene: a garment area of the blank's stock item, and the print's top left and width on it in millimetres. Omitted on a placement with no scenes to draw on. Refused with `placement_garment_area_unknown` when the stock item lacks the area, and `placement_garment_outside_area` when it reaches past it.
+     * @param float|null $foldMm How far in from the trim the product folds on every side, in millimetres, such as where a canvas's front ends and its wrap round the frame begins. The designer draws the fold lines there. Omitted, the product does not fold.
+     * @param list<BlanksGetResponsePlacementsItemGarmentsItem>|null $garments Where the placement sits on each product the blank's stock photos show, one record per stock item for every scene of it: the stock item, a garment area of it, and the print's top left and width on it in millimetres. A placement with no record on a scene's stock item draws nothing on that scene. Refused with `placement_garment_area_unknown` when the stock item or the area is unknown, and `placement_garment_outside_area` when it reaches past the area.
      * @param BlanksGetResponsePlacementsItemLinkWith|null $linkWith The placement it is linked with by default, such as a right sleeve with the left one: one design then drives both unless a designer link, an SDK mount or a design says otherwise. Null or omitted for none. A placement linked with one no longer on the blank is linked with none.
      * @param string|null $printMethod How this placement is printed, such as dtg or screen. Omitted, its category's.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemPrintMethod}.
@@ -57,7 +58,8 @@ final class BlanksGetResponsePlacementsItem implements Model
         public readonly ?string $coverage = null,
         public readonly ?int $dpi = null,
         public readonly ?string $fillColour = null,
-        public readonly ?BlanksGetResponsePlacementsItemGarment $garment = null,
+        public readonly ?float $foldMm = null,
+        public readonly ?array $garments = null,
         public readonly ?BlanksGetResponsePlacementsItemLinkWith $linkWith = null,
         public readonly ?string $printMethod = null,
         public readonly ?bool $required = null,
@@ -101,7 +103,12 @@ final class BlanksGetResponsePlacementsItem implements Model
                 $path . '.fillColour',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : null,
-            garment: array_key_exists('garment', $data) ? BlanksGetResponsePlacementsItemGarment::fromArray(Decode::object($data['garment'], $path . '.garment'), $path . '.garment') : null,
+            foldMm: array_key_exists('foldMm', $data) ? Decode::float($data['foldMm'], $path . '.foldMm') : null,
+            garments: array_key_exists('garments', $data) ? Decode::list(
+                $data['garments'],
+                $path . '.garments',
+                static fn(mixed $v, string $p): BlanksGetResponsePlacementsItemGarmentsItem => BlanksGetResponsePlacementsItemGarmentsItem::fromArray(Decode::object($v, $p), $p),
+            ) : null,
             linkWith: array_key_exists('linkWith', $data) ? Decode::nullable(
                 $data['linkWith'],
                 $path . '.linkWith',
@@ -167,8 +174,14 @@ final class BlanksGetResponsePlacementsItem implements Model
         if ($this->fillColour !== null) {
             $data['fillColour'] = $this->fillColour;
         }
-        if ($this->garment !== null) {
-            $data['garment'] = Encode::model($this->garment);
+        if ($this->foldMm !== null) {
+            $data['foldMm'] = $this->foldMm;
+        }
+        if ($this->garments !== null) {
+            $data['garments'] = array_map(
+                static fn(BlanksGetResponsePlacementsItemGarmentsItem $v): mixed => Encode::model($v),
+                $this->garments,
+            );
         }
         if ($this->linkWith !== null) {
             $data['linkWith'] = Encode::model($this->linkWith);

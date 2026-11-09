@@ -19,10 +19,12 @@ final class ApiKeysListResponseItemNeedsFeature
 
     public const AUTOMATIONS = 'automations';
 
+    public const EMBROIDERY = 'embroidery';
+
     public const MCP = 'mcp';
 
     /**
      * Every value this release knows.
      */
-    public const KNOWN = [self::API, self::AUTOMATIONS, self::MCP];
+    public const KNOWN = [self::API, self::AUTOMATIONS, self::EMBROIDERY, self::MCP];
 }

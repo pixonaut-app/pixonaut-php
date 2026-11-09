@@ -10,7 +10,14 @@ use Closure;
  * `bin/spec`: pins an API release from the CDN, or checks the pinned one.
  *
  *     pin [<version>] [--cdn <origin>] [--previous-out <file>]
+ *     pin --from <directory> [--previous-out <file>]
  *     check [--online] [--cdn <origin>]
+ *
+ * `pin --from` pins the reference in a local directory (its `openapi.json`
+ * and `webhook-signature-vectors.json`) at the version it declares, for an
+ * API that answers a reference no release has published yet. The lock marks
+ * it unpublished, and `check --online` fails on it until a published release
+ * is pinned again.
  */
 final class SpecCommand
 {
@@ -23,6 +30,7 @@ final class SpecCommand
     private const USAGE = <<<'TXT'
         Usage:
           bin/spec pin [<version>] [--cdn <origin>]
+          bin/spec pin --from <directory>
           bin/spec check [--online] [--cdn <origin>]
           bin/spec diff [<old-spec>]
         TXT;
@@ -79,31 +87,42 @@ final class SpecCommand
      */
     private function pin(array $positionals, array $options): int
     {
-        self::allowOnly($options, ['cdn', 'previous-out']);
+        self::allowOnly($options, ['cdn', 'previous-out', 'from']);
         if (count($positionals) > 1) {
             throw new UsageException('pin takes at most one version.');
         }
 
         $previous = $this->files->hasLock() ? $this->files->lock() : null;
-        $version = $positionals[0] ?? $previous?->version;
-        if ($version === null) {
-            throw new UsageException('Nothing is pinned yet: name the version to pin.');
+        $from = self::stringOption($options, 'from');
+        if ($from !== null) {
+            if ($positionals !== []) {
+                throw new UsageException('pin --from takes no version: it pins the one the reference declares.');
+            }
+            $release = self::local($from);
+            $version = $release->version;
+        } else {
+            $version = $positionals[0] ?? $previous?->version;
+            if ($version === null) {
+                throw new UsageException('Nothing is pinned yet: name the version to pin.');
+            }
+            $release = $this->cdnFor($options)->release(SpecLock::assertVersion($version));
         }
-
-        $release = $this->cdnFor($options)->release(SpecLock::assertVersion($version));
-        $next = SpecLock::forRelease($release);
+        $next = SpecLock::forRelease($release, $from === null);
 
         $previousOut = self::stringOption($options, 'previous-out');
-        if ($previous !== null && $previous->version !== $version && $previousOut !== null) {
+        $changes = $previous !== null && ($previous->version !== $version || $previous->sha256 !== $next->sha256);
+        if ($changes && $previousOut !== null) {
             // For the caller's diff of what the new release changes.
             if (file_put_contents($previousOut, $this->files->spec()) === false) {
                 throw new SpecException("Could not write {$previousOut}.");
             }
         }
 
-        $this->files->write($release);
+        $this->files->write($release, $next->published);
 
-        if ($previous === null) {
+        if (!$next->published) {
+            ($this->out)("Pinned the unpublished API {$version} reference from {$from}; pin the published release once it is out.");
+        } elseif ($previous === null) {
             ($this->out)("Pinned API {$version}.");
         } elseif ($previous->version !== $version) {
             ($this->out)("Pinned API {$version} (was {$previous->version}).");
@@ -128,7 +147,10 @@ final class SpecCommand
         }
 
         $problems = $this->files->problems();
-        if ($problems === [] && isset($options['online'])) {
+        if ($problems === [] && isset($options['online']) && !$this->files->lock()->published) {
+            $version = $this->files->lock()->version;
+            $problems[] = "The pinned files are an unpublished API {$version} reference (bin/spec pin --from), which the CDN has no copy of; pin the published release once it is out.";
+        } elseif ($problems === [] && isset($options['online'])) {
             $lock = $this->files->lock();
             $release = $this->cdnFor($options)->release($lock->version);
             if (SpecLock::forRelease($release) != $lock) {
@@ -151,6 +173,35 @@ final class SpecCommand
             : "API {$lock->version}: the pinned files match the lock.");
 
         return self::EXIT_OK;
+    }
+
+    /**
+     * The reference in `$directory`, at the version its `info.version`
+     * declares.
+     *
+     * @throws SpecException when a file is missing, is not JSON, or the
+     *                       reference declares no release version.
+     */
+    private static function local(string $directory): Release
+    {
+        $read = static function (string $name) use ($directory): string {
+            $path = rtrim($directory, '/') . '/' . $name;
+            $bytes = is_file($path) ? file_get_contents($path) : false;
+            if ($bytes === false) {
+                throw new SpecException("{$path} is missing.");
+            }
+            if (!SpecFiles::isJson($bytes)) {
+                throw new SpecException("{$path} is not JSON.");
+            }
+
+            return $bytes;
+        };
+        $spec = $read(Cdn::SPEC_FILE);
+        $vectors = $read(Cdn::VECTORS_FILE);
+        $version = SpecFiles::infoVersion($spec)
+            ?? throw new SpecException(Cdn::SPEC_FILE . ' in ' . $directory . ' declares no info.version.');
+
+        return new Release(SpecLock::assertVersion($version), $spec, $vectors);
     }
 
     private function usage(): int

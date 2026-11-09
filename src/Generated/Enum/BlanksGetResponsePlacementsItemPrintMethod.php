@@ -39,6 +39,8 @@ final class BlanksGetResponsePlacementsItemPrintMethod
 
     public const CUT_SEW = 'cut-sew';
 
+    public const DIRECT_TO_FABRIC = 'direct-to-fabric';
+
     /**
      * Every value this release knows.
      */
@@ -55,5 +57,6 @@ final class BlanksGetResponsePlacementsItemPrintMethod
         self::EMBROIDERY,
         self::LASER,
         self::CUT_SEW,
+        self::DIRECT_TO_FABRIC,
     ];
 }

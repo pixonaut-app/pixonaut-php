@@ -27,6 +27,7 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
      * @param string|null $addressChanges Whether an order's address may change after it was sent: `always` for a printshop whose integration tells it, `by_setting` when `acceptsAddressUpdates` decides, `null` for never.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemAddressChanges}.
      * @param PrintshopConnectionsListResponseOption1ConnectionsItemAsksOfDesigns $asksOfDesigns What this printshop asks of a design sent to it. `commitKeys`: the fulfilment keys a commit is refused without. `needsBlank`: a design on no blank cannot be made here, so it commits and a connected store's order of it fails until a member sends the order to a blank.
+     * @param string|null $callbackUrl The address to register in the printshop's own dashboard for its order updates, for a printshop whose updates cannot be registered for it; null for any other. It holds a secret: share it only with the printshop.
      * @param string|null $contactEmail The contact person's email address; null for none. A delivery step may send to it as `{printshop.contact.email}`.
      * @param bool $contactEmailBounced Whether mail to `contactEmail` bounced, so none is sent to it until the address changes.
      * @param string|null $contactName The name of the person to reach at the printshop. Up to 200 characters; null for none.
@@ -42,6 +43,7 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
         public readonly ?PrintshopConnectionsListResponseOption1ConnectionsItemAddress $address,
         public readonly ?string $addressChanges,
         public readonly PrintshopConnectionsListResponseOption1ConnectionsItemAsksOfDesigns $asksOfDesigns,
+        public readonly ?string $callbackUrl,
         public readonly ?string $contactEmail,
         public readonly bool $contactEmailBounced,
         public readonly ?string $contactName,
@@ -88,6 +90,11 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
             asksOfDesigns: PrintshopConnectionsListResponseOption1ConnectionsItemAsksOfDesigns::fromArray(
                 Decode::object(Decode::required($data, 'asksOfDesigns', $path), $path . '.asksOfDesigns'),
                 $path . '.asksOfDesigns',
+            ),
+            callbackUrl: Decode::nullable(
+                Decode::required($data, 'callbackUrl', $path),
+                $path . '.callbackUrl',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
             contactEmail: Decode::nullable(
                 Decode::required($data, 'contactEmail', $path),
@@ -155,6 +162,7 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
         $data['address'] = $this->address === null ? null : Encode::model($this->address);
         $data['addressChanges'] = $this->addressChanges;
         $data['asksOfDesigns'] = Encode::model($this->asksOfDesigns);
+        $data['callbackUrl'] = $this->callbackUrl;
         $data['contactEmail'] = $this->contactEmail;
         $data['contactEmailBounced'] = $this->contactEmailBounced;
         $data['contactName'] = $this->contactName;

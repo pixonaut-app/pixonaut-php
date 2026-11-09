@@ -29,6 +29,7 @@ final class BlanksListResponseBlanksItemPlacementsItemAreasItem implements Model
      * @param float $widthMm The widest print the row takes, in millimetres.
      * @param float|null $bleedMm Bleed past the trim on the row, in millimetres, 0 to 50. Omitted, the placement's.
      * @param int|null $dpi Print resolution on the row in dots per inch. Omitted, the placement's.
+     * @param float|null $foldMm How far in from the trim the product folds on the row, in millimetres. Omitted, the placement's.
      * @param float|null $safeAreaMm Safe area inside the trim on the row, in millimetres, 0 to 50. Omitted, the placement's.
      */
     public function __construct(
@@ -39,6 +40,7 @@ final class BlanksListResponseBlanksItemPlacementsItemAreasItem implements Model
         public readonly float $widthMm,
         public readonly ?float $bleedMm = null,
         public readonly ?int $dpi = null,
+        public readonly ?float $foldMm = null,
         public readonly ?float $safeAreaMm = null,
     ) {}
 
@@ -64,6 +66,7 @@ final class BlanksListResponseBlanksItemPlacementsItemAreasItem implements Model
             widthMm: Decode::float(Decode::required($data, 'widthMm', $path), $path . '.widthMm'),
             bleedMm: array_key_exists('bleedMm', $data) ? Decode::float($data['bleedMm'], $path . '.bleedMm') : null,
             dpi: array_key_exists('dpi', $data) ? Decode::int($data['dpi'], $path . '.dpi') : null,
+            foldMm: array_key_exists('foldMm', $data) ? Decode::float($data['foldMm'], $path . '.foldMm') : null,
             safeAreaMm: array_key_exists('safeAreaMm', $data) ? Decode::float($data['safeAreaMm'], $path . '.safeAreaMm') : null,
         );
         $model->decoded = $data;
@@ -94,6 +97,9 @@ final class BlanksListResponseBlanksItemPlacementsItemAreasItem implements Model
         }
         if ($this->dpi !== null) {
             $data['dpi'] = $this->dpi;
+        }
+        if ($this->foldMm !== null) {
+            $data['foldMm'] = $this->foldMm;
         }
         if ($this->safeAreaMm !== null) {
             $data['safeAreaMm'] = $this->safeAreaMm;

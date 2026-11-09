@@ -32,7 +32,7 @@ final class TemplatesDesignerLinksCreateResponse implements Model
      * @param bool $placementFrame Whether a designer link's page draws the placement frame around the shopper's picture at rest; false for every other link.
      * @param bool $printAreaFrame Whether a designer link's page draws the print area's frame; false for every other link.
      * @param string $token The link's token. Shown in this response only.
-     * @param string $url The hosted designer the link opens, with `?lang=<locale>` when the link names a `locale`.
+     * @param string $url The hosted designer the link opens, with `?lang=<locale>` when the link names a `locale`. A store sending every customer to one link adds `state=<value>` to it for each trip, 1 to 200 characters of `A–Z a–z 0–9 . _ ~ -`: the page returns that value as `state`, on approve and on cancel, in place of the link's own, and ignores one outside that form.
      * @param list<TemplatesDesignerLinksCreateResponseWarningsItem>|null $warnings What the link was made with that it is not built for, for whoever builds it; the shopper is shown none. `sides_over_recommended`: the link holds more than 4 sides. Each side is one more step on the hosted page, one more designer, canvas and photo set in the shopper's browser, and one more `proofToken[<key>]` on the return address. Absent when there is nothing to warn of.
      */
     public function __construct(

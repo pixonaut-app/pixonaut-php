@@ -34,6 +34,7 @@ final class PrintshopConnectionsListResponseOption1AdaptersItem implements Model
         public readonly ?PrintshopConnectionsListResponseOption1AdaptersItemCredentialGuide $credentialGuide,
         public readonly bool $deliverySteps,
         public readonly bool $machineProfiles,
+        public readonly bool $orderUpdates,
         public readonly bool $partnerPhotos,
         public readonly array $placeholders,
         public readonly bool $spotPlates,
@@ -66,6 +67,7 @@ final class PrintshopConnectionsListResponseOption1AdaptersItem implements Model
             ),
             deliverySteps: Decode::bool(Decode::required($data, 'deliverySteps', $path), $path . '.deliverySteps'),
             machineProfiles: Decode::bool(Decode::required($data, 'machineProfiles', $path), $path . '.machineProfiles'),
+            orderUpdates: Decode::bool(Decode::required($data, 'orderUpdates', $path), $path . '.orderUpdates'),
             partnerPhotos: Decode::bool(Decode::required($data, 'partnerPhotos', $path), $path . '.partnerPhotos'),
             placeholders: Decode::list(
                 Decode::required($data, 'placeholders', $path),
@@ -100,6 +102,7 @@ final class PrintshopConnectionsListResponseOption1AdaptersItem implements Model
         $data['credentialGuide'] = $this->credentialGuide === null ? null : Encode::model($this->credentialGuide);
         $data['deliverySteps'] = $this->deliverySteps;
         $data['machineProfiles'] = $this->machineProfiles;
+        $data['orderUpdates'] = $this->orderUpdates;
         $data['partnerPhotos'] = $this->partnerPhotos;
         $data['placeholders'] = $this->placeholders;
         $data['spotPlates'] = $this->spotPlates;

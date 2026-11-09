@@ -185,7 +185,7 @@ final class PixelDismissalsCreateResponseConversationCardsValueTool
 
     public const APPLY_AUTOMATION_TO_PAST_EVENTS = 'apply_automation_to_past_events';
 
-    public const SET_BLANK_PHOTO_SOURCE = 'set_blank_photo_source';
+    public const SET_BLANK_VIEW_ORDER = 'set_blank_view_order';
 
     public const UPDATE_BLANK_VIEW = 'update_blank_view';
 
@@ -391,7 +391,7 @@ final class PixelDismissalsCreateResponseConversationCardsValueTool
         self::RESUME_AUTOMATION_FIRING,
         self::RETRY_AUTOMATION_FIRING,
         self::APPLY_AUTOMATION_TO_PAST_EVENTS,
-        self::SET_BLANK_PHOTO_SOURCE,
+        self::SET_BLANK_VIEW_ORDER,
         self::UPDATE_BLANK_VIEW,
         self::DELETE_BLANK_VIEW,
         self::UPDATE_PANEL_LAYOUT,

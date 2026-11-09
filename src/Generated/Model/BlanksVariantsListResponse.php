@@ -25,12 +25,14 @@ final class BlanksVariantsListResponse implements Model
      * @param list<string> $areasVaryBy The options the blank's print areas change with, such as Size, in option order; empty for one print area per placement. Each placement's `areas` names a row of these.
      * @param list<string> $axes The blank's option axes, in the order the shopper sees them.
      * @param list<BlanksVariantsListResponseOptionsItem> $options The blank's options in that order, each with its values and how each value looks: a designer draws an option whose values have appearances as swatches.
+     * @param string|null $paintBy The option the blank's dyed photos are painted in, such as Colour: a stock photo that takes a dye, or a view drawn from a 3D render, shows each variant in its value's colour. null: the merchant's own photos are not painted and show as photographed, while a stock photo that takes a dye is painted in the first option with colours.
      * @param list<BlanksVariantsListResponseVariantsItem> $variants
      */
     public function __construct(
         public readonly array $areasVaryBy,
         public readonly array $axes,
         public readonly array $options,
+        public readonly ?string $paintBy,
         public readonly array $variants,
     ) {}
 
@@ -59,6 +61,11 @@ final class BlanksVariantsListResponse implements Model
                 Decode::required($data, 'options', $path),
                 $path . '.options',
                 static fn(mixed $v, string $p): BlanksVariantsListResponseOptionsItem => BlanksVariantsListResponseOptionsItem::fromArray(Decode::object($v, $p), $p),
+            ),
+            paintBy: Decode::nullable(
+                Decode::required($data, 'paintBy', $path),
+                $path . '.paintBy',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
             variants: Decode::list(
                 Decode::required($data, 'variants', $path),
@@ -90,6 +97,7 @@ final class BlanksVariantsListResponse implements Model
             static fn(BlanksVariantsListResponseOptionsItem $v): mixed => Encode::model($v),
             $this->options,
         );
+        $data['paintBy'] = $this->paintBy;
         $data['variants'] = array_map(
             static fn(BlanksVariantsListResponseVariantsItem $v): mixed => Encode::model($v),
             $this->variants,

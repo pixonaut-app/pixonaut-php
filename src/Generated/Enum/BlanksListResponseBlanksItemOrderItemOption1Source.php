@@ -7,22 +7,20 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Enum;
 
 /**
- * Where the blank's photos come from: scenes it has chosen, its printshop's photos or its own. A new blank starts on `own`.
+ * `catalogue` for the printshop's photos, `own` for the merchant's.
  *
  * The values this release knows. The field is a string, and the API may answer a value added after this release.
  *
- * Schema: `GET /v1/blanks answer 200: $.blanks[].photoSource`.
+ * Schema: `GET /v1/blanks answer 200: $.blanks[].order[] (anyOf #1).source`.
  */
-final class BlanksListResponseBlanksItemPhotoSource
+final class BlanksListResponseBlanksItemOrderItemOption1Source
 {
-    public const SCENES = 'scenes';
-
-    public const PRINTSHOP = 'printshop';
+    public const CATALOGUE = 'catalogue';
 
     public const OWN = 'own';
 
     /**
      * Every value this release knows.
      */
-    public const KNOWN = [self::SCENES, self::PRINTSHOP, self::OWN];
+    public const KNOWN = [self::CATALOGUE, self::OWN];
 }
