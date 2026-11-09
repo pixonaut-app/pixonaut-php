@@ -60,7 +60,8 @@ It pins the version the reference declares and marks the lock
 usual; `bin/spec check --online` fails until the published release is
 pinned again with `bin/spec pin <version>`.
 
-A scheduled workflow runs `bin/spec check --online` weekly.
+A workflow runs `bin/spec check --online` weekly and on every pull request
+that changes `spec/`.
 
 ## Tests
 
@@ -222,7 +223,11 @@ Release-please keeps a release pull request open from the commits on
 `main`; merging it tags the version and creates the GitHub Release. The
 release workflow then opens the release's notes, in `CHANGELOG.md`, the
 release pull request and the GitHub Release, with the API release it
-targets (`generator/release-notes.php`). Packagist publishes each tag.
+targets (`generator/release-notes.php`). Packagist publishes each tag on
+its own: the repository's GitHub webhook to `https://packagist.org/api/github`
+tells it about every push, and a new version can take a while to be
+listed. `composer show --all pixonaut/pixonaut-php` lists the versions it
+has.
 
 The workflow needs the repository allowed to create pull requests from
 GitHub Actions. For the pull request checks to run on the release pull

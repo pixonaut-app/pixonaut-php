@@ -283,6 +283,33 @@ final class SpecCommandTest extends TestCase
         self::assertArrayNotHasKey('published', (array) json_decode($this->read('spec.lock.json'), true));
     }
 
+    /**
+     * The way out of an unpublished pin: the API publishes the reference as
+     * a new release, which is pinned from the CDN, and the online check
+     * passes again.
+     */
+    public function testPinningTheReleaseThatPublishesTheReferenceMakesTheOnlineCheckPass(): void
+    {
+        $this->binSpec('pin', '1.0.0');
+        $this->binSpec('pin', '--from', $this->localReference(self::specJson('1.0.0', 'ahead')));
+        $this->cdn->publish('1.2.0', self::specJson('1.2.0', 'ahead'), self::VECTORS);
+        $previous = $this->directory . '/previous.json';
+
+        self::assertSame(SpecCommand::EXIT_OK, $this->binSpec('pin', '1.2.0', '--previous-out', $previous));
+
+        self::assertStringContainsString('Pinned API 1.2.0 (was 1.0.0)', $this->lastLine());
+        self::assertSame(self::specJson('1.0.0', 'ahead'), file_get_contents($previous), 'the unpublished reference is what the diff compares from');
+        unlink($previous);
+        self::assertSame([
+            'version' => '1.2.0',
+            'baseUrl' => 'https://cdn.pixonaut.app/api/1.2.0/',
+            'sha256' => hash('sha256', self::specJson('1.2.0', 'ahead')),
+            'webhookSignatureVectors' => ['sha256' => hash('sha256', self::VECTORS)],
+        ], json_decode($this->read('spec.lock.json'), true));
+        self::assertSame(SpecCommand::EXIT_OK, $this->binSpec('check', '--online'));
+        self::assertStringContainsString('API 1.2.0: the pinned files are the published release.', $this->lastLine());
+    }
+
     public function testPinFromADirectoryRefusesAVersion(): void
     {
         self::assertSame(SpecCommand::EXIT_USAGE, $this->binSpec('pin', '1.0.0', '--from', $this->localReference(self::specJson('1.0.0'))));
