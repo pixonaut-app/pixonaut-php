@@ -75,4 +75,8 @@ What to store, and when:
 A host that sends requests through its own HTTP stack, for instance several
 at once, builds each PSR-7 request with `$pixonaut->toPsrRequest($prepared)`
 and reads each response with `$pixonaut->handle($prepared, $response)`, with
-the same error mapping as `send()`.
+the same error mapping as `send()`. A request that got no response (DNS, a
+refused connection, a timeout) goes to
+`$pixonaut->handleFailure($prepared, $failure)` with the PSR-18 client's
+exception: it returns the `transport_failed` `ApiException` that `send()`
+would have thrown, and calls the listener as `send()` does.

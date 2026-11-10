@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Pixonaut\Sdk\Tests\Unit\Http;
 
+use Http\Client\Exception\NetworkException;
 use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
 use Pixonaut\Sdk\Exception\ApiException;
+use Pixonaut\Sdk\Http\ErrorMapper;
 use Pixonaut\Sdk\Tests\Unit\Support\Harness;
 
 final class BatchTest extends TestCase
@@ -35,5 +37,45 @@ final class BatchTest extends TestCase
 
         self::assertSame([], $harness->sent());
         self::assertSame(['before designs.get', 'before designs.get', 'after designs.get', 'after designs.get'], $harness->listener->calls);
+    }
+
+    public function testARequestThatGotNoResponseMapsToTheTransportFailureSendWouldThrow(): void
+    {
+        $harness = new Harness();
+        $prepared = $harness->pixonaut->prepare('designs.get', ['id' => 'd_1']);
+        $psr = $harness->pixonaut->toPsrRequest($prepared);
+        $failure = new NetworkException('Connection refused', $psr);
+
+        $error = $harness->pixonaut->handleFailure($prepared, $failure);
+
+        self::assertSame(ApiException::TRANSPORT_FAILED, $error->errorCode);
+        self::assertSame('designs.get', $error->operation);
+        self::assertSame(0, $error->status);
+        self::assertTrue($error->retryable);
+        self::assertSame(['message' => 'Connection refused'], $error->details);
+        self::assertSame($failure, $error->getPrevious());
+
+        self::assertSame([], $harness->sent());
+        self::assertSame(['before designs.get', 'after designs.get'], $harness->listener->calls);
+        [, $result, $seen] = $harness->listener->after[0];
+        self::assertNull($result);
+        self::assertInstanceOf(ApiException::class, $seen);
+        self::assertSame(ApiException::TRANSPORT_FAILED, $seen->errorCode);
+        // The PSR-18 exception carries the request, credential included.
+        self::assertNull($seen->getPrevious());
+        self::assertSame([], $harness->logger->records);
+    }
+
+    public function testATransportFailureOfASensitiveOperationKeepsItsMessageOutOfTheDetails(): void
+    {
+        $harness = new Harness();
+        $prepared = $harness->pixonaut->prepare('apiKeys.create', body: ['name' => 'k'], idempotencyKey: 'key-1');
+        $psr = $harness->pixonaut->toPsrRequest($prepared);
+
+        $error = $harness->pixonaut->handleFailure($prepared, new NetworkException('Connection refused', $psr));
+
+        self::assertSame(ApiException::TRANSPORT_FAILED, $error->errorCode);
+        self::assertSame(ErrorMapper::REDACTED, $error->details);
+        self::assertSame(ErrorMapper::REDACTED, $harness->listener->after[0][2]?->details);
     }
 }

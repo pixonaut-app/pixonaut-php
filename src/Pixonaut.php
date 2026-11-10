@@ -170,10 +170,7 @@ final class Pixonaut
             try {
                 $response = $this->client->sendRequest($psr);
             } catch (ClientExceptionInterface $failure) {
-                $error = ErrorMapper::transportFailed($operation, $failure);
-                // The PSR-18 exception may carry the request, credential included.
-                $this->listener->after($request, null, ErrorMapper::withoutPrevious($error));
-                throw $this->raise($error);
+                throw $this->raise($this->transportFailed($operation, $request, $failure));
             }
 
             $outcome = $this->answer($operation, $request, $response);
@@ -195,7 +192,8 @@ final class Pixonaut
 
     /**
      * The PSR-7 request for a prepared request, for a host that sends several
-     * at once with its own HTTP stack; pass each response to `handle()`.
+     * at once with its own HTTP stack; pass each response to `handle()`, and
+     * each request that got none to `handleFailure()`.
      * Calls the listener's `before()`.
      *
      * @throws ApiException             `not_connected` when the operation needs a credential the host does not hold.
@@ -225,6 +223,18 @@ final class Pixonaut
         }
 
         return $outcome;
+    }
+
+    /**
+     * The error for a request built with `toPsrRequest()` that got no
+     * response, with the same mapping as `send()`: `transport_failed`,
+     * retryable, the failure as its previous exception. Calls the listener's
+     * `after()`. Returned rather than thrown, so a host reading a batch can
+     * go on with the other answers.
+     */
+    public function handleFailure(PreparedRequest $request, ClientExceptionInterface $failure): ApiException
+    {
+        return $this->raise($this->transportFailed($this->catalogue->operation($request->operation), $request, $failure));
     }
 
     /**
@@ -368,6 +378,19 @@ final class Pixonaut
     }
 
     /**
+     * The error for a request that got no answer, or one cut short, the
+     * listener's `after()` called.
+     */
+    private function transportFailed(Operation $operation, PreparedRequest $request, ClientExceptionInterface|RuntimeException $failure): ApiException
+    {
+        $error = ErrorMapper::transportFailed($operation, $failure);
+        // The PSR-18 exception may carry the request, credential included.
+        $this->listener->after($request, null, ErrorMapper::withoutPrevious($error));
+
+        return $error;
+    }
+
+    /**
      * The result of a response, or the error it carries, the deprecation
      * noted and the listener's `after()` called.
      */
@@ -393,10 +416,7 @@ final class Pixonaut
         } catch (RuntimeException $failure) {
             // A client that streams the body, as Symfony's does, reports a
             // connection cut mid-answer here rather than from sendRequest().
-            $error = ErrorMapper::transportFailed($operation, $failure);
-            $this->listener->after($request, null, ErrorMapper::withoutPrevious($error));
-
-            return $error;
+            return $this->transportFailed($operation, $request, $failure);
         }
         if ($success) {
             // A success that is not what the operation answers, e.g. a proxy's page.
