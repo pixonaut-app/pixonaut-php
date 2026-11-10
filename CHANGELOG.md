@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/pixonaut-app/pixonaut-php/compare/v3.0.0...v3.1.0) (2026-11-10)
+
+
+### Features
+
+* map a batched request that got no response ([#29](https://github.com/pixonaut-app/pixonaut-php/issues/29)) ([076dee4](https://github.com/pixonaut-app/pixonaut-php/commit/076dee487c25068212645f451c09c8458d255070))
+
 ## [3.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v2.0.1...v3.0.0) (2026-11-10)
 
 Targets the Pixonaut API 3.0.0.
