@@ -34573,6 +34573,7 @@ Pixonaut\Sdk\Pixonaut::designerLinks(): Pixonaut\Sdk\Generated\Resource\Designer
 Pixonaut\Sdk\Pixonaut::designs(): Pixonaut\Sdk\Generated\Resource\Designs
 Pixonaut\Sdk\Pixonaut::events(): Pixonaut\Sdk\Generated\Resource\Events
 Pixonaut\Sdk\Pixonaut::handle(Pixonaut\Sdk\Http\PreparedRequest $request, Psr\Http\Message\ResponseInterface $response): Pixonaut\Sdk\Http\Result
+Pixonaut\Sdk\Pixonaut::handleFailure(Pixonaut\Sdk\Http\PreparedRequest $request, Psr\Http\Client\ClientExceptionInterface $failure): Pixonaut\Sdk\Exception\ApiException
 Pixonaut\Sdk\Pixonaut::orders(): Pixonaut\Sdk\Generated\Resource\Orders
 Pixonaut\Sdk\Pixonaut::pixel(): Pixonaut\Sdk\Generated\Resource\Pixel
 Pixonaut\Sdk\Pixonaut::prepare(string $operation, array $path = [], array $query = [], ?array $body = null, ?string $idempotencyKey = null, array $headers = []): Pixonaut\Sdk\Http\PreparedRequest
