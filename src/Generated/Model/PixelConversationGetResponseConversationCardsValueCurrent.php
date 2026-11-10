@@ -23,10 +23,12 @@ final class PixelConversationGetResponseConversationCardsValueCurrent implements
     /**
      * @param string|null $name
      * @param list<string>|null $names
+     * @param list<string>|null $templates
      */
     public function __construct(
         public readonly ?string $name = null,
         public readonly ?array $names = null,
+        public readonly ?array $templates = null,
     ) {}
 
     /**
@@ -44,6 +46,11 @@ final class PixelConversationGetResponseConversationCardsValueCurrent implements
             names: array_key_exists('names', $data) ? Decode::list(
                 $data['names'],
                 $path . '.names',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
+            templates: array_key_exists('templates', $data) ? Decode::list(
+                $data['templates'],
+                $path . '.templates',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : null,
         );
@@ -70,6 +77,9 @@ final class PixelConversationGetResponseConversationCardsValueCurrent implements
         }
         if ($this->names !== null) {
             $data['names'] = $this->names;
+        }
+        if ($this->templates !== null) {
+            $data['templates'] = $this->templates;
         }
         return $data;
     }

@@ -21,10 +21,19 @@ final class StorageGetResponseCategoriesItemCategory
 
     public const PRINT_FILES = 'printFiles';
 
+    public const SCENES = 'scenes';
+
     public const SANDBOX = 'sandbox';
 
     /**
      * Every value this release knows.
      */
-    public const KNOWN = [self::ASSETS, self::CUSTOMER_UPLOADS, self::BLANK_PHOTOS, self::PRINT_FILES, self::SANDBOX];
+    public const KNOWN = [
+        self::ASSETS,
+        self::CUSTOMER_UPLOADS,
+        self::BLANK_PHOTOS,
+        self::PRINT_FILES,
+        self::SCENES,
+        self::SANDBOX,
+    ];
 }

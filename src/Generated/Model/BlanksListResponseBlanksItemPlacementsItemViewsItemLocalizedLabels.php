@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * What it is called per customer-facing language, by code: only the languages it has a name in; a language left out reads `label`. No two views of its placement and kind read the same in one language, ignoring case.
+ * What it is called per customer-facing language, by code; a language left out reads `label`. No two views of its placement and kind read the same in one language, ignoring case.
  *
  * Schema: `GET /v1/blanks answer 200: $.blanks[].placements[].views[].localizedLabels`.
  */

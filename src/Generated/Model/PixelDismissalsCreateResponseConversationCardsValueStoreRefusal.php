@@ -20,10 +20,16 @@ final class PixelDismissalsCreateResponseConversationCardsValueStoreRefusal impl
      */
     private ?array $decoded = null;
 
+    /**
+     * @param int|null $variation
+     * @param bool|null $variationUnknown
+     */
     public function __construct(
         public readonly string $message,
         public readonly string $store,
         public readonly bool $storesOwnWords,
+        public readonly ?int $variation = null,
+        public readonly ?bool $variationUnknown = null,
     ) {}
 
     /**
@@ -40,6 +46,8 @@ final class PixelDismissalsCreateResponseConversationCardsValueStoreRefusal impl
             message: Decode::string(Decode::required($data, 'message', $path), $path . '.message'),
             store: Decode::string(Decode::required($data, 'store', $path), $path . '.store'),
             storesOwnWords: Decode::bool(Decode::required($data, 'storesOwnWords', $path), $path . '.storesOwnWords'),
+            variation: array_key_exists('variation', $data) ? Decode::int($data['variation'], $path . '.variation') : null,
+            variationUnknown: array_key_exists('variationUnknown', $data) ? Decode::bool($data['variationUnknown'], $path . '.variationUnknown') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -62,6 +70,12 @@ final class PixelDismissalsCreateResponseConversationCardsValueStoreRefusal impl
         $data['message'] = $this->message;
         $data['store'] = $this->store;
         $data['storesOwnWords'] = $this->storesOwnWords;
+        if ($this->variation !== null) {
+            $data['variation'] = $this->variation;
+        }
+        if ($this->variationUnknown !== null) {
+            $data['variationUnknown'] = $this->variationUnknown;
+        }
         return $data;
     }
 }

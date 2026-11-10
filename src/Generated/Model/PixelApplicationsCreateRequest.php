@@ -21,7 +21,7 @@ final class PixelApplicationsCreateRequest implements Model
     private ?array $decoded = null;
 
     /**
-     * @param bool|null $dontAskAgain Don't ask again, on a card that spends credits: turns "Confirm before spending credits" off, so later spends are applied without a card. Refused for any other card, which always asks.
+     * @param bool|null $dontAskAgain Don't ask again, on a card that spends credits: turns "Confirm before spending credits" off, so later spends are applied without a card. On a card that creates or updates in a connected store: later writes of that kind to that store are applied without a card. Refused for any other card, which always asks.
      */
     public function __construct(
         public readonly string $cardId,

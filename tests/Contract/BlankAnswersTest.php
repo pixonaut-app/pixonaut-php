@@ -12,8 +12,9 @@ use stdClass;
 /**
  * A blank as the API answers it: no blank-wide `photoSource`, each view
  * saying its own `source` and `position`, one blank's `order` mixing stored
- * views and scenes, placements and print areas that fold. Every answer is one
- * the spec allows (the fake checks it), and the SDK reads it.
+ * views and scenes, placements and print areas that fold, print areas with a
+ * shape. Every answer is one the spec allows (the fake checks it), and the SDK
+ * reads it.
  */
 final class BlankAnswersTest extends TestCase
 {
@@ -21,6 +22,9 @@ final class BlankAnswersTest extends TestCase
 
     /** A print method no release names yet: the field stays a string. */
     private const UNKNOWN_PRINT_METHOD = 'foil-transfer';
+
+    /** An outline in fractions of the print area, with one cut-out. */
+    private const ROUNDED_SHAPE = 'M0.1 0C0 0 0 0.1 0 0.1V0.9C0 1 0.1 1 0.1 1H0.9C1 1 1 0.9 1 0.9V0.1C1 0 0.9 0 0.9 0Z M0.4 0.4H0.6V0.6H0.4Z';
 
     public function testAListOfBlanksWithoutAPhotoSourceIsRead(): void
     {
@@ -62,6 +66,23 @@ final class BlankAnswersTest extends TestCase
         );
         self::assertSame(20.0, $blank->placements[0]->foldMm);
         self::assertSame(15.0, $blank->placements[0]->areas[0]->foldMm ?? null);
+    }
+
+    public function testAPrintAreaWithAShapeIsRead(): void
+    {
+        $client = new ContractClient();
+        $answer = self::example('blanks.get');
+        self::withPhotoSources($answer);
+        $area = self::items(self::items($answer->placements)[0]->areas)[0];
+        $area->shape = (object) ['dFrac' => self::ROUNDED_SHAPE, 'cutByPrintShop' => true];
+        $client->fake()->answer('blanks.get', self::HTTP_OK, $answer);
+
+        $blank = $client->pixonaut->blanks()->get('blank_tshirt');
+
+        self::assertSame([], $client->fake()->violations());
+        $shape = $blank->placements[0]->areas[0]->shape ?? null;
+        self::assertSame(self::ROUNDED_SHAPE, $shape?->dFrac);
+        self::assertTrue($shape->cutByPrintShop);
     }
 
     public function testABlankFromAnOlderApiThatStillSendsAPhotoSourceIsRead(): void

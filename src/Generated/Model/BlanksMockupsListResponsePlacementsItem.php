@@ -22,7 +22,7 @@ final class BlanksMockupsListResponsePlacementsItem implements Model
     private ?array $decoded = null;
 
     /**
-     * @param list<BlanksMockupsListResponsePlacementsItemAreasItem> $areas The placement's print area per row of the options the blank's print areas change with (`areasVaryBy` on the variants read): a design on a variant is printed at the area of that variant's row, at its usual size when none is chosen. Empty when the area is the same at every size.
+     * @param list<BlanksMockupsListResponsePlacementsItemAreasItem> $areas The placement's print area per row of the options the blank's print areas change with (`areasVaryBy` on the variants read): a design on a variant is printed at the area of that variant's row, at its usual size when none is chosen, and cut to the row's shape. Empty when the area is the same at every size.
      * @param string $coverage `full` when a print covers the placement's whole area, `within` when it is placed inside it.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemCoverage}.
      * @param list<BlanksMockupsListResponsePlacementsItemViewsItem> $views
