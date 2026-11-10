@@ -24,7 +24,7 @@ final class BlanksMockupsListResponseViewsItemRegionsItemMesh implements Model
 
     /**
      * @param list<list<list<float>>> $points The rows of control points, from the print's top edge.
-     * @param bool|null $cut The points draw a shape to cut the print to (CONTEXT.md → Region cut) rather than a mesh to bend it through: the print is laid flat over the box the points span, at its own proportions and filling it, and everything outside the shape the outer points draw is cut away. Absent, the print is warped through the mesh.
+     * @param bool|null $cut The points draw a shape to cut the print to rather than a mesh to bend it through: the print is laid flat over the box the points span, at its own proportions and filling it, and everything outside the shape the outer points draw is cut away. Absent, the print is warped through the mesh.
      */
     public function __construct(
         public readonly array $points,

@@ -19,7 +19,7 @@ final class PixelConversationGetResponseConversationMessagesItemUserContentOptio
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTemplateMockup|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfDesign|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTrial|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTemplate|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfAsset|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfUpload|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfDesignMockup
+     * @return PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTemplateMockup|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfDesign|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTrial|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfSceneCandidate|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTemplate|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfAsset|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfUpload|PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfDesignMockup
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
@@ -43,6 +43,11 @@ final class PixelConversationGetResponseConversationMessagesItemUserContentOptio
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTrial => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTrial::fromArray(Decode::object($v, $p), $p),
                     1003,
                     ['kind' => 'trial'],
+                ],
+                [
+                    static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfSceneCandidate => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfSceneCandidate::fromArray(Decode::object($v, $p), $p),
+                    1003,
+                    ['kind' => 'scene_candidate'],
                 ],
                 [
                     static fn(mixed $v, string $p): PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTemplate => PixelConversationGetResponseConversationMessagesItemUserContentOption2ItemToolResultContentOption2ItemPictureOfTemplate::fromArray(Decode::object($v, $p), $p),

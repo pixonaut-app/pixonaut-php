@@ -31,6 +31,7 @@ final class BlanksGetResponsePlacementsItemAreasItem implements Model
      * @param int|null $dpi Print resolution on the row in dots per inch. Omitted, the placement's.
      * @param float|null $foldMm How far in from the trim the product folds on the row, in millimetres. Omitted, the placement's.
      * @param float|null $safeAreaMm Safe area inside the trim on the row, in millimetres, 0 to 50. Omitted, the placement's.
+     * @param BlanksGetResponsePlacementsItemAreasItemShape|null $shape Where on the product a print may go on the row, such as one phone model's camera opening: as the placement's `shape`, in fractions of the row's print area. Omitted, the placement's.
      */
     public function __construct(
         public readonly float $heightMm,
@@ -42,6 +43,7 @@ final class BlanksGetResponsePlacementsItemAreasItem implements Model
         public readonly ?int $dpi = null,
         public readonly ?float $foldMm = null,
         public readonly ?float $safeAreaMm = null,
+        public readonly ?BlanksGetResponsePlacementsItemAreasItemShape $shape = null,
     ) {}
 
     /**
@@ -68,6 +70,7 @@ final class BlanksGetResponsePlacementsItemAreasItem implements Model
             dpi: array_key_exists('dpi', $data) ? Decode::int($data['dpi'], $path . '.dpi') : null,
             foldMm: array_key_exists('foldMm', $data) ? Decode::float($data['foldMm'], $path . '.foldMm') : null,
             safeAreaMm: array_key_exists('safeAreaMm', $data) ? Decode::float($data['safeAreaMm'], $path . '.safeAreaMm') : null,
+            shape: array_key_exists('shape', $data) ? BlanksGetResponsePlacementsItemAreasItemShape::fromArray(Decode::object($data['shape'], $path . '.shape'), $path . '.shape') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -103,6 +106,9 @@ final class BlanksGetResponsePlacementsItemAreasItem implements Model
         }
         if ($this->safeAreaMm !== null) {
             $data['safeAreaMm'] = $this->safeAreaMm;
+        }
+        if ($this->shape !== null) {
+            $data['shape'] = Encode::model($this->shape);
         }
         return $data;
     }

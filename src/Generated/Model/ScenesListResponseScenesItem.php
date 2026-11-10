@@ -26,6 +26,7 @@ final class ScenesListResponseScenesItem implements Model
      * @param bool $hasPerson Whether a person is in the scene.
      * @param ScenesListResponseScenesItemLayerUrls|null $layerUrls The passes the preview picture is drawn through, each its size: where a garment area's print lands, and how a colour paints its grey base. Null when the scene has no preview passes.
      * @param string $person Who is in the scene, or `none`: one of the selects a stock item's scenes are chosen by.
+     * @param bool $personSwappable Whether a composition from this scene may describe a new person: the scene's person can be replaced. Never a workspace's own scene.
      * @param ScenesListResponseScenesItemPictureSizePx|null $pictureSizePx The preview picture's size, which each of `layerUrls` shares; null when it has none.
      * @param string|null $pictureUrl A link to the scene's picture, opening with no key.
      * @param string $pose How the product is shown, such as `front` or `back`: one of the selects a stock item's scenes are chosen by.
@@ -33,6 +34,7 @@ final class ScenesListResponseScenesItem implements Model
      * @param string $stockItem The stock item the scene shows.
      * @param bool $studio Whether this is a studio scene: the product alone, on a plain ground.
      * @param bool $takesDye Whether a variant's colour paints the scene's grey base. One that does not shows a material that is the point, such as bare metal, on every variant as photographed.
+     * @param bool $workspace Whether the scene is this workspace's own, composed from a stock scene, rather than Pixonaut's.
      */
     public function __construct(
         public readonly array $areas,
@@ -41,6 +43,7 @@ final class ScenesListResponseScenesItem implements Model
         public readonly string $label,
         public readonly ?ScenesListResponseScenesItemLayerUrls $layerUrls,
         public readonly string $person,
+        public readonly bool $personSwappable,
         public readonly ?ScenesListResponseScenesItemPictureSizePx $pictureSizePx,
         public readonly ?string $pictureUrl,
         public readonly string $pose,
@@ -48,6 +51,7 @@ final class ScenesListResponseScenesItem implements Model
         public readonly string $stockItem,
         public readonly bool $studio,
         public readonly bool $takesDye,
+        public readonly bool $workspace,
     ) {}
 
     /**
@@ -75,6 +79,7 @@ final class ScenesListResponseScenesItem implements Model
                 static fn(mixed $v, string $p): ScenesListResponseScenesItemLayerUrls => ScenesListResponseScenesItemLayerUrls::fromArray(Decode::object($v, $p), $p),
             ),
             person: Decode::string(Decode::required($data, 'person', $path), $path . '.person'),
+            personSwappable: Decode::bool(Decode::required($data, 'personSwappable', $path), $path . '.personSwappable'),
             pictureSizePx: Decode::nullable(
                 Decode::required($data, 'pictureSizePx', $path),
                 $path . '.pictureSizePx',
@@ -90,6 +95,7 @@ final class ScenesListResponseScenesItem implements Model
             stockItem: Decode::string(Decode::required($data, 'stockItem', $path), $path . '.stockItem'),
             studio: Decode::bool(Decode::required($data, 'studio', $path), $path . '.studio'),
             takesDye: Decode::bool(Decode::required($data, 'takesDye', $path), $path . '.takesDye'),
+            workspace: Decode::bool(Decode::required($data, 'workspace', $path), $path . '.workspace'),
         );
         $model->decoded = $data;
         return $model;
@@ -115,6 +121,7 @@ final class ScenesListResponseScenesItem implements Model
         $data['label'] = $this->label;
         $data['layerUrls'] = $this->layerUrls === null ? null : Encode::model($this->layerUrls);
         $data['person'] = $this->person;
+        $data['personSwappable'] = $this->personSwappable;
         $data['pictureSizePx'] = $this->pictureSizePx === null ? null : Encode::model($this->pictureSizePx);
         $data['pictureUrl'] = $this->pictureUrl;
         $data['pose'] = $this->pose;
@@ -122,6 +129,7 @@ final class ScenesListResponseScenesItem implements Model
         $data['stockItem'] = $this->stockItem;
         $data['studio'] = $this->studio;
         $data['takesDye'] = $this->takesDye;
+        $data['workspace'] = $this->workspace;
         return $data;
     }
 }

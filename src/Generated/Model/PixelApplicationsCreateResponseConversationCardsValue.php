@@ -34,6 +34,7 @@ final class PixelApplicationsCreateResponseConversationCardsValue implements Mod
      * @param list<PixelApplicationsCreateResponseConversationCardsValueShowcasesItem>|null $showcases
      * @param PixelApplicationsCreateResponseConversationCardsValueStoreRefusal|null $storeRefusal
      * @param string|null $upscaleId
+     * @param list<string>|null $upscaleIds
      */
     public function __construct(
         public readonly string $status,
@@ -49,6 +50,7 @@ final class PixelApplicationsCreateResponseConversationCardsValue implements Mod
         public readonly ?array $showcases = null,
         public readonly ?PixelApplicationsCreateResponseConversationCardsValueStoreRefusal $storeRefusal = null,
         public readonly ?string $upscaleId = null,
+        public readonly ?array $upscaleIds = null,
     ) {}
 
     /**
@@ -87,6 +89,11 @@ final class PixelApplicationsCreateResponseConversationCardsValue implements Mod
             ) : null,
             storeRefusal: array_key_exists('storeRefusal', $data) ? PixelApplicationsCreateResponseConversationCardsValueStoreRefusal::fromArray(Decode::object($data['storeRefusal'], $path . '.storeRefusal'), $path . '.storeRefusal') : null,
             upscaleId: array_key_exists('upscaleId', $data) ? Decode::string($data['upscaleId'], $path . '.upscaleId') : null,
+            upscaleIds: array_key_exists('upscaleIds', $data) ? Decode::list(
+                $data['upscaleIds'],
+                $path . '.upscaleIds',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -146,6 +153,9 @@ final class PixelApplicationsCreateResponseConversationCardsValue implements Mod
         }
         if ($this->upscaleId !== null) {
             $data['upscaleId'] = $this->upscaleId;
+        }
+        if ($this->upscaleIds !== null) {
+            $data['upscaleIds'] = $this->upscaleIds;
         }
         return $data;
     }

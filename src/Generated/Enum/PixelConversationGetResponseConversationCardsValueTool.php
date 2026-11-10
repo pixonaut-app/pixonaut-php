@@ -127,6 +127,8 @@ final class PixelConversationGetResponseConversationCardsValueTool
 
     public const UPSCALE_IMAGE = 'upscale_image';
 
+    public const UPSCALE_IMAGES = 'upscale_images';
+
     public const REMOVE_BACKGROUND = 'remove_background';
 
     public const MASK_PICTURE = 'mask_picture';
@@ -134,6 +136,14 @@ final class PixelConversationGetResponseConversationCardsValueTool
     public const ESTIMATE_DEPTH = 'estimate_depth';
 
     public const GENERATE_LAYER_IMAGE = 'generate_layer_image';
+
+    public const GENERATE_BLANK_PHOTOS = 'generate_blank_photos';
+
+    public const COMPOSE_SCENE = 'compose_scene';
+
+    public const KEEP_SCENE_CANDIDATE = 'keep_scene_candidate';
+
+    public const DISCARD_SCENE_COMPOSITION = 'discard_scene_composition';
 
     public const UPDATE_CREDIT_CONFIRMATION = 'update_credit_confirmation';
 
@@ -301,6 +311,10 @@ final class PixelConversationGetResponseConversationCardsValueTool
 
     public const LINK_STORE_PRODUCT = 'link_store_product';
 
+    public const SET_STORE_VARIATION_VARIANTS = 'set_store_variation_variants';
+
+    public const SET_STORE_PRODUCT_SHOWCASES = 'set_store_product_showcases';
+
     /**
      * Every value this release knows.
      */
@@ -362,10 +376,15 @@ final class PixelConversationGetResponseConversationCardsValueTool
         self::REVOKE_SHARE_LINK,
         self::GENERATE_IMAGE,
         self::UPSCALE_IMAGE,
+        self::UPSCALE_IMAGES,
         self::REMOVE_BACKGROUND,
         self::MASK_PICTURE,
         self::ESTIMATE_DEPTH,
         self::GENERATE_LAYER_IMAGE,
+        self::GENERATE_BLANK_PHOTOS,
+        self::COMPOSE_SCENE,
+        self::KEEP_SCENE_CANDIDATE,
+        self::DISCARD_SCENE_COMPOSITION,
         self::UPDATE_CREDIT_CONFIRMATION,
         self::RESTORE_TEMPLATE_REVISION,
         self::DELETE_TEMPLATE,
@@ -449,5 +468,7 @@ final class PixelConversationGetResponseConversationCardsValueTool
         self::UPDATE_STORE_TAG,
         self::DELETE_STORE_TAG,
         self::LINK_STORE_PRODUCT,
+        self::SET_STORE_VARIATION_VARIANTS,
+        self::SET_STORE_PRODUCT_SHOWCASES,
     ];
 }
