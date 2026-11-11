@@ -35,6 +35,7 @@ return [
         'Assets' => 'assets',
         'Automations' => 'automations',
         'Blanks' => 'blanks',
+        'Catalogue' => 'printshops',
         'Designs' => 'designs',
         'Events' => 'events',
         'Orders' => 'orders',
@@ -83,6 +84,9 @@ return [
         // A noun alone does not say the method lists.
         'orders.rerouteTargets' => 'listRerouteTargets',
         'printshopConnections.list' => 'listConnections',
+        // The printshop's catalogue is on its resource, beside its connections.
+        'printshopCatalogueProducts.list' => 'listCatalogueProducts',
+        'printshopCatalogueProducts.importBlank' => 'importCatalogueProduct',
         // `createPrintOrder` would read as making a print.
         'prints.orders.create' => 'createForPrint',
         // Every round shape the picture holds; a status, not a verb.

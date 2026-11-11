@@ -21,7 +21,7 @@ final class WebhookEvent
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return AssetCreatedEvent|AssetDeletedEvent|AssetUpdatedEvent|AutomationWebhookEvent|BlankCreatedEvent|BlankDeletedEvent|BlankDriftedEvent|BlankRestoredEvent|BlankUpdatedEvent|CreditsLowEvent|DesignApprovalScheduledEvent|DesignApprovedEvent|DesignChangesRequestedEvent|DesignCommittedEvent|DesignDeletedEvent|DesignDeliveryCapturedEvent|DesignDuplicatedEvent|DesignEditedEvent|DesignPersonalDataErasedEvent|DesignRejectedEvent|InkCreatedEvent|InkDeletedEvent|InkUpdatedEvent|OrderCancelledEvent|OrderCreatedEvent|OrderDeliveryChangedEvent|OrderFailedEvent|OrderHeldEvent|OrderReleasedEvent|OrderReroutedEvent|OrderStatusChangedEvent|OrderSubmittedEvent|OrderTrackingAddedEvent|OrderTrackingChangedEvent|OrderBalanceEmptyEvent|PaletteCreatedEvent|PaletteDeletedEvent|PaletteUpdatedEvent|PrintCompletedEvent|PrintCreatedEvent|PrintFailedEvent|PrintshopConnectedEvent|PrintshopDeletedEvent|PrintshopDisconnectedEvent|PrintshopReconnectedEvent|PrintshopRestoredEvent|PrintshopUpdatedEvent|RunCancelledEvent|RunCompletedEvent|RunExhaustedEvent|RunFailedEvent|RunStartedEvent|ShapeCreatedEvent|ShapeDeletedEvent|ShapeUpdatedEvent|ShareLinkRegeneratedEvent|ShareLinkRevokedEvent|StoreAccessOffEvent|StoreAccessRequestedEvent|TemplateDeletedEvent|TemplateLiveChangedEvent|TemplatePublishedEvent|TextMessagesLowEvent|WebhookPingEvent|\Pixonaut\Sdk\Webhooks\UnknownEvent
+     * @return AssetCreatedEvent|AssetDeletedEvent|AssetUpdatedEvent|AutomationWebhookEvent|BlankCreatedEvent|BlankDeletedEvent|BlankDriftedEvent|BlankRestoredEvent|BlankUpdatedEvent|CreditsLowEvent|DesignApprovalScheduledEvent|DesignApprovedEvent|DesignChangesRequestedEvent|DesignCommittedEvent|DesignDeletedEvent|DesignDeliveryCapturedEvent|DesignDuplicatedEvent|DesignEditedEvent|DesignPersonalDataErasedEvent|DesignRejectedEvent|DesignUnapprovedEvent|InkCreatedEvent|InkDeletedEvent|InkUpdatedEvent|OrderCancelledEvent|OrderCreatedEvent|OrderDeliveryChangedEvent|OrderFailedEvent|OrderHeldEvent|OrderReleasedEvent|OrderReroutedEvent|OrderStatusChangedEvent|OrderSubmittedEvent|OrderTrackingAddedEvent|OrderTrackingChangedEvent|OrderBalanceEmptyEvent|PaletteCreatedEvent|PaletteDeletedEvent|PaletteUpdatedEvent|PrintCompletedEvent|PrintCreatedEvent|PrintFailedEvent|PrintshopConnectedEvent|PrintshopDeletedEvent|PrintshopDisconnectedEvent|PrintshopReconnectedEvent|PrintshopRestoredEvent|PrintshopUpdatedEvent|RunCancelledEvent|RunCompletedEvent|RunExhaustedEvent|RunFailedEvent|RunStartedEvent|ShapeCreatedEvent|ShapeDeletedEvent|ShapeUpdatedEvent|ShareLinkRegeneratedEvent|ShareLinkRevokedEvent|StoreAccessOffEvent|StoreAccessRequestedEvent|TemplateDeletedEvent|TemplateLiveChangedEvent|TemplateLowResolutionEvent|TemplatePublishedEvent|TemplateRenamedEvent|TextMessagesLowEvent|WebhookPingEvent|\Pixonaut\Sdk\Webhooks\UnknownEvent
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
@@ -50,6 +50,7 @@ final class WebhookEvent
             'design.edited' => DesignEditedEvent::fromArray(Decode::object($data, $path), $path),
             'design.personal_data_erased' => DesignPersonalDataErasedEvent::fromArray(Decode::object($data, $path), $path),
             'design.rejected' => DesignRejectedEvent::fromArray(Decode::object($data, $path), $path),
+            'design.unapproved' => DesignUnapprovedEvent::fromArray(Decode::object($data, $path), $path),
             'ink.created' => InkCreatedEvent::fromArray(Decode::object($data, $path), $path),
             'ink.deleted' => InkDeletedEvent::fromArray(Decode::object($data, $path), $path),
             'ink.updated' => InkUpdatedEvent::fromArray(Decode::object($data, $path), $path),
@@ -91,7 +92,9 @@ final class WebhookEvent
             'store_access.requested' => StoreAccessRequestedEvent::fromArray(Decode::object($data, $path), $path),
             'template.deleted' => TemplateDeletedEvent::fromArray(Decode::object($data, $path), $path),
             'template.live_changed' => TemplateLiveChangedEvent::fromArray(Decode::object($data, $path), $path),
+            'template.low_resolution' => TemplateLowResolutionEvent::fromArray(Decode::object($data, $path), $path),
             'template.published' => TemplatePublishedEvent::fromArray(Decode::object($data, $path), $path),
+            'template.renamed' => TemplateRenamedEvent::fromArray(Decode::object($data, $path), $path),
             'text_messages.low' => TextMessagesLowEvent::fromArray(Decode::object($data, $path), $path),
             'webhook.ping' => WebhookPingEvent::fromArray(Decode::object($data, $path), $path),
             default => \Pixonaut\Sdk\Webhooks\UnknownEvent::fromArray(Decode::object($data, $path), $path),

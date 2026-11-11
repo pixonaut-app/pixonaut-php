@@ -21,11 +21,13 @@ final class BlanksVariantsListResponseOptionsItemAppearancesValueImage implement
     private ?array $decoded = null;
 
     /**
+     * @param string $mime The picture's type, as `url` serves it: `image/png`, `image/jpeg` or `image/webp`.
      * @param string $url The picture, opened with no key. It stays valid for at least 30 days and at most 60, and any cache may keep it that long.
      */
     public function __construct(
         public readonly string $assetId,
         public readonly string $kind,
+        public readonly string $mime,
         public readonly string $url,
     ) {}
 
@@ -42,6 +44,7 @@ final class BlanksVariantsListResponseOptionsItemAppearancesValueImage implement
         $model = new self(
             assetId: Decode::string(Decode::required($data, 'assetId', $path), $path . '.assetId'),
             kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
+            mime: Decode::string(Decode::required($data, 'mime', $path), $path . '.mime'),
             url: Decode::string(Decode::required($data, 'url', $path), $path . '.url'),
         );
         $model->decoded = $data;
@@ -64,6 +67,7 @@ final class BlanksVariantsListResponseOptionsItemAppearancesValueImage implement
         $data = [];
         $data['assetId'] = $this->assetId;
         $data['kind'] = $this->kind;
+        $data['mime'] = $this->mime;
         $data['url'] = $this->url;
         return $data;
     }

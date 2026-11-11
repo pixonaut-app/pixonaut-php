@@ -39,7 +39,9 @@ final class PrintsGetResponse implements Model
      * @param PrintsGetResponseJobTicket|null $jobTicket
      * @param string|null $layeredFallback Why the print has no `layered` file: it was asked for one, or that form was fetched, and the file could not be made or differed from the flat one. Null otherwise.
      * @param string|null $liveTextFallback Why the print has no `layered_live_text` file: it was asked for one, or that form was fetched, and the file could not be made or its live text differed from the flat one past the tolerance. Null otherwise.
+     * @param list<PrintsGetResponseLowResolutionItem> $lowResolution The images the workspace put in the design's template that this print prints below their recommended resolution, as it was made. Empty when none did, when the image was accepted as it is, or when the workspace turned these warnings off.
      * @param string|null $number The print number its files are named after, such as `PR-2026-381042`. Null for a print made before numbers were kept that never completed.
+     * @param PrintsGetResponseRemake|null $remake The print's latest remake from upscales of its template's pictures printed too soft (`POST /v1/prints/{id}/remake`), or null when it was never remade.
      * @param string $status Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintsGetResponseStatus}.
      * @param string|null $templateName The name of the template the print was made from. Null until the print completes.
      * @param int|null $templateVersion The version of that template the print was rendered from. Null until the print completes.
@@ -71,7 +73,9 @@ final class PrintsGetResponse implements Model
         public readonly bool $jobTicketStale,
         public readonly ?string $layeredFallback,
         public readonly ?string $liveTextFallback,
+        public readonly array $lowResolution,
         public readonly ?string $number,
+        public readonly ?PrintsGetResponseRemake $remake,
         public readonly string $status,
         public readonly ?string $templateName,
         public readonly ?int $templateVersion,
@@ -167,10 +171,20 @@ final class PrintsGetResponse implements Model
                 $path . '.liveTextFallback',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            lowResolution: Decode::list(
+                Decode::required($data, 'lowResolution', $path),
+                $path . '.lowResolution',
+                static fn(mixed $v, string $p): PrintsGetResponseLowResolutionItem => PrintsGetResponseLowResolutionItem::fromArray(Decode::object($v, $p), $p),
+            ),
             number: Decode::nullable(
                 Decode::required($data, 'number', $path),
                 $path . '.number',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
+            remake: Decode::nullable(
+                Decode::required($data, 'remake', $path),
+                $path . '.remake',
+                static fn(mixed $v, string $p): PrintsGetResponseRemake => PrintsGetResponseRemake::fromArray(Decode::object($v, $p), $p),
             ),
             status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
             templateName: Decode::nullable(
@@ -248,7 +262,12 @@ final class PrintsGetResponse implements Model
         $data['jobTicketStale'] = $this->jobTicketStale;
         $data['layeredFallback'] = $this->layeredFallback;
         $data['liveTextFallback'] = $this->liveTextFallback;
+        $data['lowResolution'] = array_map(
+            static fn(PrintsGetResponseLowResolutionItem $v): mixed => Encode::model($v),
+            $this->lowResolution,
+        );
         $data['number'] = $this->number;
+        $data['remake'] = $this->remake === null ? null : Encode::model($this->remake);
         $data['status'] = $this->status;
         $data['templateName'] = $this->templateName;
         $data['templateVersion'] = $this->templateVersion;

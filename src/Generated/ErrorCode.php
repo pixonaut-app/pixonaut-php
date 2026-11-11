@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The error codes the API 3.0.0 spec names: its refusals (`x-refusals`), and the `error`
+ * The error codes the API 4.0.0 spec names: its refusals (`x-refusals`), and the `error`
  * values of every error answer. The client's own codes are on `ApiException`.
  */
 final class ErrorCode
@@ -158,6 +158,16 @@ final class ErrorCode
     public const CARD_NOT_OPEN = 'card_not_open';
 
     /**
+     * Documented with status 503.
+     */
+    public const CATALOGUE_LOADING = 'catalogue_loading';
+
+    /**
+     * Documented with status 502, 503.
+     */
+    public const CATALOGUE_UNAVAILABLE = 'catalogue_unavailable';
+
+    /**
      * Documented with status 499.
      */
     public const CLIENT_CLOSED_REQUEST = 'client_closed_request';
@@ -181,6 +191,11 @@ final class ErrorCode
      * Documented with status 409.
      */
     public const CONNECTION_KEY = 'connection_key';
+
+    /**
+     * Documented with status 404.
+     */
+    public const CONNECTION_NOT_FOUND = 'connection_not_found';
 
     /**
      * Documented with status 422.
@@ -328,6 +343,11 @@ final class ErrorCode
     public const DUPLICATE_CATEGORY = 'duplicate_category';
 
     /**
+     * Documented with status 409.
+     */
+    public const DUPLICATE_NAME = 'duplicate_name';
+
+    /**
      * Documented with status 422.
      */
     public const DUPLICATE_PLACEMENT = 'duplicate_placement';
@@ -433,7 +453,7 @@ final class ErrorCode
     public const IDEMPOTENCY_KEY_REUSED = 'idempotency_key_reused';
 
     /**
-     * Documented with status 500.
+     * Documented with status 500, 502, 503.
      */
     public const IMPORT_FAILED = 'import_failed';
 
@@ -618,6 +638,16 @@ final class ErrorCode
     public const LOGO_REFERENCED = 'logo_referenced';
 
     /**
+     * Documented with status 500.
+     */
+    public const LOOKUP_FAILED = 'lookup_failed';
+
+    /**
+     * Documented with status 409.
+     */
+    public const LOW_RESOLUTION = 'low_resolution';
+
+    /**
      * Documented with status 404.
      */
     public const MACHINE_PROFILE_NOT_FOUND = 'machine_profile_not_found';
@@ -713,9 +743,24 @@ final class ErrorCode
     public const MOCKUP_WARP_UNREADABLE = 'mockup_warp_unreadable';
 
     /**
+     * Documented with status 409.
+     */
+    public const NO_CREDENTIALS = 'no_credentials';
+
+    /**
      * Documented with status 404.
      */
     public const NO_PREVIEW_TABLES = 'no_preview_tables';
+
+    /**
+     * Documented with status 422.
+     */
+    public const NO_PRINTABLE_PLACEMENT = 'no_printable_placement';
+
+    /**
+     * Documented with status 422.
+     */
+    public const NO_PRINTSHOP_PHOTOS = 'no_printshop_photos';
 
     /**
      * Documented with status 400.
@@ -1188,9 +1233,24 @@ final class ErrorCode
     public const REVISION_CHANGED = 'revision_changed';
 
     /**
+     * Documented with status 409.
+     */
+    public const SANDBOX_TENANT = 'sandbox_tenant';
+
+    /**
      * Documented with status 422.
      */
     public const SAVED_ADDRESS_NOT_FOUND = 'saved_address_not_found';
+
+    /**
+     * Documented with status 422.
+     */
+    public const SCENE_NOT_FOUND = 'scene_not_found';
+
+    /**
+     * Documented with status 422.
+     */
+    public const SCENE_RETIRED = 'scene_retired';
 
     /**
      * Documented with status 409.
@@ -1271,6 +1331,16 @@ final class ErrorCode
      * Documented with status 400.
      */
     public const STATE_NEEDS_RETURN_URL = 'state_needs_return_url';
+
+    /**
+     * Documented with status 422.
+     */
+    public const STOCK_ITEM_COVERS_NO_PLACEMENT = 'stock_item_covers_no_placement';
+
+    /**
+     * Documented with status 422.
+     */
+    public const STOCK_ITEM_NOT_FOUND = 'stock_item_not_found';
 
     /**
      * Documented with status 507.
@@ -1497,11 +1567,14 @@ final class ErrorCode
         'call_not_pending' => [409],
         'cancel_unavailable' => [503],
         'card_not_open' => [409],
+        'catalogue_loading' => [503],
+        'catalogue_unavailable' => [502, 503],
         'client_closed_request' => [499],
         'composite_failed' => [500],
         'config_managed' => [409],
         'connection_endpoint' => [409],
         'connection_key' => [409],
+        'connection_not_found' => [404],
         'constraint_violation' => [422],
         'conversation_moved' => [409],
         'conversation_not_found' => [404],
@@ -1531,6 +1604,7 @@ final class ErrorCode
         'draft_invalid' => [422],
         'draft_refused' => [422],
         'duplicate_category' => [409],
+        'duplicate_name' => [409],
         'duplicate_placement' => [422],
         'embroidery_fee_unacknowledged' => [422],
         'empty_layout' => [422],
@@ -1552,7 +1626,7 @@ final class ErrorCode
         'forbidden' => [403],
         'idempotency_key_in_use' => [409],
         'idempotency_key_reused' => [422],
-        'import_failed' => [500],
+        'import_failed' => [500, 502, 503],
         'ink_changed' => [409],
         'ink_mask_missing' => [422],
         'input_too_large' => [500],
@@ -1589,6 +1663,8 @@ final class ErrorCode
         'locale_not_allowed' => [400],
         'lock_timeout' => [503],
         'logo_referenced' => [409],
+        'lookup_failed' => [500],
+        'low_resolution' => [409],
         'machine_profile_not_found' => [404],
         'member_link_required' => [401],
         'member_link_revoked' => [401],
@@ -1608,7 +1684,10 @@ final class ErrorCode
         'mockup_uv_unreadable' => [422],
         'mockup_uv_view_missing' => [500],
         'mockup_warp_unreadable' => [500],
+        'no_credentials' => [409],
         'no_preview_tables' => [404],
+        'no_printable_placement' => [422],
+        'no_printshop_photos' => [422],
         'no_session' => [400],
         'not_a_layout_proof' => [422],
         'not_a_picture' => [422],
@@ -1703,7 +1782,10 @@ final class ErrorCode
         'return_url_not_https' => [400],
         'return_url_off_store' => [400],
         'revision_changed' => [409],
+        'sandbox_tenant' => [409],
         'saved_address_not_found' => [422],
+        'scene_not_found' => [422],
+        'scene_retired' => [422],
         'sdk_outdated' => [409],
         'sdk_version_invalid' => [400],
         'secret_key_required' => [403],
@@ -1720,6 +1802,8 @@ final class ErrorCode
         'spot_plate_required' => [422],
         'stale_update' => [409],
         'state_needs_return_url' => [400],
+        'stock_item_covers_no_placement' => [422],
+        'stock_item_not_found' => [422],
         'storage_quota_exceeded' => [507],
         'store_access_request_stale' => [409],
         'subject_not_found' => [404],

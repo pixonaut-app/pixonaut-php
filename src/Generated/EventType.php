@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The event types the API 3.0.0 spec delivers to webhooks. The API may send a type
+ * The event types the API 4.0.0 spec delivers to webhooks. The API may send a type
  * added after this release: it decodes to `UnknownEvent`.
  */
 final class EventType
@@ -111,6 +111,11 @@ final class EventType
      * Delivered as `design.rejected`.
      */
     public const DESIGN_REJECTED = 'design.rejected';
+
+    /**
+     * Delivered as `design.unapproved`.
+     */
+    public const DESIGN_UNAPPROVED = 'design.unapproved';
 
     /**
      * Delivered as `ink.created`.
@@ -318,9 +323,19 @@ final class EventType
     public const TEMPLATE_LIVE_CHANGED = 'template.live_changed';
 
     /**
+     * Delivered as `template.low_resolution`.
+     */
+    public const TEMPLATE_LOW_RESOLUTION = 'template.low_resolution';
+
+    /**
      * Delivered as `template.published`.
      */
     public const TEMPLATE_PUBLISHED = 'template.published';
+
+    /**
+     * A published template's id was changed. `<oldId>@<version>` goes on reading the template under its new id, so a stored reference keeps working whether or not this arrives; new references use `newId`, and a store that receives it moves the ones it holds.
+     */
+    public const TEMPLATE_RENAMED = 'template.renamed';
 
     /**
      * Delivered as `text_messages.low`.
@@ -358,6 +373,7 @@ final class EventType
         self::DESIGN_EDITED,
         self::DESIGN_PERSONAL_DATA_ERASED,
         self::DESIGN_REJECTED,
+        self::DESIGN_UNAPPROVED,
         self::INK_CREATED,
         self::INK_DELETED,
         self::INK_UPDATED,
@@ -399,7 +415,9 @@ final class EventType
         self::STORE_ACCESS_REQUESTED,
         self::TEMPLATE_DELETED,
         self::TEMPLATE_LIVE_CHANGED,
+        self::TEMPLATE_LOW_RESOLUTION,
         self::TEMPLATE_PUBLISHED,
+        self::TEMPLATE_RENAMED,
         self::TEXT_MESSAGES_LOW,
         self::WEBHOOK_PING,
     ];

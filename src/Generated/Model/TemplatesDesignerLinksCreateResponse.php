@@ -33,6 +33,7 @@ final class TemplatesDesignerLinksCreateResponse implements Model
      * @param bool $printAreaFrame Whether a designer link's page draws the print area's frame; false for every other link.
      * @param string $token The link's token. Shown in this response only.
      * @param string $url The hosted designer the link opens, with `?lang=<locale>` when the link names a `locale`. A store sending every customer to one link adds `state=<value>` to it for each trip, 1 to 200 characters of `A–Z a–z 0–9 . _ ~ -`: the page returns that value as `state`, on approve and on cancel, in place of the link's own, and ignores one outside that form.
+     * @param list<TemplatesDesignerLinksCreateResponseLowResolutionItem>|null $lowResolution Each size a side offers that prints an image the workspace put in its template below its recommended resolution, for the merchant to see. Absent when there is none, and when the workspace turned these warnings off.
      * @param list<TemplatesDesignerLinksCreateResponseWarningsItem>|null $warnings What the link was made with that it is not built for, for whoever builds it; the shopper is shown none. `sides_over_recommended`: the link holds more than 4 sides. Each side is one more step on the hosted page, one more designer, canvas and photo set in the shopper's browser, and one more `proofToken[<key>]` on the return address. Absent when there is nothing to warn of.
      */
     public function __construct(
@@ -46,6 +47,7 @@ final class TemplatesDesignerLinksCreateResponse implements Model
         public readonly bool $printAreaFrame,
         public readonly string $token,
         public readonly string $url,
+        public readonly ?array $lowResolution = null,
         public readonly ?array $warnings = null,
     ) {}
 
@@ -90,6 +92,11 @@ final class TemplatesDesignerLinksCreateResponse implements Model
             printAreaFrame: Decode::bool(Decode::required($data, 'printAreaFrame', $path), $path . '.printAreaFrame'),
             token: Decode::string(Decode::required($data, 'token', $path), $path . '.token'),
             url: Decode::string(Decode::required($data, 'url', $path), $path . '.url'),
+            lowResolution: array_key_exists('lowResolution', $data) ? Decode::list(
+                $data['lowResolution'],
+                $path . '.lowResolution',
+                static fn(mixed $v, string $p): TemplatesDesignerLinksCreateResponseLowResolutionItem => TemplatesDesignerLinksCreateResponseLowResolutionItem::fromArray(Decode::object($v, $p), $p),
+            ) : null,
             warnings: array_key_exists('warnings', $data) ? Decode::list(
                 $data['warnings'],
                 $path . '.warnings',
@@ -124,6 +131,12 @@ final class TemplatesDesignerLinksCreateResponse implements Model
         $data['printAreaFrame'] = $this->printAreaFrame;
         $data['token'] = $this->token;
         $data['url'] = $this->url;
+        if ($this->lowResolution !== null) {
+            $data['lowResolution'] = array_map(
+                static fn(TemplatesDesignerLinksCreateResponseLowResolutionItem $v): mixed => Encode::model($v),
+                $this->lowResolution,
+            );
+        }
         if ($this->warnings !== null) {
             $data['warnings'] = array_map(
                 static fn(TemplatesDesignerLinksCreateResponseWarningsItem $v): mixed => Encode::model($v),

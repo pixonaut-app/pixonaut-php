@@ -139,6 +139,12 @@ final class PixelConversationGetResponseConversationCardsValueTool
 
     public const GENERATE_BLANK_PHOTOS = 'generate_blank_photos';
 
+    public const APPROVE_BLANK_PHOTOS = 'approve_blank_photos';
+
+    public const DENY_BLANK_PHOTOS = 'deny_blank_photos';
+
+    public const REDRAW_BLANK_PHOTOS = 'redraw_blank_photos';
+
     public const COMPOSE_SCENE = 'compose_scene';
 
     public const KEEP_SCENE_CANDIDATE = 'keep_scene_candidate';
@@ -315,6 +321,8 @@ final class PixelConversationGetResponseConversationCardsValueTool
 
     public const SET_STORE_PRODUCT_SHOWCASES = 'set_store_product_showcases';
 
+    public const SET_STORE_VARIATION_PRINT_SIZE = 'set_store_variation_print_size';
+
     /**
      * Every value this release knows.
      */
@@ -382,6 +390,9 @@ final class PixelConversationGetResponseConversationCardsValueTool
         self::ESTIMATE_DEPTH,
         self::GENERATE_LAYER_IMAGE,
         self::GENERATE_BLANK_PHOTOS,
+        self::APPROVE_BLANK_PHOTOS,
+        self::DENY_BLANK_PHOTOS,
+        self::REDRAW_BLANK_PHOTOS,
         self::COMPOSE_SCENE,
         self::KEEP_SCENE_CANDIDATE,
         self::DISCARD_SCENE_COMPOSITION,
@@ -470,5 +481,6 @@ final class PixelConversationGetResponseConversationCardsValueTool
         self::LINK_STORE_PRODUCT,
         self::SET_STORE_VARIATION_VARIANTS,
         self::SET_STORE_PRODUCT_SHOWCASES,
+        self::SET_STORE_VARIATION_PRINT_SIZE,
     ];
 }

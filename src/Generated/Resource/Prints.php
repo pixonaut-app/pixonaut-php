@@ -88,7 +88,7 @@ final class Prints
      * @param string|null $prefer `wait` answers once the print has rendered: `201` with its job ticket, or `render_failed`. Without it the print is answered `202` as soon as it is reserved, and renders after the answer.
      * @param string|null $idempotencyKey Your key for the request; a new UUID when null.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `already_printed`, `bad_request`, `db_error`, `design_erased`, `design_not_approved`, `design_not_found`, `external_ref_moved_to_order`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `not_found`, `origin_forbidden`, `payload_too_large`, `plan_limit_reached`, `quantity_moved_to_order`, `render_failed`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `already_printed`, `bad_request`, `db_error`, `design_erased`, `design_not_approved`, `design_not_found`, `external_ref_moved_to_order`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `low_resolution`, `not_found`, `origin_forbidden`, `payload_too_large`, `plan_limit_reached`, `quantity_moved_to_order`, `render_failed`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      * @throws InvalidArgumentException When the request does not fit the operation; nothing is sent.
      */
     public function create(PrintsCreateRequest $body, ?string $prefer = null, ?string $idempotencyKey = null): PrintsCreateResponse201|PrintsCreateResponse202
@@ -121,7 +121,7 @@ final class Prints
     /**
      * Sends a request from {@see prepareCreate()}, as prepared or restored with `PreparedRequest::fromArray()`.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `already_printed`, `bad_request`, `db_error`, `design_erased`, `design_not_approved`, `design_not_found`, `external_ref_moved_to_order`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `not_found`, `origin_forbidden`, `payload_too_large`, `plan_limit_reached`, `quantity_moved_to_order`, `render_failed`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `already_printed`, `bad_request`, `db_error`, `design_erased`, `design_not_approved`, `design_not_found`, `external_ref_moved_to_order`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `low_resolution`, `not_found`, `origin_forbidden`, `payload_too_large`, `plan_limit_reached`, `quantity_moved_to_order`, `render_failed`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      * @throws InvalidArgumentException When the request was prepared for another operation, or does not fit this one.
      */
     public function sendCreate(PreparedRequest $request): PrintsCreateResponse201|PrintsCreateResponse202

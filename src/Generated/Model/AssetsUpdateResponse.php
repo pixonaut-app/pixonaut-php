@@ -25,6 +25,7 @@ final class AssetsUpdateResponse implements Model
      * @param string|null $categoryId
      * @param float|null $heightPx
      * @param array<string, string> $localizedNames Its name per customer-facing language, by code; a language left out shows its own name.
+     * @param bool $lowResolutionAccepted Whether its resolution is accepted as it is: a template holding it is never warned about for printing it too soft.
      * @param string|null $name
      * @param string $role `picture`, or `blank-photo` for a blank's product photo, which is in no category and counted in no category or tag.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\AssetsUpdateResponseRole}.
@@ -39,6 +40,7 @@ final class AssetsUpdateResponse implements Model
         public readonly ?float $heightPx,
         public readonly string $id,
         public readonly array $localizedNames,
+        public readonly bool $lowResolutionAccepted,
         public readonly string $mime,
         public readonly ?string $name,
         public readonly string $role,
@@ -77,6 +79,7 @@ final class AssetsUpdateResponse implements Model
                 $path . '.localizedNames',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            lowResolutionAccepted: Decode::bool(Decode::required($data, 'lowResolutionAccepted', $path), $path . '.lowResolutionAccepted'),
             mime: Decode::string(Decode::required($data, 'mime', $path), $path . '.mime'),
             name: Decode::nullable(
                 Decode::required($data, 'name', $path),
@@ -121,6 +124,7 @@ final class AssetsUpdateResponse implements Model
         $data['heightPx'] = $this->heightPx;
         $data['id'] = $this->id;
         $data['localizedNames'] = Encode::object($this->localizedNames);
+        $data['lowResolutionAccepted'] = $this->lowResolutionAccepted;
         $data['mime'] = $this->mime;
         $data['name'] = $this->name;
         $data['role'] = $this->role;

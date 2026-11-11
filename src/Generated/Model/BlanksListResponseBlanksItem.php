@@ -27,6 +27,7 @@ final class BlanksListResponseBlanksItem implements Model
      * @param string|null $categoryId
      * @param BlanksListResponseBlanksItemCopiedFrom|null $copiedFrom The blank this one was copied to its printshop from, or null.
      * @param BlanksListResponseBlanksItemDeleted|null $deleted When and by whom the blank was deleted, or null for a blank that is not. A deleted blank is read-only: restore it to change it.
+     * @param BlanksListResponseBlanksItemGeneration|null $generation The draw a blank generated with AI waits on while it is `generating`, or while it is `importing` the catalogue product it is made as; null for any other blank.
      * @param string|null $importFailure The code a failed import failed with, such as `partner_failed` or `storage_quota_exceeded`; null unless `status` is `failed`.
      * @param string|null $machineProfileId
      * @param list<BlanksListResponseBlanksItemOptionsItem> $options The blank's options with their values, in the order the shopper sees them, a value no variant uses yet included. `axes` is their names.
@@ -36,7 +37,7 @@ final class BlanksListResponseBlanksItem implements Model
      * @param list<BlanksListResponseBlanksItemPlacementsItem> $placements The blank's placements: the areas a design is printed into. An update replaces the whole list, so send every placement to keep.
      * @param array<string, string>|null $referenceRow The row a design that names none is made at, such as {"Size": "M"}; null for none, when such a design reads each placement's own print area. Required when the print areas start to change with an option on a blank that has designs or designer links, which keep their size at it.
      * @param BlanksListResponseBlanksItemResolved $resolved Each inheritable field resolved, with where it comes from: the printshop and machine, and every placement's and photo's printing fields and preview looks, in the order of `placements`.
-     * @param string $status `importing` while the blank's import, from a printshop's catalogue or a CSV file, runs in the background: it has its name and nothing else yet. `failed` when that import failed for good (`importFailure` says why); remove it and import again. `ready` otherwise.
+     * @param string $status `importing` while the blank's import, from a printshop's catalogue or a CSV file, runs in the background: it has its name and nothing else yet. `generating` for a blank generated with AI until its photo is approved: `generation` says whether it is drawing, waits for the decision, or drew nothing. `failed` when an import failed for good (`importFailure` says why); remove it and import again. `ready` otherwise.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemStatus}.
      * @param string|null $stockItemKey The stock item the blank's scenes photograph; null for none.
      * @param BlanksListResponseBlanksItemBoundProduct|null $boundProduct The partner's product a bound blank (`partnerLocked`) is bound to, or null for a blank bound to none. Answered for one blank, never in a list.
@@ -57,6 +58,7 @@ final class BlanksListResponseBlanksItem implements Model
         public readonly float $createdAt,
         public readonly string $defaultPrintshopId,
         public readonly ?BlanksListResponseBlanksItemDeleted $deleted,
+        public readonly ?BlanksListResponseBlanksItemGeneration $generation,
         public readonly string $id,
         public readonly ?string $importFailure,
         public readonly ?string $machineProfileId,
@@ -120,6 +122,11 @@ final class BlanksListResponseBlanksItem implements Model
                 Decode::required($data, 'deleted', $path),
                 $path . '.deleted',
                 static fn(mixed $v, string $p): BlanksListResponseBlanksItemDeleted => BlanksListResponseBlanksItemDeleted::fromArray(Decode::object($v, $p), $p),
+            ),
+            generation: Decode::nullable(
+                Decode::required($data, 'generation', $path),
+                $path . '.generation',
+                static fn(mixed $v, string $p): BlanksListResponseBlanksItemGeneration => BlanksListResponseBlanksItemGeneration::fromArray(Decode::object($v, $p), $p),
             ),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             importFailure: Decode::nullable(
@@ -235,6 +242,7 @@ final class BlanksListResponseBlanksItem implements Model
         $data['createdAt'] = $this->createdAt;
         $data['defaultPrintshopId'] = $this->defaultPrintshopId;
         $data['deleted'] = $this->deleted === null ? null : Encode::model($this->deleted);
+        $data['generation'] = $this->generation === null ? null : Encode::model($this->generation);
         $data['id'] = $this->id;
         $data['importFailure'] = $this->importFailure;
         $data['machineProfileId'] = $this->machineProfileId;

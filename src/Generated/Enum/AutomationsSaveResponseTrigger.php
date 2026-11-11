@@ -23,6 +23,8 @@ final class AutomationsSaveResponseTrigger
 
     public const DESIGN_DELIVERY_CAPTURED = 'design.delivery_captured';
 
+    public const DESIGN_UNAPPROVED = 'design.unapproved';
+
     public const PRINT_COMPLETED = 'print.completed';
 
     public const PRINT_FAILED = 'print.failed';
@@ -37,6 +39,8 @@ final class AutomationsSaveResponseTrigger
 
     public const ORDER_DELIVERY_CHANGED = 'order.delivery_changed';
 
+    public const TEMPLATE_LOW_RESOLUTION = 'template.low_resolution';
+
     /**
      * Every value this release knows.
      */
@@ -45,6 +49,7 @@ final class AutomationsSaveResponseTrigger
         self::DESIGN_APPROVED,
         self::DESIGN_CHANGES_REQUESTED,
         self::DESIGN_DELIVERY_CAPTURED,
+        self::DESIGN_UNAPPROVED,
         self::PRINT_COMPLETED,
         self::PRINT_FAILED,
         self::ORDER_SUBMITTED,
@@ -52,5 +57,6 @@ final class AutomationsSaveResponseTrigger
         self::ORDER_FAILED,
         self::ORDER_CANCELLED,
         self::ORDER_DELIVERY_CHANGED,
+        self::TEMPLATE_LOW_RESOLUTION,
     ];
 }

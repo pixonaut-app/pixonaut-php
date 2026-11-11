@@ -31,6 +31,7 @@ final class AssetsGetResponse implements Model
      * @param float|null $heightPx
      * @param string $kind Values: {@see \Pixonaut\Sdk\Generated\Enum\AssetsGetResponseKind}.
      * @param array<string, string> $localizedNames Its name per customer-facing language, by code; a language left out shows its own name.
+     * @param bool $lowResolutionAccepted Whether its resolution is accepted as it is: a template holding it is never warned about for printing it too soft.
      * @param string|null $name
      * @param string|null $pictureUrl A link to a library picture's preview that opens with no key, for an hour or two. Null for an asset of another kind.
      * @param string $role `picture`, or `blank-photo` for a blank's product photo, which is in no category and counted in no category or tag.
@@ -55,6 +56,7 @@ final class AssetsGetResponse implements Model
         public readonly string $id,
         public readonly string $kind,
         public readonly array $localizedNames,
+        public readonly bool $lowResolutionAccepted,
         public readonly string $mime,
         public readonly ?string $name,
         public readonly ?string $pictureUrl,
@@ -120,6 +122,7 @@ final class AssetsGetResponse implements Model
                 $path . '.localizedNames',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            lowResolutionAccepted: Decode::bool(Decode::required($data, 'lowResolutionAccepted', $path), $path . '.lowResolutionAccepted'),
             mime: Decode::string(Decode::required($data, 'mime', $path), $path . '.mime'),
             name: Decode::nullable(
                 Decode::required($data, 'name', $path),
@@ -191,6 +194,7 @@ final class AssetsGetResponse implements Model
         $data['id'] = $this->id;
         $data['kind'] = $this->kind;
         $data['localizedNames'] = Encode::object($this->localizedNames);
+        $data['lowResolutionAccepted'] = $this->lowResolutionAccepted;
         $data['mime'] = $this->mime;
         $data['name'] = $this->name;
         $data['pictureUrl'] = $this->pictureUrl;

@@ -35,6 +35,7 @@ final class BlanksListResponseBlanksItemPlacementsItem implements Model
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemCoverage}.
      * @param int|null $dpi Print resolution in dots per inch. Omitted, its category's, else 300.
      * @param string|null $fillColour The `#rrggbb` colour an optional placement left undesigned is printed or delivered as. Null or omitted for none.
+     * @param BlanksListResponseBlanksItemPlacementsItemFlatLayout|null $flatLayout How the product is printed flat on one sheet and folded into shape, such as a folding box. Its print area is the sheet, printed edge to edge (`coverage` `full`) at one size. Null or omitted, the placement is printed as it lies.
      * @param float|null $foldMm How far in from the trim the product folds on every side, in millimetres, such as a canvas's wrap round its frame; the designer draws fold lines there. Omitted, no fold.
      * @param list<BlanksListResponseBlanksItemPlacementsItemGarmentsItem>|null $garments Where the placement sits on each stock item the blank's scenes show, one record per item: the item, a garment area of it, and the print's top left and width on it in millimetres. A scene whose item has no record draws nothing of the placement. Refused `placement_garment_area_unknown` for an unknown item or area, `placement_garment_outside_area` past the area.
      * @param BlanksListResponseBlanksItemPlacementsItemLinkWith|null $linkWith The placement it is linked with by default, such as a right sleeve with the left one: one design then drives both unless a designer link, an SDK mount or a design says otherwise. Null or omitted for none. A placement linked with one no longer on the blank is linked with none.
@@ -58,6 +59,7 @@ final class BlanksListResponseBlanksItemPlacementsItem implements Model
         public readonly ?string $coverage = null,
         public readonly ?int $dpi = null,
         public readonly ?string $fillColour = null,
+        public readonly ?BlanksListResponseBlanksItemPlacementsItemFlatLayout $flatLayout = null,
         public readonly ?float $foldMm = null,
         public readonly ?array $garments = null,
         public readonly ?BlanksListResponseBlanksItemPlacementsItemLinkWith $linkWith = null,
@@ -102,6 +104,11 @@ final class BlanksListResponseBlanksItemPlacementsItem implements Model
                 $data['fillColour'],
                 $path . '.fillColour',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
+            flatLayout: array_key_exists('flatLayout', $data) ? Decode::nullable(
+                $data['flatLayout'],
+                $path . '.flatLayout',
+                static fn(mixed $v, string $p): BlanksListResponseBlanksItemPlacementsItemFlatLayout => BlanksListResponseBlanksItemPlacementsItemFlatLayout::fromArray(Decode::object($v, $p), $p),
             ) : null,
             foldMm: array_key_exists('foldMm', $data) ? Decode::float($data['foldMm'], $path . '.foldMm') : null,
             garments: array_key_exists('garments', $data) ? Decode::list(
@@ -173,6 +180,9 @@ final class BlanksListResponseBlanksItemPlacementsItem implements Model
         }
         if ($this->fillColour !== null) {
             $data['fillColour'] = $this->fillColour;
+        }
+        if ($this->flatLayout !== null) {
+            $data['flatLayout'] = Encode::model($this->flatLayout);
         }
         if ($this->foldMm !== null) {
             $data['foldMm'] = $this->foldMm;

@@ -21,11 +21,13 @@ final class DesignEditedEventPayload implements Model
     private ?array $decoded = null;
 
     /**
+     * @param string|null $remadePrintId
      * @param int|null $restoredFrom
      */
     public function __construct(
         public readonly string $designId,
         public readonly int $revision,
+        public readonly ?string $remadePrintId = null,
         public readonly ?int $restoredFrom = null,
     ) {}
 
@@ -42,6 +44,7 @@ final class DesignEditedEventPayload implements Model
         $model = new self(
             designId: Decode::string(Decode::required($data, 'designId', $path), $path . '.designId'),
             revision: Decode::int(Decode::required($data, 'revision', $path), $path . '.revision'),
+            remadePrintId: array_key_exists('remadePrintId', $data) ? Decode::string($data['remadePrintId'], $path . '.remadePrintId') : null,
             restoredFrom: array_key_exists('restoredFrom', $data) ? Decode::int($data['restoredFrom'], $path . '.restoredFrom') : null,
         );
         $model->decoded = $data;
@@ -64,6 +67,9 @@ final class DesignEditedEventPayload implements Model
         $data = [];
         $data['designId'] = $this->designId;
         $data['revision'] = $this->revision;
+        if ($this->remadePrintId !== null) {
+            $data['remadePrintId'] = $this->remadePrintId;
+        }
         if ($this->restoredFrom !== null) {
             $data['restoredFrom'] = $this->restoredFrom;
         }

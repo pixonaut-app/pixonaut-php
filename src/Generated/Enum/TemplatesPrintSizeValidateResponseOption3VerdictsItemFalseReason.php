@@ -19,8 +19,10 @@ final class TemplatesPrintSizeValidateResponseOption3VerdictsItemFalseReason
 
     public const WRONG_RATIO = 'wrong_ratio';
 
+    public const LOW_RESOLUTION = 'low_resolution';
+
     /**
      * Every value this release knows.
      */
-    public const KNOWN = [self::TOO_LARGE, self::PRINT_SIZE_NOT_AREA, self::WRONG_RATIO];
+    public const KNOWN = [self::TOO_LARGE, self::PRINT_SIZE_NOT_AREA, self::WRONG_RATIO, self::LOW_RESOLUTION];
 }
