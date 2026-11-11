@@ -23,13 +23,13 @@ final class BlankAnswersTest extends TestCase
     /** A print method no release names yet: the field stays a string. */
     private const UNKNOWN_PRINT_METHOD = 'foil-transfer';
 
-    /** An outline in fractions of the print area, with one cut-out. */
     /** The highest pattern piece the spec lets a UV pass mark. */
     private const LAST_PIECE = 253;
 
     /** The hash a folding box's flat layout is known by. */
     private const FLAT_LAYOUT_KEY = '9f2c4e1a7b3d5f60';
 
+    /** An outline in fractions of the print area, with one cut-out. */
     private const ROUNDED_SHAPE = 'M0.1 0C0 0 0 0.1 0 0.1V0.9C0 1 0.1 1 0.1 1H0.9C1 1 1 0.9 1 0.9V0.1C1 0 0.9 0 0.9 0Z M0.4 0.4H0.6V0.6H0.4Z';
 
     public function testAListOfBlanksWithoutAPhotoSourceIsRead(): void
