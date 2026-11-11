@@ -93,7 +93,7 @@
     },
     "extra": {
         "pixonaut": {
-            "api-version": "4.0.0"
+            "api-version": "4.1.0"
         }
     }
 }

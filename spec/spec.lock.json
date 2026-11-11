@@ -1,7 +1,7 @@
 {
-    "version": "4.0.0",
-    "baseUrl": "https://cdn.pixonaut.app/api/4.0.0/",
-    "sha256": "df7809c2ae6827d52ca93b269668f7e1feb4a192427dc2b776f0fd1ee701e6cc",
+    "version": "4.1.0",
+    "baseUrl": "https://cdn.pixonaut.app/api/4.1.0/",
+    "sha256": "8980e9dcb70e99f7e293069d7da26a0d5acc2480b13411905d15d98652be9082",
     "webhookSignatureVectors": {
         "sha256": "f27f3ca12a31d20035033024a33dcae89e3a309c51b50ef6ef9b21ea47c3afcd"
     }

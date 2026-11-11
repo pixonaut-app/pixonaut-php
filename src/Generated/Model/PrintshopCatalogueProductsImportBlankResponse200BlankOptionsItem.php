@@ -28,6 +28,8 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem imp
      * @param list<string> $values
      * @param PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemLocalizedNames|null $localizedNames The option's name per customer-facing language, by code: only the languages it has one in. A language left out reads `name`.
      * @param array<string, PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemLocalizedValuesValue>|null $localizedValues Each value's name per customer-facing language, by value: only the values that have one. A language left out reads the value itself.
+     * @param array<string, string>|null $textures The texture a stock photo's dye paints each value in, in place of its colour, by value: only the values that have one, such as a wooden frame's oak. Absent when none has one.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemTexturesValue}.
      */
     public function __construct(
         public readonly array $appearances,
@@ -36,6 +38,7 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem imp
         public readonly array $values,
         public readonly ?PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemLocalizedNames $localizedNames = null,
         public readonly ?array $localizedValues = null,
+        public readonly ?array $textures = null,
     ) {}
 
     /**
@@ -75,6 +78,11 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem imp
                 $path . '.localizedValues',
                 static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemLocalizedValuesValue => PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemLocalizedValuesValue::fromArray(Decode::object($v, $p), $p),
             ) : null,
+            textures: array_key_exists('textures', $data) ? Decode::map(
+                $data['textures'],
+                $path . '.textures',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -113,6 +121,9 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem imp
                     $this->localizedValues,
                 ),
             );
+        }
+        if ($this->textures !== null) {
+            $data['textures'] = Encode::object($this->textures);
         }
         return $data;
     }

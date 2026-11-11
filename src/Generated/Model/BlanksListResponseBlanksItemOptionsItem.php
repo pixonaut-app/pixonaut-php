@@ -28,6 +28,8 @@ final class BlanksListResponseBlanksItemOptionsItem implements Model
      * @param list<string> $values
      * @param BlanksListResponseBlanksItemOptionsItemLocalizedNames|null $localizedNames The option's name per customer-facing language, by code: only the languages it has one in. A language left out reads `name`.
      * @param array<string, BlanksListResponseBlanksItemOptionsItemLocalizedValuesValue>|null $localizedValues Each value's name per customer-facing language, by value: only the values that have one. A language left out reads the value itself.
+     * @param array<string, string>|null $textures The texture a stock photo's dye paints each value in, in place of its colour, by value: only the values that have one, such as a wooden frame's oak. Absent when none has one.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemTexturesValue}.
      */
     public function __construct(
         public readonly array $appearances,
@@ -36,6 +38,7 @@ final class BlanksListResponseBlanksItemOptionsItem implements Model
         public readonly array $values,
         public readonly ?BlanksListResponseBlanksItemOptionsItemLocalizedNames $localizedNames = null,
         public readonly ?array $localizedValues = null,
+        public readonly ?array $textures = null,
     ) {}
 
     /**
@@ -75,6 +78,11 @@ final class BlanksListResponseBlanksItemOptionsItem implements Model
                 $path . '.localizedValues',
                 static fn(mixed $v, string $p): BlanksListResponseBlanksItemOptionsItemLocalizedValuesValue => BlanksListResponseBlanksItemOptionsItemLocalizedValuesValue::fromArray(Decode::object($v, $p), $p),
             ) : null,
+            textures: array_key_exists('textures', $data) ? Decode::map(
+                $data['textures'],
+                $path . '.textures',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -113,6 +121,9 @@ final class BlanksListResponseBlanksItemOptionsItem implements Model
                     $this->localizedValues,
                 ),
             );
+        }
+        if ($this->textures !== null) {
+            $data['textures'] = Encode::object($this->textures);
         }
         return $data;
     }

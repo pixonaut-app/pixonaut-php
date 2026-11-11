@@ -28,6 +28,7 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
      * @param list<int> $pieces The pieces the UV pass marks, as its `view.json` lists them.
      * @param string $screenAssetId The screen pass: the garment's highlights.
      * @param string $uvAssetId The 16-bit UV pass: for each pixel, its piece (blue) and where across (red) and down (green) that piece's print it reads.
+     * @param PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout|null $fromFlatLayout Rendered from the flat layout.
      * @param string|null $occluderAssetId What lies in front of the print, drawn over it: hands, cords and hair. A scene's alone, and read only.
      * @param list<PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesPieceSizesMmItem>|null $pieceSizesMm Each piece's print size on the model, as its `view.json` gives it: what a region's print window is placed on. Absent, no region of the view may name a print window.
      */
@@ -36,6 +37,7 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
         public readonly array $pieces,
         public readonly string $screenAssetId,
         public readonly string $uvAssetId,
+        public readonly ?PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout $fromFlatLayout = null,
         public readonly ?string $occluderAssetId = null,
         public readonly ?array $pieceSizesMm = null,
     ) {}
@@ -59,6 +61,7 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
             ),
             screenAssetId: Decode::string(Decode::required($data, 'screenAssetId', $path), $path . '.screenAssetId'),
             uvAssetId: Decode::string(Decode::required($data, 'uvAssetId', $path), $path . '.uvAssetId'),
+            fromFlatLayout: array_key_exists('fromFlatLayout', $data) ? PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout::fromArray(Decode::object($data['fromFlatLayout'], $path . '.fromFlatLayout'), $path . '.fromFlatLayout') : null,
             occluderAssetId: array_key_exists('occluderAssetId', $data) ? Decode::string($data['occluderAssetId'], $path . '.occluderAssetId') : null,
             pieceSizesMm: array_key_exists('pieceSizesMm', $data) ? Decode::list(
                 $data['pieceSizesMm'],
@@ -88,6 +91,9 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
         $data['pieces'] = $this->pieces;
         $data['screenAssetId'] = $this->screenAssetId;
         $data['uvAssetId'] = $this->uvAssetId;
+        if ($this->fromFlatLayout !== null) {
+            $data['fromFlatLayout'] = Encode::model($this->fromFlatLayout);
+        }
         if ($this->occluderAssetId !== null) {
             $data['occluderAssetId'] = $this->occluderAssetId;
         }
