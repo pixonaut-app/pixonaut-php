@@ -911,6 +911,10 @@ final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemAppearancesV
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemAppearancesValueImageTone::DARK const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemAppearancesValueImageTone::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemAppearancesValueImageTone::LIGHT const
+final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemTexturesValue
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemTexturesValue::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemTexturesValue::OAK const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemTexturesValue::PAINT const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemTonesValue
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemTonesValue::DARK const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemTonesValue::KNOWN const
@@ -943,6 +947,11 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemSource::CATA
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemSource::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemSource::OWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemSource::STOCK const
+final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayoutAngle
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayoutAngle::FRONT const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayoutAngle::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayoutAngle::THREE_QUARTER const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayoutAngle::TOP const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedDefaultPrintshopIdSource
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedDefaultPrintshopIdSource::CATEGORY const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseResolvedDefaultPrintshopIdSource::KNOWN const
@@ -1043,6 +1052,10 @@ final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemA
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemAppearancesValueImageTone::DARK const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemAppearancesValueImageTone::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemAppearancesValueImageTone::LIGHT const
+final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemTexturesValue
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemTexturesValue::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemTexturesValue::OAK const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemTexturesValue::PAINT const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemTonesValue
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemTonesValue::DARK const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemTonesValue::KNOWN const
@@ -1075,6 +1088,11 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemS
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemSource::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemSource::OWN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemSource::STOCK const
+final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayoutAngle
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::FRONT const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::THREE_QUARTER const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::TOP const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedDefaultPrintshopIdSource
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedDefaultPrintshopIdSource::CATEGORY const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemResolvedDefaultPrintshopIdSource::KNOWN const
@@ -1199,6 +1217,10 @@ Pixonaut\Sdk\Generated\Enum\BlanksPlacementsFittingTemplatesListResponseItemsIte
 Pixonaut\Sdk\Generated\Enum\BlanksPlacementsFittingTemplatesListResponseItemsItemVerdictFalseReason::PRINT_SIZE_NOT_AREA const
 Pixonaut\Sdk\Generated\Enum\BlanksPlacementsFittingTemplatesListResponseItemsItemVerdictFalseReason::TOO_LARGE const
 Pixonaut\Sdk\Generated\Enum\BlanksPlacementsFittingTemplatesListResponseItemsItemVerdictFalseReason::WRONG_RATIO const
+final class Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseOptionsItemTexturesValue
+Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseOptionsItemTexturesValue::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseOptionsItemTexturesValue::OAK const
+Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseOptionsItemTexturesValue::PAINT const
 final class Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseOptionsItemTonesValue
 Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseOptionsItemTonesValue::DARK const
 Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseOptionsItemTonesValue::KNOWN const
@@ -3342,6 +3364,10 @@ final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRes
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemAppearancesValueImageTone::DARK const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemAppearancesValueImageTone::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemAppearancesValueImageTone::LIGHT const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemTexturesValue
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemTexturesValue::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemTexturesValue::OAK const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemTexturesValue::PAINT const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemTonesValue
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemTonesValue::DARK const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemTonesValue::KNOWN const
@@ -3374,6 +3400,11 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemSource::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemSource::OWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemSource::STOCK const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::FRONT const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::THREE_QUARTER const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::TOP const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankResolvedDefaultPrintshopIdSource
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankResolvedDefaultPrintshopIdSource::CATEGORY const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankResolvedDefaultPrintshopIdSource::KNOWN const
@@ -3488,6 +3519,10 @@ final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRes
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemAppearancesValueImageTone::DARK const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemAppearancesValueImageTone::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemAppearancesValueImageTone::LIGHT const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemTexturesValue
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemTexturesValue::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemTexturesValue::OAK const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemTexturesValue::PAINT const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemTonesValue
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemTonesValue::DARK const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemTonesValue::KNOWN const
@@ -3520,6 +3555,11 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemSource::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemSource::OWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemSource::STOCK const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::FRONT const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::THREE_QUARTER const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::TOP const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankResolvedDefaultPrintshopIdSource
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankResolvedDefaultPrintshopIdSource::CATEGORY const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankResolvedDefaultPrintshopIdSource::KNOWN const
@@ -9077,9 +9117,10 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$appearances readonly
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$localizedNames readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItemLocalizedNames
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$localizedValues readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$textures readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$tones readonly array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$values readonly array
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null, ?array $textures = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::toArray(): array
@@ -9363,16 +9404,24 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemSourceWindo
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemSourceWindowMm::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemSourceWindowMm::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses::$fromFlatLayout readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayout
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses::$multiplyAssetId readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses::$occluderAssetId readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses::$pieceSizesMm readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses::$pieces readonly array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses::$screenAssetId readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses::$uvAssetId readonly string
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses::__construct(string $multiplyAssetId, array $pieces, string $screenAssetId, string $uvAssetId, ?string $occluderAssetId = null, ?array $pieceSizesMm = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses::__construct(string $multiplyAssetId, array $pieces, string $screenAssetId, string $uvAssetId, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayout $fromFlatLayout = null, ?string $occluderAssetId = null, ?array $pieceSizesMm = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPasses::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayout implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayout::$angle readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayout::$layoutKey readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayout::__construct(string $angle, string $layoutKey)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayout::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayout static
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayout::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayout::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesPieceSizesMmItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesPieceSizesMmItem::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemUvPassesPieceSizesMmItem::$piece readonly int
@@ -9632,9 +9681,10 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$appearanc
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$localizedNames readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItemLocalizedNames
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$localizedValues readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$textures readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$tones readonly array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$values readonly array
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null, ?array $textures = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::toArray(): array
@@ -9918,16 +9968,24 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemSourceWindowMm::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemSourceWindowMm::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses::$fromFlatLayout readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayout
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses::$multiplyAssetId readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses::$occluderAssetId readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses::$pieceSizesMm readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses::$pieces readonly array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses::$screenAssetId readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses::$uvAssetId readonly string
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses::__construct(string $multiplyAssetId, array $pieces, string $screenAssetId, string $uvAssetId, ?string $occluderAssetId = null, ?array $pieceSizesMm = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses::__construct(string $multiplyAssetId, array $pieces, string $screenAssetId, string $uvAssetId, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayout $fromFlatLayout = null, ?string $occluderAssetId = null, ?array $pieceSizesMm = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPasses::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayout implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayout::$angle readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayout::$layoutKey readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayout::__construct(string $angle, string $layoutKey)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayout::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayout static
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayout::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayout::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesPieceSizesMmItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesPieceSizesMmItem::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesPieceSizesMmItem::$piece readonly int
@@ -10552,9 +10610,10 @@ Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseOptionsItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseOptionsItem::$appearances readonly array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseOptionsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseOptionsItem::$textures readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseOptionsItem::$tones readonly array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseOptionsItem::$values readonly array
-Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseOptionsItem::__construct(array $appearances, string $name, array $tones, array $values)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?array $textures = null)
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseOptionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseOptionsItem static
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseOptionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseOptionsItem::toArray(): array
@@ -17777,9 +17836,10 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$localizedNames readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemLocalizedNames
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$localizedValues readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$textures readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$tones readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$values readonly array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null, ?array $textures = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::toArray(): array
@@ -18063,16 +18123,24 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemSourceWindowMm::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemSourceWindowMm::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses::$fromFlatLayout readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses::$multiplyAssetId readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses::$occluderAssetId readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses::$pieceSizesMm readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses::$pieces readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses::$screenAssetId readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses::$uvAssetId readonly string
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses::__construct(string $multiplyAssetId, array $pieces, string $screenAssetId, string $uvAssetId, ?string $occluderAssetId = null, ?array $pieceSizesMm = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses::__construct(string $multiplyAssetId, array $pieces, string $screenAssetId, string $uvAssetId, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout $fromFlatLayout = null, ?string $occluderAssetId = null, ?array $pieceSizesMm = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPasses::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout::$angle readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout::$layoutKey readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout::__construct(string $angle, string $layoutKey)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayout::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesPieceSizesMmItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesPieceSizesMmItem::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesPieceSizesMmItem::$piece readonly int
@@ -18345,9 +18413,10 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$localizedNames readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemLocalizedNames
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$localizedValues readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$textures readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$tones readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$values readonly array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null, ?array $textures = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::toArray(): array
@@ -18631,16 +18700,24 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemSourceWindowMm::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemSourceWindowMm::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses::$fromFlatLayout readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayout
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses::$multiplyAssetId readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses::$occluderAssetId readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses::$pieceSizesMm readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses::$pieces readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses::$screenAssetId readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses::$uvAssetId readonly string
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses::__construct(string $multiplyAssetId, array $pieces, string $screenAssetId, string $uvAssetId, ?string $occluderAssetId = null, ?array $pieceSizesMm = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses::__construct(string $multiplyAssetId, array $pieces, string $screenAssetId, string $uvAssetId, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayout $fromFlatLayout = null, ?string $occluderAssetId = null, ?array $pieceSizesMm = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPasses::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayout implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayout::$angle readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayout::$layoutKey readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayout::__construct(string $angle, string $layoutKey)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayout::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayout static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayout::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayout::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesPieceSizesMmItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesPieceSizesMmItem::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesPieceSizesMmItem::$piece readonly int

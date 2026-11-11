@@ -24,7 +24,7 @@ final class BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesPieceSize
 
     /**
      * @param float $heightMm The piece's print height on the model, in mm.
-     * @param int $piece A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.
+     * @param int $piece A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.
      * @param float $widthMm The piece's print width on the model, in mm.
      */
     public function __construct(

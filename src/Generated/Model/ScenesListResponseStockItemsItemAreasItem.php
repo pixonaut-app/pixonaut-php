@@ -21,7 +21,7 @@ final class ScenesListResponseStockItemsItemAreasItem implements Model
     private ?array $decoded = null;
 
     /**
-     * @param int $piece A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.
+     * @param int $piece A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.
      */
     public function __construct(
         public readonly float $heightMm,

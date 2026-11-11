@@ -50448,7 +50448,7 @@
   "info": {
     "description": "# Overview\n\nThe Pixonaut API turns a template into a printed product. A merchant publishes\ntemplates; a customer fills one in inside the designer on the merchant's\nstorefront and commits a **design**; the merchant's own server approves the\ndesign, **prints** it, and sends the print to a printshop as an **order**.\nEach of those steps is also reported as an **event**, delivered to the\nmerchant's webhook endpoints.\n\nStart with [Design to order](#tag/design-to-order), which walks through that\nflow request by request.\n\n## Base URL\n\nThis reference names no server. Send requests to the host that serves it:\nthe same origin as its `/openapi.json`. Every example path in it is relative\nto that host.\n\n## Versions\n\nThe routes an integration calls are under `/v1`, and the version is the path\nprefix. A few routes sit outside it because they are fetched as plain URLs\nrather than called: template images under `/t`, and the signed links the API\nhands out for print files, proof images, uploads and published assets.\n\n## Requests and responses\n\nBodies are JSON, sent with `content-type: application/json`, unless a route\nsays otherwise (an upload's bytes, an image, a PDF). Times are milliseconds\nsince the Unix epoch unless a field says otherwise. Every route in this\nreference lists the key it takes, its request and response shapes, and each\nrefusal it can answer with.\n\n## Operation names\n\nEvery operation has an `operationId` of the form `<resource>.<verb>`, nested\nresources dotted: `templates.list`, `designs.approve`,\n`blanks.placements.fittingTemplates.list`. The SDKs name their methods from\nit, so `templates.list` is `client.templates.list()` in JavaScript and\n`$client->templates->list()` in PHP. The routes outside `/v1`, which are\nfetched as plain URLs, are named too and carry `x-sdk-skip: true`: no SDK\ngenerates a method for them.\n\n# Authentication\n\nA route that takes an API key reads it as a bearer token:\n\n```http\nAuthorization: Bearer sk_...\n```\n\nA tenant has three kinds of key, and every such route says which it takes. The\nfew routes that take no key are signed links the API hands out, which carry\ntheir own proof, and public files; they are listed with the rest below.\n\n## Publishable key\n\nA publishable key (`pk_...`) is meant to sit in a browser, inside the designer on the merchant's own storefront, so it is visible to anyone who opens the page. It is bound to the web origins the tenant allows, and refused from any other. It can do what a customer needs: read templates, preview, upload a picture and commit a design. It cannot approve, print or order.\n\nA request with a publishable key must carry an `Origin` header matching one\nof the key's `allowedOrigins` (set when the key is created with\n`POST /v1/api-keys`), or it is refused with `origin_forbidden`. An entry is\nan exact origin (`https://shop.example`), or `*.shop.example`, which matches\n`shop.example` and any subdomain of it. An entry of `*` alone matches every\norigin, which removes the key's origin binding altogether: any page on any\nsite can then use it, so it is for trying the API out, never for a live\nstorefront. Because a browser sets `Origin`\nitself, a publishable key sent from a server with no `Origin` is refused too:\na server uses its secret key, and a connected store's server its integration\nkey.\n\n## Secret key\n\nA secret key (`sk_...`) stays on the merchant's server. It acts as the tenant itself, and it is the only credential that approves designs, prints them and submits orders.\n\nNever send it to a browser. Revoke one with `DELETE /v1/api-keys/{id}` when\nwhoever holds it no longer should.\n\n## Integration key\n\nAn integration key (`ik_...`) is a connected store's key, given to the store when a member approves its connection, together with a publishable key and a webhook endpoint. It stays on the store's server and acts as the tenant, but only within its grants: it reads templates, blanks and printshops, makes and decides designs, makes and reads prints, places and reads orders, and manages the one webhook endpoint it was given. It never registers another endpoint or reaches one it was not given, and never manages keys, members, roles or settings. Pixel in the store's admin and the MCP endpoint act as a member, so they take the member key a store's user links instead (`member_link_required`).\n\nA store gets one by connecting: the merchant starts at the store, approves in\nthe studio, and the store exchanges the code it is sent back with for its\nintegration key, a publishable key bound to the store's origin and a webhook\nendpoint at the store (`POST /v1/connect/token`). Nobody copies a key by\nhand. A route the key's grants do not cover refuses it with `forbidden`.\n`DELETE /v1/connect` disconnects the store: it revokes all three.\n\n## Member key\n\nA member key (`mk_...`) is held by a connected store for one of its users, who linked their own Pixonaut account to it (`POST /v1/connect/token` with `kind: \"member_link\"`). It acts as that member, with their permissions: Pixel in the store's admin, with the conversation theirs in that store, and the MCP endpoint, as an MCP key the member minted would. It holds while the link, the store's connection and the membership do; after that it is refused `member_link_revoked`.\n\nA store links one of its users the way it connects: it sends the user to the\nstudio with `kind=member_link`, the member approves linking themselves to the\nworkspace the store is connected to, and the store exchanges the code with its\nintegration key as the bearer (`POST /v1/connect/token` with\n`kind: \"member_link\"`). The store that connects is given its approving\nmember's key in the same exchange (`memberKey`). The store keeps the key for\nthat user and sends it on Pixel's routes and the MCP endpoint, which refuse\nthe integration key itself with `member_link_required`.\n`DELETE /v1/connect/member-link` unlinks it.\n\n## Share link\n\nA share link's token (`link_...`), such as the one in a correction link a store mints for its customer (`POST /v1/designs/{id}/correction-links`), sent by the hosted page the link opens. The token is the credential; the api takes it only from the hosted pages' origin (their `Origin` header, or none on a read the page sends to its own origin), and a correction link also from the tenant's store origins, which keeps other web pages from using a link in a browser. A link acts only on its own template, design or session, and a designer link reads the blank it is sold on: any other is answered as not found.\n\nA store never sends this token itself: it hands the link to its customer,\nand the hosted page sends the token. It is listed on every route a link\nreaches, so a client validating what a hosted page sends can check it.\n\n## Which key each group of routes takes\n\nThe number of routes in each group that take a publishable key, a secret key,\nan integration key, a member key, a share link, or no key at all. A route with no key is a signed link the API handed out,\nwhich carries its own proof, or a public file.\n\n| Group | Publishable key | Secret key | Integration key | Share link | Member key | No key |\n| --- | --- | --- | --- | --- | --- | --- |\n| API keys | none | 4 of 11 | 6 of 11 | none | 1 of 11 | 1 of 11 |\n| Assets | 6 of 28 | 19 of 28 | none | 6 of 28 | none | 5 of 28 |\n| Automations | none | all | none | none | none | none |\n| Blanks | 4 of 9 | 8 of 9 | 7 of 9 | 3 of 9 | none | 1 of 9 |\n| Catalogue | none | none | all | none | none | none |\n| Designs | 1 of 27 | all | all | 11 of 27 | none | none |\n| Events | none | all | all | none | none | none |\n| Fonts | none | none | none | none | none | all |\n| Orders | none | all | 14 of 17 | 6 of 17 | none | none |\n| Pixel | 1 of 7 | none | none | 1 of 7 | 6 of 7 | none |\n| Prints | none | 6 of 8 | 6 of 8 | none | none | 2 of 8 |\n| Printshops | none | all | all | none | none | none |\n| Proofs | 3 of 4 | 3 of 4 | none | 3 of 4 | none | 1 of 4 |\n| Sessions | 1 of 2 | all | none | 1 of 2 | none | none |\n| Share links | none | all | all | none | none | none |\n| Templates | 6 of 8 | all | 5 of 8 | 3 of 8 | none | none |\n| Webhook endpoints | none | all | 7 of 8 | none | none | none |\n\n# Errors\n\nA refused request answers a 4xx or 5xx status with a JSON body whose `error`\nis a code, and sometimes fields that say more:\n\n<!-- example: POST /v1/prints 409 -->\n```json\n{ \"error\": \"design_not_approved\" }\n```\n\n<!-- example: POST /v1/designs 422 -->\n```json\n{ \"error\": \"payload_too_large\", \"maxBytes\": 65536, \"bytes\": 70312 }\n```\n\nBranch on `error`, never on the status alone: one status can carry several\ncodes, and each route lists the codes it can answer with under each status.\nA refusal is an expected answer. It means the request asked for something\nthat is not there, not yet approved, over a limit or not the key's to do,\nand the code says which.\n\nA request the API failed to handle for a reason of its own answers `500` with the plain-text body `Internal Server Error` rather than JSON. There is nothing to change in the request, and it can be retried later.\n\nEvery response names the request it answers in `X-Request-Id`: the id the request was sent with in that header, when it is well formed, else one the API gave it. Quote it when reporting a refusal or a failure: the API's log lines for that request carry it.\n\nBefore retrying a request that asked a printshop for something, such as\n`POST /v1/prints/{id}/orders`, read what it was about first: the failure may\nhave come after the printshop took the order. Check the print's orders with\n`GET /v1/orders?printId=<print id>` and an order's status with `GET /v1/orders/{id}`, and never\nsubmit again while an order says `outcome_unknown`.\n\n## A body that does not match its route\n\nA body, query or path the route cannot accept is refused before the route\ndoes anything, with a `422` or, on some routes, a `400`, whose `error` names\nwhat was wrong. Some carry a field saying more, such as a one-line `reason`\nor an `issues` list naming each field at fault. Each operation lists the codes\nit can answer with.\n\n## Refusals any route can answer\n\nThese come from checks that run before a route's own work: the key and its\norigin, on the routes that take one, the rate limit and the body's size. They\nare also listed in this document's `x-refusals`.\n\n| Status | Code | Meaning |\n| --- | --- | --- |\n| 401 | `unauthorized` | The request carries no credential, or one that is unknown or revoked. |\n| 401 | `member_link_required` | A connected store's integration key was sent to a route that acts as a member. The store links its user's Pixonaut account first (`POST /v1/connect/token` with `kind: \"member_link\"`) and sends the member key it is given. |\n| 401 | `member_link_revoked` | A member key whose link no longer holds: it was revoked, its member left the workspace, or its store was disconnected. The store asks its user to link their account again. The store's own connection is not affected. |\n| 403 | `origin_forbidden` | A publishable key was sent from an origin outside the key's allowlist. |\n| 403 | `secret_key_required` | The route takes a secret key, and the request carried another credential. |\n| 403 | `forbidden` | The route does not take the kind of credential sent. |\n| 403 | `feature_disabled` | The tenant does not have the feature the key is for: `api` for a publishable or secret key, `mcp` for an MCP key. The key is kept, and is admitted again once the tenant has the feature. |\n| 403 | `workspace_suspended` | The workspace the credential belongs to is suspended. Every credential of it is refused until the suspension is lifted; nothing of it is deleted. |\n| 429 | `rate_limited` | Too many requests in the current window. Retry after the number of seconds in `retry-after`. |\n| 422 | `payload_too_large` | The request body is larger than the route accepts. `maxBytes` is the limit. |\n| 500 | `db_error` | The api could not read or write its database. |\n\n## Rate limits\n\nEach caller has a budget per bucket: an api key, a member, a person's MCP\nkeys together, or one visitor of a storefront's publishable key or share\nlink. All the visitors of one publishable key or link share a total, and all\nof a workspace's callers share a ceiling, so one busy store leaves its\nmembers room. The budgets are the same on every plan. A request past one is\nrefused with `429` and `rate_limited`, and the `retry-after` header says how\nmany seconds to wait; the windows slide, so the budget comes back gradually.\n\n| Bucket | Counts | Window | One caller | A storefront key's or link's visitors together | The workspace together |\n| --- | --- | --- | --- | --- | --- |\n| `proof` | Proofs: each one rendered | a minute | 30 | 90 | 150 |\n| `validate` | Validating a design | a minute | 120 | 360 | 600 |\n| `commit` | Committing a design | a minute | 30 | 90 | 150 |\n| `pixel` | Pixel's turns | a minute | 20 | 60 | 100 |\n| `pixelUpload` | Files attached to Pixel | a minute | 60 | 180 | 300 |\n| `pixelCard` | Confirming Pixel's cards | a minute | 120 | 360 | 600 |\n| `webhookPing` | Test requests to a webhook endpoint | a minute | 10 | 30 | 50 |\n| `blankImport` | Importing blanks from a CSV, and its previews | a minute | 10 | 30 | 50 |\n| `mcp` | MCP requests, per person across their MCP keys | a minute | 120 | 360 | 600 |\n\nPublic file addresses, hosted designer pages and share links are also\nlimited per visitor's address, and answer the same way.\n\n## A studio session whose address is not verified\n\nThe studio's own session, signed in to an account whose email address is not\nverified yet, is refused every write with `403` and `email_not_verified`,\nwhatever the route, except accepting an invitation, which verifies the\naddress. No key or integration meets it: the rule is about the signed-in\nperson.",
     "title": "Pixonaut API",
-    "version": "4.0.0"
+    "version": "4.1.0"
   },
   "openapi": "3.1.0",
   "paths": {
@@ -82781,6 +82781,18 @@
                                   "minLength": 1,
                                   "type": "string"
                                 },
+                                "textures": {
+                                  "additionalProperties": {
+                                    "description": "A texture a stock photo's dye paints this value in: oak, in place of its colour, a wooden frame's grain running along each rail; paint, its colour as matte paint with no sheen, as a white frame's. The colour stays the value's swatch.",
+                                    "type": "string",
+                                    "x-extensible-enum": [
+                                      "oak",
+                                      "paint"
+                                    ]
+                                  },
+                                  "description": "The texture a stock photo's dye paints each value in, in place of its colour, by value: only the values that have one, such as a wooden frame's oak. Absent when none has one.",
+                                  "type": "object"
+                                },
                                 "tones": {
                                   "additionalProperties": {
                                     "type": "string",
@@ -83536,8 +83548,8 @@
                                         "type": "array"
                                       },
                                       "piece": {
-                                        "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                        "maximum": 254,
+                                        "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                        "maximum": 253,
                                         "minimum": 1,
                                         "type": "integer"
                                       },
@@ -83679,6 +83691,32 @@
                                         "additionalProperties": false,
                                         "description": "The maps the view was rendered with from a 3D model of the product, each the view's photo size; a region naming a piece is drawn through them. Absent, the view's regions are laid in their rect or mesh.",
                                         "properties": {
+                                          "fromFlatLayout": {
+                                            "additionalProperties": false,
+                                            "description": "Rendered from the flat layout.",
+                                            "properties": {
+                                              "angle": {
+                                                "description": "Camera position.",
+                                                "type": "string",
+                                                "x-extensible-enum": [
+                                                  "three_quarter",
+                                                  "front",
+                                                  "top"
+                                                ]
+                                              },
+                                              "layoutKey": {
+                                                "description": "Hash of the parts.",
+                                                "maxLength": 64,
+                                                "minLength": 1,
+                                                "type": "string"
+                                              }
+                                            },
+                                            "required": [
+                                              "angle",
+                                              "layoutKey"
+                                            ],
+                                            "type": "object"
+                                          },
                                           "multiplyAssetId": {
                                             "description": "The multiply pass: the garment's shadows and folds.",
                                             "minLength": 1,
@@ -83701,8 +83739,8 @@
                                                   "type": "number"
                                                 },
                                                 "piece": {
-                                                  "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                                  "maximum": 254,
+                                                  "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                                  "maximum": 253,
                                                   "minimum": 1,
                                                   "type": "integer"
                                                 },
@@ -83719,18 +83757,18 @@
                                               ],
                                               "type": "object"
                                             },
-                                            "maxItems": 254,
+                                            "maxItems": 253,
                                             "type": "array"
                                           },
                                           "pieces": {
                                             "description": "The pieces the UV pass marks, as its `view.json` lists them.",
                                             "items": {
-                                              "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                              "maximum": 254,
+                                              "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                              "maximum": 253,
                                               "minimum": 1,
                                               "type": "integer"
                                             },
-                                            "maxItems": 254,
+                                            "maxItems": 253,
                                             "minItems": 1,
                                             "type": "array"
                                           },
@@ -85164,6 +85202,18 @@
                             "minLength": 1,
                             "type": "string"
                           },
+                          "textures": {
+                            "additionalProperties": {
+                              "description": "A texture a stock photo's dye paints this value in: oak, in place of its colour, a wooden frame's grain running along each rail; paint, its colour as matte paint with no sheen, as a white frame's. The colour stays the value's swatch.",
+                              "type": "string",
+                              "x-extensible-enum": [
+                                "oak",
+                                "paint"
+                              ]
+                            },
+                            "description": "The texture a stock photo's dye paints each value in, in place of its colour, by value: only the values that have one, such as a wooden frame's oak. Absent when none has one.",
+                            "type": "object"
+                          },
                           "tones": {
                             "additionalProperties": {
                               "type": "string",
@@ -85919,8 +85969,8 @@
                                   "type": "array"
                                 },
                                 "piece": {
-                                  "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                  "maximum": 254,
+                                  "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                  "maximum": 253,
                                   "minimum": 1,
                                   "type": "integer"
                                 },
@@ -86062,6 +86112,32 @@
                                   "additionalProperties": false,
                                   "description": "The maps the view was rendered with from a 3D model of the product, each the view's photo size; a region naming a piece is drawn through them. Absent, the view's regions are laid in their rect or mesh.",
                                   "properties": {
+                                    "fromFlatLayout": {
+                                      "additionalProperties": false,
+                                      "description": "Rendered from the flat layout.",
+                                      "properties": {
+                                        "angle": {
+                                          "description": "Camera position.",
+                                          "type": "string",
+                                          "x-extensible-enum": [
+                                            "three_quarter",
+                                            "front",
+                                            "top"
+                                          ]
+                                        },
+                                        "layoutKey": {
+                                          "description": "Hash of the parts.",
+                                          "maxLength": 64,
+                                          "minLength": 1,
+                                          "type": "string"
+                                        }
+                                      },
+                                      "required": [
+                                        "angle",
+                                        "layoutKey"
+                                      ],
+                                      "type": "object"
+                                    },
                                     "multiplyAssetId": {
                                       "description": "The multiply pass: the garment's shadows and folds.",
                                       "minLength": 1,
@@ -86084,8 +86160,8 @@
                                             "type": "number"
                                           },
                                           "piece": {
-                                            "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                            "maximum": 254,
+                                            "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                            "maximum": 253,
                                             "minimum": 1,
                                             "type": "integer"
                                           },
@@ -86102,18 +86178,18 @@
                                         ],
                                         "type": "object"
                                       },
-                                      "maxItems": 254,
+                                      "maxItems": 253,
                                       "type": "array"
                                     },
                                     "pieces": {
                                       "description": "The pieces the UV pass marks, as its `view.json` lists them.",
                                       "items": {
-                                        "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                        "maximum": 254,
+                                        "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                        "maximum": 253,
                                         "minimum": 1,
                                         "type": "integer"
                                       },
-                                      "maxItems": 254,
+                                      "maxItems": 253,
                                       "minItems": 1,
                                       "type": "array"
                                     },
@@ -87661,8 +87737,8 @@
                                   "type": "array"
                                 },
                                 "piece": {
-                                  "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                  "maximum": 254,
+                                  "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                  "maximum": 253,
                                   "minimum": 1,
                                   "type": "integer"
                                 },
@@ -88141,8 +88217,8 @@
                                   "type": "object"
                                 },
                                 "piece": {
-                                  "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                  "maximum": 254,
+                                  "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                  "maximum": 253,
                                   "minimum": 1,
                                   "type": "integer"
                                 },
@@ -89866,6 +89942,18 @@
                             "maxLength": 80,
                             "minLength": 1,
                             "type": "string"
+                          },
+                          "textures": {
+                            "additionalProperties": {
+                              "description": "A texture a stock photo's dye paints this value in: oak, in place of its colour, a wooden frame's grain running along each rail; paint, its colour as matte paint with no sheen, as a white frame's. The colour stays the value's swatch.",
+                              "type": "string",
+                              "x-extensible-enum": [
+                                "oak",
+                                "paint"
+                              ]
+                            },
+                            "description": "The texture a stock photo's dye paints each value in, in place of its colour, by value: only the values that have one. Absent when none has one.",
+                            "type": "object"
                           },
                           "tones": {
                             "additionalProperties": {
@@ -147172,6 +147260,18 @@
                                 "minLength": 1,
                                 "type": "string"
                               },
+                              "textures": {
+                                "additionalProperties": {
+                                  "description": "A texture a stock photo's dye paints this value in: oak, in place of its colour, a wooden frame's grain running along each rail; paint, its colour as matte paint with no sheen, as a white frame's. The colour stays the value's swatch.",
+                                  "type": "string",
+                                  "x-extensible-enum": [
+                                    "oak",
+                                    "paint"
+                                  ]
+                                },
+                                "description": "The texture a stock photo's dye paints each value in, in place of its colour, by value: only the values that have one, such as a wooden frame's oak. Absent when none has one.",
+                                "type": "object"
+                              },
                               "tones": {
                                 "additionalProperties": {
                                   "type": "string",
@@ -147927,8 +148027,8 @@
                                       "type": "array"
                                     },
                                     "piece": {
-                                      "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                      "maximum": 254,
+                                      "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                      "maximum": 253,
                                       "minimum": 1,
                                       "type": "integer"
                                     },
@@ -148070,6 +148170,32 @@
                                       "additionalProperties": false,
                                       "description": "The maps the view was rendered with from a 3D model of the product, each the view's photo size; a region naming a piece is drawn through them. Absent, the view's regions are laid in their rect or mesh.",
                                       "properties": {
+                                        "fromFlatLayout": {
+                                          "additionalProperties": false,
+                                          "description": "Rendered from the flat layout.",
+                                          "properties": {
+                                            "angle": {
+                                              "description": "Camera position.",
+                                              "type": "string",
+                                              "x-extensible-enum": [
+                                                "three_quarter",
+                                                "front",
+                                                "top"
+                                              ]
+                                            },
+                                            "layoutKey": {
+                                              "description": "Hash of the parts.",
+                                              "maxLength": 64,
+                                              "minLength": 1,
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "angle",
+                                            "layoutKey"
+                                          ],
+                                          "type": "object"
+                                        },
                                         "multiplyAssetId": {
                                           "description": "The multiply pass: the garment's shadows and folds.",
                                           "minLength": 1,
@@ -148092,8 +148218,8 @@
                                                 "type": "number"
                                               },
                                               "piece": {
-                                                "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                                "maximum": 254,
+                                                "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                                "maximum": 253,
                                                 "minimum": 1,
                                                 "type": "integer"
                                               },
@@ -148110,18 +148236,18 @@
                                             ],
                                             "type": "object"
                                           },
-                                          "maxItems": 254,
+                                          "maxItems": 253,
                                           "type": "array"
                                         },
                                         "pieces": {
                                           "description": "The pieces the UV pass marks, as its `view.json` lists them.",
                                           "items": {
-                                            "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                            "maximum": 254,
+                                            "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                            "maximum": 253,
                                             "minimum": 1,
                                             "type": "integer"
                                           },
-                                          "maxItems": 254,
+                                          "maxItems": 253,
                                           "minItems": 1,
                                           "type": "array"
                                         },
@@ -149359,6 +149485,18 @@
                                 "minLength": 1,
                                 "type": "string"
                               },
+                              "textures": {
+                                "additionalProperties": {
+                                  "description": "A texture a stock photo's dye paints this value in: oak, in place of its colour, a wooden frame's grain running along each rail; paint, its colour as matte paint with no sheen, as a white frame's. The colour stays the value's swatch.",
+                                  "type": "string",
+                                  "x-extensible-enum": [
+                                    "oak",
+                                    "paint"
+                                  ]
+                                },
+                                "description": "The texture a stock photo's dye paints each value in, in place of its colour, by value: only the values that have one, such as a wooden frame's oak. Absent when none has one.",
+                                "type": "object"
+                              },
                               "tones": {
                                 "additionalProperties": {
                                   "type": "string",
@@ -150114,8 +150252,8 @@
                                       "type": "array"
                                     },
                                     "piece": {
-                                      "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                      "maximum": 254,
+                                      "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                      "maximum": 253,
                                       "minimum": 1,
                                       "type": "integer"
                                     },
@@ -150257,6 +150395,32 @@
                                       "additionalProperties": false,
                                       "description": "The maps the view was rendered with from a 3D model of the product, each the view's photo size; a region naming a piece is drawn through them. Absent, the view's regions are laid in their rect or mesh.",
                                       "properties": {
+                                        "fromFlatLayout": {
+                                          "additionalProperties": false,
+                                          "description": "Rendered from the flat layout.",
+                                          "properties": {
+                                            "angle": {
+                                              "description": "Camera position.",
+                                              "type": "string",
+                                              "x-extensible-enum": [
+                                                "three_quarter",
+                                                "front",
+                                                "top"
+                                              ]
+                                            },
+                                            "layoutKey": {
+                                              "description": "Hash of the parts.",
+                                              "maxLength": 64,
+                                              "minLength": 1,
+                                              "type": "string"
+                                            }
+                                          },
+                                          "required": [
+                                            "angle",
+                                            "layoutKey"
+                                          ],
+                                          "type": "object"
+                                        },
                                         "multiplyAssetId": {
                                           "description": "The multiply pass: the garment's shadows and folds.",
                                           "minLength": 1,
@@ -150279,8 +150443,8 @@
                                                 "type": "number"
                                               },
                                               "piece": {
-                                                "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                                "maximum": 254,
+                                                "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                                "maximum": 253,
                                                 "minimum": 1,
                                                 "type": "integer"
                                               },
@@ -150297,18 +150461,18 @@
                                             ],
                                             "type": "object"
                                           },
-                                          "maxItems": 254,
+                                          "maxItems": 253,
                                           "type": "array"
                                         },
                                         "pieces": {
                                           "description": "The pieces the UV pass marks, as its `view.json` lists them.",
                                           "items": {
-                                            "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                            "maximum": 254,
+                                            "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                            "maximum": 253,
                                             "minimum": 1,
                                             "type": "integer"
                                           },
-                                          "maxItems": 254,
+                                          "maxItems": 253,
                                           "minItems": 1,
                                           "type": "array"
                                         },
@@ -154140,8 +154304,8 @@
                                   "type": "string"
                                 },
                                 "piece": {
-                                  "description": "A pattern piece of the view's UV pass, 1 to 254: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
-                                  "maximum": 254,
+                                  "description": "A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.",
+                                  "maximum": 253,
                                   "minimum": 1,
                                   "type": "integer"
                                 },

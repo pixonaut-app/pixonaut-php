@@ -24,6 +24,12 @@ final class BlankAnswersTest extends TestCase
     private const UNKNOWN_PRINT_METHOD = 'foil-transfer';
 
     /** An outline in fractions of the print area, with one cut-out. */
+    /** The highest pattern piece the spec lets a UV pass mark. */
+    private const LAST_PIECE = 253;
+
+    /** The hash a folding box's flat layout is known by. */
+    private const FLAT_LAYOUT_KEY = '9f2c4e1a7b3d5f60';
+
     private const ROUNDED_SHAPE = 'M0.1 0C0 0 0 0.1 0 0.1V0.9C0 1 0.1 1 0.1 1H0.9C1 1 1 0.9 1 0.9V0.1C1 0 0.9 0 0.9 0Z M0.4 0.4H0.6V0.6H0.4Z';
 
     public function testAListOfBlanksWithoutAPhotoSourceIsRead(): void
@@ -127,6 +133,75 @@ final class BlankAnswersTest extends TestCase
         self::assertSame([], $client->fake()->violations());
         self::assertSame(['Color', 'Size', 'Paper'], $variants->axes);
         self::assertSame('Matte', $variants->variants[0]->options['Paper']);
+    }
+
+    public function testAFrameOptionsTexturesAreRead(): void
+    {
+        $client = new ContractClient();
+        $answer = self::example('blanks.variants.list');
+        $answer->axes = [...self::values($answer->axes), 'Frame'];
+        $answer->options = [...self::items($answer->options), (object) [
+            'appearances' => (object) ['Oak' => null, 'White' => null],
+            'name' => 'Frame',
+            'textures' => (object) ['Oak' => 'oak', 'White' => 'paint'],
+            'tones' => (object) ['Oak' => 'dark', 'White' => 'light'],
+            'values' => ['Oak', 'White'],
+        ]];
+        foreach (self::items($answer->variants) as $variant) {
+            self::obj($variant->options)->Frame = 'Oak';
+        }
+        $client->fake()->answer('blanks.variants.list', self::HTTP_OK, $answer);
+
+        $variants = $client->pixonaut->blanks()->listVariants('blank_tshirt');
+
+        self::assertSame([], $client->fake()->violations());
+        $frame = array_values(array_filter($variants->options, static fn(object $option): bool => $option->name === 'Frame'));
+        self::assertCount(1, $frame);
+        self::assertSame(['Oak' => 'oak', 'White' => 'paint'], $frame[0]->textures);
+        self::assertNull($variants->options[0]->textures);
+    }
+
+    public function testAViewRenderedFromAFoldingBoxsFlatLayoutIsRead(): void
+    {
+        $client = new ContractClient();
+        $answer = self::example('blanks.get');
+        self::withPhotoSources($answer);
+        $view = self::items(self::items($answer->placements)[0]->views)[0];
+        $view->uvPasses = (object) [
+            'fromFlatLayout' => (object) ['angle' => 'three_quarter', 'layoutKey' => self::FLAT_LAYOUT_KEY],
+            'multiplyAssetId' => 'asset_box_multiply',
+            'pieces' => [1, self::LAST_PIECE],
+            'screenAssetId' => 'asset_box_screen',
+            'uvAssetId' => 'asset_box_uv',
+        ];
+        $client->fake()->answer('blanks.get', self::HTTP_OK, $answer);
+
+        $blank = $client->pixonaut->blanks()->get('blank_tshirt');
+
+        self::assertSame([], $client->fake()->violations());
+        $uvPasses = $blank->placements[0]->views[0]->uvPasses;
+        self::assertSame('three_quarter', $uvPasses?->fromFlatLayout?->angle);
+        self::assertSame(self::FLAT_LAYOUT_KEY, $uvPasses->fromFlatLayout->layoutKey);
+        self::assertSame([1, self::LAST_PIECE], $uvPasses->pieces);
+        self::assertNull($blank->placements[0]->views[1]->uvPasses?->fromFlatLayout);
+    }
+
+    public function testAPieceBeyondTheLastAUvPassMarksIsNotAnAnswerTheSpecAllows(): void
+    {
+        $client = new ContractClient();
+        $answer = self::example('blanks.get');
+        $view = self::items(self::items($answer->placements)[0]->views)[0];
+        $view->uvPasses = (object) [
+            'multiplyAssetId' => 'asset_box_multiply',
+            'pieces' => [self::LAST_PIECE + 1],
+            'screenAssetId' => 'asset_box_screen',
+            'uvAssetId' => 'asset_box_uv',
+        ];
+        $client->fake()->answer('blanks.get', self::HTTP_OK, $answer);
+
+        $client->pixonaut->blanks()->get('blank_tshirt');
+
+        self::assertNotSame([], $client->fake()->violations());
     }
 
     public function testMockupViewsEachWithTheirSourceAreRead(): void
