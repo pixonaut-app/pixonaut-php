@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v3.1.0...v4.0.0) (2026-11-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* the models of these answers take the new required arguments, inserted among their constructors' positional parameters: print-size verdicts (`lowResolution`), assets (`lowResolutionAccepted`), `PrintsGetResponse` (`lowResolution`, `remake`), blanks (`generation`), fitting templates and placements and a share link's designer answer (`lowResolution`), a variant appearance's image (`mime`) and a printshop connection (`catalogue`). The new optional arguments sit among the existing optional ones, so code passing those positionally must name them.
+
+### Features
+
+* target the published Pixonaut API 4.0.0 ([#32](https://github.com/pixonaut-app/pixonaut-php/issues/32)) ([7c87d0a](https://github.com/pixonaut-app/pixonaut-php/commit/7c87d0aa22c1524d2fd9dbd1d558648f7a7da9d8))
+
 ## [3.1.0](https://github.com/pixonaut-app/pixonaut-php/compare/v3.0.0...v3.1.0) (2026-11-10)
 
 Targets the Pixonaut API 3.0.0.
