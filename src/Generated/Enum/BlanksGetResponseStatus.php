@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Enum;
 
 /**
- * `importing` while the blank's import, from a printshop's catalogue or a CSV file, runs in the background: it has its name and nothing else yet. `failed` when that import failed for good (`importFailure` says why); remove it and import again. `ready` otherwise.
+ * `importing` while the blank's import, from a printshop's catalogue or a CSV file, runs in the background: it has its name and nothing else yet. `generating` for a blank generated with AI until its photo is approved: `generation` says whether it is drawing, waits for the decision, or drew nothing. `failed` when an import failed for good (`importFailure` says why); remove it and import again. `ready` otherwise.
  *
  * The values this release knows. The field is a string, and the API may answer a value added after this release.
  *
@@ -17,6 +17,8 @@ final class BlanksGetResponseStatus
 {
     public const IMPORTING = 'importing';
 
+    public const GENERATING = 'generating';
+
     public const READY = 'ready';
 
     public const FAILED = 'failed';
@@ -24,5 +26,5 @@ final class BlanksGetResponseStatus
     /**
      * Every value this release knows.
      */
-    public const KNOWN = [self::IMPORTING, self::READY, self::FAILED];
+    public const KNOWN = [self::IMPORTING, self::GENERATING, self::READY, self::FAILED];
 }

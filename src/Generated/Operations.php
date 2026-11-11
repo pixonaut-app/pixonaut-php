@@ -12,7 +12,7 @@ use Pixonaut\Sdk\Http\Catalogue;
 use Pixonaut\Sdk\Http\Operation;
 
 /**
- * The operations of the API 3.0.0 spec, as the client sends them.
+ * The operations of the API 4.0.0 spec, as the client sends them.
  */
 final class Operations
 {
@@ -1247,6 +1247,26 @@ final class Operations
                 credentials: [Credential::SecretKey, Credential::IntegrationKey],
                 anonymous: false,
                 idempotent: true,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
+                id: 'printshopCatalogueProducts.list',
+                method: 'GET',
+                path: '/v1/printshop-catalogue-products',
+                credentials: [Credential::IntegrationKey],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
+                id: 'printshopCatalogueProducts.importBlank',
+                method: 'POST',
+                path: '/v1/printshop-catalogue-products/{productId}/blank',
+                credentials: [Credential::IntegrationKey],
+                anonymous: false,
+                idempotent: false,
                 accept: 'application/json',
                 sensitive: false,
             ),

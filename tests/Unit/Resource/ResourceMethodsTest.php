@@ -192,7 +192,7 @@ final class ResourceMethodsTest extends TestCase
             }
         }
         $path = SpecExamples::text($operation['path'] ?? null);
-        $query = [];
+        $queryOf = [];
         $headers = [];
         $body = null;
         $arguments = [];
@@ -218,11 +218,17 @@ final class ResourceMethodsTest extends TestCase
             );
             match ($spec['in']) {
                 'path' => $path = str_replace('{' . $spec['name'] . '}', rawurlencode($items[0]), $path),
-                'query' => $query = [...$query, ...array_map(static fn(string $item): string => $spec['name'] . '=' . rawurlencode($item), $items)],
+                'query' => $queryOf[$name] = array_map(static fn(string $item): string => $spec['name'] . '=' . rawurlencode($item), $items),
                 default => $headers[strtolower($spec['name'])] = $items[0],
             };
         }
         self::assertSame(count($byVariable), count($arguments) - count(array_intersect(array_keys($arguments), ['body', 'idempotencyKey'])), 'Every parameter of the operation is one of the method\'s.');
+        // The query is sent in the spec's order of its parameters, which a
+        // method's arguments need not follow: required ones come first.
+        $query = [];
+        foreach (array_keys($byVariable) as $variable) {
+            $query = [...$query, ...$queryOf[$variable] ?? []];
+        }
 
         return [$arguments, ['method' => strtoupper(SpecExamples::text($operation['method'] ?? null)), 'path' => $path, 'query' => $query, 'headers' => $headers, 'body' => $body]];
     }

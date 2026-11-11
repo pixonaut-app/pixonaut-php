@@ -8,6 +8,7 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
+use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -20,8 +21,12 @@ final class TemplatesPrintSizeValidateResponseTrue implements Model
      */
     private ?array $decoded = null;
 
+    /**
+     * @param list<TemplatesPrintSizeValidateResponseTrueLowResolutionItem> $lowResolution The images the workspace put in the template that print below their recommended resolution at the size. Empty when every image is at or above it, when the image was accepted as it is, or when the workspace turned these warnings off.
+     */
     public function __construct(
         public readonly bool $legal,
+        public readonly array $lowResolution,
     ) {}
 
     /**
@@ -34,7 +39,14 @@ final class TemplatesPrintSizeValidateResponseTrue implements Model
      */
     public static function fromArray(array $data, string $path = '$'): self
     {
-        $model = new self(legal: Decode::bool(Decode::required($data, 'legal', $path), $path . '.legal'));
+        $model = new self(
+            legal: Decode::bool(Decode::required($data, 'legal', $path), $path . '.legal'),
+            lowResolution: Decode::list(
+                Decode::required($data, 'lowResolution', $path),
+                $path . '.lowResolution',
+                static fn(mixed $v, string $p): TemplatesPrintSizeValidateResponseTrueLowResolutionItem => TemplatesPrintSizeValidateResponseTrueLowResolutionItem::fromArray(Decode::object($v, $p), $p),
+            ),
+        );
         $model->decoded = $data;
         return $model;
     }
@@ -54,6 +66,10 @@ final class TemplatesPrintSizeValidateResponseTrue implements Model
     {
         $data = [];
         $data['legal'] = $this->legal;
+        $data['lowResolution'] = array_map(
+            static fn(TemplatesPrintSizeValidateResponseTrueLowResolutionItem $v): mixed => Encode::model($v),
+            $this->lowResolution,
+        );
         return $data;
     }
 }

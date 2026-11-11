@@ -7,6 +7,10 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Resource;
 
 use Pixonaut\Sdk\Exception\ApiException;
+use Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest;
+use Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200;
+use Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202;
+use Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponse;
 use Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponse;
 use Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1;
 use Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2;
@@ -23,11 +27,75 @@ final class Printshops
      *
      * @var array<string, string>
      */
-    public const OPERATIONS = ['listConnections' => 'printshopConnections.list'];
+    public const OPERATIONS = [
+        'listCatalogueProducts' => 'printshopCatalogueProducts.list',
+        'importCatalogueProduct' => 'printshopCatalogueProducts.importBlank',
+        'listConnections' => 'printshopConnections.list',
+    ];
 
     public function __construct(
         private readonly Pixonaut $pixonaut,
     ) {}
+
+    /**
+     * List the printshop's catalogue.
+     *
+     * `GET /v1/printshop-catalogue-products`
+     *
+     * @param string $connectionId
+     * @param int|null $limit
+     * @param int|null $offset
+     * @param string|null $categoryId Only the products filed under this one of the partner's categories (GET /v1/printshop-connections/{id}/categories).
+     * @param string|null $search Only the products whose name holds this, ignoring case; blank is no search. `total` then counts the matches.
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `catalogue_loading`, `catalogue_unavailable`, `connection_not_found`, `db_error`, `feature_disabled`, `forbidden`, `invalid_input`, `lookup_failed`, `no_credentials`, `origin_forbidden`, `sandbox_tenant`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function listCatalogueProducts(string $connectionId, ?int $limit = null, ?int $offset = null, ?string $categoryId = null, ?string $search = null): PrintshopCatalogueProductsListResponse
+    {
+        $result = $this->pixonaut->call(
+            'printshopCatalogueProducts.list',
+            query: [
+                'limit' => $limit,
+                'offset' => $offset,
+                'connectionId' => $connectionId,
+                'categoryId' => $categoryId,
+                'search' => $search,
+            ],
+        );
+        return $result->decode(
+            static fn(mixed $json): PrintshopCatalogueProductsListResponse => PrintshopCatalogueProductsListResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Import a catalogue product as a blank.
+     *
+     * `POST /v1/printshop-catalogue-products/{productId}/blank`
+     *
+     * @param string $productId
+     * @param string $connectionId
+     * @param PrintshopCatalogueProductsImportBlankRequest|null $body
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `connection_not_found`, `db_error`, `duplicate_name`, `feature_disabled`, `forbidden`, `import_failed`, `invalid_input`, `lock_timeout`, `lookup_failed`, `no_credentials`, `no_printable_placement`, `no_printshop_photos`, `origin_forbidden`, `payload_too_large`, `sandbox_tenant`, `scene_not_found`, `scene_retired`, `stock_item_covers_no_placement`, `stock_item_not_found`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function importCatalogueProduct(string $productId, string $connectionId, ?PrintshopCatalogueProductsImportBlankRequest $body = null): PrintshopCatalogueProductsImportBlankResponse200|PrintshopCatalogueProductsImportBlankResponse202
+    {
+        $result = $this->pixonaut->call(
+            'printshopCatalogueProducts.importBlank',
+            path: ['productId' => $productId],
+            query: ['connectionId' => $connectionId],
+            body: $body?->toArray(),
+        );
+        return match ($result->status) {
+            200 => $result->decode(
+                static fn(mixed $json): PrintshopCatalogueProductsImportBlankResponse200 => PrintshopCatalogueProductsImportBlankResponse200::fromArray(Decode::object($json, '$'), '$'),
+            ),
+            202 => $result->decode(
+                static fn(mixed $json): PrintshopCatalogueProductsImportBlankResponse202 => PrintshopCatalogueProductsImportBlankResponse202::fromArray(Decode::object($json, '$'), '$'),
+            ),
+            default => throw $result->unexpected(),
+        };
+    }
 
     /**
      * List the tenant's printshop connections.

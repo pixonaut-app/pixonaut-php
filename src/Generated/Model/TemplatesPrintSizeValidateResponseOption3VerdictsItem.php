@@ -31,12 +31,12 @@ final class TemplatesPrintSizeValidateResponseOption3VerdictsItem
             [
                 [
                     static fn(mixed $v, string $p): TemplatesPrintSizeValidateResponseOption3VerdictsItemFalse => TemplatesPrintSizeValidateResponseOption3VerdictsItemFalse::fromArray(Decode::object($v, $p), $p),
-                    1002,
+                    1003,
                     ['legal' => false],
                 ],
                 [
                     static fn(mixed $v, string $p): TemplatesPrintSizeValidateResponseOption3VerdictsItemTrue => TemplatesPrintSizeValidateResponseOption3VerdictsItemTrue::fromArray(Decode::object($v, $p), $p),
-                    1001,
+                    1002,
                     ['legal' => true],
                 ],
             ],

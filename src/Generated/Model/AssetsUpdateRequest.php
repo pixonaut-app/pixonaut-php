@@ -26,6 +26,7 @@ final class AssetsUpdateRequest implements Model
      * @param string|null|Omitted $categoryId The id of a category, as list_asset_categories returns it, or null to take the picture out of its category.
      * @param int|null $expectedUpdatedAt The picture's updatedAt, as list_assets returned it. The change is refused if the picture changed since.
      * @param AssetsUpdateRequestLocalizedNames|null $localizedNames Its name per customer-facing language, by code (`en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`), e.g. `{"de": "Stern"}`. Replaces every name it had; a language left out shows its own name.
+     * @param bool|null $lowResolutionAccepted true accepts the picture's resolution as it is: a template holding it is never warned about, or refused, for printing it below its recommended resolution. false takes that back.
      * @param string|null $name The picture's new name; it cannot be empty.
      * @param string|null $role `picture`, or `blank-photo` for a blank's product photo. A blank photo is in no category.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\AssetsUpdateRequestRole}.
@@ -37,6 +38,7 @@ final class AssetsUpdateRequest implements Model
         public readonly string|null|Omitted $categoryId = Omitted::Field,
         public readonly ?int $expectedUpdatedAt = null,
         public readonly ?AssetsUpdateRequestLocalizedNames $localizedNames = null,
+        public readonly ?bool $lowResolutionAccepted = null,
         public readonly ?string $name = null,
         public readonly ?string $role = null,
         public readonly ?array $tags = null,
@@ -61,6 +63,7 @@ final class AssetsUpdateRequest implements Model
             ) : Omitted::Field,
             expectedUpdatedAt: array_key_exists('expectedUpdatedAt', $data) ? Decode::int($data['expectedUpdatedAt'], $path . '.expectedUpdatedAt') : null,
             localizedNames: array_key_exists('localizedNames', $data) ? AssetsUpdateRequestLocalizedNames::fromArray(Decode::object($data['localizedNames'], $path . '.localizedNames'), $path . '.localizedNames') : null,
+            lowResolutionAccepted: array_key_exists('lowResolutionAccepted', $data) ? Decode::bool($data['lowResolutionAccepted'], $path . '.lowResolutionAccepted') : null,
             name: array_key_exists('name', $data) ? Decode::string($data['name'], $path . '.name') : null,
             role: array_key_exists('role', $data) ? Decode::string($data['role'], $path . '.role') : null,
             tags: array_key_exists('tags', $data) ? Decode::list(
@@ -96,6 +99,9 @@ final class AssetsUpdateRequest implements Model
         }
         if ($this->localizedNames !== null) {
             $data['localizedNames'] = Encode::model($this->localizedNames);
+        }
+        if ($this->lowResolutionAccepted !== null) {
+            $data['lowResolutionAccepted'] = $this->lowResolutionAccepted;
         }
         if ($this->name !== null) {
             $data['name'] = $this->name;

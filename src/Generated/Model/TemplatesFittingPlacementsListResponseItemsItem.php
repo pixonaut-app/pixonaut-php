@@ -21,11 +21,15 @@ final class TemplatesFittingPlacementsListResponseItemsItem implements Model
      */
     private ?array $decoded = null;
 
+    /**
+     * @param list<TemplatesFittingPlacementsListResponseItemsItemLowResolutionItem> $lowResolution The images the workspace put in the template that print below their recommended resolution at this pairing's fitted size (`printWidthMm` × `printHeightMm`). Empty when every image is at or above it, when the image was accepted as it is, or when the workspace turned these warnings off.
+     */
     public function __construct(
         public readonly string $blankId,
         public readonly string $blankName,
         public readonly float $defaultHeightMm,
         public readonly float $defaultWidthMm,
+        public readonly array $lowResolution,
         public readonly float $maxHeightMm,
         public readonly float $maxWidthMm,
         public readonly string $placementId,
@@ -50,6 +54,11 @@ final class TemplatesFittingPlacementsListResponseItemsItem implements Model
             blankName: Decode::string(Decode::required($data, 'blankName', $path), $path . '.blankName'),
             defaultHeightMm: Decode::float(Decode::required($data, 'defaultHeightMm', $path), $path . '.defaultHeightMm'),
             defaultWidthMm: Decode::float(Decode::required($data, 'defaultWidthMm', $path), $path . '.defaultWidthMm'),
+            lowResolution: Decode::list(
+                Decode::required($data, 'lowResolution', $path),
+                $path . '.lowResolution',
+                static fn(mixed $v, string $p): TemplatesFittingPlacementsListResponseItemsItemLowResolutionItem => TemplatesFittingPlacementsListResponseItemsItemLowResolutionItem::fromArray(Decode::object($v, $p), $p),
+            ),
             maxHeightMm: Decode::float(Decode::required($data, 'maxHeightMm', $path), $path . '.maxHeightMm'),
             maxWidthMm: Decode::float(Decode::required($data, 'maxWidthMm', $path), $path . '.maxWidthMm'),
             placementId: Decode::string(Decode::required($data, 'placementId', $path), $path . '.placementId'),
@@ -80,6 +89,10 @@ final class TemplatesFittingPlacementsListResponseItemsItem implements Model
         $data['blankName'] = $this->blankName;
         $data['defaultHeightMm'] = $this->defaultHeightMm;
         $data['defaultWidthMm'] = $this->defaultWidthMm;
+        $data['lowResolution'] = array_map(
+            static fn(TemplatesFittingPlacementsListResponseItemsItemLowResolutionItem $v): mixed => Encode::model($v),
+            $this->lowResolution,
+        );
         $data['maxHeightMm'] = $this->maxHeightMm;
         $data['maxWidthMm'] = $this->maxWidthMm;
         $data['placementId'] = $this->placementId;

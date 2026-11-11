@@ -20,9 +20,13 @@ final class PrintshopConnectionsListResponseOption2ConnectionsItem implements Mo
      */
     private ?array $decoded = null;
 
+    /**
+     * @param bool $catalogue Whether its printshop has a catalogue to browse and import from (GET /v1/printshop-catalogue-products).
+     */
     public function __construct(
         public readonly bool $active,
         public readonly string $adapter,
+        public readonly bool $catalogue,
         public readonly string $id,
         public readonly bool $isDefault,
         public readonly string $name,
@@ -41,6 +45,7 @@ final class PrintshopConnectionsListResponseOption2ConnectionsItem implements Mo
         $model = new self(
             active: Decode::bool(Decode::required($data, 'active', $path), $path . '.active'),
             adapter: Decode::string(Decode::required($data, 'adapter', $path), $path . '.adapter'),
+            catalogue: Decode::bool(Decode::required($data, 'catalogue', $path), $path . '.catalogue'),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             isDefault: Decode::bool(Decode::required($data, 'isDefault', $path), $path . '.isDefault'),
             name: Decode::string(Decode::required($data, 'name', $path), $path . '.name'),
@@ -65,6 +70,7 @@ final class PrintshopConnectionsListResponseOption2ConnectionsItem implements Mo
         $data = [];
         $data['active'] = $this->active;
         $data['adapter'] = $this->adapter;
+        $data['catalogue'] = $this->catalogue;
         $data['id'] = $this->id;
         $data['isDefault'] = $this->isDefault;
         $data['name'] = $this->name;

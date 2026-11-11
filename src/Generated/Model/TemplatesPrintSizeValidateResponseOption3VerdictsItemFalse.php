@@ -8,6 +8,7 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
+use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -21,10 +22,12 @@ final class TemplatesPrintSizeValidateResponseOption3VerdictsItemFalse implement
     private ?array $decoded = null;
 
     /**
+     * @param list<TemplatesPrintSizeValidateResponseOption3VerdictsItemFalseLowResolutionItem> $lowResolution The images the workspace put in the template that print below their recommended resolution at the size. Empty when every image is at or above it, when the image was accepted as it is, or when the workspace turned these warnings off.
      * @param string $reason Values: {@see \Pixonaut\Sdk\Generated\Enum\TemplatesPrintSizeValidateResponseOption3VerdictsItemFalseReason}.
      */
     public function __construct(
         public readonly bool $legal,
+        public readonly array $lowResolution,
         public readonly string $reason,
     ) {}
 
@@ -40,6 +43,11 @@ final class TemplatesPrintSizeValidateResponseOption3VerdictsItemFalse implement
     {
         $model = new self(
             legal: Decode::bool(Decode::required($data, 'legal', $path), $path . '.legal'),
+            lowResolution: Decode::list(
+                Decode::required($data, 'lowResolution', $path),
+                $path . '.lowResolution',
+                static fn(mixed $v, string $p): TemplatesPrintSizeValidateResponseOption3VerdictsItemFalseLowResolutionItem => TemplatesPrintSizeValidateResponseOption3VerdictsItemFalseLowResolutionItem::fromArray(Decode::object($v, $p), $p),
+            ),
             reason: Decode::string(Decode::required($data, 'reason', $path), $path . '.reason'),
         );
         $model->decoded = $data;
@@ -61,6 +69,10 @@ final class TemplatesPrintSizeValidateResponseOption3VerdictsItemFalse implement
     {
         $data = [];
         $data['legal'] = $this->legal;
+        $data['lowResolution'] = array_map(
+            static fn(TemplatesPrintSizeValidateResponseOption3VerdictsItemFalseLowResolutionItem $v): mixed => Encode::model($v),
+            $this->lowResolution,
+        );
         $data['reason'] = $this->reason;
         return $data;
     }

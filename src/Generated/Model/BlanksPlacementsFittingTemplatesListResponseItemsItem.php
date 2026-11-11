@@ -22,11 +22,13 @@ final class BlanksPlacementsFittingTemplatesListResponseItemsItem implements Mod
     private ?array $decoded = null;
 
     /**
+     * @param list<BlanksPlacementsFittingTemplatesListResponseItemsItemLowResolutionItem> $lowResolution The images the workspace put in the template that print below their recommended resolution at this pairing's fitted size (`printWidthMm` × `printHeightMm`). Empty when every image is at or above it, when the image was accepted as it is, or when the workspace turned these warnings off.
      * @param string|null $previewUrl A link to the template's preview, as the template search gives one, opening with no key for an hour or two. Null for a draft never published, which has no version to draw.
      * @param BlanksPlacementsFittingTemplatesListResponseItemsItemSizes $sizes The blank's sizes the template can and can't print at, on a placement whose print area changes with an option (coverage `full`, or a position that prints one size only). Both empty on a placement whose area doesn't, which the template fits at every size.
      * @param string $status Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksPlacementsFittingTemplatesListResponseItemsItemStatus}.
      */
     public function __construct(
+        public readonly array $lowResolution,
         public readonly string $name,
         public readonly ?string $previewUrl,
         public readonly float $printHeightMm,
@@ -50,6 +52,11 @@ final class BlanksPlacementsFittingTemplatesListResponseItemsItem implements Mod
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
+            lowResolution: Decode::list(
+                Decode::required($data, 'lowResolution', $path),
+                $path . '.lowResolution',
+                static fn(mixed $v, string $p): BlanksPlacementsFittingTemplatesListResponseItemsItemLowResolutionItem => BlanksPlacementsFittingTemplatesListResponseItemsItemLowResolutionItem::fromArray(Decode::object($v, $p), $p),
+            ),
             name: Decode::string(Decode::required($data, 'name', $path), $path . '.name'),
             previewUrl: Decode::nullable(
                 Decode::required($data, 'previewUrl', $path),
@@ -83,6 +90,10 @@ final class BlanksPlacementsFittingTemplatesListResponseItemsItem implements Mod
     public function toArray(): array
     {
         $data = [];
+        $data['lowResolution'] = array_map(
+            static fn(BlanksPlacementsFittingTemplatesListResponseItemsItemLowResolutionItem $v): mixed => Encode::model($v),
+            $this->lowResolution,
+        );
         $data['name'] = $this->name;
         $data['previewUrl'] = $this->previewUrl;
         $data['printHeightMm'] = $this->printHeightMm;

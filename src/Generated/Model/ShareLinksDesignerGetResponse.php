@@ -28,6 +28,7 @@ final class ShareLinksDesignerGetResponse implements Model
      * @param string $id The link's id.
      * @param string|null $locale The language the link's page is shown in, which its `url` names as `?lang=<locale>`; null when it names none, and the page is shown in the workspace's default language.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ShareLinksDesignerGetResponseLocale}.
+     * @param list<ShareLinksDesignerGetResponseLowResolutionItem> $lowResolution Each size a side offers that prints an image the workspace put in its template below its recommended resolution, judged as it is read: an image accepted since, or the workspace turning these warnings off, leaves it out. Empty when there is none.
      * @param string|null $name The workspace's name for the link.
      * @param bool $placementFrame Whether a designer link's page draws the placement frame around the shopper's picture at rest; false for every other link.
      * @param bool $printAreaFrame Whether a designer link's page draws the print area's frame; false for every other link.
@@ -58,6 +59,7 @@ final class ShareLinksDesignerGetResponse implements Model
         public readonly ?float $expiresAt,
         public readonly string $id,
         public readonly ?string $locale,
+        public readonly array $lowResolution,
         public readonly ?string $name,
         public readonly bool $placementFrame,
         public readonly bool $printAreaFrame,
@@ -113,6 +115,11 @@ final class ShareLinksDesignerGetResponse implements Model
                 Decode::required($data, 'locale', $path),
                 $path . '.locale',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
+            lowResolution: Decode::list(
+                Decode::required($data, 'lowResolution', $path),
+                $path . '.lowResolution',
+                static fn(mixed $v, string $p): ShareLinksDesignerGetResponseLowResolutionItem => ShareLinksDesignerGetResponseLowResolutionItem::fromArray(Decode::object($v, $p), $p),
             ),
             name: Decode::nullable(
                 Decode::required($data, 'name', $path),
@@ -196,6 +203,10 @@ final class ShareLinksDesignerGetResponse implements Model
         $data['expiresAt'] = $this->expiresAt;
         $data['id'] = $this->id;
         $data['locale'] = $this->locale;
+        $data['lowResolution'] = array_map(
+            static fn(ShareLinksDesignerGetResponseLowResolutionItem $v): mixed => Encode::model($v),
+            $this->lowResolution,
+        );
         $data['name'] = $this->name;
         $data['placementFrame'] = $this->placementFrame;
         $data['printAreaFrame'] = $this->printAreaFrame;
