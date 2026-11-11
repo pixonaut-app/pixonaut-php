@@ -1,5 +1,17 @@
 # Changelog
 
+## [5.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v4.0.0...v5.0.0) (2026-11-11)
+
+Targets the Pixonaut API 4.1.0.
+
+### ⚠ BREAKING CHANGES
+
+* the UV-pass models' constructors take `fromFlatLayout` before `occluderAssetId` and `pieceSizesMm`, so a call that passes those by position must name them.
+
+### Features
+
+* target the published Pixonaut API 4.1.0 ([#34](https://github.com/pixonaut-app/pixonaut-php/issues/34)) ([6c09250](https://github.com/pixonaut-app/pixonaut-php/commit/6c092507579bd889555fd87ee0ee481e7c9dff26))
+
 ## [4.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v3.1.0...v4.0.0) (2026-11-11)
 
 Targets the Pixonaut API 4.0.0.
