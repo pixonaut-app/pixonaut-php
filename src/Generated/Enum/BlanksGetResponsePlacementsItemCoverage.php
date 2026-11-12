@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Enum;
 
 /**
- * How a print covers the placement: `within`, a print of any size up to the maximum placed inside it, or `full`, a print that is the whole area, such as an all-over-print panel. Omitted, `within`. A `full` placement's usual size is its area, and a request naming a smaller size is refused `print_size_not_area`.
+ * How a print covers the placement: `within`, any size up to the maximum, placed inside it, or `full`, the whole area, such as an all-over-print panel. Omitted, `within`. A `full` placement's size is its area; a smaller one is refused `print_size_not_area`.
  *
  * The values this release knows. The field is a string, and the API may answer a value added after this release.
  *

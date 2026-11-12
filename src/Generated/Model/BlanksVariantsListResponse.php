@@ -25,7 +25,7 @@ final class BlanksVariantsListResponse implements Model
      * @param list<string> $areasVaryBy The options the blank's print areas change with, such as Size, in option order; empty for one print area per placement. Each placement's `areas` names a row of these.
      * @param list<string> $axes The blank's option axes, in the order the shopper sees them.
      * @param list<BlanksVariantsListResponseOptionsItem> $options The blank's options in that order, each with its values and how each value looks: a designer draws an option whose values have appearances as swatches.
-     * @param string|null $paintBy The option the blank's dyed photos are painted in, such as Colour: a stock photo that takes a dye, or a view drawn from a 3D render, shows each variant in its value's colour. null: the merchant's own photos show as photographed, while a stock photo that takes a dye is painted in the first option with colours.
+     * @param string|null $paintBy The option the blank's dyed photos are painted in, such as Colour: a stock photo that takes a dye, or a view drawn from a 3D render, shows each variant in its value's colour. null: the merchant's own photos show as photographed, and a dyeable stock photo takes the first option with colours.
      * @param list<BlanksVariantsListResponseVariantsItem> $variants
      */
     public function __construct(

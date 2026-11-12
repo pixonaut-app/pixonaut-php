@@ -11,6 +11,7 @@ use Pixonaut\Sdk\Generated\EventType;
 use Pixonaut\Sdk\Generated\Model\AutomationWebhookEvent;
 use Pixonaut\Sdk\Generated\Model\EventsListResponse;
 use Pixonaut\Sdk\Generated\Model\OrderStatusChangedEvent;
+use Pixonaut\Sdk\Generated\Model\TemplateRenamedEvent;
 use Pixonaut\Sdk\Generated\Model\WebhookEvent;
 use Pixonaut\Sdk\Webhooks\Event;
 use Pixonaut\Sdk\Webhooks\UnknownEvent;
@@ -28,6 +29,16 @@ final class EventTest extends TestCase
             'status' => 'shipped',
             'previousStatus' => 'printed',
         ],
+    ];
+
+    /** A template renamed by one of the workspace's automations. */
+    private const TEMPLATE_RENAMED = [
+        'id' => 'evt_3',
+        'type' => 'template.renamed',
+        'createdAt' => 1790086400000,
+        'payload' => ['oldId' => 'summer-tee', 'newId' => 'summer-tee-2026', 'renamedAt' => 1790086400000],
+        'via' => 'automation',
+        'automation' => ['id' => 'aut_1', 'name' => 'Seasonal rename'],
     ];
 
     /** A type no release knows yet. */
@@ -78,6 +89,19 @@ final class EventTest extends TestCase
 
         self::assertInstanceOf(OrderStatusChangedEvent::class, $page->events[0]);
         self::assertInstanceOf(UnknownEvent::class, $page->events[1]);
+    }
+
+    public function testThePolledEventStreamReadsARenamedTemplate(): void
+    {
+        $page = EventsListResponse::fromArray(['events' => [self::TEMPLATE_RENAMED], 'nextCursor' => null]);
+
+        $event = $page->events[0];
+        self::assertInstanceOf(TemplateRenamedEvent::class, $event);
+        self::assertSame('summer-tee', $event->payload->oldId);
+        self::assertSame('summer-tee-2026', $event->payload->newId);
+        self::assertSame('automation', $event->via);
+        self::assertSame('Seasonal rename', $event->automation?->name);
+        self::assertSame(self::TEMPLATE_RENAMED, $event->raw());
     }
 
     public function testAnUnknownEventInTheStreamStillNeedsAnEnvelope(): void

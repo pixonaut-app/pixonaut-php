@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * The part of the region's piece its print covers, in millimetres on the piece's unwrapped surface from its top-left corner, such as a square on the side of a cup: the print fills it at the window's size, and the product shows plain outside it. It lies inside its piece and needs the piece's size on the view. Absent, the whole piece.
+ * The part of the region's piece its print covers, in millimetres on the piece's unwrapped surface from its top-left corner, such as a square on a cup's side: the print fills it at the window's size, the product plain outside it. It lies inside its piece, whose size the view must give. Absent, the whole piece.
  *
  * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 202: $.blank.placements[].views[].printWindowMm`.
  */

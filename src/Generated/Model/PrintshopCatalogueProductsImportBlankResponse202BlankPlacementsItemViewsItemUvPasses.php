@@ -12,7 +12,7 @@ use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * The maps the view was rendered with from a 3D model of the product, each the view's photo size; a region naming a piece is drawn through them. Absent, the view's regions are laid in their rect or mesh.
+ * The maps the view was rendered with from a 3D model of the product, each the view's photo size; a region naming a piece is drawn through them. Absent, regions are laid in their rect or mesh.
  *
  * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 202: $.blank.placements[].views[].uvPasses`.
  */
