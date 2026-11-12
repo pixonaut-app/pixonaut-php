@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * The placement it is linked with by default, such as a right sleeve with the left one: one design then drives both unless a designer link, an SDK mount or a design says otherwise. Null or omitted for none. A placement linked with one no longer on the blank is linked with none.
+ * The placement it is linked with by default, such as a right sleeve with the left one: one design drives both unless a designer link, an SDK mount or a design says otherwise. Null or omitted for none, as when the linked one leaves the blank.
  *
  * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 200: $.blank.placements[].linkWith`.
  */

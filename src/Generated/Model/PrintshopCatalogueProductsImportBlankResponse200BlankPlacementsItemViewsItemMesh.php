@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Control points the print is laid through or, marked cut, cut to, rows from its top edge and points from its left, as [x, y] in the photo's original pixels; at least 2 and at most 33 along each side. Absent, the print is laid in the rect.
+ * Control points the print is laid through or, marked cut, cut to: rows from its top edge, points from its left, as [x, y] in the photo's original pixels; 2 to 33 along each side. Absent, the print is laid in the rect.
  *
  * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 200: $.blank.placements[].views[].mesh`.
  */
@@ -24,7 +24,7 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
 
     /**
      * @param list<list<list<float>>> $points The rows of control points, from the print's top edge.
-     * @param bool|null $cut The points draw a shape to cut the print to rather than a mesh to bend it through: the print is laid flat over the box the points span, at its own proportions and filling it, and everything outside the shape the outer points draw is cut away. Absent, the print is warped through the mesh.
+     * @param bool|null $cut The points draw a shape the print is cut to, not a mesh it bends through: the print is laid flat over the box the points span, filling it at its own proportions, and cut away outside the outer points' shape. Absent, it is warped through the mesh.
      */
     public function __construct(
         public readonly array $points,

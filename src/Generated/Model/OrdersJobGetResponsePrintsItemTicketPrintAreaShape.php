@@ -22,7 +22,7 @@ final class OrdersJobGetResponsePrintsItemTicketPrintAreaShape implements Model
 
     /**
      * @param string $dFrac The shape as SVG path data in fractions of the print area, 0 to 1 across and down (curves, no arcs): its first subpath the outline, every further one a cut-out, filled even-odd, each subpath closed.
-     * @param bool|null $cutByPrintShop True when the print shop cuts the product to this shape: the outline and the cut-outs go into the print file as its cut line. Omitted, the product already has the shape.
+     * @param bool|null $cutByPrintShop True when the print shop cuts the product to this shape: outline and cut-outs go into the print file as its cut line. Omitted, the product already has the shape.
      */
     public function __construct(
         public readonly string $dFrac,

@@ -12,7 +12,7 @@ use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * How the product is printed flat on one sheet and folded into shape, such as a folding box. Its print area is the sheet, printed edge to edge (`coverage` `full`) at one size. Null or omitted, the placement is printed as it lies.
+ * How the product is printed flat on one sheet and folded into shape, such as a folding box: its print area is the sheet, printed edge to edge (`coverage` `full`) at one size. Null or omitted, it is printed as it lies.
  *
  * Schema: `GET /v1/blanks answer 200: $.blanks[].placements[].flatLayout`.
  */
