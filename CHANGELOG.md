@@ -1,5 +1,16 @@
 # Changelog
 
+## [6.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v5.0.0...v6.0.0) (2026-11-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* a template.renamed event read from events()->list() is a TemplateRenamedEvent, no longer an UnknownEvent.
+
+### Features
+
+* target the published Pixonaut API 5.0.0 ([#36](https://github.com/pixonaut-app/pixonaut-php/issues/36)) ([73f9acd](https://github.com/pixonaut-app/pixonaut-php/commit/73f9acd15d85b02a4397d8336fa7444a0ecdb5f2))
+
 ## [5.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v4.0.0...v5.0.0) (2026-11-11)
 
 Targets the Pixonaut API 4.1.0.
