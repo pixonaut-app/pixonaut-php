@@ -1,5 +1,17 @@
 # Changelog
 
+## [7.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v6.0.0...v7.0.0) (2026-11-13)
+
+Targets the Pixonaut API 6.0.0.
+
+### ⚠ BREAKING CHANGES
+
+* generated model constructors gain arguments for the new fields, ScenesListResponseScenesItem::$stockItem is nullable, and a low-resolution image without a `label` no longer decodes.
+
+### Features
+
+* target the published Pixonaut API 6.0.0 ([#38](https://github.com/pixonaut-app/pixonaut-php/issues/38)) ([f1219e4](https://github.com/pixonaut-app/pixonaut-php/commit/f1219e450966c13ad1d0e58a889847338e4a7ca3))
+
 ## [6.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v5.0.0...v6.0.0) (2026-11-12)
 
 Targets the Pixonaut API 5.0.0.
