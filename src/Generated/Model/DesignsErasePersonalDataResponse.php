@@ -37,6 +37,7 @@ final class DesignsErasePersonalDataResponse implements Model
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\DesignsErasePersonalDataResponseLanguage}.
      * @param DesignsErasePersonalDataResponseOrigin $origin Where the design came from: the door it was committed through. A duplicate's is whoever duplicated it.
      * @param float|null $personalDataErasedAt When the design's own personal data was erased (`POST /v1/designs/{id}/erase-personal-data`), or null. An erased design's document holds none of the text or pictures its customer put in, and nothing more is printed, ordered or corrected from it.
+     * @param array<string, string>|null $pickedColours The colours the shopper picked, by option name, `#rrggbb` each, such as `{"Colour": "#1b2a4a"}`, as the design was committed: a value of its blank that takes any colour is made in its pick. Null when none was picked.
      * @param string|null $placementId The placement on the blank this design was fitted to when it was made; null whenever `blankId` is. Kept while the blank is, so it may name a placement since removed from the blank: the print box frozen into the document is what prints.
      * @param bool|null $previewOpened Whether the customer saw the proof before approving. `true` when they approved on a deciding proof page, which showed them that revision's proof, whatever the commit said, and when they approved in a hosted designer and the commit said nothing. On an approval by a store's key or with consent, what the caller committing it said, from the SDK's `wasPreviewOpened()`. `null` means this does not apply: a review time ran out, or a member or an automation approved it with no consent, so no customer approved, short of what a hosted designer's customer already answered. A correction, a rejection and a request for changes set it back to `null`. It is for the merchant's own tracking: nothing else in Pixonaut depends on it, and a caller should report it honestly.
      * @param DesignsErasePersonalDataResponsePrintSize|null $printSize The size the design prints at, without bleed: the `widthMm` and `heightMm` its proof or commit named, or the size fitted for one that named none. A store checks it, with `templateVersion`, `blankId` and `placementId`, against what the product variation sells before accepting the add to cart, since the proof is made in the customer's browser. Null only for a stored document that holds no usable print size.
@@ -71,6 +72,7 @@ final class DesignsErasePersonalDataResponse implements Model
         public readonly string $language,
         public readonly DesignsErasePersonalDataResponseOrigin $origin,
         public readonly ?float $personalDataErasedAt,
+        public readonly ?array $pickedColours,
         public readonly ?string $placementId,
         public readonly ?bool $previewOpened,
         public readonly ?DesignsErasePersonalDataResponsePrintSize $printSize,
@@ -155,6 +157,15 @@ final class DesignsErasePersonalDataResponse implements Model
                 Decode::required($data, 'personalDataErasedAt', $path),
                 $path . '.personalDataErasedAt',
                 static fn(mixed $v, string $p): float => Decode::float($v, $p),
+            ),
+            pickedColours: Decode::nullable(
+                Decode::required($data, 'pickedColours', $path),
+                $path . '.pickedColours',
+                static fn(mixed $v, string $p): array => Decode::map(
+                    $v,
+                    $p,
+                    static fn(mixed $v, string $p): string => Decode::string($v, $p),
+                ),
             ),
             placementId: Decode::nullable(
                 Decode::required($data, 'placementId', $path),
@@ -263,6 +274,7 @@ final class DesignsErasePersonalDataResponse implements Model
         $data['language'] = $this->language;
         $data['origin'] = Encode::model($this->origin);
         $data['personalDataErasedAt'] = $this->personalDataErasedAt;
+        $data['pickedColours'] = $this->pickedColours === null ? null : Encode::object($this->pickedColours);
         $data['placementId'] = $this->placementId;
         $data['previewOpened'] = $this->previewOpened;
         $data['printSize'] = $this->printSize === null ? null : Encode::model($this->printSize);

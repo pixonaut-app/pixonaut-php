@@ -24,7 +24,7 @@ final class PrintshopCatalogueProductsImportBlankRequest implements Model
      * @param list<string>|null $colours The colours to fetch photos of, by name as the options read answers them; absent for every colour. A colour named here that the product does not have is ignored.
      * @param string|null $name As the library shows it. Omitted, the printshop's product name.
      * @param bool|null $printshopPhotos Whether the printshop's photos are fetched as the blank's catalogue photos. True is refused where the printshop has no photo with a print area. Omitted, they are fetched if it has any.
-     * @param list<string>|null $sceneIds Stock photos, the scenes in the order they show, first in the blank's order and before the printshop's photos. They may photograph several stock items, each scene its own. On each of them, each placement with a role that item has a place for takes its default record; one with none shows on none of its scenes.
+     * @param list<string>|null $sceneIds Stock photos, the scenes in the order they show, first in the blank's order and before the printshop's photos. They may photograph several stock items, each scene its own; two of one stock item, setting, person and pose are refused `scene_view_repeated`, unless each is held in a hand. On each of them, each placement with a role that item has a place for takes its default record; one with none shows on none of its scenes.
      * @param list<string>|null $views The views to fetch photos for, by the key the options read answers; absent for every view.
      */
     public function __construct(

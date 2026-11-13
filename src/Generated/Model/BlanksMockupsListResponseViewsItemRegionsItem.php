@@ -23,7 +23,7 @@ final class BlanksMockupsListResponseViewsItemRegionsItem implements Model
 
     /**
      * @param string $placementId The placement whose print the region shows.
-     * @param BlanksMockupsListResponseViewsItemRegionsItemRectPx|null $rectPx Where the region's print sits on every photo, in the photo's original pixels; null while it is not marked.
+     * @param BlanksMockupsListResponseViewsItemRegionsItemRectPx|null $rectPx Where the region's print sits on every photo, in the photo's original pixels; null while it is not marked, and on a view showing a setting, whose photos each say where under `photoScene`.
      * @param string|null $maskUrl The region's mask, the view's photo size, opened with no key: where it is light the print shows, where it is dark the print is hidden. Absent hides nothing. Valid as long as a photo's `url`.
      * @param BlanksMockupsListResponseViewsItemRegionsItemMesh|null $mesh Control points the print is laid through or, marked cut, cut to: rows from its top edge, points from its left, as [x, y] in the photo's original pixels; 2 to 33 along each side. Absent, the print is laid in the rect.
      * @param int|null $piece A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.

@@ -21,9 +21,13 @@ final class PrintshopCatalogueProductsImportBlankResponse202 implements Model
      */
     private ?array $decoded = null;
 
+    /**
+     * @param list<PrintshopCatalogueProductsImportBlankResponse202ProductModelMissingItem> $productModelMissing The measures of the product the printshop's data does not give, each with the question to ask the merchant. While any is listed the blank is imported without product models, and its pictures in a setting need them: ask, and once it is `ready` send the answers to `POST /v1/blanks/{id}/product-model-proposal`, which reads what is missing again and answers the models to write with `PATCH /v1/blanks/{id}`. Empty when the import writes them, or the printshop's data names no kind of product a picture is drawn from.
+     */
     public function __construct(
         public readonly PrintshopCatalogueProductsImportBlankResponse202Blank $blank,
         public readonly PrintshopCatalogueProductsImportBlankResponse202Job $job,
+        public readonly array $productModelMissing,
     ) {}
 
     /**
@@ -39,6 +43,11 @@ final class PrintshopCatalogueProductsImportBlankResponse202 implements Model
         $model = new self(
             blank: PrintshopCatalogueProductsImportBlankResponse202Blank::fromArray(Decode::object(Decode::required($data, 'blank', $path), $path . '.blank'), $path . '.blank'),
             job: PrintshopCatalogueProductsImportBlankResponse202Job::fromArray(Decode::object(Decode::required($data, 'job', $path), $path . '.job'), $path . '.job'),
+            productModelMissing: Decode::list(
+                Decode::required($data, 'productModelMissing', $path),
+                $path . '.productModelMissing',
+                static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202ProductModelMissingItem => PrintshopCatalogueProductsImportBlankResponse202ProductModelMissingItem::fromArray(Decode::object($v, $p), $p),
+            ),
         );
         $model->decoded = $data;
         return $model;
@@ -60,6 +69,10 @@ final class PrintshopCatalogueProductsImportBlankResponse202 implements Model
         $data = [];
         $data['blank'] = Encode::model($this->blank);
         $data['job'] = Encode::model($this->job);
+        $data['productModelMissing'] = array_map(
+            static fn(PrintshopCatalogueProductsImportBlankResponse202ProductModelMissingItem $v): mixed => Encode::model($v),
+            $this->productModelMissing,
+        );
         return $data;
     }
 }

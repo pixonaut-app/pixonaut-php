@@ -25,12 +25,14 @@ final class BlanksVariantsListResponseVariantsItem implements Model
      * @param array<string, string> $options
      * @param BlanksVariantsListResponseVariantsItemRetired|null $retired
      * @param list<BlanksVariantsListResponseVariantsItemViewsItem> $views The views it has a photo in, in the blank's order: each view whose photo of its row shows it.
+     * @param BlanksVariantsListResponseVariantsItemFrame|null $frame How the frame of its product looks, from the frame part of its row's product model. Absent on a product with no frame part.
      */
     public function __construct(
         public readonly array $options,
         public readonly string $ref,
         public readonly ?BlanksVariantsListResponseVariantsItemRetired $retired,
         public readonly array $views,
+        public readonly ?BlanksVariantsListResponseVariantsItemFrame $frame = null,
     ) {}
 
     /**
@@ -60,6 +62,7 @@ final class BlanksVariantsListResponseVariantsItem implements Model
                 $path . '.views',
                 static fn(mixed $v, string $p): BlanksVariantsListResponseVariantsItemViewsItem => BlanksVariantsListResponseVariantsItemViewsItem::fromArray(Decode::object($v, $p), $p),
             ),
+            frame: array_key_exists('frame', $data) ? BlanksVariantsListResponseVariantsItemFrame::fromArray(Decode::object($data['frame'], $path . '.frame'), $path . '.frame') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -86,6 +89,9 @@ final class BlanksVariantsListResponseVariantsItem implements Model
             static fn(BlanksVariantsListResponseVariantsItemViewsItem $v): mixed => Encode::model($v),
             $this->views,
         );
+        if ($this->frame !== null) {
+            $data['frame'] = Encode::model($this->frame);
+        }
         return $data;
     }
 }

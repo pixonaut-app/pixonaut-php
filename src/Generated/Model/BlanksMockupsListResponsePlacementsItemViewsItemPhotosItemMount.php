@@ -25,7 +25,7 @@ final class BlanksMockupsListResponsePlacementsItemViewsItemPhotosItemMount impl
 
     /**
      * @param BlanksMockupsListResponsePlacementsItemViewsItemPhotosItemMountPhotoSizePx $photoSizePx The size of the photo `placementRectPx` is measured in. The url may serve a smaller copy of it; the designer places the rect on whatever size arrives.
-     * @param BlanksMockupsListResponsePlacementsItemViewsItemPhotosItemMountPlacementRectPx $placementRectPx Where the print area sits on every photo of the view, in the original photo's pixels; null until it is marked.
+     * @param BlanksMockupsListResponsePlacementsItemViewsItemPhotosItemMountPlacementRectPx $placementRectPx Where the print sits on the photo, in its original pixels.
      * @param string $url The photo, opened with no key. It stays valid for at least 30 days and at most 60, and any cache may keep it that long; it stops opening once the mockup's photo is replaced. Read the blank's mockups again within 30 days for a fresh one.
      * @param float|null $displacementStrength How far the photo's folds move the design, more than 0 and at most 1. null moves nothing. Omitted, its category's, else nothing.
      * @param float|null $shadingStrength How strongly the photo's light and shade carry onto the design, 0 (none) to 1 (all). Omitted, its category's, else the default strength.

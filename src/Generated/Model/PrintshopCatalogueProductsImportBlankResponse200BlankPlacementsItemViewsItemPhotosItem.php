@@ -25,6 +25,8 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
      * @param string $assetId The photo's asset id, as the assets feature returns it after an upload.
      * @param string $id The photo's id, unique within the blank: the `mockupId` a render and a mockup link name.
      * @param float|null $displacementStrength How far the photo's folds move the design, more than 0 and at most 1. null moves nothing. Omitted, its category's, else nothing.
+     * @param PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPhotosItemPhotoSizePx|null $photoSizePx Own pixel size; absent, the view's.
+     * @param PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPhotosItemPlacementRectPx|null $placementRectPx Own print rect; absent, the view's.
      * @param array<string, string>|null $row The photo's value of each `photosVaryBy` option; empty when there are none. One photo per row per view.
      * @param float|null $shadingStrength How strongly the photo's light and shade carry onto the design, 0 (none) to 1 (all). Omitted, its category's, else the default strength.
      * @param float|null $textureStrength How strongly the photo's fine detail, such as a weave or a grain, shows through the print, 0 (none) to 1 (all). Omitted, its category's, else, as for null, the default strength.
@@ -35,6 +37,8 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
         public readonly string $assetId,
         public readonly string $id,
         public readonly ?float $displacementStrength = null,
+        public readonly ?PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPhotosItemPhotoSizePx $photoSizePx = null,
+        public readonly ?PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPhotosItemPlacementRectPx $placementRectPx = null,
         public readonly ?array $row = null,
         public readonly ?float $shadingStrength = null,
         public readonly ?float $textureStrength = null,
@@ -60,6 +64,8 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
                 $path . '.displacementStrength',
                 static fn(mixed $v, string $p): float => Decode::float($v, $p),
             ) : null,
+            photoSizePx: array_key_exists('photoSizePx', $data) ? PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPhotosItemPhotoSizePx::fromArray(Decode::object($data['photoSizePx'], $path . '.photoSizePx'), $path . '.photoSizePx') : null,
+            placementRectPx: array_key_exists('placementRectPx', $data) ? PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPhotosItemPlacementRectPx::fromArray(Decode::object($data['placementRectPx'], $path . '.placementRectPx'), $path . '.placementRectPx') : null,
             row: array_key_exists('row', $data) ? Decode::map(
                 $data['row'],
                 $path . '.row',
@@ -104,6 +110,12 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
         $data['id'] = $this->id;
         if ($this->displacementStrength !== null) {
             $data['displacementStrength'] = $this->displacementStrength;
+        }
+        if ($this->photoSizePx !== null) {
+            $data['photoSizePx'] = Encode::model($this->photoSizePx);
+        }
+        if ($this->placementRectPx !== null) {
+            $data['placementRectPx'] = Encode::model($this->placementRectPx);
         }
         if ($this->row !== null) {
             $data['row'] = Encode::object($this->row);

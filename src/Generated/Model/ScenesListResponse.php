@@ -22,10 +22,14 @@ final class ScenesListResponse implements Model
     private ?array $decoded = null;
 
     /**
+     * @param ScenesListResponseCanMake|null $canMake Set when the query names a setting or a person and no scene matches: the scene asked for can be composed, at this price. Null otherwise.
+     * @param ScenesListResponseFacets $facets The settings, people and poses the list can be narrowed by, each with how many scenes have it: a facet's values are counted with every other part of the query applied, and its own left out.
      * @param list<ScenesListResponseScenesItem> $scenes
      * @param list<ScenesListResponseStockItemsItem> $stockItems
      */
     public function __construct(
+        public readonly ?ScenesListResponseCanMake $canMake,
+        public readonly ScenesListResponseFacets $facets,
         public readonly array $scenes,
         public readonly array $stockItems,
     ) {}
@@ -41,6 +45,12 @@ final class ScenesListResponse implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
+            canMake: Decode::nullable(
+                Decode::required($data, 'canMake', $path),
+                $path . '.canMake',
+                static fn(mixed $v, string $p): ScenesListResponseCanMake => ScenesListResponseCanMake::fromArray(Decode::object($v, $p), $p),
+            ),
+            facets: ScenesListResponseFacets::fromArray(Decode::object(Decode::required($data, 'facets', $path), $path . '.facets'), $path . '.facets'),
             scenes: Decode::list(
                 Decode::required($data, 'scenes', $path),
                 $path . '.scenes',
@@ -70,6 +80,8 @@ final class ScenesListResponse implements Model
     public function toArray(): array
     {
         $data = [];
+        $data['canMake'] = $this->canMake === null ? null : Encode::model($this->canMake);
+        $data['facets'] = Encode::model($this->facets);
         $data['scenes'] = array_map(
             static fn(ScenesListResponseScenesItem $v): mixed => Encode::model($v),
             $this->scenes,

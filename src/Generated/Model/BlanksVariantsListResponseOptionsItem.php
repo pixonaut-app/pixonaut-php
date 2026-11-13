@@ -26,6 +26,7 @@ final class BlanksVariantsListResponseOptionsItem implements Model
      * @param array<string, string> $tones Whether a product in each value is light or dark, by value: the tone set on its appearance, else its colour fill's, else light. Every value of `values` is named. On a variant of a dark value a template's on-dark values are used.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseOptionsItemTonesValue}.
      * @param list<string> $values
+     * @param list<string>|null $anyColour The values the shopper picks any colour for with a colour picker, their colour fill the one shown until they do: only on a blank made by a custom printshop. Absent when none does.
      * @param array<string, string>|null $textures The texture a stock photo's dye paints each value in, in place of its colour, by value: only the values that have one. Absent when none has one.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseOptionsItemTexturesValue}.
      */
@@ -34,6 +35,7 @@ final class BlanksVariantsListResponseOptionsItem implements Model
         public readonly string $name,
         public readonly array $tones,
         public readonly array $values,
+        public readonly ?array $anyColour = null,
         public readonly ?array $textures = null,
     ) {}
 
@@ -68,6 +70,11 @@ final class BlanksVariantsListResponseOptionsItem implements Model
                 $path . '.values',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            anyColour: array_key_exists('anyColour', $data) ? Decode::list(
+                $data['anyColour'],
+                $path . '.anyColour',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
             textures: array_key_exists('textures', $data) ? Decode::map(
                 $data['textures'],
                 $path . '.textures',
@@ -101,6 +108,9 @@ final class BlanksVariantsListResponseOptionsItem implements Model
         $data['name'] = $this->name;
         $data['tones'] = Encode::object($this->tones);
         $data['values'] = $this->values;
+        if ($this->anyColour !== null) {
+            $data['anyColour'] = $this->anyColour;
+        }
         if ($this->textures !== null) {
             $data['textures'] = Encode::object($this->textures);
         }

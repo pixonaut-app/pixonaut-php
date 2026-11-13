@@ -30,6 +30,7 @@ final class OrdersJobGetResponse implements Model
      * @param string $status Values: {@see \Pixonaut\Sdk\Generated\Enum\OrdersJobGetResponseStatus}.
      * @param OrdersJobGetResponseTicket|null $ticket
      * @param OrdersJobGetResponseTracking|null $tracking
+     * @param OrdersJobGetResponseVariant|null $variant The variant the order is made in, as it was placed: its options, and the colour each is made in whose value lets the shopper pick any colour. `null` for an order of prints on no blank.
      */
     public function __construct(
         public readonly OrdersJobGetResponseCarriers $carriers,
@@ -42,6 +43,7 @@ final class OrdersJobGetResponse implements Model
         public readonly float $submittedAt,
         public readonly ?OrdersJobGetResponseTicket $ticket,
         public readonly ?OrdersJobGetResponseTracking $tracking,
+        public readonly ?OrdersJobGetResponseVariant $variant,
     ) {}
 
     /**
@@ -89,6 +91,11 @@ final class OrdersJobGetResponse implements Model
                 $path . '.tracking',
                 static fn(mixed $v, string $p): OrdersJobGetResponseTracking => OrdersJobGetResponseTracking::fromArray(Decode::object($v, $p), $p),
             ),
+            variant: Decode::nullable(
+                Decode::required($data, 'variant', $path),
+                $path . '.variant',
+                static fn(mixed $v, string $p): OrdersJobGetResponseVariant => OrdersJobGetResponseVariant::fromArray(Decode::object($v, $p), $p),
+            ),
         );
         $model->decoded = $data;
         return $model;
@@ -124,6 +131,7 @@ final class OrdersJobGetResponse implements Model
         $data['submittedAt'] = $this->submittedAt;
         $data['ticket'] = $this->ticket === null ? null : Encode::model($this->ticket);
         $data['tracking'] = $this->tracking === null ? null : Encode::model($this->tracking);
+        $data['variant'] = $this->variant === null ? null : Encode::model($this->variant);
         return $data;
     }
 }

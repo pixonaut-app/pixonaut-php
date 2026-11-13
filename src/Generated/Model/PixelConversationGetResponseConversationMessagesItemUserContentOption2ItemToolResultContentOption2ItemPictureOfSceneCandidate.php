@@ -20,10 +20,14 @@ final class PixelConversationGetResponseConversationMessagesItemUserContentOptio
      */
     private ?array $decoded = null;
 
+    /**
+     * @param int|null $preview
+     */
     public function __construct(
         public readonly string $id,
         public readonly string $kind,
         public readonly int $slot,
+        public readonly ?int $preview = null,
     ) {}
 
     /**
@@ -40,6 +44,7 @@ final class PixelConversationGetResponseConversationMessagesItemUserContentOptio
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             slot: Decode::int(Decode::required($data, 'slot', $path), $path . '.slot'),
+            preview: array_key_exists('preview', $data) ? Decode::int($data['preview'], $path . '.preview') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -62,6 +67,9 @@ final class PixelConversationGetResponseConversationMessagesItemUserContentOptio
         $data['id'] = $this->id;
         $data['kind'] = $this->kind;
         $data['slot'] = $this->slot;
+        if ($this->preview !== null) {
+            $data['preview'] = $this->preview;
+        }
         return $data;
     }
 }

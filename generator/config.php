@@ -114,6 +114,12 @@ return [
         'automations.placeholders' => [
             '$.namespaces[].placeholders[].token' => 'The placeholder as a text writes it, e.g. `{order.id}`.',
         ],
+        'blanks.mockups.list' => [
+            '$.placements[].views[].facets.person.key' => 'The person facet\'s value, the same on every scene that names it.',
+            '$.placements[].views[].facets.setting.key' => 'The setting facet\'s value, the same on every scene that names it.',
+            '$.views[].facets.person.key' => 'The person facet\'s value, the same on every scene that names it.',
+            '$.views[].facets.setting.key' => 'The setting facet\'s value, the same on every scene that names it.',
+        ],
         'designs.correctionProofs.create' => [
             '$.proofToken' => 'Names the proof; redeeming it takes a secret or integration key.',
         ],
@@ -127,6 +133,11 @@ return [
             '$.proofToken' => 'Names the proof; redeeming it takes a secret or integration key.',
         ],
         'scenes.list' => [
+            '$.facets.people[].key' => 'The person facet\'s value, as a scene holds it.',
+            '$.facets.poses[].key' => 'The pose facet\'s value, as a scene holds it.',
+            '$.facets.settings[].key' => 'The setting facet\'s value, as a scene holds it.',
+            '$.scenes[].geometry.anchors[].key' => 'The anchor\'s name within its scene.',
+            '$.scenes[].geometry.studio.cameras[].key' => 'The studio camera\'s name.',
             '$.stockItems[].areas[].key' => 'The print area\'s name.',
             '$.stockItems[].key' => 'The stock item\'s name.',
         ],

@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Where the region's print sits on every photo, in the photo's original pixels; null while it is not marked.
+ * Where the region's print sits on every photo, in the photo's original pixels; null while it is not marked, and on a view showing a setting, whose photos each say where under `photoScene`.
  *
  * Schema: `GET /v1/blanks/{id}/mockups answer 200: $.views[].regions[].rectPx`.
  */

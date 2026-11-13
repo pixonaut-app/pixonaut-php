@@ -34,6 +34,7 @@ final class ProofsCreateRequest implements Model
      * @param string|null $variant A variant of the blank, by ref (`v_…`). On a blank whose print areas change with its size, the design is sized at, and keeps, that variant's size; a ref the blank has no variant of is refused with `variant_not_of_blank`. On any other blank it is not checked. A proof also keeps it as `proofVariant`, for display.
      * @param array<string, string>|null $variantRow The size the design is for, as the blank's option values, such as `{"Size": "XL"}`, in place of `variant`: a value of each option the blank's print areas change with, and nothing else, or it is refused with `variant_row_invalid`. Ignored on a blank whose print areas change with nothing.
      * @param string|null $garmentVariant The variant whose colour the design is drawn in, by ref (`v_…`), when it is not the one `variant` names: on a dark colour each layer takes its on-dark value. It sizes nothing. A proof keeps it as `proofVariant`, so its commit is drawn in the same colour. Absent, `variant`'s colour; a ref the blank has no variant of draws as on a light product.
+     * @param array<string, string>|null $pickedColours The colours the shopper picked, by option name, `#rrggbb` each, such as `{"Colour": "#1b2a4a"}`, for a value of the blank that takes any colour: the product is drawn, and its tone judged, in the pick. A design keeps them, and its order is made in them; a pick for a value that takes no colour is kept and not used. Absent, each such value is its own colour.
      * @param ProofsCreateRequestRepeat|null|Omitted $repeat Lays the design as a repeat of its template across the print area. Null, or absent, places it once. Through a designer link, a repeat the link offers, or null where its shopper may turn the repeat off; absent there, the link's own start.
      * @param string|null $viewId The view of the blank's placement the customer previewed the proof in, by id. Kept with the proof and read with the design's proof as `proofViewId`, for display only.
      */
@@ -49,6 +50,7 @@ final class ProofsCreateRequest implements Model
         public readonly ?string $variant = null,
         public readonly ?array $variantRow = null,
         public readonly ?string $garmentVariant = null,
+        public readonly ?array $pickedColours = null,
         public readonly ProofsCreateRequestRepeat|null|Omitted $repeat = Omitted::Field,
         public readonly ?string $viewId = null,
     ) {}
@@ -79,6 +81,11 @@ final class ProofsCreateRequest implements Model
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : null,
             garmentVariant: array_key_exists('garmentVariant', $data) ? Decode::string($data['garmentVariant'], $path . '.garmentVariant') : null,
+            pickedColours: array_key_exists('pickedColours', $data) ? Decode::map(
+                $data['pickedColours'],
+                $path . '.pickedColours',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
             repeat: array_key_exists('repeat', $data) ? Decode::nullable(
                 $data['repeat'],
                 $path . '.repeat',
@@ -136,6 +143,9 @@ final class ProofsCreateRequest implements Model
         }
         if ($this->garmentVariant !== null) {
             $data['garmentVariant'] = $this->garmentVariant;
+        }
+        if ($this->pickedColours !== null) {
+            $data['pickedColours'] = Encode::object($this->pickedColours);
         }
         if (!$this->repeat instanceof Omitted) {
             $data['repeat'] = $this->repeat === null ? null : Encode::model($this->repeat);

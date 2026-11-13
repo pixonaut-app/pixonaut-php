@@ -30,6 +30,7 @@ final class OrdersJobUpdateResponse implements Model
      * @param string $status Values: {@see \Pixonaut\Sdk\Generated\Enum\OrdersJobUpdateResponseStatus}.
      * @param OrdersJobUpdateResponseTicket|null $ticket
      * @param OrdersJobUpdateResponseTracking|null $tracking
+     * @param OrdersJobUpdateResponseVariant|null $variant The variant the order is made in, as it was placed: its options, and the colour each is made in whose value lets the shopper pick any colour. `null` for an order of prints on no blank.
      */
     public function __construct(
         public readonly OrdersJobUpdateResponseCarriers $carriers,
@@ -42,6 +43,7 @@ final class OrdersJobUpdateResponse implements Model
         public readonly float $submittedAt,
         public readonly ?OrdersJobUpdateResponseTicket $ticket,
         public readonly ?OrdersJobUpdateResponseTracking $tracking,
+        public readonly ?OrdersJobUpdateResponseVariant $variant,
     ) {}
 
     /**
@@ -89,6 +91,11 @@ final class OrdersJobUpdateResponse implements Model
                 $path . '.tracking',
                 static fn(mixed $v, string $p): OrdersJobUpdateResponseTracking => OrdersJobUpdateResponseTracking::fromArray(Decode::object($v, $p), $p),
             ),
+            variant: Decode::nullable(
+                Decode::required($data, 'variant', $path),
+                $path . '.variant',
+                static fn(mixed $v, string $p): OrdersJobUpdateResponseVariant => OrdersJobUpdateResponseVariant::fromArray(Decode::object($v, $p), $p),
+            ),
         );
         $model->decoded = $data;
         return $model;
@@ -124,6 +131,7 @@ final class OrdersJobUpdateResponse implements Model
         $data['submittedAt'] = $this->submittedAt;
         $data['ticket'] = $this->ticket === null ? null : Encode::model($this->ticket);
         $data['tracking'] = $this->tracking === null ? null : Encode::model($this->tracking);
+        $data['variant'] = $this->variant === null ? null : Encode::model($this->variant);
         return $data;
     }
 }

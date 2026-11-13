@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Enum;
 
 /**
- * A texture a stock photo's dye paints this value in: oak, in place of its colour, a wooden frame's grain running along each rail; paint, its colour as matte paint with no sheen, as a white frame's. The colour stays the value's swatch.
+ * A texture a stock photo's dye paints this value in: oak or walnut, in place of its colour, a wooden frame's grain running along each rail; paint, its colour as matte paint with no sheen, as a white frame's; metal, its colour brushed; plastic, its colour smooth and glinting. The colour stays the value's swatch.
  *
  * The values this release knows. The field is a string, and the API may answer a value added after this release.
  *
@@ -19,8 +19,14 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemText
 
     public const PAINT = 'paint';
 
+    public const WALNUT = 'walnut';
+
+    public const METAL = 'metal';
+
+    public const PLASTIC = 'plastic';
+
     /**
      * Every value this release knows.
      */
-    public const KNOWN = [self::OAK, self::PAINT];
+    public const KNOWN = [self::OAK, self::PAINT, self::WALNUT, self::METAL, self::PLASTIC];
 }

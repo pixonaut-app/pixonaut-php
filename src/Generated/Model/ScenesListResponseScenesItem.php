@@ -23,7 +23,11 @@ final class ScenesListResponseScenesItem implements Model
 
     /**
      * @param list<string> $areas The keys of the garment areas the scene shows truthfully.
+     * @param bool $cutOut Whether this is a garment cut-out: a photo of the garment alone with nothing round it, which a blank shows only laid over a studio style, never as a scene of its own.
+     * @param ScenesListResponseScenesItemGeometry|null $geometry What the scene's photo was measured to hold: its camera, and the anchors a product can be placed at, each a support plane with its scale, light and shadow. Every pixel number is at its `sizePx`. Null for a scene with none.
      * @param bool $hasPerson Whether a person is in the scene.
+     * @param string $kind What the scene is: `product`, a photo with a stock item in it; `setting`, a photo with no product and anchors to place one at; or `studio-style`, a studio look with no photo.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemKind}.
      * @param ScenesListResponseScenesItemLayerUrls|null $layerUrls The passes the preview picture is drawn through, each its size: where a garment area's print lands, and how a colour paints its grey base. Null when the scene has no preview passes.
      * @param string $person Who is in the scene, or `none`: one of the selects a stock item's scenes are chosen by.
      * @param bool $personSwappable Whether a composition from this scene may describe a new person: the scene's person can be replaced. Never a workspace's own scene.
@@ -31,15 +35,19 @@ final class ScenesListResponseScenesItem implements Model
      * @param string|null $pictureUrl A link to the scene's picture, opening with no key.
      * @param string $pose How the product is shown, such as `front` or `back`: one of the selects a stock item's scenes are chosen by.
      * @param string $setting Where the scene is photographed, such as `studio` or `street`: one of the selects a stock item's scenes are chosen by.
-     * @param string $stockItem The stock item the scene shows.
+     * @param string|null $stockItem The stock item the scene shows. Null unless the scene is a `product`: no other kind has a product in it.
      * @param bool $studio Whether this is a studio scene: the product alone, on a plain ground.
      * @param bool $takesDye Whether a variant's colour paints the scene's grey base. One that does not shows a material that is the point, such as bare metal, on every variant as photographed.
      * @param bool $workspace Whether the scene is this workspace's own, composed from a stock scene, rather than Pixonaut's.
+     * @param list<ScenesListResponseScenesItemOffersItem>|null $offers With `forBlank`: which rows of that blank the scene can show, a setting an anchor at a time, and a garment cut-out a studio style at a time. Empty for a scene no blank can show.
      */
     public function __construct(
         public readonly array $areas,
+        public readonly bool $cutOut,
+        public readonly ?ScenesListResponseScenesItemGeometry $geometry,
         public readonly bool $hasPerson,
         public readonly string $id,
+        public readonly string $kind,
         public readonly string $label,
         public readonly ?ScenesListResponseScenesItemLayerUrls $layerUrls,
         public readonly string $person,
@@ -48,10 +56,11 @@ final class ScenesListResponseScenesItem implements Model
         public readonly ?string $pictureUrl,
         public readonly string $pose,
         public readonly string $setting,
-        public readonly string $stockItem,
+        public readonly ?string $stockItem,
         public readonly bool $studio,
         public readonly bool $takesDye,
         public readonly bool $workspace,
+        public readonly ?array $offers = null,
     ) {}
 
     /**
@@ -70,8 +79,15 @@ final class ScenesListResponseScenesItem implements Model
                 $path . '.areas',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            cutOut: Decode::bool(Decode::required($data, 'cutOut', $path), $path . '.cutOut'),
+            geometry: Decode::nullable(
+                Decode::required($data, 'geometry', $path),
+                $path . '.geometry',
+                static fn(mixed $v, string $p): ScenesListResponseScenesItemGeometry => ScenesListResponseScenesItemGeometry::fromArray(Decode::object($v, $p), $p),
+            ),
             hasPerson: Decode::bool(Decode::required($data, 'hasPerson', $path), $path . '.hasPerson'),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
+            kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             label: Decode::string(Decode::required($data, 'label', $path), $path . '.label'),
             layerUrls: Decode::nullable(
                 Decode::required($data, 'layerUrls', $path),
@@ -92,10 +108,19 @@ final class ScenesListResponseScenesItem implements Model
             ),
             pose: Decode::string(Decode::required($data, 'pose', $path), $path . '.pose'),
             setting: Decode::string(Decode::required($data, 'setting', $path), $path . '.setting'),
-            stockItem: Decode::string(Decode::required($data, 'stockItem', $path), $path . '.stockItem'),
+            stockItem: Decode::nullable(
+                Decode::required($data, 'stockItem', $path),
+                $path . '.stockItem',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             studio: Decode::bool(Decode::required($data, 'studio', $path), $path . '.studio'),
             takesDye: Decode::bool(Decode::required($data, 'takesDye', $path), $path . '.takesDye'),
             workspace: Decode::bool(Decode::required($data, 'workspace', $path), $path . '.workspace'),
+            offers: array_key_exists('offers', $data) ? Decode::list(
+                $data['offers'],
+                $path . '.offers',
+                static fn(mixed $v, string $p): ScenesListResponseScenesItemOffersItem => ScenesListResponseScenesItemOffersItem::fromArray(Decode::object($v, $p), $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -116,8 +141,11 @@ final class ScenesListResponseScenesItem implements Model
     {
         $data = [];
         $data['areas'] = $this->areas;
+        $data['cutOut'] = $this->cutOut;
+        $data['geometry'] = $this->geometry === null ? null : Encode::model($this->geometry);
         $data['hasPerson'] = $this->hasPerson;
         $data['id'] = $this->id;
+        $data['kind'] = $this->kind;
         $data['label'] = $this->label;
         $data['layerUrls'] = $this->layerUrls === null ? null : Encode::model($this->layerUrls);
         $data['person'] = $this->person;
@@ -130,6 +158,12 @@ final class ScenesListResponseScenesItem implements Model
         $data['studio'] = $this->studio;
         $data['takesDye'] = $this->takesDye;
         $data['workspace'] = $this->workspace;
+        if ($this->offers !== null) {
+            $data['offers'] = array_map(
+                static fn(ScenesListResponseScenesItemOffersItem $v): mixed => Encode::model($v),
+                $this->offers,
+            );
+        }
         return $data;
     }
 }

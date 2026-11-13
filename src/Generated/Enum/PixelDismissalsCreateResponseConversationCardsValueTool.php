@@ -201,6 +201,8 @@ final class PixelDismissalsCreateResponseConversationCardsValueTool
 
     public const APPLY_AUTOMATION_TO_PAST_EVENTS = 'apply_automation_to_past_events';
 
+    public const BIND_SCENES = 'bind_scenes';
+
     public const SET_BLANK_VIEW_ORDER = 'set_blank_view_order';
 
     public const UPDATE_BLANK_VIEW = 'update_blank_view';
@@ -323,6 +325,8 @@ final class PixelDismissalsCreateResponseConversationCardsValueTool
 
     public const SET_STORE_VARIATION_PRINT_SIZE = 'set_store_variation_print_size';
 
+    public const SET_STORE_VARIATION_SETUP = 'set_store_variation_setup';
+
     /**
      * Every value this release knows.
      */
@@ -421,6 +425,7 @@ final class PixelDismissalsCreateResponseConversationCardsValueTool
         self::RESUME_AUTOMATION_FIRING,
         self::RETRY_AUTOMATION_FIRING,
         self::APPLY_AUTOMATION_TO_PAST_EVENTS,
+        self::BIND_SCENES,
         self::SET_BLANK_VIEW_ORDER,
         self::UPDATE_BLANK_VIEW,
         self::DELETE_BLANK_VIEW,
@@ -482,5 +487,6 @@ final class PixelDismissalsCreateResponseConversationCardsValueTool
         self::SET_STORE_VARIATION_VARIANTS,
         self::SET_STORE_PRODUCT_SHOWCASES,
         self::SET_STORE_VARIATION_PRINT_SIZE,
+        self::SET_STORE_VARIATION_SETUP,
     ];
 }
