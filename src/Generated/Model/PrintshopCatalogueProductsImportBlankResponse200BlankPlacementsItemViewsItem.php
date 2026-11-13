@@ -24,9 +24,9 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
     /**
      * @param string $id Unique within the blank.
      * @param string $label What it is called, such as Flat or On model; unique among its placement's views of its kind, the printshop's or the merchant's, ignoring case.
-     * @param PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPhotoSizePx|null $photoSizePx The pixel size every photo of the view has; null until the view holds a photo.
-     * @param list<PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPhotosItem> $photos The view's product photos, each the same size as the view.
-     * @param PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPlacementRectPx|null $placementRectPx Where the print area sits on every photo of the view, in the original photo's pixels; null until it is marked.
+     * @param PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPhotoSizePx|null $photoSizePx Its photos' pixel size, unless one has its own; null with no photo.
+     * @param list<PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPhotosItem> $photos The view's product photos.
+     * @param PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPlacementRectPx|null $placementRectPx Where the print area sits on its photos, unless one has its own, in the original photo's pixels; null until marked.
      * @param bool|null $fromPrintshop True on a view a printshop-bound blank took from its printshop (import, Add colours, model photos): its photo size and print area are the printshop's, not changed by hand. Absent on a view the workspace added; sending it is ignored.
      * @param PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemLocalizedLabels|null $localizedLabels What it is called per customer-facing language, by code; a language left out reads `label`. No two views of its placement and kind read the same in one language, ignoring case.
      * @param string|null $maskAssetId A library asset of the view's photo size: where it is light the print shows, where it is dark the print is hidden, as behind a sleeve or a fold. Absent hides nothing.

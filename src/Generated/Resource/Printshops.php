@@ -76,7 +76,7 @@ final class Printshops
      * @param string $connectionId
      * @param PrintshopCatalogueProductsImportBlankRequest|null $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `connection_not_found`, `db_error`, `duplicate_name`, `feature_disabled`, `forbidden`, `import_failed`, `invalid_input`, `lock_timeout`, `lookup_failed`, `no_credentials`, `no_printable_placement`, `no_printshop_photos`, `origin_forbidden`, `payload_too_large`, `sandbox_tenant`, `scene_not_found`, `scene_retired`, `stock_item_covers_no_placement`, `stock_item_not_found`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `connection_not_found`, `db_error`, `duplicate_name`, `feature_disabled`, `forbidden`, `import_failed`, `invalid_input`, `lock_timeout`, `lookup_failed`, `no_credentials`, `no_printable_placement`, `no_printshop_photos`, `origin_forbidden`, `payload_too_large`, `sandbox_tenant`, `scene_not_found`, `scene_retired`, `scene_view_repeated`, `stock_item_covers_no_placement`, `stock_item_not_found`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function importCatalogueProduct(string $productId, string $connectionId, ?PrintshopCatalogueProductsImportBlankRequest $body = null): PrintshopCatalogueProductsImportBlankResponse200|PrintshopCatalogueProductsImportBlankResponse202
     {

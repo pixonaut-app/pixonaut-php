@@ -20,9 +20,13 @@ final class PixelConversationGetResponseConversationCardsValueEstimate implement
      */
     private ?array $decoded = null;
 
+    /**
+     * @param string|null $buys
+     */
     public function __construct(
         public readonly float $availableCredits,
         public readonly float $credits,
+        public readonly ?string $buys = null,
     ) {}
 
     /**
@@ -38,6 +42,7 @@ final class PixelConversationGetResponseConversationCardsValueEstimate implement
         $model = new self(
             availableCredits: Decode::float(Decode::required($data, 'availableCredits', $path), $path . '.availableCredits'),
             credits: Decode::float(Decode::required($data, 'credits', $path), $path . '.credits'),
+            buys: array_key_exists('buys', $data) ? Decode::string($data['buys'], $path . '.buys') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -59,6 +64,9 @@ final class PixelConversationGetResponseConversationCardsValueEstimate implement
         $data = [];
         $data['availableCredits'] = $this->availableCredits;
         $data['credits'] = $this->credits;
+        if ($this->buys !== null) {
+            $data['buys'] = $this->buys;
+        }
         return $data;
     }
 }

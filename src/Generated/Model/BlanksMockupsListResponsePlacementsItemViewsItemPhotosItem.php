@@ -27,6 +27,8 @@ final class BlanksMockupsListResponsePlacementsItemViewsItemPhotosItem implement
      * @param BlanksMockupsListResponsePlacementsItemViewsItemPhotosItemMount|null $mount What the designer mounts this mockup with, as one of `mockups` with its view's `label`. Null when the photo has not finished uploading, its size is not known, or its view has no print area marked.
      * @param list<string> $variantRefs The refs of the blank's variants the photo shows, so a designer picks a view's photo of the variant chosen. Empty when it names none: on a blank with no Color axis a photo shows every variant.
      * @param int|null $width The photo's width in pixels, so a host reserves the preview's shape before it loads; null while the photo has not finished uploading or its size is not known.
+     * @param BlanksMockupsListResponsePlacementsItemViewsItemPhotosItemPhotoScene|null $photoScene On a view showing a setting, this photo's own picture and files: the product of the variants it names, drawn into the setting, with the print window of their own print area. A photo carrying it has no `mount`: it is drawn through these alone. Absent on every other photo.
+     * @param array<string, string>|null $row The option values a scene's photo is limited to, by option name: it shows only the variants in `variantRefs`, and no other variant has a photo on this view. Absent on a photo limited to none.
      */
     public function __construct(
         public readonly ?int $height,
@@ -35,6 +37,8 @@ final class BlanksMockupsListResponsePlacementsItemViewsItemPhotosItem implement
         public readonly string $thumbnailUrl,
         public readonly array $variantRefs,
         public readonly ?int $width,
+        public readonly ?BlanksMockupsListResponsePlacementsItemViewsItemPhotosItemPhotoScene $photoScene = null,
+        public readonly ?array $row = null,
     ) {}
 
     /**
@@ -70,6 +74,12 @@ final class BlanksMockupsListResponsePlacementsItemViewsItemPhotosItem implement
                 $path . '.width',
                 static fn(mixed $v, string $p): int => Decode::int($v, $p),
             ),
+            photoScene: array_key_exists('photoScene', $data) ? BlanksMockupsListResponsePlacementsItemViewsItemPhotosItemPhotoScene::fromArray(Decode::object($data['photoScene'], $path . '.photoScene'), $path . '.photoScene') : null,
+            row: array_key_exists('row', $data) ? Decode::map(
+                $data['row'],
+                $path . '.row',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -95,6 +105,12 @@ final class BlanksMockupsListResponsePlacementsItemViewsItemPhotosItem implement
         $data['thumbnailUrl'] = $this->thumbnailUrl;
         $data['variantRefs'] = $this->variantRefs;
         $data['width'] = $this->width;
+        if ($this->photoScene !== null) {
+            $data['photoScene'] = Encode::model($this->photoScene);
+        }
+        if ($this->row !== null) {
+            $data['row'] = Encode::object($this->row);
+        }
         return $data;
     }
 }

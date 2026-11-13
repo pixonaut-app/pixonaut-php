@@ -28,6 +28,9 @@ final class BlanksMockupsListResponseViewsItem implements Model
      * @param BlanksMockupsListResponseViewsItemPhotoSizePx|null $photoSizePx The pixel size every photo of the view has; null while it has none.
      * @param list<BlanksMockupsListResponseViewsItemPhotosItem> $photos The view's photos whose upload has finished, in stored order.
      * @param list<BlanksMockupsListResponseViewsItemRegionsItem> $regions The view's print regions, in the order they are drawn.
+     * @param string|null $camera On a studio style's view, the camera of the style it is seen from: a blank shows one style once for each camera, and this says which this view is.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponseViewsItemCamera}.
+     * @param BlanksMockupsListResponseViewsItemFacets|null $facets On a scene's view, the setting, person and pose its scene is chosen by, which a reader groups a product's views with.
      * @param int|null $position The view's place in the blank's one list of views and scenes, from 0. The first with a photo is the blank's picture. Read only.
      * @param string|null $sceneId The scene this view shows. A scene's view is built from the blank's chosen scenes and is read only.
      * @param int|null $scenePosition On a scene's view, its `position`, for a reader that orders scenes by it.
@@ -43,6 +46,8 @@ final class BlanksMockupsListResponseViewsItem implements Model
         public readonly ?BlanksMockupsListResponseViewsItemPhotoSizePx $photoSizePx,
         public readonly array $photos,
         public readonly array $regions,
+        public readonly ?string $camera = null,
+        public readonly ?BlanksMockupsListResponseViewsItemFacets $facets = null,
         public readonly ?int $position = null,
         public readonly ?string $sceneId = null,
         public readonly ?int $scenePosition = null,
@@ -80,6 +85,8 @@ final class BlanksMockupsListResponseViewsItem implements Model
                 $path . '.regions',
                 static fn(mixed $v, string $p): BlanksMockupsListResponseViewsItemRegionsItem => BlanksMockupsListResponseViewsItemRegionsItem::fromArray(Decode::object($v, $p), $p),
             ),
+            camera: array_key_exists('camera', $data) ? Decode::string($data['camera'], $path . '.camera') : null,
+            facets: array_key_exists('facets', $data) ? BlanksMockupsListResponseViewsItemFacets::fromArray(Decode::object($data['facets'], $path . '.facets'), $path . '.facets') : null,
             position: array_key_exists('position', $data) ? Decode::int($data['position'], $path . '.position') : null,
             sceneId: array_key_exists('sceneId', $data) ? Decode::string($data['sceneId'], $path . '.sceneId') : null,
             scenePosition: array_key_exists('scenePosition', $data) ? Decode::int($data['scenePosition'], $path . '.scenePosition') : null,
@@ -117,6 +124,12 @@ final class BlanksMockupsListResponseViewsItem implements Model
             static fn(BlanksMockupsListResponseViewsItemRegionsItem $v): mixed => Encode::model($v),
             $this->regions,
         );
+        if ($this->camera !== null) {
+            $data['camera'] = $this->camera;
+        }
+        if ($this->facets !== null) {
+            $data['facets'] = Encode::model($this->facets);
+        }
         if ($this->position !== null) {
             $data['position'] = $this->position;
         }

@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * The pixel size every photo of the view has; null until the view holds a photo.
+ * Its photos' pixel size, unless one has its own; null with no photo.
  *
  * Schema: `GET /v1/blanks/{id} answer 200: $.placements[].views[].photoSizePx`.
  */

@@ -58,6 +58,7 @@ final class PrintSizeAnswersTest extends TestCase
         $image = $verdict->lowResolution[0];
         self::assertSame('ast_photo', $image->assetId);
         self::assertSame('layer_photo', $image->layerId);
+        self::assertSame('Photo', $image->label);
         self::assertSame(self::EFFECTIVE_DPI, $image->effectiveDpi);
         self::assertSame(self::RECOMMENDED_DPI, $image->recommendedDpi);
     }
@@ -94,6 +95,7 @@ final class PrintSizeAnswersTest extends TestCase
         return [
             'layerId' => 'layer_photo',
             'assetId' => 'ast_photo',
+            'label' => 'Photo',
             'effectiveDpi' => self::EFFECTIVE_DPI,
             'recommendedDpi' => self::RECOMMENDED_DPI,
         ];

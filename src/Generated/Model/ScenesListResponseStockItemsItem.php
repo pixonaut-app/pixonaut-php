@@ -24,12 +24,17 @@ final class ScenesListResponseStockItemsItem implements Model
     /**
      * @param list<ScenesListResponseStockItemsItemAreasItem> $areas
      * @param string $family Values: {@see \Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemFamily}.
+     * @param string|null $kind What kind of product the stock item is.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind}.
+     * @param ScenesListResponseStockItemsItemModelCylinder|ScenesListResponseStockItemsItemModelFlatSheet|ScenesListResponseStockItemsItemModelFramedSheet|ScenesListResponseStockItemsItemModelGarmentCut|null $model The product a blank that says none of its own is taken to be, in millimetres.
      */
     public function __construct(
         public readonly array $areas,
         public readonly string $family,
         public readonly string $key,
         public readonly string $name,
+        public readonly ?string $kind = null,
+        public readonly ScenesListResponseStockItemsItemModelCylinder|ScenesListResponseStockItemsItemModelFlatSheet|ScenesListResponseStockItemsItemModelFramedSheet|ScenesListResponseStockItemsItemModelGarmentCut|null $model = null,
     ) {}
 
     /**
@@ -51,6 +56,8 @@ final class ScenesListResponseStockItemsItem implements Model
             family: Decode::string(Decode::required($data, 'family', $path), $path . '.family'),
             key: Decode::string(Decode::required($data, 'key', $path), $path . '.key'),
             name: Decode::string(Decode::required($data, 'name', $path), $path . '.name'),
+            kind: array_key_exists('kind', $data) ? Decode::string($data['kind'], $path . '.kind') : null,
+            model: array_key_exists('model', $data) ? ScenesListResponseStockItemsItemModel::decode($data['model'], $path . '.model') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -77,6 +84,12 @@ final class ScenesListResponseStockItemsItem implements Model
         $data['family'] = $this->family;
         $data['key'] = $this->key;
         $data['name'] = $this->name;
+        if ($this->kind !== null) {
+            $data['kind'] = $this->kind;
+        }
+        if ($this->model !== null) {
+            $data['model'] = Encode::value($this->model);
+        }
         return $data;
     }
 }

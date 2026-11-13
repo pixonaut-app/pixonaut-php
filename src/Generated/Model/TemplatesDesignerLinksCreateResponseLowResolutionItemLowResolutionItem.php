@@ -22,12 +22,14 @@ final class TemplatesDesignerLinksCreateResponseLowResolutionItemLowResolutionIt
 
     /**
      * @param float $effectiveDpi Pixels per inch along the edge that decides, at the size.
+     * @param string $label What the merchant knows the image by: the layer's name, else its form field's label, else the form's word for the background picture or a picture, in the workspace's language. Never an internal key.
      * @param string $layerId The layer the image fills, or the artwork's own key for its image background.
      * @param float $recommendedDpi The resolution it is judged against: the template's minimum, else the workspace's.
      */
     public function __construct(
         public readonly string $assetId,
         public readonly float $effectiveDpi,
+        public readonly string $label,
         public readonly string $layerId,
         public readonly float $recommendedDpi,
     ) {}
@@ -45,6 +47,7 @@ final class TemplatesDesignerLinksCreateResponseLowResolutionItemLowResolutionIt
         $model = new self(
             assetId: Decode::string(Decode::required($data, 'assetId', $path), $path . '.assetId'),
             effectiveDpi: Decode::float(Decode::required($data, 'effectiveDpi', $path), $path . '.effectiveDpi'),
+            label: Decode::string(Decode::required($data, 'label', $path), $path . '.label'),
             layerId: Decode::string(Decode::required($data, 'layerId', $path), $path . '.layerId'),
             recommendedDpi: Decode::float(Decode::required($data, 'recommendedDpi', $path), $path . '.recommendedDpi'),
         );
@@ -68,6 +71,7 @@ final class TemplatesDesignerLinksCreateResponseLowResolutionItemLowResolutionIt
         $data = [];
         $data['assetId'] = $this->assetId;
         $data['effectiveDpi'] = $this->effectiveDpi;
+        $data['label'] = $this->label;
         $data['layerId'] = $this->layerId;
         $data['recommendedDpi'] = $this->recommendedDpi;
         return $data;

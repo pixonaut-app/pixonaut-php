@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * The pixel size every photo of the view has; null until the view holds a photo.
+ * Its photos' pixel size, unless one has its own; null with no photo.
  *
  * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 200: $.blank.placements[].views[].photoSizePx`.
  */

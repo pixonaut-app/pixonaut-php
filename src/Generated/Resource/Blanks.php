@@ -220,15 +220,29 @@ final class Blanks
      *
      * `GET /v1/scenes`
      *
-     * @param string|null $stockItem Only this stock item's scenes, by its key.
+     * @param string|null $stockItem Only this stock item's scenes, by its key: no setting, which shows none.
+     * @param string|null $kind Only scenes of this kind.
+     * @param string|null $setting Only scenes of this setting, by its key as `facets` answers it. A value no scene has answers no scenes.
+     * @param string|null $person Only scenes of this person, by its key as `facets` answers it. A value no scene has answers no scenes.
+     * @param string|null $pose Only scenes of this pose, by its key as `facets` answers it. A value no scene has answers no scenes.
+     * @param string|null $accepts Only scenes with an anchor a product may sit at this way.
+     * @param string|null $forBlank A blank's id: each scene then says, in `offers`, which of that blank's rows it can show. It narrows nothing.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
-    public function listScenes(?string $stockItem = null): ScenesListResponse
+    public function listScenes(?string $stockItem = null, ?string $kind = null, ?string $setting = null, ?string $person = null, ?string $pose = null, ?string $accepts = null, ?string $forBlank = null): ScenesListResponse
     {
         $result = $this->pixonaut->call(
             'scenes.list',
-            query: ['stockItem' => $stockItem],
+            query: [
+                'stockItem' => $stockItem,
+                'kind' => $kind,
+                'setting' => $setting,
+                'person' => $person,
+                'pose' => $pose,
+                'accepts' => $accepts,
+                'forBlank' => $forBlank,
+            ],
         );
         return $result->decode(
             static fn(mixed $json): ScenesListResponse => ScenesListResponse::fromArray(Decode::object($json, '$'), '$'),

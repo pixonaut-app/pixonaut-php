@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The error codes the API 5.0.0 spec names: its refusals (`x-refusals`), and the `error`
+ * The error codes the API 6.0.0 spec names: its refusals (`x-refusals`), and the `error`
  * values of every error answer. The client's own codes are on `ApiException`.
  */
 final class ErrorCode
@@ -1253,6 +1253,11 @@ final class ErrorCode
     public const SCENE_RETIRED = 'scene_retired';
 
     /**
+     * Documented with status 422.
+     */
+    public const SCENE_VIEW_REPEATED = 'scene_view_repeated';
+
+    /**
      * Documented with status 409.
      */
     public const SDK_OUTDATED = 'sdk_outdated';
@@ -1786,6 +1791,7 @@ final class ErrorCode
         'saved_address_not_found' => [422],
         'scene_not_found' => [422],
         'scene_retired' => [422],
+        'scene_view_repeated' => [422],
         'sdk_outdated' => [409],
         'sdk_version_invalid' => [400],
         'secret_key_required' => [403],

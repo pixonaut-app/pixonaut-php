@@ -27,6 +27,7 @@ final class DesignsCommitThroughLayoutRequestOption2 implements Model
      * @param string $templateId The published template version, `<baseId>@<version>`.
      * @param string|null $externalRef The caller's own reference, kept on every design made.
      * @param string|null $garmentVariant The variant whose colour the design is drawn in, by ref (`v_…`), when it is not the one `variant` names: on a dark colour each layer takes its on-dark value. It sizes nothing. A proof keeps it as `proofVariant`, so its commit is drawn in the same colour. Absent, `variant`'s colour; a ref the blank has no variant of draws as on a light product.
+     * @param array<string, string>|null $pickedColours The colours the shopper picked, by option name, `#rrggbb` each, such as `{"Colour": "#1b2a4a"}`, for a value of the blank that takes any colour: the product is drawn, and its tone judged, in the pick. A design keeps them, and its order is made in them; a pick for a value that takes no colour is kept and not used. Absent, each such value is its own colour.
      * @param bool|null $previewOpened Whether the customer opened the design's preview before ticking your approval checkbox, as the SDK's `wasPreviewOpened()` says, kept on the design as `previewOpened`. It is for your own tracking: nothing else in Pixonaut depends on it, so report it honestly. Leave it out when your store has no approval checkbox: the design then says this does not apply, or yes when the proof you commit came from a hosted designer's approve.
      * @param DesignsCommitThroughLayoutRequestOption2Repeat|null|Omitted $repeat Lays the design as a repeat of its template across the print area. Null, or absent, places it once. Through a designer link, a repeat the link offers, or null where its shopper may turn the repeat off; absent there, the link's own start.
      * @param array<string, mixed>|null $values The customer's values, as on `POST /v1/designs`.
@@ -39,6 +40,7 @@ final class DesignsCommitThroughLayoutRequestOption2 implements Model
         public readonly string $templateId,
         public readonly ?string $externalRef = null,
         public readonly ?string $garmentVariant = null,
+        public readonly ?array $pickedColours = null,
         public readonly ?bool $previewOpened = null,
         public readonly DesignsCommitThroughLayoutRequestOption2Repeat|null|Omitted $repeat = Omitted::Field,
         public readonly ?array $values = null,
@@ -62,6 +64,11 @@ final class DesignsCommitThroughLayoutRequestOption2 implements Model
             templateId: Decode::string(Decode::required($data, 'templateId', $path), $path . '.templateId'),
             externalRef: array_key_exists('externalRef', $data) ? Decode::string($data['externalRef'], $path . '.externalRef') : null,
             garmentVariant: array_key_exists('garmentVariant', $data) ? Decode::string($data['garmentVariant'], $path . '.garmentVariant') : null,
+            pickedColours: array_key_exists('pickedColours', $data) ? Decode::map(
+                $data['pickedColours'],
+                $path . '.pickedColours',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
             previewOpened: array_key_exists('previewOpened', $data) ? Decode::bool($data['previewOpened'], $path . '.previewOpened') : null,
             repeat: array_key_exists('repeat', $data) ? Decode::nullable(
                 $data['repeat'],
@@ -102,6 +109,9 @@ final class DesignsCommitThroughLayoutRequestOption2 implements Model
         }
         if ($this->garmentVariant !== null) {
             $data['garmentVariant'] = $this->garmentVariant;
+        }
+        if ($this->pickedColours !== null) {
+            $data['pickedColours'] = Encode::object($this->pickedColours);
         }
         if ($this->previewOpened !== null) {
             $data['previewOpened'] = $this->previewOpened;

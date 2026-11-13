@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Where the print area sits on every photo of the view, in the original photo's pixels; null until it is marked.
+ * Where the print area sits on its photos, unless one has its own, in the original photo's pixels; null until marked.
  *
  * Schema: `GET /v1/blanks/{id} answer 200: $.placements[].views[].placementRectPx`.
  */

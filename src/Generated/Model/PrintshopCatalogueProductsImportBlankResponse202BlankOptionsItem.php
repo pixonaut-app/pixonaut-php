@@ -26,6 +26,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem imp
      * @param array<string, string> $tones Whether a product in each value is light or dark, by value: the tone set on its appearance, else its colour fill's, else light. Every value of `values` is named. On a variant of a dark value a template's on-dark values are used.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemTonesValue}.
      * @param list<string> $values
+     * @param list<string>|null $anyColour The values the shopper picks any colour for with a colour picker, their colour fill the one shown until they do: only on a blank made by a custom printshop. Absent when none does.
      * @param PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemLocalizedNames|null $localizedNames The option's name per customer-facing language, by code: only the languages it has one in. A language left out reads `name`.
      * @param array<string, PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemLocalizedValuesValue>|null $localizedValues Each value's name per customer-facing language, by value: only the values that have one. A language left out reads the value itself.
      * @param array<string, string>|null $textures The texture a stock photo's dye paints each value in, in place of its colour, by value: only the values that have one, such as a wooden frame's oak. Absent when none has one.
@@ -36,6 +37,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem imp
         public readonly string $name,
         public readonly array $tones,
         public readonly array $values,
+        public readonly ?array $anyColour = null,
         public readonly ?PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemLocalizedNames $localizedNames = null,
         public readonly ?array $localizedValues = null,
         public readonly ?array $textures = null,
@@ -72,6 +74,11 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem imp
                 $path . '.values',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            anyColour: array_key_exists('anyColour', $data) ? Decode::list(
+                $data['anyColour'],
+                $path . '.anyColour',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
             localizedNames: array_key_exists('localizedNames', $data) ? PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemLocalizedNames::fromArray(Decode::object($data['localizedNames'], $path . '.localizedNames'), $path . '.localizedNames') : null,
             localizedValues: array_key_exists('localizedValues', $data) ? Decode::map(
                 $data['localizedValues'],
@@ -111,6 +118,9 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem imp
         $data['name'] = $this->name;
         $data['tones'] = Encode::object($this->tones);
         $data['values'] = $this->values;
+        if ($this->anyColour !== null) {
+            $data['anyColour'] = $this->anyColour;
+        }
         if ($this->localizedNames !== null) {
             $data['localizedNames'] = Encode::model($this->localizedNames);
         }

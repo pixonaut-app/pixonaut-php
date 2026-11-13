@@ -30,21 +30,25 @@ final class PrintshopCatalogueProductsImportBlankResponse202Blank implements Mod
      * @param PrintshopCatalogueProductsImportBlankResponse202BlankGeneration|null $generation The draw a blank generated with AI waits on while it is `generating`, or while it is `importing` the catalogue product it is made as; null for any other blank.
      * @param string|null $importFailure The code a failed import failed with, such as `partner_failed` or `storage_quota_exceeded`; null unless `status` is `failed`.
      * @param string|null $machineProfileId
+     * @param list<string> $modelVariesBy The options the blank's product changes with, such as Size; empty for one product for every variant.
      * @param list<PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem> $options The blank's options with their values, in the order the shopper sees them, a value no variant uses yet included. `axes` is their names.
      * @param float|null $optionsConfirmedAt When the blank's options were confirmed: the merchant said it has one version, or added its first option. Null until then. A blank imported from a printshop's catalogue arrives confirmed.
      * @param string|null $paintBy The option the blank's dyed photos are painted in, such as Colour: a stock photo that takes a dye, or a view drawn from a 3D render, shows each variant in its value's colour. null: the merchant's own photos show as photographed, and a dyeable stock photo takes the first option with colours.
      * @param list<string> $photosVaryBy The options the blank's photos change with, in option order: each photo belongs to one row, its values of these, and shows every variant with them. Empty is All: one photo per view shows every variant.
      * @param list<PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItem> $placements The blank's placements: the areas a design is printed into. An update replaces the whole list.
+     * @param list<PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem> $productModels What the product is, per row of the blank's `modelVariesBy` options, such as a poster's sheet per size. A row left out has no model.
      * @param array<string, string>|null $referenceRow The row a design that names none is made at, such as {"Size": "M"}; null for none, each placement then reading its own print area. Required once print areas change with an option on a blank with designs or designer links, which keep their size at it.
      * @param PrintshopCatalogueProductsImportBlankResponse202BlankResolved $resolved Each inheritable field resolved, with where it comes from: the printshop and machine, and every placement's and photo's printing fields and preview looks, in the order of `placements`.
      * @param string $status `importing` while the blank's import, from a printshop's catalogue or a CSV file, runs in the background: it has its name and nothing else yet. `generating` for a blank generated with AI until its photo is approved: `generation` says whether it is drawing, waits for the decision, or drew nothing. `failed` when an import failed for good (`importFailure` says why); remove it and import again. `ready` otherwise.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankStatus}.
      * @param string|null $stockItemKey The stock item the blank's scenes photograph; null for none.
      * @param PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct|null $boundProduct The partner's product a bound blank (`partnerLocked`) is bound to, or null for a blank bound to none. Answered for one blank, never in a list.
+     * @param list<PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItem>|null $heldScenes The blank's rows on each held scene it shows, a scene with its product in a hand, in the blank's order: how many rows the scene shows, and which it does not and why. A scene limited to some option values answers for the rows with those values alone. Empty for a blank that shows no held scene, or deleted. Answered for one blank, never in a list.
      * @param list<PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption1|PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2>|null $order The blank's stored views and the scenes it shows as one ordered list, each saying its source: `stock` (a scene), `catalogue` (the printshop's photos) or `own` (the merchant's). The first with a photo is the blank's picture. Answered for one blank, never in a list.
      * @param int|null $orderCount How many orders name the blank, past ones included. Answered in a list, never for one blank, and only to a caller with `orders:read`.
      * @param PrintshopCatalogueProductsImportBlankResponse202BlankPhotoCoverage|null $photoCoverage How much of the blank is photographed. Answered in a list.
      * @param list<PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsAtOtherSizeItem>|null $placementsAtOtherSize The placements printed as a position that prints one size only at the blank's printshop whose default print size is another size: flagged, never refused, since an order of the position's size is still taken. Answered for one blank, never in a list.
+     * @param list<PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem>|null $settingBakes Where the blank's pictures stand in each setting it is bound to, in the blank's order: how many of its rows are drawn there, and which are not and why. Empty for a blank bound to no setting, or deleted. Answered for one blank, never in a list.
      * @param PrintshopCatalogueProductsImportBlankResponse202BlankSharedViewPhoto|null $sharedViewPhoto The first photo of the blank's first view of several placements that has one, in their order: the view, the photo (a mockup), its asset and the view's photo size. A blank whose views of one placement have no photo is pictured by it. Null for a blank with no such photo. Answered in a list.
      * @param string|null $thumbnailUrl A link to the blank's picture, opening with no key for an hour or two, so a list shows a picture of each blank: its first photo of a view of one placement, else `sharedViewPhoto`. Null for a blank with no photo. Answered in a list.
      * @param int|null $variantCount How many variants the blank has, deleted ones included. Answered in a list.
@@ -62,6 +66,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202Blank implements Mod
         public readonly string $id,
         public readonly ?string $importFailure,
         public readonly ?string $machineProfileId,
+        public readonly array $modelVariesBy,
         public readonly string $name,
         public readonly array $options,
         public readonly ?float $optionsConfirmedAt,
@@ -69,16 +74,19 @@ final class PrintshopCatalogueProductsImportBlankResponse202Blank implements Mod
         public readonly bool $partnerLocked,
         public readonly array $photosVaryBy,
         public readonly array $placements,
+        public readonly array $productModels,
         public readonly ?array $referenceRow,
         public readonly PrintshopCatalogueProductsImportBlankResponse202BlankResolved $resolved,
         public readonly string $status,
         public readonly ?string $stockItemKey,
         public readonly float $updatedAt,
         public readonly ?PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct $boundProduct = null,
+        public readonly ?array $heldScenes = null,
         public readonly ?array $order = null,
         public readonly ?int $orderCount = null,
         public readonly ?PrintshopCatalogueProductsImportBlankResponse202BlankPhotoCoverage $photoCoverage = null,
         public readonly ?array $placementsAtOtherSize = null,
+        public readonly ?array $settingBakes = null,
         public readonly ?PrintshopCatalogueProductsImportBlankResponse202BlankSharedViewPhoto $sharedViewPhoto = null,
         public readonly ?string $thumbnailUrl = null,
         public readonly ?int $variantCount = null,
@@ -139,6 +147,11 @@ final class PrintshopCatalogueProductsImportBlankResponse202Blank implements Mod
                 $path . '.machineProfileId',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            modelVariesBy: Decode::list(
+                Decode::required($data, 'modelVariesBy', $path),
+                $path . '.modelVariesBy',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             name: Decode::string(Decode::required($data, 'name', $path), $path . '.name'),
             options: Decode::list(
                 Decode::required($data, 'options', $path),
@@ -166,6 +179,11 @@ final class PrintshopCatalogueProductsImportBlankResponse202Blank implements Mod
                 $path . '.placements',
                 static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItem => PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItem::fromArray(Decode::object($v, $p), $p),
             ),
+            productModels: Decode::list(
+                Decode::required($data, 'productModels', $path),
+                $path . '.productModels',
+                static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem => PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::fromArray(Decode::object($v, $p), $p),
+            ),
             referenceRow: Decode::nullable(
                 Decode::required($data, 'referenceRow', $path),
                 $path . '.referenceRow',
@@ -188,6 +206,11 @@ final class PrintshopCatalogueProductsImportBlankResponse202Blank implements Mod
                 $path . '.boundProduct',
                 static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct => PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct::fromArray(Decode::object($v, $p), $p),
             ) : null,
+            heldScenes: array_key_exists('heldScenes', $data) ? Decode::list(
+                $data['heldScenes'],
+                $path . '.heldScenes',
+                static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItem => PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItem::fromArray(Decode::object($v, $p), $p),
+            ) : null,
             order: array_key_exists('order', $data) ? Decode::list(
                 $data['order'],
                 $path . '.order',
@@ -199,6 +222,11 @@ final class PrintshopCatalogueProductsImportBlankResponse202Blank implements Mod
                 $data['placementsAtOtherSize'],
                 $path . '.placementsAtOtherSize',
                 static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsAtOtherSizeItem => PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsAtOtherSizeItem::fromArray(Decode::object($v, $p), $p),
+            ) : null,
+            settingBakes: array_key_exists('settingBakes', $data) ? Decode::list(
+                $data['settingBakes'],
+                $path . '.settingBakes',
+                static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem => PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem::fromArray(Decode::object($v, $p), $p),
             ) : null,
             sharedViewPhoto: array_key_exists('sharedViewPhoto', $data) ? Decode::nullable(
                 $data['sharedViewPhoto'],
@@ -246,6 +274,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202Blank implements Mod
         $data['id'] = $this->id;
         $data['importFailure'] = $this->importFailure;
         $data['machineProfileId'] = $this->machineProfileId;
+        $data['modelVariesBy'] = $this->modelVariesBy;
         $data['name'] = $this->name;
         $data['options'] = array_map(
             static fn(PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem $v): mixed => Encode::model($v),
@@ -259,6 +288,10 @@ final class PrintshopCatalogueProductsImportBlankResponse202Blank implements Mod
             static fn(PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItem $v): mixed => Encode::model($v),
             $this->placements,
         );
+        $data['productModels'] = array_map(
+            static fn(PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem $v): mixed => Encode::model($v),
+            $this->productModels,
+        );
         $data['referenceRow'] = $this->referenceRow === null ? null : Encode::object($this->referenceRow);
         $data['resolved'] = Encode::model($this->resolved);
         $data['status'] = $this->status;
@@ -266,6 +299,12 @@ final class PrintshopCatalogueProductsImportBlankResponse202Blank implements Mod
         $data['updatedAt'] = $this->updatedAt;
         if ($this->boundProduct !== null) {
             $data['boundProduct'] = Encode::model($this->boundProduct);
+        }
+        if ($this->heldScenes !== null) {
+            $data['heldScenes'] = array_map(
+                static fn(PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItem $v): mixed => Encode::model($v),
+                $this->heldScenes,
+            );
         }
         if ($this->order !== null) {
             $data['order'] = array_map(
@@ -283,6 +322,12 @@ final class PrintshopCatalogueProductsImportBlankResponse202Blank implements Mod
             $data['placementsAtOtherSize'] = array_map(
                 static fn(PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsAtOtherSizeItem $v): mixed => Encode::model($v),
                 $this->placementsAtOtherSize,
+            );
+        }
+        if ($this->settingBakes !== null) {
+            $data['settingBakes'] = array_map(
+                static fn(PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem $v): mixed => Encode::model($v),
+                $this->settingBakes,
             );
         }
         if ($this->sharedViewPhoto !== null) {

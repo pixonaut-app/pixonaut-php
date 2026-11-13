@@ -29,11 +29,13 @@ final class DesignsDesignerGetResponse implements Model
      * @param string $language The language the template is read in, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`: `lang`, else the workspace's default. `template` is the original with that language's overrides (`localized`) merged in.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\DesignsDesignerGetResponseLanguage}.
      * @param bool $offersProperties Whether the customer's form offers anything to fill in or place: false when every layer is fixed or in no group, so a customer designing on it can change nothing. A store warns a merchant who sells a template meant to be filled in as a fixed product, or one that offers nothing as personalised.
+     * @param array<string, string>|null $pickedColours The colours the shopper picked, by option name, as the design was committed, which a designer opened on it shows the product in; null when none was picked. A correction keeps them.
      * @param bool $pixel Whether the designer offers the customer Pixel (`POST /v1/pixel/designer`): the template has Pixel for customers on and the workspace has not turned it off. A round may still be refused, as that route says.
      * @param string|null $placementId The placement on `blankId` the design was fitted to; null whenever `blankId` is.
      * @param int $revision The revision `doc` is, which a correction made from it sends as `expectedRevision`.
      * @param list<DesignsDesignerGetResponseShowcasesItem> $showcases The template's showcases, by id and name: sets of example values its preview and mockup images are drawn with when their `showcase` names one, each with a link to its preview. Empty when it holds none. Their values are not served: the designer, a design, a proof and a print are drawn from `template` alone.
      * @param string $status Values: {@see \Pixonaut\Sdk\Generated\Enum\DesignsDesignerGetResponseStatus}.
+     * @param string|null $variant The variant of `blankId` the design's proof was drawn in, by ref, as `GET /v1/designs/{id}` answers `proofVariant`, which a designer opened on it shows unless told another; null when it named none.
      * @param string $workspaceLanguage The template's workspace's default language, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`: what the SDK designer is shown in when its mount names no `locale`.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\DesignsDesignerGetResponseWorkspaceLanguage}.
      * @param array<string, array<string, string>>|null $colourNames By palette name as `template.palettes` holds it, each colour's name in `lang` by its own name: what the designer shows under its swatch and lists as the field's value. Only the colours named in it; the rest read their own name, which a pick is held as in every language.
@@ -51,6 +53,7 @@ final class DesignsDesignerGetResponse implements Model
         public readonly DesignsDesignerGetResponseFormSchema $formSchema,
         public readonly string $language,
         public readonly bool $offersProperties,
+        public readonly ?array $pickedColours,
         public readonly bool $pixel,
         public readonly ?string $placementId,
         public readonly bool $poweredBy,
@@ -61,6 +64,7 @@ final class DesignsDesignerGetResponse implements Model
         public readonly array $showcases,
         public readonly string $status,
         public readonly ResolvedTemplate $template,
+        public readonly ?string $variant,
         public readonly string $workspaceLanguage,
         public readonly ?array $colourNames = null,
         public readonly ?string $dieShapeId = null,
@@ -103,6 +107,15 @@ final class DesignsDesignerGetResponse implements Model
             ),
             language: Decode::string(Decode::required($data, 'language', $path), $path . '.language'),
             offersProperties: Decode::bool(Decode::required($data, 'offersProperties', $path), $path . '.offersProperties'),
+            pickedColours: Decode::nullable(
+                Decode::required($data, 'pickedColours', $path),
+                $path . '.pickedColours',
+                static fn(mixed $v, string $p): array => Decode::map(
+                    $v,
+                    $p,
+                    static fn(mixed $v, string $p): string => Decode::string($v, $p),
+                ),
+            ),
             pixel: Decode::bool(Decode::required($data, 'pixel', $path), $path . '.pixel'),
             placementId: Decode::nullable(
                 Decode::required($data, 'placementId', $path),
@@ -124,6 +137,11 @@ final class DesignsDesignerGetResponse implements Model
             ),
             status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
             template: ResolvedTemplate::fromArray(Decode::object(Decode::required($data, 'template', $path), $path . '.template'), $path . '.template'),
+            variant: Decode::nullable(
+                Decode::required($data, 'variant', $path),
+                $path . '.variant',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             workspaceLanguage: Decode::string(Decode::required($data, 'workspaceLanguage', $path), $path . '.workspaceLanguage'),
             colourNames: array_key_exists('colourNames', $data) ? Decode::map(
                 $data['colourNames'],
@@ -181,6 +199,7 @@ final class DesignsDesignerGetResponse implements Model
         $data['formSchema'] = Encode::model($this->formSchema);
         $data['language'] = $this->language;
         $data['offersProperties'] = $this->offersProperties;
+        $data['pickedColours'] = $this->pickedColours === null ? null : Encode::object($this->pickedColours);
         $data['pixel'] = $this->pixel;
         $data['placementId'] = $this->placementId;
         $data['poweredBy'] = $this->poweredBy;
@@ -194,6 +213,7 @@ final class DesignsDesignerGetResponse implements Model
         );
         $data['status'] = $this->status;
         $data['template'] = Encode::model($this->template);
+        $data['variant'] = $this->variant;
         $data['workspaceLanguage'] = $this->workspaceLanguage;
         if ($this->colourNames !== null) {
             $data['colourNames'] = Encode::object(

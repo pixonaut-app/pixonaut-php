@@ -26,11 +26,15 @@ final class OrdersCancelResponseVariant implements Model
     /**
      * @param list<OrdersCancelResponseVariantFieldsItem> $fields Each declared field, in the printshop's order, as it was sent.
      * @param array<string, string> $options
+     * @param array<string, OrdersCancelResponseVariantColoursValue>|null $colours The colour each option of the variant is made in whose value lets the shopper pick any colour, by option name: the shopper's pick, else the value's own colour. Absent when no value of the variant takes any colour.
+     * @param array<string, string>|null $unusedPicks Colours the shopper picked, by option name, that the order is not made in: the variant's value of that option takes no colour, as when it was set to a fixed one since. Absent when every pick is used.
      */
     public function __construct(
         public readonly array $fields,
         public readonly array $options,
         public readonly string $ref,
+        public readonly ?array $colours = null,
+        public readonly ?array $unusedPicks = null,
     ) {}
 
     /**
@@ -55,6 +59,16 @@ final class OrdersCancelResponseVariant implements Model
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
             ref: Decode::string(Decode::required($data, 'ref', $path), $path . '.ref'),
+            colours: array_key_exists('colours', $data) ? Decode::map(
+                $data['colours'],
+                $path . '.colours',
+                static fn(mixed $v, string $p): OrdersCancelResponseVariantColoursValue => OrdersCancelResponseVariantColoursValue::fromArray(Decode::object($v, $p), $p),
+            ) : null,
+            unusedPicks: array_key_exists('unusedPicks', $data) ? Decode::map(
+                $data['unusedPicks'],
+                $path . '.unusedPicks',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -80,6 +94,17 @@ final class OrdersCancelResponseVariant implements Model
         );
         $data['options'] = Encode::object($this->options);
         $data['ref'] = $this->ref;
+        if ($this->colours !== null) {
+            $data['colours'] = Encode::object(
+                array_map(
+                    static fn(OrdersCancelResponseVariantColoursValue $v): mixed => Encode::model($v),
+                    $this->colours,
+                ),
+            );
+        }
+        if ($this->unusedPicks !== null) {
+            $data['unusedPicks'] = Encode::object($this->unusedPicks);
+        }
         return $data;
     }
 }

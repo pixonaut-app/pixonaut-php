@@ -26,6 +26,8 @@ final class BlanksMockupsListResponseViewsItemPhotosItem implements Model
      * @param list<BlanksMockupsListResponseViewsItemPhotosItemRegionsItem> $regions The photo's looks in each region it sets any for; a region left out takes the defaults.
      * @param string $url The photo, opened with no key. It stays valid for at least 30 days and at most 60, and any cache may keep it that long; it stops opening once the view no longer shows that photo.
      * @param list<string> $variantRefs The refs of the blank's variants the photo shows. Empty when it names none: on a blank with no Color axis a photo shows every variant.
+     * @param BlanksMockupsListResponseViewsItemPhotosItemPhotoScene|null $photoScene On a view showing a setting, this photo's own picture and files: the product of the variants it names, drawn into the setting, with a print window per placement. The view's own `regions` then mark no rect, and each is drawn through these alone. Absent on every other photo.
+     * @param array<string, string>|null $row The option values a scene's photo is limited to, by option name: it shows only the variants in `variantRefs`, and no other variant has a photo on this view. Absent on a photo limited to none.
      */
     public function __construct(
         public readonly int $height,
@@ -34,6 +36,8 @@ final class BlanksMockupsListResponseViewsItemPhotosItem implements Model
         public readonly string $url,
         public readonly array $variantRefs,
         public readonly int $width,
+        public readonly ?BlanksMockupsListResponseViewsItemPhotosItemPhotoScene $photoScene = null,
+        public readonly ?array $row = null,
     ) {}
 
     /**
@@ -61,6 +65,12 @@ final class BlanksMockupsListResponseViewsItemPhotosItem implements Model
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
             width: Decode::int(Decode::required($data, 'width', $path), $path . '.width'),
+            photoScene: array_key_exists('photoScene', $data) ? BlanksMockupsListResponseViewsItemPhotosItemPhotoScene::fromArray(Decode::object($data['photoScene'], $path . '.photoScene'), $path . '.photoScene') : null,
+            row: array_key_exists('row', $data) ? Decode::map(
+                $data['row'],
+                $path . '.row',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -89,6 +99,12 @@ final class BlanksMockupsListResponseViewsItemPhotosItem implements Model
         $data['url'] = $this->url;
         $data['variantRefs'] = $this->variantRefs;
         $data['width'] = $this->width;
+        if ($this->photoScene !== null) {
+            $data['photoScene'] = Encode::model($this->photoScene);
+        }
+        if ($this->row !== null) {
+            $data['row'] = Encode::object($this->row);
+        }
         return $data;
     }
 }

@@ -24,12 +24,14 @@ final class PrintsGetResponseLowResolutionItem implements Model
      * @param float $effectiveDpi Pixels per inch along the edge that decides, at the size.
      * @param string $layerId The layer the image fills, or the artwork's own key for its image background.
      * @param float $recommendedDpi The resolution it is judged against: the template's minimum, else the workspace's.
+     * @param string|null $label What the merchant knows the image by, as the template's own judgement answers it. Absent on a print made before prints recorded it.
      */
     public function __construct(
         public readonly string $assetId,
         public readonly float $effectiveDpi,
         public readonly string $layerId,
         public readonly float $recommendedDpi,
+        public readonly ?string $label = null,
     ) {}
 
     /**
@@ -47,6 +49,7 @@ final class PrintsGetResponseLowResolutionItem implements Model
             effectiveDpi: Decode::float(Decode::required($data, 'effectiveDpi', $path), $path . '.effectiveDpi'),
             layerId: Decode::string(Decode::required($data, 'layerId', $path), $path . '.layerId'),
             recommendedDpi: Decode::float(Decode::required($data, 'recommendedDpi', $path), $path . '.recommendedDpi'),
+            label: array_key_exists('label', $data) ? Decode::string($data['label'], $path . '.label') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -70,6 +73,9 @@ final class PrintsGetResponseLowResolutionItem implements Model
         $data['effectiveDpi'] = $this->effectiveDpi;
         $data['layerId'] = $this->layerId;
         $data['recommendedDpi'] = $this->recommendedDpi;
+        if ($this->label !== null) {
+            $data['label'] = $this->label;
+        }
         return $data;
     }
 }
