@@ -2,6 +2,7 @@
 
 ## [16.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v15.0.0...v16.0.0) (2026-11-14)
 
+Targets the Pixonaut API 8.3.0.
 
 ### ⚠ BREAKING CHANGES
 
