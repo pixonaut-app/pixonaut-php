@@ -227,10 +227,13 @@ final class Blanks
      * @param string|null $pose Only scenes of this pose, by its key as `facets` answers it. A value no scene has answers no scenes.
      * @param string|null $accepts Only scenes with an anchor a product may sit at this way.
      * @param string|null $forBlank A blank's id: each scene then says, in `offers`, which of that blank's rows it can show. It narrows nothing.
+     * @param string|null $forKind A product kind, for a product that is no blank yet or to list only what fits a blank's: only scenes that can show a product of this kind (a setting with an anchor it sits at, a studio style with a camera it is drawn from, a garment's cut-out and a scene photographing a stock item of the kind), each saying where in `offers`. Sizes are judged only with `forBlank`.
+     * @param string|null $forCut With `forKind=garment-cut`, the garment's cut: only scenes and cut-outs of that garment. Left out, every garment's.
+     * @param string|null $view `picker`: the list as a picker reads it once, to narrow by product, setting, person and pose itself with no further request. It is lighter: no scene says its `geometry` or its `layerUrls` (both null) and no refused row its `reason`. `forKind` then narrows nothing: every scene is listed with every place it can show a product, each place saying in `fitsKind` whether a product of that kind fits there, and `makeCredits` says what composing a scene would cost. Left out, the whole list.
      *
      * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
-    public function listScenes(?string $stockItem = null, ?string $kind = null, ?string $setting = null, ?string $person = null, ?string $pose = null, ?string $accepts = null, ?string $forBlank = null): ScenesListResponse
+    public function listScenes(?string $stockItem = null, ?string $kind = null, ?string $setting = null, ?string $person = null, ?string $pose = null, ?string $accepts = null, ?string $forBlank = null, ?string $forKind = null, ?string $forCut = null, ?string $view = null): ScenesListResponse
     {
         $result = $this->pixonaut->call(
             'scenes.list',
@@ -242,6 +245,9 @@ final class Blanks
                 'pose' => $pose,
                 'accepts' => $accepts,
                 'forBlank' => $forBlank,
+                'forKind' => $forKind,
+                'forCut' => $forCut,
+                'view' => $view,
             ],
         );
         return $result->decode(

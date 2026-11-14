@@ -26,12 +26,14 @@ final class ScenesListResponse implements Model
      * @param ScenesListResponseFacets $facets The settings, people and poses the list can be narrowed by, each with how many scenes have it: a facet's values are counted with every other part of the query applied, and its own left out.
      * @param list<ScenesListResponseScenesItem> $scenes
      * @param list<ScenesListResponseStockItemsItem> $stockItems
+     * @param int|null $makeCredits With `view=picker`: what composing a scene the list does not hold would cost, which `canMake` says only for the query asked.
      */
     public function __construct(
         public readonly ?ScenesListResponseCanMake $canMake,
         public readonly ScenesListResponseFacets $facets,
         public readonly array $scenes,
         public readonly array $stockItems,
+        public readonly ?int $makeCredits = null,
     ) {}
 
     /**
@@ -61,6 +63,7 @@ final class ScenesListResponse implements Model
                 $path . '.stockItems',
                 static fn(mixed $v, string $p): ScenesListResponseStockItemsItem => ScenesListResponseStockItemsItem::fromArray(Decode::object($v, $p), $p),
             ),
+            makeCredits: array_key_exists('makeCredits', $data) ? Decode::int($data['makeCredits'], $path . '.makeCredits') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -90,6 +93,9 @@ final class ScenesListResponse implements Model
             static fn(ScenesListResponseStockItemsItem $v): mixed => Encode::model($v),
             $this->stockItems,
         );
+        if ($this->makeCredits !== null) {
+            $data['makeCredits'] = $this->makeCredits;
+        }
         return $data;
     }
 }

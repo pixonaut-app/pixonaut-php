@@ -38,8 +38,9 @@ final class ScenesListResponseScenesItem implements Model
      * @param string|null $stockItem The stock item the scene shows. Null unless the scene is a `product`: no other kind has a product in it.
      * @param bool $studio Whether this is a studio scene: the product alone, on a plain ground.
      * @param bool $takesDye Whether a variant's colour paints the scene's grey base. One that does not shows a material that is the point, such as bare metal, on every variant as photographed.
+     * @param string|null $thumbnailUrl A link to the scene's picture small, for a list or a picker: at most 256 pixels on its longer side, opening with no key. Null when the scene has no picture.
      * @param bool $workspace Whether the scene is this workspace's own, composed from a stock scene, rather than Pixonaut's.
-     * @param list<ScenesListResponseScenesItemOffersItem>|null $offers With `forBlank`: which rows of that blank the scene can show, a setting an anchor at a time, and a garment cut-out a studio style at a time. Empty for a scene no blank can show.
+     * @param list<ScenesListResponseScenesItemOffersItem>|null $offers With `forBlank`: which rows of that blank the scene can show, a setting an anchor at a time, a studio style a camera at a time, and a garment cut-out a studio style at a time. Empty for a scene no blank can show. With `forKind`: only the places a product of that kind can be shown at, and, with no `forBlank`, each with one row of no option values, shown.
      */
     public function __construct(
         public readonly array $areas,
@@ -59,6 +60,7 @@ final class ScenesListResponseScenesItem implements Model
         public readonly ?string $stockItem,
         public readonly bool $studio,
         public readonly bool $takesDye,
+        public readonly ?string $thumbnailUrl,
         public readonly bool $workspace,
         public readonly ?array $offers = null,
     ) {}
@@ -115,6 +117,11 @@ final class ScenesListResponseScenesItem implements Model
             ),
             studio: Decode::bool(Decode::required($data, 'studio', $path), $path . '.studio'),
             takesDye: Decode::bool(Decode::required($data, 'takesDye', $path), $path . '.takesDye'),
+            thumbnailUrl: Decode::nullable(
+                Decode::required($data, 'thumbnailUrl', $path),
+                $path . '.thumbnailUrl',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             workspace: Decode::bool(Decode::required($data, 'workspace', $path), $path . '.workspace'),
             offers: array_key_exists('offers', $data) ? Decode::list(
                 $data['offers'],
@@ -157,6 +164,7 @@ final class ScenesListResponseScenesItem implements Model
         $data['stockItem'] = $this->stockItem;
         $data['studio'] = $this->studio;
         $data['takesDye'] = $this->takesDye;
+        $data['thumbnailUrl'] = $this->thumbnailUrl;
         $data['workspace'] = $this->workspace;
         if ($this->offers !== null) {
             $data['offers'] = array_map(
