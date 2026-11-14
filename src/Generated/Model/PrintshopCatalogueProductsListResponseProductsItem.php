@@ -27,6 +27,8 @@ final class PrintshopCatalogueProductsListResponseProductsItem implements Model
      * @param PrintshopCatalogueProductsListResponseProductsItemHolds $holds What the product holds: how many colours, sizes and variants it is sold in; each null when the partner did not say.
      * @param string|null $imageUrl
      * @param string|null $importedBlankId The blank it was imported as through this connection, the latest when there are several; null when it has not been.
+     * @param string|null $productKind What kind of product the printshop's data says it is, as the product's options answer it; null where the data does not say, and an import then takes the merchant's own word for a garment as `garmentCut`.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind}.
      */
     public function __construct(
         public readonly ?string $brand,
@@ -37,6 +39,7 @@ final class PrintshopCatalogueProductsListResponseProductsItem implements Model
         public readonly ?string $importedBlankId,
         public readonly string $name,
         public readonly string $productId,
+        public readonly ?string $productKind,
     ) {}
 
     /**
@@ -74,6 +77,11 @@ final class PrintshopCatalogueProductsListResponseProductsItem implements Model
             ),
             name: Decode::string(Decode::required($data, 'name', $path), $path . '.name'),
             productId: Decode::string(Decode::required($data, 'productId', $path), $path . '.productId'),
+            productKind: Decode::nullable(
+                Decode::required($data, 'productKind', $path),
+                $path . '.productKind',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
         );
         $model->decoded = $data;
         return $model;
@@ -101,6 +109,7 @@ final class PrintshopCatalogueProductsListResponseProductsItem implements Model
         $data['importedBlankId'] = $this->importedBlankId;
         $data['name'] = $this->name;
         $data['productId'] = $this->productId;
+        $data['productKind'] = $this->productKind;
         return $data;
     }
 }

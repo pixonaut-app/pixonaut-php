@@ -4215,6 +4215,13 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202JobS
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202JobState::QUEUED const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202JobState::RUNNING const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202JobState::SUCCEEDED const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind::CANVAS const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind::CYLINDER const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind::FLAT_SHEET const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind::FRAMED_SHEET const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind::GARMENT_CUT const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind::KNOWN const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemAddressChanges
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemAddressChanges::ALWAYS const
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemAddressChanges::BY_SETTING const
@@ -21079,7 +21086,8 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItem:
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItem::$importedBlankId readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItem::$name readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItem::$productId readonly string
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItem::__construct(?string $brand, ?string $categoryId, bool $hasImportedBlank, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItemHolds $holds, ?string $imageUrl, ?string $importedBlankId, string $name, string $productId)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItem::$productKind readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItem::__construct(?string $brand, ?string $categoryId, bool $hasImportedBlank, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItemHolds $holds, ?string $imageUrl, ?string $importedBlankId, string $name, string $productId, ?string $productKind)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItem::toArray(): array
