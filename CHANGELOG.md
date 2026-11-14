@@ -1,5 +1,16 @@
 # Changelog
 
+## [15.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v14.0.0...v15.0.0) (2026-11-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* the constructors of the four product model row classes (BlanksGetResponseProductModelsItem and its list and import twins) gain an optional last argument, $fromPrintshop.
+
+### Features
+
+* target the published Pixonaut API 8.2.0 ([#58](https://github.com/pixonaut-app/pixonaut-php/issues/58)) ([e94c1b0](https://github.com/pixonaut-app/pixonaut-php/commit/e94c1b09421679aaeea73994c56e6295a1e1a5b3))
+
 ## [14.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v13.0.0...v14.0.0) (2026-11-14)
 
 Targets the Pixonaut API 8.1.0.
