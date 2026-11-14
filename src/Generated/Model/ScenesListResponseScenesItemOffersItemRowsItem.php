@@ -22,7 +22,7 @@ final class ScenesListResponseScenesItemOffersItemRowsItem implements Model
     private ?array $decoded = null;
 
     /**
-     * @param string|null $reason The refusal as one plain sentence, to say as it is; null when the row is shown.
+     * @param string|null $reason The refusal as one plain sentence, to say as it is; null when the row is shown, and with `view=picker`, whose reader words the refusal itself.
      * @param string|null $refusal Why the scene does not show the row, or null when it does: `no_product_model`, the row says no product; `kind_not_accepted`, the scene takes no product of that kind; `footprint_exceeds_anchor`, the product is larger than the anchor's room; `size_outside_reviewed_range`, no product of that size was looked at there; `angle_unsupported`, the camera looks too far up or down; `no_drawer`, nothing draws the kind yet; `shape_outside_grip`, the scene's photo holds a product of another kind or size in a hand.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemOffersItemRowsItemRefusal}.
      * @param array<string, string> $row A row of the blank's product: its values of the options its product changes with. Empty for a product that changes with none.

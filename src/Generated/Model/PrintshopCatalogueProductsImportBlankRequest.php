@@ -8,6 +8,7 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
+use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -25,6 +26,7 @@ final class PrintshopCatalogueProductsImportBlankRequest implements Model
      * @param string|null $name As the library shows it. Omitted, the printshop's product name.
      * @param bool|null $printshopPhotos Whether the printshop's photos are fetched as the blank's catalogue photos. True is refused where the printshop has no photo with a print area. Omitted, they are fetched if it has any.
      * @param list<string>|null $sceneIds Stock photos, the scenes in the order they show, first in the blank's order and before the printshop's photos. They may photograph several stock items, each scene its own; two of one stock item, setting, person and pose are refused `scene_view_repeated`, unless each is held in a hand. On each of them, each placement with a role that item has a place for takes its default record; one with none shows on none of its scenes.
+     * @param list<PrintshopCatalogueProductsImportBlankRequestScenesItem>|null $scenes The library's pictures of the blank in order, after `sceneIds`, each a scene from list_scenes: a setting, such as a wall for a poster, at one of its anchors (left out where it has one), or a studio style from one of its cameras, both with the blank's own product drawn in at true size from its product model, or a stock photo by its id alone. A size no setting was checked with shows on none. Omitted, the blank takes the library's own for what its printshop's data says the product is: first a studio picture, the library's base studio style from its front, which is the blank's picture; then `sceneIds`; then a sheet on every wall and a cylinder on every table. [] for none of them.
      * @param list<string>|null $views The views to fetch photos for, by the key the options read answers; absent for every view.
      */
     public function __construct(
@@ -32,6 +34,7 @@ final class PrintshopCatalogueProductsImportBlankRequest implements Model
         public readonly ?string $name = null,
         public readonly ?bool $printshopPhotos = null,
         public readonly ?array $sceneIds = null,
+        public readonly ?array $scenes = null,
         public readonly ?array $views = null,
     ) {}
 
@@ -57,6 +60,11 @@ final class PrintshopCatalogueProductsImportBlankRequest implements Model
                 $data['sceneIds'],
                 $path . '.sceneIds',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
+            scenes: array_key_exists('scenes', $data) ? Decode::list(
+                $data['scenes'],
+                $path . '.scenes',
+                static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankRequestScenesItem => PrintshopCatalogueProductsImportBlankRequestScenesItem::fromArray(Decode::object($v, $p), $p),
             ) : null,
             views: array_key_exists('views', $data) ? Decode::list(
                 $data['views'],
@@ -93,6 +101,12 @@ final class PrintshopCatalogueProductsImportBlankRequest implements Model
         }
         if ($this->sceneIds !== null) {
             $data['sceneIds'] = $this->sceneIds;
+        }
+        if ($this->scenes !== null) {
+            $data['scenes'] = array_map(
+                static fn(PrintshopCatalogueProductsImportBlankRequestScenesItem $v): mixed => Encode::model($v),
+                $this->scenes,
+            );
         }
         if ($this->views !== null) {
             $data['views'] = $this->views;

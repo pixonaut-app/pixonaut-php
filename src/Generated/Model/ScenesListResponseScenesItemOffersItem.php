@@ -23,13 +23,18 @@ final class ScenesListResponseScenesItemOffersItem implements Model
 
     /**
      * @param string|null $anchor The anchor of a setting the rows are judged at; null for a scene with a product of its own.
+     * @param string|null $camera For a studio style, the camera of it the rows are judged from: the blank is bound to the style from this camera. Null for any other scene.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemOffersItemCamera}.
      * @param list<ScenesListResponseScenesItemOffersItemRowsItem> $rows
      * @param ScenesListResponseScenesItemOffersItemStudio|null $studio For a garment cut-out, the studio style it is laid over: the blank is bound to that style from this camera, with this scene as its `cutOut`. Null for any other scene.
+     * @param bool|null $fitsKind With `view=picker` and `forKind`: whether a product of that kind can be shown at this place. Absent otherwise.
      */
     public function __construct(
         public readonly ?string $anchor,
+        public readonly ?string $camera,
         public readonly array $rows,
         public readonly ?ScenesListResponseScenesItemOffersItemStudio $studio,
+        public readonly ?bool $fitsKind = null,
     ) {}
 
     /**
@@ -48,6 +53,11 @@ final class ScenesListResponseScenesItemOffersItem implements Model
                 $path . '.anchor',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            camera: Decode::nullable(
+                Decode::required($data, 'camera', $path),
+                $path . '.camera',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             rows: Decode::list(
                 Decode::required($data, 'rows', $path),
                 $path . '.rows',
@@ -58,6 +68,7 @@ final class ScenesListResponseScenesItemOffersItem implements Model
                 $path . '.studio',
                 static fn(mixed $v, string $p): ScenesListResponseScenesItemOffersItemStudio => ScenesListResponseScenesItemOffersItemStudio::fromArray(Decode::object($v, $p), $p),
             ),
+            fitsKind: array_key_exists('fitsKind', $data) ? Decode::bool($data['fitsKind'], $path . '.fitsKind') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -78,11 +89,15 @@ final class ScenesListResponseScenesItemOffersItem implements Model
     {
         $data = [];
         $data['anchor'] = $this->anchor;
+        $data['camera'] = $this->camera;
         $data['rows'] = array_map(
             static fn(ScenesListResponseScenesItemOffersItemRowsItem $v): mixed => Encode::model($v),
             $this->rows,
         );
         $data['studio'] = $this->studio === null ? null : Encode::model($this->studio);
+        if ($this->fitsKind !== null) {
+            $data['fitsKind'] = $this->fitsKind;
+        }
         return $data;
     }
 }
