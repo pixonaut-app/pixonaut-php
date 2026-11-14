@@ -1,5 +1,17 @@
 # Changelog
 
+## [9.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v8.0.0...v9.0.0) (2026-11-14)
+
+Targets the Pixonaut API 6.2.0.
+
+### ⚠ BREAKING CHANGES
+
+* the constructors of the generated models ScenesListResponseScenesItem (required $thumbnailUrl before $workspace), ScenesListResponseScenesItemOffersItem (required $camera before $rows, trailing optional $fitsKind), ScenesListResponse (trailing optional $makeCredits) and PrintshopCatalogueProductsImportBlankRequest (optional $scenes before $views) change, and Blanks::listScenes() gains the trailing optional $forKind, $forCut and $view.
+
+### Features
+
+* target the published Pixonaut API 6.2.0 ([#42](https://github.com/pixonaut-app/pixonaut-php/issues/42)) ([f558d82](https://github.com/pixonaut-app/pixonaut-php/commit/f558d829fe5f8a003510fa1b384c8f9d1f34e0ae))
+
 ## [8.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v7.0.0...v8.0.0) (2026-11-14)
 
 Targets the Pixonaut API 6.1.0.
