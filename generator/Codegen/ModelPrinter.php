@@ -180,10 +180,17 @@ final class ModelPrinter
                     Ast::value($tags),
                 ]);
             }
-            $statements = [new Stmt\Return_(Ast::call('Decode', $union->kind, [$data, $path, Ast::list($variants)]))];
-            $text = $union->kind === UnionDef::ONE_OF
-                ? 'Decodes the one variant the value matches, the most specific first.'
-                : 'Decodes the first variant the value matches, the most specific first.';
+            $statements = [new Stmt\Return_($union->openBy !== ''
+                ? Ast::call('Decode', 'openOneOf', [$data, $path, Ast::list($variants), Ast::string($union->openBy)])
+                : Ast::call('Decode', $union->kind, [$data, $path, Ast::list($variants)]))];
+            $text = match (true) {
+                $union->openBy !== '' => sprintf(
+                    'Decodes the variant its `%s` names. One this release does not know is an `UnknownVariant`, so a newer API does not break it.',
+                    $union->openBy,
+                ),
+                $union->kind === UnionDef::ONE_OF => 'Decodes the one variant the value matches, the most specific first.',
+                default => 'Decodes the first variant the value matches, the most specific first.',
+            };
         }
 
         $decode = new Stmt\ClassMethod('decode', [

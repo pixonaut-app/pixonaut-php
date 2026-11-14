@@ -26,7 +26,7 @@ final class ScenesListResponseStockItemsItem implements Model
      * @param string $family Values: {@see \Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemFamily}.
      * @param string|null $kind What kind of product the stock item is.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind}.
-     * @param ScenesListResponseStockItemsItemModelCanvas|ScenesListResponseStockItemsItemModelCylinder|ScenesListResponseStockItemsItemModelFlatSheet|ScenesListResponseStockItemsItemModelFramedSheet|ScenesListResponseStockItemsItemModelGarmentCut|null $model The product a blank that says none of its own is taken to be, in millimetres.
+     * @param ScenesListResponseStockItemsItemModelCanvas|ScenesListResponseStockItemsItemModelCylinder|ScenesListResponseStockItemsItemModelFlatSheet|ScenesListResponseStockItemsItemModelFramedSheet|ScenesListResponseStockItemsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant|null $model The product a blank that says none of its own is taken to be, in millimetres.
      */
     public function __construct(
         public readonly array $areas,

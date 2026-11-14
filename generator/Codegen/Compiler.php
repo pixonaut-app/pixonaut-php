@@ -31,6 +31,9 @@ final class Compiler
     /** The envelope field naming an event's type. */
     private const EVENT_TYPE_FIELD = 'type';
 
+    /** What an answer's origin holds between its operation and its status (`GET /v1/blanks answer 200: $`). */
+    private const ANSWER_ORIGIN = ' answer ';
+
     private const IDEMPOTENCY_HEADER = 'idempotency-key';
 
     /** The lowest status of an answer that is not a success. */
@@ -62,6 +65,9 @@ final class Compiler
 
     /** @var array<string, true> Every component a webhook's body refers to. */
     private array $eventComponents = [];
+
+    /** @var array<string, true> Every `openUnions` entry a union was listed by. */
+    private array $openUnionsSeen = [];
 
     /**
      * @param array<string, mixed> $spec
@@ -99,6 +105,11 @@ final class Compiler
         foreach (array_keys($this->config->sensitive + $this->config->generateSkipped) as $id) {
             if (!in_array($id, array_map(static fn(OperationDef $operation): string => $operation->id, $operations), true)) {
                 throw new GeneratorException(sprintf('generator/config.php names %s, which the spec does not have.', $id));
+            }
+        }
+        foreach (array_keys($this->config->openUnions) as $suffix) {
+            if (!isset($this->openUnionsSeen[$suffix])) {
+                throw new GeneratorException(sprintf('generator/config.php lists %s as an open union, which no answer of the spec has.', $suffix));
             }
         }
         foreach ($requests as $request) {
@@ -266,7 +277,7 @@ final class Compiler
                     $responses[(int) $status] = $this->schema(
                         self::map($schema),
                         self::responseName($id, (int) $status, $jsonStatuses),
-                        $origin . ' answer ' . $status . ': $',
+                        $origin . self::ANSWER_ORIGIN . $status . ': $',
                     );
                 }
             }
@@ -626,10 +637,53 @@ final class Compiler
             $description,
             array_map(static fn(array $variant): array => [$variant[0], $variant[1], $variant[2]], $compiled),
             $origin,
+            openBy: $this->openBy($keyword, $origin, array_map(static fn(array $variant): array => $variant[2], $compiled)),
         );
         $this->unions[$name] = $union;
 
         return $union->type();
+    }
+
+    /**
+     * The field that tags every variant of a union `generator/config.php`
+     * lists as open, or an empty string for a closed one.
+     *
+     * @param list<array<string, string|int|float|bool>> $tags Each variant's tags.
+     */
+    private function openBy(string $keyword, string $origin, array $tags): string
+    {
+        $suffix = $this->openUnionSuffix($origin);
+        if ($suffix === null) {
+            return '';
+        }
+        $this->openUnionsSeen[$suffix] = true;
+        $shared = array_keys(array_intersect_key(...$tags));
+        $values = array_column($tags, $shared[0] ?? '');
+        if ($keyword !== UnionDef::ONE_OF || count($shared) !== 1 || $values !== array_filter($values, is_string(...)) || count(array_unique($values)) !== count($tags)) {
+            throw new GeneratorException(sprintf(
+                '%s: generator/config.php lists it as an open union, which takes a oneOf whose variants each allow one text value of the same one field.',
+                $origin,
+            ));
+        }
+
+        return $shared[0];
+    }
+
+    /**
+     * The `openUnions` entry an answer's union is listed by, if any.
+     */
+    private function openUnionSuffix(string $origin): ?string
+    {
+        if (!str_contains($origin, self::ANSWER_ORIGIN)) {
+            return null;
+        }
+        foreach (array_keys($this->config->openUnions) as $suffix) {
+            if (str_ends_with($origin, $suffix)) {
+                return $suffix;
+            }
+        }
+
+        return null;
     }
 
     /**

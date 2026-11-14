@@ -204,6 +204,29 @@ final class Decode
     }
 
     /**
+     * The value decoded by the variant its `$field` names, for a `oneOf`
+     * whose variants are an open set, each tagged by that field: a value of
+     * it no variant has is an `UnknownVariant`, holding the object as sent.
+     *
+     * @template T
+     *
+     * @param list<array{Closure(mixed, string): T, int, array<string, string|int|float|bool>}> $variants
+     *
+     * @return T|UnknownVariant
+     */
+    public static function openOneOf(mixed $value, string $path, array $variants, string $field): mixed
+    {
+        $tag = self::discriminator($value, $path, $field);
+        foreach ($variants as $variant) {
+            if (($variant[2][$field] ?? null) === $tag) {
+                return self::oneOf($value, $path, $variants);
+            }
+        }
+
+        return new UnknownVariant($field, $tag, self::object($value, $path));
+    }
+
+    /**
      * The value decoded by the first variant it matches (`anyOf`), chosen as
      * for `oneOf()`.
      *

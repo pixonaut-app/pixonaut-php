@@ -22,7 +22,7 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsIt
     private ?array $decoded = null;
 
     /**
-     * @param PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFlatSheet|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFramedSheet|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelGarmentCut $model What the product is, by kind.
+     * @param PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFlatSheet|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFramedSheet|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant $model What the product is, by kind.
      * @param array<string, string> $row A value for each `modelVariesBy` option, by option name; {} for none.
      */
     public function __construct(

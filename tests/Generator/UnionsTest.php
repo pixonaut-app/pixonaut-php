@@ -6,6 +6,9 @@ namespace Pixonaut\Sdk\Tests\Generator;
 
 use PHPUnit\Framework\TestCase;
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
+use Pixonaut\Sdk\Generator\Codegen\Config;
+use Pixonaut\Sdk\Generator\Codegen\GeneratorException;
+use Pixonaut\Sdk\Model\UnknownVariant;
 use Pixonaut\Sdk\Tests\Generator\Support\Calls;
 use Pixonaut\Sdk\Tests\Generator\Support\GeneratesCode;
 
@@ -120,6 +123,108 @@ final class UnionsTest extends TestCase
 
         $this->expectExceptionObject(new UnexpectedResponse('$.events[0].type', 'unknown type "order.lost"'));
         Calls::fromArray($namespace . '\\Model\\EventsListResponse', ['events' => [['type' => 'order.lost', 'id' => 'e_3']]]);
+    }
+
+    public function testAnOpenUnionDecodesAVariantAddedLaterAsUnknown(): void
+    {
+        $namespace = $this->load(self::productSpec(), self::openProducts());
+        $decoder = $namespace . '\\Model\\ProductsGetResponseProductsItemModel';
+
+        self::assertInstanceOf(Calls::class($decoder . 'Mug'), Calls::decode($decoder, ['kind' => 'mug', 'heightMm' => 95]));
+
+        $later = ['kind' => 'tote', 'handleMm' => 600];
+        $unknown = Calls::decode($decoder, $later);
+        self::assertInstanceOf(UnknownVariant::class, $unknown);
+        self::assertSame('kind', $unknown->field);
+        self::assertSame('tote', $unknown->value);
+        self::assertSame($later, $unknown->raw());
+        self::assertSame($later, $unknown->toArray());
+
+        $products = Calls::fromArray($namespace . '\\Model\\ProductsGetResponse', ['products' => [
+            ['model' => $later],
+            ['model' => ['kind' => 'poster', 'widthMm' => 210]],
+        ]]);
+        $read = Calls::get($products, 'products');
+        self::assertIsArray($read);
+        self::assertCount(2, $read);
+    }
+
+    public function testAnOpenUnionStillRefusesAKnownVariantItCannotRead(): void
+    {
+        $decoder = $this->load(self::productSpec(), self::openProducts()) . '\\Model\\ProductsGetResponseProductsItemModel';
+
+        try {
+            Calls::decode($decoder, ['kind' => 'mug', 'heightMm' => 'tall']);
+            self::fail('A mug with a wrong height decoded.');
+        } catch (UnexpectedResponse $e) {
+            self::assertSame('$.heightMm', $e->jsonPath);
+        }
+
+        try {
+            Calls::decode($decoder, ['heightMm' => 95]);
+            self::fail('A product model without a kind decoded.');
+        } catch (UnexpectedResponse $e) {
+            self::assertSame('$', $e->jsonPath);
+        }
+
+        $this->expectException(UnexpectedResponse::class);
+        Calls::decode($decoder, ['kind' => 7]);
+    }
+
+    public function testAUnionNotListedAsOpenRefusesAVariantAddedLater(): void
+    {
+        $decoder = $this->load(self::productSpec()) . '\\Model\\ProductsGetResponseProductsItemModel';
+
+        $this->expectException(UnexpectedResponse::class);
+        Calls::decode($decoder, ['kind' => 'tote', 'handleMm' => 600]);
+    }
+
+    public function testAnOpenUnionNeedsEveryVariantTaggedByTheSameField(): void
+    {
+        $spec = self::productSpec([
+            ['type' => 'object', 'required' => ['kind'], 'properties' => ['kind' => ['type' => 'string', 'enum' => ['mug']]]],
+            ['type' => 'object', 'required' => ['widthMm'], 'properties' => ['widthMm' => ['type' => 'number']]],
+        ]);
+
+        $this->expectException(GeneratorException::class);
+        $this->expectExceptionMessage('$.products[].model: generator/config.php lists it as an open union');
+        $this->load($spec, self::openProducts());
+    }
+
+    public function testAnOpenUnionNoAnswerHasIsRefused(): void
+    {
+        $this->expectExceptionObject(new GeneratorException('generator/config.php lists .parts[].model as an open union, which no answer of the spec has.'));
+        $this->load(self::productSpec(), new Config(resources: [self::fixtureTag() => null], openUnions: ['.parts[].model' => 'Fixture.']));
+    }
+
+    private static function openProducts(): Config
+    {
+        return new Config(resources: [self::fixtureTag() => null], openUnions: ['.products[].model' => 'Fixture.']);
+    }
+
+    /**
+     * An answer listing products, each with a model of one of `$variants`.
+     *
+     * @param list<array<string, mixed>>|null $variants A mug and a poster, tagged by `kind`, when left out.
+     *
+     * @return array<string, mixed>
+     */
+    private static function productSpec(?array $variants = null): array
+    {
+        $variants ??= [
+            ['type' => 'object', 'required' => ['kind', 'heightMm'], 'properties' => ['kind' => ['type' => 'string', 'enum' => ['mug']], 'heightMm' => ['type' => 'number']]],
+            ['type' => 'object', 'required' => ['kind', 'widthMm'], 'properties' => ['kind' => ['type' => 'string', 'enum' => ['poster']], 'widthMm' => ['type' => 'number']]],
+        ];
+
+        return self::spec([], ['/v1/products' => self::operation('products.get', ['responses' => self::json200([
+            'type' => 'object',
+            'required' => ['products'],
+            'properties' => ['products' => ['type' => 'array', 'items' => [
+                'type' => 'object',
+                'required' => ['model'],
+                'properties' => ['model' => ['oneOf' => $variants]],
+            ]]],
+        ])], 'get')]);
     }
 
     public function testANullVariantMakesTheOtherNullable(): void

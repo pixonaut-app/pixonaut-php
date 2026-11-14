@@ -109,6 +109,14 @@ return [
         'pixelTurns.toolResults.create' => 'createToolResults',
     ],
 
+    // A `oneOf` of an answer whose variants are an open set, by the field
+    // path it ends with: a variant added after this release decodes to
+    // `UnknownVariant`, where a closed union refuses the whole answer.
+    'openUnions' => [
+        '.productModels[].model' => 'A product kind added later must not stop a store reading its other blanks.',
+        '.stockItems[].model' => 'A stock item is of the same kinds as a blank; one added later must not stop the scenes being read.',
+    ],
+
     // Fields of an answer named like a secret (`key`, `secret`, `token`)
     // that are not one, by operation and field path.
     'notSecret' => [

@@ -39025,6 +39025,7 @@ Pixonaut\Sdk\Model\Decode::null(mixed $value, string $path): mixed static
 Pixonaut\Sdk\Model\Decode::nullable(mixed $value, string $path, Closure $item): mixed static
 Pixonaut\Sdk\Model\Decode::object(mixed $value, string $path): array static
 Pixonaut\Sdk\Model\Decode::oneOf(mixed $value, string $path, array $variants): mixed static
+Pixonaut\Sdk\Model\Decode::openOneOf(mixed $value, string $path, array $variants, string $field): mixed static
 Pixonaut\Sdk\Model\Decode::required(array $data, string $key, string $path): mixed static
 Pixonaut\Sdk\Model\Decode::string(mixed $value, string $path): string static
 Pixonaut\Sdk\Model\Decode::tuple(mixed $value, string $path, array $items, ?Closure $rest = null): array static
@@ -39038,6 +39039,12 @@ Pixonaut\Sdk\Model\Model::raw(): array
 Pixonaut\Sdk\Model\Model::toArray(): array
 enum Pixonaut\Sdk\Model\Omitted
 Pixonaut\Sdk\Model\Omitted::Field case
+final class Pixonaut\Sdk\Model\UnknownVariant implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Model\UnknownVariant::$field readonly string
+Pixonaut\Sdk\Model\UnknownVariant::$value readonly string
+Pixonaut\Sdk\Model\UnknownVariant::__construct(string $field, string $value, array $object)
+Pixonaut\Sdk\Model\UnknownVariant::raw(): array
+Pixonaut\Sdk\Model\UnknownVariant::toArray(): array
 final class Pixonaut\Sdk\Pixonaut uses Pixonaut\Sdk\Generated\Resources
 Pixonaut\Sdk\Pixonaut::MAX_IN_USE_RESENDS const
 Pixonaut\Sdk\Pixonaut::VERSION const
