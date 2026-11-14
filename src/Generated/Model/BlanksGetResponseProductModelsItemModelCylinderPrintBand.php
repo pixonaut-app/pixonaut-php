@@ -13,7 +13,7 @@ use Pixonaut\Sdk\Model\Model;
 /**
  * The band round its side that takes the print.
  *
- * Schema: `GET /v1/blanks/{id} answer 200: $.productModels[].model (oneOf #3).printBand`.
+ * Schema: `GET /v1/blanks/{id} answer 200: $.productModels[].model (oneOf #4).printBand`.
  */
 final class BlanksGetResponseProductModelsItemModelCylinderPrintBand implements Model
 {

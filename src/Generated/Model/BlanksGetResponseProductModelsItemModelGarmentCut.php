@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `GET /v1/blanks/{id} answer 200: $.productModels[].model (oneOf #4)`.
+ * Schema: `GET /v1/blanks/{id} answer 200: $.productModels[].model (oneOf #5)`.
  */
 final class BlanksGetResponseProductModelsItemModelGarmentCut implements Model
 {

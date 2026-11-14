@@ -13,7 +13,7 @@ use Pixonaut\Sdk\Model\Model;
 /**
  * A bottle's shoulder and neck, within its height. Omitted, none.
  *
- * Schema: `GET /v1/blanks answer 200: $.blanks[].productModels[].model (oneOf #3).profile`.
+ * Schema: `GET /v1/blanks answer 200: $.blanks[].productModels[].model (oneOf #4).profile`.
  */
 final class BlanksListResponseBlanksItemProductModelsItemModelCylinderProfile implements Model
 {

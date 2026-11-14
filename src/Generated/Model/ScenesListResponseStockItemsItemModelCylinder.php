@@ -12,7 +12,7 @@ use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `GET /v1/scenes answer 200: $.stockItems[].model (oneOf #3)`.
+ * Schema: `GET /v1/scenes answer 200: $.stockItems[].model (oneOf #4)`.
  */
 final class ScenesListResponseStockItemsItemModelCylinder implements Model
 {

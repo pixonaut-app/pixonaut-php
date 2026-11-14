@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 202: $.blank.productModels[].model (oneOf #3).parts[] (oneOf #1)`.
+ * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 202: $.blank.productModels[].model (oneOf #4).parts[] (oneOf #1)`.
  */
 final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemHandle implements Model
 {

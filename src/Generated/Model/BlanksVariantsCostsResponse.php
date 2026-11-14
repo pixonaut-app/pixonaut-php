@@ -22,9 +22,11 @@ final class BlanksVariantsCostsResponse implements Model
     private ?array $decoded = null;
 
     /**
+     * @param bool $complete Whether every variant on sale has been read for the region, so no variant is missing from `costs` for not being read yet. false from when a region is first asked for until its last variant is read, and while a variant put on sale since waits for its read. It tells of the whole region, also when `variant` narrows the list. Always true for a blank no printshop is bound to.
      * @param list<BlanksVariantsCostsResponseCostsItem> $costs
      */
     public function __construct(
+        public readonly bool $complete,
         public readonly array $costs,
     ) {}
 
@@ -39,6 +41,7 @@ final class BlanksVariantsCostsResponse implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
+            complete: Decode::bool(Decode::required($data, 'complete', $path), $path . '.complete'),
             costs: Decode::list(
                 Decode::required($data, 'costs', $path),
                 $path . '.costs',
@@ -63,6 +66,7 @@ final class BlanksVariantsCostsResponse implements Model
     public function toArray(): array
     {
         $data = [];
+        $data['complete'] = $this->complete;
         $data['costs'] = array_map(
             static fn(BlanksVariantsCostsResponseCostsItem $v): mixed => Encode::model($v),
             $this->costs,

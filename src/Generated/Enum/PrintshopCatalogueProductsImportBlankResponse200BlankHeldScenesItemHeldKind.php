@@ -17,6 +17,8 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemH
 
     public const FRAMED_SHEET = 'framed-sheet';
 
+    public const CANVAS = 'canvas';
+
     public const CYLINDER = 'cylinder';
 
     public const GARMENT_CUT = 'garment-cut';
@@ -24,5 +26,5 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemH
     /**
      * Every value this release knows.
      */
-    public const KNOWN = [self::FLAT_SHEET, self::FRAMED_SHEET, self::CYLINDER, self::GARMENT_CUT];
+    public const KNOWN = [self::FLAT_SHEET, self::FRAMED_SHEET, self::CANVAS, self::CYLINDER, self::GARMENT_CUT];
 }

@@ -904,6 +904,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponseGenerationDecision::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseGenerationDecision::NONE const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseGenerationDecision::OPEN const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind::FLAT_SHEET const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind::FRAMED_SHEET const
@@ -981,6 +982,11 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFrom
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayoutAngle::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayoutAngle::THREE_QUARTER const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayoutAngle::TOP const
+final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelCanvasEdge
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelCanvasEdge::COLOUR const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelCanvasEdge::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelCanvasEdge::MIRRORED const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelCanvasEdge::WRAPPED const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelCylinderPartsItemFinishMaterial
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelCylinderPartsItemFinishMaterial::GLASS const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelCylinderPartsItemFinishMaterial::GLAZED_CERAMIC const
@@ -1157,6 +1163,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemGenerationDecision::KNOW
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemGenerationDecision::NONE const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemGenerationDecision::OPEN const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind::FLAT_SHEET const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind::FRAMED_SHEET const
@@ -1234,6 +1241,11 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemU
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::THREE_QUARTER const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::TOP const
+final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelCanvasEdge
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelCanvasEdge::COLOUR const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelCanvasEdge::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelCanvasEdge::MIRRORED const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelCanvasEdge::WRAPPED const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemFinishMaterial
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemFinishMaterial::GLASS const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemFinishMaterial::GLAZED_CERAMIC const
@@ -3665,6 +3677,7 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankGenerationDecision::NONE const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankGenerationDecision::OPEN const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind::FLAT_SHEET const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind::FRAMED_SHEET const
@@ -3742,6 +3755,11 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::THREE_QUARTER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::TOP const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvasEdge
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvasEdge::COLOUR const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvasEdge::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvasEdge::MIRRORED const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvasEdge::WRAPPED const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderPartsItemFinishMaterial
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderPartsItemFinishMaterial::GLASS const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderPartsItemFinishMaterial::GLAZED_CERAMIC const
@@ -3932,6 +3950,7 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankGenerationDecision::NONE const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankGenerationDecision::OPEN const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind::FLAT_SHEET const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind::FRAMED_SHEET const
@@ -4009,6 +4028,11 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::THREE_QUARTER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::TOP const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvasEdge
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvasEdge::COLOUR const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvasEdge::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvasEdge::MIRRORED const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvasEdge::WRAPPED const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinishMaterial
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinishMaterial::GLASS const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinishMaterial::GLAZED_CERAMIC const
@@ -4591,6 +4615,7 @@ Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemAccep
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemAcceptsItem::STANDS const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemAcceptsItem::WORN const
 final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemKind
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemKind::FLAT_SHEET const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemKind::FRAMED_SHEET const
@@ -4607,6 +4632,7 @@ Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemRevie
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemPartsItem::MAT const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemPartsItem::STRAW const
 final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind::FLAT_SHEET const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind::FRAMED_SHEET const
@@ -4656,11 +4682,17 @@ Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemFamily::FLAT const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemFamily::KNOWN const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemFamily::RIGID const
 final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::FLAT_SHEET const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::FRAMED_SHEET const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::GARMENT_CUT const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::KNOWN const
+final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelCanvasEdge
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelCanvasEdge::COLOUR const
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelCanvasEdge::KNOWN const
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelCanvasEdge::MIRRORED const
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelCanvasEdge::WRAPPED const
 final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelCylinderPartsItemFinishMaterial
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelCylinderPartsItemFinishMaterial::GLASS const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelCylinderPartsItemFinishMaterial::GLAZED_CERAMIC const
@@ -10265,14 +10297,26 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemZoomTierPho
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemZoomTierPhotoSizePx::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemZoomTierPhotoSizePx::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::$model readonly Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder|Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelGarmentCut
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::$model readonly Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::$row readonly array
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::__construct(Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder|Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelGarmentCut $model, array $row)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::__construct(Pixonaut\Sdk\Model\Model $model, array $row)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModel
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder|Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelGarmentCut static
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::$depthMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::$edge readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::$edgeColour readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::$kind readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::$wrapMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::__construct(float $depthMm, string $edge, float $heightMm, string $kind, float $widthMm, float $wrapMm, ?string $edgeColour = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas static
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::$baseDiameterMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::$heightMm readonly float
@@ -11057,14 +11101,26 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemZoomTierPhotoSizePx::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemZoomTierPhotoSizePx::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::$model readonly Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder|Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelGarmentCut
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::$model readonly Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::$row readonly array
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::__construct(Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder|Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelGarmentCut $model, array $row)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::__construct(Pixonaut\Sdk\Model\Model $model, array $row)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModel
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder|Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelGarmentCut static
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::$depthMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::$edge readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::$edgeColour readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::$kind readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::$wrapMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::__construct(float $depthMm, string $edge, float $heightMm, string $kind, float $widthMm, float $wrapMm, ?string $edgeColour = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas static
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder::$baseDiameterMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder::$heightMm readonly float
@@ -12028,8 +12084,9 @@ Pixonaut\Sdk\Generated\Model\BlanksPreviewTablesGetResponsePreview::fromArray(ar
 Pixonaut\Sdk\Generated\Model\BlanksPreviewTablesGetResponsePreview::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksPreviewTablesGetResponsePreview::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::$complete readonly bool
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::$costs readonly array
-Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::__construct(array $costs)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::__construct(bool $complete, array $costs)
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse static
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::toArray(): array
@@ -19846,14 +19903,26 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemZoomTierPhotoSizePx::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemZoomTierPhotoSizePx::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::$model readonly Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelGarmentCut
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::$model readonly Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::$row readonly array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::__construct(Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelGarmentCut $model, array $row)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::__construct(Pixonaut\Sdk\Model\Model $model, array $row)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModel
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelGarmentCut static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::$depthMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::$edge readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::$edgeColour readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::$kind readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::$wrapMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::__construct(float $depthMm, string $edge, float $heightMm, string $kind, float $widthMm, float $wrapMm, ?string $edgeColour = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder::$baseDiameterMm readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder::$heightMm readonly float
@@ -20652,14 +20721,26 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemZoomTierPhotoSizePx::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemZoomTierPhotoSizePx::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::$model readonly Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelGarmentCut
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::$model readonly Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::$row readonly array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::__construct(Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelGarmentCut $model, array $row)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::__construct(Pixonaut\Sdk\Model\Model $model, array $row)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModel
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelGarmentCut static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::$depthMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::$edge readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::$edgeColour readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::$kind readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::$wrapMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::__construct(float $depthMm, string $edge, float $heightMm, string $kind, float $widthMm, float $wrapMm, ?string $edgeColour = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder::$baseDiameterMm readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder::$heightMm readonly float
@@ -28537,9 +28618,9 @@ Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::$areas readonly a
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::$family readonly string
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::$key readonly string
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::$kind readonly ?string
-Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::$model readonly Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder|Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelGarmentCut|null
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::$model readonly ?Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::$name readonly string
-Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::__construct(array $areas, string $family, string $key, string $name, ?string $kind = null, Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder|Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelGarmentCut|null $model = null)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::__construct(array $areas, string $family, string $key, string $name, ?string $kind = null, ?Pixonaut\Sdk\Model\Model $model = null)
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem static
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::toArray(): array
@@ -28553,7 +28634,19 @@ Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemAreasItem::fromArra
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemAreasItem::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemAreasItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModel
-Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder|Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelFlatSheet|Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelFramedSheet|Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelGarmentCut static
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::$depthMm readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::$edge readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::$edgeColour readonly ?string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::$kind readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::$wrapMm readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::__construct(float $depthMm, string $edge, float $heightMm, string $kind, float $widthMm, float $wrapMm, ?string $edgeColour = null)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas static
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::raw(): array
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::$baseDiameterMm readonly float
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::$heightMm readonly float

@@ -10,7 +10,7 @@ use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
 
 /**
- * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 202: $.blank.productModels[].model (oneOf #3).parts[]`.
+ * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 202: $.blank.productModels[].model (oneOf #4).parts[]`.
  */
 final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItem
 {

@@ -11,7 +11,7 @@ namespace Pixonaut\Sdk\Generated\Enum;
  *
  * The values this release knows. The field is a string, and the API may answer a value added after this release.
  *
- * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 202: $.blank.productModels[].model (oneOf #4).cut`.
+ * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 202: $.blank.productModels[].model (oneOf #5).cut`.
  */
 final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelGarmentCutCut
 {
