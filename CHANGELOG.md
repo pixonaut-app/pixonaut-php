@@ -1,5 +1,16 @@
 # Changelog
 
+## [16.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v15.0.0...v16.0.0) (2026-11-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* the constructors of BlanksMockupsListResponsePlacementsItem and BlanksMockupsListResponsePlacementsItemAreasItem gain an optional argument, $foldMm, before their later optional ones, and that of ScenesListResponseScenesItemGeometryAnchorsItem an optional last one, $bareAboveMm. Code that names its arguments is unchanged.
+
+### Features
+
+* target the published Pixonaut API 8.3.0 ([#60](https://github.com/pixonaut-app/pixonaut-php/issues/60)) ([f12d280](https://github.com/pixonaut-app/pixonaut-php/commit/f12d2804ee803d1298945b0e842f83955e03a1bd))
+
 ## [15.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v14.0.0...v15.0.0) (2026-11-14)
 
 Targets the Pixonaut API 8.2.0.
