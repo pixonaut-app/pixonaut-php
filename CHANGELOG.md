@@ -1,5 +1,16 @@
 # Changelog
 
+## [13.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v12.1.0...v13.0.0) (2026-11-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* a product model's decoder returns one more class, the canvas's, wherever a blank's or a stock item's model is read.
+
+### Features
+
+* target the published Pixonaut API 8.0.0 ([#53](https://github.com/pixonaut-app/pixonaut-php/issues/53)) ([38acf23](https://github.com/pixonaut-app/pixonaut-php/commit/38acf23d66164187165d06db302f3be7821a1d5a))
+
 ## [12.1.0](https://github.com/pixonaut-app/pixonaut-php/compare/v12.0.0...v12.1.0) (2026-11-14)
 
 Targets the Pixonaut API 7.3.0.
