@@ -18,6 +18,8 @@ final class Config
      * @param array<string, string|null>           $operationResources Operation id → its resource, where it is not its tag's.
      * @param array<string, string>                $resourcePrefixes   Resource → the `operationId` prefix its method names leave out.
      * @param array<string, string>                $methodNames        Operation id → its method name, where the derived one reads badly.
+     * @param array<string, string>                $openUnions         Field path an answer's `oneOf` ends with → why a variant added
+     *                                                                 after this release decodes to `UnknownVariant`.
      */
     public function __construct(
         public readonly array $sensitive = [],
@@ -27,11 +29,12 @@ final class Config
         public readonly array $operationResources = [],
         public readonly array $resourcePrefixes = [],
         public readonly array $methodNames = [],
+        public readonly array $openUnions = [],
     ) {}
 
     public static function load(string $file): self
     {
-        /** @var array{sensitive?: array<string, string>, generateSkipped?: array<string, string>, notSecret?: array<string, array<string, string>>, resources?: array<string, string|null>, operationResources?: array<string, string|null>, resourcePrefixes?: array<string, string>, methodNames?: array<string, string>} $config */
+        /** @var array{sensitive?: array<string, string>, generateSkipped?: array<string, string>, notSecret?: array<string, array<string, string>>, resources?: array<string, string|null>, operationResources?: array<string, string|null>, resourcePrefixes?: array<string, string>, methodNames?: array<string, string>, openUnions?: array<string, string>} $config */
         $config = require $file;
 
         return new self(
@@ -42,6 +45,7 @@ final class Config
             $config['operationResources'] ?? [],
             $config['resourcePrefixes'] ?? [],
             $config['methodNames'] ?? [],
+            $config['openUnions'] ?? [],
         );
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Pixonaut\Sdk\Generator\Codegen;
 
+use Pixonaut\Sdk\Model\UnknownVariant;
 use Pixonaut\Sdk\Webhooks\UnknownEvent;
 
 /**
@@ -21,6 +22,9 @@ final class UnionDef
      * @param array<string, Type>    $mapping       Discriminator value → variant, for a discriminated union.
      * @param bool                   $events        A union of event envelopes, discriminated by `type`: a type
      *                                              this release does not know decodes to `UnknownEvent`.
+     * @param string                 $openBy        The field every variant is tagged by, for a `oneOf` whose
+     *                                              variants are an open set: a value of it this release does
+     *                                              not know decodes to `UnknownVariant`. Empty for a closed one.
      */
     public function __construct(
         public readonly string $name,
@@ -31,6 +35,7 @@ final class UnionDef
         public readonly string $discriminator = '',
         public readonly array $mapping = [],
         public readonly bool $events = false,
+        public readonly string $openBy = '',
     ) {}
 
     public function type(bool $nullable = false): Type
@@ -41,6 +46,9 @@ final class UnionDef
 
         if ($this->events) {
             $variants[] = new Type(Type::MODEL, class: '\\' . UnknownEvent::class);
+        }
+        if ($this->openBy !== '') {
+            $variants[] = new Type(Type::MODEL, class: '\\' . UnknownVariant::class);
         }
 
         return new Type(Type::UNION, $nullable, class: $this->name, variants: $variants);

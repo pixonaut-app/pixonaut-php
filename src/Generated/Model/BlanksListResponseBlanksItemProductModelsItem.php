@@ -22,7 +22,7 @@ final class BlanksListResponseBlanksItemProductModelsItem implements Model
     private ?array $decoded = null;
 
     /**
-     * @param BlanksListResponseBlanksItemProductModelsItemModelCanvas|BlanksListResponseBlanksItemProductModelsItemModelCylinder|BlanksListResponseBlanksItemProductModelsItemModelFlatSheet|BlanksListResponseBlanksItemProductModelsItemModelFramedSheet|BlanksListResponseBlanksItemProductModelsItemModelGarmentCut $model What the product is, by kind.
+     * @param BlanksListResponseBlanksItemProductModelsItemModelCanvas|BlanksListResponseBlanksItemProductModelsItemModelCylinder|BlanksListResponseBlanksItemProductModelsItemModelFlatSheet|BlanksListResponseBlanksItemProductModelsItemModelFramedSheet|BlanksListResponseBlanksItemProductModelsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant $model What the product is, by kind.
      * @param array<string, string> $row A value for each `modelVariesBy` option, by option name; {} for none.
      */
     public function __construct(

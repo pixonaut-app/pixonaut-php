@@ -35,8 +35,9 @@ releases the next major.
 
 Within a major, code written against the SDK keeps compiling and running.
 Answers may grow: a field or an enum value the API adds later is kept in a
-model's `raw()`, an unknown event type reads as an `UnknownEvent`, and an
-unknown error code arrives as it was sent. So a store does not break when
+model's `raw()`, an unknown event type reads as an `UnknownEvent`, a
+product model of an unknown kind reads as an `UnknownVariant` holding the
+object as sent, and an unknown error code arrives as it was sent. So a store does not break when
 Pixonaut adds to the API before the SDK is updated.
 
 ## The public surface

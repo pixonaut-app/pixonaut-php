@@ -17,17 +17,17 @@ use Pixonaut\Sdk\Model\Decode;
 final class PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModel
 {
     /**
-     * Decodes the one variant the value matches, the most specific first.
+     * Decodes the variant its `kind` names. One this release does not know is an `UnknownVariant`, so a newer API does not break it.
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFlatSheet|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFramedSheet|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelGarmentCut
+     * @return PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFlatSheet|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFramedSheet|PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
     public static function decode(mixed $data, string $path = '$'): \Pixonaut\Sdk\Model\Model
     {
-        return Decode::oneOf(
+        return Decode::openOneOf(
             $data,
             $path,
             [
@@ -57,6 +57,7 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsIt
                     ['kind' => 'garment-cut'],
                 ],
             ],
+            'kind',
         );
     }
 }
