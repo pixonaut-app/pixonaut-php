@@ -22,7 +22,7 @@ final class BlanksVariantsCostsResponseCostsItem implements Model
     private ?array $decoded = null;
 
     /**
-     * @param string|null $changedAt When a read last found another product or shipping amount than the one held, as an ISO 8601 time; null while the first read still stands.
+     * @param string|null $changedAt When the cost was last told as changed, as an ISO 8601 time: a read found a product or shipping amount more than 2 % from the one last told, or one that appeared, went or changed currency. null while the first read still stands. An amount that moves less, as one billed in another currency than it is priced in does with the exchange rate, is held as read without being told.
      * @param BlanksVariantsCostsResponseCostsItemProduct|null $product What the printshop charges for the variant, printed with the blank's default print: its main side, by one print method. Further print areas and other print methods are not included. null when the printshop publishes no price for it.
      * @param string $readAt When the printshop was last asked, as an ISO 8601 time; for a blank no printshop is bound to, when the variant was last changed.
      * @param string $region The country the cost is for.
