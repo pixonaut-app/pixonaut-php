@@ -27,11 +27,14 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemH
      * @param string $kind Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind}.
      * @param PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMaxMm $maxMm The largest product the grip holds.
      * @param PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMinMm $minMm The smallest product the grip holds.
+     * @param list<string>|null $parts The parts the product in the photo has beside its body. Stated, the scene shows no product with a part its photo lacks.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldPartsItem}.
      */
     public function __construct(
         public readonly string $kind,
         public readonly PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMaxMm $maxMm,
         public readonly PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMinMm $minMm,
+        public readonly ?array $parts = null,
     ) {}
 
     /**
@@ -48,6 +51,11 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemH
             kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             maxMm: PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMaxMm::fromArray(Decode::object(Decode::required($data, 'maxMm', $path), $path . '.maxMm'), $path . '.maxMm'),
             minMm: PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMinMm::fromArray(Decode::object(Decode::required($data, 'minMm', $path), $path . '.minMm'), $path . '.minMm'),
+            parts: array_key_exists('parts', $data) ? Decode::list(
+                $data['parts'],
+                $path . '.parts',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -70,6 +78,9 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemH
         $data['kind'] = $this->kind;
         $data['maxMm'] = Encode::model($this->maxMm);
         $data['minMm'] = Encode::model($this->minMm);
+        if ($this->parts !== null) {
+            $data['parts'] = $this->parts;
+        }
         return $data;
     }
 }

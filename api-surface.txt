@@ -909,6 +909,11 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind::FLAT_SHEET 
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind::FRAMED_SHEET const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind::GARMENT_CUT const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind::KNOWN const
+final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldPartsItem
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldPartsItem::HANDLE const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldPartsItem::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldPartsItem::LID const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldPartsItem::STRAW const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal::ANGLE_UNSUPPORTED const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal::FOOTPRINT_EXCEEDS_ANCHOR const
@@ -1148,6 +1153,11 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind::
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind::FRAMED_SHEET const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind::GARMENT_CUT const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind::KNOWN const
+final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldPartsItem
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldPartsItem::HANDLE const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldPartsItem::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldPartsItem::LID const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldPartsItem::STRAW const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal::ANGLE_UNSUPPORTED const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal::FOOTPRINT_EXCEEDS_ANCHOR const
@@ -3630,6 +3640,11 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind::FRAMED_SHEET const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind::GARMENT_CUT const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind::KNOWN const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldPartsItem
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldPartsItem::HANDLE const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldPartsItem::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldPartsItem::LID const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldPartsItem::STRAW const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemRefusal
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemRefusal::ANGLE_UNSUPPORTED const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemRefusal::FOOTPRINT_EXCEEDS_ANCHOR const
@@ -3883,6 +3898,11 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind::FRAMED_SHEET const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind::GARMENT_CUT const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind::KNOWN const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldPartsItem
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldPartsItem::HANDLE const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldPartsItem::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldPartsItem::LID const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldPartsItem::STRAW const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal::ANGLE_UNSUPPORTED const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal::FOOTPRINT_EXCEEDS_ANCHOR const
@@ -4543,6 +4563,11 @@ Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind::FLAT_S
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind::FRAMED_SHEET const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind::GARMENT_CUT const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind::KNOWN const
+final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldPartsItem
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldPartsItem::HANDLE const
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldPartsItem::KNOWN const
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldPartsItem::LID const
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldPartsItem::STRAW const
 final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryStudioCamerasItemKey
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryStudioCamerasItemKey::BACK const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryStudioCamerasItemKey::FROM_ABOVE const
@@ -9716,7 +9741,8 @@ final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeld imp
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeld::$kind readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeld::$maxMm readonly Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeldMaxMm
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeld::$minMm readonly Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeldMinMm
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeld::__construct(string $kind, Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeldMaxMm $maxMm, Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeldMinMm $minMm)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeld::$parts readonly ?array
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeld::__construct(string $kind, Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeldMaxMm $maxMm, Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeldMinMm $minMm, ?array $parts = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeld::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeld static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeld::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeld::toArray(): array
@@ -10484,7 +10510,8 @@ final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesI
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeld::$kind readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeld::$maxMm readonly Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeldMaxMm
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeld::$minMm readonly Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeldMinMm
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeld::__construct(string $kind, Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeldMaxMm $maxMm, Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeldMinMm $minMm)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeld::$parts readonly ?array
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeld::__construct(string $kind, Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeldMaxMm $maxMm, Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeldMinMm $minMm, ?array $parts = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeld::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeld static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeld::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeld::toArray(): array
@@ -19206,7 +19233,8 @@ final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRe
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeld::$kind readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeld::$maxMm readonly Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldMaxMm
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeld::$minMm readonly Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldMinMm
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeld::__construct(string $kind, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldMaxMm $maxMm, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldMinMm $minMm)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeld::$parts readonly ?array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeld::__construct(string $kind, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldMaxMm $maxMm, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldMinMm $minMm, ?array $parts = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeld::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeld static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeld::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeld::toArray(): array
@@ -19988,7 +20016,8 @@ final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRe
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeld::$kind readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeld::$maxMm readonly Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMaxMm
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeld::$minMm readonly Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMinMm
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeld::__construct(string $kind, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMaxMm $maxMm, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMinMm $minMm)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeld::$parts readonly ?array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeld::__construct(string $kind, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMaxMm $maxMm, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMinMm $minMm, ?array $parts = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeld::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeld static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeld::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeld::toArray(): array
@@ -28120,7 +28149,8 @@ final class Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHel
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeld::$kind readonly string
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeld::$maxMm readonly Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeldMaxMm
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeld::$minMm readonly Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeldMinMm
-Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeld::__construct(string $kind, Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeldMaxMm $maxMm, Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeldMinMm $minMm)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeld::$parts readonly ?array
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeld::__construct(string $kind, Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeldMaxMm $maxMm, Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeldMinMm $minMm, ?array $parts = null)
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeld::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeld static
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeld::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryHeld::toArray(): array
