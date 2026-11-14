@@ -10154,8 +10154,9 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::$h
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::$kind readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::$parts readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::$printBand readonly Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderPrintBand
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::$profile readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderProfile
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::$topDiameterMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::__construct(float $baseDiameterMm, float $heightMm, string $kind, Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderPrintBand $printBand, float $topDiameterMm, ?array $parts = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::__construct(float $baseDiameterMm, float $heightMm, string $kind, Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderPrintBand $printBand, float $topDiameterMm, ?array $parts = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderProfile $profile = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinder::toArray(): array
@@ -10206,6 +10207,14 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderPrin
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderPrintBand::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderPrintBand static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderPrintBand::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderPrintBand::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderProfile implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderProfile::$neckDiameterMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderProfile::$neckHeightMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderProfile::$shoulderHeightMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderProfile::__construct(float $neckDiameterMm, float $neckHeightMm, float $shoulderHeightMm)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderProfile::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderProfile static
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderProfile::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCylinderProfile::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelFlatSheet implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelFlatSheet::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelFlatSheet::$kind readonly string
@@ -10923,8 +10932,9 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelC
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder::$kind readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder::$parts readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder::$printBand readonly Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderPrintBand
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder::$profile readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderProfile
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder::$topDiameterMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder::__construct(float $baseDiameterMm, float $heightMm, string $kind, Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderPrintBand $printBand, float $topDiameterMm, ?array $parts = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder::__construct(float $baseDiameterMm, float $heightMm, string $kind, Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderPrintBand $printBand, float $topDiameterMm, ?array $parts = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderProfile $profile = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinder::toArray(): array
@@ -10975,6 +10985,14 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelC
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderPrintBand::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderPrintBand static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderPrintBand::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderPrintBand::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderProfile implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderProfile::$neckDiameterMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderProfile::$neckHeightMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderProfile::$shoulderHeightMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderProfile::__construct(float $neckDiameterMm, float $neckHeightMm, float $shoulderHeightMm)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderProfile::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderProfile static
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderProfile::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCylinderProfile::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelFlatSheet implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelFlatSheet::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelFlatSheet::$kind readonly string
@@ -19656,8 +19674,9 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder::$kind readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder::$parts readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder::$printBand readonly Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderPrintBand
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder::$profile readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderProfile
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder::$topDiameterMm readonly float
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder::__construct(float $baseDiameterMm, float $heightMm, string $kind, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderPrintBand $printBand, float $topDiameterMm, ?array $parts = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder::__construct(float $baseDiameterMm, float $heightMm, string $kind, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderPrintBand $printBand, float $topDiameterMm, ?array $parts = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderProfile $profile = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder::toArray(): array
@@ -19708,6 +19727,14 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderPrintBand::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderPrintBand static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderPrintBand::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderPrintBand::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderProfile implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderProfile::$neckDiameterMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderProfile::$neckHeightMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderProfile::$shoulderHeightMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderProfile::__construct(float $neckDiameterMm, float $neckHeightMm, float $shoulderHeightMm)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderProfile::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderProfile static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderProfile::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinderProfile::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFlatSheet implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFlatSheet::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelFlatSheet::$kind readonly string
@@ -20439,8 +20466,9 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder::$kind readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder::$parts readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder::$printBand readonly Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPrintBand
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder::$profile readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder::$topDiameterMm readonly float
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder::__construct(float $baseDiameterMm, float $heightMm, string $kind, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPrintBand $printBand, float $topDiameterMm, ?array $parts = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder::__construct(float $baseDiameterMm, float $heightMm, string $kind, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPrintBand $printBand, float $topDiameterMm, ?array $parts = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile $profile = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder::toArray(): array
@@ -20491,6 +20519,14 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPrintBand::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPrintBand static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPrintBand::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPrintBand::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile::$neckDiameterMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile::$neckHeightMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile::$shoulderHeightMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile::__construct(float $neckDiameterMm, float $neckHeightMm, float $shoulderHeightMm)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet::$kind readonly string
@@ -28310,8 +28346,9 @@ Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::$hei
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::$kind readonly string
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::$parts readonly ?array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::$printBand readonly Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderPrintBand
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::$profile readonly ?Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderProfile
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::$topDiameterMm readonly float
-Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::__construct(float $baseDiameterMm, float $heightMm, string $kind, Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderPrintBand $printBand, float $topDiameterMm, ?array $parts = null)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::__construct(float $baseDiameterMm, float $heightMm, string $kind, Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderPrintBand $printBand, float $topDiameterMm, ?array $parts = null, ?Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderProfile $profile = null)
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder static
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinder::toArray(): array
@@ -28362,6 +28399,14 @@ Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderPrintB
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderPrintBand::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderPrintBand static
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderPrintBand::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderPrintBand::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderProfile implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderProfile::$neckDiameterMm readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderProfile::$neckHeightMm readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderProfile::$shoulderHeightMm readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderProfile::__construct(float $neckDiameterMm, float $neckHeightMm, float $shoulderHeightMm)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderProfile::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderProfile static
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderProfile::raw(): array
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCylinderProfile::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelFlatSheet implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelFlatSheet::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelFlatSheet::$kind readonly string
