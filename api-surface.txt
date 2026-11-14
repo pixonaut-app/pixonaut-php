@@ -10304,9 +10304,10 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemZoomTierPho
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemZoomTierPhotoSizePx::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemViewsItemZoomTierPhotoSizePx::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::$fromPrintshop readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::$model readonly Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::$row readonly array
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::__construct(Pixonaut\Sdk\Model\Model $model, array $row)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::__construct(Pixonaut\Sdk\Model\Model $model, array $row, ?array $fromPrintshop = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::toArray(): array
@@ -11108,9 +11109,10 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItem
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemZoomTierPhotoSizePx::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemViewsItemZoomTierPhotoSizePx::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::$fromPrintshop readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::$model readonly Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::$row readonly array
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::__construct(Pixonaut\Sdk\Model\Model $model, array $row)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::__construct(Pixonaut\Sdk\Model\Model $model, array $row, ?array $fromPrintshop = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::toArray(): array
@@ -19910,9 +19912,10 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemZoomTierPhotoSizePx::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemZoomTierPhotoSizePx::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::$fromPrintshop readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::$model readonly Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::$row readonly array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::__construct(Pixonaut\Sdk\Model\Model $model, array $row)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::__construct(Pixonaut\Sdk\Model\Model $model, array $row, ?array $fromPrintshop = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::toArray(): array
@@ -20728,9 +20731,10 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemZoomTierPhotoSizePx::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemZoomTierPhotoSizePx::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::$fromPrintshop readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::$model readonly Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::$row readonly array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::__construct(Pixonaut\Sdk\Model\Model $model, array $row)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::__construct(Pixonaut\Sdk\Model\Model $model, array $row, ?array $fromPrintshop = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::toArray(): array

@@ -24,10 +24,12 @@ final class BlanksListResponseBlanksItemProductModelsItem implements Model
     /**
      * @param BlanksListResponseBlanksItemProductModelsItemModelCanvas|BlanksListResponseBlanksItemProductModelsItemModelCylinder|BlanksListResponseBlanksItemProductModelsItemModelFlatSheet|BlanksListResponseBlanksItemProductModelsItemModelFramedSheet|BlanksListResponseBlanksItemProductModelsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant $model What the product is, by kind.
      * @param array<string, string> $row A value for each `modelVariesBy` option, by option name; {} for none.
+     * @param list<string>|null $fromPrintshop The model's fields its printshop's data gave, each named as a measure names it (`depthMm`, `parts.frame.depthMm`). Omitted, none.
      */
     public function __construct(
         public readonly \Pixonaut\Sdk\Model\Model $model,
         public readonly array $row,
+        public readonly ?array $fromPrintshop = null,
     ) {}
 
     /**
@@ -47,6 +49,11 @@ final class BlanksListResponseBlanksItemProductModelsItem implements Model
                 $path . '.row',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            fromPrintshop: array_key_exists('fromPrintshop', $data) ? Decode::list(
+                $data['fromPrintshop'],
+                $path . '.fromPrintshop',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -68,6 +75,9 @@ final class BlanksListResponseBlanksItemProductModelsItem implements Model
         $data = [];
         $data['model'] = Encode::value($this->model);
         $data['row'] = Encode::object($this->row);
+        if ($this->fromPrintshop !== null) {
+            $data['fromPrintshop'] = $this->fromPrintshop;
+        }
         return $data;
     }
 }
