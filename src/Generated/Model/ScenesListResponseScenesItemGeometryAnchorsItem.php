@@ -26,6 +26,7 @@ final class ScenesListResponseScenesItemGeometryAnchorsItem implements Model
      * @param ScenesListResponseScenesItemGeometryAnchorsItemFootprintMm $footprintMm The most room a product has on the plane.
      * @param bool $occluded Whether something of the photo lies in front of the anchor, held in the scene's occluder.
      * @param list<ScenesListResponseScenesItemGeometryAnchorsItemReviewedItem> $reviewed
+     * @param float|null $bareAboveMm How far above its room the plane goes on bare, in millimetres: what a product hangs from, a cord and its nail, may rise into it. Absent, no further.
      */
     public function __construct(
         public readonly array $accepts,
@@ -36,6 +37,7 @@ final class ScenesListResponseScenesItemGeometryAnchorsItem implements Model
         public readonly ScenesListResponseScenesItemGeometryAnchorsItemPlane $plane,
         public readonly array $reviewed,
         public readonly ScenesListResponseScenesItemGeometryAnchorsItemShadowCatcher $shadowCatcher,
+        public readonly ?float $bareAboveMm = null,
     ) {}
 
     /**
@@ -71,6 +73,7 @@ final class ScenesListResponseScenesItemGeometryAnchorsItem implements Model
                 Decode::object(Decode::required($data, 'shadowCatcher', $path), $path . '.shadowCatcher'),
                 $path . '.shadowCatcher',
             ),
+            bareAboveMm: array_key_exists('bareAboveMm', $data) ? Decode::float($data['bareAboveMm'], $path . '.bareAboveMm') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -101,6 +104,9 @@ final class ScenesListResponseScenesItemGeometryAnchorsItem implements Model
             $this->reviewed,
         );
         $data['shadowCatcher'] = Encode::model($this->shadowCatcher);
+        if ($this->bareAboveMm !== null) {
+            $data['bareAboveMm'] = $this->bareAboveMm;
+        }
         return $data;
     }
 }

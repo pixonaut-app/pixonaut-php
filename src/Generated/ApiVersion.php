@@ -14,10 +14,10 @@ final class ApiVersion
     /**
      * The API release this SDK release is generated from.
      */
-    public const TARGET = '8.2.0';
+    public const TARGET = '8.3.0';
 
     /**
      * The sha256 of that release's `openapi.json`.
      */
-    public const SPEC_SHA256 = '6599ad0c3d400618adb69e2841163df57628070b6abab0b3b22fd54f6876d9a4';
+    public const SPEC_SHA256 = '3f6eaaa2b36ebe1a34c9640a1f262e3ffcaefb9e5db8d54ef9cf1e60562e75bf';
 }

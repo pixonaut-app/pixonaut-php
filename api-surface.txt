@@ -11439,6 +11439,7 @@ Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::$coverage 
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::$defaultHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::$defaultWidthMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::$fillColour readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::$foldMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::$linkWith readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemLinkWith
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::$maxHeightMm readonly float
@@ -11448,18 +11449,19 @@ Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::$printMeth
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::$safeAreaMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::$shape readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemShape
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::$views readonly array
-Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::__construct(array $areas, float $bleedMm, string $coverage, float $defaultHeightMm, float $defaultWidthMm, string $id, float $maxHeightMm, float $maxWidthMm, string $name, float $safeAreaMm, array $views, ?string $fillColour = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemLinkWith $linkWith = null, ?string $printMethod = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemShape $shape = null)
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::__construct(array $areas, float $bleedMm, string $coverage, float $defaultHeightMm, float $defaultWidthMm, string $id, float $maxHeightMm, float $maxWidthMm, string $name, float $safeAreaMm, array $views, ?string $fillColour = null, ?float $foldMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemLinkWith $linkWith = null, ?string $printMethod = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemShape $shape = null)
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem static
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$foldMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$row readonly array
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$shape readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemShape
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$usualHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$usualWidthMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$widthMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemShape $shape = null)
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $foldMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemShape $shape = null)
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem static
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::toArray(): array
@@ -28424,6 +28426,7 @@ Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometry::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometry::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::$accepts readonly array
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::$bareAboveMm readonly ?float
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::$footprintMm readonly Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItemFootprintMm
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::$key readonly string
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::$light readonly Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItemLight
@@ -28431,7 +28434,7 @@ Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::$o
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::$plane readonly Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItemPlane
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::$reviewed readonly array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::$shadowCatcher readonly Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItemShadowCatcher
-Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::__construct(array $accepts, Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItemFootprintMm $footprintMm, string $key, Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItemLight $light, bool $occluded, Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItemPlane $plane, array $reviewed, Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItemShadowCatcher $shadowCatcher)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::__construct(array $accepts, Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItemFootprintMm $footprintMm, string $key, Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItemLight $light, bool $occluded, Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItemPlane $plane, array $reviewed, Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItemShadowCatcher $shadowCatcher, ?float $bareAboveMm = null)
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem static
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometryAnchorsItem::toArray(): array
