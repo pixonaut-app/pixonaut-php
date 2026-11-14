@@ -26,8 +26,9 @@ final class BlanksGetResponseProductModelsItemModelCylinder implements Model
      * @param float $heightMm Its height, in millimetres.
      * @param string $kind A cylinder, straight or tapered, such as a mug.
      * @param BlanksGetResponseProductModelsItemModelCylinderPrintBand $printBand The band round its side that takes the print.
-     * @param float $topDiameterMm Its diameter at the top, in millimetres.
+     * @param float $topDiameterMm Its diameter at the top of its straight side, in millimetres.
      * @param list<BlanksGetResponseProductModelsItemModelCylinderPartsItemHandle|BlanksGetResponseProductModelsItemModelCylinderPartsItemStraw|BlanksGetResponseProductModelsItemModelCylinderPartsItemLid|BlanksGetResponseProductModelsItemModelCylinderPartsItemFinish>|null $parts Its handle, lid, straw and finish, each when it has one. Omitted, none.
+     * @param BlanksGetResponseProductModelsItemModelCylinderProfile|null $profile A bottle's shoulder and neck, within its height. Omitted, none.
      */
     public function __construct(
         public readonly float $baseDiameterMm,
@@ -36,6 +37,7 @@ final class BlanksGetResponseProductModelsItemModelCylinder implements Model
         public readonly BlanksGetResponseProductModelsItemModelCylinderPrintBand $printBand,
         public readonly float $topDiameterMm,
         public readonly ?array $parts = null,
+        public readonly ?BlanksGetResponseProductModelsItemModelCylinderProfile $profile = null,
     ) {}
 
     /**
@@ -62,6 +64,7 @@ final class BlanksGetResponseProductModelsItemModelCylinder implements Model
                 $path . '.parts',
                 static fn(mixed $v, string $p): BlanksGetResponseProductModelsItemModelCylinderPartsItemHandle|BlanksGetResponseProductModelsItemModelCylinderPartsItemStraw|BlanksGetResponseProductModelsItemModelCylinderPartsItemLid|BlanksGetResponseProductModelsItemModelCylinderPartsItemFinish => BlanksGetResponseProductModelsItemModelCylinderPartsItem::decode($v, $p),
             ) : null,
+            profile: array_key_exists('profile', $data) ? BlanksGetResponseProductModelsItemModelCylinderProfile::fromArray(Decode::object($data['profile'], $path . '.profile'), $path . '.profile') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -91,6 +94,9 @@ final class BlanksGetResponseProductModelsItemModelCylinder implements Model
                 static fn(BlanksGetResponseProductModelsItemModelCylinderPartsItemHandle|BlanksGetResponseProductModelsItemModelCylinderPartsItemStraw|BlanksGetResponseProductModelsItemModelCylinderPartsItemLid|BlanksGetResponseProductModelsItemModelCylinderPartsItemFinish $v): mixed => Encode::value($v),
                 $this->parts,
             );
+        }
+        if ($this->profile !== null) {
+            $data['profile'] = Encode::model($this->profile);
         }
         return $data;
     }

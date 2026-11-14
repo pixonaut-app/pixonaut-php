@@ -26,8 +26,9 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
      * @param float $heightMm Its height, in millimetres.
      * @param string $kind A cylinder, straight or tapered, such as a mug.
      * @param PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPrintBand $printBand The band round its side that takes the print.
-     * @param float $topDiameterMm Its diameter at the top, in millimetres.
+     * @param float $topDiameterMm Its diameter at the top of its straight side, in millimetres.
      * @param list<PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemHandle|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemStraw|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemLid|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinish>|null $parts Its handle, lid, straw and finish, each when it has one. Omitted, none.
+     * @param PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile|null $profile A bottle's shoulder and neck, within its height. Omitted, none.
      */
     public function __construct(
         public readonly float $baseDiameterMm,
@@ -36,6 +37,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
         public readonly PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPrintBand $printBand,
         public readonly float $topDiameterMm,
         public readonly ?array $parts = null,
+        public readonly ?PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile $profile = null,
     ) {}
 
     /**
@@ -62,6 +64,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
                 $path . '.parts',
                 static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemHandle|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemStraw|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemLid|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinish => PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItem::decode($v, $p),
             ) : null,
+            profile: array_key_exists('profile', $data) ? PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile::fromArray(Decode::object($data['profile'], $path . '.profile'), $path . '.profile') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -91,6 +94,9 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
                 static fn(PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemHandle|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemStraw|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemLid|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinish $v): mixed => Encode::value($v),
                 $this->parts,
             );
+        }
+        if ($this->profile !== null) {
+            $data['profile'] = Encode::model($this->profile);
         }
         return $data;
     }
