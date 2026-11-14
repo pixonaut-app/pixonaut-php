@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The error codes the API 6.3.0 spec names: its refusals (`x-refusals`), and the `error`
+ * The error codes the API 7.1.0 spec names: its refusals (`x-refusals`), and the `error`
  * values of every error answer. The client's own codes are on `ApiException`.
  */
 final class ErrorCode
@@ -221,6 +221,11 @@ final class ErrorCode
      * Documented with status 409.
      */
     public const CORRECTION_PROOF = 'correction_proof';
+
+    /**
+     * Documented with status 422.
+     */
+    public const COST_REGION_UNSET = 'cost_region_unset';
 
     /**
      * Documented with status 409.
@@ -1453,6 +1458,11 @@ final class ErrorCode
     public const UNKNOWN_PROOF = 'unknown_proof';
 
     /**
+     * Documented with status 422.
+     */
+    public const UNKNOWN_REGION = 'unknown_region';
+
+    /**
      * Documented with status 404, 422.
      */
     public const UNKNOWN_UPLOAD = 'unknown_upload';
@@ -1585,6 +1595,7 @@ final class ErrorCode
         'conversation_not_found' => [404],
         'copy_in_progress' => [409],
         'correction_proof' => [409],
+        'cost_region_unset' => [422],
         'cut_out_exhausted' => [409],
         'cut_out_not_offered' => [422],
         'cut_out_unavailable' => [503],
@@ -1831,6 +1842,7 @@ final class ErrorCode
         'unknown_placement' => [422],
         'unknown_printshop' => [422],
         'unknown_proof' => [404],
+        'unknown_region' => [422],
         'unknown_upload' => [404, 422],
         'unknown_variant' => [422],
         'unsupported_mime' => [422],

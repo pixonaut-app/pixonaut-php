@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The event types the API 6.3.0 spec delivers to webhooks. The API may send a type
+ * The event types the API 7.1.0 spec delivers to webhooks. The API may send a type
  * added after this release: it decodes to `UnknownEvent`.
  */
 final class EventType
@@ -56,6 +56,11 @@ final class EventType
      * Delivered as `blank.updated`.
      */
     public const BLANK_UPDATED = 'blank.updated';
+
+    /**
+     * Delivered as `blank.variant_cost_changed`.
+     */
+    public const BLANK_VARIANT_COST_CHANGED = 'blank.variant_cost_changed';
 
     /**
      * Delivered as `credits.low`.
@@ -362,6 +367,7 @@ final class EventType
         self::BLANK_DRIFTED,
         self::BLANK_RESTORED,
         self::BLANK_UPDATED,
+        self::BLANK_VARIANT_COST_CHANGED,
         self::CREDITS_LOW,
         self::DESIGN_APPROVAL_SCHEDULED,
         self::DESIGN_APPROVED,

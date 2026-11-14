@@ -24,11 +24,13 @@ final class BlanksVariantsListResponseVariantsItemFrame implements Model
 
     /**
      * @param string $hex Its colour, `#rrggbb`.
+     * @param bool|null $stained True for a wood stained `hex`: its grain is drawn in that colour. Absent, a wood is drawn in its own.
      * @param string|null $texture The texture it is painted in; absent, its flat colour.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseVariantsItemFrameTexture}.
      */
     public function __construct(
         public readonly string $hex,
+        public readonly ?bool $stained = null,
         public readonly ?string $texture = null,
     ) {}
 
@@ -44,6 +46,7 @@ final class BlanksVariantsListResponseVariantsItemFrame implements Model
     {
         $model = new self(
             hex: Decode::string(Decode::required($data, 'hex', $path), $path . '.hex'),
+            stained: array_key_exists('stained', $data) ? Decode::bool($data['stained'], $path . '.stained') : null,
             texture: array_key_exists('texture', $data) ? Decode::string($data['texture'], $path . '.texture') : null,
         );
         $model->decoded = $data;
@@ -65,6 +68,9 @@ final class BlanksVariantsListResponseVariantsItemFrame implements Model
     {
         $data = [];
         $data['hex'] = $this->hex;
+        if ($this->stained !== null) {
+            $data['stained'] = $this->stained;
+        }
         if ($this->texture !== null) {
             $data['texture'] = $this->texture;
         }

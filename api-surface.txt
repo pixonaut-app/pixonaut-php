@@ -3627,6 +3627,12 @@ Pixonaut\Sdk\Generated\Enum\PrintsOrdersCreateResponseVariantFieldsItemSource::D
 Pixonaut\Sdk\Generated\Enum\PrintsOrdersCreateResponseVariantFieldsItemSource::EMPTY const
 Pixonaut\Sdk\Generated\Enum\PrintsOrdersCreateResponseVariantFieldsItemSource::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintsOrdersCreateResponseVariantFieldsItemSource::OWN const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestGarmentCut
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestGarmentCut::HOODIE const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestGarmentCut::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestGarmentCut::PULLOVER_HOODIE const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestGarmentCut::SWEATSHIRT const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestGarmentCut::TEE const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestScenesItemCamera
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestScenesItemCamera::BACK const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestScenesItemCamera::FROM_ABOVE const
@@ -5552,6 +5558,7 @@ Pixonaut\Sdk\Generated\ErrorCode::CONVERSATION_MOVED const
 Pixonaut\Sdk\Generated\ErrorCode::CONVERSATION_NOT_FOUND const
 Pixonaut\Sdk\Generated\ErrorCode::COPY_IN_PROGRESS const
 Pixonaut\Sdk\Generated\ErrorCode::CORRECTION_PROOF const
+Pixonaut\Sdk\Generated\ErrorCode::COST_REGION_UNSET const
 Pixonaut\Sdk\Generated\ErrorCode::CUT_OUT_EXHAUSTED const
 Pixonaut\Sdk\Generated\ErrorCode::CUT_OUT_NOT_OFFERED const
 Pixonaut\Sdk\Generated\ErrorCode::CUT_OUT_UNAVAILABLE const
@@ -5799,6 +5806,7 @@ Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_LAYOUT const
 Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_PLACEMENT const
 Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_PRINTSHOP const
 Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_PROOF const
+Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_REGION const
 Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_UPLOAD const
 Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_VARIANT const
 Pixonaut\Sdk\Generated\ErrorCode::UNSUPPORTED_MIME const
@@ -5828,6 +5836,7 @@ Pixonaut\Sdk\Generated\EventType::BLANK_DELETED const
 Pixonaut\Sdk\Generated\EventType::BLANK_DRIFTED const
 Pixonaut\Sdk\Generated\EventType::BLANK_RESTORED const
 Pixonaut\Sdk\Generated\EventType::BLANK_UPDATED const
+Pixonaut\Sdk\Generated\EventType::BLANK_VARIANT_COST_CHANGED const
 Pixonaut\Sdk\Generated\EventType::CREDITS_LOW const
 Pixonaut\Sdk\Generated\EventType::DESIGN_APPROVAL_SCHEDULED const
 Pixonaut\Sdk\Generated\EventType::DESIGN_APPROVED const
@@ -9661,6 +9670,76 @@ Pixonaut\Sdk\Generated\Model\BlankUpdatedEventPayload::__construct(string $blank
 Pixonaut\Sdk\Generated\Model\BlankUpdatedEventPayload::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlankUpdatedEventPayload static
 Pixonaut\Sdk\Generated\Model\BlankUpdatedEventPayload::raw(): array
 Pixonaut\Sdk\Generated\Model\BlankUpdatedEventPayload::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent::$automation readonly ?Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventAutomation
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent::$createdAt readonly int
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent::$id readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent::$payload readonly Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent::$type readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent::$via readonly ?string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent::__construct(int $createdAt, string $id, Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload $payload, string $type, ?Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventAutomation $automation = null, ?string $via = null)
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent static
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent::raw(): array
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventAutomation implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventAutomation::$id readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventAutomation::$name readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventAutomation::__construct(string $id, string $name)
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventAutomation::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventAutomation static
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventAutomation::raw(): array
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventAutomation::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload::$blankId readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload::$product readonly Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProduct
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload::$region readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload::$shipping readonly Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShipping
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload::$variant readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload::__construct(string $blankId, Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProduct $product, string $region, Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShipping $shipping, string $variant)
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload static
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload::raw(): array
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayload::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProduct implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProduct::$from readonly ?Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductFrom
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProduct::$to readonly ?Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductTo
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProduct::__construct(?Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductFrom $from, ?Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductTo $to)
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProduct::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProduct static
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProduct::raw(): array
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProduct::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductFrom implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductFrom::$amount readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductFrom::$currency readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductFrom::__construct(string $amount, string $currency)
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductFrom::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductFrom static
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductFrom::raw(): array
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductFrom::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductTo implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductTo::$amount readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductTo::$currency readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductTo::__construct(string $amount, string $currency)
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductTo::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductTo static
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductTo::raw(): array
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadProductTo::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShipping implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShipping::$from readonly ?Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingFrom
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShipping::$to readonly ?Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingTo
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShipping::__construct(?Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingFrom $from, ?Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingTo $to)
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShipping::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShipping static
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShipping::raw(): array
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShipping::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingFrom implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingFrom::$amount readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingFrom::$currency readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingFrom::__construct(string $amount, string $currency)
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingFrom::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingFrom static
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingFrom::raw(): array
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingFrom::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingTo implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingTo::$amount readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingTo::$currency readonly string
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingTo::__construct(string $amount, string $currency)
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingTo::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingTo static
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingTo::raw(): array
+Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingTo::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$areasVaryBy readonly array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$axes readonly array
@@ -11874,6 +11953,37 @@ Pixonaut\Sdk\Generated\Model\BlanksPreviewTablesGetResponsePreview::__construct(
 Pixonaut\Sdk\Generated\Model\BlanksPreviewTablesGetResponsePreview::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksPreviewTablesGetResponsePreview static
 Pixonaut\Sdk\Generated\Model\BlanksPreviewTablesGetResponsePreview::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksPreviewTablesGetResponsePreview::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::$costs readonly array
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::__construct(array $costs)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse static
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::$changedAt readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::$product readonly ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemProduct
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::$readAt readonly string
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::$region readonly string
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::$shipping readonly ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::$variant readonly string
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::__construct(?string $changedAt, ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemProduct $product, string $readAt, string $region, ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping $shipping, string $variant)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem static
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemProduct implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemProduct::$amount readonly string
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemProduct::$currency readonly string
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemProduct::__construct(string $amount, string $currency)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemProduct::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemProduct static
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemProduct::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemProduct::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping::$amount readonly string
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping::$currency readonly string
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping::__construct(string $amount, string $currency)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping static
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::$areasVaryBy readonly array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::$axes readonly array
@@ -11925,8 +12035,9 @@ Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseVariantsItem::raw(): arra
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseVariantsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseVariantsItemFrame implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseVariantsItemFrame::$hex readonly string
+Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseVariantsItemFrame::$stained readonly ?bool
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseVariantsItemFrame::$texture readonly ?string
-Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseVariantsItemFrame::__construct(string $hex, ?string $texture = null)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseVariantsItemFrame::__construct(string $hex, ?bool $stained = null, ?string $texture = null)
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseVariantsItemFrame::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseVariantsItemFrame static
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseVariantsItemFrame::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponseVariantsItemFrame::toArray(): array
@@ -19156,12 +19267,13 @@ Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponseVariantFieldsItem::raw():
 Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponseVariantFieldsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest::$colours readonly ?array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest::$garmentCut readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest::$name readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest::$printshopPhotos readonly ?bool
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest::$sceneIds readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest::$scenes readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest::$views readonly ?array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest::__construct(?array $colours = null, ?string $name = null, ?bool $printshopPhotos = null, ?array $sceneIds = null, ?array $scenes = null, ?array $views = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest::__construct(?array $colours = null, ?string $garmentCut = null, ?string $name = null, ?bool $printshopPhotos = null, ?array $sceneIds = null, ?array $scenes = null, ?array $views = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequest::toArray(): array
@@ -38441,6 +38553,7 @@ Pixonaut\Sdk\Generated\Resource\Blanks::list(?int $page = null, ?int $pageSize =
 Pixonaut\Sdk\Generated\Resource\Blanks::listMockups(string $id, ?string $lang = null): Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponse
 Pixonaut\Sdk\Generated\Resource\Blanks::listPlacementFittingTemplates(string $id, string $placementId, ?int $page = null, ?int $pageSize = null, ?string $status = null, ?string $q = null): Pixonaut\Sdk\Generated\Model\BlanksPlacementsFittingTemplatesListResponse
 Pixonaut\Sdk\Generated\Resource\Blanks::listScenes(?string $stockItem = null, ?string $kind = null, ?string $setting = null, ?string $person = null, ?string $pose = null, ?string $accepts = null, ?string $forBlank = null, ?string $forKind = null, ?string $forCut = null, ?string $view = null): Pixonaut\Sdk\Generated\Model\ScenesListResponse
+Pixonaut\Sdk\Generated\Resource\Blanks::listVariantCosts(string $id, ?string $region = null, ?string $variant = null): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse
 Pixonaut\Sdk\Generated\Resource\Blanks::listVariants(string $id, ?string $lang = null): Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse
 final class Pixonaut\Sdk\Generated\Resource\Connect
 Pixonaut\Sdk\Generated\Resource\Connect::OPERATIONS const

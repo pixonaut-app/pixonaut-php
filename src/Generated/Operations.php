@@ -12,7 +12,7 @@ use Pixonaut\Sdk\Http\Catalogue;
 use Pixonaut\Sdk\Http\Operation;
 
 /**
- * The operations of the API 6.3.0 spec, as the client sends them.
+ * The operations of the API 7.1.0 spec, as the client sends them.
  */
 final class Operations
 {
@@ -582,6 +582,16 @@ final class Operations
                 method: 'GET',
                 path: '/v1/blanks/{id}/variants',
                 credentials: [Credential::PublishableKey, Credential::SecretKey, Credential::IntegrationKey, Credential::ShareLink],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
+                id: 'blanks.variants.costs',
+                method: 'GET',
+                path: '/v1/blanks/{id}/variants/costs',
+                credentials: [Credential::SecretKey, Credential::IntegrationKey],
                 anonymous: false,
                 idempotent: false,
                 accept: 'application/json',

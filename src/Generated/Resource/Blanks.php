@@ -12,6 +12,7 @@ use Pixonaut\Sdk\Generated\Model\BlanksListResponse;
 use Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponse;
 use Pixonaut\Sdk\Generated\Model\BlanksPlacementsFittingTemplatesListResponse;
 use Pixonaut\Sdk\Generated\Model\BlanksPreviewTablesGetResponse;
+use Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse;
 use Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse;
 use Pixonaut\Sdk\Generated\Model\ScenesListResponse;
 use Pixonaut\Sdk\Http\Binary;
@@ -35,6 +36,7 @@ final class Blanks
         'listPlacementFittingTemplates' => 'blanks.placements.fittingTemplates.list',
         'getPreviewTables' => 'blanks.previewTables.get',
         'listVariants' => 'blanks.variants.list',
+        'listVariantCosts' => 'blanks.variants.costs',
         'getViewMockup' => 'blanks.views.mockup.get',
         'listScenes' => 'scenes.list',
     ];
@@ -189,6 +191,29 @@ final class Blanks
         );
         return $result->decode(
             static fn(mixed $json): BlanksVariantsListResponse => BlanksVariantsListResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Read a blank's variant costs at its printshop.
+     *
+     * `GET /v1/blanks/{id}/variants/costs`
+     *
+     * @param string $id
+     * @param string|null $region The country the costs are for, as a two-letter ISO 3166-1 code in capitals, such as `SE`. Omitted, the workspace's own cost region: the one its settings pick, else the country its orders are delivered to.
+     * @param string|null $variant Only this variant's cost, by its `ref`.
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `cost_region_unset`, `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `unauthorized`, `unknown_region`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function listVariantCosts(string $id, ?string $region = null, ?string $variant = null): BlanksVariantsCostsResponse
+    {
+        $result = $this->pixonaut->call(
+            'blanks.variants.costs',
+            path: ['id' => $id],
+            query: ['region' => $region, 'variant' => $variant],
+        );
+        return $result->decode(
+            static fn(mixed $json): BlanksVariantsCostsResponse => BlanksVariantsCostsResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
