@@ -13,6 +13,8 @@ namespace Pixonaut\Sdk\Generated\Enum;
  */
 final class ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemPartsItem
 {
+    public const HANGER = 'hanger';
+
     public const FRAME = 'frame';
 
     public const MAT = 'mat';
@@ -30,5 +32,14 @@ final class ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemPartsItem
     /**
      * Every value this release knows.
      */
-    public const KNOWN = [self::FRAME, self::MAT, self::GLASS, self::HANDLE, self::LID, self::STRAW, self::FINISH];
+    public const KNOWN = [
+        self::HANGER,
+        self::FRAME,
+        self::MAT,
+        self::GLASS,
+        self::HANDLE,
+        self::LID,
+        self::STRAW,
+        self::FINISH,
+    ];
 }
