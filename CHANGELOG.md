@@ -1,5 +1,16 @@
 # Changelog
 
+## [12.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v11.0.0...v12.0.0) (2026-11-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* the constructors of the generated flat-sheet models gain the trailing optional $parts.
+
+### Features
+
+* target the published Pixonaut API 7.2.0 ([#48](https://github.com/pixonaut-app/pixonaut-php/issues/48)) ([03fd115](https://github.com/pixonaut-app/pixonaut-php/commit/03fd115fd61ff8535d13fd200777d4d88ce1a999))
+
 ## [11.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v10.0.0...v11.0.0) (2026-11-14)
 
 Targets the Pixonaut API 7.1.0.
