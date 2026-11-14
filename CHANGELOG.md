@@ -1,5 +1,16 @@
 # Changelog
 
+## [8.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v7.0.0...v8.0.0) (2026-11-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* the constructors of the generated held-scene geometry models (BlanksGetResponseHeldScenesItemHeld and its list, import and scene counterparts) gain a trailing optional $parts argument.
+
+### Features
+
+* target the published Pixonaut API 6.1.0 ([#40](https://github.com/pixonaut-app/pixonaut-php/issues/40)) ([a576eb9](https://github.com/pixonaut-app/pixonaut-php/commit/a576eb98ae04b7892389105675739044c9881a02))
+
 ## [7.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v6.0.0...v7.0.0) (2026-11-13)
 
 Targets the Pixonaut API 6.0.0.
