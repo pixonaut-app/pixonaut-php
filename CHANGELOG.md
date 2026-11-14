@@ -1,5 +1,16 @@
 # Changelog
 
+## [10.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v9.0.0...v10.0.0) (2026-11-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* the constructors of the generated cylinder models (BlanksGetResponseProductModelsItemModelCylinder, BlanksListResponseBlanksItemProductModelsItemModelCylinder, PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCylinder, PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder, ScenesListResponseStockItemsItemModelCylinder) gain the trailing optional $profile.
+
+### Features
+
+* target the published Pixonaut API 6.3.0 ([#44](https://github.com/pixonaut-app/pixonaut-php/issues/44)) ([9156a42](https://github.com/pixonaut-app/pixonaut-php/commit/9156a425ffe200ab6b5d7ed9382ed9415ebb00e8))
+
 ## [9.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v8.0.0...v9.0.0) (2026-11-14)
 
 Targets the Pixonaut API 6.2.0.
