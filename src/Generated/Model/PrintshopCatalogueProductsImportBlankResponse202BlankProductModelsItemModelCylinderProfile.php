@@ -13,7 +13,7 @@ use Pixonaut\Sdk\Model\Model;
 /**
  * A bottle's shoulder and neck, within its height. Omitted, none.
  *
- * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 202: $.blank.productModels[].model (oneOf #3).profile`.
+ * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 202: $.blank.productModels[].model (oneOf #4).profile`.
  */
 final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile implements Model
 {

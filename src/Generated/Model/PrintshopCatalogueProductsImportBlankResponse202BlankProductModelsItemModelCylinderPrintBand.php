@@ -13,7 +13,7 @@ use Pixonaut\Sdk\Model\Model;
 /**
  * The band round its side that takes the print.
  *
- * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 202: $.blank.productModels[].model (oneOf #3).printBand`.
+ * Schema: `POST /v1/printshop-catalogue-products/{productId}/blank answer 202: $.blank.productModels[].model (oneOf #4).printBand`.
  */
 final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPrintBand implements Model
 {

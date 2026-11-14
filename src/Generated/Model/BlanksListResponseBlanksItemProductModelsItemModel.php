@@ -21,16 +21,21 @@ final class BlanksListResponseBlanksItemProductModelsItemModel
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return BlanksListResponseBlanksItemProductModelsItemModelCylinder|BlanksListResponseBlanksItemProductModelsItemModelFlatSheet|BlanksListResponseBlanksItemProductModelsItemModelFramedSheet|BlanksListResponseBlanksItemProductModelsItemModelGarmentCut
+     * @return BlanksListResponseBlanksItemProductModelsItemModelCanvas|BlanksListResponseBlanksItemProductModelsItemModelCylinder|BlanksListResponseBlanksItemProductModelsItemModelFlatSheet|BlanksListResponseBlanksItemProductModelsItemModelFramedSheet|BlanksListResponseBlanksItemProductModelsItemModelGarmentCut
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
-    public static function decode(mixed $data, string $path = '$'): BlanksListResponseBlanksItemProductModelsItemModelCylinder|BlanksListResponseBlanksItemProductModelsItemModelFlatSheet|BlanksListResponseBlanksItemProductModelsItemModelFramedSheet|BlanksListResponseBlanksItemProductModelsItemModelGarmentCut
+    public static function decode(mixed $data, string $path = '$'): \Pixonaut\Sdk\Model\Model
     {
         return Decode::oneOf(
             $data,
             $path,
             [
+                [
+                    static fn(mixed $v, string $p): BlanksListResponseBlanksItemProductModelsItemModelCanvas => BlanksListResponseBlanksItemProductModelsItemModelCanvas::fromArray(Decode::object($v, $p), $p),
+                    1006,
+                    ['kind' => 'canvas'],
+                ],
                 [
                     static fn(mixed $v, string $p): BlanksListResponseBlanksItemProductModelsItemModelCylinder => BlanksListResponseBlanksItemProductModelsItemModelCylinder::fromArray(Decode::object($v, $p), $p),
                     1005,

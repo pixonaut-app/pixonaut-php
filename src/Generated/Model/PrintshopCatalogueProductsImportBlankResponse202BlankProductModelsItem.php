@@ -22,11 +22,11 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
     private ?array $decoded = null;
 
     /**
-     * @param PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFramedSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelGarmentCut $model What the product is, by kind.
+     * @param PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFramedSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelGarmentCut $model What the product is, by kind.
      * @param array<string, string> $row A value for each `modelVariesBy` option, by option name; {} for none.
      */
     public function __construct(
-        public readonly PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFramedSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelGarmentCut $model,
+        public readonly \Pixonaut\Sdk\Model\Model $model,
         public readonly array $row,
     ) {}
 

@@ -21,16 +21,21 @@ final class ScenesListResponseStockItemsItemModel
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return ScenesListResponseStockItemsItemModelCylinder|ScenesListResponseStockItemsItemModelFlatSheet|ScenesListResponseStockItemsItemModelFramedSheet|ScenesListResponseStockItemsItemModelGarmentCut
+     * @return ScenesListResponseStockItemsItemModelCanvas|ScenesListResponseStockItemsItemModelCylinder|ScenesListResponseStockItemsItemModelFlatSheet|ScenesListResponseStockItemsItemModelFramedSheet|ScenesListResponseStockItemsItemModelGarmentCut
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
-    public static function decode(mixed $data, string $path = '$'): ScenesListResponseStockItemsItemModelCylinder|ScenesListResponseStockItemsItemModelFlatSheet|ScenesListResponseStockItemsItemModelFramedSheet|ScenesListResponseStockItemsItemModelGarmentCut
+    public static function decode(mixed $data, string $path = '$'): \Pixonaut\Sdk\Model\Model
     {
         return Decode::oneOf(
             $data,
             $path,
             [
+                [
+                    static fn(mixed $v, string $p): ScenesListResponseStockItemsItemModelCanvas => ScenesListResponseStockItemsItemModelCanvas::fromArray(Decode::object($v, $p), $p),
+                    1006,
+                    ['kind' => 'canvas'],
+                ],
                 [
                     static fn(mixed $v, string $p): ScenesListResponseStockItemsItemModelCylinder => ScenesListResponseStockItemsItemModelCylinder::fromArray(Decode::object($v, $p), $p),
                     1005,

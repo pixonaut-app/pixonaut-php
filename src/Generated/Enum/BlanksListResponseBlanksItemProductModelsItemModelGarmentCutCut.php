@@ -11,7 +11,7 @@ namespace Pixonaut\Sdk\Generated\Enum;
  *
  * The values this release knows. The field is a string, and the API may answer a value added after this release.
  *
- * Schema: `GET /v1/blanks answer 200: $.blanks[].productModels[].model (oneOf #4).cut`.
+ * Schema: `GET /v1/blanks answer 200: $.blanks[].productModels[].model (oneOf #5).cut`.
  */
 final class BlanksListResponseBlanksItemProductModelsItemModelGarmentCutCut
 {

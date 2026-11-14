@@ -10,7 +10,7 @@ use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
 
 /**
- * Schema: `GET /v1/scenes answer 200: $.stockItems[].model (oneOf #3).parts[]`.
+ * Schema: `GET /v1/scenes answer 200: $.stockItems[].model (oneOf #4).parts[]`.
  */
 final class ScenesListResponseStockItemsItemModelCylinderPartsItem
 {
