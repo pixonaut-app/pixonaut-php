@@ -1,5 +1,16 @@
 # Changelog
 
+## [11.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v10.0.0...v11.0.0) (2026-11-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* the constructors of BlanksVariantsListResponseVariantsItemFrame and PrintshopCatalogueProductsImportBlankRequest gain an optional argument before existing ones.
+
+### Features
+
+* target the published Pixonaut API 7.1.0 ([#46](https://github.com/pixonaut-app/pixonaut-php/issues/46)) ([38f95ce](https://github.com/pixonaut-app/pixonaut-php/commit/38f95ce7265d7627f6514e8eebc4f798ba215e7b))
+
 ## [10.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v9.0.0...v10.0.0) (2026-11-14)
 
 Targets the Pixonaut API 6.3.0.
