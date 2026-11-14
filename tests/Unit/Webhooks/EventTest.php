@@ -9,6 +9,7 @@ use PHPUnit\Framework\TestCase;
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Generated\EventType;
 use Pixonaut\Sdk\Generated\Model\AutomationWebhookEvent;
+use Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEvent;
 use Pixonaut\Sdk\Generated\Model\EventsListResponse;
 use Pixonaut\Sdk\Generated\Model\OrderStatusChangedEvent;
 use Pixonaut\Sdk\Generated\Model\TemplateRenamedEvent;
@@ -39,6 +40,20 @@ final class EventTest extends TestCase
         'payload' => ['oldId' => 'summer-tee', 'newId' => 'summer-tee-2026', 'renamedAt' => 1790086400000],
         'via' => 'automation',
         'automation' => ['id' => 'aut_1', 'name' => 'Seasonal rename'],
+    ];
+
+    /** A variant whose product cost rose and whose shipping cost the printshop no longer publishes. */
+    private const VARIANT_COST_CHANGED = [
+        'id' => '1790000460000-0c6e1d52-7f3b-4a8e-9b21-4d5a6e7f8091',
+        'type' => 'blank.variant_cost_changed',
+        'createdAt' => 1790000460000,
+        'payload' => [
+            'blankId' => 'blank_ff71cf74abb3ccb005b8b643',
+            'variant' => 'v_3f9a0c1d2e4b5a6c',
+            'region' => 'SE',
+            'product' => ['from' => ['amount' => '160.00', 'currency' => 'SEK'], 'to' => ['amount' => '167.10', 'currency' => 'SEK']],
+            'shipping' => ['from' => ['amount' => '65.50', 'currency' => 'SEK'], 'to' => null],
+        ],
     ];
 
     /** A type no release knows yet. */
@@ -102,6 +117,40 @@ final class EventTest extends TestCase
         self::assertSame('automation', $event->via);
         self::assertSame('Seasonal rename', $event->automation?->name);
         self::assertSame(self::TEMPLATE_RENAMED, $event->raw());
+    }
+
+    public function testADeliveryOfAChangedVariantCostIsItsTypedEvent(): void
+    {
+        $event = Event::fromJson(json_encode(self::VARIANT_COST_CHANGED, JSON_THROW_ON_ERROR));
+        $typed = $event->typed();
+
+        self::assertSame(EventType::BLANK_VARIANT_COST_CHANGED, $event->type);
+        self::assertInstanceOf(BlankVariantCostChangedEvent::class, $typed);
+        self::assertSame('blank_ff71cf74abb3ccb005b8b643', $typed->payload->blankId);
+        self::assertSame('v_3f9a0c1d2e4b5a6c', $typed->payload->variant);
+        self::assertSame('SE', $typed->payload->region);
+        self::assertSame(['160.00', 'SEK'], [$typed->payload->product->from?->amount, $typed->payload->product->from?->currency]);
+        self::assertSame(['167.10', 'SEK'], [$typed->payload->product->to?->amount, $typed->payload->product->to?->currency]);
+        self::assertSame('65.50', $typed->payload->shipping->from?->amount);
+        self::assertNull($typed->payload->shipping->to);
+        self::assertSame(self::VARIANT_COST_CHANGED, $typed->raw());
+    }
+
+    public function testThePolledEventStreamReadsAChangedVariantCost(): void
+    {
+        $page = EventsListResponse::fromArray(['events' => [self::VARIANT_COST_CHANGED], 'nextCursor' => null]);
+
+        self::assertInstanceOf(BlankVariantCostChangedEvent::class, $page->events[0]);
+        self::assertNull($page->events[0]->via);
+    }
+
+    public function testAChangedVariantCostWithoutASideIsRefused(): void
+    {
+        $broken = self::VARIANT_COST_CHANGED;
+        unset($broken['payload']['shipping']['to']);
+
+        $this->expectExceptionObject(new UnexpectedResponse('$.payload.shipping', 'missing required field "to"'));
+        WebhookEvent::decode($broken);
     }
 
     public function testAnUnknownEventInTheStreamStillNeedsAnEnvelope(): void

@@ -23,6 +23,8 @@ final class PrintshopCatalogueProductsImportBlankRequest implements Model
 
     /**
      * @param list<string>|null $colours The colours to fetch photos of, by name as the options read answers them; absent for every colour. A colour named here that the product does not have is ignored.
+     * @param string|null $garmentCut Which garment the product is, as the merchant says: ask, never read it from the product's name. With it the blank's product model is a garment of that cut, and with no scenes named it starts on a studio picture, that cut's front cut-out over a studio style. Unread where the printshop's data says what the product is.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestGarmentCut}.
      * @param string|null $name As the library shows it. Omitted, the printshop's product name.
      * @param bool|null $printshopPhotos Whether the printshop's photos are fetched as the blank's catalogue photos. True is refused where the printshop has no photo with a print area. Omitted, they are fetched if it has any.
      * @param list<string>|null $sceneIds Stock photos, the scenes in the order they show, first in the blank's order and before the printshop's photos. They may photograph several stock items, each scene its own; two of one stock item, setting, person and pose are refused `scene_view_repeated`, unless each is held in a hand. On each of them, each placement with a role that item has a place for takes its default record; one with none shows on none of its scenes.
@@ -31,6 +33,7 @@ final class PrintshopCatalogueProductsImportBlankRequest implements Model
      */
     public function __construct(
         public readonly ?array $colours = null,
+        public readonly ?string $garmentCut = null,
         public readonly ?string $name = null,
         public readonly ?bool $printshopPhotos = null,
         public readonly ?array $sceneIds = null,
@@ -54,6 +57,7 @@ final class PrintshopCatalogueProductsImportBlankRequest implements Model
                 $path . '.colours',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : null,
+            garmentCut: array_key_exists('garmentCut', $data) ? Decode::string($data['garmentCut'], $path . '.garmentCut') : null,
             name: array_key_exists('name', $data) ? Decode::string($data['name'], $path . '.name') : null,
             printshopPhotos: array_key_exists('printshopPhotos', $data) ? Decode::bool($data['printshopPhotos'], $path . '.printshopPhotos') : null,
             sceneIds: array_key_exists('sceneIds', $data) ? Decode::list(
@@ -92,6 +96,9 @@ final class PrintshopCatalogueProductsImportBlankRequest implements Model
         $data = [];
         if ($this->colours !== null) {
             $data['colours'] = $this->colours;
+        }
+        if ($this->garmentCut !== null) {
+            $data['garmentCut'] = $this->garmentCut;
         }
         if ($this->name !== null) {
             $data['name'] = $this->name;

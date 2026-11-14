@@ -548,6 +548,167 @@
         ],
         "type": "object"
       },
+      "BlankVariantCostChangedEvent": {
+        "properties": {
+          "automation": {
+            "description": "The automation that caused the event, beside `via`.",
+            "properties": {
+              "id": {
+                "description": "The automation's id.",
+                "type": "string"
+              },
+              "name": {
+                "description": "What the automation was called when it acted.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "type": "object"
+          },
+          "createdAt": {
+            "description": "When the event happened, in milliseconds since the Unix epoch.",
+            "type": "integer"
+          },
+          "id": {
+            "description": "The event's id. A retry or a redelivery carries the same id, so a receiver can drop one it has already handled.",
+            "type": "string"
+          },
+          "payload": {
+            "properties": {
+              "blankId": {
+                "type": "string"
+              },
+              "product": {
+                "properties": {
+                  "from": {
+                    "properties": {
+                      "amount": {
+                        "type": "string"
+                      },
+                      "currency": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "amount",
+                      "currency"
+                    ],
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "to": {
+                    "properties": {
+                      "amount": {
+                        "type": "string"
+                      },
+                      "currency": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "amount",
+                      "currency"
+                    ],
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "from",
+                  "to"
+                ],
+                "type": "object"
+              },
+              "region": {
+                "type": "string"
+              },
+              "shipping": {
+                "properties": {
+                  "from": {
+                    "properties": {
+                      "amount": {
+                        "type": "string"
+                      },
+                      "currency": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "amount",
+                      "currency"
+                    ],
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  },
+                  "to": {
+                    "properties": {
+                      "amount": {
+                        "type": "string"
+                      },
+                      "currency": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "amount",
+                      "currency"
+                    ],
+                    "type": [
+                      "object",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "from",
+                  "to"
+                ],
+                "type": "object"
+              },
+              "variant": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "blankId",
+              "variant",
+              "region",
+              "product",
+              "shipping"
+            ],
+            "type": "object"
+          },
+          "type": {
+            "enum": [
+              "blank.variant_cost_changed"
+            ],
+            "type": "string"
+          },
+          "via": {
+            "description": "`automation` when one of your automations caused the event; absent otherwise.",
+            "enum": [
+              "automation"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "type",
+          "payload",
+          "createdAt"
+        ],
+        "type": "object"
+      },
       "CreditsLowEvent": {
         "properties": {
           "automation": {
@@ -50446,9 +50607,9 @@
     }
   },
   "info": {
-    "description": "# Overview\n\nThe Pixonaut API turns a template into a printed product. A merchant publishes\ntemplates; a customer fills one in inside the designer on the merchant's\nstorefront and commits a **design**; the merchant's own server approves the\ndesign, **prints** it, and sends the print to a printshop as an **order**.\nEach of those steps is also reported as an **event**, delivered to the\nmerchant's webhook endpoints.\n\nStart with [Design to order](#tag/design-to-order), which walks through that\nflow request by request.\n\n## Base URL\n\nThis reference names no server. Send requests to the host that serves it:\nthe same origin as its `/openapi.json`. Every example path in it is relative\nto that host.\n\n## Versions\n\nThe routes an integration calls are under `/v1`, and the version is the path\nprefix. A few routes sit outside it because they are fetched as plain URLs\nrather than called: template images under `/t`, and the signed links the API\nhands out for print files, proof images, uploads and published assets.\n\n## Requests and responses\n\nBodies are JSON, sent with `content-type: application/json`, unless a route\nsays otherwise (an upload's bytes, an image, a PDF). Times are milliseconds\nsince the Unix epoch unless a field says otherwise. Every route in this\nreference lists the key it takes, its request and response shapes, and each\nrefusal it can answer with.\n\n## Operation names\n\nEvery operation has an `operationId` of the form `<resource>.<verb>`, nested\nresources dotted: `templates.list`, `designs.approve`,\n`blanks.placements.fittingTemplates.list`. The SDKs name their methods from\nit, so `templates.list` is `client.templates.list()` in JavaScript and\n`$client->templates->list()` in PHP. The routes outside `/v1`, which are\nfetched as plain URLs, are named too and carry `x-sdk-skip: true`: no SDK\ngenerates a method for them.\n\n# Authentication\n\nA route that takes an API key reads it as a bearer token:\n\n```http\nAuthorization: Bearer sk_...\n```\n\nA tenant has three kinds of key, and every such route says which it takes. The\nfew routes that take no key are signed links the API hands out, which carry\ntheir own proof, and public files; they are listed with the rest below.\n\n## Publishable key\n\nA publishable key (`pk_...`) is meant to sit in a browser, inside the designer on the merchant's own storefront, so it is visible to anyone who opens the page. It is bound to the web origins the tenant allows, and refused from any other. It can do what a customer needs: read templates, preview, upload a picture and commit a design. It cannot approve, print or order.\n\nA request with a publishable key must carry an `Origin` header matching one\nof the key's `allowedOrigins` (set when the key is created with\n`POST /v1/api-keys`), or it is refused with `origin_forbidden`. An entry is\nan exact origin (`https://shop.example`), or `*.shop.example`, which matches\n`shop.example` and any subdomain of it. An entry of `*` alone matches every\norigin, which removes the key's origin binding altogether: any page on any\nsite can then use it, so it is for trying the API out, never for a live\nstorefront. Because a browser sets `Origin`\nitself, a publishable key sent from a server with no `Origin` is refused too:\na server uses its secret key, and a connected store's server its integration\nkey.\n\n## Secret key\n\nA secret key (`sk_...`) stays on the merchant's server. It acts as the tenant itself, and it is the only credential that approves designs, prints them and submits orders.\n\nNever send it to a browser. Revoke one with `DELETE /v1/api-keys/{id}` when\nwhoever holds it no longer should.\n\n## Integration key\n\nAn integration key (`ik_...`) is a connected store's key, given to the store when a member approves its connection, together with a publishable key and a webhook endpoint. It stays on the store's server and acts as the tenant, but only within its grants: it reads templates, blanks and printshops, makes and decides designs, makes and reads prints, places and reads orders, and manages the one webhook endpoint it was given. It never registers another endpoint or reaches one it was not given, and never manages keys, members, roles or settings. Pixel in the store's admin and the MCP endpoint act as a member, so they take the member key a store's user links instead (`member_link_required`).\n\nA store gets one by connecting: the merchant starts at the store, approves in\nthe studio, and the store exchanges the code it is sent back with for its\nintegration key, a publishable key bound to the store's origin and a webhook\nendpoint at the store (`POST /v1/connect/token`). Nobody copies a key by\nhand. A route the key's grants do not cover refuses it with `forbidden`.\n`DELETE /v1/connect` disconnects the store: it revokes all three.\n\n## Member key\n\nA member key (`mk_...`) is held by a connected store for one of its users, who linked their own Pixonaut account to it (`POST /v1/connect/token` with `kind: \"member_link\"`). It acts as that member, with their permissions: Pixel in the store's admin, with the conversation theirs in that store, and the MCP endpoint, as an MCP key the member minted would. It holds while the link, the store's connection and the membership do; after that it is refused `member_link_revoked`.\n\nA store links one of its users the way it connects: it sends the user to the\nstudio with `kind=member_link`, the member approves linking themselves to the\nworkspace the store is connected to, and the store exchanges the code with its\nintegration key as the bearer (`POST /v1/connect/token` with\n`kind: \"member_link\"`). The store that connects is given its approving\nmember's key in the same exchange (`memberKey`). The store keeps the key for\nthat user and sends it on Pixel's routes and the MCP endpoint, which refuse\nthe integration key itself with `member_link_required`.\n`DELETE /v1/connect/member-link` unlinks it.\n\n## Share link\n\nA share link's token (`link_...`), such as the one in a correction link a store mints for its customer (`POST /v1/designs/{id}/correction-links`), sent by the hosted page the link opens. The token is the credential; the api takes it only from the hosted pages' origin (their `Origin` header, or none on a read the page sends to its own origin), and a correction link also from the tenant's store origins, which keeps other web pages from using a link in a browser. A link acts only on its own template, design or session, and a designer link reads the blank it is sold on: any other is answered as not found.\n\nA store never sends this token itself: it hands the link to its customer,\nand the hosted page sends the token. It is listed on every route a link\nreaches, so a client validating what a hosted page sends can check it.\n\n## Which key each group of routes takes\n\nThe number of routes in each group that take a publishable key, a secret key,\nan integration key, a member key, a share link, or no key at all. A route with no key is a signed link the API handed out,\nwhich carries its own proof, or a public file.\n\n| Group | Publishable key | Secret key | Integration key | Share link | Member key | No key |\n| --- | --- | --- | --- | --- | --- | --- |\n| API keys | none | 4 of 11 | 6 of 11 | none | 1 of 11 | 1 of 11 |\n| Assets | 6 of 28 | 19 of 28 | none | 6 of 28 | none | 5 of 28 |\n| Automations | none | all | none | none | none | none |\n| Blanks | 4 of 11 | 8 of 11 | 7 of 11 | 3 of 11 | none | 3 of 11 |\n| Catalogue | none | none | all | none | none | none |\n| Designs | 1 of 27 | all | all | 11 of 27 | none | none |\n| Events | none | all | all | none | none | none |\n| Fonts | none | none | none | none | none | all |\n| Orders | none | all | 14 of 17 | 6 of 17 | none | none |\n| Pixel | 1 of 7 | none | none | 1 of 7 | 6 of 7 | none |\n| Prints | none | 6 of 8 | 6 of 8 | none | none | 2 of 8 |\n| Printshops | none | all | all | none | none | none |\n| Proofs | 3 of 4 | 3 of 4 | none | 3 of 4 | none | 1 of 4 |\n| Sessions | 1 of 2 | all | none | 1 of 2 | none | none |\n| Share links | none | all | all | none | none | none |\n| Templates | 6 of 8 | all | 5 of 8 | 3 of 8 | none | none |\n| Webhook endpoints | none | all | 7 of 8 | none | none | none |\n\n# Errors\n\nA refused request answers a 4xx or 5xx status with a JSON body whose `error`\nis a code, and sometimes fields that say more:\n\n<!-- example: POST /v1/prints 409 -->\n```json\n{ \"error\": \"design_not_approved\" }\n```\n\n<!-- example: POST /v1/designs 422 -->\n```json\n{ \"error\": \"payload_too_large\", \"maxBytes\": 65536, \"bytes\": 70312 }\n```\n\nBranch on `error`, never on the status alone: one status can carry several\ncodes, and each route lists the codes it can answer with under each status.\nA refusal is an expected answer. It means the request asked for something\nthat is not there, not yet approved, over a limit or not the key's to do,\nand the code says which.\n\nA request the API failed to handle for a reason of its own answers `500` with the plain-text body `Internal Server Error` rather than JSON. There is nothing to change in the request, and it can be retried later.\n\nEvery response names the request it answers in `X-Request-Id`: the id the request was sent with in that header, when it is well formed, else one the API gave it. Quote it when reporting a refusal or a failure: the API's log lines for that request carry it.\n\nBefore retrying a request that asked a printshop for something, such as\n`POST /v1/prints/{id}/orders`, read what it was about first: the failure may\nhave come after the printshop took the order. Check the print's orders with\n`GET /v1/orders?printId=<print id>` and an order's status with `GET /v1/orders/{id}`, and never\nsubmit again while an order says `outcome_unknown`.\n\n## A body that does not match its route\n\nA body, query or path the route cannot accept is refused before the route\ndoes anything, with a `422` or, on some routes, a `400`, whose `error` names\nwhat was wrong. Some carry a field saying more, such as a one-line `reason`\nor an `issues` list naming each field at fault. Each operation lists the codes\nit can answer with.\n\n## Refusals any route can answer\n\nThese come from checks that run before a route's own work: the key and its\norigin, on the routes that take one, the rate limit and the body's size. They\nare also listed in this document's `x-refusals`.\n\n| Status | Code | Meaning |\n| --- | --- | --- |\n| 401 | `unauthorized` | The request carries no credential, or one that is unknown or revoked. |\n| 401 | `member_link_required` | A connected store's integration key was sent to a route that acts as a member. The store links its user's Pixonaut account first (`POST /v1/connect/token` with `kind: \"member_link\"`) and sends the member key it is given. |\n| 401 | `member_link_revoked` | A member key whose link no longer holds: it was revoked, its member left the workspace, or its store was disconnected. The store asks its user to link their account again. The store's own connection is not affected. |\n| 403 | `origin_forbidden` | A publishable key was sent from an origin outside the key's allowlist. |\n| 403 | `secret_key_required` | The route takes a secret key, and the request carried another credential. |\n| 403 | `forbidden` | The route does not take the kind of credential sent. |\n| 403 | `feature_disabled` | The tenant does not have the feature the key is for: `api` for a publishable or secret key, `mcp` for an MCP key. The key is kept, and is admitted again once the tenant has the feature. |\n| 403 | `workspace_suspended` | The workspace the credential belongs to is suspended. Every credential of it is refused until the suspension is lifted; nothing of it is deleted. |\n| 429 | `rate_limited` | Too many requests in the current window. Retry after the number of seconds in `retry-after`. |\n| 422 | `payload_too_large` | The request body is larger than the route accepts. `maxBytes` is the limit. |\n| 500 | `db_error` | The api could not read or write its database. |\n\n## Rate limits\n\nEach caller has a budget per bucket: an api key, a member, a person's MCP\nkeys together, or one visitor of a storefront's publishable key or share\nlink. All the visitors of one publishable key or link share a total, and all\nof a workspace's callers share a ceiling, so one busy store leaves its\nmembers room. The budgets are the same on every plan. A request past one is\nrefused with `429` and `rate_limited`, and the `retry-after` header says how\nmany seconds to wait; the windows slide, so the budget comes back gradually.\n\n| Bucket | Counts | Window | One caller | A storefront key's or link's visitors together | The workspace together |\n| --- | --- | --- | --- | --- | --- |\n| `proof` | Proofs: each one rendered | a minute | 30 | 90 | 150 |\n| `validate` | Validating a design | a minute | 120 | 360 | 600 |\n| `commit` | Committing a design | a minute | 30 | 90 | 150 |\n| `pixel` | Pixel's turns | a minute | 20 | 60 | 100 |\n| `pixelUpload` | Files attached to Pixel | a minute | 60 | 180 | 300 |\n| `pixelCard` | Confirming Pixel's cards | a minute | 120 | 360 | 600 |\n| `webhookPing` | Test requests to a webhook endpoint | a minute | 10 | 30 | 50 |\n| `blankImport` | Importing blanks from a CSV, and its previews | a minute | 10 | 30 | 50 |\n| `mcp` | MCP requests, per person across their MCP keys | a minute | 120 | 360 | 600 |\n\nPublic file addresses, hosted designer pages and share links are also\nlimited per visitor's address, and answer the same way.\n\n## A studio session whose address is not verified\n\nThe studio's own session, signed in to an account whose email address is not\nverified yet, is refused every write with `403` and `email_not_verified`,\nwhatever the route, except accepting an invitation, which verifies the\naddress. No key or integration meets it: the rule is about the signed-in\nperson.",
+    "description": "# Overview\n\nThe Pixonaut API turns a template into a printed product. A merchant publishes\ntemplates; a customer fills one in inside the designer on the merchant's\nstorefront and commits a **design**; the merchant's own server approves the\ndesign, **prints** it, and sends the print to a printshop as an **order**.\nEach of those steps is also reported as an **event**, delivered to the\nmerchant's webhook endpoints.\n\nStart with [Design to order](#tag/design-to-order), which walks through that\nflow request by request.\n\n## Base URL\n\nThis reference names no server. Send requests to the host that serves it:\nthe same origin as its `/openapi.json`. Every example path in it is relative\nto that host.\n\n## Versions\n\nThe routes an integration calls are under `/v1`, and the version is the path\nprefix. A few routes sit outside it because they are fetched as plain URLs\nrather than called: template images under `/t`, and the signed links the API\nhands out for print files, proof images, uploads and published assets.\n\n## Requests and responses\n\nBodies are JSON, sent with `content-type: application/json`, unless a route\nsays otherwise (an upload's bytes, an image, a PDF). Times are milliseconds\nsince the Unix epoch unless a field says otherwise. Every route in this\nreference lists the key it takes, its request and response shapes, and each\nrefusal it can answer with.\n\n## Operation names\n\nEvery operation has an `operationId` of the form `<resource>.<verb>`, nested\nresources dotted: `templates.list`, `designs.approve`,\n`blanks.placements.fittingTemplates.list`. The SDKs name their methods from\nit, so `templates.list` is `client.templates.list()` in JavaScript and\n`$client->templates->list()` in PHP. The routes outside `/v1`, which are\nfetched as plain URLs, are named too and carry `x-sdk-skip: true`: no SDK\ngenerates a method for them.\n\n# Authentication\n\nA route that takes an API key reads it as a bearer token:\n\n```http\nAuthorization: Bearer sk_...\n```\n\nA tenant has three kinds of key, and every such route says which it takes. The\nfew routes that take no key are signed links the API hands out, which carry\ntheir own proof, and public files; they are listed with the rest below.\n\n## Publishable key\n\nA publishable key (`pk_...`) is meant to sit in a browser, inside the designer on the merchant's own storefront, so it is visible to anyone who opens the page. It is bound to the web origins the tenant allows, and refused from any other. It can do what a customer needs: read templates, preview, upload a picture and commit a design. It cannot approve, print or order.\n\nA request with a publishable key must carry an `Origin` header matching one\nof the key's `allowedOrigins` (set when the key is created with\n`POST /v1/api-keys`), or it is refused with `origin_forbidden`. An entry is\nan exact origin (`https://shop.example`), or `*.shop.example`, which matches\n`shop.example` and any subdomain of it. An entry of `*` alone matches every\norigin, which removes the key's origin binding altogether: any page on any\nsite can then use it, so it is for trying the API out, never for a live\nstorefront. Because a browser sets `Origin`\nitself, a publishable key sent from a server with no `Origin` is refused too:\na server uses its secret key, and a connected store's server its integration\nkey.\n\n## Secret key\n\nA secret key (`sk_...`) stays on the merchant's server. It acts as the tenant itself, and it is the only credential that approves designs, prints them and submits orders.\n\nNever send it to a browser. Revoke one with `DELETE /v1/api-keys/{id}` when\nwhoever holds it no longer should.\n\n## Integration key\n\nAn integration key (`ik_...`) is a connected store's key, given to the store when a member approves its connection, together with a publishable key and a webhook endpoint. It stays on the store's server and acts as the tenant, but only within its grants: it reads templates, blanks and printshops, makes and decides designs, makes and reads prints, places and reads orders, and manages the one webhook endpoint it was given. It never registers another endpoint or reaches one it was not given, and never manages keys, members, roles or settings. Pixel in the store's admin and the MCP endpoint act as a member, so they take the member key a store's user links instead (`member_link_required`).\n\nA store gets one by connecting: the merchant starts at the store, approves in\nthe studio, and the store exchanges the code it is sent back with for its\nintegration key, a publishable key bound to the store's origin and a webhook\nendpoint at the store (`POST /v1/connect/token`). Nobody copies a key by\nhand. A route the key's grants do not cover refuses it with `forbidden`.\n`DELETE /v1/connect` disconnects the store: it revokes all three.\n\n## Member key\n\nA member key (`mk_...`) is held by a connected store for one of its users, who linked their own Pixonaut account to it (`POST /v1/connect/token` with `kind: \"member_link\"`). It acts as that member, with their permissions: Pixel in the store's admin, with the conversation theirs in that store, and the MCP endpoint, as an MCP key the member minted would. It holds while the link, the store's connection and the membership do; after that it is refused `member_link_revoked`.\n\nA store links one of its users the way it connects: it sends the user to the\nstudio with `kind=member_link`, the member approves linking themselves to the\nworkspace the store is connected to, and the store exchanges the code with its\nintegration key as the bearer (`POST /v1/connect/token` with\n`kind: \"member_link\"`). The store that connects is given its approving\nmember's key in the same exchange (`memberKey`). The store keeps the key for\nthat user and sends it on Pixel's routes and the MCP endpoint, which refuse\nthe integration key itself with `member_link_required`.\n`DELETE /v1/connect/member-link` unlinks it.\n\n## Share link\n\nA share link's token (`link_...`), such as the one in a correction link a store mints for its customer (`POST /v1/designs/{id}/correction-links`), sent by the hosted page the link opens. The token is the credential; the api takes it only from the hosted pages' origin (their `Origin` header, or none on a read the page sends to its own origin), and a correction link also from the tenant's store origins, which keeps other web pages from using a link in a browser. A link acts only on its own template, design or session, and a designer link reads the blank it is sold on: any other is answered as not found.\n\nA store never sends this token itself: it hands the link to its customer,\nand the hosted page sends the token. It is listed on every route a link\nreaches, so a client validating what a hosted page sends can check it.\n\n## Which key each group of routes takes\n\nThe number of routes in each group that take a publishable key, a secret key,\nan integration key, a member key, a share link, or no key at all. A route with no key is a signed link the API handed out,\nwhich carries its own proof, or a public file.\n\n| Group | Publishable key | Secret key | Integration key | Share link | Member key | No key |\n| --- | --- | --- | --- | --- | --- | --- |\n| API keys | none | 4 of 11 | 6 of 11 | none | 1 of 11 | 1 of 11 |\n| Assets | 6 of 28 | 19 of 28 | none | 6 of 28 | none | 5 of 28 |\n| Automations | none | all | none | none | none | none |\n| Blanks | 4 of 12 | 9 of 12 | 8 of 12 | 3 of 12 | none | 3 of 12 |\n| Catalogue | none | none | all | none | none | none |\n| Designs | 1 of 27 | all | all | 11 of 27 | none | none |\n| Events | none | all | all | none | none | none |\n| Fonts | none | none | none | none | none | all |\n| Orders | none | all | 14 of 17 | 6 of 17 | none | none |\n| Pixel | 1 of 7 | none | none | 1 of 7 | 6 of 7 | none |\n| Prints | none | 6 of 8 | 6 of 8 | none | none | 2 of 8 |\n| Printshops | none | all | all | none | none | none |\n| Proofs | 3 of 4 | 3 of 4 | none | 3 of 4 | none | 1 of 4 |\n| Sessions | 1 of 2 | all | none | 1 of 2 | none | none |\n| Share links | none | all | all | none | none | none |\n| Templates | 6 of 8 | all | 5 of 8 | 3 of 8 | none | none |\n| Webhook endpoints | none | all | 7 of 8 | none | none | none |\n\n# Errors\n\nA refused request answers a 4xx or 5xx status with a JSON body whose `error`\nis a code, and sometimes fields that say more:\n\n<!-- example: POST /v1/prints 409 -->\n```json\n{ \"error\": \"design_not_approved\" }\n```\n\n<!-- example: POST /v1/designs 422 -->\n```json\n{ \"error\": \"payload_too_large\", \"maxBytes\": 65536, \"bytes\": 70312 }\n```\n\nBranch on `error`, never on the status alone: one status can carry several\ncodes, and each route lists the codes it can answer with under each status.\nA refusal is an expected answer. It means the request asked for something\nthat is not there, not yet approved, over a limit or not the key's to do,\nand the code says which.\n\nA request the API failed to handle for a reason of its own answers `500` with the plain-text body `Internal Server Error` rather than JSON. There is nothing to change in the request, and it can be retried later.\n\nEvery response names the request it answers in `X-Request-Id`: the id the request was sent with in that header, when it is well formed, else one the API gave it. Quote it when reporting a refusal or a failure: the API's log lines for that request carry it.\n\nBefore retrying a request that asked a printshop for something, such as\n`POST /v1/prints/{id}/orders`, read what it was about first: the failure may\nhave come after the printshop took the order. Check the print's orders with\n`GET /v1/orders?printId=<print id>` and an order's status with `GET /v1/orders/{id}`, and never\nsubmit again while an order says `outcome_unknown`.\n\n## A body that does not match its route\n\nA body, query or path the route cannot accept is refused before the route\ndoes anything, with a `422` or, on some routes, a `400`, whose `error` names\nwhat was wrong. Some carry a field saying more, such as a one-line `reason`\nor an `issues` list naming each field at fault. Each operation lists the codes\nit can answer with.\n\n## Refusals any route can answer\n\nThese come from checks that run before a route's own work: the key and its\norigin, on the routes that take one, the rate limit and the body's size. They\nare also listed in this document's `x-refusals`.\n\n| Status | Code | Meaning |\n| --- | --- | --- |\n| 401 | `unauthorized` | The request carries no credential, or one that is unknown or revoked. |\n| 401 | `member_link_required` | A connected store's integration key was sent to a route that acts as a member. The store links its user's Pixonaut account first (`POST /v1/connect/token` with `kind: \"member_link\"`) and sends the member key it is given. |\n| 401 | `member_link_revoked` | A member key whose link no longer holds: it was revoked, its member left the workspace, or its store was disconnected. The store asks its user to link their account again. The store's own connection is not affected. |\n| 403 | `origin_forbidden` | A publishable key was sent from an origin outside the key's allowlist. |\n| 403 | `secret_key_required` | The route takes a secret key, and the request carried another credential. |\n| 403 | `forbidden` | The route does not take the kind of credential sent. |\n| 403 | `feature_disabled` | The tenant does not have the feature the key is for: `api` for a publishable or secret key, `mcp` for an MCP key. The key is kept, and is admitted again once the tenant has the feature. |\n| 403 | `workspace_suspended` | The workspace the credential belongs to is suspended. Every credential of it is refused until the suspension is lifted; nothing of it is deleted. |\n| 429 | `rate_limited` | Too many requests in the current window. Retry after the number of seconds in `retry-after`. |\n| 422 | `payload_too_large` | The request body is larger than the route accepts. `maxBytes` is the limit. |\n| 500 | `db_error` | The api could not read or write its database. |\n\n## Rate limits\n\nEach caller has a budget per bucket: an api key, a member, a person's MCP\nkeys together, or one visitor of a storefront's publishable key or share\nlink. All the visitors of one publishable key or link share a total, and all\nof a workspace's callers share a ceiling, so one busy store leaves its\nmembers room. The budgets are the same on every plan. A request past one is\nrefused with `429` and `rate_limited`, and the `retry-after` header says how\nmany seconds to wait; the windows slide, so the budget comes back gradually.\n\n| Bucket | Counts | Window | One caller | A storefront key's or link's visitors together | The workspace together |\n| --- | --- | --- | --- | --- | --- |\n| `proof` | Proofs: each one rendered | a minute | 30 | 90 | 150 |\n| `validate` | Validating a design | a minute | 120 | 360 | 600 |\n| `commit` | Committing a design | a minute | 30 | 90 | 150 |\n| `pixel` | Pixel's turns | a minute | 20 | 60 | 100 |\n| `pixelUpload` | Files attached to Pixel | a minute | 60 | 180 | 300 |\n| `pixelCard` | Confirming Pixel's cards | a minute | 120 | 360 | 600 |\n| `webhookPing` | Test requests to a webhook endpoint | a minute | 10 | 30 | 50 |\n| `blankImport` | Importing blanks from a CSV, and its previews | a minute | 10 | 30 | 50 |\n| `mcp` | MCP requests, per person across their MCP keys | a minute | 120 | 360 | 600 |\n\nPublic file addresses, hosted designer pages and share links are also\nlimited per visitor's address, and answer the same way.\n\n## A studio session whose address is not verified\n\nThe studio's own session, signed in to an account whose email address is not\nverified yet, is refused every write with `403` and `email_not_verified`,\nwhatever the route, except accepting an invitation, which verifies the\naddress. No key or integration meets it: the rule is about the signed-in\nperson.",
     "title": "Pixonaut API",
-    "version": "6.3.0"
+    "version": "7.1.0"
   },
   "openapi": "3.1.0",
   "paths": {
@@ -92545,6 +92706,10 @@
                                 "description": "Its colour, `#rrggbb`.",
                                 "type": "string"
                               },
+                              "stained": {
+                                "description": "True for a wood stained `hex`: its grain is drawn in that colour. Absent, a wood is drawn in its own.",
+                                "type": "boolean"
+                              },
                               "texture": {
                                 "description": "The texture it is painted in; absent, its flat colour.",
                                 "type": "string",
@@ -92909,6 +93074,409 @@
           }
         ],
         "summary": "List a blank's variants",
+        "tags": [
+          "Blanks"
+        ]
+      }
+    },
+    "/v1/blanks/{id}/variants/costs": {
+      "get": {
+        "description": "What the blank's printshop charges for each variant on sale, and for shipping one to a country, as the printshop publishes it: a store prices its products from these. Each amount is in the currency the printshop bills the connected account in, which each amount names, and is never converted: the read takes a country and no currency, so amounts for one country may be in another's currency. Pixonaut holds no selling price, margin or tax. Costs are read from the printshop in the background, when a blank is imported or re-synced and once a day: a region asked for the first time is read within moments, and until then the list holds only the variants already read, so a variant missing from it has not been read yet. A variant whose printshop publishes no price is listed with `product` null, as is every variant of a blank no printshop is bound to. A region nobody asks for in 30 days is no longer kept read, except the workspace's own.",
+        "operationId": "blanks.variants.costs",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "The country the costs are for, as a two-letter ISO 3166-1 code in capitals, such as `SE`. Omitted, the workspace's own cost region: the one its settings pick, else the country its orders are delivered to.",
+            "in": "query",
+            "name": "region",
+            "required": false,
+            "schema": {
+              "description": "The country the costs are for, as a two-letter ISO 3166-1 code in capitals, such as `SE`. Omitted, the workspace's own cost region: the one its settings pick, else the country its orders are delivered to.",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Only this variant's cost, by its `ref`.",
+            "in": "query",
+            "name": "variant",
+            "required": false,
+            "schema": {
+              "description": "Only this variant's cost, by its `ref`.",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "example": {
+                    "summary": "Example",
+                    "value": {
+                      "costs": [
+                        {
+                          "changedAt": "2026-11-13T12:00:00.000Z",
+                          "product": {
+                            "amount": "167.10",
+                            "currency": "SEK"
+                          },
+                          "readAt": "2026-11-14T12:00:00.000Z",
+                          "region": "SE",
+                          "shipping": {
+                            "amount": "65.50",
+                            "currency": "SEK"
+                          },
+                          "variant": "v_3f9a0c1d2e4b5a6c"
+                        },
+                        {
+                          "changedAt": null,
+                          "product": {
+                            "amount": "189.00",
+                            "currency": "SEK"
+                          },
+                          "readAt": "2026-11-14T12:00:00.000Z",
+                          "region": "SE",
+                          "shipping": null,
+                          "variant": "v_7b1e4d2a9c0f3e58"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "costs": {
+                      "items": {
+                        "properties": {
+                          "changedAt": {
+                            "description": "When a read last found another product or shipping amount than the one held, as an ISO 8601 time; null while the first read still stands.",
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "product": {
+                            "description": "What the printshop charges for the variant, printed with the blank's default print: its main side, by one print method. Further print areas and other print methods are not included. null when the printshop publishes no price for it.",
+                            "properties": {
+                              "amount": {
+                                "description": "The amount as a decimal string with the currency's own decimals, such as `167.10`.",
+                                "type": "string"
+                              },
+                              "currency": {
+                                "description": "The amount's currency, as its ISO 4217 code, such as `SEK`.",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "amount",
+                              "currency"
+                            ],
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          "readAt": {
+                            "description": "When the printshop was last asked, as an ISO 8601 time; for a blank no printshop is bound to, when the variant was last changed.",
+                            "type": "string"
+                          },
+                          "region": {
+                            "description": "The country the cost is for.",
+                            "type": "string"
+                          },
+                          "shipping": {
+                            "description": "The cheapest way the printshop ships one of the variant to the region. null when the printshop publishes none.",
+                            "properties": {
+                              "amount": {
+                                "description": "The amount as a decimal string with the currency's own decimals, such as `167.10`.",
+                                "type": "string"
+                              },
+                              "currency": {
+                                "description": "The amount's currency, as its ISO 4217 code, such as `SEK`.",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "amount",
+                              "currency"
+                            ],
+                            "type": [
+                              "object",
+                              "null"
+                            ]
+                          },
+                          "variant": {
+                            "description": "The variant's `ref`.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "variant",
+                          "product",
+                          "shipping",
+                          "region",
+                          "readAt",
+                          "changedAt"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "costs"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Each read variant's cost in the region",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/RequestId"
+              }
+            }
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "unauthorized": {
+                    "summary": "unauthorized",
+                    "value": {
+                      "error": "unauthorized"
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "x-extensible-enum": [
+                        "unauthorized"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Refused: unauthorized",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/RequestId"
+              }
+            }
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "feature_disabled": {
+                    "summary": "feature_disabled",
+                    "value": {
+                      "error": "feature_disabled",
+                      "feature": "api"
+                    }
+                  },
+                  "forbidden": {
+                    "summary": "forbidden",
+                    "value": {
+                      "error": "forbidden"
+                    }
+                  },
+                  "origin_forbidden": {
+                    "summary": "origin_forbidden",
+                    "value": {
+                      "error": "origin_forbidden"
+                    }
+                  },
+                  "workspace_suspended": {
+                    "summary": "workspace_suspended",
+                    "value": {
+                      "error": "workspace_suspended"
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "x-extensible-enum": [
+                        "origin_forbidden",
+                        "forbidden",
+                        "feature_disabled",
+                        "workspace_suspended"
+                      ]
+                    },
+                    "feature": {
+                      "description": "The feature the tenant does not have. Always sent with `feature_disabled`.",
+                      "type": "string",
+                      "x-extensible-enum": [
+                        "api",
+                        "automations",
+                        "embroidery",
+                        "mcp"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Refused: origin_forbidden, forbidden, feature_disabled, workspace_suspended",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/RequestId"
+              }
+            }
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "not_found": {
+                    "summary": "not_found",
+                    "value": {
+                      "error": "not_found"
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "x-extensible-enum": [
+                        "not_found"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Refused: not_found",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/RequestId"
+              }
+            }
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "cost_region_unset": {
+                    "summary": "cost_region_unset",
+                    "value": {
+                      "error": "cost_region_unset"
+                    }
+                  },
+                  "invalid_query": {
+                    "summary": "invalid_query",
+                    "value": {
+                      "error": "invalid_query"
+                    }
+                  },
+                  "unknown_region": {
+                    "summary": "unknown_region",
+                    "value": {
+                      "error": "unknown_region"
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "x-extensible-enum": [
+                        "unknown_region",
+                        "cost_region_unset",
+                        "invalid_query"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Refused: unknown_region, cost_region_unset, invalid_query",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/RequestId"
+              }
+            }
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "db_error": {
+                    "summary": "db_error",
+                    "value": {
+                      "error": "db_error"
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "type": "string",
+                      "x-extensible-enum": [
+                        "db_error"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "error"
+                  ],
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "const": "Internal Server Error",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Refused: db_error. A request that failed unexpectedly answers as text instead.",
+            "headers": {
+              "X-Request-Id": {
+                "$ref": "#/components/headers/RequestId"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "secretKey": []
+          },
+          {
+            "integrationKey": []
+          }
+        ],
+        "summary": "Read a blank's variant costs at its printshop",
         "tags": [
           "Blanks"
         ]
@@ -113085,6 +113653,7 @@
                             "blank.drifted": "#/components/schemas/BlankDriftedEvent",
                             "blank.restored": "#/components/schemas/BlankRestoredEvent",
                             "blank.updated": "#/components/schemas/BlankUpdatedEvent",
+                            "blank.variant_cost_changed": "#/components/schemas/BlankVariantCostChangedEvent",
                             "credits.low": "#/components/schemas/CreditsLowEvent",
                             "design.approval_scheduled": "#/components/schemas/DesignApprovalScheduledEvent",
                             "design.approved": "#/components/schemas/DesignApprovedEvent",
@@ -113248,6 +113817,9 @@
                           },
                           {
                             "$ref": "#/components/schemas/BlankRestoredEvent"
+                          },
+                          {
+                            "$ref": "#/components/schemas/BlankVariantCostChangedEvent"
                           },
                           {
                             "$ref": "#/components/schemas/InkCreatedEvent"
@@ -149845,6 +150417,16 @@
                     "maxItems": 2000,
                     "type": "array"
                   },
+                  "garmentCut": {
+                    "description": "Which garment the product is, as the merchant says: ask, never read it from the product's name. With it the blank's product model is a garment of that cut, and with no scenes named it starts on a studio picture, that cut's front cut-out over a studio style. Unread where the printshop's data says what the product is.",
+                    "enum": [
+                      "tee",
+                      "hoodie",
+                      "pullover-hoodie",
+                      "sweatshirt"
+                    ],
+                    "type": "string"
+                  },
                   "name": {
                     "description": "As the library shows it. Omitted, the printshop's product name.",
                     "maxLength": 120,
@@ -178482,6 +179064,85 @@
           }
         },
         "summary": "blank.updated",
+        "tags": [
+          "Webhooks"
+        ]
+      }
+    },
+    "blank.variant_cost_changed": {
+      "post": {
+        "parameters": [
+          {
+            "description": "When this attempt was sent, in Unix seconds.",
+            "in": "header",
+            "name": "x-pixonaut-timestamp",
+            "required": true,
+            "schema": {
+              "description": "When this attempt was sent, in Unix seconds.",
+              "type": "string"
+            }
+          },
+          {
+            "description": "`v1=` followed by the hex HMAC-SHA256, keyed with the endpoint's signing secret, of the `x-pixonaut-timestamp` value, a `.`, and the raw request body.",
+            "in": "header",
+            "name": "x-pixonaut-signature",
+            "required": true,
+            "schema": {
+              "description": "`v1=` followed by the hex HMAC-SHA256, keyed with the endpoint's signing secret, of the `x-pixonaut-timestamp` value, a `.`, and the raw request body.",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "examples": {
+                "example": {
+                  "summary": "Example",
+                  "value": {
+                    "createdAt": 1790000460000,
+                    "id": "1790000460000-0c6e1d52-7f3b-4a8e-9b21-4d5a6e7f8091",
+                    "payload": {
+                      "blankId": "blank_ff71cf74abb3ccb005b8b643",
+                      "product": {
+                        "from": {
+                          "amount": "160.00",
+                          "currency": "SEK"
+                        },
+                        "to": {
+                          "amount": "167.10",
+                          "currency": "SEK"
+                        }
+                      },
+                      "region": "SE",
+                      "shipping": {
+                        "from": {
+                          "amount": "65.50",
+                          "currency": "SEK"
+                        },
+                        "to": {
+                          "amount": "65.50",
+                          "currency": "SEK"
+                        }
+                      },
+                      "variant": "v_5b0e2a179c41"
+                    },
+                    "type": "blank.variant_cost_changed"
+                  }
+                }
+              },
+              "schema": {
+                "$ref": "#/components/schemas/BlankVariantCostChangedEvent"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Any 2xx acknowledges the delivery."
+          }
+        },
+        "summary": "blank.variant_cost_changed",
         "tags": [
           "Webhooks"
         ]

@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace Pixonaut\Sdk\Tests\Contract;
 
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
+use Pixonaut\Sdk\Exception\ApiException;
+use Pixonaut\Sdk\Generated\ErrorCode;
 use Pixonaut\Sdk\Tests\Contract\Support\ContractClient;
 use Pixonaut\Sdk\Tests\Fake\Spec;
 use stdClass;
@@ -19,6 +22,10 @@ use stdClass;
 final class BlankAnswersTest extends TestCase
 {
     private const HTTP_OK = 200;
+
+    private const HTTP_NOT_FOUND = 404;
+
+    private const HTTP_UNPROCESSABLE = 422;
 
     /** A print method no release names yet: the field stays a string. */
     private const UNKNOWN_PRINT_METHOD = 'foil-transfer';
@@ -159,6 +166,70 @@ final class BlankAnswersTest extends TestCase
         self::assertCount(1, $frame);
         self::assertSame(['Oak' => 'oak', 'White' => 'paint'], $frame[0]->textures);
         self::assertNull($variants->options[0]->textures);
+    }
+
+    public function testAVariantsCostsInARegionAreRead(): void
+    {
+        $client = new ContractClient();
+        $client->fake()->answerExample('blanks.variants.costs', self::HTTP_OK);
+
+        $costs = $client->pixonaut->blanks()->listVariantCosts('blank_tshirt', region: 'SE', variant: 'v_3f9a0c1d2e4b5a6c');
+
+        self::assertSame([], $client->fake()->violations());
+        self::assertSame('/v1/blanks/blank_tshirt/variants/costs?region=SE&variant=v_3f9a0c1d2e4b5a6c', $client->fake()->log()[0]['target']);
+        $cost = $costs->costs[0];
+        self::assertSame('v_3f9a0c1d2e4b5a6c', $cost->variant);
+        self::assertSame(['167.10', 'SEK'], [$cost->product?->amount, $cost->product?->currency]);
+        self::assertSame(['65.50', 'SEK'], [$cost->shipping?->amount, $cost->shipping?->currency]);
+        self::assertSame('SE', $cost->region);
+        self::assertSame('2026-11-14T12:00:00.000Z', $cost->readAt);
+        self::assertSame('2026-11-13T12:00:00.000Z', $cost->changedAt);
+    }
+
+    public function testACostThePrintshopPublishesNoAmountForIsRead(): void
+    {
+        $client = new ContractClient();
+        $answer = self::example('blanks.variants.costs');
+        $cost = self::items($answer->costs)[0];
+        $cost->product = null;
+        $cost->shipping = null;
+        $cost->changedAt = null;
+        $client->fake()->answer('blanks.variants.costs', self::HTTP_OK, $answer);
+
+        $costs = $client->pixonaut->blanks()->listVariantCosts('blank_tshirt');
+
+        self::assertSame([], $client->fake()->violations());
+        self::assertSame('/v1/blanks/blank_tshirt/variants/costs', $client->fake()->log()[0]['target']);
+        self::assertNull($costs->costs[0]->product);
+        self::assertNull($costs->costs[0]->shipping);
+        self::assertNull($costs->costs[0]->changedAt);
+    }
+
+    /**
+     * @return array<string, array{int, string}>
+     */
+    public static function costRefusals(): array
+    {
+        return [
+            'a blank the workspace does not hold' => [self::HTTP_NOT_FOUND, ErrorCode::NOT_FOUND],
+            'a region that is no country' => [self::HTTP_UNPROCESSABLE, ErrorCode::UNKNOWN_REGION],
+            'no region asked for and none set' => [self::HTTP_UNPROCESSABLE, ErrorCode::COST_REGION_UNSET],
+        ];
+    }
+
+    #[DataProvider('costRefusals')]
+    public function testARefusedCostReadNamesWhy(int $status, string $code): void
+    {
+        $client = new ContractClient();
+        $client->fake()->answerExample('blanks.variants.costs', $status, $code);
+
+        try {
+            $client->pixonaut->blanks()->listVariantCosts('blank_tshirt', region: 'SE');
+            self::fail('It read costs the API refused.');
+        } catch (ApiException $e) {
+            self::assertSame([$status, $code, false], [$e->status, $e->errorCode, $e->retryable]);
+        }
+        self::assertSame([], $client->fake()->violations());
     }
 
     public function testAViewRenderedFromAFoldingBoxsFlatLayoutIsRead(): void

@@ -84,6 +84,7 @@ return [
         // A noun alone does not say the method lists.
         'orders.rerouteTargets' => 'listRerouteTargets',
         'printshopConnections.list' => 'listConnections',
+        'blanks.variants.costs' => 'listVariantCosts',
         // The printshop's catalogue is on its resource, beside its connections.
         'printshopCatalogueProducts.list' => 'listCatalogueProducts',
         'printshopCatalogueProducts.importBlank' => 'importCatalogueProduct',
