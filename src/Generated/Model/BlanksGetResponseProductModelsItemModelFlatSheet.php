@@ -8,6 +8,7 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
+use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -24,11 +25,13 @@ final class BlanksGetResponseProductModelsItemModelFlatSheet implements Model
      * @param float $heightMm The sheet's height, in millimetres.
      * @param string $kind A flat sheet, such as a poster.
      * @param float $widthMm The sheet's width, in millimetres.
+     * @param list<BlanksGetResponseProductModelsItemModelFlatSheetPartsItem>|null $parts Its hanger, when it hangs from one. Omitted, none.
      */
     public function __construct(
         public readonly float $heightMm,
         public readonly string $kind,
         public readonly float $widthMm,
+        public readonly ?array $parts = null,
     ) {}
 
     /**
@@ -45,6 +48,11 @@ final class BlanksGetResponseProductModelsItemModelFlatSheet implements Model
             heightMm: Decode::float(Decode::required($data, 'heightMm', $path), $path . '.heightMm'),
             kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             widthMm: Decode::float(Decode::required($data, 'widthMm', $path), $path . '.widthMm'),
+            parts: array_key_exists('parts', $data) ? Decode::list(
+                $data['parts'],
+                $path . '.parts',
+                static fn(mixed $v, string $p): BlanksGetResponseProductModelsItemModelFlatSheetPartsItem => BlanksGetResponseProductModelsItemModelFlatSheetPartsItem::fromArray(Decode::object($v, $p), $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -67,6 +75,12 @@ final class BlanksGetResponseProductModelsItemModelFlatSheet implements Model
         $data['heightMm'] = $this->heightMm;
         $data['kind'] = $this->kind;
         $data['widthMm'] = $this->widthMm;
+        if ($this->parts !== null) {
+            $data['parts'] = array_map(
+                static fn(BlanksGetResponseProductModelsItemModelFlatSheetPartsItem $v): mixed => Encode::model($v),
+                $this->parts,
+            );
+        }
         return $data;
     }
 }
