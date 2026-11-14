@@ -1,5 +1,18 @@
 # Changelog
 
+## [14.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v13.0.0...v14.0.0) (2026-11-14)
+
+Targets the Pixonaut API 8.1.0.
+
+### ⚠ BREAKING CHANGES
+
+* the constructor of PrintshopCatalogueProductsListResponseProductsItem gains the required $productKind.
+
+### Features
+
+* a product model of a kind added later reads as an UnknownVariant ([#55](https://github.com/pixonaut-app/pixonaut-php/issues/55)) ([462e1e1](https://github.com/pixonaut-app/pixonaut-php/commit/462e1e1934ac88a17b6bd503744e70e2184c7475))
+* target the published Pixonaut API 8.1.0 ([#56](https://github.com/pixonaut-app/pixonaut-php/issues/56)) ([1f97a9c](https://github.com/pixonaut-app/pixonaut-php/commit/1f97a9c6c09da6218ea463fddc946f7e7e3340f5))
+
 ## [13.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v12.1.0...v13.0.0) (2026-11-14)
 
 Targets the Pixonaut API 8.0.0.
