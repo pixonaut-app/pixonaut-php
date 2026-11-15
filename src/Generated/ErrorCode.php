@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The error codes the API 8.3.0 spec names: its refusals (`x-refusals`), and the `error`
+ * The error codes the API 8.4.0 spec names: its refusals (`x-refusals`), and the `error`
  * values of every error answer. The client's own codes are on `ApiException`.
  */
 final class ErrorCode
@@ -1260,6 +1260,11 @@ final class ErrorCode
     /**
      * Documented with status 422.
      */
+    public const SCENE_ROW_INVALID = 'scene_row_invalid';
+
+    /**
+     * Documented with status 422.
+     */
     public const SCENE_VIEW_REPEATED = 'scene_view_repeated';
 
     /**
@@ -1802,6 +1807,7 @@ final class ErrorCode
         'saved_address_not_found' => [422],
         'scene_not_found' => [422],
         'scene_retired' => [422],
+        'scene_row_invalid' => [422],
         'scene_view_repeated' => [422],
         'sdk_outdated' => [409],
         'sdk_version_invalid' => [400],

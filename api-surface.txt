@@ -5850,6 +5850,7 @@ Pixonaut\Sdk\Generated\ErrorCode::SANDBOX_TENANT const
 Pixonaut\Sdk\Generated\ErrorCode::SAVED_ADDRESS_NOT_FOUND const
 Pixonaut\Sdk\Generated\ErrorCode::SCENE_NOT_FOUND const
 Pixonaut\Sdk\Generated\ErrorCode::SCENE_RETIRED const
+Pixonaut\Sdk\Generated\ErrorCode::SCENE_ROW_INVALID const
 Pixonaut\Sdk\Generated\ErrorCode::SCENE_VIEW_REPEATED const
 Pixonaut\Sdk\Generated\ErrorCode::SDK_OUTDATED const
 Pixonaut\Sdk\Generated\ErrorCode::SDK_VERSION_INVALID const
@@ -19423,8 +19424,9 @@ final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRe
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequestScenesItem::$anchor readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequestScenesItem::$camera readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequestScenesItem::$cutOut readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequestScenesItem::$row readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequestScenesItem::$sceneId readonly string
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequestScenesItem::__construct(string $sceneId, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequestScenesItem::__construct(string $sceneId, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?array $row = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequestScenesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequestScenesItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequestScenesItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRequestScenesItem::toArray(): array

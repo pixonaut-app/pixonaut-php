@@ -8,6 +8,7 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
+use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -26,12 +27,14 @@ final class PrintshopCatalogueProductsImportBlankRequestScenesItem implements Mo
      * @param string|null $camera For a studio style, a scene with no photo: the key of its camera the product is seen from, as the scene's `geometry.studio.cameras` lists them. Required for one, and left out for any other scene. A style is listed once for each camera it is shown from.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestScenesItemCamera}.
      * @param string|null $cutOut For a studio style showing a garment: the id of the garment's cut-out, a scene whose `cutOut` is true, laid over the style's backdrop with a shadow. Left out for a product the style draws from its measures, and for any other scene.
+     * @param array<string, string>|null $row The option values the stock photo shows, by option name, of the options the blank's photos change with (`photosVaryBy`): shoppers see it only for the variants with these values. Absent or empty: every variant.
      */
     public function __construct(
         public readonly string $sceneId,
         public readonly ?string $anchor = null,
         public readonly ?string $camera = null,
         public readonly ?string $cutOut = null,
+        public readonly ?array $row = null,
     ) {}
 
     /**
@@ -49,6 +52,11 @@ final class PrintshopCatalogueProductsImportBlankRequestScenesItem implements Mo
             anchor: array_key_exists('anchor', $data) ? Decode::string($data['anchor'], $path . '.anchor') : null,
             camera: array_key_exists('camera', $data) ? Decode::string($data['camera'], $path . '.camera') : null,
             cutOut: array_key_exists('cutOut', $data) ? Decode::string($data['cutOut'], $path . '.cutOut') : null,
+            row: array_key_exists('row', $data) ? Decode::map(
+                $data['row'],
+                $path . '.row',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -77,6 +85,9 @@ final class PrintshopCatalogueProductsImportBlankRequestScenesItem implements Mo
         }
         if ($this->cutOut !== null) {
             $data['cutOut'] = $this->cutOut;
+        }
+        if ($this->row !== null) {
+            $data['row'] = Encode::object($this->row);
         }
         return $data;
     }
