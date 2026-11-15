@@ -24,7 +24,7 @@ final class BlanksVariantsListResponseVariantsItem implements Model
     /**
      * @param array<string, string> $options
      * @param BlanksVariantsListResponseVariantsItemRetired|null $retired
-     * @param list<BlanksVariantsListResponseVariantsItemViewsItem> $views The views it has a photo in, in the blank's order: each view whose photo of its row shows it.
+     * @param list<BlanksVariantsListResponseVariantsItemViewsItem> $views The views it has a photo in, in the blank's order: each view whose photo of its row shows it, a scene or a setting the blank is shown in included.
      * @param BlanksVariantsListResponseVariantsItemFrame|null $frame How the frame of its product looks, from the frame part of its row's product model. Absent on a product with no frame part.
      */
     public function __construct(
