@@ -1,5 +1,16 @@
 # Changelog
 
+## [18.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v17.0.0...v18.0.0) (2026-11-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* the constructors of TemplatesPrintSizeValidateRequestOption1 and TemplatesPrintSizeValidateRequestOption2 gain the optional last arguments $variant and $variantRow, ScenesListResponseScenesItemOffersItem gains $standIn, and the blank models (BlanksGetResponse, BlanksListResponseBlanksItem, PrintshopCatalogueProductsImportBlankResponse200Blank, PrintshopCatalogueProductsImportBlankResponse202Blank) and their OptionsItem models gain the optional $bakesJob and $newValues, which are not last on the blank models. Code that names its arguments is unchanged; code that passes a blank model's optional arguments by position must be checked.
+
+### Features
+
+* target the published Pixonaut API 9.0.0 ([#64](https://github.com/pixonaut-app/pixonaut-php/issues/64)) ([d4ccb0a](https://github.com/pixonaut-app/pixonaut-php/commit/d4ccb0a8f4de9c81d827ae1f719fb708b6e99a4c))
+
 ## [17.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v16.0.0...v17.0.0) (2026-11-15)
 
 Targets the Pixonaut API 8.4.0.
