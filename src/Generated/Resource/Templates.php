@@ -62,7 +62,7 @@ final class Templates
      * @param string $placementId The placement on that blank.
      * @param string|null $mockupId One of the placement's mockup photos. Name it or `viewId`, not both; neither draws on the placement's first view.
      * @param string|null $viewId One of the placement's views: the render uses its photo of `variant`, else its default photo. Name it or `mockupId`, not both.
-     * @param string|null $variant A variant ref of the blank, with `viewId`: the render uses the view's photo that shows it.
+     * @param string|null $variant A variant ref of the blank: with `viewId`, the render uses the view's photo that shows it; with no photo named, that of the placement's first view showing it.
      * @param string|null $size The long edge in pixels, clamped to the sizes the api renders.
      * @param string|null $bleed Refused: a full-bleed reference cannot be composited.
      * @param string|null $showcase The id of one of the template's showcases, as its read lists them: the template is drawn with that set's values in place of its defaults.

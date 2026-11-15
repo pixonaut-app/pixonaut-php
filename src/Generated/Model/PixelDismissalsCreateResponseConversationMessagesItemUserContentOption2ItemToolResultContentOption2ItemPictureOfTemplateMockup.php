@@ -22,6 +22,7 @@ final class PixelDismissalsCreateResponseConversationMessagesItemUserContentOpti
 
     /**
      * @param string|null $mockupId
+     * @param string|null $variant
      * @param string|null $viewId
      */
     public function __construct(
@@ -30,6 +31,7 @@ final class PixelDismissalsCreateResponseConversationMessagesItemUserContentOpti
         public readonly string $kind,
         public readonly string $placementId,
         public readonly ?string $mockupId = null,
+        public readonly ?string $variant = null,
         public readonly ?string $viewId = null,
     ) {}
 
@@ -49,6 +51,7 @@ final class PixelDismissalsCreateResponseConversationMessagesItemUserContentOpti
             kind: Decode::string(Decode::required($data, 'kind', $path), $path . '.kind'),
             placementId: Decode::string(Decode::required($data, 'placementId', $path), $path . '.placementId'),
             mockupId: array_key_exists('mockupId', $data) ? Decode::string($data['mockupId'], $path . '.mockupId') : null,
+            variant: array_key_exists('variant', $data) ? Decode::string($data['variant'], $path . '.variant') : null,
             viewId: array_key_exists('viewId', $data) ? Decode::string($data['viewId'], $path . '.viewId') : null,
         );
         $model->decoded = $data;
@@ -75,6 +78,9 @@ final class PixelDismissalsCreateResponseConversationMessagesItemUserContentOpti
         $data['placementId'] = $this->placementId;
         if ($this->mockupId !== null) {
             $data['mockupId'] = $this->mockupId;
+        }
+        if ($this->variant !== null) {
+            $data['variant'] = $this->variant;
         }
         if ($this->viewId !== null) {
             $data['viewId'] = $this->viewId;
