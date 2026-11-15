@@ -260,7 +260,7 @@ final class Templates
      * @param string $id A template id, `baseId@version`.
      * @param TemplatesPrintSizeValidateRequestOption1|TemplatesPrintSizeValidateRequestOption2 $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_json`, `db_error`, `feature_disabled`, `forbidden`, `invalid_body`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_json`, `db_error`, `feature_disabled`, `forbidden`, `invalid_body`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function validatePrintSize(string $id, TemplatesPrintSizeValidateRequestOption1|TemplatesPrintSizeValidateRequestOption2 $body): TemplatesPrintSizeValidateResponseFalse|TemplatesPrintSizeValidateResponseTrue|TemplatesPrintSizeValidateResponseOption3
     {

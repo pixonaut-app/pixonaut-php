@@ -42,6 +42,8 @@ final class BlanksGetResponse implements Model
      * @param string $status `importing` while the blank's import, from a printshop's catalogue or a CSV file, runs in the background: it has its name and nothing else yet. `generating` for a blank generated with AI until its photo is approved: `generation` says whether it is drawing, waits for the decision, or drew nothing. `failed` when an import failed for good (`importFailure` says why); remove it and import again. `ready` otherwise.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksGetResponseStatus}.
      * @param string|null $stockItemKey The stock item the blank's scenes photograph; null for none.
+     * @param string|null $bakesJob Where the job that draws the blank's `queued` and `failed` pictures (`settingBakes`) stands: `queued` is waiting its turn or its next try, `running` is drawing now, `failed` gave up after its last try and starts again at the next write of the blank. Null when no job is drawing: the blank is bound to no setting, or its job ended. Answered for one blank, never in a list.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBakesJob}.
      * @param BlanksGetResponseBoundProduct|null $boundProduct The partner's product a bound blank (`partnerLocked`) is bound to, or null for a blank bound to none. Answered for one blank, never in a list.
      * @param list<BlanksGetResponseHeldScenesItem>|null $heldScenes The blank's rows on each held scene it shows, a scene with its product in a hand, in the blank's order: how many rows the scene shows, and which it does not and why. A scene limited to some option values answers for the rows with those values alone. Empty for a blank that shows no held scene, or deleted. Answered for one blank, never in a list.
      * @param list<BlanksGetResponseOrderItemOption1|BlanksGetResponseOrderItemOption2>|null $order The blank's stored views and the scenes it shows as one ordered list, each saying its source: `stock` (a scene), `catalogue` (the printshop's photos) or `own` (the merchant's). The first with a photo is the blank's picture. Answered for one blank, never in a list.
@@ -80,6 +82,7 @@ final class BlanksGetResponse implements Model
         public readonly string $status,
         public readonly ?string $stockItemKey,
         public readonly float $updatedAt,
+        public readonly ?string $bakesJob = null,
         public readonly ?BlanksGetResponseBoundProduct $boundProduct = null,
         public readonly ?array $heldScenes = null,
         public readonly ?array $order = null,
@@ -201,6 +204,11 @@ final class BlanksGetResponse implements Model
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
             updatedAt: Decode::float(Decode::required($data, 'updatedAt', $path), $path . '.updatedAt'),
+            bakesJob: array_key_exists('bakesJob', $data) ? Decode::nullable(
+                $data['bakesJob'],
+                $path . '.bakesJob',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
             boundProduct: array_key_exists('boundProduct', $data) ? Decode::nullable(
                 $data['boundProduct'],
                 $path . '.boundProduct',
@@ -297,6 +305,9 @@ final class BlanksGetResponse implements Model
         $data['status'] = $this->status;
         $data['stockItemKey'] = $this->stockItemKey;
         $data['updatedAt'] = $this->updatedAt;
+        if ($this->bakesJob !== null) {
+            $data['bakesJob'] = $this->bakesJob;
+        }
         if ($this->boundProduct !== null) {
             $data['boundProduct'] = Encode::model($this->boundProduct);
         }

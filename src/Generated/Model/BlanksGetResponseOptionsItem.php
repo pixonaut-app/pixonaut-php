@@ -29,6 +29,7 @@ final class BlanksGetResponseOptionsItem implements Model
      * @param list<string>|null $anyColour The values the shopper picks any colour for with a colour picker, their colour fill the one shown until they do: only on a blank made by a custom printshop. Absent when none does.
      * @param BlanksGetResponseOptionsItemLocalizedNames|null $localizedNames The option's name per customer-facing language, by code: only the languages it has one in. A language left out reads `name`.
      * @param array<string, BlanksGetResponseOptionsItemLocalizedValuesValue>|null $localizedValues Each value's name per customer-facing language, by value: only the values that have one. A language left out reads the value itself.
+     * @param list<string>|null $newValues The values the printshop newly offered at a re-sync of the blank, which arrived off sale: marked new until the blank's options are next saved. Absent when there is none.
      * @param array<string, string>|null $textures The texture a stock photo's dye paints each value in, in place of its colour, by value: only the values that have one, such as a wooden frame's oak. Absent when none has one.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemTexturesValue}.
      */
@@ -40,6 +41,7 @@ final class BlanksGetResponseOptionsItem implements Model
         public readonly ?array $anyColour = null,
         public readonly ?BlanksGetResponseOptionsItemLocalizedNames $localizedNames = null,
         public readonly ?array $localizedValues = null,
+        public readonly ?array $newValues = null,
         public readonly ?array $textures = null,
     ) {}
 
@@ -84,6 +86,11 @@ final class BlanksGetResponseOptionsItem implements Model
                 $data['localizedValues'],
                 $path . '.localizedValues',
                 static fn(mixed $v, string $p): BlanksGetResponseOptionsItemLocalizedValuesValue => BlanksGetResponseOptionsItemLocalizedValuesValue::fromArray(Decode::object($v, $p), $p),
+            ) : null,
+            newValues: array_key_exists('newValues', $data) ? Decode::list(
+                $data['newValues'],
+                $path . '.newValues',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : null,
             textures: array_key_exists('textures', $data) ? Decode::map(
                 $data['textures'],
@@ -131,6 +138,9 @@ final class BlanksGetResponseOptionsItem implements Model
                     $this->localizedValues,
                 ),
             );
+        }
+        if ($this->newValues !== null) {
+            $data['newValues'] = $this->newValues;
         }
         if ($this->textures !== null) {
             $data['textures'] = Encode::object($this->textures);

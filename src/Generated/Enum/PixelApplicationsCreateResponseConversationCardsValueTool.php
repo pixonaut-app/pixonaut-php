@@ -327,6 +327,12 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
 
     public const SET_STORE_VARIATION_SETUP = 'set_store_variation_setup';
 
+    public const SET_STORE_PRODUCT_VALUE_CARDS = 'set_store_product_value_cards';
+
+    public const UPDATE_STORE_PRICING_SETTINGS = 'update_store_pricing_settings';
+
+    public const PRICE_STORE_PRODUCT = 'price_store_product';
+
     /**
      * Every value this release knows.
      */
@@ -488,5 +494,8 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
         self::SET_STORE_PRODUCT_SHOWCASES,
         self::SET_STORE_VARIATION_PRINT_SIZE,
         self::SET_STORE_VARIATION_SETUP,
+        self::SET_STORE_PRODUCT_VALUE_CARDS,
+        self::UPDATE_STORE_PRICING_SETTINGS,
+        self::PRICE_STORE_PRODUCT,
     ];
 }

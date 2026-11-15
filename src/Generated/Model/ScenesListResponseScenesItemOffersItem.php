@@ -28,6 +28,7 @@ final class ScenesListResponseScenesItemOffersItem implements Model
      * @param list<ScenesListResponseScenesItemOffersItemRowsItem> $rows
      * @param ScenesListResponseScenesItemOffersItemStudio|null $studio For a garment cut-out, the studio style it is laid over: the blank is bound to that style from this camera, with this scene as its `cutOut`. Null for any other scene.
      * @param bool|null $fitsKind With `view=picker` and `forKind`: whether a product of that kind can be shown at this place. Absent otherwise.
+     * @param list<ScenesListResponseScenesItemOffersItemStandInItem>|null $standIn With `view=picker`, at a setting's anchor: the outline the product would have in the setting's photo, corner by corner, each a share of the photo's width and height from its top left. It is of the first row shown there; with no `forBlank`, whose product has no measures, it is the room the anchor has for a product. Absent where no row is shown, and for any other scene.
      */
     public function __construct(
         public readonly ?string $anchor,
@@ -35,6 +36,7 @@ final class ScenesListResponseScenesItemOffersItem implements Model
         public readonly array $rows,
         public readonly ?ScenesListResponseScenesItemOffersItemStudio $studio,
         public readonly ?bool $fitsKind = null,
+        public readonly ?array $standIn = null,
     ) {}
 
     /**
@@ -69,6 +71,11 @@ final class ScenesListResponseScenesItemOffersItem implements Model
                 static fn(mixed $v, string $p): ScenesListResponseScenesItemOffersItemStudio => ScenesListResponseScenesItemOffersItemStudio::fromArray(Decode::object($v, $p), $p),
             ),
             fitsKind: array_key_exists('fitsKind', $data) ? Decode::bool($data['fitsKind'], $path . '.fitsKind') : null,
+            standIn: array_key_exists('standIn', $data) ? Decode::list(
+                $data['standIn'],
+                $path . '.standIn',
+                static fn(mixed $v, string $p): ScenesListResponseScenesItemOffersItemStandInItem => ScenesListResponseScenesItemOffersItemStandInItem::fromArray(Decode::object($v, $p), $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -97,6 +104,12 @@ final class ScenesListResponseScenesItemOffersItem implements Model
         $data['studio'] = $this->studio === null ? null : Encode::model($this->studio);
         if ($this->fitsKind !== null) {
             $data['fitsKind'] = $this->fitsKind;
+        }
+        if ($this->standIn !== null) {
+            $data['standIn'] = array_map(
+                static fn(ScenesListResponseScenesItemOffersItemStandInItem $v): mixed => Encode::model($v),
+                $this->standIn,
+            );
         }
         return $data;
     }

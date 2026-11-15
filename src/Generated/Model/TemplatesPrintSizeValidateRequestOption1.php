@@ -8,6 +8,7 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
+use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -23,12 +24,16 @@ final class TemplatesPrintSizeValidateRequestOption1 implements Model
     /**
      * @param string|null $blankId
      * @param string|null $placementId
+     * @param string|null $variant A variant of the blank, by ref (`v_…`): on a blank whose print areas change with an option, each size is judged against that variant's print area. A ref the blank has no variant of is refused with `variant_not_of_blank`. On any other blank it is not checked.
+     * @param array<string, string>|null $variantRow The size the print is for, as the blank's option values, such as `{"Size": "40x50"}`, in place of `variant`: a value of each option the blank's print areas change with, and nothing else, or it is refused with `variant_row_invalid`. Ignored on a blank whose print areas change with nothing.
      */
     public function __construct(
         public readonly float $heightMm,
         public readonly float $widthMm,
         public readonly ?string $blankId = null,
         public readonly ?string $placementId = null,
+        public readonly ?string $variant = null,
+        public readonly ?array $variantRow = null,
     ) {}
 
     /**
@@ -46,6 +51,12 @@ final class TemplatesPrintSizeValidateRequestOption1 implements Model
             widthMm: Decode::float(Decode::required($data, 'widthMm', $path), $path . '.widthMm'),
             blankId: array_key_exists('blankId', $data) ? Decode::string($data['blankId'], $path . '.blankId') : null,
             placementId: array_key_exists('placementId', $data) ? Decode::string($data['placementId'], $path . '.placementId') : null,
+            variant: array_key_exists('variant', $data) ? Decode::string($data['variant'], $path . '.variant') : null,
+            variantRow: array_key_exists('variantRow', $data) ? Decode::map(
+                $data['variantRow'],
+                $path . '.variantRow',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -72,6 +83,12 @@ final class TemplatesPrintSizeValidateRequestOption1 implements Model
         }
         if ($this->placementId !== null) {
             $data['placementId'] = $this->placementId;
+        }
+        if ($this->variant !== null) {
+            $data['variant'] = $this->variant;
+        }
+        if ($this->variantRow !== null) {
+            $data['variantRow'] = Encode::object($this->variantRow);
         }
         return $data;
     }
