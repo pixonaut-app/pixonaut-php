@@ -896,6 +896,11 @@ Pixonaut\Sdk\Generated\Enum\BlankDriftedEventPayloadSeverity::ERROR const
 Pixonaut\Sdk\Generated\Enum\BlankDriftedEventPayloadSeverity::INFO const
 Pixonaut\Sdk\Generated\Enum\BlankDriftedEventPayloadSeverity::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlankDriftedEventPayloadSeverity::WARNING const
+final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBakesJob
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBakesJob::FAILED const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBakesJob::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBakesJob::QUEUED const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBakesJob::RUNNING const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseGenerationDecision
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseGenerationDecision::APPROVED const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseGenerationDecision::DENIED const
@@ -1155,6 +1160,11 @@ final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseVariantsItemRetiredReas
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseVariantsItemRetiredReason::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseVariantsItemRetiredReason::NO_LONGER_SOLD const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseVariantsItemRetiredReason::RETIRED const
+final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBakesJob
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBakesJob::FAILED const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBakesJob::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBakesJob::QUEUED const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBakesJob::RUNNING const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemGenerationDecision
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemGenerationDecision::APPROVED const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemGenerationDecision::DENIED const
@@ -2893,6 +2903,7 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::MASK_PICTURE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::MUTE_AUTOMATION const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::PLACE_ORDER const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::PRICE_STORE_PRODUCT const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::PUBLISH_TEMPLATE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::PUBLISH_TEMPLATES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::RECONNECT_PRINTSHOP const
@@ -2932,6 +2943,7 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRINT_FILE_FORM const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PRINT_SIZE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_SETUP const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_VARIANTS const
@@ -2973,6 +2985,7 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_STORE_ATTRIBUTE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_STORE_ATTRIBUTE_TERM const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_STORE_CATEGORY const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_STORE_PRICING_SETTINGS const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_STORE_PRODUCT const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_STORE_PRODUCT_VARIATION const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_STORE_TAG const
@@ -3085,6 +3098,7 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::MASK_PICTURE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::MUTE_AUTOMATION const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::PLACE_ORDER const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::PRICE_STORE_PRODUCT const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::PUBLISH_TEMPLATE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::PUBLISH_TEMPLATES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::RECONNECT_PRINTSHOP const
@@ -3124,6 +3138,7 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRINT_FILE_FORM const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_VARIATION_PRINT_SIZE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_VARIATION_SETUP const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_VARIATION_VARIANTS const
@@ -3165,6 +3180,7 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_STORE_ATTRIBUTE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_STORE_ATTRIBUTE_TERM const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_STORE_CATEGORY const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_STORE_PRICING_SETTINGS const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_STORE_PRODUCT const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_STORE_PRODUCT_VARIATION const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_STORE_TAG const
@@ -3286,6 +3302,7 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::MASK_PICTURE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::MUTE_AUTOMATION const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::PLACE_ORDER const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::PRICE_STORE_PRODUCT const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::PUBLISH_TEMPLATE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::PUBLISH_TEMPLATES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::RECONNECT_PRINTSHOP const
@@ -3325,6 +3342,7 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRINT_FILE_FORM const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PRINT_SIZE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_SETUP const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_VARIANTS const
@@ -3366,6 +3384,7 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_STORE_ATTRIBUTE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_STORE_ATTRIBUTE_TERM const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_STORE_CATEGORY const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_STORE_PRICING_SETTINGS const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_STORE_PRODUCT const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_STORE_PRODUCT_VARIATION const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_STORE_TAG const
@@ -3669,6 +3688,11 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestScenesIt
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestScenesItemCamera::FRONT const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestScenesItemCamera::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankRequestScenesItemCamera::SIDE const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBakesJob
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBakesJob::FAILED const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBakesJob::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBakesJob::QUEUED const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBakesJob::RUNNING const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankGenerationDecision
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankGenerationDecision::APPROVED const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankGenerationDecision::DENIED const
@@ -3942,6 +3966,11 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200JobS
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200JobState::QUEUED const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200JobState::RUNNING const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200JobState::SUCCEEDED const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankBakesJob
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankBakesJob::FAILED const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankBakesJob::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankBakesJob::QUEUED const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankBakesJob::RUNNING const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankGenerationDecision
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankGenerationDecision::APPROVED const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankGenerationDecision::DENIED const
@@ -9829,6 +9858,7 @@ Pixonaut\Sdk\Generated\Model\BlankVariantCostChangedEventPayloadShippingTo::toAr
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$areasVaryBy readonly array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$axes readonly array
+Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$bakesJob readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$boundProduct readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$categoryId readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$copiedFrom readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseCopiedFrom
@@ -9863,7 +9893,7 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$thumbnailUrl readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$variantCount readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::$variants readonly ?array
-Pixonaut\Sdk\Generated\Model\BlanksGetResponse::__construct(array $areasVaryBy, array $axes, ?string $categoryId, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseCopiedFrom $copiedFrom, float $createdAt, string $defaultPrintshopId, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseDeleted $deleted, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseGeneration $generation, string $id, ?string $importFailure, ?string $machineProfileId, array $modelVariesBy, string $name, array $options, ?float $optionsConfirmedAt, ?string $paintBy, bool $partnerLocked, array $photosVaryBy, array $placements, array $productModels, ?array $referenceRow, Pixonaut\Sdk\Generated\Model\BlanksGetResponseResolved $resolved, string $status, ?string $stockItemKey, float $updatedAt, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct $boundProduct = null, ?array $heldScenes = null, ?array $order = null, ?int $orderCount = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePhotoCoverage $photoCoverage = null, ?array $placementsAtOtherSize = null, ?array $settingBakes = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseSharedViewPhoto $sharedViewPhoto = null, ?string $thumbnailUrl = null, ?int $variantCount = null, ?array $variants = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponse::__construct(array $areasVaryBy, array $axes, ?string $categoryId, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseCopiedFrom $copiedFrom, float $createdAt, string $defaultPrintshopId, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseDeleted $deleted, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseGeneration $generation, string $id, ?string $importFailure, ?string $machineProfileId, array $modelVariesBy, string $name, array $options, ?float $optionsConfirmedAt, ?string $paintBy, bool $partnerLocked, array $photosVaryBy, array $placements, array $productModels, ?array $referenceRow, Pixonaut\Sdk\Generated\Model\BlanksGetResponseResolved $resolved, string $status, ?string $stockItemKey, float $updatedAt, ?string $bakesJob = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct $boundProduct = null, ?array $heldScenes = null, ?array $order = null, ?int $orderCount = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePhotoCoverage $photoCoverage = null, ?array $placementsAtOtherSize = null, ?array $settingBakes = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseSharedViewPhoto $sharedViewPhoto = null, ?string $thumbnailUrl = null, ?int $variantCount = null, ?array $variants = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponse static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::toArray(): array
@@ -9951,10 +9981,11 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$appearances readonly
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$localizedNames readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItemLocalizedNames
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$localizedValues readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$newValues readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$textures readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$tones readonly array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::$values readonly array
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?array $anyColour = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null, ?array $textures = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?array $anyColour = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null, ?array $newValues = null, ?array $textures = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOptionsItem::toArray(): array
@@ -10634,6 +10665,7 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponse::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$areasVaryBy readonly array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$axes readonly array
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$bakesJob readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$boundProduct readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$categoryId readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$copiedFrom readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemCopiedFrom
@@ -10668,7 +10700,7 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$thumbnailUrl readonl
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$variantCount readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::$variants readonly ?array
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::__construct(array $areasVaryBy, array $axes, ?string $categoryId, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemCopiedFrom $copiedFrom, float $createdAt, string $defaultPrintshopId, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemDeleted $deleted, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemGeneration $generation, string $id, ?string $importFailure, ?string $machineProfileId, array $modelVariesBy, string $name, array $options, ?float $optionsConfirmedAt, ?string $paintBy, bool $partnerLocked, array $photosVaryBy, array $placements, array $productModels, ?array $referenceRow, Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemResolved $resolved, string $status, ?string $stockItemKey, float $updatedAt, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct $boundProduct = null, ?array $heldScenes = null, ?array $order = null, ?int $orderCount = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPhotoCoverage $photoCoverage = null, ?array $placementsAtOtherSize = null, ?array $settingBakes = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSharedViewPhoto $sharedViewPhoto = null, ?string $thumbnailUrl = null, ?int $variantCount = null, ?array $variants = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::__construct(array $areasVaryBy, array $axes, ?string $categoryId, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemCopiedFrom $copiedFrom, float $createdAt, string $defaultPrintshopId, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemDeleted $deleted, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemGeneration $generation, string $id, ?string $importFailure, ?string $machineProfileId, array $modelVariesBy, string $name, array $options, ?float $optionsConfirmedAt, ?string $paintBy, bool $partnerLocked, array $photosVaryBy, array $placements, array $productModels, ?array $referenceRow, Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemResolved $resolved, string $status, ?string $stockItemKey, float $updatedAt, ?string $bakesJob = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct $boundProduct = null, ?array $heldScenes = null, ?array $order = null, ?int $orderCount = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPhotoCoverage $photoCoverage = null, ?array $placementsAtOtherSize = null, ?array $settingBakes = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSharedViewPhoto $sharedViewPhoto = null, ?string $thumbnailUrl = null, ?int $variantCount = null, ?array $variants = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::toArray(): array
@@ -10756,10 +10788,11 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$appearanc
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$localizedNames readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItemLocalizedNames
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$localizedValues readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$newValues readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$textures readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$tones readonly array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::$values readonly array
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?array $anyColour = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null, ?array $textures = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?array $anyColour = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null, ?array $newValues = null, ?array $textures = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOptionsItem::toArray(): array
@@ -19440,6 +19473,7 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200::t
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::$areasVaryBy readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::$axes readonly array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::$bakesJob readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::$boundProduct readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::$categoryId readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::$copiedFrom readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankCopiedFrom
@@ -19474,7 +19508,7 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::$variantCount readonly ?int
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::$variants readonly ?array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::__construct(array $areasVaryBy, array $axes, ?string $categoryId, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankCopiedFrom $copiedFrom, float $createdAt, string $defaultPrintshopId, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankDeleted $deleted, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankGeneration $generation, string $id, ?string $importFailure, ?string $machineProfileId, array $modelVariesBy, string $name, array $options, ?float $optionsConfirmedAt, ?string $paintBy, bool $partnerLocked, array $photosVaryBy, array $placements, array $productModels, ?array $referenceRow, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankResolved $resolved, string $status, ?string $stockItemKey, float $updatedAt, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct $boundProduct = null, ?array $heldScenes = null, ?array $order = null, ?int $orderCount = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPhotoCoverage $photoCoverage = null, ?array $placementsAtOtherSize = null, ?array $settingBakes = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSharedViewPhoto $sharedViewPhoto = null, ?string $thumbnailUrl = null, ?int $variantCount = null, ?array $variants = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::__construct(array $areasVaryBy, array $axes, ?string $categoryId, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankCopiedFrom $copiedFrom, float $createdAt, string $defaultPrintshopId, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankDeleted $deleted, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankGeneration $generation, string $id, ?string $importFailure, ?string $machineProfileId, array $modelVariesBy, string $name, array $options, ?float $optionsConfirmedAt, ?string $paintBy, bool $partnerLocked, array $photosVaryBy, array $placements, array $productModels, ?array $referenceRow, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankResolved $resolved, string $status, ?string $stockItemKey, float $updatedAt, ?string $bakesJob = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct $boundProduct = null, ?array $heldScenes = null, ?array $order = null, ?int $orderCount = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPhotoCoverage $photoCoverage = null, ?array $placementsAtOtherSize = null, ?array $settingBakes = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSharedViewPhoto $sharedViewPhoto = null, ?string $thumbnailUrl = null, ?int $variantCount = null, ?array $variants = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::toArray(): array
@@ -19562,10 +19596,11 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$localizedNames readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemLocalizedNames
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$localizedValues readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$newValues readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$textures readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$tones readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::$values readonly array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?array $anyColour = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null, ?array $textures = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?array $anyColour = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null, ?array $newValues = null, ?array $textures = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItem::toArray(): array
@@ -20259,6 +20294,7 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202::t
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::$areasVaryBy readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::$axes readonly array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::$bakesJob readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::$boundProduct readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::$categoryId readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::$copiedFrom readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankCopiedFrom
@@ -20293,7 +20329,7 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::$variantCount readonly ?int
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::$variants readonly ?array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::__construct(array $areasVaryBy, array $axes, ?string $categoryId, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankCopiedFrom $copiedFrom, float $createdAt, string $defaultPrintshopId, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankDeleted $deleted, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankGeneration $generation, string $id, ?string $importFailure, ?string $machineProfileId, array $modelVariesBy, string $name, array $options, ?float $optionsConfirmedAt, ?string $paintBy, bool $partnerLocked, array $photosVaryBy, array $placements, array $productModels, ?array $referenceRow, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankResolved $resolved, string $status, ?string $stockItemKey, float $updatedAt, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct $boundProduct = null, ?array $heldScenes = null, ?array $order = null, ?int $orderCount = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPhotoCoverage $photoCoverage = null, ?array $placementsAtOtherSize = null, ?array $settingBakes = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSharedViewPhoto $sharedViewPhoto = null, ?string $thumbnailUrl = null, ?int $variantCount = null, ?array $variants = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::__construct(array $areasVaryBy, array $axes, ?string $categoryId, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankCopiedFrom $copiedFrom, float $createdAt, string $defaultPrintshopId, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankDeleted $deleted, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankGeneration $generation, string $id, ?string $importFailure, ?string $machineProfileId, array $modelVariesBy, string $name, array $options, ?float $optionsConfirmedAt, ?string $paintBy, bool $partnerLocked, array $photosVaryBy, array $placements, array $productModels, ?array $referenceRow, Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankResolved $resolved, string $status, ?string $stockItemKey, float $updatedAt, ?string $bakesJob = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct $boundProduct = null, ?array $heldScenes = null, ?array $order = null, ?int $orderCount = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPhotoCoverage $photoCoverage = null, ?array $placementsAtOtherSize = null, ?array $settingBakes = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSharedViewPhoto $sharedViewPhoto = null, ?string $thumbnailUrl = null, ?int $variantCount = null, ?array $variants = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::toArray(): array
@@ -20381,10 +20417,11 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$localizedNames readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemLocalizedNames
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$localizedValues readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$newValues readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$textures readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$tones readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::$values readonly array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?array $anyColour = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null, ?array $textures = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::__construct(array $appearances, string $name, array $tones, array $values, ?array $anyColour = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemLocalizedNames $localizedNames = null, ?array $localizedValues = null, ?array $newValues = null, ?array $textures = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItem::toArray(): array
@@ -28602,8 +28639,9 @@ Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItem::$anchor rea
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItem::$camera readonly ?string
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItem::$fitsKind readonly ?bool
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItem::$rows readonly array
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItem::$standIn readonly ?array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItem::$studio readonly ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStudio
-Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItem::__construct(?string $anchor, ?string $camera, array $rows, ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStudio $studio, ?bool $fitsKind = null)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItem::__construct(?string $anchor, ?string $camera, array $rows, ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStudio $studio, ?bool $fitsKind = null, ?array $standIn = null)
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItem static
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItem::toArray(): array
@@ -28615,6 +28653,13 @@ Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemRowsItem::__c
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemRowsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemRowsItem static
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemRowsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemRowsItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStandInItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStandInItem::$x readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStandInItem::$y readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStandInItem::__construct(float $x, float $y)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStandInItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStandInItem static
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStandInItem::raw(): array
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStandInItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStudio implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStudio::$camera readonly string
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemOffersItemStudio::$label readonly string
@@ -38446,8 +38491,10 @@ final class Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption1::$blankId readonly ?string
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption1::$heightMm readonly float
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption1::$placementId readonly ?string
+Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption1::$variant readonly ?string
+Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption1::$variantRow readonly ?array
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption1::$widthMm readonly float
-Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption1::__construct(float $heightMm, float $widthMm, ?string $blankId = null, ?string $placementId = null)
+Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption1::__construct(float $heightMm, float $widthMm, ?string $blankId = null, ?string $placementId = null, ?string $variant = null, ?array $variantRow = null)
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption1::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption1 static
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption1::raw(): array
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption1::toArray(): array
@@ -38455,7 +38502,9 @@ final class Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption2::$blankId readonly ?string
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption2::$placementId readonly ?string
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption2::$sizes readonly array
-Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption2::__construct(array $sizes, ?string $blankId = null, ?string $placementId = null)
+Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption2::$variant readonly ?string
+Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption2::$variantRow readonly ?array
+Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption2::__construct(array $sizes, ?string $blankId = null, ?string $placementId = null, ?string $variant = null, ?array $variantRow = null)
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption2::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption2 static
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption2::raw(): array
 Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateRequestOption2::toArray(): array
