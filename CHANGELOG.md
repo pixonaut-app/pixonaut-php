@@ -1,5 +1,16 @@
 # Changelog
 
+## [17.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v16.0.0...v17.0.0) (2026-11-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* the constructor of PrintshopCatalogueProductsImportBlankRequestScenesItem gains an optional last argument, $row. Code that names its arguments, or passes the four before it by position, is unchanged.
+
+### Features
+
+* target the published Pixonaut API 8.4.0 ([#62](https://github.com/pixonaut-app/pixonaut-php/issues/62)) ([c4552ea](https://github.com/pixonaut-app/pixonaut-php/commit/c4552eaad9ff37a0182da15298a07bde49d1dc98))
+
 ## [16.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v15.0.0...v16.0.0) (2026-11-14)
 
 Targets the Pixonaut API 8.3.0.
