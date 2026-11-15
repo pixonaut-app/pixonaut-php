@@ -1,5 +1,17 @@
 # Changelog
 
+## [19.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v18.0.0...v19.0.0) (2026-11-15)
+
+Targets the Pixonaut API 9.1.0.
+
+### ⚠ BREAKING CHANGES
+
+* the constructors of the three Pixel conversation models ending in ToolResultContentOption2ItemPictureOfTemplateMockup (under PixelApplicationsCreateResponse, PixelConversationGetResponse and PixelDismissalsCreateResponse) gain the optional argument $variant before $viewId. Code that names its arguments is unchanged; code that passes $viewId by position must be checked.
+
+### Features
+
+* target the published Pixonaut API 9.1.0 ([#66](https://github.com/pixonaut-app/pixonaut-php/issues/66)) ([a894902](https://github.com/pixonaut-app/pixonaut-php/commit/a894902e5783643ad1117dbbfe1daa0e43142669))
+
 ## [18.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v17.0.0...v18.0.0) (2026-11-15)
 
 Targets the Pixonaut API 9.0.0.
