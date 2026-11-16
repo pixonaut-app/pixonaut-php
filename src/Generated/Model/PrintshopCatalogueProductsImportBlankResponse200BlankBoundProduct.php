@@ -23,10 +23,13 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct im
     private ?array $decoded = null;
 
     /**
+     * @param string|null $assembly How the product reaches its buyer, as the printshop's data says: `assembled`, put together and ready to use (a framed poster already in its frame, ready to hang), or `unassembled`, its parts packed separately for the buyer to put together (the poster and the frame arrive apart, and the buyer puts the poster in the frame). Null where the printshop does not say.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProductAssembly}.
      * @param string $id The partner's own id of the product.
      * @param string|null $name The product's name as the printshop last reported it: at import, then at each check for printshop changes. Null when the record of the import is gone.
      */
     public function __construct(
+        public readonly ?string $assembly,
         public readonly string $id,
         public readonly ?string $name,
     ) {}
@@ -42,6 +45,11 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct im
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
+            assembly: Decode::nullable(
+                Decode::required($data, 'assembly', $path),
+                $path . '.assembly',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             name: Decode::nullable(
                 Decode::required($data, 'name', $path),
@@ -67,6 +75,7 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct im
     public function toArray(): array
     {
         $data = [];
+        $data['assembly'] = $this->assembly;
         $data['id'] = $this->id;
         $data['name'] = $this->name;
         return $data;

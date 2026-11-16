@@ -21,11 +21,16 @@ final class PrintshopConnectionsListResponseOption2ConnectionsItem implements Mo
     private ?array $decoded = null;
 
     /**
+     * @param string|null $billingCurrency The currency the printshop bills the connected account in, as its ISO 4217 code, such as `SEK`: what its costs are amounts of. null while nobody has said: a printshop that names it is asked when the connection is connected or reconnected, and any other is told by its merchant (`PUT /v1/printshop-connections/{id}/billing-currency`).
+     * @param string|null $billingCurrencyFrom Who says `billingCurrency`: `printshop` when the printshop names it, which nobody else can change, `merchant` when the printshop names none and its merchant states it, null for a printshop that tells no costs. `merchant` with `billingCurrency` null is a printshop whose costs wait for its currency.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption2ConnectionsItemBillingCurrencyFrom}.
      * @param bool $catalogue Whether its printshop has a catalogue to browse and import from (GET /v1/printshop-catalogue-products).
      */
     public function __construct(
         public readonly bool $active,
         public readonly string $adapter,
+        public readonly ?string $billingCurrency,
+        public readonly ?string $billingCurrencyFrom,
         public readonly bool $catalogue,
         public readonly string $id,
         public readonly bool $isDefault,
@@ -45,6 +50,16 @@ final class PrintshopConnectionsListResponseOption2ConnectionsItem implements Mo
         $model = new self(
             active: Decode::bool(Decode::required($data, 'active', $path), $path . '.active'),
             adapter: Decode::string(Decode::required($data, 'adapter', $path), $path . '.adapter'),
+            billingCurrency: Decode::nullable(
+                Decode::required($data, 'billingCurrency', $path),
+                $path . '.billingCurrency',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
+            billingCurrencyFrom: Decode::nullable(
+                Decode::required($data, 'billingCurrencyFrom', $path),
+                $path . '.billingCurrencyFrom',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             catalogue: Decode::bool(Decode::required($data, 'catalogue', $path), $path . '.catalogue'),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             isDefault: Decode::bool(Decode::required($data, 'isDefault', $path), $path . '.isDefault'),
@@ -70,6 +85,8 @@ final class PrintshopConnectionsListResponseOption2ConnectionsItem implements Mo
         $data = [];
         $data['active'] = $this->active;
         $data['adapter'] = $this->adapter;
+        $data['billingCurrency'] = $this->billingCurrency;
+        $data['billingCurrencyFrom'] = $this->billingCurrencyFrom;
         $data['catalogue'] = $this->catalogue;
         $data['id'] = $this->id;
         $data['isDefault'] = $this->isDefault;

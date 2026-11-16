@@ -27,6 +27,7 @@ final class BlanksVariantsCostsResponseCostsItem implements Model
      * @param string $readAt When the printshop was last asked, as an ISO 8601 time; for a blank no printshop is bound to, when the variant was last changed.
      * @param string $region The country the cost is for.
      * @param BlanksVariantsCostsResponseCostsItemShipping|null $shipping The cheapest way the printshop ships one of the variant to the region. null when the printshop publishes none.
+     * @param BlanksVariantsCostsResponseCostsItemTimes $times How long the printshop says the variant takes to the region by the shipping `shipping` is the amount of, in calendar days, each span as the printshop answers it and never estimated. Printshops answer different spans: Gelato the whole way from order to door, Printful the days in the post and the whole way, Printify the days in the post, Prodigi the days of making it. All three are null for a variant no time was read for: one with no cost, one of a printshop that answers none, and one last read before times were.
      * @param string $variant The variant's `ref`.
      */
     public function __construct(
@@ -35,6 +36,7 @@ final class BlanksVariantsCostsResponseCostsItem implements Model
         public readonly string $readAt,
         public readonly string $region,
         public readonly ?BlanksVariantsCostsResponseCostsItemShipping $shipping,
+        public readonly BlanksVariantsCostsResponseCostsItemTimes $times,
         public readonly string $variant,
     ) {}
 
@@ -66,6 +68,7 @@ final class BlanksVariantsCostsResponseCostsItem implements Model
                 $path . '.shipping',
                 static fn(mixed $v, string $p): BlanksVariantsCostsResponseCostsItemShipping => BlanksVariantsCostsResponseCostsItemShipping::fromArray(Decode::object($v, $p), $p),
             ),
+            times: BlanksVariantsCostsResponseCostsItemTimes::fromArray(Decode::object(Decode::required($data, 'times', $path), $path . '.times'), $path . '.times'),
             variant: Decode::string(Decode::required($data, 'variant', $path), $path . '.variant'),
         );
         $model->decoded = $data;
@@ -91,6 +94,7 @@ final class BlanksVariantsCostsResponseCostsItem implements Model
         $data['readAt'] = $this->readAt;
         $data['region'] = $this->region;
         $data['shipping'] = $this->shipping === null ? null : Encode::model($this->shipping);
+        $data['times'] = Encode::model($this->times);
         $data['variant'] = $this->variant;
         return $data;
     }
