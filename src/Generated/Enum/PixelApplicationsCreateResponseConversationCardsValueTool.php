@@ -307,6 +307,8 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
 
     public const DELETE_STORE_ATTRIBUTE_TERM = 'delete_store_attribute_term';
 
+    public const SET_STORE_ATTRIBUTE_QUERY_NAME = 'set_store_attribute_query_name';
+
     public const CREATE_STORE_CATEGORY = 'create_store_category';
 
     public const UPDATE_STORE_CATEGORY = 'update_store_category';
@@ -492,6 +494,7 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
         self::CREATE_STORE_ATTRIBUTE_TERM,
         self::UPDATE_STORE_ATTRIBUTE_TERM,
         self::DELETE_STORE_ATTRIBUTE_TERM,
+        self::SET_STORE_ATTRIBUTE_QUERY_NAME,
         self::CREATE_STORE_CATEGORY,
         self::UPDATE_STORE_CATEGORY,
         self::DELETE_STORE_CATEGORY,
