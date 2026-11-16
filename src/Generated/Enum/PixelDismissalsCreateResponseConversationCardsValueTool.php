@@ -333,6 +333,8 @@ final class PixelDismissalsCreateResponseConversationCardsValueTool
 
     public const UPDATE_STORE_PRICING_SETTINGS = 'update_store_pricing_settings';
 
+    public const UPDATE_STORE_SETTINGS = 'update_store_settings';
+
     public const PRICE_STORE_PRODUCT = 'price_store_product';
 
     public const SET_STORE_PRODUCT_PRICE_CHANGES = 'set_store_product_price_changes';
@@ -501,6 +503,7 @@ final class PixelDismissalsCreateResponseConversationCardsValueTool
         self::SET_STORE_VARIATION_SETUP,
         self::SET_STORE_PRODUCT_VALUE_CARDS,
         self::UPDATE_STORE_PRICING_SETTINGS,
+        self::UPDATE_STORE_SETTINGS,
         self::PRICE_STORE_PRODUCT,
         self::SET_STORE_PRODUCT_PRICE_CHANGES,
     ];
