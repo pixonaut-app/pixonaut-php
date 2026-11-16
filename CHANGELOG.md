@@ -1,5 +1,16 @@
 # Changelog
 
+## [20.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v19.0.0...v20.0.0) (2026-11-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* the constructors of the bound product models (BlanksGetResponseBoundProduct, BlanksListResponseBlanksItemBoundProduct and the two PrintshopCatalogueProductsImportBlankResponse…BlankBoundProduct models), of BlanksVariantsCostsResponse and BlanksVariantsCostsResponseCostsItem, and of the two PrintshopConnectionsListResponseOption…ConnectionsItem models gain arguments for the new fields. Code that builds these models itself must pass them; code that only reads answers is unchanged.
+
+### Features
+
+* target the published Pixonaut API 10.0.0 ([#68](https://github.com/pixonaut-app/pixonaut-php/issues/68)) ([9612e57](https://github.com/pixonaut-app/pixonaut-php/commit/9612e5737279ca3e2d9aa9e809e3a699a95fed8e))
+
 ## [19.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v18.0.0...v19.0.0) (2026-11-15)
 
 Targets the Pixonaut API 9.1.0.
