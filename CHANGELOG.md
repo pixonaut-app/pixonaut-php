@@ -1,5 +1,13 @@
 # Changelog
 
+## [20.1.0](https://github.com/pixonaut-app/pixonaut-php/compare/v20.0.0...v20.1.0) (2026-11-16)
+
+Targets the Pixonaut API 10.1.0.
+
+### Features
+
+* target the published Pixonaut API 10.1.0 ([#70](https://github.com/pixonaut-app/pixonaut-php/issues/70)) ([572d366](https://github.com/pixonaut-app/pixonaut-php/commit/572d366a3413289ee4e674df0b7332f60286c6c2))
+
 ## [20.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v19.0.0...v20.0.0) (2026-11-16)
 
 Targets the Pixonaut API 10.0.0.
