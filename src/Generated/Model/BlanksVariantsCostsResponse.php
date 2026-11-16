@@ -24,10 +24,12 @@ final class BlanksVariantsCostsResponse implements Model
     /**
      * @param bool $complete Whether every variant on sale has been read for the region, so no variant is missing from `costs` for not being read yet. false from when a region is first asked for until its last variant is read, and while a variant put on sale since waits for its read. It tells of the whole region, also when `variant` narrows the list. Always true for a blank no printshop is bound to.
      * @param list<BlanksVariantsCostsResponseCostsItem> $costs
+     * @param bool $currencyNeeded Whether the costs wait for the printshop's billing currency: its printshop names no currency in what it answers, and nobody has stated the one it bills the connected account in (`PUT /v1/printshop-connections/{id}/billing-currency`). `costs` is then empty and `complete` false: no amount is read, or shown in a guessed currency. Once it is stated the costs are read in it within moments, and a cost held in another currency is left out until it is read again.
      */
     public function __construct(
         public readonly bool $complete,
         public readonly array $costs,
+        public readonly bool $currencyNeeded,
     ) {}
 
     /**
@@ -47,6 +49,7 @@ final class BlanksVariantsCostsResponse implements Model
                 $path . '.costs',
                 static fn(mixed $v, string $p): BlanksVariantsCostsResponseCostsItem => BlanksVariantsCostsResponseCostsItem::fromArray(Decode::object($v, $p), $p),
             ),
+            currencyNeeded: Decode::bool(Decode::required($data, 'currencyNeeded', $path), $path . '.currencyNeeded'),
         );
         $model->decoded = $data;
         return $model;
@@ -71,6 +74,7 @@ final class BlanksVariantsCostsResponse implements Model
             static fn(BlanksVariantsCostsResponseCostsItem $v): mixed => Encode::model($v),
             $this->costs,
         );
+        $data['currencyNeeded'] = $this->currencyNeeded;
         return $data;
     }
 }

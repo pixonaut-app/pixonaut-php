@@ -265,6 +265,8 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
 
     public const RECONNECT_PRINTSHOP = 'reconnect_printshop';
 
+    public const SET_PRINTSHOP_BILLING_CURRENCY = 'set_printshop_billing_currency';
+
     public const DELETE_OUTPUT_PROFILE = 'delete_output_profile';
 
     public const UPDATE_SHOPPER_PIXEL_SETTINGS = 'update_shopper_pixel_settings';
@@ -332,6 +334,8 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
     public const UPDATE_STORE_PRICING_SETTINGS = 'update_store_pricing_settings';
 
     public const PRICE_STORE_PRODUCT = 'price_store_product';
+
+    public const SET_STORE_PRODUCT_PRICE_CHANGES = 'set_store_product_price_changes';
 
     /**
      * Every value this release knows.
@@ -463,6 +467,7 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
         self::UPDATE_CATEGORY_MAPPING,
         self::APPLY_CATEGORY_MAPPING,
         self::RECONNECT_PRINTSHOP,
+        self::SET_PRINTSHOP_BILLING_CURRENCY,
         self::DELETE_OUTPUT_PROFILE,
         self::UPDATE_SHOPPER_PIXEL_SETTINGS,
         self::UPDATE_TEMPLATE_SHOPPER_PIXEL,
@@ -497,5 +502,6 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
         self::SET_STORE_PRODUCT_VALUE_CARDS,
         self::UPDATE_STORE_PRICING_SETTINGS,
         self::PRICE_STORE_PRODUCT,
+        self::SET_STORE_PRODUCT_PRICE_CHANGES,
     ];
 }

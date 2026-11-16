@@ -901,6 +901,10 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBakesJob::FAILED const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBakesJob::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBakesJob::QUEUED const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBakesJob::RUNNING const
+final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBoundProductAssembly
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBoundProductAssembly::ASSEMBLED const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBoundProductAssembly::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseBoundProductAssembly::UNASSEMBLED const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseGenerationDecision
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseGenerationDecision::APPROVED const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseGenerationDecision::DENIED const
@@ -1165,6 +1169,10 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBakesJob::FAILED const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBakesJob::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBakesJob::QUEUED const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBakesJob::RUNNING const
+final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBoundProductAssembly
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBoundProductAssembly::ASSEMBLED const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBoundProductAssembly::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemBoundProductAssembly::UNASSEMBLED const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemGenerationDecision
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemGenerationDecision::APPROVED const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemGenerationDecision::DENIED const
@@ -2940,8 +2948,10 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_DESIGN_EXTERNAL_REF const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_FONTS_ACTIVE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_FONTS_FAVOURITE const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_PRINTSHOP_BILLING_CURRENCY const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRINT_FILE_FORM const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_PRICE_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PRINT_SIZE const
@@ -3135,8 +3145,10 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_DESIGN_EXTERNAL_REF const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_FONTS_ACTIVE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_FONTS_FAVOURITE const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_PRINTSHOP_BILLING_CURRENCY const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRINT_FILE_FORM const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_PRICE_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_VARIATION_PRINT_SIZE const
@@ -3339,8 +3351,10 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_DESIGN_EXTERNAL_REF const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_FONTS_ACTIVE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_FONTS_FAVOURITE const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_PRINTSHOP_BILLING_CURRENCY const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRINT_FILE_FORM const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_PRICE_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PRINT_SIZE const
@@ -3693,6 +3707,10 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBakesJob::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBakesJob::QUEUED const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBakesJob::RUNNING const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProductAssembly
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProductAssembly::ASSEMBLED const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProductAssembly::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProductAssembly::UNASSEMBLED const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankGenerationDecision
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankGenerationDecision::APPROVED const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankGenerationDecision::DENIED const
@@ -3971,6 +3989,10 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankBakesJob::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankBakesJob::QUEUED const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankBakesJob::RUNNING const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProductAssembly
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProductAssembly::ASSEMBLED const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProductAssembly::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProductAssembly::UNASSEMBLED const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankGenerationDecision
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankGenerationDecision::APPROVED const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankGenerationDecision::DENIED const
@@ -4255,6 +4277,10 @@ final class Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1C
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemAddressChanges::ALWAYS const
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemAddressChanges::BY_SETTING const
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemAddressChanges::KNOWN const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemBillingCurrencyFrom
+Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemBillingCurrencyFrom::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemBillingCurrencyFrom::MERCHANT const
+Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemBillingCurrencyFrom::PRINTSHOP const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem::CUT_SEW const
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem::DIGITAL const
@@ -4270,6 +4296,10 @@ Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsIt
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem::SCREEN const
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem::SUBLIMATION const
 Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem::UV const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption2ConnectionsItemBillingCurrencyFrom
+Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption2ConnectionsItemBillingCurrencyFrom::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption2ConnectionsItemBillingCurrencyFrom::MERCHANT const
+Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption2ConnectionsItemBillingCurrencyFrom::PRINTSHOP const
 final class Pixonaut\Sdk\Generated\Enum\ProofsCreateRequestRepeatMode
 Pixonaut\Sdk\Generated\Enum\ProofsCreateRequestRepeatMode::BRICK const
 Pixonaut\Sdk\Generated\Enum\ProofsCreateRequestRepeatMode::GRID const
@@ -9898,9 +9928,10 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponse::fromArray(array $data, string $p
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponse::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct::$assembly readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct::$id readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct::$name readonly ?string
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct::__construct(string $id, ?string $name)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct::__construct(?string $assembly, string $id, ?string $name)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseBoundProduct::toArray(): array
@@ -10705,9 +10736,10 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::fromArray(array $data
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct::$assembly readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct::$id readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct::$name readonly ?string
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct::__construct(string $id, ?string $name)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct::__construct(?string $assembly, string $id, ?string $name)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemBoundProduct::toArray(): array
@@ -12131,7 +12163,8 @@ Pixonaut\Sdk\Generated\Model\BlanksPreviewTablesGetResponsePreview::toArray(): a
 final class Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::$complete readonly bool
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::$costs readonly array
-Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::__construct(bool $complete, array $costs)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::$currencyNeeded readonly bool
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::__construct(bool $complete, array $costs, bool $currencyNeeded)
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse static
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::toArray(): array
@@ -12141,8 +12174,9 @@ Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::$product read
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::$readAt readonly string
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::$region readonly string
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::$shipping readonly ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::$times readonly Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimes
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::$variant readonly string
-Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::__construct(?string $changedAt, ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemProduct $product, string $readAt, string $region, ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping $shipping, string $variant)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::__construct(?string $changedAt, ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemProduct $product, string $readAt, string $region, ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping $shipping, Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimes $times, string $variant)
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem static
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItem::toArray(): array
@@ -12160,6 +12194,35 @@ Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping::__con
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping static
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemShipping::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimes implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimes::$delivery readonly ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesDelivery
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimes::$production readonly ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesProduction
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimes::$shipping readonly ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimes::__construct(?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesDelivery $delivery, ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesProduction $production, ?Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping $shipping)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimes::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimes static
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimes::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimes::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesDelivery implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesDelivery::$maxDays readonly int
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesDelivery::$minDays readonly int
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesDelivery::__construct(int $maxDays, int $minDays)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesDelivery::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesDelivery static
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesDelivery::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesDelivery::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesProduction implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesProduction::$maxDays readonly int
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesProduction::$minDays readonly int
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesProduction::__construct(int $maxDays, int $minDays)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesProduction::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesProduction static
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesProduction::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesProduction::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping::$maxDays readonly int
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping::$minDays readonly int
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping::__construct(int $maxDays, int $minDays)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping static
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::$areasVaryBy readonly array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::$axes readonly array
@@ -19516,9 +19579,10 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Blank::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct::$assembly readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct::$id readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct::$name readonly ?string
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct::__construct(string $id, ?string $name)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct::__construct(?string $assembly, string $id, ?string $name)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankBoundProduct::toArray(): array
@@ -20337,9 +20401,10 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Blank::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct::$assembly readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct::$id readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct::$name readonly ?string
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct::__construct(string $id, ?string $name)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct::__construct(?string $assembly, string $id, ?string $name)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankBoundProduct::toArray(): array
@@ -21219,6 +21284,8 @@ Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsI
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$address readonly ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAddress
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$addressChanges readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$asksOfDesigns readonly Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAsksOfDesigns
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$billingCurrency readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$billingCurrencyFrom readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$callbackUrl readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$config readonly mixed
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$contactEmail readonly ?string
@@ -21237,7 +21304,7 @@ Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsI
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$printMethodsFixed readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$secretNames readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$updatedAt readonly float
-Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::__construct(bool $acceptsAddressUpdates, bool $active, string $adapter, ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAddress $address, ?string $addressChanges, Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAsksOfDesigns $asksOfDesigns, ?string $callbackUrl, ?string $contactEmail, bool $contactEmailBounced, ?string $contactName, ?string $contactPhone, Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemCounts $counts, float $createdAt, bool $credentialsLapsed, string $id, bool $isDefault, string $name, bool $needsPositions, bool $paused, array $printMethods, bool $printMethodsFixed, ?array $secretNames, float $updatedAt, mixed $config = null)
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::__construct(bool $acceptsAddressUpdates, bool $active, string $adapter, ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAddress $address, ?string $addressChanges, Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAsksOfDesigns $asksOfDesigns, ?string $billingCurrency, ?string $billingCurrencyFrom, ?string $callbackUrl, ?string $contactEmail, bool $contactEmailBounced, ?string $contactName, ?string $contactPhone, Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemCounts $counts, float $createdAt, bool $credentialsLapsed, string $id, bool $isDefault, string $name, bool $needsPositions, bool $paused, array $printMethods, bool $printMethodsFixed, ?array $secretNames, float $updatedAt, mixed $config = null)
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::toArray(): array
@@ -21277,11 +21344,13 @@ Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2::toArray():
 final class Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$active readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$billingCurrency readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$billingCurrencyFrom readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$catalogue readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$isDefault readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$name readonly string
-Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::__construct(bool $active, string $adapter, bool $catalogue, string $id, bool $isDefault, string $name)
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::__construct(bool $active, string $adapter, ?string $billingCurrency, ?string $billingCurrencyFrom, bool $catalogue, string $id, bool $isDefault, string $name)
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::toArray(): array
