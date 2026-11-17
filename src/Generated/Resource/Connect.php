@@ -13,6 +13,7 @@ use Pixonaut\Sdk\Generated\Model\ConnectedStoreExchangeCodeResponseOption1;
 use Pixonaut\Sdk\Generated\Model\ConnectedStoreExchangeCodeResponseOption2;
 use Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponse;
 use Pixonaut\Sdk\Generated\Model\ConnectedStoreHoldAccessRequest;
+use Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest;
 use Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateRequest;
 use Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponse;
 use Pixonaut\Sdk\Model\Decode;
@@ -33,6 +34,7 @@ final class Connect
         'get' => 'connectedStore.get',
         'update' => 'connectedStore.update',
         'deleteMemberLink' => 'memberLinks.delete',
+        'reportPictureStorage' => 'connectedStore.reportPictureStorage',
         'cutAccess' => 'connectedStore.cutAccess',
         'holdAccess' => 'connectedStore.holdAccess',
         'exchangeCode' => 'connectedStore.exchangeCode',
@@ -99,6 +101,23 @@ final class Connect
     public function deleteMemberLink(): void
     {
         $this->pixonaut->call('memberLinks.delete');
+    }
+
+    /**
+     * Report the pictures this store keeps.
+     *
+     * `PUT /v1/connect/picture-storage`
+     *
+     * @param ConnectedStoreReportPictureStorageRequest $body
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_input`, `invalid_link`, `not_found`, `origin_forbidden`, `payload_too_large`, `unauthorized`), or cannot be reached.
+     */
+    public function reportPictureStorage(ConnectedStoreReportPictureStorageRequest $body): void
+    {
+        $this->pixonaut->call(
+            'connectedStore.reportPictureStorage',
+            body: $body->toArray(),
+        );
     }
 
     /**

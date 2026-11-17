@@ -57,6 +57,12 @@ final class PixelConversationGetResponseConversationCardsValueTool
 
     public const SET_TEMPLATE_LIVE = 'set_template_live';
 
+    public const SET_TEMPLATE_PARENT = 'set_template_parent';
+
+    public const CLEAR_TEMPLATE_PARENT = 'clear_template_parent';
+
+    public const CHANGE_TEMPLATE_OVERRIDES = 'change_template_overrides';
+
     public const RENAME_TEMPLATE_CATEGORY = 'rename_template_category';
 
     public const DELETE_TEMPLATE_CATEGORY = 'delete_template_category';
@@ -369,6 +375,9 @@ final class PixelConversationGetResponseConversationCardsValueTool
         self::RETRY_PRINT,
         self::PLACE_ORDER,
         self::SET_TEMPLATE_LIVE,
+        self::SET_TEMPLATE_PARENT,
+        self::CLEAR_TEMPLATE_PARENT,
+        self::CHANGE_TEMPLATE_OVERRIDES,
         self::RENAME_TEMPLATE_CATEGORY,
         self::DELETE_TEMPLATE_CATEGORY,
         self::SET_TEMPLATE_CATEGORY,

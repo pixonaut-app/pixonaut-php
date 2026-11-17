@@ -42,6 +42,7 @@ use Pixonaut\Sdk\Generated\Model\AssetsUpdateRequest;
 use Pixonaut\Sdk\Generated\Model\AssetsUpdateResponse;
 use Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse;
 use Pixonaut\Sdk\Generated\Model\StorageGetResponse;
+use Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponse;
 use Pixonaut\Sdk\Http\Binary;
 use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Pixonaut;
@@ -80,6 +81,7 @@ final class Assets
         'threadCopy' => 'assets.threadCopy',
         'getUsage' => 'assets.usage.get',
         'getStorage' => 'storage.get',
+        'storeProductsStorage' => 'storage.storeProducts',
     ];
 
     public function __construct(
@@ -599,6 +601,30 @@ final class Assets
         $result = $this->pixonaut->call('storage.get');
         return $result->decode(
             static fn(mixed $json): StorageGetResponse => StorageGetResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Page a connected store's reported products.
+     *
+     * `GET /v1/storage/stores/{connectionId}/products`
+     *
+     * @param string $connectionId
+     * @param string|null $query
+     * @param int|null $offset
+     * @param int|null $limit
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function storeProductsStorage(string $connectionId, ?string $query = null, ?int $offset = null, ?int $limit = null): StorageStoreProductsResponse
+    {
+        $result = $this->pixonaut->call(
+            'storage.storeProducts',
+            path: ['connectionId' => $connectionId],
+            query: ['query' => $query, 'offset' => $offset, 'limit' => $limit],
+        );
+        return $result->decode(
+            static fn(mixed $json): StorageStoreProductsResponse => StorageStoreProductsResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 }

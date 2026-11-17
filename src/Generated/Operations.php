@@ -12,7 +12,7 @@ use Pixonaut\Sdk\Http\Catalogue;
 use Pixonaut\Sdk\Http\Operation;
 
 /**
- * The operations of the API 10.3.0 spec, as the client sends them.
+ * The operations of the API 10.4.1 spec, as the client sends them.
  */
 final class Operations
 {
@@ -642,6 +642,16 @@ final class Operations
                 method: 'DELETE',
                 path: '/v1/connect/member-link',
                 credentials: [Credential::MemberKey],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
+                id: 'connectedStore.reportPictureStorage',
+                method: 'PUT',
+                path: '/v1/connect/picture-storage',
+                credentials: [Credential::IntegrationKey],
                 anonymous: false,
                 idempotent: false,
                 accept: 'application/json',
@@ -1406,6 +1416,16 @@ final class Operations
                 id: 'storage.get',
                 method: 'GET',
                 path: '/v1/storage',
+                credentials: [Credential::SecretKey],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
+                id: 'storage.storeProducts',
+                method: 'GET',
+                path: '/v1/storage/stores/{connectionId}/products',
                 credentials: [Credential::SecretKey],
                 anonymous: false,
                 idempotent: false,
