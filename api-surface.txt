@@ -10104,13 +10104,28 @@ final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2 imple
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$anchor readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$camera readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$cutOut readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$localizedLabels readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$row readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$sceneId readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$source readonly string
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?array $row = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels $localizedLabels = null, ?array $row = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2 static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::$da readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::$de readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::$en readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::$es readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::$fi readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::$fr readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::$nb readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::$nl readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::$sv readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::__construct(?string $da = null, ?string $de = null, ?string $en = null, ?string $es = null, ?string $fi = null, ?string $fr = null, ?string $nb = null, ?string $nl = null, ?string $sv = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels static
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponsePhotoCoverage implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePhotoCoverage::$cells readonly int
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePhotoCoverage::$filled readonly int
@@ -10912,13 +10927,28 @@ final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOp
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$anchor readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$camera readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$cutOut readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$localizedLabels readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$row readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$sceneId readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$source readonly string
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?array $row = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels $localizedLabels = null, ?array $row = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2 static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::$da readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::$de readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::$en readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::$es readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::$fi readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::$fr readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::$nb readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::$nl readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::$sv readonly ?string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::__construct(?string $da = null, ?string $de = null, ?string $en = null, ?string $es = null, ?string $fi = null, ?string $fr = null, ?string $nb = null, ?string $nl = null, ?string $sv = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels static
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPhotoCoverage implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPhotoCoverage::$cells readonly int
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPhotoCoverage::$filled readonly int
@@ -19822,13 +19852,28 @@ final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRe
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::$anchor readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::$camera readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::$cutOut readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::$localizedLabels readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::$row readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::$sceneId readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::$source readonly string
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?array $row = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels $localizedLabels = null, ?array $row = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2 static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::$da readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::$de readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::$en readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::$es readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::$fi readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::$fr readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::$nb readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::$nl readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::$sv readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::__construct(?string $da = null, ?string $de = null, ?string $en = null, ?string $es = null, ?string $fi = null, ?string $fr = null, ?string $nb = null, ?string $nl = null, ?string $sv = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPhotoCoverage implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPhotoCoverage::$cells readonly int
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPhotoCoverage::$filled readonly int
@@ -20644,13 +20689,28 @@ final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankRe
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::$anchor readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::$camera readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::$cutOut readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::$localizedLabels readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::$row readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::$sceneId readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::$source readonly string
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?array $row = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels $localizedLabels = null, ?array $row = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2 static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::$da readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::$de readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::$en readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::$es readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::$fi readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::$fr readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::$nb readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::$nl readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::$sv readonly ?string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::__construct(?string $da = null, ?string $de = null, ?string $en = null, ?string $es = null, ?string $fi = null, ?string $fr = null, ?string $nb = null, ?string $nl = null, ?string $sv = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPhotoCoverage implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPhotoCoverage::$cells readonly int
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPhotoCoverage::$filled readonly int

@@ -28,6 +28,7 @@ final class BlanksListResponseBlanksItemOrderItemOption2 implements Model
      * @param string|null $camera For a studio style, a scene with no photo: the key of its camera the product is seen from, as the scene's `geometry.studio.cameras` lists them. Required for one, and left out for any other scene. A style is listed once for each camera it is shown from.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOrderItemOption2Camera}.
      * @param string|null $cutOut For a studio style showing a garment: the id of the garment's cut-out, a scene whose `cutOut` is true, laid over the style's backdrop with a shadow. Left out for a product the style draws from its measures, and for any other scene.
+     * @param BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels|null $localizedLabels What the scene is called as a view of this blank in each customer-facing language, by code: only the languages it has a name in. A shopper whose designer is shown in a language left out reads the scene's own label. A studio style has names for each camera it is shown from.
      * @param array<string, string>|null $row The option values the stock photo shows, by option name, of the options the blank's photos change with (`photosVaryBy`): shoppers see it only for the variants with these values. Absent or empty: every variant.
      */
     public function __construct(
@@ -36,6 +37,7 @@ final class BlanksListResponseBlanksItemOrderItemOption2 implements Model
         public readonly ?string $anchor = null,
         public readonly ?string $camera = null,
         public readonly ?string $cutOut = null,
+        public readonly ?BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels $localizedLabels = null,
         public readonly ?array $row = null,
     ) {}
 
@@ -55,6 +57,7 @@ final class BlanksListResponseBlanksItemOrderItemOption2 implements Model
             anchor: array_key_exists('anchor', $data) ? Decode::string($data['anchor'], $path . '.anchor') : null,
             camera: array_key_exists('camera', $data) ? Decode::string($data['camera'], $path . '.camera') : null,
             cutOut: array_key_exists('cutOut', $data) ? Decode::string($data['cutOut'], $path . '.cutOut') : null,
+            localizedLabels: array_key_exists('localizedLabels', $data) ? BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels::fromArray(Decode::object($data['localizedLabels'], $path . '.localizedLabels'), $path . '.localizedLabels') : null,
             row: array_key_exists('row', $data) ? Decode::map(
                 $data['row'],
                 $path . '.row',
@@ -89,6 +92,9 @@ final class BlanksListResponseBlanksItemOrderItemOption2 implements Model
         }
         if ($this->cutOut !== null) {
             $data['cutOut'] = $this->cutOut;
+        }
+        if ($this->localizedLabels !== null) {
+            $data['localizedLabels'] = Encode::model($this->localizedLabels);
         }
         if ($this->row !== null) {
             $data['row'] = Encode::object($this->row);
