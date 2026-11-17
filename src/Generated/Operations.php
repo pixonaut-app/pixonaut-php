@@ -12,7 +12,7 @@ use Pixonaut\Sdk\Http\Catalogue;
 use Pixonaut\Sdk\Http\Operation;
 
 /**
- * The operations of the API 10.4.1 spec, as the client sends them.
+ * The operations of the API 10.5.0 spec, as the client sends them.
  */
 final class Operations
 {

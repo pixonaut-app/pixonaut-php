@@ -2958,6 +2958,7 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_PRICE_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PICTURES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PRINT_SIZE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_SETUP const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_VARIANTS const
@@ -3005,6 +3006,7 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_STORE_PRODUCT_VARIATION const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_STORE_SETTINGS const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_STORE_TAG const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_STORE_THEME_SETTINGS const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_TEMPLATE_SHOPPER_PIXEL const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPSCALE_IMAGE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPSCALE_IMAGES const
@@ -3161,6 +3163,7 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_PRICE_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_VARIATION_PICTURES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_VARIATION_PRINT_SIZE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_VARIATION_SETUP const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_VARIATION_VARIANTS const
@@ -3208,6 +3211,7 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_STORE_PRODUCT_VARIATION const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_STORE_SETTINGS const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_STORE_TAG const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_STORE_THEME_SETTINGS const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_TEMPLATE_SHOPPER_PIXEL const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPSCALE_IMAGE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPSCALE_IMAGES const
@@ -3373,6 +3377,7 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_PRICE_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PICTURES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PRINT_SIZE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_SETUP const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_VARIANTS const
@@ -3420,6 +3425,7 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_STORE_PRODUCT_VARIATION const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_STORE_SETTINGS const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_STORE_TAG const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_STORE_THEME_SETTINGS const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_TEMPLATE_SHOPPER_PIXEL const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPSCALE_IMAGE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPSCALE_IMAGES const
@@ -17553,11 +17559,12 @@ Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsVal
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::$savedRevisions readonly ?array
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::$showcases readonly ?array
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::$status readonly string
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::$storage readonly ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::$storeRefusal readonly ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStoreRefusal
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::$tool readonly string
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::$upscaleId readonly ?string
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::$upscaleIds readonly ?array
-Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::__construct(string $status, string $tool, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueChange $change = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueCurrent $current = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueEstimate $estimate = null, mixed $input = null, ?array $pictures = null, ?string $refusedWith = null, ?string $runId = null, ?array $savedRevisions = null, ?array $showcases = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStoreRefusal $storeRefusal = null, ?string $upscaleId = null, ?array $upscaleIds = null)
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::__construct(string $status, string $tool, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueChange $change = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueCurrent $current = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueEstimate $estimate = null, mixed $input = null, ?array $pictures = null, ?string $refusedWith = null, ?string $runId = null, ?array $savedRevisions = null, ?array $showcases = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage $storage = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStoreRefusal $storeRefusal = null, ?string $upscaleId = null, ?array $upscaleIds = null)
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue static
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::raw(): array
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::toArray(): array
@@ -17638,6 +17645,16 @@ Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsVal
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueShowcasesItemBeforeItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueShowcasesItemBeforeItem static
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueShowcasesItemBeforeItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueShowcasesItemBeforeItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage::$bytes readonly float
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage::$draws readonly bool
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage::$percentOfFree readonly ?float
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage::$pictures readonly float
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage::$warning readonly ?string
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage::__construct(float $bytes, bool $draws, ?float $percentOfFree, float $pictures, ?string $warning)
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage static
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage::raw(): array
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStoreRefusal implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStoreRefusal::$message readonly string
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStoreRefusal::$store readonly string
@@ -17891,11 +17908,12 @@ Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue:
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::$savedRevisions readonly ?array
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::$showcases readonly ?array
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::$status readonly string
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::$storage readonly ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::$storeRefusal readonly ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStoreRefusal
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::$tool readonly string
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::$upscaleId readonly ?string
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::$upscaleIds readonly ?array
-Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::__construct(string $status, string $tool, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueChange $change = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueCurrent $current = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueEstimate $estimate = null, mixed $input = null, ?array $pictures = null, ?string $refusedWith = null, ?string $runId = null, ?array $savedRevisions = null, ?array $showcases = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStoreRefusal $storeRefusal = null, ?string $upscaleId = null, ?array $upscaleIds = null)
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::__construct(string $status, string $tool, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueChange $change = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueCurrent $current = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueEstimate $estimate = null, mixed $input = null, ?array $pictures = null, ?string $refusedWith = null, ?string $runId = null, ?array $savedRevisions = null, ?array $showcases = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage $storage = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStoreRefusal $storeRefusal = null, ?string $upscaleId = null, ?array $upscaleIds = null)
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue static
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::raw(): array
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::toArray(): array
@@ -17976,6 +17994,16 @@ Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueS
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueShowcasesItemBeforeItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueShowcasesItemBeforeItem static
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueShowcasesItemBeforeItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueShowcasesItemBeforeItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage::$bytes readonly float
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage::$draws readonly bool
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage::$percentOfFree readonly ?float
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage::$pictures readonly float
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage::$warning readonly ?string
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage::__construct(float $bytes, bool $draws, ?float $percentOfFree, float $pictures, ?string $warning)
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage static
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage::raw(): array
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStoreRefusal implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStoreRefusal::$message readonly string
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStoreRefusal::$store readonly string
@@ -18280,11 +18308,12 @@ Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::$savedRevisions readonly ?array
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::$showcases readonly ?array
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::$status readonly string
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::$storage readonly ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::$storeRefusal readonly ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStoreRefusal
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::$tool readonly string
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::$upscaleId readonly ?string
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::$upscaleIds readonly ?array
-Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::__construct(string $status, string $tool, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueChange $change = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueCurrent $current = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueEstimate $estimate = null, mixed $input = null, ?array $pictures = null, ?string $refusedWith = null, ?string $runId = null, ?array $savedRevisions = null, ?array $showcases = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStoreRefusal $storeRefusal = null, ?string $upscaleId = null, ?array $upscaleIds = null)
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::__construct(string $status, string $tool, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueChange $change = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueCurrent $current = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueEstimate $estimate = null, mixed $input = null, ?array $pictures = null, ?string $refusedWith = null, ?string $runId = null, ?array $savedRevisions = null, ?array $showcases = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage $storage = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStoreRefusal $storeRefusal = null, ?string $upscaleId = null, ?array $upscaleIds = null)
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue static
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::raw(): array
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::toArray(): array
@@ -18365,6 +18394,16 @@ Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueShowcasesItemBeforeItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueShowcasesItemBeforeItem static
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueShowcasesItemBeforeItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueShowcasesItemBeforeItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage::$bytes readonly float
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage::$draws readonly bool
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage::$percentOfFree readonly ?float
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage::$pictures readonly float
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage::$warning readonly ?string
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage::__construct(float $bytes, bool $draws, ?float $percentOfFree, float $pictures, ?string $warning)
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage static
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage::raw(): array
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStoreRefusal implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStoreRefusal::$message readonly string
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStoreRefusal::$store readonly string
