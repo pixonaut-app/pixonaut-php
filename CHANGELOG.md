@@ -1,5 +1,16 @@
 # Changelog
 
+## [21.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v20.3.0...v21.0.0) (2026-11-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* StorageGetResponse's constructor takes the required stores list.
+
+### Features
+
+* target the published Pixonaut API 10.4.1 ([#76](https://github.com/pixonaut-app/pixonaut-php/issues/76)) ([5829f91](https://github.com/pixonaut-app/pixonaut-php/commit/5829f91c7a3819182e5ec739260fd7e262cbfee5))
+
 ## [20.3.0](https://github.com/pixonaut-app/pixonaut-php/compare/v20.2.0...v20.3.0) (2026-11-16)
 
 Targets the Pixonaut API 10.3.0.
