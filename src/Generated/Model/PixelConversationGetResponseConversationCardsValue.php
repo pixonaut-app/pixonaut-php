@@ -32,6 +32,7 @@ final class PixelConversationGetResponseConversationCardsValue implements Model
      * @param string|null $runId
      * @param array<string, float>|null $savedRevisions
      * @param list<PixelConversationGetResponseConversationCardsValueShowcasesItem>|null $showcases
+     * @param PixelConversationGetResponseConversationCardsValueStorage|null $storage
      * @param PixelConversationGetResponseConversationCardsValueStoreRefusal|null $storeRefusal
      * @param string|null $upscaleId
      * @param list<string>|null $upscaleIds
@@ -48,6 +49,7 @@ final class PixelConversationGetResponseConversationCardsValue implements Model
         public readonly ?string $runId = null,
         public readonly ?array $savedRevisions = null,
         public readonly ?array $showcases = null,
+        public readonly ?PixelConversationGetResponseConversationCardsValueStorage $storage = null,
         public readonly ?PixelConversationGetResponseConversationCardsValueStoreRefusal $storeRefusal = null,
         public readonly ?string $upscaleId = null,
         public readonly ?array $upscaleIds = null,
@@ -87,6 +89,7 @@ final class PixelConversationGetResponseConversationCardsValue implements Model
                 $path . '.showcases',
                 static fn(mixed $v, string $p): PixelConversationGetResponseConversationCardsValueShowcasesItem => PixelConversationGetResponseConversationCardsValueShowcasesItem::fromArray(Decode::object($v, $p), $p),
             ) : null,
+            storage: array_key_exists('storage', $data) ? PixelConversationGetResponseConversationCardsValueStorage::fromArray(Decode::object($data['storage'], $path . '.storage'), $path . '.storage') : null,
             storeRefusal: array_key_exists('storeRefusal', $data) ? PixelConversationGetResponseConversationCardsValueStoreRefusal::fromArray(Decode::object($data['storeRefusal'], $path . '.storeRefusal'), $path . '.storeRefusal') : null,
             upscaleId: array_key_exists('upscaleId', $data) ? Decode::string($data['upscaleId'], $path . '.upscaleId') : null,
             upscaleIds: array_key_exists('upscaleIds', $data) ? Decode::list(
@@ -147,6 +150,9 @@ final class PixelConversationGetResponseConversationCardsValue implements Model
                 static fn(PixelConversationGetResponseConversationCardsValueShowcasesItem $v): mixed => Encode::model($v),
                 $this->showcases,
             );
+        }
+        if ($this->storage !== null) {
+            $data['storage'] = Encode::model($this->storage);
         }
         if ($this->storeRefusal !== null) {
             $data['storeRefusal'] = Encode::model($this->storeRefusal);
