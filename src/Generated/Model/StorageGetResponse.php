@@ -23,11 +23,13 @@ final class StorageGetResponse implements Model
 
     /**
      * @param list<StorageGetResponseCategoriesItem> $categories Every category, in a fixed order, an empty one reading 0.
+     * @param list<StorageGetResponseStoresItem> $stores Each connected store's last picture report, by name; a store that never reported is left out. Not counted in usedBytes.
      */
     public function __construct(
         public readonly array $categories,
         public readonly float $fileCount,
         public readonly float $quotaBytes,
+        public readonly array $stores,
         public readonly float $usedBytes,
     ) {}
 
@@ -49,6 +51,11 @@ final class StorageGetResponse implements Model
             ),
             fileCount: Decode::float(Decode::required($data, 'fileCount', $path), $path . '.fileCount'),
             quotaBytes: Decode::float(Decode::required($data, 'quotaBytes', $path), $path . '.quotaBytes'),
+            stores: Decode::list(
+                Decode::required($data, 'stores', $path),
+                $path . '.stores',
+                static fn(mixed $v, string $p): StorageGetResponseStoresItem => StorageGetResponseStoresItem::fromArray(Decode::object($v, $p), $p),
+            ),
             usedBytes: Decode::float(Decode::required($data, 'usedBytes', $path), $path . '.usedBytes'),
         );
         $model->decoded = $data;
@@ -75,6 +82,10 @@ final class StorageGetResponse implements Model
         );
         $data['fileCount'] = $this->fileCount;
         $data['quotaBytes'] = $this->quotaBytes;
+        $data['stores'] = array_map(
+            static fn(StorageGetResponseStoresItem $v): mixed => Encode::model($v),
+            $this->stores,
+        );
         $data['usedBytes'] = $this->usedBytes;
         return $data;
     }

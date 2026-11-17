@@ -2852,9 +2852,11 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::CANCEL_AUTOMATION_FIRING const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::CANCEL_ORDER const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::CANCEL_RUN const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::CHANGE_TEMPLATE_OVERRIDES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::CHECK_BLANK_DRIFT const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::CHECK_CUSTOM_DOMAIN const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::CLEAR_DESIGN_DELIVERY const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::CLEAR_TEMPLATE_PARENT const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::COMPOSE_SCENE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::CREATE_ORDER const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::CREATE_PRINT const
@@ -2964,6 +2966,7 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_TEMPLATE_BLANK_PREVIEW const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_TEMPLATE_CATEGORY const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_TEMPLATE_LIVE const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_TEMPLATE_PARENT const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_TEMPLATE_SHOWCASES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::START_RUN const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::UPDATE_ASSET const
@@ -3052,9 +3055,11 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::CANCEL_AUTOMATION_FIRING const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::CANCEL_ORDER const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::CANCEL_RUN const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::CHANGE_TEMPLATE_OVERRIDES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::CHECK_BLANK_DRIFT const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::CHECK_CUSTOM_DOMAIN const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::CLEAR_DESIGN_DELIVERY const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::CLEAR_TEMPLATE_PARENT const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::COMPOSE_SCENE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::CREATE_ORDER const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::CREATE_PRINT const
@@ -3164,6 +3169,7 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_TEMPLATE_BLANK_PREVIEW const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_TEMPLATE_CATEGORY const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_TEMPLATE_LIVE const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_TEMPLATE_PARENT const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_TEMPLATE_SHOWCASES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::START_RUN const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::UPDATE_ASSET const
@@ -3261,9 +3267,11 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::CANCEL_AUTOMATION_FIRING const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::CANCEL_ORDER const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::CANCEL_RUN const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::CHANGE_TEMPLATE_OVERRIDES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::CHECK_BLANK_DRIFT const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::CHECK_CUSTOM_DOMAIN const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::CLEAR_DESIGN_DELIVERY const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::CLEAR_TEMPLATE_PARENT const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::COMPOSE_SCENE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::CREATE_ORDER const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::CREATE_PRINT const
@@ -3373,6 +3381,7 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_TEMPLATE_BLANK_PREVIEW const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_TEMPLATE_CATEGORY const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_TEMPLATE_LIVE const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_TEMPLATE_PARENT const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_TEMPLATE_SHOWCASES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::START_RUN const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::UPDATE_ASSET const
@@ -5773,6 +5782,7 @@ Pixonaut\Sdk\Generated\ErrorCode::INVALID_ID const
 Pixonaut\Sdk\Generated\ErrorCode::INVALID_IDEMPOTENCY_KEY const
 Pixonaut\Sdk\Generated\ErrorCode::INVALID_INPUT const
 Pixonaut\Sdk\Generated\ErrorCode::INVALID_KIND const
+Pixonaut\Sdk\Generated\ErrorCode::INVALID_LINK const
 Pixonaut\Sdk\Generated\ErrorCode::INVALID_NAME const
 Pixonaut\Sdk\Generated\ErrorCode::INVALID_ORIGIN const
 Pixonaut\Sdk\Generated\ErrorCode::INVALID_PUBLISH const
@@ -12480,6 +12490,40 @@ Pixonaut\Sdk\Generated\Model\ConnectedStoreHoldAccessRequest::__construct(string
 Pixonaut\Sdk\Generated\Model\ConnectedStoreHoldAccessRequest::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ConnectedStoreHoldAccessRequest static
 Pixonaut\Sdk\Generated\Model\ConnectedStoreHoldAccessRequest::raw(): array
 Pixonaut\Sdk\Generated\Model\ConnectedStoreHoldAccessRequest::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::$freeBytes readonly ?int
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::$links readonly Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestLinks
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::$pictureBytes readonly int
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::$pictureCount readonly int
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::$productCount readonly ?int
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::$products readonly array
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::$variationPictureBytes readonly int
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::$variationPictureCount readonly int
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::$variationPicturesOn readonly bool
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::__construct(?int $freeBytes, Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestLinks $links, int $pictureBytes, int $pictureCount, array $products, int $variationPictureBytes, int $variationPictureCount, bool $variationPicturesOn, ?int $productCount = null)
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest static
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::raw(): array
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestLinks implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestLinks::$cleanUp readonly ?string
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestLinks::$variationSetting readonly ?string
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestLinks::__construct(?string $cleanUp, ?string $variationSetting)
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestLinks::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestLinks static
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestLinks::raw(): array
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestLinks::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem::$editUrl readonly ?string
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem::$pictureBytes readonly int
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem::$pictureCount readonly int
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem::$storeProductId readonly string
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem::$variationPictureBytes readonly int
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem::$variationPictureCount readonly int
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem::$variationPicturesOn readonly bool
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem::__construct(?string $editUrl, string $name, int $pictureBytes, int $pictureCount, string $storeProductId, int $variationPictureBytes, int $variationPictureCount, bool $variationPicturesOn)
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem static
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequestProductsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateRequest implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateRequest::$additionalOrigins readonly ?array
 Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateRequest::$brandId readonly Pixonaut\Sdk\Model\Omitted|null|string
@@ -30049,8 +30093,9 @@ final class Pixonaut\Sdk\Generated\Model\StorageGetResponse implements Pixonaut\
 Pixonaut\Sdk\Generated\Model\StorageGetResponse::$categories readonly array
 Pixonaut\Sdk\Generated\Model\StorageGetResponse::$fileCount readonly float
 Pixonaut\Sdk\Generated\Model\StorageGetResponse::$quotaBytes readonly float
+Pixonaut\Sdk\Generated\Model\StorageGetResponse::$stores readonly array
 Pixonaut\Sdk\Generated\Model\StorageGetResponse::$usedBytes readonly float
-Pixonaut\Sdk\Generated\Model\StorageGetResponse::__construct(array $categories, float $fileCount, float $quotaBytes, float $usedBytes)
+Pixonaut\Sdk\Generated\Model\StorageGetResponse::__construct(array $categories, float $fileCount, float $quotaBytes, array $stores, float $usedBytes)
 Pixonaut\Sdk\Generated\Model\StorageGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\StorageGetResponse static
 Pixonaut\Sdk\Generated\Model\StorageGetResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\StorageGetResponse::toArray(): array
@@ -30062,6 +30107,68 @@ Pixonaut\Sdk\Generated\Model\StorageGetResponseCategoriesItem::__construct(float
 Pixonaut\Sdk\Generated\Model\StorageGetResponseCategoriesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\StorageGetResponseCategoriesItem static
 Pixonaut\Sdk\Generated\Model\StorageGetResponseCategoriesItem::raw(): array
 Pixonaut\Sdk\Generated\Model\StorageGetResponseCategoriesItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$connectionId readonly string
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$freeBytes readonly ?float
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$links readonly Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemLinks
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$listedProductCount readonly float
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$lowSpace readonly bool
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$pictureBytes readonly float
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$pictureCount readonly float
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$productCount readonly float
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$products readonly array
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$reportedAt readonly float
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$siteUrl readonly string
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$stale readonly bool
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$variationPictureBytes readonly float
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$variationPictureCount readonly float
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::$variationPicturesOn readonly bool
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::__construct(string $connectionId, ?float $freeBytes, Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemLinks $links, float $listedProductCount, bool $lowSpace, string $name, float $pictureBytes, float $pictureCount, float $productCount, array $products, float $reportedAt, string $siteUrl, bool $stale, float $variationPictureBytes, float $variationPictureCount, bool $variationPicturesOn)
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem static
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::raw(): array
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemLinks implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemLinks::$cleanUp readonly ?string
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemLinks::$variationSetting readonly ?string
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemLinks::__construct(?string $cleanUp, ?string $variationSetting)
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemLinks::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemLinks static
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemLinks::raw(): array
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemLinks::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem::$editUrl readonly ?string
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem::$pictureBytes readonly float
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem::$pictureCount readonly float
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem::$storeProductId readonly string
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem::$variationPictureBytes readonly float
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem::$variationPictureCount readonly float
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem::$variationPicturesOn readonly bool
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem::__construct(?string $editUrl, string $name, float $pictureBytes, float $pictureCount, string $storeProductId, float $variationPictureBytes, float $variationPictureCount, bool $variationPicturesOn)
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem static
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\StorageGetResponseStoresItemProductsItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponse implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponse::$products readonly array
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponse::$reportedAt readonly float
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponse::$total readonly float
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponse::__construct(array $products, float $reportedAt, float $total)
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponse static
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponse::raw(): array
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem::$editUrl readonly ?string
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem::$pictureBytes readonly float
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem::$pictureCount readonly float
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem::$storeProductId readonly string
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem::$variationPictureBytes readonly float
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem::$variationPictureCount readonly float
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem::$variationPicturesOn readonly bool
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem::__construct(?string $editUrl, string $name, float $pictureBytes, float $pictureCount, string $storeProductId, float $variationPictureBytes, float $variationPictureCount, bool $variationPicturesOn)
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem static
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponseProductsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\StoreAccessOffEvent implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\StoreAccessOffEvent::$automation readonly ?Pixonaut\Sdk\Generated\Model\StoreAccessOffEventAutomation
 Pixonaut\Sdk\Generated\Model\StoreAccessOffEvent::$createdAt readonly int
@@ -38873,6 +38980,7 @@ Pixonaut\Sdk\Generated\Resource\Assets::list(?string $kind = null, ?string $role
 Pixonaut\Sdk\Generated\Resource\Assets::listAssetCategories(?int $page = null, ?int $pageSize = null, ?string $q = null): Pixonaut\Sdk\Generated\Model\AssetCategoriesListResponseOption1|array
 Pixonaut\Sdk\Generated\Resource\Assets::listAssetFilters(): Pixonaut\Sdk\Generated\Model\AssetFiltersListResponse
 Pixonaut\Sdk\Generated\Resource\Assets::listAssetTags(?int $page = null, ?int $pageSize = null, ?string $q = null): Pixonaut\Sdk\Generated\Model\AssetTagsListResponseOption1|array
+Pixonaut\Sdk\Generated\Resource\Assets::storeProductsStorage(string $connectionId, ?string $query = null, ?int $offset = null, ?int $limit = null): Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponse
 Pixonaut\Sdk\Generated\Resource\Assets::threadCopy(string $id, Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest $body, ?string $session = null): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200|Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201
 Pixonaut\Sdk\Generated\Resource\Assets::update(string $id, Pixonaut\Sdk\Generated\Model\AssetsUpdateRequest $body): Pixonaut\Sdk\Generated\Model\AssetsUpdateResponse
 Pixonaut\Sdk\Generated\Resource\Assets::updateAssetCategory(string $id, Pixonaut\Sdk\Generated\Model\AssetCategoriesUpdateRequest $body): Pixonaut\Sdk\Generated\Model\AssetCategoriesUpdateResponse
@@ -38920,6 +39028,7 @@ Pixonaut\Sdk\Generated\Resource\Connect::deleteMemberLink(): void
 Pixonaut\Sdk\Generated\Resource\Connect::exchangeCode(Pixonaut\Sdk\Generated\Model\ConnectedStoreExchangeCodeRequest $body): Pixonaut\Sdk\Generated\Model\ConnectedStoreExchangeCodeResponseOption1|Pixonaut\Sdk\Generated\Model\ConnectedStoreExchangeCodeResponseOption2
 Pixonaut\Sdk\Generated\Resource\Connect::get(): Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponse
 Pixonaut\Sdk\Generated\Resource\Connect::holdAccess(Pixonaut\Sdk\Generated\Model\ConnectedStoreHoldAccessRequest $body): void
+Pixonaut\Sdk\Generated\Resource\Connect::reportPictureStorage(Pixonaut\Sdk\Generated\Model\ConnectedStoreReportPictureStorageRequest $body): void
 Pixonaut\Sdk\Generated\Resource\Connect::update(Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateRequest $body): Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponse
 final class Pixonaut\Sdk\Generated\Resource\DesignerLinks
 Pixonaut\Sdk\Generated\Resource\DesignerLinks::OPERATIONS const

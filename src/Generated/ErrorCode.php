@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The error codes the API 10.3.0 spec names: its refusals (`x-refusals`), and the `error`
+ * The error codes the API 10.4.1 spec names: its refusals (`x-refusals`), and the `error`
  * values of every error answer. The client's own codes are on `ApiException`.
  */
 final class ErrorCode
@@ -531,6 +531,11 @@ final class ErrorCode
      * Documented with status 422.
      */
     public const INVALID_KIND = 'invalid_kind';
+
+    /**
+     * Documented with status 400.
+     */
+    public const INVALID_LINK = 'invalid_link';
 
     /**
      * Documented with status 422.
@@ -1662,6 +1667,7 @@ final class ErrorCode
         'invalid_idempotency_key' => [422],
         'invalid_input' => [400, 422],
         'invalid_kind' => [422],
+        'invalid_link' => [400],
         'invalid_name' => [422],
         'invalid_origin' => [400],
         'invalid_publish' => [422],
