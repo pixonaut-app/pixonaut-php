@@ -1,5 +1,16 @@
 # Changelog
 
+## [22.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v21.0.0...v22.0.0) (2026-11-17)
+
+
+### ⚠ BREAKING CHANGES
+
+* the conversation card models' constructors take a trailing optional storage argument.
+
+### Features
+
+* target the published Pixonaut API 10.5.0 ([#78](https://github.com/pixonaut-app/pixonaut-php/issues/78)) ([1ae94cf](https://github.com/pixonaut-app/pixonaut-php/commit/1ae94cfa278c15ff29f4c50db7a3847e4e268442))
+
 ## [21.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v20.3.0...v21.0.0) (2026-11-17)
 
 Targets the Pixonaut API 10.4.1.
