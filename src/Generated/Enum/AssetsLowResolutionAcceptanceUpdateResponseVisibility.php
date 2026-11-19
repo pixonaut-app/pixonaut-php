@@ -9,16 +9,16 @@ namespace Pixonaut\Sdk\Generated\Enum;
 /**
  * The values this release knows. The field is a string, and the API may answer a value added after this release.
  *
- * Schema: `POST /v1/automations/{id}/enable answer 200: $.standing (oneOf #1).state`.
+ * Schema: `PUT /v1/assets/{id}/low-resolution-acceptance answer 200: $.visibility`.
  */
-final class AutomationsEnableResponseStandingOption1State
+final class AssetsLowResolutionAcceptanceUpdateResponseVisibility
 {
-    public const ENABLED = 'enabled';
+    public const PUBLIC = 'public';
 
-    public const DISABLED = 'disabled';
+    public const PRIVATE = 'private';
 
     /**
      * Every value this release knows.
      */
-    public const KNOWN = [self::ENABLED, self::DISABLED];
+    public const KNOWN = [self::PUBLIC, self::PRIVATE];
 }

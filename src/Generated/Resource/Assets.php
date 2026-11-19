@@ -28,21 +28,28 @@ use Pixonaut\Sdk\Generated\Model\AssetsCreateResponse;
 use Pixonaut\Sdk\Generated\Model\AssetsCutOutResponse200;
 use Pixonaut\Sdk\Generated\Model\AssetsCutOutResponse202;
 use Pixonaut\Sdk\Generated\Model\AssetsCutOutStatusResponse;
+use Pixonaut\Sdk\Generated\Model\AssetsDeleteResponse;
 use Pixonaut\Sdk\Generated\Model\AssetsGetResponse;
 use Pixonaut\Sdk\Generated\Model\AssetsImportRequest;
 use Pixonaut\Sdk\Generated\Model\AssetsImportResponse;
 use Pixonaut\Sdk\Generated\Model\AssetsImproveResolutionResponse200;
 use Pixonaut\Sdk\Generated\Model\AssetsImproveResolutionResponse201;
 use Pixonaut\Sdk\Generated\Model\AssetsListResponse;
+use Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateRequest;
+use Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse;
 use Pixonaut\Sdk\Generated\Model\AssetsRoundShapesGetResponse;
 use Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest;
 use Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200;
 use Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201;
 use Pixonaut\Sdk\Generated\Model\AssetsUpdateRequest;
 use Pixonaut\Sdk\Generated\Model\AssetsUpdateResponse;
+use Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequest;
+use Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse;
+use Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse;
 use Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse;
 use Pixonaut\Sdk\Generated\Model\StorageGetResponse;
 use Pixonaut\Sdk\Generated\Model\StorageStoreProductsResponse;
+use Pixonaut\Sdk\Generated\Model\UpscalesGetResponse;
 use Pixonaut\Sdk\Http\Binary;
 use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Pixonaut;
@@ -76,12 +83,16 @@ final class Assets
         'getCutOutStatus' => 'assets.cutOutStatus',
         'cutOut' => 'assets.cutOut',
         'improveResolution' => 'assets.improveResolution',
+        'updateLowResolutionAcceptance' => 'assets.lowResolutionAcceptance.update',
         'getOriginal' => 'assets.original.get',
         'getRoundShapes' => 'assets.roundShapes.get',
         'threadCopy' => 'assets.threadCopy',
+        'createUpscale' => 'assets.upscale.create',
+        'getUpscaleQuote' => 'assets.upscaleQuote.get',
         'getUsage' => 'assets.usage.get',
         'getStorage' => 'storage.get',
         'storeProductsStorage' => 'storage.storeProducts',
+        'getUpscale' => 'upscales.get',
     ];
 
     public function __construct(
@@ -345,14 +356,23 @@ final class Assets
      *
      * @param string $id
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `blank_referenced`, `db_error`, `delete_failed`, `feature_disabled`, `forbidden`, `logo_referenced`, `not_found`, `order_referenced`, `origin_forbidden`, `payload_too_large`, `template_referenced`, `unauthorized`, `workspace_suspended`), or cannot be reached.
+     * @return AssetsDeleteResponse|null
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `blank_referenced`, `db_error`, `delete_failed`, `design_referenced`, `feature_disabled`, `forbidden`, `logo_referenced`, `not_found`, `order_referenced`, `origin_forbidden`, `payload_too_large`, `template_referenced`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
-    public function delete(string $id): void
+    public function delete(string $id): ?AssetsDeleteResponse
     {
-        $this->pixonaut->call(
+        $result = $this->pixonaut->call(
             'assets.delete',
             path: ['id' => $id],
         );
+        return match ($result->status) {
+            200 => $result->decode(
+                static fn(mixed $json): AssetsDeleteResponse => AssetsDeleteResponse::fromArray(Decode::object($json, '$'), '$'),
+            ),
+            204 => null,
+            default => throw $result->unexpected(),
+        };
     }
 
     /**
@@ -500,6 +520,28 @@ final class Assets
     }
 
     /**
+     * Accept a library picture's resolution.
+     *
+     * `PUT /v1/assets/{id}/low-resolution-acceptance`
+     *
+     * @param string $id
+     * @param AssetsLowResolutionAcceptanceUpdateRequest $body
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_body`, `lock_timeout`, `not_found`, `origin_forbidden`, `payload_too_large`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function updateLowResolutionAcceptance(string $id, AssetsLowResolutionAcceptanceUpdateRequest $body): AssetsLowResolutionAcceptanceUpdateResponse
+    {
+        $result = $this->pixonaut->call(
+            'assets.lowResolutionAcceptance.update',
+            path: ['id' => $id],
+            body: $body->toArray(),
+        );
+        return $result->decode(
+            static fn(mixed $json): AssetsLowResolutionAcceptanceUpdateResponse => AssetsLowResolutionAcceptanceUpdateResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
      * Fetch an asset's file.
      *
      * `GET /v1/assets/{id}/original`
@@ -570,6 +612,50 @@ final class Assets
     }
 
     /**
+     * Upscale a library picture into a new one.
+     *
+     * `POST /v1/assets/{id}/upscale`
+     *
+     * @param string $id
+     * @param AssetsUpscaleCreateRequest $body
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `insufficient_credits`, `invalid_body`, `lock_timeout`, `not_a_picture`, `not_found`, `origin_forbidden`, `payload_too_large`, `publish_forbidden`, `rate_limited`, `storage_quota_exceeded`, `unauthorized`, `upscale_edge_exceeded`, `upscale_factor_exceeded`, `upscale_not_larger`, `upscale_pixels_exceeded`, `upscale_unavailable`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function createUpscale(string $id, AssetsUpscaleCreateRequest $body): AssetsUpscaleCreateResponse
+    {
+        $result = $this->pixonaut->call(
+            'assets.upscale.create',
+            path: ['id' => $id],
+            body: $body->toArray(),
+        );
+        return $result->decode(
+            static fn(mixed $json): AssetsUpscaleCreateResponse => AssetsUpscaleCreateResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Quote an upscale of a library picture.
+     *
+     * `GET /v1/assets/{id}/upscale-quote`
+     *
+     * @param string $id
+     * @param float $widthPx
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_body`, `not_a_picture`, `not_found`, `origin_forbidden`, `unauthorized`, `upscale_edge_exceeded`, `upscale_factor_exceeded`, `upscale_not_larger`, `upscale_pixels_exceeded`, `upscale_unavailable`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function getUpscaleQuote(string $id, float $widthPx): AssetsUpscaleQuoteGetResponse
+    {
+        $result = $this->pixonaut->call(
+            'assets.upscaleQuote.get',
+            path: ['id' => $id],
+            query: ['widthPx' => $widthPx],
+        );
+        return $result->decode(
+            static fn(mixed $json): AssetsUpscaleQuoteGetResponse => AssetsUpscaleQuoteGetResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
      * Where an asset is used.
      *
      * `GET /v1/assets/{id}/usage`
@@ -625,6 +711,26 @@ final class Assets
         );
         return $result->decode(
             static fn(mixed $json): StorageStoreProductsResponse => StorageStoreProductsResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Read an upscale.
+     *
+     * `GET /v1/upscales/{id}`
+     *
+     * @param string $id
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `origin_forbidden`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function getUpscale(string $id): UpscalesGetResponse
+    {
+        $result = $this->pixonaut->call(
+            'upscales.get',
+            path: ['id' => $id],
+        );
+        return $result->decode(
+            static fn(mixed $json): UpscalesGetResponse => UpscalesGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 }

@@ -11,18 +11,15 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `PUT /v1/automations/{id} answer 200: $.standing (oneOf #1)`.
+ * Schema: `POST /v1/automations/{id}/disable answer 200: $.automation.standing (oneOf #1)`.
  */
-final class AutomationsSaveResponseStandingOption1 implements Model
+final class AutomationsDisableResponseAutomationStandingEnabled implements Model
 {
     /**
      * @var array<string, mixed>|null The object as decoded, unknown fields included.
      */
     private ?array $decoded = null;
 
-    /**
-     * @param string $state Values: {@see \Pixonaut\Sdk\Generated\Enum\AutomationsSaveResponseStandingOption1State}.
-     */
     public function __construct(
         public readonly string $state,
     ) {}

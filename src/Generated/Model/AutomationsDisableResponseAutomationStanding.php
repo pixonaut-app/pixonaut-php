@@ -21,11 +21,11 @@ final class AutomationsDisableResponseAutomationStanding
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return AutomationsDisableResponseAutomationStandingBroken|AutomationsDisableResponseAutomationStandingFailing|AutomationsDisableResponseAutomationStandingOption1
+     * @return AutomationsDisableResponseAutomationStandingBroken|AutomationsDisableResponseAutomationStandingFailing|AutomationsDisableResponseAutomationStandingEnabled|AutomationsDisableResponseAutomationStandingDisabled
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
-    public static function decode(mixed $data, string $path = '$'): AutomationsDisableResponseAutomationStandingBroken|AutomationsDisableResponseAutomationStandingFailing|AutomationsDisableResponseAutomationStandingOption1
+    public static function decode(mixed $data, string $path = '$'): AutomationsDisableResponseAutomationStandingBroken|AutomationsDisableResponseAutomationStandingFailing|AutomationsDisableResponseAutomationStandingEnabled|AutomationsDisableResponseAutomationStandingDisabled
     {
         return Decode::oneOf(
             $data,
@@ -42,9 +42,14 @@ final class AutomationsDisableResponseAutomationStanding
                     ['state' => 'failing'],
                 ],
                 [
-                    static fn(mixed $v, string $p): AutomationsDisableResponseAutomationStandingOption1 => AutomationsDisableResponseAutomationStandingOption1::fromArray(Decode::object($v, $p), $p),
-                    1,
-                    [],
+                    static fn(mixed $v, string $p): AutomationsDisableResponseAutomationStandingEnabled => AutomationsDisableResponseAutomationStandingEnabled::fromArray(Decode::object($v, $p), $p),
+                    1001,
+                    ['state' => 'enabled'],
+                ],
+                [
+                    static fn(mixed $v, string $p): AutomationsDisableResponseAutomationStandingDisabled => AutomationsDisableResponseAutomationStandingDisabled::fromArray(Decode::object($v, $p), $p),
+                    1001,
+                    ['state' => 'disabled'],
                 ],
             ],
         );

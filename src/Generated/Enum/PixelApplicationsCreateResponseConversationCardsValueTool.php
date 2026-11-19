@@ -273,6 +273,8 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
 
     public const SET_PRINTSHOP_BILLING_CURRENCY = 'set_printshop_billing_currency';
 
+    public const SET_PRINTSHOP_DRAFT_ORDERS = 'set_printshop_draft_orders';
+
     public const DELETE_OUTPUT_PROFILE = 'delete_output_profile';
 
     public const UPDATE_SHOPPER_PIXEL_SETTINGS = 'update_shopper_pixel_settings';
@@ -348,6 +350,12 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
     public const UPDATE_STORE_THEME_SETTINGS = 'update_store_theme_settings';
 
     public const SET_STORE_VARIATION_PICTURES = 'set_store_variation_pictures';
+
+    public const SET_STORE_SHIPPING_METHOD = 'set_store_shipping_method';
+
+    public const GENERATE_STORE_PRODUCT_VARIATIONS = 'generate_store_product_variations';
+
+    public const REGENERATE_STORE_PRODUCT_PICTURES = 'regenerate_store_product_pictures';
 
     public const PRICE_STORE_PRODUCT = 'price_store_product';
 
@@ -487,6 +495,7 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
         self::APPLY_CATEGORY_MAPPING,
         self::RECONNECT_PRINTSHOP,
         self::SET_PRINTSHOP_BILLING_CURRENCY,
+        self::SET_PRINTSHOP_DRAFT_ORDERS,
         self::DELETE_OUTPUT_PROFILE,
         self::UPDATE_SHOPPER_PIXEL_SETTINGS,
         self::UPDATE_TEMPLATE_SHOPPER_PIXEL,
@@ -525,6 +534,9 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
         self::UPDATE_STORE_SETTINGS,
         self::UPDATE_STORE_THEME_SETTINGS,
         self::SET_STORE_VARIATION_PICTURES,
+        self::SET_STORE_SHIPPING_METHOD,
+        self::GENERATE_STORE_PRODUCT_VARIATIONS,
+        self::REGENERATE_STORE_PRODUCT_PICTURES,
         self::PRICE_STORE_PRODUCT,
         self::SET_STORE_PRODUCT_PRICE_CHANGES,
     ];

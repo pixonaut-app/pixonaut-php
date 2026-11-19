@@ -82,6 +82,7 @@ Pixonaut\Sdk\Generated\Enum\AssetsBulkUpdateRequestAction::RETAIN const
 final class Pixonaut\Sdk\Generated\Enum\AssetsBulkUpdateResponseResultsItemOption2Error
 Pixonaut\Sdk\Generated\Enum\AssetsBulkUpdateResponseResultsItemOption2Error::BLANK_REFERENCED const
 Pixonaut\Sdk\Generated\Enum\AssetsBulkUpdateResponseResultsItemOption2Error::DELETE_FAILED const
+Pixonaut\Sdk\Generated\Enum\AssetsBulkUpdateResponseResultsItemOption2Error::DESIGN_REFERENCED const
 Pixonaut\Sdk\Generated\Enum\AssetsBulkUpdateResponseResultsItemOption2Error::KNOWN const
 Pixonaut\Sdk\Generated\Enum\AssetsBulkUpdateResponseResultsItemOption2Error::LOGO_REFERENCED const
 Pixonaut\Sdk\Generated\Enum\AssetsBulkUpdateResponseResultsItemOption2Error::NOT_FOUND const
@@ -155,6 +156,14 @@ final class Pixonaut\Sdk\Generated\Enum\AssetsListResponseAssetsItemVisibility
 Pixonaut\Sdk\Generated\Enum\AssetsListResponseAssetsItemVisibility::KNOWN const
 Pixonaut\Sdk\Generated\Enum\AssetsListResponseAssetsItemVisibility::PRIVATE const
 Pixonaut\Sdk\Generated\Enum\AssetsListResponseAssetsItemVisibility::PUBLIC const
+final class Pixonaut\Sdk\Generated\Enum\AssetsLowResolutionAcceptanceUpdateResponseRole
+Pixonaut\Sdk\Generated\Enum\AssetsLowResolutionAcceptanceUpdateResponseRole::BLANK_PHOTO const
+Pixonaut\Sdk\Generated\Enum\AssetsLowResolutionAcceptanceUpdateResponseRole::KNOWN const
+Pixonaut\Sdk\Generated\Enum\AssetsLowResolutionAcceptanceUpdateResponseRole::PICTURE const
+final class Pixonaut\Sdk\Generated\Enum\AssetsLowResolutionAcceptanceUpdateResponseVisibility
+Pixonaut\Sdk\Generated\Enum\AssetsLowResolutionAcceptanceUpdateResponseVisibility::KNOWN const
+Pixonaut\Sdk\Generated\Enum\AssetsLowResolutionAcceptanceUpdateResponseVisibility::PRIVATE const
+Pixonaut\Sdk\Generated\Enum\AssetsLowResolutionAcceptanceUpdateResponseVisibility::PUBLIC const
 final class Pixonaut\Sdk\Generated\Enum\AssetsUpdateRequestRole
 Pixonaut\Sdk\Generated\Enum\AssetsUpdateRequestRole::BLANK_PHOTO const
 Pixonaut\Sdk\Generated\Enum\AssetsUpdateRequestRole::KNOWN const
@@ -171,6 +180,32 @@ final class Pixonaut\Sdk\Generated\Enum\AssetsUpdateResponseVisibility
 Pixonaut\Sdk\Generated\Enum\AssetsUpdateResponseVisibility::KNOWN const
 Pixonaut\Sdk\Generated\Enum\AssetsUpdateResponseVisibility::PRIVATE const
 Pixonaut\Sdk\Generated\Enum\AssetsUpdateResponseVisibility::PUBLIC const
+final class Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobParkReason
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobParkReason::CONTINUE const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobParkReason::FEATURE_OFF const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobParkReason::KNOWN const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobParkReason::RATE_LIMITED const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobParkReason::SUSPENDED const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobParkReason::WAITING const
+final class Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobState
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobState::CANCELLED const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobState::FAILED const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobState::KNOWN const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobState::QUEUED const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobState::RUNNING const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseJobState::SUCCEEDED const
+final class Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseStatus
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseStatus::DONE const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseStatus::FAILED const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseStatus::KNOWN const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleCreateResponseStatus::RUNNING const
+final class Pixonaut\Sdk\Generated\Enum\AssetsUpscaleQuoteGetResponseShortfallReason
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleQuoteGetResponseShortfallReason::BALANCE const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleQuoteGetResponseShortfallReason::EMAIL_UNVERIFIED const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleQuoteGetResponseShortfallReason::FREE_PLAN_CEILING const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleQuoteGetResponseShortfallReason::KNOWN const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleQuoteGetResponseShortfallReason::SPENDING_CAP const
+Pixonaut\Sdk\Generated\Enum\AssetsUpscaleQuoteGetResponseShortfallReason::STOREFRONT_CEILING const
 final class Pixonaut\Sdk\Generated\Enum\AutomationsCheckRequestBodyConditionsOption4Field
 Pixonaut\Sdk\Generated\Enum\AutomationsCheckRequestBodyConditionsOption4Field::BLANK const
 Pixonaut\Sdk\Generated\Enum\AutomationsCheckRequestBodyConditionsOption4Field::CATEGORY const
@@ -304,10 +339,6 @@ final class Pixonaut\Sdk\Generated\Enum\AutomationsCreateResponseRunsAs
 Pixonaut\Sdk\Generated\Enum\AutomationsCreateResponseRunsAs::AUTHOR const
 Pixonaut\Sdk\Generated\Enum\AutomationsCreateResponseRunsAs::KNOWN const
 Pixonaut\Sdk\Generated\Enum\AutomationsCreateResponseRunsAs::WORKSPACE const
-final class Pixonaut\Sdk\Generated\Enum\AutomationsCreateResponseStandingOption1State
-Pixonaut\Sdk\Generated\Enum\AutomationsCreateResponseStandingOption1State::DISABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsCreateResponseStandingOption1State::ENABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsCreateResponseStandingOption1State::KNOWN const
 final class Pixonaut\Sdk\Generated\Enum\AutomationsCreateResponseTrigger
 Pixonaut\Sdk\Generated\Enum\AutomationsCreateResponseTrigger::DESIGN_APPROVED const
 Pixonaut\Sdk\Generated\Enum\AutomationsCreateResponseTrigger::DESIGN_CHANGES_REQUESTED const
@@ -340,10 +371,6 @@ final class Pixonaut\Sdk\Generated\Enum\AutomationsDisableResponseAutomationRuns
 Pixonaut\Sdk\Generated\Enum\AutomationsDisableResponseAutomationRunsAs::AUTHOR const
 Pixonaut\Sdk\Generated\Enum\AutomationsDisableResponseAutomationRunsAs::KNOWN const
 Pixonaut\Sdk\Generated\Enum\AutomationsDisableResponseAutomationRunsAs::WORKSPACE const
-final class Pixonaut\Sdk\Generated\Enum\AutomationsDisableResponseAutomationStandingOption1State
-Pixonaut\Sdk\Generated\Enum\AutomationsDisableResponseAutomationStandingOption1State::DISABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsDisableResponseAutomationStandingOption1State::ENABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsDisableResponseAutomationStandingOption1State::KNOWN const
 final class Pixonaut\Sdk\Generated\Enum\AutomationsDisableResponseAutomationTrigger
 Pixonaut\Sdk\Generated\Enum\AutomationsDisableResponseAutomationTrigger::DESIGN_APPROVED const
 Pixonaut\Sdk\Generated\Enum\AutomationsDisableResponseAutomationTrigger::DESIGN_CHANGES_REQUESTED const
@@ -376,10 +403,6 @@ final class Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseRunsAs
 Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseRunsAs::AUTHOR const
 Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseRunsAs::KNOWN const
 Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseRunsAs::WORKSPACE const
-final class Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseStandingOption1State
-Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseStandingOption1State::DISABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseStandingOption1State::ENABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseStandingOption1State::KNOWN const
 final class Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseTrigger
 Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseTrigger::DESIGN_APPROVED const
 Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseTrigger::DESIGN_CHANGES_REQUESTED const
@@ -412,10 +435,6 @@ final class Pixonaut\Sdk\Generated\Enum\AutomationsEnableResponseRunsAs
 Pixonaut\Sdk\Generated\Enum\AutomationsEnableResponseRunsAs::AUTHOR const
 Pixonaut\Sdk\Generated\Enum\AutomationsEnableResponseRunsAs::KNOWN const
 Pixonaut\Sdk\Generated\Enum\AutomationsEnableResponseRunsAs::WORKSPACE const
-final class Pixonaut\Sdk\Generated\Enum\AutomationsEnableResponseStandingOption1State
-Pixonaut\Sdk\Generated\Enum\AutomationsEnableResponseStandingOption1State::DISABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsEnableResponseStandingOption1State::ENABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsEnableResponseStandingOption1State::KNOWN const
 final class Pixonaut\Sdk\Generated\Enum\AutomationsEnableResponseTrigger
 Pixonaut\Sdk\Generated\Enum\AutomationsEnableResponseTrigger::DESIGN_APPROVED const
 Pixonaut\Sdk\Generated\Enum\AutomationsEnableResponseTrigger::DESIGN_CHANGES_REQUESTED const
@@ -598,10 +617,6 @@ final class Pixonaut\Sdk\Generated\Enum\AutomationsGetResponseRunsAs
 Pixonaut\Sdk\Generated\Enum\AutomationsGetResponseRunsAs::AUTHOR const
 Pixonaut\Sdk\Generated\Enum\AutomationsGetResponseRunsAs::KNOWN const
 Pixonaut\Sdk\Generated\Enum\AutomationsGetResponseRunsAs::WORKSPACE const
-final class Pixonaut\Sdk\Generated\Enum\AutomationsGetResponseStandingOption1State
-Pixonaut\Sdk\Generated\Enum\AutomationsGetResponseStandingOption1State::DISABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsGetResponseStandingOption1State::ENABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsGetResponseStandingOption1State::KNOWN const
 final class Pixonaut\Sdk\Generated\Enum\AutomationsGetResponseTrigger
 Pixonaut\Sdk\Generated\Enum\AutomationsGetResponseTrigger::DESIGN_APPROVED const
 Pixonaut\Sdk\Generated\Enum\AutomationsGetResponseTrigger::DESIGN_CHANGES_REQUESTED const
@@ -638,10 +653,6 @@ final class Pixonaut\Sdk\Generated\Enum\AutomationsListResponseAutomationsItemRu
 Pixonaut\Sdk\Generated\Enum\AutomationsListResponseAutomationsItemRunsAs::AUTHOR const
 Pixonaut\Sdk\Generated\Enum\AutomationsListResponseAutomationsItemRunsAs::KNOWN const
 Pixonaut\Sdk\Generated\Enum\AutomationsListResponseAutomationsItemRunsAs::WORKSPACE const
-final class Pixonaut\Sdk\Generated\Enum\AutomationsListResponseAutomationsItemStandingOption1State
-Pixonaut\Sdk\Generated\Enum\AutomationsListResponseAutomationsItemStandingOption1State::DISABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsListResponseAutomationsItemStandingOption1State::ENABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsListResponseAutomationsItemStandingOption1State::KNOWN const
 final class Pixonaut\Sdk\Generated\Enum\AutomationsListResponseAutomationsItemTrigger
 Pixonaut\Sdk\Generated\Enum\AutomationsListResponseAutomationsItemTrigger::DESIGN_APPROVED const
 Pixonaut\Sdk\Generated\Enum\AutomationsListResponseAutomationsItemTrigger::DESIGN_CHANGES_REQUESTED const
@@ -743,10 +754,6 @@ final class Pixonaut\Sdk\Generated\Enum\AutomationsSaveResponseRunsAs
 Pixonaut\Sdk\Generated\Enum\AutomationsSaveResponseRunsAs::AUTHOR const
 Pixonaut\Sdk\Generated\Enum\AutomationsSaveResponseRunsAs::KNOWN const
 Pixonaut\Sdk\Generated\Enum\AutomationsSaveResponseRunsAs::WORKSPACE const
-final class Pixonaut\Sdk\Generated\Enum\AutomationsSaveResponseStandingOption1State
-Pixonaut\Sdk\Generated\Enum\AutomationsSaveResponseStandingOption1State::DISABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsSaveResponseStandingOption1State::ENABLED const
-Pixonaut\Sdk\Generated\Enum\AutomationsSaveResponseStandingOption1State::KNOWN const
 final class Pixonaut\Sdk\Generated\Enum\AutomationsSaveResponseTrigger
 Pixonaut\Sdk\Generated\Enum\AutomationsSaveResponseTrigger::DESIGN_APPROVED const
 Pixonaut\Sdk\Generated\Enum\AutomationsSaveResponseTrigger::DESIGN_CHANGES_REQUESTED const
@@ -1529,6 +1536,11 @@ Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintFileForm::FLAT const
 Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintFileForm::KNOWN const
 Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintFileForm::LAYERED const
 Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintFileForm::LAYERED_LIVE_TEXT const
+final class Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintingLowResolutionAction
+Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintingLowResolutionAction::KNOWN const
+Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintingLowResolutionAction::OFF const
+Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintingLowResolutionAction::REFUSE const
+Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintingLowResolutionAction::WARN const
 final class Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintingPrintFileForm
 Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintingPrintFileForm::FLAT const
 Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintingPrintFileForm::KNOWN const
@@ -1559,6 +1571,11 @@ Pixonaut\Sdk\Generated\Enum\ConnectedStoreUpdateResponsePrintFileForm::FLAT cons
 Pixonaut\Sdk\Generated\Enum\ConnectedStoreUpdateResponsePrintFileForm::KNOWN const
 Pixonaut\Sdk\Generated\Enum\ConnectedStoreUpdateResponsePrintFileForm::LAYERED const
 Pixonaut\Sdk\Generated\Enum\ConnectedStoreUpdateResponsePrintFileForm::LAYERED_LIVE_TEXT const
+final class Pixonaut\Sdk\Generated\Enum\ConnectedStoreUpdateResponsePrintingLowResolutionAction
+Pixonaut\Sdk\Generated\Enum\ConnectedStoreUpdateResponsePrintingLowResolutionAction::KNOWN const
+Pixonaut\Sdk\Generated\Enum\ConnectedStoreUpdateResponsePrintingLowResolutionAction::OFF const
+Pixonaut\Sdk\Generated\Enum\ConnectedStoreUpdateResponsePrintingLowResolutionAction::REFUSE const
+Pixonaut\Sdk\Generated\Enum\ConnectedStoreUpdateResponsePrintingLowResolutionAction::WARN const
 final class Pixonaut\Sdk\Generated\Enum\ConnectedStoreUpdateResponsePrintingPrintFileForm
 Pixonaut\Sdk\Generated\Enum\ConnectedStoreUpdateResponsePrintingPrintFileForm::FLAT const
 Pixonaut\Sdk\Generated\Enum\ConnectedStoreUpdateResponsePrintingPrintFileForm::KNOWN const
@@ -2906,6 +2923,7 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::GENERATE_BLANK_PHOTOS const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::GENERATE_IMAGE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::GENERATE_LAYER_IMAGE const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::GENERATE_STORE_PRODUCT_VARIATIONS const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::KEEP_SCENE_CANDIDATE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::LINK_STORE_PRODUCT const
@@ -2918,6 +2936,7 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::PUBLISH_TEMPLATES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::RECONNECT_PRINTSHOP const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::REDRAW_BLANK_PHOTOS const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::REGENERATE_STORE_PRODUCT_PICTURES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::REJECT_DESIGN const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::REJECT_DESIGNS const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::REMOVE_BACKGROUND const
@@ -2951,6 +2970,7 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_FONTS_ACTIVE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_FONTS_FAVOURITE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_PRINTSHOP_BILLING_CURRENCY const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_PRINTSHOP_DRAFT_ORDERS const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_ATTRIBUTE_QUERY_NAME const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRINT_FILE_FORM const
@@ -2958,6 +2978,7 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_PRICE_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_SHIPPING_METHOD const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PICTURES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PRINT_SIZE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_SETUP const
@@ -3111,6 +3132,7 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::GENERATE_BLANK_PHOTOS const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::GENERATE_IMAGE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::GENERATE_LAYER_IMAGE const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::GENERATE_STORE_PRODUCT_VARIATIONS const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::KEEP_SCENE_CANDIDATE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::LINK_STORE_PRODUCT const
@@ -3123,6 +3145,7 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::PUBLISH_TEMPLATES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::RECONNECT_PRINTSHOP const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::REDRAW_BLANK_PHOTOS const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::REGENERATE_STORE_PRODUCT_PICTURES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::REJECT_DESIGN const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::REJECT_DESIGNS const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::REMOVE_BACKGROUND const
@@ -3156,6 +3179,7 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_FONTS_ACTIVE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_FONTS_FAVOURITE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_PRINTSHOP_BILLING_CURRENCY const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_PRINTSHOP_DRAFT_ORDERS const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_ATTRIBUTE_QUERY_NAME const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRINT_FILE_FORM const
@@ -3163,6 +3187,7 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_PRICE_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_SHIPPING_METHOD const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_VARIATION_PICTURES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_VARIATION_PRINT_SIZE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_VARIATION_SETUP const
@@ -3325,6 +3350,7 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::GENERATE_BLANK_PHOTOS const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::GENERATE_IMAGE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::GENERATE_LAYER_IMAGE const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::GENERATE_STORE_PRODUCT_VARIATIONS const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::KEEP_SCENE_CANDIDATE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::LINK_STORE_PRODUCT const
@@ -3337,6 +3363,7 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::PUBLISH_TEMPLATES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::RECONNECT_PRINTSHOP const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::REDRAW_BLANK_PHOTOS const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::REGENERATE_STORE_PRODUCT_PICTURES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::REJECT_DESIGN const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::REJECT_DESIGNS const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::REMOVE_BACKGROUND const
@@ -3370,6 +3397,7 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_FONTS_ACTIVE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_FONTS_FAVOURITE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_PRINTSHOP_BILLING_CURRENCY const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_PRINTSHOP_DRAFT_ORDERS const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_ATTRIBUTE_QUERY_NAME const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRINT_FILE_FORM const
@@ -3377,6 +3405,7 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_PRICE_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_SHIPPING_METHOD const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PICTURES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PRINT_SIZE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_SETUP const
@@ -5683,6 +5712,26 @@ Pixonaut\Sdk\Generated\Enum\TemplatesPrintSizeValidateResponseOption3VerdictsIte
 Pixonaut\Sdk\Generated\Enum\TemplatesPrintSizeValidateResponseOption3VerdictsItemFalseReason::PRINT_SIZE_NOT_AREA const
 Pixonaut\Sdk\Generated\Enum\TemplatesPrintSizeValidateResponseOption3VerdictsItemFalseReason::TOO_LARGE const
 Pixonaut\Sdk\Generated\Enum\TemplatesPrintSizeValidateResponseOption3VerdictsItemFalseReason::WRONG_RATIO const
+final class Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesDoneSkippedItemReason
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesDoneSkippedItemReason::DRAFT_CHANGED const
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesDoneSkippedItemReason::DRAFT_INVALID const
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesDoneSkippedItemReason::FAILED const
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesDoneSkippedItemReason::KNOWN const
+final class Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraftReason
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraftReason::KNOWN const
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraftReason::NEVER_PUBLISHED const
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraftReason::NOT_ASKED const
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraftReason::UNPUBLISHED_CHANGES const
+final class Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraftReason
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraftReason::KNOWN const
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraftReason::NEVER_PUBLISHED const
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraftReason::NOT_ASKED const
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraftReason::UNPUBLISHED_CHANGES const
+final class Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseStatus
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseStatus::DONE const
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseStatus::FAILED const
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseStatus::KNOWN const
+Pixonaut\Sdk\Generated\Enum\UpscalesGetResponseStatus::RUNNING const
 final class Pixonaut\Sdk\Generated\ErrorCode
 Pixonaut\Sdk\Generated\ErrorCode::ABORTED const
 Pixonaut\Sdk\Generated\ErrorCode::ADDRESS_CHANGE_NOT_ACCEPTED const
@@ -5744,6 +5793,7 @@ Pixonaut\Sdk\Generated\ErrorCode::DESIGN_NOT_FOUND const
 Pixonaut\Sdk\Generated\ErrorCode::DESIGN_NOT_STITCHABLE const
 Pixonaut\Sdk\Generated\ErrorCode::DESIGN_ORDERED const
 Pixonaut\Sdk\Generated\ErrorCode::DESIGN_PRINTED const
+Pixonaut\Sdk\Generated\ErrorCode::DESIGN_REFERENCED const
 Pixonaut\Sdk\Generated\ErrorCode::DESIGN_REJECTED const
 Pixonaut\Sdk\Generated\ErrorCode::DESIGN_UNREADABLE const
 Pixonaut\Sdk\Generated\ErrorCode::DOWNSCALE_SIZE_OVERFLOW const
@@ -5918,6 +5968,7 @@ Pixonaut\Sdk\Generated\ErrorCode::PROOF_EXPIRED const
 Pixonaut\Sdk\Generated\ErrorCode::PROOF_NOT_FOR_DESIGN const
 Pixonaut\Sdk\Generated\ErrorCode::PROOF_NOT_FOUND const
 Pixonaut\Sdk\Generated\ErrorCode::PROOF_OUTDATED const
+Pixonaut\Sdk\Generated\ErrorCode::PUBLISH_FORBIDDEN const
 Pixonaut\Sdk\Generated\ErrorCode::PUBLISH_GATE_FAILED const
 Pixonaut\Sdk\Generated\ErrorCode::PUBLISH_REFERENCES_UNAVAILABLE const
 Pixonaut\Sdk\Generated\ErrorCode::QUANTITY_MOVED_TO_ORDER const
@@ -5981,7 +6032,11 @@ Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_UPLOAD const
 Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_VARIANT const
 Pixonaut\Sdk\Generated\ErrorCode::UNSUPPORTED_MIME const
 Pixonaut\Sdk\Generated\ErrorCode::UPLOAD_EXPIRED const
+Pixonaut\Sdk\Generated\ErrorCode::UPSCALE_EDGE_EXCEEDED const
+Pixonaut\Sdk\Generated\ErrorCode::UPSCALE_FACTOR_EXCEEDED const
 Pixonaut\Sdk\Generated\ErrorCode::UPSCALE_FAILED const
+Pixonaut\Sdk\Generated\ErrorCode::UPSCALE_NOT_LARGER const
+Pixonaut\Sdk\Generated\ErrorCode::UPSCALE_PIXELS_EXCEEDED const
 Pixonaut\Sdk\Generated\ErrorCode::UPSCALE_TIMED_OUT const
 Pixonaut\Sdk\Generated\ErrorCode::UPSCALE_UNAVAILABLE const
 Pixonaut\Sdk\Generated\ErrorCode::URL_REFUSED const
@@ -6312,9 +6367,10 @@ Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponse::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItem
 Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItem::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption1|Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption2|Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption3 static
 final class Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption1 implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption1::$archived readonly ?bool
 Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption1::$id readonly string
 Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption1::$ok readonly bool
-Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption1::__construct(string $id, bool $ok)
+Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption1::__construct(string $id, bool $ok, ?bool $archived = null)
 Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption1::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption1 static
 Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption1::raw(): array
 Pixonaut\Sdk\Generated\Model\AssetsBulkUpdateResponseResultsItemOption1::toArray(): array
@@ -6435,6 +6491,20 @@ Pixonaut\Sdk\Generated\Model\AssetsCutOutStatusResponseCutOut::__construct(strin
 Pixonaut\Sdk\Generated\Model\AssetsCutOutStatusResponseCutOut::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsCutOutStatusResponseCutOut static
 Pixonaut\Sdk\Generated\Model\AssetsCutOutStatusResponseCutOut::raw(): array
 Pixonaut\Sdk\Generated\Model\AssetsCutOutStatusResponseCutOut::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsDeleteResponse implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsDeleteResponse::$archived readonly bool
+Pixonaut\Sdk\Generated\Model\AssetsDeleteResponse::$keptFor readonly array
+Pixonaut\Sdk\Generated\Model\AssetsDeleteResponse::__construct(bool $archived, array $keptFor)
+Pixonaut\Sdk\Generated\Model\AssetsDeleteResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsDeleteResponse static
+Pixonaut\Sdk\Generated\Model\AssetsDeleteResponse::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsDeleteResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsDeleteResponseKeptForItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsDeleteResponseKeptForItem::$baseId readonly string
+Pixonaut\Sdk\Generated\Model\AssetsDeleteResponseKeptForItem::$version readonly ?float
+Pixonaut\Sdk\Generated\Model\AssetsDeleteResponseKeptForItem::__construct(string $baseId, ?float $version)
+Pixonaut\Sdk\Generated\Model\AssetsDeleteResponseKeptForItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsDeleteResponseKeptForItem static
+Pixonaut\Sdk\Generated\Model\AssetsDeleteResponseKeptForItem::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsDeleteResponseKeptForItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AssetsGetResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AssetsGetResponse::$categoryId readonly ?string
 Pixonaut\Sdk\Generated\Model\AssetsGetResponse::$colourModel readonly ?string
@@ -6565,6 +6635,31 @@ Pixonaut\Sdk\Generated\Model\AssetsListResponseAssetsItemUpscaledFrom::__constru
 Pixonaut\Sdk\Generated\Model\AssetsListResponseAssetsItemUpscaledFrom::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsListResponseAssetsItemUpscaledFrom static
 Pixonaut\Sdk\Generated\Model\AssetsListResponseAssetsItemUpscaledFrom::raw(): array
 Pixonaut\Sdk\Generated\Model\AssetsListResponseAssetsItemUpscaledFrom::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateRequest implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateRequest::$accepted readonly bool
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateRequest::__construct(bool $accepted)
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateRequest::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateRequest static
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateRequest::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateRequest::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$categoryId readonly ?string
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$createdAt readonly float
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$heightPx readonly ?float
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$id readonly string
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$localizedNames readonly array
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$lowResolutionAccepted readonly bool
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$mime readonly string
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$name readonly ?string
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$role readonly string
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$sizeBytes readonly float
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$tags readonly array
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$updatedAt readonly float
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$visibility readonly string
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::$widthPx readonly ?float
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::__construct(?string $categoryId, float $createdAt, ?float $heightPx, string $id, array $localizedNames, bool $lowResolutionAccepted, string $mime, ?string $name, string $role, float $sizeBytes, array $tags, float $updatedAt, string $visibility, ?float $widthPx)
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse static
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AssetsRoundShapesGetResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AssetsRoundShapesGetResponse::$heightPx readonly int
 Pixonaut\Sdk\Generated\Model\AssetsRoundShapesGetResponse::$shapes readonly array
@@ -6946,14 +7041,83 @@ Pixonaut\Sdk\Generated\Model\AssetsUpdateResponse::__construct(?string $category
 Pixonaut\Sdk\Generated\Model\AssetsUpdateResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsUpdateResponse static
 Pixonaut\Sdk\Generated\Model\AssetsUpdateResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\AssetsUpdateResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequest implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequest::$replaceUses readonly ?Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequestReplaceUses
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequest::$widthPx readonly int
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequest::__construct(int $widthPx, ?Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequestReplaceUses $replaceUses = null)
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequest::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequest static
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequest::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequest::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequestReplaceUses implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequestReplaceUses::$publish readonly bool
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequestReplaceUses::$templates readonly ?array
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequestReplaceUses::__construct(bool $publish, ?array $templates = null)
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequestReplaceUses::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequestReplaceUses static
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequestReplaceUses::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequestReplaceUses::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse::$id readonly string
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse::$job readonly Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse::$sourceAssetId readonly string
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse::$status readonly string
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse::$upscale readonly Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseUpscale
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse::__construct(string $id, Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob $job, string $sourceAssetId, string $status, Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseUpscale $upscale)
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse static
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::$attempts readonly int
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::$createdAt readonly int
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::$finishedAt readonly ?int
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::$id readonly string
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::$kind readonly string
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::$lastError readonly ?string
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::$lastRunAt readonly ?int
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::$parkReason readonly ?string
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::$runAt readonly ?int
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::$state readonly string
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::$subjectId readonly ?string
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::__construct(int $attempts, int $createdAt, ?int $finishedAt, string $id, string $kind, ?string $lastError, ?int $lastRunAt, ?string $parkReason, ?int $runAt, string $state, ?string $subjectId)
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob static
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseJob::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseUpscale implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseUpscale::$credits readonly float
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseUpscale::$heightPx readonly float
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseUpscale::$outputPixels readonly float
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseUpscale::$widthPx readonly float
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseUpscale::__construct(float $credits, float $heightPx, float $outputPixels, float $widthPx)
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseUpscale::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseUpscale static
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseUpscale::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponseUpscale::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse::$availableCredits readonly float
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse::$shortfallReason readonly ?string
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse::$sourceHeightPx readonly float
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse::$sourceWidthPx readonly float
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse::$upscale readonly Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponseUpscale
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse::__construct(float $availableCredits, ?string $shortfallReason, float $sourceHeightPx, float $sourceWidthPx, Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponseUpscale $upscale)
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse static
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponseUpscale implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponseUpscale::$credits readonly float
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponseUpscale::$heightPx readonly float
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponseUpscale::$outputPixels readonly float
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponseUpscale::$widthPx readonly float
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponseUpscale::__construct(float $credits, float $heightPx, float $outputPixels, float $widthPx)
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponseUpscale::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponseUpscale static
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponseUpscale::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponseUpscale::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse::$blanks readonly array
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse::$designs readonly array
+Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse::$keptFor readonly array
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse::$logo readonly bool
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse::$orders readonly array
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse::$templates readonly array
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse::$withheld readonly Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseWithheld
-Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse::__construct(array $blanks, array $designs, bool $logo, array $orders, array $templates, Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseWithheld $withheld)
+Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse::__construct(array $blanks, array $designs, array $keptFor, bool $logo, array $orders, array $templates, Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseWithheld $withheld)
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse static
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse::toArray(): array
@@ -6975,6 +7139,15 @@ Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseDesignsItem::__construct(stri
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseDesignsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseDesignsItem static
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseDesignsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseDesignsItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseKeptForItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseKeptForItem::$baseId readonly string
+Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseKeptForItem::$deleted readonly bool
+Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseKeptForItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseKeptForItem::$version readonly ?float
+Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseKeptForItem::__construct(string $baseId, bool $deleted, string $name, ?float $version)
+Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseKeptForItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseKeptForItem static
+Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseKeptForItem::raw(): array
+Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseKeptForItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseOrdersItem::$externalRef readonly ?string
 Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponseOrdersItem::$orderId readonly string
@@ -7274,11 +7447,11 @@ Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::$name readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::$runsAs readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::$sources readonly Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseSources
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::$spendLimit readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingOption1
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::$trigger readonly ?string
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::$version readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingOption1 $standing, ?string $trigger, float $updatedAt, float $version)
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing $standing, ?string $trigger, float $updatedAt, float $version)
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse static
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponse::toArray(): array
@@ -7390,7 +7563,7 @@ Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseSourcesStores::fromArray(a
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseSourcesStores::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseSourcesStores::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStanding
-Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingOption1 static
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing static
 final class Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken::$code readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken::$reason readonly string
@@ -7399,6 +7572,18 @@ Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken::__construc
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken static
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingBroken::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingDisabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingDisabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingDisabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingDisabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingDisabled static
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingDisabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingDisabled::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingEnabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingEnabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingEnabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingEnabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingEnabled static
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingEnabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingEnabled::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing::$reason readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing::$state readonly string
@@ -7406,12 +7591,6 @@ Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing::__constru
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing static
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingFailing::toArray(): array
-final class Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingOption1 implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingOption1::$state readonly string
-Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingOption1::__construct(string $state)
-Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingOption1::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingOption1 static
-Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingOption1::raw(): array
-Pixonaut\Sdk\Generated\Model\AutomationsCreateResponseStandingOption1::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsDeleteResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsDeleteResponse::$cancelledFirings readonly float
 Pixonaut\Sdk\Generated\Model\AutomationsDeleteResponse::__construct(float $cancelledFirings)
@@ -7437,11 +7616,11 @@ Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::$name readonl
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::$runsAs readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::$sources readonly Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationSources
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::$spendLimit readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingOption1
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::$trigger readonly ?string
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::$version readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingOption1 $standing, ?string $trigger, float $updatedAt, float $version)
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing $standing, ?string $trigger, float $updatedAt, float $version)
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation static
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomation::toArray(): array
@@ -7553,7 +7732,7 @@ Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationSourcesStores::
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationSourcesStores::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationSourcesStores::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStanding
-Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingOption1 static
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing static
 final class Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken::$code readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken::$reason readonly string
@@ -7562,6 +7741,18 @@ Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken:
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken static
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingBroken::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingDisabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingDisabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingDisabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingDisabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingDisabled static
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingDisabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingDisabled::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingEnabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingEnabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingEnabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingEnabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingEnabled static
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingEnabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingEnabled::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing::$reason readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing::$state readonly string
@@ -7569,12 +7760,6 @@ Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing static
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingFailing::toArray(): array
-final class Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingOption1 implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingOption1::$state readonly string
-Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingOption1::__construct(string $state)
-Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingOption1::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingOption1 static
-Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingOption1::raw(): array
-Pixonaut\Sdk\Generated\Model\AutomationsDisableResponseAutomationStandingOption1::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::$author readonly ?Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseAuthor
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::$body readonly Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseBody
@@ -7587,11 +7772,11 @@ Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::$name readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::$runsAs readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::$sources readonly Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseSources
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::$spendLimit readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingOption1
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::$trigger readonly ?string
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::$version readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingOption1 $standing, ?string $trigger, float $updatedAt, float $version)
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing $standing, ?string $trigger, float $updatedAt, float $version)
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse static
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponse::toArray(): array
@@ -7703,7 +7888,7 @@ Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseSourcesStores::fromArra
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseSourcesStores::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseSourcesStores::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStanding
-Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingOption1 static
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing static
 final class Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken::$code readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken::$reason readonly string
@@ -7712,6 +7897,18 @@ Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken::__const
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken static
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingBroken::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingDisabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingDisabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingDisabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingDisabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingDisabled static
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingDisabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingDisabled::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingEnabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingEnabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingEnabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingEnabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingEnabled static
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingEnabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingEnabled::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing::$reason readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing::$state readonly string
@@ -7719,12 +7916,6 @@ Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing::__cons
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing static
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingFailing::toArray(): array
-final class Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingOption1 implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingOption1::$state readonly string
-Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingOption1::__construct(string $state)
-Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingOption1::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingOption1 static
-Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingOption1::raw(): array
-Pixonaut\Sdk\Generated\Model\AutomationsDuplicateResponseStandingOption1::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsEnableRequest implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsEnableRequest::$expectedUpdatedAt readonly ?float
 Pixonaut\Sdk\Generated\Model\AutomationsEnableRequest::__construct(?float $expectedUpdatedAt = null)
@@ -7743,11 +7934,11 @@ Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::$name readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::$runsAs readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::$sources readonly Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseSources
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::$spendLimit readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingOption1
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::$trigger readonly ?string
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::$version readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingOption1 $standing, ?string $trigger, float $updatedAt, float $version)
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing $standing, ?string $trigger, float $updatedAt, float $version)
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse static
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponse::toArray(): array
@@ -7859,7 +8050,7 @@ Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseSourcesStores::fromArray(a
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseSourcesStores::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseSourcesStores::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStanding
-Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingOption1 static
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing static
 final class Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken::$code readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken::$reason readonly string
@@ -7868,6 +8059,18 @@ Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken::__construc
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken static
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingBroken::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingDisabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingDisabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingDisabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingDisabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingDisabled static
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingDisabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingDisabled::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingEnabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingEnabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingEnabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingEnabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingEnabled static
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingEnabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingEnabled::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing::$reason readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing::$state readonly string
@@ -7875,12 +8078,6 @@ Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing::__constru
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing static
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingFailing::toArray(): array
-final class Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingOption1 implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingOption1::$state readonly string
-Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingOption1::__construct(string $state)
-Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingOption1::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingOption1 static
-Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingOption1::raw(): array
-Pixonaut\Sdk\Generated\Model\AutomationsEnableResponseStandingOption1::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsFiringResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsFiringResponse::$chain readonly Pixonaut\Sdk\Generated\Model\AutomationsFiringResponseChain
 Pixonaut\Sdk\Generated\Model\AutomationsFiringResponse::$event readonly Pixonaut\Sdk\Generated\Model\AutomationsFiringResponseEvent
@@ -8510,11 +8707,11 @@ Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::$name readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::$runsAs readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::$sources readonly Pixonaut\Sdk\Generated\Model\AutomationsGetResponseSources
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::$spendLimit readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingOption1
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::$trigger readonly ?string
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::$version readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsGetResponseAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsGetResponseBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsGetResponseFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsGetResponseSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingOption1 $standing, ?string $trigger, float $updatedAt, float $version)
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsGetResponseAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsGetResponseBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsGetResponseFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsGetResponseSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing $standing, ?string $trigger, float $updatedAt, float $version)
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsGetResponse static
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponse::toArray(): array
@@ -8626,7 +8823,7 @@ Pixonaut\Sdk\Generated\Model\AutomationsGetResponseSourcesStores::fromArray(arra
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponseSourcesStores::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponseSourcesStores::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStanding
-Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingOption1 static
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing static
 final class Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken::$code readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken::$reason readonly string
@@ -8635,6 +8832,18 @@ Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken::__construct(s
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken static
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingBroken::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingDisabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingDisabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingDisabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingDisabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingDisabled static
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingDisabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingDisabled::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingEnabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingEnabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingEnabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingEnabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingEnabled static
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingEnabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingEnabled::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing::$reason readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing::$state readonly string
@@ -8642,12 +8851,6 @@ Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing::__construct(
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing static
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingFailing::toArray(): array
-final class Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingOption1 implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingOption1::$state readonly string
-Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingOption1::__construct(string $state)
-Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingOption1::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingOption1 static
-Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingOption1::raw(): array
-Pixonaut\Sdk\Generated\Model\AutomationsGetResponseStandingOption1::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsListResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsListResponse::$automations readonly array
 Pixonaut\Sdk\Generated\Model\AutomationsListResponse::$page readonly float
@@ -8670,11 +8873,11 @@ Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::$name reado
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::$runsAs readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::$sources readonly Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemSources
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::$spendLimit readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingOption1
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::$trigger readonly ?string
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::$version readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingOption1 $standing, ?string $trigger, float $updatedAt, float $version, ?array $atPrintshop = null)
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing $standing, ?string $trigger, float $updatedAt, float $version, ?array $atPrintshop = null)
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem static
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItem::toArray(): array
@@ -8794,7 +8997,7 @@ Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemSourcesStores
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemSourcesStores::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemSourcesStores::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStanding
-Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingOption1 static
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing static
 final class Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken::$code readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken::$reason readonly string
@@ -8803,6 +9006,18 @@ Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroke
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken static
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingBroken::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingDisabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingDisabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingDisabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingDisabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingDisabled static
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingDisabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingDisabled::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingEnabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingEnabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingEnabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingEnabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingEnabled static
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingEnabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingEnabled::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing::$reason readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing::$state readonly string
@@ -8810,12 +9025,6 @@ Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFaili
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing static
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingFailing::toArray(): array
-final class Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingOption1 implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingOption1::$state readonly string
-Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingOption1::__construct(string $state)
-Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingOption1::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingOption1 static
-Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingOption1::raw(): array
-Pixonaut\Sdk\Generated\Model\AutomationsListResponseAutomationsItemStandingOption1::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsPastEventsPreviewRequest implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsPastEventsPreviewRequest::$from readonly float
 Pixonaut\Sdk\Generated\Model\AutomationsPastEventsPreviewRequest::$to readonly float
@@ -9080,11 +9289,11 @@ Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::$name readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::$runsAs readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::$sources readonly Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseSources
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::$spendLimit readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingOption1
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::$standing readonly Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::$trigger readonly ?string
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::$updatedAt readonly float
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::$version readonly float
-Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingOption1 $standing, ?string $trigger, float $updatedAt, float $version)
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::__construct(?Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseAuthor $author, Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseBody $body, float $createdAt, bool $enabled, ?float $enabledAt, Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseFirings $firings, string $id, string $name, string $runsAs, Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseSources $sources, float $spendLimit, Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing $standing, ?string $trigger, float $updatedAt, float $version)
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse static
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponse::toArray(): array
@@ -9196,7 +9405,7 @@ Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseSourcesStores::fromArray(arr
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseSourcesStores::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseSourcesStores::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStanding
-Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingOption1 static
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStanding::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingDisabled|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingEnabled|Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing static
 final class Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken::$code readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken::$reason readonly string
@@ -9205,6 +9414,18 @@ Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken::__construct(
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken static
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingBroken::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingDisabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingDisabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingDisabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingDisabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingDisabled static
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingDisabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingDisabled::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingEnabled implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingEnabled::$state readonly string
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingEnabled::__construct(string $state)
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingEnabled::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingEnabled static
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingEnabled::raw(): array
+Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingEnabled::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing::$reason readonly string
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing::$state readonly string
@@ -9212,12 +9433,6 @@ Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing::__construct
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing static
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing::raw(): array
 Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingFailing::toArray(): array
-final class Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingOption1 implements Pixonaut\Sdk\Model\Model
-Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingOption1::$state readonly string
-Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingOption1::__construct(string $state)
-Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingOption1::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingOption1 static
-Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingOption1::raw(): array
-Pixonaut\Sdk\Generated\Model\AutomationsSaveResponseStandingOption1::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\AutomationsTestRunEventsRequest implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\AutomationsTestRunEventsRequest::$automationId readonly ?string
 Pixonaut\Sdk\Generated\Model\AutomationsTestRunEventsRequest::$draft readonly ?Pixonaut\Sdk\Generated\Model\AutomationsTestRunEventsRequestDraft
@@ -12487,10 +12702,11 @@ Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrintFileTextTolerancePx::
 final class Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting::$defaultBleedMm readonly float
 Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting::$defaultSafeAreaMm readonly float
+Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting::$lowResolutionAction readonly string
 Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting::$minPrintDpi readonly float
 Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting::$printFileForm readonly string
 Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting::$printFileTextTolerance readonly Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrintingPrintFileTextToleranceMm|Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrintingPrintFileTextTolerancePx
-Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting::__construct(float $defaultBleedMm, float $defaultSafeAreaMm, float $minPrintDpi, string $printFileForm, Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrintingPrintFileTextToleranceMm|Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrintingPrintFileTextTolerancePx $printFileTextTolerance)
+Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting::__construct(float $defaultBleedMm, float $defaultSafeAreaMm, string $lowResolutionAction, float $minPrintDpi, string $printFileForm, Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrintingPrintFileTextToleranceMm|Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrintingPrintFileTextTolerancePx $printFileTextTolerance)
 Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting static
 Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting::raw(): array
 Pixonaut\Sdk\Generated\Model\ConnectedStoreGetResponsePrinting::toArray(): array
@@ -12655,10 +12871,11 @@ Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrintFileTextToleranceP
 final class Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting::$defaultBleedMm readonly float
 Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting::$defaultSafeAreaMm readonly float
+Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting::$lowResolutionAction readonly string
 Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting::$minPrintDpi readonly float
 Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting::$printFileForm readonly string
 Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting::$printFileTextTolerance readonly Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrintingPrintFileTextToleranceMm|Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrintingPrintFileTextTolerancePx
-Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting::__construct(float $defaultBleedMm, float $defaultSafeAreaMm, float $minPrintDpi, string $printFileForm, Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrintingPrintFileTextToleranceMm|Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrintingPrintFileTextTolerancePx $printFileTextTolerance)
+Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting::__construct(float $defaultBleedMm, float $defaultSafeAreaMm, string $lowResolutionAction, float $minPrintDpi, string $printFileForm, Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrintingPrintFileTextToleranceMm|Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrintingPrintFileTextTolerancePx $printFileTextTolerance)
 Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting static
 Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting::raw(): array
 Pixonaut\Sdk\Generated\Model\ConnectedStoreUpdateResponsePrinting::toArray(): array
@@ -14739,8 +14956,9 @@ Pixonaut\Sdk\Generated\Model\OrdersCreateRequest::$recipient readonly ?Pixonaut\
 Pixonaut\Sdk\Generated\Model\OrdersCreateRequest::$reorder readonly ?bool
 Pixonaut\Sdk\Generated\Model\OrdersCreateRequest::$shipToAddressId readonly Pixonaut\Sdk\Model\Omitted|null|string
 Pixonaut\Sdk\Generated\Model\OrdersCreateRequest::$shippingAddress readonly ?Pixonaut\Sdk\Generated\Model\OrdersCreateRequestShippingAddress
+Pixonaut\Sdk\Generated\Model\OrdersCreateRequest::$storeOrder readonly ?Pixonaut\Sdk\Generated\Model\OrdersCreateRequestStoreOrder
 Pixonaut\Sdk\Generated\Model\OrdersCreateRequest::$variant readonly ?string
-Pixonaut\Sdk\Generated\Model\OrdersCreateRequest::__construct(?array $designs = null, ?string $externalRef = null, ?array $prints = null, Pixonaut\Sdk\Model\Omitted|null|string $printshopId = Pixonaut\Sdk\Model\Omitted::Field, ?int $quantity = null, ?Pixonaut\Sdk\Generated\Model\OrdersCreateRequestRecipient $recipient = null, ?bool $reorder = null, Pixonaut\Sdk\Model\Omitted|null|string $shipToAddressId = Pixonaut\Sdk\Model\Omitted::Field, ?Pixonaut\Sdk\Generated\Model\OrdersCreateRequestShippingAddress $shippingAddress = null, ?string $variant = null)
+Pixonaut\Sdk\Generated\Model\OrdersCreateRequest::__construct(?array $designs = null, ?string $externalRef = null, ?array $prints = null, Pixonaut\Sdk\Model\Omitted|null|string $printshopId = Pixonaut\Sdk\Model\Omitted::Field, ?int $quantity = null, ?Pixonaut\Sdk\Generated\Model\OrdersCreateRequestRecipient $recipient = null, ?bool $reorder = null, Pixonaut\Sdk\Model\Omitted|null|string $shipToAddressId = Pixonaut\Sdk\Model\Omitted::Field, ?Pixonaut\Sdk\Generated\Model\OrdersCreateRequestShippingAddress $shippingAddress = null, ?Pixonaut\Sdk\Generated\Model\OrdersCreateRequestStoreOrder $storeOrder = null, ?string $variant = null)
 Pixonaut\Sdk\Generated\Model\OrdersCreateRequest::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersCreateRequest static
 Pixonaut\Sdk\Generated\Model\OrdersCreateRequest::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersCreateRequest::toArray(): array
@@ -14776,6 +14994,13 @@ Pixonaut\Sdk\Generated\Model\OrdersCreateRequestShippingAddress::__construct(str
 Pixonaut\Sdk\Generated\Model\OrdersCreateRequestShippingAddress::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersCreateRequestShippingAddress static
 Pixonaut\Sdk\Generated\Model\OrdersCreateRequestShippingAddress::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersCreateRequestShippingAddress::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\OrdersCreateRequestStoreOrder implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\OrdersCreateRequestStoreOrder::$items readonly int
+Pixonaut\Sdk\Generated\Model\OrdersCreateRequestStoreOrder::$ref readonly string
+Pixonaut\Sdk\Generated\Model\OrdersCreateRequestStoreOrder::__construct(int $items, string $ref)
+Pixonaut\Sdk\Generated\Model\OrdersCreateRequestStoreOrder::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersCreateRequestStoreOrder static
+Pixonaut\Sdk\Generated\Model\OrdersCreateRequestStoreOrder::raw(): array
+Pixonaut\Sdk\Generated\Model\OrdersCreateRequestStoreOrder::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersCreateResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponse::$adapter readonly string
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponse::$blank readonly ?Pixonaut\Sdk\Generated\Model\OrdersCreateResponseBlank
@@ -17594,7 +17819,8 @@ Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsVal
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::$tool readonly string
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::$upscaleId readonly ?string
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::$upscaleIds readonly ?array
-Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::__construct(string $status, string $tool, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueChange $change = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueCurrent $current = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueEstimate $estimate = null, mixed $input = null, ?array $pictures = null, ?string $refusedWith = null, ?string $runId = null, ?array $savedRevisions = null, ?array $showcases = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage $storage = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStoreRefusal $storeRefusal = null, ?string $upscaleId = null, ?array $upscaleIds = null)
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::$variations readonly ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::__construct(string $status, string $tool, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueChange $change = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueCurrent $current = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueEstimate $estimate = null, mixed $input = null, ?array $pictures = null, ?string $refusedWith = null, ?string $runId = null, ?array $savedRevisions = null, ?array $showcases = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStorage $storage = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStoreRefusal $storeRefusal = null, ?string $upscaleId = null, ?array $upscaleIds = null, ?Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations $variations = null)
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue static
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::raw(): array
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValue::toArray(): array
@@ -17695,6 +17921,17 @@ Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsVal
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStoreRefusal::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStoreRefusal static
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStoreRefusal::raw(): array
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueStoreRefusal::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations::$added readonly float
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations::$changed readonly float
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations::$disabled readonly float
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations::$kept readonly float
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations::$remaining readonly float
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations::$skipped readonly float
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations::__construct(float $added, float $changed, float $disabled, float $kept, float $remaining, float $skipped)
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations static
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations::raw(): array
+Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationCardsValueVariations::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationMessagesItem
 Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationMessagesItem::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationMessagesItemAssistant|Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationMessagesItemUser static
 final class Pixonaut\Sdk\Generated\Model\PixelApplicationsCreateResponseConversationMessagesItemAssistant implements Pixonaut\Sdk\Model\Model
@@ -17943,7 +18180,8 @@ Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue:
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::$tool readonly string
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::$upscaleId readonly ?string
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::$upscaleIds readonly ?array
-Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::__construct(string $status, string $tool, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueChange $change = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueCurrent $current = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueEstimate $estimate = null, mixed $input = null, ?array $pictures = null, ?string $refusedWith = null, ?string $runId = null, ?array $savedRevisions = null, ?array $showcases = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage $storage = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStoreRefusal $storeRefusal = null, ?string $upscaleId = null, ?array $upscaleIds = null)
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::$variations readonly ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::__construct(string $status, string $tool, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueChange $change = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueCurrent $current = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueEstimate $estimate = null, mixed $input = null, ?array $pictures = null, ?string $refusedWith = null, ?string $runId = null, ?array $savedRevisions = null, ?array $showcases = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStorage $storage = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStoreRefusal $storeRefusal = null, ?string $upscaleId = null, ?array $upscaleIds = null, ?Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations $variations = null)
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue static
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::raw(): array
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValue::toArray(): array
@@ -18044,6 +18282,17 @@ Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueS
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStoreRefusal::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStoreRefusal static
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStoreRefusal::raw(): array
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueStoreRefusal::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations::$added readonly float
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations::$changed readonly float
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations::$disabled readonly float
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations::$kept readonly float
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations::$remaining readonly float
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations::$skipped readonly float
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations::__construct(float $added, float $changed, float $disabled, float $kept, float $remaining, float $skipped)
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations static
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations::raw(): array
+Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationCardsValueVariations::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationMessagesItem
 Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationMessagesItem::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationMessagesItemAssistant|Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationMessagesItemUser static
 final class Pixonaut\Sdk\Generated\Model\PixelConversationGetResponseConversationMessagesItemAssistant implements Pixonaut\Sdk\Model\Model
@@ -18343,7 +18592,8 @@ Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::$tool readonly string
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::$upscaleId readonly ?string
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::$upscaleIds readonly ?array
-Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::__construct(string $status, string $tool, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueChange $change = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueCurrent $current = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueEstimate $estimate = null, mixed $input = null, ?array $pictures = null, ?string $refusedWith = null, ?string $runId = null, ?array $savedRevisions = null, ?array $showcases = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage $storage = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStoreRefusal $storeRefusal = null, ?string $upscaleId = null, ?array $upscaleIds = null)
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::$variations readonly ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::__construct(string $status, string $tool, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueChange $change = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueCurrent $current = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueEstimate $estimate = null, mixed $input = null, ?array $pictures = null, ?string $refusedWith = null, ?string $runId = null, ?array $savedRevisions = null, ?array $showcases = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStorage $storage = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStoreRefusal $storeRefusal = null, ?string $upscaleId = null, ?array $upscaleIds = null, ?Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations $variations = null)
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue static
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::raw(): array
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue::toArray(): array
@@ -18444,6 +18694,17 @@ Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValue
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStoreRefusal::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStoreRefusal static
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStoreRefusal::raw(): array
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueStoreRefusal::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations::$added readonly float
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations::$changed readonly float
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations::$disabled readonly float
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations::$kept readonly float
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations::$remaining readonly float
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations::$skipped readonly float
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations::__construct(float $added, float $changed, float $disabled, float $kept, float $remaining, float $skipped)
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations static
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations::raw(): array
+Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationCardsValueVariations::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationMessagesItem
 Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationMessagesItem::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationMessagesItemAssistant|Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationMessagesItemUser static
 final class Pixonaut\Sdk\Generated\Model\PixelDismissalsCreateResponseConversationMessagesItemAssistant implements Pixonaut\Sdk\Model\Model
@@ -21447,6 +21708,7 @@ Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsI
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$counts readonly Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemCounts
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$createdAt readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$credentialsLapsed readonly bool
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$draftOrders readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$isDefault readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$name readonly string
@@ -21455,8 +21717,9 @@ Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsI
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$printMethods readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$printMethodsFixed readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$secretNames readonly ?array
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$sendsDrafts readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::$updatedAt readonly float
-Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::__construct(bool $acceptsAddressUpdates, bool $active, string $adapter, ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAddress $address, ?string $addressChanges, Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAsksOfDesigns $asksOfDesigns, ?string $billingCurrency, ?string $billingCurrencyFrom, ?string $callbackUrl, ?string $contactEmail, bool $contactEmailBounced, ?string $contactName, ?string $contactPhone, Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemCounts $counts, float $createdAt, bool $credentialsLapsed, string $id, bool $isDefault, string $name, bool $needsPositions, bool $paused, array $printMethods, bool $printMethodsFixed, ?array $secretNames, float $updatedAt, mixed $config = null)
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::__construct(bool $acceptsAddressUpdates, bool $active, string $adapter, ?Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAddress $address, ?string $addressChanges, Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemAsksOfDesigns $asksOfDesigns, ?string $billingCurrency, ?string $billingCurrencyFrom, ?string $callbackUrl, ?string $contactEmail, bool $contactEmailBounced, ?string $contactName, ?string $contactPhone, Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItemCounts $counts, float $createdAt, bool $credentialsLapsed, bool $draftOrders, string $id, bool $isDefault, string $name, bool $needsPositions, bool $paused, array $printMethods, bool $printMethodsFixed, ?array $secretNames, bool $sendsDrafts, float $updatedAt, mixed $config = null)
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption1ConnectionsItem::toArray(): array
@@ -21499,10 +21762,12 @@ Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsI
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$billingCurrency readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$billingCurrencyFrom readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$catalogue readonly bool
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$draftOrders readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$isDefault readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$name readonly string
-Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::__construct(bool $active, string $adapter, ?string $billingCurrency, ?string $billingCurrencyFrom, bool $catalogue, string $id, bool $isDefault, string $name)
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::$sendsDrafts readonly bool
+Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::__construct(bool $active, string $adapter, ?string $billingCurrency, ?string $billingCurrencyFrom, bool $catalogue, bool $draftOrders, string $id, bool $isDefault, string $name, bool $sendsDrafts)
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem static
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopConnectionsListResponseOption2ConnectionsItem::toArray(): array
@@ -38037,6 +38302,7 @@ Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$cmykPrev
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$coverage readonly string
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$defaultHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$defaultWidthMm readonly float
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$flatLayout readonly ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayout
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$foldMm readonly ?float
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$maxHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$maxWidthMm readonly float
@@ -38047,10 +38313,30 @@ Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$safeArea
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$shape readonly ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementShape
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$sizes readonly Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementSizes
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::$stitch readonly ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch
-Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::__construct(string $blankId, float $bleedMm, string $cmykPreviewProfile, string $coverage, float $defaultHeightMm, float $defaultWidthMm, float $maxHeightMm, float $maxWidthMm, string $placementId, float $printHeightMm, float $printWidthMm, float $safeAreaMm, Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementSizes $sizes, ?string $cmykPreviewTables = null, ?float $foldMm = null, ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementShape $shape = null, ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch $stitch = null)
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::__construct(string $blankId, float $bleedMm, string $cmykPreviewProfile, string $coverage, float $defaultHeightMm, float $defaultWidthMm, float $maxHeightMm, float $maxWidthMm, string $placementId, float $printHeightMm, float $printWidthMm, float $safeAreaMm, Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementSizes $sizes, ?string $cmykPreviewTables = null, ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayout $flatLayout = null, ?float $foldMm = null, ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementShape $shape = null, ?Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementStitch $stitch = null)
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement static
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::raw(): array
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacement::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayout implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayout::$parts readonly array
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayout::__construct(array $parts)
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayout::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayout static
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayout::raw(): array
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayout::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem::$printed readonly bool
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem::$up readonly float
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem::$xMm readonly float
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem::$yMm readonly float
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem::__construct(float $heightMm, string $name, bool $printed, float $up, float $widthMm, float $xMm, float $yMm)
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem static
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItemUp
+Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementFlatLayoutPartsItemUp::decode(mixed $data, string $path = '$'): float static
 final class Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementShape implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementShape::$cutByPrintShop readonly ?bool
 Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponsePlacementShape::$dFrac readonly string
@@ -38923,6 +39209,137 @@ Pixonaut\Sdk\Generated\Model\TextMessagesLowEventPayload::__construct(int $allow
 Pixonaut\Sdk\Generated\Model\TextMessagesLowEventPayload::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TextMessagesLowEventPayload static
 Pixonaut\Sdk\Generated\Model\TextMessagesLowEventPayload::raw(): array
 Pixonaut\Sdk\Generated\Model\TextMessagesLowEventPayload::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponse implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::$assetId readonly ?string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::$createdAt readonly int
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::$endedAt readonly ?int
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::$failure readonly ?string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::$heightPx readonly float
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::$id readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::$replaceUses readonly ?Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::$sourceAssetId readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::$status readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::$widthPx readonly float
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::__construct(?string $assetId, int $createdAt, ?int $endedAt, ?string $failure, float $heightPx, string $id, ?Pixonaut\Sdk\Model\Model $replaceUses, string $sourceAssetId, string $status, float $widthPx)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponse static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUses
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUses::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDone implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDone::$more readonly bool
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDone::$publish readonly bool
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDone::$skipped readonly array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDone::$status readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDone::$templates readonly array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDone::__construct(bool $more, bool $publish, array $skipped, string $status, array $templates)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDone::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDone static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDone::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDone::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneSkippedItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneSkippedItem::$baseId readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneSkippedItem::$reason readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneSkippedItem::__construct(string $baseId, string $reason)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneSkippedItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneSkippedItem static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneSkippedItem::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneSkippedItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItem::$baseId readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItem::$publish readonly Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraft|Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishPublished|Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishRefused
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItem::$revision readonly int
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItem::__construct(string $baseId, Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraft|Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishPublished|Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishRefused $publish, int $revision)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItem static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItem::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublish
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublish::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraft|Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishPublished|Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishRefused static
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraft implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraft::$outcome readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraft::$reason readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraft::__construct(string $outcome, string $reason)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraft::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraft static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraft::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishKeptAsDraft::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishPublished implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishPublished::$draftKept readonly ?bool
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishPublished::$outcome readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishPublished::$version readonly float
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishPublished::__construct(string $outcome, float $version, ?bool $draftKept = null)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishPublished::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishPublished static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishPublished::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishPublished::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishRefused implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishRefused::$error readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishRefused::$outcome readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishRefused::$status readonly float
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishRefused::__construct(string $error, string $outcome, float $status)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishRefused::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishRefused static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishRefused::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesDoneTemplatesItemPublishRefused::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailed implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailed::$error readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailed::$publish readonly bool
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailed::$status readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailed::$templates readonly array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailed::__construct(string $error, bool $publish, string $status, array $templates)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailed::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailed static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailed::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailed::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItem::$baseId readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItem::$publish readonly Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraft|Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishPublished|Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishRefused
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItem::$revision readonly int
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItem::__construct(string $baseId, Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraft|Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishPublished|Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishRefused $publish, int $revision)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItem static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItem::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublish
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublish::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraft|Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishPublished|Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishRefused static
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraft implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraft::$outcome readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraft::$reason readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraft::__construct(string $outcome, string $reason)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraft::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraft static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraft::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishKeptAsDraft::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishPublished implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishPublished::$draftKept readonly ?bool
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishPublished::$outcome readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishPublished::$version readonly float
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishPublished::__construct(string $outcome, float $version, ?bool $draftKept = null)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishPublished::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishPublished static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishPublished::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishPublished::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishRefused implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishRefused::$error readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishRefused::$outcome readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishRefused::$status readonly float
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishRefused::__construct(string $error, string $outcome, float $status)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishRefused::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishRefused static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishRefused::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesFailedTemplatesItemPublishRefused::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesNotRun implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesNotRun::$publish readonly bool
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesNotRun::$status readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesNotRun::__construct(bool $publish, string $status)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesNotRun::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesNotRun static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesNotRun::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesNotRun::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesPending implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesPending::$publish readonly bool
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesPending::$status readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesPending::__construct(bool $publish, string $status)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesPending::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesPending static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesPending::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesPending::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesRefused implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesRefused::$error readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesRefused::$publish readonly bool
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesRefused::$status readonly string
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesRefused::__construct(string $error, bool $publish, string $status)
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesRefused::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesRefused static
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesRefused::raw(): array
+Pixonaut\Sdk\Generated\Model\UpscalesGetResponseReplaceUsesRefused::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\WebhookEndpointsCreateRequest implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\WebhookEndpointsCreateRequest::$eventTypes readonly ?array
 Pixonaut\Sdk\Generated\Model\WebhookEndpointsCreateRequest::$url readonly string
@@ -39063,8 +39480,9 @@ Pixonaut\Sdk\Generated\Resource\Assets::bulkUpdate(Pixonaut\Sdk\Generated\Model\
 Pixonaut\Sdk\Generated\Resource\Assets::checkDuplicate(string $sha256hex): Pixonaut\Sdk\Generated\Model\AssetsCheckDuplicateResponseFalse|Pixonaut\Sdk\Generated\Model\AssetsCheckDuplicateResponseTrue
 Pixonaut\Sdk\Generated\Resource\Assets::create(Pixonaut\Sdk\Generated\Model\AssetsCreateRequest $body, ?string $session = null): Pixonaut\Sdk\Generated\Model\AssetsCreateResponse
 Pixonaut\Sdk\Generated\Resource\Assets::createAssetCategory(Pixonaut\Sdk\Generated\Model\AssetCategoriesCreateRequest $body): Pixonaut\Sdk\Generated\Model\AssetCategoriesCreateResponse
+Pixonaut\Sdk\Generated\Resource\Assets::createUpscale(string $id, Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateRequest $body): Pixonaut\Sdk\Generated\Model\AssetsUpscaleCreateResponse
 Pixonaut\Sdk\Generated\Resource\Assets::cutOut(string $id, ?string $session = null): Pixonaut\Sdk\Generated\Model\AssetsCutOutResponse200|Pixonaut\Sdk\Generated\Model\AssetsCutOutResponse202
-Pixonaut\Sdk\Generated\Resource\Assets::delete(string $id): void
+Pixonaut\Sdk\Generated\Resource\Assets::delete(string $id): ?Pixonaut\Sdk\Generated\Model\AssetsDeleteResponse
 Pixonaut\Sdk\Generated\Resource\Assets::deleteAssetCategory(string $id): void
 Pixonaut\Sdk\Generated\Resource\Assets::get(string $id): Pixonaut\Sdk\Generated\Model\AssetsGetResponse
 Pixonaut\Sdk\Generated\Resource\Assets::getContent(string $id, ?string $v = null, ?string $width = null, ?string $fit = null, ?string $session = null): Pixonaut\Sdk\Http\Binary
@@ -39072,6 +39490,8 @@ Pixonaut\Sdk\Generated\Resource\Assets::getCutOutStatus(string $id, ?string $ses
 Pixonaut\Sdk\Generated\Resource\Assets::getOriginal(string $id): Pixonaut\Sdk\Http\Binary
 Pixonaut\Sdk\Generated\Resource\Assets::getRoundShapes(string $id, ?string $ratio = null): Pixonaut\Sdk\Generated\Model\AssetsRoundShapesGetResponse
 Pixonaut\Sdk\Generated\Resource\Assets::getStorage(): Pixonaut\Sdk\Generated\Model\StorageGetResponse
+Pixonaut\Sdk\Generated\Resource\Assets::getUpscale(string $id): Pixonaut\Sdk\Generated\Model\UpscalesGetResponse
+Pixonaut\Sdk\Generated\Resource\Assets::getUpscaleQuote(string $id, float $widthPx): Pixonaut\Sdk\Generated\Model\AssetsUpscaleQuoteGetResponse
 Pixonaut\Sdk\Generated\Resource\Assets::getUsage(string $id): Pixonaut\Sdk\Generated\Model\AssetsUsageGetResponse
 Pixonaut\Sdk\Generated\Resource\Assets::import(Pixonaut\Sdk\Generated\Model\AssetsImportRequest $body): Pixonaut\Sdk\Generated\Model\AssetsImportResponse
 Pixonaut\Sdk\Generated\Resource\Assets::improveResolution(string $id, ?string $session = null): Pixonaut\Sdk\Generated\Model\AssetsImproveResolutionResponse200|Pixonaut\Sdk\Generated\Model\AssetsImproveResolutionResponse201
@@ -39083,6 +39503,7 @@ Pixonaut\Sdk\Generated\Resource\Assets::storeProductsStorage(string $connectionI
 Pixonaut\Sdk\Generated\Resource\Assets::threadCopy(string $id, Pixonaut\Sdk\Generated\Model\AssetsThreadCopyRequest $body, ?string $session = null): Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse200|Pixonaut\Sdk\Generated\Model\AssetsThreadCopyResponse201
 Pixonaut\Sdk\Generated\Resource\Assets::update(string $id, Pixonaut\Sdk\Generated\Model\AssetsUpdateRequest $body): Pixonaut\Sdk\Generated\Model\AssetsUpdateResponse
 Pixonaut\Sdk\Generated\Resource\Assets::updateAssetCategory(string $id, Pixonaut\Sdk\Generated\Model\AssetCategoriesUpdateRequest $body): Pixonaut\Sdk\Generated\Model\AssetCategoriesUpdateResponse
+Pixonaut\Sdk\Generated\Resource\Assets::updateLowResolutionAcceptance(string $id, Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateRequest $body): Pixonaut\Sdk\Generated\Model\AssetsLowResolutionAcceptanceUpdateResponse
 final class Pixonaut\Sdk\Generated\Resource\Automations
 Pixonaut\Sdk\Generated\Resource\Automations::OPERATIONS const
 Pixonaut\Sdk\Generated\Resource\Automations::__construct(Pixonaut\Sdk\Pixonaut $pixonaut)

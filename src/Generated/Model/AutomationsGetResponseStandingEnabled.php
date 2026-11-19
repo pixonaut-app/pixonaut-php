@@ -13,16 +13,13 @@ use Pixonaut\Sdk\Model\Model;
 /**
  * Schema: `GET /v1/automations/{id} answer 200: $.standing (oneOf #1)`.
  */
-final class AutomationsGetResponseStandingOption1 implements Model
+final class AutomationsGetResponseStandingEnabled implements Model
 {
     /**
      * @var array<string, mixed>|null The object as decoded, unknown fields included.
      */
     private ?array $decoded = null;
 
-    /**
-     * @param string $state Values: {@see \Pixonaut\Sdk\Generated\Enum\AutomationsGetResponseStandingOption1State}.
-     */
     public function __construct(
         public readonly string $state,
     ) {}

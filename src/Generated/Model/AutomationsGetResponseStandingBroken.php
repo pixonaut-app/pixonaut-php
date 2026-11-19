@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `GET /v1/automations/{id} answer 200: $.standing (oneOf #3)`.
+ * Schema: `GET /v1/automations/{id} answer 200: $.standing (oneOf #4)`.
  */
 final class AutomationsGetResponseStandingBroken implements Model
 {

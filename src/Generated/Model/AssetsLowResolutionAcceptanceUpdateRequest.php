@@ -11,9 +11,9 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `GET /v1/automations answer 200: $.automations[].standing (oneOf #1)`.
+ * Schema: `PUT /v1/assets/{id}/low-resolution-acceptance request body: $`.
  */
-final class AutomationsListResponseAutomationsItemStandingOption1 implements Model
+final class AssetsLowResolutionAcceptanceUpdateRequest implements Model
 {
     /**
      * @var array<string, mixed>|null The object as decoded, unknown fields included.
@@ -21,10 +21,10 @@ final class AutomationsListResponseAutomationsItemStandingOption1 implements Mod
     private ?array $decoded = null;
 
     /**
-     * @param string $state Values: {@see \Pixonaut\Sdk\Generated\Enum\AutomationsListResponseAutomationsItemStandingOption1State}.
+     * @param bool $accepted true accepts the picture's resolution as it is: a print-size check no longer names it in `lowResolution`, and a workspace that refuses soft pictures no longer refuses a size over it. false takes the acceptance back.
      */
     public function __construct(
-        public readonly string $state,
+        public readonly bool $accepted,
     ) {}
 
     /**
@@ -37,7 +37,7 @@ final class AutomationsListResponseAutomationsItemStandingOption1 implements Mod
      */
     public static function fromArray(array $data, string $path = '$'): self
     {
-        $model = new self(state: Decode::string(Decode::required($data, 'state', $path), $path . '.state'));
+        $model = new self(accepted: Decode::bool(Decode::required($data, 'accepted', $path), $path . '.accepted'));
         $model->decoded = $data;
         return $model;
     }
@@ -56,7 +56,7 @@ final class AutomationsListResponseAutomationsItemStandingOption1 implements Mod
     public function toArray(): array
     {
         $data = [];
-        $data['state'] = $this->state;
+        $data['accepted'] = $this->accepted;
         return $data;
     }
 }

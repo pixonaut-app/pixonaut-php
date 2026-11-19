@@ -11,20 +11,18 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `POST /v1/automations/{id}/disable answer 200: $.automation.standing (oneOf #1)`.
+ * Schema: `GET /v1/upscales/{id} answer 200: $.replaceUses (oneOf #1)`.
  */
-final class AutomationsDisableResponseAutomationStandingOption1 implements Model
+final class UpscalesGetResponseReplaceUsesPending implements Model
 {
     /**
      * @var array<string, mixed>|null The object as decoded, unknown fields included.
      */
     private ?array $decoded = null;
 
-    /**
-     * @param string $state Values: {@see \Pixonaut\Sdk\Generated\Enum\AutomationsDisableResponseAutomationStandingOption1State}.
-     */
     public function __construct(
-        public readonly string $state,
+        public readonly bool $publish,
+        public readonly string $status,
     ) {}
 
     /**
@@ -37,7 +35,10 @@ final class AutomationsDisableResponseAutomationStandingOption1 implements Model
      */
     public static function fromArray(array $data, string $path = '$'): self
     {
-        $model = new self(state: Decode::string(Decode::required($data, 'state', $path), $path . '.state'));
+        $model = new self(
+            publish: Decode::bool(Decode::required($data, 'publish', $path), $path . '.publish'),
+            status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
+        );
         $model->decoded = $data;
         return $model;
     }
@@ -56,7 +57,8 @@ final class AutomationsDisableResponseAutomationStandingOption1 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['state'] = $this->state;
+        $data['publish'] = $this->publish;
+        $data['status'] = $this->status;
         return $data;
     }
 }

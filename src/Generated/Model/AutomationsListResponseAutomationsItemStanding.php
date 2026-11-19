@@ -21,11 +21,11 @@ final class AutomationsListResponseAutomationsItemStanding
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return AutomationsListResponseAutomationsItemStandingBroken|AutomationsListResponseAutomationsItemStandingFailing|AutomationsListResponseAutomationsItemStandingOption1
+     * @return AutomationsListResponseAutomationsItemStandingBroken|AutomationsListResponseAutomationsItemStandingFailing|AutomationsListResponseAutomationsItemStandingEnabled|AutomationsListResponseAutomationsItemStandingDisabled
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
-    public static function decode(mixed $data, string $path = '$'): AutomationsListResponseAutomationsItemStandingBroken|AutomationsListResponseAutomationsItemStandingFailing|AutomationsListResponseAutomationsItemStandingOption1
+    public static function decode(mixed $data, string $path = '$'): AutomationsListResponseAutomationsItemStandingBroken|AutomationsListResponseAutomationsItemStandingFailing|AutomationsListResponseAutomationsItemStandingEnabled|AutomationsListResponseAutomationsItemStandingDisabled
     {
         return Decode::oneOf(
             $data,
@@ -42,9 +42,14 @@ final class AutomationsListResponseAutomationsItemStanding
                     ['state' => 'failing'],
                 ],
                 [
-                    static fn(mixed $v, string $p): AutomationsListResponseAutomationsItemStandingOption1 => AutomationsListResponseAutomationsItemStandingOption1::fromArray(Decode::object($v, $p), $p),
-                    1,
-                    [],
+                    static fn(mixed $v, string $p): AutomationsListResponseAutomationsItemStandingEnabled => AutomationsListResponseAutomationsItemStandingEnabled::fromArray(Decode::object($v, $p), $p),
+                    1001,
+                    ['state' => 'enabled'],
+                ],
+                [
+                    static fn(mixed $v, string $p): AutomationsListResponseAutomationsItemStandingDisabled => AutomationsListResponseAutomationsItemStandingDisabled::fromArray(Decode::object($v, $p), $p),
+                    1001,
+                    ['state' => 'disabled'],
                 ],
             ],
         );

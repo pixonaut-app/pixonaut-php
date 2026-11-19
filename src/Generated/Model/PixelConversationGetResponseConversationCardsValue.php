@@ -36,6 +36,7 @@ final class PixelConversationGetResponseConversationCardsValue implements Model
      * @param PixelConversationGetResponseConversationCardsValueStoreRefusal|null $storeRefusal
      * @param string|null $upscaleId
      * @param list<string>|null $upscaleIds
+     * @param PixelConversationGetResponseConversationCardsValueVariations|null $variations
      */
     public function __construct(
         public readonly string $status,
@@ -53,6 +54,7 @@ final class PixelConversationGetResponseConversationCardsValue implements Model
         public readonly ?PixelConversationGetResponseConversationCardsValueStoreRefusal $storeRefusal = null,
         public readonly ?string $upscaleId = null,
         public readonly ?array $upscaleIds = null,
+        public readonly ?PixelConversationGetResponseConversationCardsValueVariations $variations = null,
     ) {}
 
     /**
@@ -97,6 +99,7 @@ final class PixelConversationGetResponseConversationCardsValue implements Model
                 $path . '.upscaleIds',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : null,
+            variations: array_key_exists('variations', $data) ? PixelConversationGetResponseConversationCardsValueVariations::fromArray(Decode::object($data['variations'], $path . '.variations'), $path . '.variations') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -162,6 +165,9 @@ final class PixelConversationGetResponseConversationCardsValue implements Model
         }
         if ($this->upscaleIds !== null) {
             $data['upscaleIds'] = $this->upscaleIds;
+        }
+        if ($this->variations !== null) {
+            $data['variations'] = Encode::model($this->variations);
         }
         return $data;
     }

@@ -21,11 +21,11 @@ final class AutomationsEnableResponseStanding
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return AutomationsEnableResponseStandingBroken|AutomationsEnableResponseStandingFailing|AutomationsEnableResponseStandingOption1
+     * @return AutomationsEnableResponseStandingBroken|AutomationsEnableResponseStandingFailing|AutomationsEnableResponseStandingEnabled|AutomationsEnableResponseStandingDisabled
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
-    public static function decode(mixed $data, string $path = '$'): AutomationsEnableResponseStandingBroken|AutomationsEnableResponseStandingFailing|AutomationsEnableResponseStandingOption1
+    public static function decode(mixed $data, string $path = '$'): AutomationsEnableResponseStandingBroken|AutomationsEnableResponseStandingFailing|AutomationsEnableResponseStandingEnabled|AutomationsEnableResponseStandingDisabled
     {
         return Decode::oneOf(
             $data,
@@ -42,9 +42,14 @@ final class AutomationsEnableResponseStanding
                     ['state' => 'failing'],
                 ],
                 [
-                    static fn(mixed $v, string $p): AutomationsEnableResponseStandingOption1 => AutomationsEnableResponseStandingOption1::fromArray(Decode::object($v, $p), $p),
-                    1,
-                    [],
+                    static fn(mixed $v, string $p): AutomationsEnableResponseStandingEnabled => AutomationsEnableResponseStandingEnabled::fromArray(Decode::object($v, $p), $p),
+                    1001,
+                    ['state' => 'enabled'],
+                ],
+                [
+                    static fn(mixed $v, string $p): AutomationsEnableResponseStandingDisabled => AutomationsEnableResponseStandingDisabled::fromArray(Decode::object($v, $p), $p),
+                    1001,
+                    ['state' => 'disabled'],
                 ],
             ],
         );

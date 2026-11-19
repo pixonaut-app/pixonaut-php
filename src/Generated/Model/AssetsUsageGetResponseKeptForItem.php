@@ -11,9 +11,9 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `POST /v1/automations/{id}/enable answer 200: $.standing (oneOf #1)`.
+ * Schema: `GET /v1/assets/{id}/usage answer 200: $.keptFor[]`.
  */
-final class AutomationsEnableResponseStandingOption1 implements Model
+final class AssetsUsageGetResponseKeptForItem implements Model
 {
     /**
      * @var array<string, mixed>|null The object as decoded, unknown fields included.
@@ -21,10 +21,13 @@ final class AutomationsEnableResponseStandingOption1 implements Model
     private ?array $decoded = null;
 
     /**
-     * @param string $state Values: {@see \Pixonaut\Sdk\Generated\Enum\AutomationsEnableResponseStandingOption1State}.
+     * @param float|null $version
      */
     public function __construct(
-        public readonly string $state,
+        public readonly string $baseId,
+        public readonly bool $deleted,
+        public readonly string $name,
+        public readonly ?float $version,
     ) {}
 
     /**
@@ -37,7 +40,16 @@ final class AutomationsEnableResponseStandingOption1 implements Model
      */
     public static function fromArray(array $data, string $path = '$'): self
     {
-        $model = new self(state: Decode::string(Decode::required($data, 'state', $path), $path . '.state'));
+        $model = new self(
+            baseId: Decode::string(Decode::required($data, 'baseId', $path), $path . '.baseId'),
+            deleted: Decode::bool(Decode::required($data, 'deleted', $path), $path . '.deleted'),
+            name: Decode::string(Decode::required($data, 'name', $path), $path . '.name'),
+            version: Decode::nullable(
+                Decode::required($data, 'version', $path),
+                $path . '.version',
+                static fn(mixed $v, string $p): float => Decode::float($v, $p),
+            ),
+        );
         $model->decoded = $data;
         return $model;
     }
@@ -56,7 +68,10 @@ final class AutomationsEnableResponseStandingOption1 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['state'] = $this->state;
+        $data['baseId'] = $this->baseId;
+        $data['deleted'] = $this->deleted;
+        $data['name'] = $this->name;
+        $data['version'] = $this->version;
         return $data;
     }
 }

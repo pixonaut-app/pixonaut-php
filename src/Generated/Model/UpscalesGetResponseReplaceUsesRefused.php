@@ -11,20 +11,19 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `POST /v1/automations/{id}/duplicate answer 201: $.standing (oneOf #1)`.
+ * Schema: `GET /v1/upscales/{id} answer 200: $.replaceUses (oneOf #4)`.
  */
-final class AutomationsDuplicateResponseStandingOption1 implements Model
+final class UpscalesGetResponseReplaceUsesRefused implements Model
 {
     /**
      * @var array<string, mixed>|null The object as decoded, unknown fields included.
      */
     private ?array $decoded = null;
 
-    /**
-     * @param string $state Values: {@see \Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseStandingOption1State}.
-     */
     public function __construct(
-        public readonly string $state,
+        public readonly string $error,
+        public readonly bool $publish,
+        public readonly string $status,
     ) {}
 
     /**
@@ -37,7 +36,11 @@ final class AutomationsDuplicateResponseStandingOption1 implements Model
      */
     public static function fromArray(array $data, string $path = '$'): self
     {
-        $model = new self(state: Decode::string(Decode::required($data, 'state', $path), $path . '.state'));
+        $model = new self(
+            error: Decode::string(Decode::required($data, 'error', $path), $path . '.error'),
+            publish: Decode::bool(Decode::required($data, 'publish', $path), $path . '.publish'),
+            status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
+        );
         $model->decoded = $data;
         return $model;
     }
@@ -56,7 +59,9 @@ final class AutomationsDuplicateResponseStandingOption1 implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['state'] = $this->state;
+        $data['error'] = $this->error;
+        $data['publish'] = $this->publish;
+        $data['status'] = $this->status;
         return $data;
     }
 }

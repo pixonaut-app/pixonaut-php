@@ -26,6 +26,8 @@ final class ConnectedStoreGetResponsePrinting implements Model
     /**
      * @param float $defaultBleedMm The bleed past the trim that artwork without a blank prints with, in millimetres.
      * @param float $defaultSafeAreaMm The safe area inside the trim, in millimetres, on the same terms as defaultBleedMm.
+     * @param string $lowResolutionAction What happens when an image the workspace put in a template prints below its recommended resolution at a size: `warn` lets the size through and names the image in `lowResolution`, `refuse` makes the size illegal (`low_resolution`), `off` says nothing. An image accepted with `PUT /v1/assets/{id}/low-resolution-acceptance` is never named.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintingLowResolutionAction}.
      * @param float $minPrintDpi The minimum print resolution, in dots per inch, a design's pictures are judged against when their template sets none.
      * @param string $printFileForm The form of print files of designs this store sends: its own choice, else the workspace's. A template's own choice outranks it.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ConnectedStoreGetResponsePrintingPrintFileForm}.
@@ -34,6 +36,7 @@ final class ConnectedStoreGetResponsePrinting implements Model
     public function __construct(
         public readonly float $defaultBleedMm,
         public readonly float $defaultSafeAreaMm,
+        public readonly string $lowResolutionAction,
         public readonly float $minPrintDpi,
         public readonly string $printFileForm,
         public readonly ConnectedStoreGetResponsePrintingPrintFileTextTolerancePx|ConnectedStoreGetResponsePrintingPrintFileTextToleranceMm $printFileTextTolerance,
@@ -52,6 +55,7 @@ final class ConnectedStoreGetResponsePrinting implements Model
         $model = new self(
             defaultBleedMm: Decode::float(Decode::required($data, 'defaultBleedMm', $path), $path . '.defaultBleedMm'),
             defaultSafeAreaMm: Decode::float(Decode::required($data, 'defaultSafeAreaMm', $path), $path . '.defaultSafeAreaMm'),
+            lowResolutionAction: Decode::string(Decode::required($data, 'lowResolutionAction', $path), $path . '.lowResolutionAction'),
             minPrintDpi: Decode::float(Decode::required($data, 'minPrintDpi', $path), $path . '.minPrintDpi'),
             printFileForm: Decode::string(Decode::required($data, 'printFileForm', $path), $path . '.printFileForm'),
             printFileTextTolerance: ConnectedStoreGetResponsePrintingPrintFileTextTolerance::decode(Decode::required($data, 'printFileTextTolerance', $path), $path . '.printFileTextTolerance'),
@@ -76,6 +80,7 @@ final class ConnectedStoreGetResponsePrinting implements Model
         $data = [];
         $data['defaultBleedMm'] = $this->defaultBleedMm;
         $data['defaultSafeAreaMm'] = $this->defaultSafeAreaMm;
+        $data['lowResolutionAction'] = $this->lowResolutionAction;
         $data['minPrintDpi'] = $this->minPrintDpi;
         $data['printFileForm'] = $this->printFileForm;
         $data['printFileTextTolerance'] = Encode::value($this->printFileTextTolerance);

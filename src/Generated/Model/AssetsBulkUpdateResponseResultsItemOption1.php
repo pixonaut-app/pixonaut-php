@@ -20,9 +20,13 @@ final class AssetsBulkUpdateResponseResultsItemOption1 implements Model
      */
     private ?array $decoded = null;
 
+    /**
+     * @param bool|null $archived
+     */
     public function __construct(
         public readonly string $id,
         public readonly bool $ok,
+        public readonly ?bool $archived = null,
     ) {}
 
     /**
@@ -38,6 +42,7 @@ final class AssetsBulkUpdateResponseResultsItemOption1 implements Model
         $model = new self(
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             ok: Decode::bool(Decode::required($data, 'ok', $path), $path . '.ok'),
+            archived: array_key_exists('archived', $data) ? Decode::bool($data['archived'], $path . '.archived') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -59,6 +64,9 @@ final class AssetsBulkUpdateResponseResultsItemOption1 implements Model
         $data = [];
         $data['id'] = $this->id;
         $data['ok'] = $this->ok;
+        if ($this->archived !== null) {
+            $data['archived'] = $this->archived;
+        }
         return $data;
     }
 }
