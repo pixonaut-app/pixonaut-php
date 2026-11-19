@@ -5893,6 +5893,7 @@ Pixonaut\Sdk\Generated\ErrorCode::NOT_LAYOUT_PROOF const
 Pixonaut\Sdk\Generated\ErrorCode::NOT_PAUSED const
 Pixonaut\Sdk\Generated\ErrorCode::NOT_STANDING const
 Pixonaut\Sdk\Generated\ErrorCode::NO_CREDENTIALS const
+Pixonaut\Sdk\Generated\ErrorCode::NO_PHOTOS const
 Pixonaut\Sdk\Generated\ErrorCode::NO_PREVIEW_TABLES const
 Pixonaut\Sdk\Generated\ErrorCode::NO_PRINTABLE_PLACEMENT const
 Pixonaut\Sdk\Generated\ErrorCode::NO_PRINTSHOP_PHOTOS const
