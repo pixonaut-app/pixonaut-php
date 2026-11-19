@@ -1,5 +1,12 @@
 # Changelog
 
+## [24.1.0](https://github.com/pixonaut-app/pixonaut-php/compare/v24.0.0...v24.1.0) (2026-11-19)
+
+
+### Features
+
+* target the published Pixonaut API 12.1.1 ([#84](https://github.com/pixonaut-app/pixonaut-php/issues/84)) ([0b35b97](https://github.com/pixonaut-app/pixonaut-php/commit/0b35b97ce4b10dba4a413840f77166bb17ebb95f))
+
 ## [24.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v23.0.0...v24.0.0) (2026-11-19)
 
 Targets the Pixonaut API 12.0.0.
