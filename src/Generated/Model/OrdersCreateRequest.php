@@ -32,6 +32,7 @@ final class OrdersCreateRequest implements Model
      * @param bool|null $reorder Order the design again on purpose. A design has one live order (in any status but `failed` and `cancelled`): absent or false, an order of a design that has one is refused `409 design_already_ordered`, naming the design and its newest live order, and nothing is written. True places the order whatever orders the design has.
      * @param string|null|Omitted $shipToAddressId A saved address to ship to; the customer stays the recipient. null: the customer's. Left out: the workspace's setting.
      * @param OrdersCreateRequestShippingAddress|null $shippingAddress Where the order ships. Left out, the first order of a design takes what its customer gave.
+     * @param OrdersCreateRequestStoreOrder|null $storeOrder The store order this item was sold in, for a store that sells several items in one order. The items of one store order bound for one printshop are sent to it as one of its orders, where it takes several items in one, so they ship together: this order waits, `awaiting_prints`, until every item of the store order has been placed and the prints of those bound for its printshop are done, or until two hours from its first item, then goes with the ones ready. Each item stays an order of its own, with its own status, tracking and retry. A retry or replacement of one goes on its own.
      * @param string|null $variant The variant of the print's blank the order is for, by ref (`v_…`). Left out, a blank with exactly one variant orders that one, and one with several is refused `variant_required`. A ref of another blank is refused `variant_not_of_blank`, and a retired one `variant_retired`. The order keeps a copy of the variant as it was: its options and the printshop fields it was sent.
      */
     public function __construct(
@@ -44,6 +45,7 @@ final class OrdersCreateRequest implements Model
         public readonly ?bool $reorder = null,
         public readonly string|null|Omitted $shipToAddressId = Omitted::Field,
         public readonly ?OrdersCreateRequestShippingAddress $shippingAddress = null,
+        public readonly ?OrdersCreateRequestStoreOrder $storeOrder = null,
         public readonly ?string $variant = null,
     ) {}
 
@@ -83,6 +85,7 @@ final class OrdersCreateRequest implements Model
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : Omitted::Field,
             shippingAddress: array_key_exists('shippingAddress', $data) ? OrdersCreateRequestShippingAddress::fromArray(Decode::object($data['shippingAddress'], $path . '.shippingAddress'), $path . '.shippingAddress') : null,
+            storeOrder: array_key_exists('storeOrder', $data) ? OrdersCreateRequestStoreOrder::fromArray(Decode::object($data['storeOrder'], $path . '.storeOrder'), $path . '.storeOrder') : null,
             variant: array_key_exists('variant', $data) ? Decode::string($data['variant'], $path . '.variant') : null,
         );
         $model->decoded = $data;
@@ -135,6 +138,9 @@ final class OrdersCreateRequest implements Model
         }
         if ($this->shippingAddress !== null) {
             $data['shippingAddress'] = Encode::model($this->shippingAddress);
+        }
+        if ($this->storeOrder !== null) {
+            $data['storeOrder'] = Encode::model($this->storeOrder);
         }
         if ($this->variant !== null) {
             $data['variant'] = $this->variant;

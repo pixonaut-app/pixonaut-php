@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The error codes the API 10.6.0 spec names: its refusals (`x-refusals`), and the `error`
+ * The error codes the API 12.0.0 spec names: its refusals (`x-refusals`), and the `error`
  * values of every error answer. The client's own codes are on `ApiException`.
  */
 final class ErrorCode
@@ -306,6 +306,11 @@ final class ErrorCode
      * Documented with status 409.
      */
     public const DESIGN_PRINTED = 'design_printed';
+
+    /**
+     * Documented with status 409.
+     */
+    public const DESIGN_REFERENCED = 'design_referenced';
 
     /**
      * Documented with status 409.
@@ -1183,6 +1188,11 @@ final class ErrorCode
     public const PROOF_OUTDATED = 'proof_outdated';
 
     /**
+     * Documented with status 403.
+     */
+    public const PUBLISH_FORBIDDEN = 'publish_forbidden';
+
+    /**
      * Documented with status 500.
      */
     public const PUBLISH_GATE_FAILED = 'publish_gate_failed';
@@ -1493,9 +1503,29 @@ final class ErrorCode
     public const UPLOAD_EXPIRED = 'upload_expired';
 
     /**
+     * Documented with status 422.
+     */
+    public const UPSCALE_EDGE_EXCEEDED = 'upscale_edge_exceeded';
+
+    /**
+     * Documented with status 422.
+     */
+    public const UPSCALE_FACTOR_EXCEEDED = 'upscale_factor_exceeded';
+
+    /**
      * Documented with status 503.
      */
     public const UPSCALE_FAILED = 'upscale_failed';
+
+    /**
+     * Documented with status 422.
+     */
+    public const UPSCALE_NOT_LARGER = 'upscale_not_larger';
+
+    /**
+     * Documented with status 422.
+     */
+    public const UPSCALE_PIXELS_EXCEEDED = 'upscale_pixels_exceeded';
 
     /**
      * Documented with status 503.
@@ -1622,6 +1652,7 @@ final class ErrorCode
         'design_not_stitchable' => [422],
         'design_ordered' => [409],
         'design_printed' => [409],
+        'design_referenced' => [409],
         'design_rejected' => [409],
         'design_unreadable' => [422],
         'designer_settings_not_allowed' => [400],
@@ -1797,6 +1828,7 @@ final class ErrorCode
         'proof_not_for_design' => [409],
         'proof_not_found' => [404],
         'proof_outdated' => [409],
+        'publish_forbidden' => [403],
         'publish_gate_failed' => [500],
         'publish_references_unavailable' => [503],
         'quantity_moved_to_order' => [400],
@@ -1859,7 +1891,11 @@ final class ErrorCode
         'unknown_variant' => [422],
         'unsupported_mime' => [422],
         'upload_expired' => [410],
+        'upscale_edge_exceeded' => [422],
+        'upscale_factor_exceeded' => [422],
         'upscale_failed' => [503],
+        'upscale_not_larger' => [422],
+        'upscale_pixels_exceeded' => [422],
         'upscale_timed_out' => [503],
         'upscale_unavailable' => [503],
         'url_refused' => [422],

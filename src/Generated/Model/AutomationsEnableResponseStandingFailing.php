@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `POST /v1/automations/{id}/enable answer 200: $.standing (oneOf #2)`.
+ * Schema: `POST /v1/automations/{id}/enable answer 200: $.standing (oneOf #3)`.
  */
 final class AutomationsEnableResponseStandingFailing implements Model
 {

@@ -25,6 +25,8 @@ final class PrintshopConnectionsListResponseOption2ConnectionsItem implements Mo
      * @param string|null $billingCurrencyFrom Who says `billingCurrency`: `printshop` when the printshop names it, which nobody else can change, `merchant` when the printshop names none and its merchant states it, null for a printshop that tells no costs. `merchant` with `billingCurrency` null is a printshop whose costs wait for its currency.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption2ConnectionsItemBillingCurrencyFrom}.
      * @param bool $catalogue Whether its printshop has a catalogue to browse and import from (GET /v1/printshop-catalogue-products).
+     * @param bool $draftOrders Whether the printshop keeps an order sent as a draft, so `sendsDrafts` may be turned on: false for one that has no drafts.
+     * @param bool $sendsDrafts Whether the printshop is sent each order as a draft, which it keeps and makes nothing of until its merchant confirms it in the printshop's own dashboard. The order reads as a draft waiting to be confirmed there until then; once confirmed, its status, shipment and tracking come back as any order's do. Off by default.
      */
     public function __construct(
         public readonly bool $active,
@@ -32,9 +34,11 @@ final class PrintshopConnectionsListResponseOption2ConnectionsItem implements Mo
         public readonly ?string $billingCurrency,
         public readonly ?string $billingCurrencyFrom,
         public readonly bool $catalogue,
+        public readonly bool $draftOrders,
         public readonly string $id,
         public readonly bool $isDefault,
         public readonly string $name,
+        public readonly bool $sendsDrafts,
     ) {}
 
     /**
@@ -61,9 +65,11 @@ final class PrintshopConnectionsListResponseOption2ConnectionsItem implements Mo
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
             catalogue: Decode::bool(Decode::required($data, 'catalogue', $path), $path . '.catalogue'),
+            draftOrders: Decode::bool(Decode::required($data, 'draftOrders', $path), $path . '.draftOrders'),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             isDefault: Decode::bool(Decode::required($data, 'isDefault', $path), $path . '.isDefault'),
             name: Decode::string(Decode::required($data, 'name', $path), $path . '.name'),
+            sendsDrafts: Decode::bool(Decode::required($data, 'sendsDrafts', $path), $path . '.sendsDrafts'),
         );
         $model->decoded = $data;
         return $model;
@@ -88,9 +94,11 @@ final class PrintshopConnectionsListResponseOption2ConnectionsItem implements Mo
         $data['billingCurrency'] = $this->billingCurrency;
         $data['billingCurrencyFrom'] = $this->billingCurrencyFrom;
         $data['catalogue'] = $this->catalogue;
+        $data['draftOrders'] = $this->draftOrders;
         $data['id'] = $this->id;
         $data['isDefault'] = $this->isDefault;
         $data['name'] = $this->name;
+        $data['sendsDrafts'] = $this->sendsDrafts;
         return $data;
     }
 }

@@ -27,7 +27,7 @@ final class AutomationsDuplicateResponse implements Model
      * @param float|null $enabledAt When it was last enabled: it never fires on an event from before. Null for one never enabled.
      * @param string $runsAs Values: {@see \Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseRunsAs}.
      * @param AutomationsDuplicateResponseSources $sources The sources it acts on: the studio always; designer links, keys and connected stores, each every one or a snapshot. To act on only some, an Only if compares the design's `origin`.
-     * @param AutomationsDuplicateResponseStandingBroken|AutomationsDuplicateResponseStandingFailing|AutomationsDuplicateResponseStandingOption1 $standing Where it stands: `enabled` or `disabled`; `failing` while its latest firing failed; `broken` while it cannot fire at all, because its author lacks a grant it needs. `reason` says why, in words.
+     * @param AutomationsDuplicateResponseStandingBroken|AutomationsDuplicateResponseStandingFailing|AutomationsDuplicateResponseStandingEnabled|AutomationsDuplicateResponseStandingDisabled $standing Where it stands: `enabled` or `disabled`; `failing` while its latest firing failed; `broken` while it cannot fire at all, because its author lacks a grant it needs. `reason` says why, in words.
      * @param string|null $trigger The event it fires on; null for none yet.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\AutomationsDuplicateResponseTrigger}.
      * @param float $updatedAt When it was last saved: a save names it as `expectedUpdatedAt`.
@@ -45,7 +45,7 @@ final class AutomationsDuplicateResponse implements Model
         public readonly string $runsAs,
         public readonly AutomationsDuplicateResponseSources $sources,
         public readonly float $spendLimit,
-        public readonly AutomationsDuplicateResponseStandingBroken|AutomationsDuplicateResponseStandingFailing|AutomationsDuplicateResponseStandingOption1 $standing,
+        public readonly AutomationsDuplicateResponseStandingBroken|AutomationsDuplicateResponseStandingFailing|AutomationsDuplicateResponseStandingEnabled|AutomationsDuplicateResponseStandingDisabled $standing,
         public readonly ?string $trigger,
         public readonly float $updatedAt,
         public readonly float $version,

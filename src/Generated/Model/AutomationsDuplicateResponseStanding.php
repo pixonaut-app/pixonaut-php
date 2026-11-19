@@ -21,11 +21,11 @@ final class AutomationsDuplicateResponseStanding
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return AutomationsDuplicateResponseStandingBroken|AutomationsDuplicateResponseStandingFailing|AutomationsDuplicateResponseStandingOption1
+     * @return AutomationsDuplicateResponseStandingBroken|AutomationsDuplicateResponseStandingFailing|AutomationsDuplicateResponseStandingEnabled|AutomationsDuplicateResponseStandingDisabled
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
-    public static function decode(mixed $data, string $path = '$'): AutomationsDuplicateResponseStandingBroken|AutomationsDuplicateResponseStandingFailing|AutomationsDuplicateResponseStandingOption1
+    public static function decode(mixed $data, string $path = '$'): AutomationsDuplicateResponseStandingBroken|AutomationsDuplicateResponseStandingFailing|AutomationsDuplicateResponseStandingEnabled|AutomationsDuplicateResponseStandingDisabled
     {
         return Decode::oneOf(
             $data,
@@ -42,9 +42,14 @@ final class AutomationsDuplicateResponseStanding
                     ['state' => 'failing'],
                 ],
                 [
-                    static fn(mixed $v, string $p): AutomationsDuplicateResponseStandingOption1 => AutomationsDuplicateResponseStandingOption1::fromArray(Decode::object($v, $p), $p),
-                    1,
-                    [],
+                    static fn(mixed $v, string $p): AutomationsDuplicateResponseStandingEnabled => AutomationsDuplicateResponseStandingEnabled::fromArray(Decode::object($v, $p), $p),
+                    1001,
+                    ['state' => 'enabled'],
+                ],
+                [
+                    static fn(mixed $v, string $p): AutomationsDuplicateResponseStandingDisabled => AutomationsDuplicateResponseStandingDisabled::fromArray(Decode::object($v, $p), $p),
+                    1001,
+                    ['state' => 'disabled'],
                 ],
             ],
         );

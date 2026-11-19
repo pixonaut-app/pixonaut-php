@@ -36,8 +36,10 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
      * @param string|null $contactName The name of the person to reach at the printshop. Up to 200 characters; null for none.
      * @param string|null $contactPhone The contact person's phone number as written; null for none.
      * @param bool $credentialsLapsed Whether its printshop refused to renew its credentials: it needs its merchant to connect it again through the printshop's consent.
+     * @param bool $draftOrders Whether the printshop keeps an order sent as a draft, so `sendsDrafts` may be turned on: false for one that has no drafts.
      * @param list<string> $printMethods Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopConnectionsListResponseOption1ConnectionsItemPrintMethodsItem}.
      * @param list<string>|null $secretNames
+     * @param bool $sendsDrafts Whether the printshop is sent each order as a draft, which it keeps and makes nothing of until its merchant confirms it in the printshop's own dashboard. The order reads as a draft waiting to be confirmed there until then; once confirmed, its status, shipment and tracking come back as any order's do. Off by default.
      */
     public function __construct(
         public readonly bool $acceptsAddressUpdates,
@@ -56,6 +58,7 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
         public readonly PrintshopConnectionsListResponseOption1ConnectionsItemCounts $counts,
         public readonly float $createdAt,
         public readonly bool $credentialsLapsed,
+        public readonly bool $draftOrders,
         public readonly string $id,
         public readonly bool $isDefault,
         public readonly string $name,
@@ -64,6 +67,7 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
         public readonly array $printMethods,
         public readonly bool $printMethodsFixed,
         public readonly ?array $secretNames,
+        public readonly bool $sendsDrafts,
         public readonly float $updatedAt,
         public readonly mixed $config = null,
     ) {}
@@ -130,6 +134,7 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
             counts: PrintshopConnectionsListResponseOption1ConnectionsItemCounts::fromArray(Decode::object(Decode::required($data, 'counts', $path), $path . '.counts'), $path . '.counts'),
             createdAt: Decode::float(Decode::required($data, 'createdAt', $path), $path . '.createdAt'),
             credentialsLapsed: Decode::bool(Decode::required($data, 'credentialsLapsed', $path), $path . '.credentialsLapsed'),
+            draftOrders: Decode::bool(Decode::required($data, 'draftOrders', $path), $path . '.draftOrders'),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             isDefault: Decode::bool(Decode::required($data, 'isDefault', $path), $path . '.isDefault'),
             name: Decode::string(Decode::required($data, 'name', $path), $path . '.name'),
@@ -150,6 +155,7 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
                     static fn(mixed $v, string $p): string => Decode::string($v, $p),
                 ),
             ),
+            sendsDrafts: Decode::bool(Decode::required($data, 'sendsDrafts', $path), $path . '.sendsDrafts'),
             updatedAt: Decode::float(Decode::required($data, 'updatedAt', $path), $path . '.updatedAt'),
             config: array_key_exists('config', $data) ? $data['config'] : null,
         );
@@ -187,6 +193,7 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
         $data['counts'] = Encode::model($this->counts);
         $data['createdAt'] = $this->createdAt;
         $data['credentialsLapsed'] = $this->credentialsLapsed;
+        $data['draftOrders'] = $this->draftOrders;
         $data['id'] = $this->id;
         $data['isDefault'] = $this->isDefault;
         $data['name'] = $this->name;
@@ -195,6 +202,7 @@ final class PrintshopConnectionsListResponseOption1ConnectionsItem implements Mo
         $data['printMethods'] = $this->printMethods;
         $data['printMethodsFixed'] = $this->printMethodsFixed;
         $data['secretNames'] = $this->secretNames;
+        $data['sendsDrafts'] = $this->sendsDrafts;
         $data['updatedAt'] = $this->updatedAt;
         if ($this->config !== null) {
             $data['config'] = $this->config;

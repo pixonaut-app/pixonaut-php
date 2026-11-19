@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Schema: `PUT /v1/automations/{id} answer 200: $.standing (oneOf #3)`.
+ * Schema: `PUT /v1/automations/{id} answer 200: $.standing (oneOf #4)`.
  */
 final class AutomationsSaveResponseStandingBroken implements Model
 {

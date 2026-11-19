@@ -24,14 +24,16 @@ final class AssetsUsageGetResponse implements Model
     /**
      * @param list<AssetsUsageGetResponseBlanksItem> $blanks Every blank mockup photo the asset is.
      * @param list<AssetsUsageGetResponseDesignsItem> $designs Every committed design that names the asset and has no order yet: it keeps the picture as an order does.
+     * @param list<AssetsUsageGetResponseKeptForItem> $keptFor Every earlier published version that names the asset. They keep it stored, but do not refuse a delete: an asset only these name is archived out of the library instead.
      * @param bool $logo Whether the asset is the workspace logo.
      * @param list<AssetsUsageGetResponseOrdersItem> $orders Every order of a print of a design that names the asset.
-     * @param list<AssetsUsageGetResponseTemplatesItem> $templates Every template whose draft (`version: null`) or a published version names the asset.
+     * @param list<AssetsUsageGetResponseTemplatesItem> $templates Every template whose draft (`version: null`) or latest published version names the asset: a delete is refused over these.
      * @param AssetsUsageGetResponseWithheld $withheld What the answer leaves out for want of a grant, so an empty group is not read as an unused asset. A secret key is shown everything.
      */
     public function __construct(
         public readonly array $blanks,
         public readonly array $designs,
+        public readonly array $keptFor,
         public readonly bool $logo,
         public readonly array $orders,
         public readonly array $templates,
@@ -58,6 +60,11 @@ final class AssetsUsageGetResponse implements Model
                 Decode::required($data, 'designs', $path),
                 $path . '.designs',
                 static fn(mixed $v, string $p): AssetsUsageGetResponseDesignsItem => AssetsUsageGetResponseDesignsItem::fromArray(Decode::object($v, $p), $p),
+            ),
+            keptFor: Decode::list(
+                Decode::required($data, 'keptFor', $path),
+                $path . '.keptFor',
+                static fn(mixed $v, string $p): AssetsUsageGetResponseKeptForItem => AssetsUsageGetResponseKeptForItem::fromArray(Decode::object($v, $p), $p),
             ),
             logo: Decode::bool(Decode::required($data, 'logo', $path), $path . '.logo'),
             orders: Decode::list(
@@ -97,6 +104,10 @@ final class AssetsUsageGetResponse implements Model
         $data['designs'] = array_map(
             static fn(AssetsUsageGetResponseDesignsItem $v): mixed => Encode::model($v),
             $this->designs,
+        );
+        $data['keptFor'] = array_map(
+            static fn(AssetsUsageGetResponseKeptForItem $v): mixed => Encode::model($v),
+            $this->keptFor,
         );
         $data['logo'] = $this->logo;
         $data['orders'] = array_map(

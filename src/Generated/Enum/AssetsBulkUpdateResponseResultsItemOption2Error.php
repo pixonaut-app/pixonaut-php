@@ -17,6 +17,8 @@ final class AssetsBulkUpdateResponseResultsItemOption2Error
 
     public const BLANK_REFERENCED = 'blank_referenced';
 
+    public const DESIGN_REFERENCED = 'design_referenced';
+
     public const LOGO_REFERENCED = 'logo_referenced';
 
     public const ORDER_REFERENCED = 'order_referenced';
@@ -29,6 +31,7 @@ final class AssetsBulkUpdateResponseResultsItemOption2Error
     public const KNOWN = [
         self::NOT_FOUND,
         self::BLANK_REFERENCED,
+        self::DESIGN_REFERENCED,
         self::LOGO_REFERENCED,
         self::ORDER_REFERENCED,
         self::DELETE_FAILED,

@@ -12,7 +12,7 @@ use Pixonaut\Sdk\Http\Catalogue;
 use Pixonaut\Sdk\Http\Operation;
 
 /**
- * The operations of the API 10.6.0 spec, as the client sends them.
+ * The operations of the API 12.0.0 spec, as the client sends them.
  */
 final class Operations
 {
@@ -287,6 +287,16 @@ final class Operations
                 headers: ['x-pixonaut-session'],
             ),
             new Operation(
+                id: 'assets.lowResolutionAcceptance.update',
+                method: 'PUT',
+                path: '/v1/assets/{id}/low-resolution-acceptance',
+                credentials: [Credential::SecretKey, Credential::IntegrationKey],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
                 id: 'assets.original.get',
                 method: 'GET',
                 path: '/v1/assets/{id}/original',
@@ -316,6 +326,26 @@ final class Operations
                 accept: 'application/json',
                 sensitive: false,
                 headers: ['x-pixonaut-session'],
+            ),
+            new Operation(
+                id: 'assets.upscale.create',
+                method: 'POST',
+                path: '/v1/assets/{id}/upscale',
+                credentials: [Credential::IntegrationKey],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
+                id: 'assets.upscaleQuote.get',
+                method: 'GET',
+                path: '/v1/assets/{id}/upscale-quote',
+                credentials: [Credential::IntegrationKey],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
             ),
             new Operation(
                 id: 'assets.usage.get',
@@ -1498,6 +1528,16 @@ final class Operations
                 method: 'POST',
                 path: '/v1/templates/{id}/print-size',
                 credentials: [Credential::PublishableKey, Credential::SecretKey, Credential::IntegrationKey, Credential::ShareLink],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
+                id: 'upscales.get',
+                method: 'GET',
+                path: '/v1/upscales/{id}',
+                credentials: [Credential::IntegrationKey],
                 anonymous: false,
                 idempotent: false,
                 accept: 'application/json',
