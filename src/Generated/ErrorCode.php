@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The error codes the API 12.0.0 spec names: its refusals (`x-refusals`), and the `error`
+ * The error codes the API 12.1.1 spec names: its refusals (`x-refusals`), and the `error`
  * values of every error answer. The client's own codes are on `ApiException`.
  */
 final class ErrorCode
@@ -761,6 +761,11 @@ final class ErrorCode
      * Documented with status 409.
      */
     public const NO_CREDENTIALS = 'no_credentials';
+
+    /**
+     * Documented with status 422.
+     */
+    public const NO_PHOTOS = 'no_photos';
 
     /**
      * Documented with status 404.
@@ -1743,6 +1748,7 @@ final class ErrorCode
         'mockup_uv_view_missing' => [500],
         'mockup_warp_unreadable' => [500],
         'no_credentials' => [409],
+        'no_photos' => [422],
         'no_preview_tables' => [404],
         'no_printable_placement' => [422],
         'no_printshop_photos' => [422],
