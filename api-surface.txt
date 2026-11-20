@@ -1624,6 +1624,10 @@ Pixonaut\Sdk\Generated\Enum\DesignsApproveRequestConsentKind::DEADLINE const
 Pixonaut\Sdk\Generated\Enum\DesignsApproveRequestConsentKind::EDIT const
 Pixonaut\Sdk\Generated\Enum\DesignsApproveRequestConsentKind::KNOWN const
 Pixonaut\Sdk\Generated\Enum\DesignsApproveRequestConsentKind::PROOF_PAGE const
+final class Pixonaut\Sdk\Generated\Enum\DesignsApproveResponseSmallerThanAreaHandling
+Pixonaut\Sdk\Generated\Enum\DesignsApproveResponseSmallerThanAreaHandling::ENLARGED const
+Pixonaut\Sdk\Generated\Enum\DesignsApproveResponseSmallerThanAreaHandling::KNOWN const
+Pixonaut\Sdk\Generated\Enum\DesignsApproveResponseSmallerThanAreaHandling::REFUSED const
 final class Pixonaut\Sdk\Generated\Enum\DesignsApproveResponseStatus
 Pixonaut\Sdk\Generated\Enum\DesignsApproveResponseStatus::APPROVED const
 Pixonaut\Sdk\Generated\Enum\DesignsApproveResponseStatus::KNOWN const
@@ -1634,6 +1638,10 @@ Pixonaut\Sdk\Generated\Enum\DesignsCommitRequestOption2RepeatMode::GRID const
 Pixonaut\Sdk\Generated\Enum\DesignsCommitRequestOption2RepeatMode::HALF_DROP const
 Pixonaut\Sdk\Generated\Enum\DesignsCommitRequestOption2RepeatMode::KNOWN const
 Pixonaut\Sdk\Generated\Enum\DesignsCommitRequestOption2RepeatMode::SCATTER const
+final class Pixonaut\Sdk\Generated\Enum\DesignsCommitResponseSmallerThanAreaHandling
+Pixonaut\Sdk\Generated\Enum\DesignsCommitResponseSmallerThanAreaHandling::ENLARGED const
+Pixonaut\Sdk\Generated\Enum\DesignsCommitResponseSmallerThanAreaHandling::KNOWN const
+Pixonaut\Sdk\Generated\Enum\DesignsCommitResponseSmallerThanAreaHandling::REFUSED const
 final class Pixonaut\Sdk\Generated\Enum\DesignsCommitThroughLayoutRequestOption2RepeatMode
 Pixonaut\Sdk\Generated\Enum\DesignsCommitThroughLayoutRequestOption2RepeatMode::BRICK const
 Pixonaut\Sdk\Generated\Enum\DesignsCommitThroughLayoutRequestOption2RepeatMode::GRID const
@@ -13496,11 +13504,35 @@ Pixonaut\Sdk\Generated\Model\DesignsApproveRequestConsent::fromArray(array $data
 Pixonaut\Sdk\Generated\Model\DesignsApproveRequestConsent::raw(): array
 Pixonaut\Sdk\Generated\Model\DesignsApproveRequestConsent::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\DesignsApproveResponse implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponse::$smallerThanArea readonly ?Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanArea
 Pixonaut\Sdk\Generated\Model\DesignsApproveResponse::$status readonly string
-Pixonaut\Sdk\Generated\Model\DesignsApproveResponse::__construct(string $status)
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponse::__construct(string $status, ?Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanArea $smallerThanArea = null)
 Pixonaut\Sdk\Generated\Model\DesignsApproveResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsApproveResponse static
 Pixonaut\Sdk\Generated\Model\DesignsApproveResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\DesignsApproveResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanArea implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanArea::$areaMm readonly Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaAreaMm
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanArea::$handling readonly string
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanArea::$printMm readonly Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaPrintMm
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanArea::$printshop readonly string
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanArea::__construct(Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaAreaMm $areaMm, string $handling, Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaPrintMm $printMm, string $printshop)
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanArea::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanArea static
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanArea::raw(): array
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanArea::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaAreaMm implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaAreaMm::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaAreaMm::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaAreaMm::__construct(float $heightMm, float $widthMm)
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaAreaMm::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaAreaMm static
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaAreaMm::raw(): array
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaAreaMm::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaPrintMm implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaPrintMm::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaPrintMm::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaPrintMm::__construct(float $heightMm, float $widthMm)
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaPrintMm::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaPrintMm static
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaPrintMm::raw(): array
+Pixonaut\Sdk\Generated\Model\DesignsApproveResponseSmallerThanAreaPrintMm::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\DesignsCommitRequest
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequest::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption1|Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2 static
 final class Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption1 implements Pixonaut\Sdk\Model\Model
@@ -13562,7 +13594,8 @@ final class Pixonaut\Sdk\Generated\Model\DesignsCommitResponse implements Pixona
 Pixonaut\Sdk\Generated\Model\DesignsCommitResponse::$designId readonly string
 Pixonaut\Sdk\Generated\Model\DesignsCommitResponse::$lowResolution readonly array
 Pixonaut\Sdk\Generated\Model\DesignsCommitResponse::$printFloorDpi readonly float
-Pixonaut\Sdk\Generated\Model\DesignsCommitResponse::__construct(string $designId, array $lowResolution, float $printFloorDpi)
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponse::$smallerThanArea readonly ?Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanArea
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponse::__construct(string $designId, array $lowResolution, float $printFloorDpi, ?Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanArea $smallerThanArea = null)
 Pixonaut\Sdk\Generated\Model\DesignsCommitResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsCommitResponse static
 Pixonaut\Sdk\Generated\Model\DesignsCommitResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\DesignsCommitResponse::toArray(): array
@@ -13576,6 +13609,29 @@ Pixonaut\Sdk\Generated\Model\DesignsCommitResponseLowResolutionItem::__construct
 Pixonaut\Sdk\Generated\Model\DesignsCommitResponseLowResolutionItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsCommitResponseLowResolutionItem static
 Pixonaut\Sdk\Generated\Model\DesignsCommitResponseLowResolutionItem::raw(): array
 Pixonaut\Sdk\Generated\Model\DesignsCommitResponseLowResolutionItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanArea implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanArea::$areaMm readonly Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaAreaMm
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanArea::$handling readonly string
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanArea::$printMm readonly Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaPrintMm
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanArea::$printshop readonly string
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanArea::__construct(Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaAreaMm $areaMm, string $handling, Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaPrintMm $printMm, string $printshop)
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanArea::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanArea static
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanArea::raw(): array
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanArea::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaAreaMm implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaAreaMm::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaAreaMm::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaAreaMm::__construct(float $heightMm, float $widthMm)
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaAreaMm::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaAreaMm static
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaAreaMm::raw(): array
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaAreaMm::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaPrintMm implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaPrintMm::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaPrintMm::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaPrintMm::__construct(float $heightMm, float $widthMm)
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaPrintMm::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaPrintMm static
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaPrintMm::raw(): array
+Pixonaut\Sdk\Generated\Model\DesignsCommitResponseSmallerThanAreaPrintMm::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\DesignsCommitThroughLayoutRequest
 Pixonaut\Sdk\Generated\Model\DesignsCommitThroughLayoutRequest::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsCommitThroughLayoutRequestOption1|Pixonaut\Sdk\Generated\Model\DesignsCommitThroughLayoutRequestOption2 static
 final class Pixonaut\Sdk\Generated\Model\DesignsCommitThroughLayoutRequestOption1 implements Pixonaut\Sdk\Model\Model

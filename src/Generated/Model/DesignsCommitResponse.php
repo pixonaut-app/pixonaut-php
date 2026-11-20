@@ -24,11 +24,13 @@ final class DesignsCommitResponse implements Model
     /**
      * @param list<DesignsCommitResponseLowResolutionItem> $lowResolution The pictures that print below `printFloorDpi` at the design's print size. A warning: nothing is refused for it.
      * @param float $printFloorDpi The minimum print resolution the design's pictures were judged against: the template's own, else the tenant's.
+     * @param DesignsCommitResponseSmallerThanArea|null $smallerThanArea Present when the design's print is smaller than its placement's print area and its printshop does not place a smaller print: a warning, nothing is refused yet. Make the design at the whole area: give the template the area's ratio and print it at the area's size (the placement's usual size, or the size the design names), leaving the part its artwork does not cover transparent.
      */
     public function __construct(
         public readonly string $designId,
         public readonly array $lowResolution,
         public readonly float $printFloorDpi,
+        public readonly ?DesignsCommitResponseSmallerThanArea $smallerThanArea = null,
     ) {}
 
     /**
@@ -49,6 +51,7 @@ final class DesignsCommitResponse implements Model
                 static fn(mixed $v, string $p): DesignsCommitResponseLowResolutionItem => DesignsCommitResponseLowResolutionItem::fromArray(Decode::object($v, $p), $p),
             ),
             printFloorDpi: Decode::float(Decode::required($data, 'printFloorDpi', $path), $path . '.printFloorDpi'),
+            smallerThanArea: array_key_exists('smallerThanArea', $data) ? DesignsCommitResponseSmallerThanArea::fromArray(Decode::object($data['smallerThanArea'], $path . '.smallerThanArea'), $path . '.smallerThanArea') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -74,6 +77,9 @@ final class DesignsCommitResponse implements Model
             $this->lowResolution,
         );
         $data['printFloorDpi'] = $this->printFloorDpi;
+        if ($this->smallerThanArea !== null) {
+            $data['smallerThanArea'] = Encode::model($this->smallerThanArea);
+        }
         return $data;
     }
 }
