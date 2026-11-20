@@ -1,5 +1,16 @@
 # Changelog
 
+## [25.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v24.1.0...v25.0.0) (2026-11-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* an order's answer requires `orderedWith` and `storeOrderWait`, and a cylinder model's parts gain an `inside` arm, which changes generated constructors.
+
+### Features
+
+* target the published Pixonaut API 13.0.0 ([#86](https://github.com/pixonaut-app/pixonaut-php/issues/86)) ([1c826b9](https://github.com/pixonaut-app/pixonaut-php/commit/1c826b9e93993890fb98832bb085c5ab8030cd53))
+
 ## [24.1.0](https://github.com/pixonaut-app/pixonaut-php/compare/v24.0.0...v24.1.0) (2026-11-19)
 
 Targets the Pixonaut API 12.1.1.
