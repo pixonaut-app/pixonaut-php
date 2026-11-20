@@ -19,11 +19,11 @@ final class BlanksGetResponseProductModelsItemModelCylinderPartsItem
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return BlanksGetResponseProductModelsItemModelCylinderPartsItemHandle|BlanksGetResponseProductModelsItemModelCylinderPartsItemStraw|BlanksGetResponseProductModelsItemModelCylinderPartsItemLid|BlanksGetResponseProductModelsItemModelCylinderPartsItemFinish
+     * @return BlanksGetResponseProductModelsItemModelCylinderPartsItemHandle|BlanksGetResponseProductModelsItemModelCylinderPartsItemStraw|BlanksGetResponseProductModelsItemModelCylinderPartsItemLid|BlanksGetResponseProductModelsItemModelCylinderPartsItemFinish|BlanksGetResponseProductModelsItemModelCylinderPartsItemInside
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
-    public static function decode(mixed $data, string $path = '$'): BlanksGetResponseProductModelsItemModelCylinderPartsItemHandle|BlanksGetResponseProductModelsItemModelCylinderPartsItemStraw|BlanksGetResponseProductModelsItemModelCylinderPartsItemLid|BlanksGetResponseProductModelsItemModelCylinderPartsItemFinish
+    public static function decode(mixed $data, string $path = '$'): \Pixonaut\Sdk\Model\Model
     {
         return Decode::oneOf(
             $data,
@@ -48,6 +48,11 @@ final class BlanksGetResponseProductModelsItemModelCylinderPartsItem
                     static fn(mixed $v, string $p): BlanksGetResponseProductModelsItemModelCylinderPartsItemFinish => BlanksGetResponseProductModelsItemModelCylinderPartsItemFinish::fromArray(Decode::object($v, $p), $p),
                     1002,
                     ['role' => 'finish'],
+                ],
+                [
+                    static fn(mixed $v, string $p): BlanksGetResponseProductModelsItemModelCylinderPartsItemInside => BlanksGetResponseProductModelsItemModelCylinderPartsItemInside::fromArray(Decode::object($v, $p), $p),
+                    1002,
+                    ['role' => 'inside'],
                 ],
             ],
         );

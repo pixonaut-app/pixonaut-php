@@ -38,6 +38,7 @@ final class OrdersGetResponse implements Model
      * @param OrdersGetResponseHold|null $hold Why the order is `held`, while it is; `null` for an order not held. A held order is accepted and not handed to its printshop until the month resets with room for it or the workspace upgrades.
      * @param float|null $lastCheckedAt
      * @param string|null $lastError
+     * @param list<OrdersGetResponseOrderedWithItem> $orderedWith The other items of the order this one was placed in, oldest first, each an order of its own with its prints and variant: the other items of its store order (`storeOrder`), or of a member's order of several items (`POST /v1/orders/batch`). Empty for an order placed alone, and for a replacement, which goes on its own.
      * @param float|null $personalDataErasedAt
      * @param string $printId The order's lead print: the first of `printIds`, and the only one of an order of one print.
      * @param list<string> $printIds Every print the order holds, the lead first: the prints of one item, each in its own placement on its blank.
@@ -56,6 +57,7 @@ final class OrdersGetResponse implements Model
      * @param string $status Values: {@see \Pixonaut\Sdk\Generated\Enum\OrdersGetResponseStatus}.
      * @param list<string> $statusMoves The statuses this caller may set the order to now with `PATCH /v1/orders/{id}`: for an integration key or a studio member on live, `submitted` and `failed` while its outcome is unknown and nothing otherwise; in a sandbox, every move a secret key may make. Empty for a caller without `orders:update`.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\OrdersGetResponseStatusMovesItem}.
+     * @param OrdersGetResponseStoreOrderWait|null $storeOrderWait Why the order, `awaiting_prints` with its own prints done, still waits: it goes to its printshop with the other items of its store order, as one of the printshop's orders. `null` for any other order, one whose prints are still rendering included. `POST /v1/orders/{id}/send-now` sends the ready ones now.
      * @param OrdersGetResponseTracking|null $tracking
      * @param OrdersGetResponseVariant|null $variant The variant as it was when the order was placed: its options and the variant fields its printshop was sent. A later edit of the variant does not change it.
      * @param string|null $variantRef The variant the order names; `null` as `blankId` is.
@@ -82,6 +84,7 @@ final class OrdersGetResponse implements Model
         public readonly string $id,
         public readonly ?float $lastCheckedAt,
         public readonly ?string $lastError,
+        public readonly array $orderedWith,
         public readonly ?float $personalDataErasedAt,
         public readonly string $printId,
         public readonly array $printIds,
@@ -101,6 +104,7 @@ final class OrdersGetResponse implements Model
         public readonly ?string $spotOutput,
         public readonly string $status,
         public readonly array $statusMoves,
+        public readonly ?OrdersGetResponseStoreOrderWait $storeOrderWait,
         public readonly float $submittedAt,
         public readonly string $tenantId,
         public readonly ?OrdersGetResponseTracking $tracking,
@@ -202,6 +206,11 @@ final class OrdersGetResponse implements Model
                 $path . '.lastError',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            orderedWith: Decode::list(
+                Decode::required($data, 'orderedWith', $path),
+                $path . '.orderedWith',
+                static fn(mixed $v, string $p): OrdersGetResponseOrderedWithItem => OrdersGetResponseOrderedWithItem::fromArray(Decode::object($v, $p), $p),
+            ),
             personalDataErasedAt: Decode::nullable(
                 Decode::required($data, 'personalDataErasedAt', $path),
                 $path . '.personalDataErasedAt',
@@ -277,6 +286,11 @@ final class OrdersGetResponse implements Model
                 $path . '.statusMoves',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            storeOrderWait: Decode::nullable(
+                Decode::required($data, 'storeOrderWait', $path),
+                $path . '.storeOrderWait',
+                static fn(mixed $v, string $p): OrdersGetResponseStoreOrderWait => OrdersGetResponseStoreOrderWait::fromArray(Decode::object($v, $p), $p),
+            ),
             submittedAt: Decode::float(Decode::required($data, 'submittedAt', $path), $path . '.submittedAt'),
             tenantId: Decode::string(Decode::required($data, 'tenantId', $path), $path . '.tenantId'),
             tracking: Decode::nullable(
@@ -342,6 +356,10 @@ final class OrdersGetResponse implements Model
         $data['id'] = $this->id;
         $data['lastCheckedAt'] = $this->lastCheckedAt;
         $data['lastError'] = $this->lastError;
+        $data['orderedWith'] = array_map(
+            static fn(OrdersGetResponseOrderedWithItem $v): mixed => Encode::model($v),
+            $this->orderedWith,
+        );
         $data['personalDataErasedAt'] = $this->personalDataErasedAt;
         $data['printId'] = $this->printId;
         $data['printIds'] = $this->printIds;
@@ -367,6 +385,7 @@ final class OrdersGetResponse implements Model
         $data['spotOutput'] = $this->spotOutput;
         $data['status'] = $this->status;
         $data['statusMoves'] = $this->statusMoves;
+        $data['storeOrderWait'] = $this->storeOrderWait === null ? null : Encode::model($this->storeOrderWait);
         $data['submittedAt'] = $this->submittedAt;
         $data['tenantId'] = $this->tenantId;
         $data['tracking'] = $this->tracking === null ? null : Encode::model($this->tracking);

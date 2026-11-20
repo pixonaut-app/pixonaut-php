@@ -19,11 +19,11 @@ final class ScenesListResponseStockItemsItemModelCylinderPartsItem
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return ScenesListResponseStockItemsItemModelCylinderPartsItemHandle|ScenesListResponseStockItemsItemModelCylinderPartsItemStraw|ScenesListResponseStockItemsItemModelCylinderPartsItemLid|ScenesListResponseStockItemsItemModelCylinderPartsItemFinish
+     * @return ScenesListResponseStockItemsItemModelCylinderPartsItemHandle|ScenesListResponseStockItemsItemModelCylinderPartsItemStraw|ScenesListResponseStockItemsItemModelCylinderPartsItemLid|ScenesListResponseStockItemsItemModelCylinderPartsItemFinish|ScenesListResponseStockItemsItemModelCylinderPartsItemInside
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
-    public static function decode(mixed $data, string $path = '$'): ScenesListResponseStockItemsItemModelCylinderPartsItemHandle|ScenesListResponseStockItemsItemModelCylinderPartsItemStraw|ScenesListResponseStockItemsItemModelCylinderPartsItemLid|ScenesListResponseStockItemsItemModelCylinderPartsItemFinish
+    public static function decode(mixed $data, string $path = '$'): \Pixonaut\Sdk\Model\Model
     {
         return Decode::oneOf(
             $data,
@@ -48,6 +48,11 @@ final class ScenesListResponseStockItemsItemModelCylinderPartsItem
                     static fn(mixed $v, string $p): ScenesListResponseStockItemsItemModelCylinderPartsItemFinish => ScenesListResponseStockItemsItemModelCylinderPartsItemFinish::fromArray(Decode::object($v, $p), $p),
                     1002,
                     ['role' => 'finish'],
+                ],
+                [
+                    static fn(mixed $v, string $p): ScenesListResponseStockItemsItemModelCylinderPartsItemInside => ScenesListResponseStockItemsItemModelCylinderPartsItemInside::fromArray(Decode::object($v, $p), $p),
+                    1002,
+                    ['role' => 'inside'],
                 ],
             ],
         );

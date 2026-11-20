@@ -12,7 +12,7 @@ use Pixonaut\Sdk\Http\Catalogue;
 use Pixonaut\Sdk\Http\Operation;
 
 /**
- * The operations of the API 12.1.1 spec, as the client sends them.
+ * The operations of the API 13.0.0 spec, as the client sends them.
  */
 final class Operations
 {
@@ -1029,6 +1029,16 @@ final class Operations
                 sensitive: false,
             ),
             new Operation(
+                id: 'orders.createBatch',
+                method: 'POST',
+                path: '/v1/orders/batch',
+                credentials: [Credential::SecretKey],
+                anonymous: false,
+                idempotent: true,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
                 id: 'orders.get',
                 method: 'GET',
                 path: '/v1/orders/{id}',
@@ -1162,6 +1172,16 @@ final class Operations
                 id: 'orders.retry',
                 method: 'POST',
                 path: '/v1/orders/{id}/retry',
+                credentials: [Credential::SecretKey, Credential::IntegrationKey],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
+                id: 'orders.sendNow',
+                method: 'POST',
+                path: '/v1/orders/{id}/send-now',
                 credentials: [Credential::SecretKey, Credential::IntegrationKey],
                 anonymous: false,
                 idempotent: false,

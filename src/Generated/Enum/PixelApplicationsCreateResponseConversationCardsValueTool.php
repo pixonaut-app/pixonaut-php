@@ -167,6 +167,8 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
 
     public const CANCEL_ORDER = 'cancel_order';
 
+    public const SEND_ORDER_NOW = 'send_order_now';
+
     public const CANCEL_RUN = 'cancel_run';
 
     public const UPDATE_BLANK_VARIANT = 'update_blank_variant';
@@ -442,6 +444,7 @@ final class PixelApplicationsCreateResponseConversationCardsValueTool
         self::DELETE_TEMPLATE,
         self::DELETE_DESIGN,
         self::CANCEL_ORDER,
+        self::SEND_ORDER_NOW,
         self::CANCEL_RUN,
         self::UPDATE_BLANK_VARIANT,
         self::EDIT_BLANK_VARIANTS,

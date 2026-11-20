@@ -19,11 +19,11 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemHandle|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemStraw|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemLid|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinish
+     * @return PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemHandle|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemStraw|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemLid|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinish|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemInside
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
-    public static function decode(mixed $data, string $path = '$'): PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemHandle|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemStraw|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemLid|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinish
+    public static function decode(mixed $data, string $path = '$'): \Pixonaut\Sdk\Model\Model
     {
         return Decode::oneOf(
             $data,
@@ -48,6 +48,11 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
                     static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinish => PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinish::fromArray(Decode::object($v, $p), $p),
                     1002,
                     ['role' => 'finish'],
+                ],
+                [
+                    static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemInside => PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemInside::fromArray(Decode::object($v, $p), $p),
+                    1002,
+                    ['role' => 'inside'],
                 ],
             ],
         );

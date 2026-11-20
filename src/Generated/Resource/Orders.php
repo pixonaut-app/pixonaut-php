@@ -9,6 +9,8 @@ namespace Pixonaut\Sdk\Generated\Resource;
 use InvalidArgumentException;
 use Pixonaut\Sdk\Exception\ApiException;
 use Pixonaut\Sdk\Generated\Model\OrdersCancelResponse;
+use Pixonaut\Sdk\Generated\Model\OrdersCreateBatchRequest;
+use Pixonaut\Sdk\Generated\Model\OrdersCreateBatchResponse;
 use Pixonaut\Sdk\Generated\Model\OrdersCreateRequest;
 use Pixonaut\Sdk\Generated\Model\OrdersCreateResponse;
 use Pixonaut\Sdk\Generated\Model\OrdersDeliveriesListResponse;
@@ -25,6 +27,7 @@ use Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse;
 use Pixonaut\Sdk\Generated\Model\OrdersRerouteTargetsResponse;
 use Pixonaut\Sdk\Generated\Model\OrdersRetryRequest;
 use Pixonaut\Sdk\Generated\Model\OrdersRetryResponse;
+use Pixonaut\Sdk\Generated\Model\OrdersSendNowResponse;
 use Pixonaut\Sdk\Generated\Model\OrdersUpdateRequest;
 use Pixonaut\Sdk\Generated\Model\OrdersUpdateResponse;
 use Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateRequest;
@@ -47,6 +50,7 @@ final class Orders
     public const OPERATIONS = [
         'list' => 'orders.list',
         'create' => 'orders.create',
+        'createBatch' => 'orders.createBatch',
         'get' => 'orders.get',
         'update' => 'orders.update',
         'cancel' => 'orders.cancel',
@@ -61,6 +65,7 @@ final class Orders
         'getProgress' => 'orders.progress.get',
         'listRerouteTargets' => 'orders.rerouteTargets',
         'retry' => 'orders.retry',
+        'sendNow' => 'orders.sendNow',
         'createForPrint' => 'prints.orders.create',
     ];
 
@@ -166,6 +171,59 @@ final class Orders
         );
         return $result->decode(
             static fn(mixed $json): OrdersCreateResponse => OrdersCreateResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Place an order of several items.
+     *
+     * `POST /v1/orders/batch`, with an `Idempotency-Key`: a repeat with the same key is answered with what the first one made.
+     * To send the same request again later, keep {@see prepareCreateBatch()} and send it with {@see sendCreateBatch()}.
+     *
+     * @param OrdersCreateBatchRequest $body
+     * @param string|null $idempotencyKey Your key for the request; a new UUID when null.
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_approved`, `design_not_found`, `design_not_stitchable`, `design_unreadable`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `low_resolution`, `missing_fulfilment_keys`, `mixed_blanks`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_position`, `print_files_deleted`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_unavailable`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_not_offered`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws InvalidArgumentException When the request does not fit the operation; nothing is sent.
+     */
+    public function createBatch(OrdersCreateBatchRequest $body, ?string $idempotencyKey = null): OrdersCreateBatchResponse
+    {
+        return $this->sendCreateBatch(
+            $this->prepareCreateBatch($body, $idempotencyKey),
+        );
+    }
+
+    /**
+     * The `POST /v1/orders/batch` request {@see createBatch()} sends, body encoded and key chosen, for {@see sendCreateBatch()}.
+     * Store its `toArray()` before sending, and a retry sends the same bytes under the same key.
+     *
+     * @param OrdersCreateBatchRequest $body
+     * @param string|null $idempotencyKey Your key for the request; a new UUID when null.
+     *
+     * @throws InvalidArgumentException When the request does not fit the operation.
+     */
+    public function prepareCreateBatch(OrdersCreateBatchRequest $body, ?string $idempotencyKey = null): PreparedRequest
+    {
+        return $this->pixonaut->prepare(
+            'orders.createBatch',
+            body: $body->toArray(),
+            idempotencyKey: $idempotencyKey,
+        );
+    }
+
+    /**
+     * Sends a request from {@see prepareCreateBatch()}, as prepared or restored with `PreparedRequest::fromArray()`.
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_approved`, `design_not_found`, `design_not_stitchable`, `design_unreadable`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `low_resolution`, `missing_fulfilment_keys`, `mixed_blanks`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_position`, `print_files_deleted`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_unavailable`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_not_offered`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws InvalidArgumentException When the request was prepared for another operation, or does not fit this one.
+     */
+    public function sendCreateBatch(PreparedRequest $request): OrdersCreateBatchResponse
+    {
+        $result = $this->pixonaut->send(
+            $request->expect('orders.createBatch'),
+        );
+        return $result->decode(
+            static fn(mixed $json): OrdersCreateBatchResponse => OrdersCreateBatchResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -510,6 +568,26 @@ final class Orders
         );
         return $result->decode(
             static fn(mixed $json): OrdersRetryResponse => OrdersRetryResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Send a store order's ready items now.
+     *
+     * `POST /v1/orders/{id}/send-now`
+     *
+     * @param string $id
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `not_found`, `order_not_found`, `origin_forbidden`, `payload_too_large`, `store_order_not_waiting`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function sendNow(string $id): OrdersSendNowResponse
+    {
+        $result = $this->pixonaut->call(
+            'orders.sendNow',
+            path: ['id' => $id],
+        );
+        return $result->decode(
+            static fn(mixed $json): OrdersSendNowResponse => OrdersSendNowResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 

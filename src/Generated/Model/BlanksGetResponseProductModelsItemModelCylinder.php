@@ -27,7 +27,7 @@ final class BlanksGetResponseProductModelsItemModelCylinder implements Model
      * @param string $kind A cylinder, straight or tapered, such as a mug.
      * @param BlanksGetResponseProductModelsItemModelCylinderPrintBand $printBand The band round its side that takes the print.
      * @param float $topDiameterMm Its diameter at the top of its straight side, in millimetres.
-     * @param list<BlanksGetResponseProductModelsItemModelCylinderPartsItemHandle|BlanksGetResponseProductModelsItemModelCylinderPartsItemStraw|BlanksGetResponseProductModelsItemModelCylinderPartsItemLid|BlanksGetResponseProductModelsItemModelCylinderPartsItemFinish>|null $parts Its handle, lid, straw and finish, each when it has one. Omitted, none.
+     * @param list<BlanksGetResponseProductModelsItemModelCylinderPartsItemHandle|BlanksGetResponseProductModelsItemModelCylinderPartsItemStraw|BlanksGetResponseProductModelsItemModelCylinderPartsItemLid|BlanksGetResponseProductModelsItemModelCylinderPartsItemFinish|BlanksGetResponseProductModelsItemModelCylinderPartsItemInside>|null $parts Its handle, lid, straw, finish and inside, each when it has one. Omitted, none.
      * @param BlanksGetResponseProductModelsItemModelCylinderProfile|null $profile A bottle's shoulder and neck, within its height. Omitted, none.
      */
     public function __construct(
@@ -62,7 +62,7 @@ final class BlanksGetResponseProductModelsItemModelCylinder implements Model
             parts: array_key_exists('parts', $data) ? Decode::list(
                 $data['parts'],
                 $path . '.parts',
-                static fn(mixed $v, string $p): BlanksGetResponseProductModelsItemModelCylinderPartsItemHandle|BlanksGetResponseProductModelsItemModelCylinderPartsItemStraw|BlanksGetResponseProductModelsItemModelCylinderPartsItemLid|BlanksGetResponseProductModelsItemModelCylinderPartsItemFinish => BlanksGetResponseProductModelsItemModelCylinderPartsItem::decode($v, $p),
+                static fn(mixed $v, string $p): \Pixonaut\Sdk\Model\Model => BlanksGetResponseProductModelsItemModelCylinderPartsItem::decode($v, $p),
             ) : null,
             profile: array_key_exists('profile', $data) ? BlanksGetResponseProductModelsItemModelCylinderProfile::fromArray(Decode::object($data['profile'], $path . '.profile'), $path . '.profile') : null,
         );
@@ -91,7 +91,7 @@ final class BlanksGetResponseProductModelsItemModelCylinder implements Model
         $data['topDiameterMm'] = $this->topDiameterMm;
         if ($this->parts !== null) {
             $data['parts'] = array_map(
-                static fn(BlanksGetResponseProductModelsItemModelCylinderPartsItemHandle|BlanksGetResponseProductModelsItemModelCylinderPartsItemStraw|BlanksGetResponseProductModelsItemModelCylinderPartsItemLid|BlanksGetResponseProductModelsItemModelCylinderPartsItemFinish $v): mixed => Encode::value($v),
+                static fn(\Pixonaut\Sdk\Model\Model $v): mixed => Encode::value($v),
                 $this->parts,
             );
         }

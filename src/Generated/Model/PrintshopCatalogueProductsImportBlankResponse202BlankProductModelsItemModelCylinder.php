@@ -27,7 +27,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
      * @param string $kind A cylinder, straight or tapered, such as a mug.
      * @param PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPrintBand $printBand The band round its side that takes the print.
      * @param float $topDiameterMm Its diameter at the top of its straight side, in millimetres.
-     * @param list<PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemHandle|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemStraw|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemLid|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinish>|null $parts Its handle, lid, straw and finish, each when it has one. Omitted, none.
+     * @param list<PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemHandle|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemStraw|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemLid|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinish|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemInside>|null $parts Its handle, lid, straw, finish and inside, each when it has one. Omitted, none.
      * @param PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile|null $profile A bottle's shoulder and neck, within its height. Omitted, none.
      */
     public function __construct(
@@ -62,7 +62,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
             parts: array_key_exists('parts', $data) ? Decode::list(
                 $data['parts'],
                 $path . '.parts',
-                static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemHandle|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemStraw|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemLid|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinish => PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItem::decode($v, $p),
+                static fn(mixed $v, string $p): \Pixonaut\Sdk\Model\Model => PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItem::decode($v, $p),
             ) : null,
             profile: array_key_exists('profile', $data) ? PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderProfile::fromArray(Decode::object($data['profile'], $path . '.profile'), $path . '.profile') : null,
         );
@@ -91,7 +91,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
         $data['topDiameterMm'] = $this->topDiameterMm;
         if ($this->parts !== null) {
             $data['parts'] = array_map(
-                static fn(PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemHandle|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemStraw|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemLid|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinderPartsItemFinish $v): mixed => Encode::value($v),
+                static fn(\Pixonaut\Sdk\Model\Model $v): mixed => Encode::value($v),
                 $this->parts,
             );
         }
