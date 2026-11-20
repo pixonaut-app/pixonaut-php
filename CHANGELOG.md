@@ -1,5 +1,17 @@
 # Changelog
 
+## [26.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v25.0.0...v26.0.0) (2026-11-20)
+
+Targets the Pixonaut API 13.1.0.
+
+### ⚠ BREAKING CHANGES
+
+* the generated DesignsCommitResponse and DesignsApproveResponse constructors take a new smallerThanArea argument.
+
+### Features
+
+* target the published Pixonaut API 13.1.0 ([#88](https://github.com/pixonaut-app/pixonaut-php/issues/88)) ([2361183](https://github.com/pixonaut-app/pixonaut-php/commit/23611836e39985f00d35f79c65a79874749e67e1))
+
 ## [25.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v24.1.0...v25.0.0) (2026-11-20)
 
 Targets the Pixonaut API 13.0.0.
