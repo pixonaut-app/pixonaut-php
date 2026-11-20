@@ -8,6 +8,7 @@ namespace Pixonaut\Sdk\Generated\Model;
 
 use Pixonaut\Sdk\Exception\UnexpectedResponse;
 use Pixonaut\Sdk\Model\Decode;
+use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
@@ -22,9 +23,11 @@ final class DesignsApproveResponse implements Model
 
     /**
      * @param string $status Values: {@see \Pixonaut\Sdk\Generated\Enum\DesignsApproveResponseStatus}.
+     * @param DesignsApproveResponseSmallerThanArea|null $smallerThanArea Present when the design's print is smaller than its placement's print area and its printshop does not place a smaller print: a warning, the approval stands. Never through a proof page link.
      */
     public function __construct(
         public readonly string $status,
+        public readonly ?DesignsApproveResponseSmallerThanArea $smallerThanArea = null,
     ) {}
 
     /**
@@ -37,7 +40,10 @@ final class DesignsApproveResponse implements Model
      */
     public static function fromArray(array $data, string $path = '$'): self
     {
-        $model = new self(status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'));
+        $model = new self(
+            status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
+            smallerThanArea: array_key_exists('smallerThanArea', $data) ? DesignsApproveResponseSmallerThanArea::fromArray(Decode::object($data['smallerThanArea'], $path . '.smallerThanArea'), $path . '.smallerThanArea') : null,
+        );
         $model->decoded = $data;
         return $model;
     }
@@ -57,6 +63,9 @@ final class DesignsApproveResponse implements Model
     {
         $data = [];
         $data['status'] = $this->status;
+        if ($this->smallerThanArea !== null) {
+            $data['smallerThanArea'] = Encode::model($this->smallerThanArea);
+        }
         return $data;
     }
 }
