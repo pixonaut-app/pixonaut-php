@@ -27,7 +27,7 @@ final class ScenesListResponseStockItemsItemModelCylinder implements Model
      * @param string $kind A cylinder, straight or tapered, such as a mug.
      * @param ScenesListResponseStockItemsItemModelCylinderPrintBand $printBand The band round its side that takes the print.
      * @param float $topDiameterMm Its diameter at the top of its straight side, in millimetres.
-     * @param list<ScenesListResponseStockItemsItemModelCylinderPartsItemHandle|ScenesListResponseStockItemsItemModelCylinderPartsItemStraw|ScenesListResponseStockItemsItemModelCylinderPartsItemLid|ScenesListResponseStockItemsItemModelCylinderPartsItemFinish>|null $parts Its handle, lid, straw and finish, each when it has one. Omitted, none.
+     * @param list<ScenesListResponseStockItemsItemModelCylinderPartsItemHandle|ScenesListResponseStockItemsItemModelCylinderPartsItemStraw|ScenesListResponseStockItemsItemModelCylinderPartsItemLid|ScenesListResponseStockItemsItemModelCylinderPartsItemFinish|ScenesListResponseStockItemsItemModelCylinderPartsItemInside>|null $parts Its handle, lid, straw, finish and inside, each when it has one. Omitted, none.
      * @param ScenesListResponseStockItemsItemModelCylinderProfile|null $profile A bottle's shoulder and neck, within its height. Omitted, none.
      */
     public function __construct(
@@ -62,7 +62,7 @@ final class ScenesListResponseStockItemsItemModelCylinder implements Model
             parts: array_key_exists('parts', $data) ? Decode::list(
                 $data['parts'],
                 $path . '.parts',
-                static fn(mixed $v, string $p): ScenesListResponseStockItemsItemModelCylinderPartsItemHandle|ScenesListResponseStockItemsItemModelCylinderPartsItemStraw|ScenesListResponseStockItemsItemModelCylinderPartsItemLid|ScenesListResponseStockItemsItemModelCylinderPartsItemFinish => ScenesListResponseStockItemsItemModelCylinderPartsItem::decode($v, $p),
+                static fn(mixed $v, string $p): \Pixonaut\Sdk\Model\Model => ScenesListResponseStockItemsItemModelCylinderPartsItem::decode($v, $p),
             ) : null,
             profile: array_key_exists('profile', $data) ? ScenesListResponseStockItemsItemModelCylinderProfile::fromArray(Decode::object($data['profile'], $path . '.profile'), $path . '.profile') : null,
         );
@@ -91,7 +91,7 @@ final class ScenesListResponseStockItemsItemModelCylinder implements Model
         $data['topDiameterMm'] = $this->topDiameterMm;
         if ($this->parts !== null) {
             $data['parts'] = array_map(
-                static fn(ScenesListResponseStockItemsItemModelCylinderPartsItemHandle|ScenesListResponseStockItemsItemModelCylinderPartsItemStraw|ScenesListResponseStockItemsItemModelCylinderPartsItemLid|ScenesListResponseStockItemsItemModelCylinderPartsItemFinish $v): mixed => Encode::value($v),
+                static fn(\Pixonaut\Sdk\Model\Model $v): mixed => Encode::value($v),
                 $this->parts,
             );
         }

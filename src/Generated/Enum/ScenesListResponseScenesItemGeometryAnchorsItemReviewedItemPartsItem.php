@@ -29,6 +29,8 @@ final class ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemPartsItem
 
     public const FINISH = 'finish';
 
+    public const INSIDE = 'inside';
+
     /**
      * Every value this release knows.
      */
@@ -41,5 +43,6 @@ final class ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemPartsItem
         self::LID,
         self::STRAW,
         self::FINISH,
+        self::INSIDE,
     ];
 }

@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The error codes the API 12.1.1 spec names: its refusals (`x-refusals`), and the `error`
+ * The error codes the API 13.0.0 spec names: its refusals (`x-refusals`), and the `error`
  * values of every error answer. The client's own codes are on `ApiException`.
  */
 final class ErrorCode
@@ -1388,6 +1388,11 @@ final class ErrorCode
     public const STORE_ACCESS_REQUEST_STALE = 'store_access_request_stale';
 
     /**
+     * Documented with status 409.
+     */
+    public const STORE_ORDER_NOT_WAITING = 'store_order_not_waiting';
+
+    /**
      * Documented with status 404.
      */
     public const SUBJECT_NOT_FOUND = 'subject_not_found';
@@ -1873,6 +1878,7 @@ final class ErrorCode
         'stock_item_not_found' => [422],
         'storage_quota_exceeded' => [507],
         'store_access_request_stale' => [409],
+        'store_order_not_waiting' => [409],
         'subject_not_found' => [404],
         'technique_differs' => [422],
         'technique_not_offered' => [422],

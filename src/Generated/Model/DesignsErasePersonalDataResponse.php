@@ -43,7 +43,7 @@ final class DesignsErasePersonalDataResponse implements Model
      * @param DesignsErasePersonalDataResponsePrintSize|null $printSize The size the design prints at, without bleed: the `widthMm` and `heightMm` its proof or commit named, or the size fitted for one that named none. A store checks it, with `templateVersion`, `blankId` and `placementId`, against what the product variation sells before accepting the add to cart, since the proof is made in the customer's browser. Null only for a stored document that holds no usable print size.
      * @param string|null $proofId
      * @param int|null $proofRevision
-     * @param string|null $proofVariant The variant of the blank the customer previewed the design's proof on, by ref, as `POST /v1/proofs` was sent it; null when it named none. For display only: an order names its own variant.
+     * @param string|null $proofVariant The variant of the blank the customer previewed the design's proof on, by ref, as `POST /v1/proofs` was sent it; else the one the design was made for, as `POST /v1/designs` was sent it (its `garmentVariant`, else its `variant`); null when neither named one. For display only: an order names its own variant.
      * @param string|null $proofViewId The view of the blank's placement the customer previewed the design's proof in, by id, as `POST /v1/proofs` was sent it; null when it named none.
      * @param string|null $rejectionReason Why the design was rejected, as its rejection said (`reason` on `POST /v1/designs/{id}/reject`); null when it is not rejected, or was rejected without one. Its customer is shown it on the proof page.
      * @param string|null $shareLinkId The share link whose page made the design: committed there, or from a proof it made. Null when no link made it.

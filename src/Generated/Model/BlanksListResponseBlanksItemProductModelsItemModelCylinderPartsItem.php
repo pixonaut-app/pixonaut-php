@@ -19,11 +19,11 @@ final class BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItem
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemHandle|BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemStraw|BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemLid|BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemFinish
+     * @return BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemHandle|BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemStraw|BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemLid|BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemFinish|BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemInside
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
-    public static function decode(mixed $data, string $path = '$'): BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemHandle|BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemStraw|BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemLid|BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemFinish
+    public static function decode(mixed $data, string $path = '$'): \Pixonaut\Sdk\Model\Model
     {
         return Decode::oneOf(
             $data,
@@ -48,6 +48,11 @@ final class BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItem
                     static fn(mixed $v, string $p): BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemFinish => BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemFinish::fromArray(Decode::object($v, $p), $p),
                     1002,
                     ['role' => 'finish'],
+                ],
+                [
+                    static fn(mixed $v, string $p): BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemInside => BlanksListResponseBlanksItemProductModelsItemModelCylinderPartsItemInside::fromArray(Decode::object($v, $p), $p),
+                    1002,
+                    ['role' => 'inside'],
                 ],
             ],
         );
