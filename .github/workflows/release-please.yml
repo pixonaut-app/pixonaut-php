@@ -124,20 +124,36 @@ jobs:
         run: |
           NUMBER="$(jq -r .number <<<"${PR}")"
           HEAD="$(gh pr view "${NUMBER}" --json headRefOid --jq .headRefOid)"
-          runs="repos/${GH_REPO}/actions/workflows/pull-request.yml/runs?event=pull_request&head_sha=${HEAD}"
+          # Only runs this release update started count: a cancelled or
+          # finished run from an earlier event on the same head says nothing
+          # about the newest one.
+          SINCE="$(gh api "repos/${GH_REPO}/actions/runs/${GITHUB_RUN_ID}" --jq .run_started_at)"
+          runs="repos/${GH_REPO}/actions/workflows/pull-request.yml/runs?event=pull_request&head_sha=${HEAD}&created=>=${SINCE}"
           last_approval="${SECONDS}"
           while [ "${SECONDS}" -lt "${MAX_WAIT_SECONDS}" ]; do
-            for id in $(gh api "${runs}&status=action_required" --jq '.workflow_runs[].id'); do
-              gh api --method POST "repos/${GH_REPO}/actions/runs/${id}/approve" --silent
-              echo "Approved run ${id} on ${HEAD}."
+            waiting="$(gh api "${runs}&status=action_required" --jq '.workflow_runs[].id')"
+            for id in ${waiting}; do
+              if gh api --method POST "repos/${GH_REPO}/actions/runs/${id}/approve" --silent; then
+                echo "Approved run ${id} on ${HEAD}."
+              else
+                # A newer event may have cancelled the run, or a maintainer
+                # approved it, between the list and the approval.
+                conclusion="$(gh api "repos/${GH_REPO}/actions/runs/${id}" --jq '.conclusion // ""')"
+                if [ "${conclusion}" = action_required ]; then
+                  echo "::error::Run ${id} on ${HEAD} still waits for approval and could not be approved."
+                  exit 1
+                fi
+                echo "Run ${id} no longer waits for approval (${conclusion:-running})."
+              fi
               last_approval="${SECONDS}"
             done
-            started="$(gh api "${runs}" --jq '[.workflow_runs[] | select(.conclusion != "action_required")] | length')"
+            started="$(gh api "${runs}" --jq '[.workflow_runs[] | select(.conclusion != "action_required" and .conclusion != "cancelled")] | length')"
             if [ "${started}" -gt 0 ] && [ $((SECONDS - last_approval)) -ge "${QUIET_SECONDS}" ]; then
               echo "The release pull request's checks are running on ${HEAD}."
               exit 0
             fi
             sleep "${POLL_SECONDS}"
           done
-          echo "::error::No \"Pull request\" run started on ${HEAD} within ${MAX_WAIT_SECONDS} seconds."
-          exit 1
+          # Release-please may have left the pull request as it was, which
+          # starts no run; nothing is left waiting either way.
+          echo "::notice::No \"Pull request\" run started on ${HEAD} since this workflow began; none waits for approval."
