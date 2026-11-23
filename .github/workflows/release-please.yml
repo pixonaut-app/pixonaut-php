@@ -4,11 +4,11 @@ name: Release please
 # main; merging it tags the version and creates the GitHub Release. Each
 # release's notes open with the API release it targets.
 #
-# A pull request opened with the default GITHUB_TOKEN starts no workflows, so
-# the release pull request would get no checks. Set the RELEASE_PLEASE_TOKEN
-# secret (a GitHub App token or fine-grained token with contents and pull
-# requests write on this repository) to have them run; without it the
-# workflow falls back to GITHUB_TOKEN.
+# A pull request opened or pushed with the default GITHUB_TOKEN gets
+# "Pull request" runs that wait for approval and start no jobs, so the checks
+# job approves them. With the RELEASE_PLEASE_TOKEN secret set (a GitHub App
+# token or fine-grained token with contents and pull requests write on this
+# repository) they start on their own and there is nothing to approve.
 on:
   push:
     branches: [main]
@@ -95,3 +95,65 @@ jobs:
           if ! cmp -s "${notes}" "${notes}.before"; then
             gh release edit "${TAG}" --notes-file "${notes}"
           fi
+
+  # Runs started by github-actions[bot] wait for approval; closing the pull
+  # request instead ends them as failures that name no job. This approves the
+  # ones on the release pull request's head, after the changelog commit, so
+  # its checks run like any other pull request's.
+  checks:
+    name: Start the release pull request's checks
+    needs: [release-please, api-version]
+    if: needs.release-please.outputs.pr != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      actions: write
+      pull-requests: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      PR: ${{ needs.release-please.outputs.pr }}
+      # The pushes and edits above start their runs a few seconds later, one
+      # per event: poll until no run has waited for this long.
+      QUIET_SECONDS: 45
+      POLL_SECONDS: 5
+      # Give up after this long in all.
+      MAX_WAIT_SECONDS: 300
+    steps:
+      - name: Approve the runs waiting on the head
+        run: |
+          NUMBER="$(jq -r .number <<<"${PR}")"
+          HEAD="$(gh pr view "${NUMBER}" --json headRefOid --jq .headRefOid)"
+          # Only runs this release update started count: a cancelled or
+          # finished run from an earlier event on the same head says nothing
+          # about the newest one.
+          SINCE="$(gh api "repos/${GH_REPO}/actions/runs/${GITHUB_RUN_ID}" --jq .run_started_at)"
+          runs="repos/${GH_REPO}/actions/workflows/pull-request.yml/runs?event=pull_request&head_sha=${HEAD}&created=>=${SINCE}"
+          last_approval="${SECONDS}"
+          while [ "${SECONDS}" -lt "${MAX_WAIT_SECONDS}" ]; do
+            waiting="$(gh api "${runs}&status=action_required" --jq '.workflow_runs[].id')"
+            for id in ${waiting}; do
+              if gh api --method POST "repos/${GH_REPO}/actions/runs/${id}/approve" --silent; then
+                echo "Approved run ${id} on ${HEAD}."
+              else
+                # A newer event may have cancelled the run, or a maintainer
+                # approved it, between the list and the approval.
+                conclusion="$(gh api "repos/${GH_REPO}/actions/runs/${id}" --jq '.conclusion // ""')"
+                if [ "${conclusion}" = action_required ]; then
+                  echo "::error::Run ${id} on ${HEAD} still waits for approval and could not be approved."
+                  exit 1
+                fi
+                echo "Run ${id} no longer waits for approval (${conclusion:-running})."
+              fi
+              last_approval="${SECONDS}"
+            done
+            started="$(gh api "${runs}" --jq '[.workflow_runs[] | select(.conclusion != "action_required" and .conclusion != "cancelled")] | length')"
+            if [ "${started}" -gt 0 ] && [ $((SECONDS - last_approval)) -ge "${QUIET_SECONDS}" ]; then
+              echo "The release pull request's checks are running on ${HEAD}."
+              exit 0
+            fi
+            sleep "${POLL_SECONDS}"
+          done
+          # Release-please may have left the pull request as it was, which
+          # starts no run; nothing is left waiting either way.
+          echo "::notice::No \"Pull request\" run started on ${HEAD} since this workflow began; none waits for approval."
