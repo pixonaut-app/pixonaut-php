@@ -1,5 +1,17 @@
 # Changelog
 
+## [27.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v26.0.0...v27.0.0) (2026-11-23)
+
+Targets the Pixonaut API 14.0.0.
+
+### ⚠ BREAKING CHANGES
+
+* Orders::createBatch(), update(), retry(), listRerouteTargets(), getJob(), updateJob(), listJobFiles(), getJobFile() and bundleJobFiles() are removed, along with their request and response models. OrdersCreateRequest takes a required items list in place of prints. The order.failed, order.rerouted, order.submitted, order.tracking_added and order.tracking_changed events and their classes are removed, and order statuses are the new order status set.
+
+### Features
+
+* target the published Pixonaut API 14.0.0 ([#92](https://github.com/pixonaut-app/pixonaut-php/issues/92)) ([3bc76f9](https://github.com/pixonaut-app/pixonaut-php/commit/3bc76f9ca3879d82e13d28e68bef2891c2aff55e))
+
 ## [26.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v25.0.0...v26.0.0) (2026-11-20)
 
 Targets the Pixonaut API 13.1.0.
