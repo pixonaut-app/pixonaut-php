@@ -119,6 +119,17 @@ final class FakePixonautTest extends TestCase
         self::assertSame(['automations.get', ['id' => 'a/1']], [$templated[0]->id ?? null, $templated[1] ?? null]);
     }
 
+    public function testReadsEachPathValueUnderItsOwnName(): void
+    {
+        // `printshopOrderId` is longer than a PCRE group name may be.
+        $route = Spec::pinned()->route('PATCH', '/v1/orders/o%2F1/printshop-orders/po%2F2');
+
+        self::assertSame(
+            ['orders.printshopOrders.update', ['id' => 'o/1', 'printshopOrderId' => 'po/2']],
+            [$route[0]->id ?? null, $route[1] ?? null],
+        );
+    }
+
     public function testARepeatedKeyWithTheSameBodyIsReplayed(): void
     {
         $client = new ContractClient();
