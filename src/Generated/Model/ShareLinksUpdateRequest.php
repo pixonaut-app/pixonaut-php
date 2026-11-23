@@ -35,6 +35,7 @@ final class ShareLinksUpdateRequest implements Model
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ShareLinksUpdateRequestLocale}.
      * @param list<ShareLinksUpdateRequestMockupsItem>|null $mockups The store's own product photos the design is shown on, in place of the blank's views.
      * @param string|null|Omitted $name The link's new name; null removes it. Unique among the workspace's working links, case aside.
+     * @param ShareLinksUpdateRequestPages|null $pages On a placement printed as pages, the page counts the shopper picks from, on its own steps: a narrower range, or one count. Absent, the placement's whole range.
      * @param string|null $panelLayout The name of a panel layout of the link's `blankId`, in place of `placementId`: the page draws one design across the layout's canvas, and each placement it lays out gets its print cut from it, so art runs across the seams. Not with `sides` or `printSizes`.
      * @param bool|null $placementFrame Whether the link's page draws the placement frame, the ring and corner handles around the shopper's picture, at rest, as the SDK's `showPlacementFrame` does. Absent, the frame shows only while the picture is dragged or sized on the preview.
      * @param string|null $placementId The blank's placement it is printed in; with blankId.
@@ -62,6 +63,7 @@ final class ShareLinksUpdateRequest implements Model
         public readonly string|null|Omitted $locale = Omitted::Field,
         public readonly ?array $mockups = null,
         public readonly string|null|Omitted $name = Omitted::Field,
+        public readonly ?ShareLinksUpdateRequestPages $pages = null,
         public readonly ?string $panelLayout = null,
         public readonly ?bool $placementFrame = null,
         public readonly ?string $placementId = null,
@@ -120,6 +122,7 @@ final class ShareLinksUpdateRequest implements Model
                 $path . '.name',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : Omitted::Field,
+            pages: array_key_exists('pages', $data) ? ShareLinksUpdateRequestPages::fromArray(Decode::object($data['pages'], $path . '.pages'), $path . '.pages') : null,
             panelLayout: array_key_exists('panelLayout', $data) ? Decode::string($data['panelLayout'], $path . '.panelLayout') : null,
             placementFrame: array_key_exists('placementFrame', $data) ? Decode::bool($data['placementFrame'], $path . '.placementFrame') : null,
             placementId: array_key_exists('placementId', $data) ? Decode::string($data['placementId'], $path . '.placementId') : null,
@@ -214,6 +217,9 @@ final class ShareLinksUpdateRequest implements Model
         }
         if (!$this->name instanceof Omitted) {
             $data['name'] = $this->name;
+        }
+        if ($this->pages !== null) {
+            $data['pages'] = Encode::model($this->pages);
         }
         if ($this->panelLayout !== null) {
             $data['panelLayout'] = $this->panelLayout;

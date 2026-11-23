@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Why the order is `held`, while it is; `null` for an order not held. A held order is accepted and not handed to its printshop until the month resets with room for it or the workspace upgrades.
+ * Why the whole order is `held`, while it is: the plan's month has no room for it. `null` otherwise.
  *
  * Schema: `PATCH /v1/orders/{id}/delivery answer 200: $.hold`.
  */

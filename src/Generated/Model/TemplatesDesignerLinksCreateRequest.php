@@ -37,6 +37,7 @@ final class TemplatesDesignerLinksCreateRequest implements Model
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\TemplatesDesignerLinksCreateRequestLocale}.
      * @param list<TemplatesDesignerLinksCreateRequestMockupsItem>|null $mockups The store's own product photos the design is shown on, in place of the blank's views.
      * @param string|null $name The workspace's own name for the link (`Spring market stand`), at most 80 characters, never shown on its page. Trimmed, inner spaces made one; empty is no name. Unique among the workspace's working links, case aside: one another holds is refused `share_link_name_taken` naming the holder, a longer one `share_link_name_too_long`. A withdrawn or expired link frees its name.
+     * @param TemplatesDesignerLinksCreateRequestPages|null $pages On a placement printed as pages, the page counts the shopper picks from, on its own steps: a narrower range, or one count. Absent, the placement's whole range.
      * @param string|null $panelLayout The name of a panel layout of the link's `blankId`, in place of `placementId`: the page draws one design across the layout's canvas, and each placement it lays out gets its print cut from it, so art runs across the seams. Not with `sides` or `printSizes`.
      * @param bool|null $placementFrame Whether the link's page draws the placement frame, the ring and corner handles around the shopper's picture, at rest, as the SDK's `showPlacementFrame` does. Absent, the frame shows only while the picture is dragged or sized on the preview.
      * @param string|null $placementId The blank's placement it is printed in; with blankId.
@@ -65,6 +66,7 @@ final class TemplatesDesignerLinksCreateRequest implements Model
         public readonly ?string $locale = null,
         public readonly ?array $mockups = null,
         public readonly ?string $name = null,
+        public readonly ?TemplatesDesignerLinksCreateRequestPages $pages = null,
         public readonly ?string $panelLayout = null,
         public readonly ?bool $placementFrame = null,
         public readonly ?string $placementId = null,
@@ -108,6 +110,7 @@ final class TemplatesDesignerLinksCreateRequest implements Model
                 static fn(mixed $v, string $p): TemplatesDesignerLinksCreateRequestMockupsItem => TemplatesDesignerLinksCreateRequestMockupsItem::fromArray(Decode::object($v, $p), $p),
             ) : null,
             name: array_key_exists('name', $data) ? Decode::string($data['name'], $path . '.name') : null,
+            pages: array_key_exists('pages', $data) ? TemplatesDesignerLinksCreateRequestPages::fromArray(Decode::object($data['pages'], $path . '.pages'), $path . '.pages') : null,
             panelLayout: array_key_exists('panelLayout', $data) ? Decode::string($data['panelLayout'], $path . '.panelLayout') : null,
             placementFrame: array_key_exists('placementFrame', $data) ? Decode::bool($data['placementFrame'], $path . '.placementFrame') : null,
             placementId: array_key_exists('placementId', $data) ? Decode::string($data['placementId'], $path . '.placementId') : null,
@@ -199,6 +202,9 @@ final class TemplatesDesignerLinksCreateRequest implements Model
         }
         if ($this->name !== null) {
             $data['name'] = $this->name;
+        }
+        if ($this->pages !== null) {
+            $data['pages'] = Encode::model($this->pages);
         }
         if ($this->panelLayout !== null) {
             $data['panelLayout'] = $this->panelLayout;

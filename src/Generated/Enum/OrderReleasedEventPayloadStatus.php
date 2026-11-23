@@ -15,34 +15,28 @@ final class OrderReleasedEventPayloadStatus
 {
     public const HELD = 'held';
 
-    public const AWAITING_PRINTS = 'awaiting_prints';
+    public const OPEN = 'open';
 
-    public const SUBMITTED = 'submitted';
-
-    public const QUEUED = 'queued';
-
-    public const PRINTED = 'printed';
+    public const PARTLY_SHIPPED = 'partly_shipped';
 
     public const SHIPPED = 'shipped';
 
-    public const FAILED = 'failed';
-
-    public const OUTCOME_UNKNOWN = 'outcome_unknown';
+    public const NEEDS_ATTENTION = 'needs_attention';
 
     public const CANCELLED = 'cancelled';
+
+    public const DONE = 'done';
 
     /**
      * Every value this release knows.
      */
     public const KNOWN = [
         self::HELD,
-        self::AWAITING_PRINTS,
-        self::SUBMITTED,
-        self::QUEUED,
-        self::PRINTED,
+        self::OPEN,
+        self::PARTLY_SHIPPED,
         self::SHIPPED,
-        self::FAILED,
-        self::OUTCOME_UNKNOWN,
+        self::NEEDS_ATTENTION,
         self::CANCELLED,
+        self::DONE,
     ];
 }

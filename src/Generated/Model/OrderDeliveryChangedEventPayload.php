@@ -22,20 +22,19 @@ final class OrderDeliveryChangedEventPayload implements Model
 
     /**
      * @param string $by Values: {@see \Pixonaut\Sdk\Generated\Enum\OrderDeliveryChangedEventPayloadBy}.
+     * @param string|null $externalRef
      * @param string $outcome Values: {@see \Pixonaut\Sdk\Generated\Enum\OrderDeliveryChangedEventPayloadOutcome}.
      * @param string|null $words
-     * @param string|null $externalRef
-     * @param list<string>|null $printIds
+     * @param string|null $printshopOrderId
      */
     public function __construct(
         public readonly bool $added,
         public readonly string $by,
+        public readonly ?string $externalRef,
         public readonly string $orderId,
         public readonly string $outcome,
-        public readonly string $printId,
         public readonly ?string $words,
-        public readonly ?string $externalRef = null,
-        public readonly ?array $printIds = null,
+        public readonly ?string $printshopOrderId = null,
     ) {}
 
     /**
@@ -51,22 +50,21 @@ final class OrderDeliveryChangedEventPayload implements Model
         $model = new self(
             added: Decode::bool(Decode::required($data, 'added', $path), $path . '.added'),
             by: Decode::string(Decode::required($data, 'by', $path), $path . '.by'),
+            externalRef: Decode::nullable(
+                Decode::required($data, 'externalRef', $path),
+                $path . '.externalRef',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             orderId: Decode::string(Decode::required($data, 'orderId', $path), $path . '.orderId'),
             outcome: Decode::string(Decode::required($data, 'outcome', $path), $path . '.outcome'),
-            printId: Decode::string(Decode::required($data, 'printId', $path), $path . '.printId'),
             words: Decode::nullable(
                 Decode::required($data, 'words', $path),
                 $path . '.words',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
-            externalRef: array_key_exists('externalRef', $data) ? Decode::nullable(
-                $data['externalRef'],
-                $path . '.externalRef',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ) : null,
-            printIds: array_key_exists('printIds', $data) ? Decode::list(
-                $data['printIds'],
-                $path . '.printIds',
+            printshopOrderId: array_key_exists('printshopOrderId', $data) ? Decode::nullable(
+                $data['printshopOrderId'],
+                $path . '.printshopOrderId',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : null,
         );
@@ -90,15 +88,12 @@ final class OrderDeliveryChangedEventPayload implements Model
         $data = [];
         $data['added'] = $this->added;
         $data['by'] = $this->by;
+        $data['externalRef'] = $this->externalRef;
         $data['orderId'] = $this->orderId;
         $data['outcome'] = $this->outcome;
-        $data['printId'] = $this->printId;
         $data['words'] = $this->words;
-        if ($this->externalRef !== null) {
-            $data['externalRef'] = $this->externalRef;
-        }
-        if ($this->printIds !== null) {
-            $data['printIds'] = $this->printIds;
+        if ($this->printshopOrderId !== null) {
+            $data['printshopOrderId'] = $this->printshopOrderId;
         }
         return $data;
     }

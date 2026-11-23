@@ -9,8 +9,6 @@ namespace Pixonaut\Sdk\Generated\Resource;
 use InvalidArgumentException;
 use Pixonaut\Sdk\Exception\ApiException;
 use Pixonaut\Sdk\Generated\Model\OrdersCancelResponse;
-use Pixonaut\Sdk\Generated\Model\OrdersCreateBatchRequest;
-use Pixonaut\Sdk\Generated\Model\OrdersCreateBatchResponse;
 use Pixonaut\Sdk\Generated\Model\OrdersCreateRequest;
 use Pixonaut\Sdk\Generated\Model\OrdersCreateResponse;
 use Pixonaut\Sdk\Generated\Model\OrdersDeliveriesListResponse;
@@ -18,18 +16,22 @@ use Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateRequest;
 use Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponse;
 use Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponse;
 use Pixonaut\Sdk\Generated\Model\OrdersGetResponse;
-use Pixonaut\Sdk\Generated\Model\OrdersJobFilesListResponse;
-use Pixonaut\Sdk\Generated\Model\OrdersJobGetResponse;
-use Pixonaut\Sdk\Generated\Model\OrdersJobUpdateRequest;
-use Pixonaut\Sdk\Generated\Model\OrdersJobUpdateResponse;
+use Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponse;
+use Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteRequest;
+use Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponse;
+use Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteTargetsResponse;
+use Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponse;
 use Pixonaut\Sdk\Generated\Model\OrdersListResponse;
+use Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateRequest;
+use Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponse;
+use Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersJobFilesListResponse;
+use Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersJobGetResponse;
+use Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersJobUpdateRequest;
+use Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersJobUpdateResponse;
+use Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateRequest;
+use Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponse;
 use Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse;
-use Pixonaut\Sdk\Generated\Model\OrdersRerouteTargetsResponse;
-use Pixonaut\Sdk\Generated\Model\OrdersRetryRequest;
-use Pixonaut\Sdk\Generated\Model\OrdersRetryResponse;
 use Pixonaut\Sdk\Generated\Model\OrdersSendNowResponse;
-use Pixonaut\Sdk\Generated\Model\OrdersUpdateRequest;
-use Pixonaut\Sdk\Generated\Model\OrdersUpdateResponse;
 use Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateRequest;
 use Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponse;
 use Pixonaut\Sdk\Http\Binary;
@@ -50,21 +52,23 @@ final class Orders
     public const OPERATIONS = [
         'list' => 'orders.list',
         'create' => 'orders.create',
-        'createBatch' => 'orders.createBatch',
         'get' => 'orders.get',
-        'update' => 'orders.update',
         'cancel' => 'orders.cancel',
         'listDeliveries' => 'orders.deliveries.list',
         'updateDelivery' => 'orders.delivery.update',
         'erasePersonalData' => 'orders.erasePersonalData',
-        'getJob' => 'orders.job.get',
-        'updateJob' => 'orders.job.update',
-        'bundleJobFiles' => 'orders.job.files.bundle',
-        'getJobFile' => 'orders.job.files.get',
-        'listJobFiles' => 'orders.job.files.list',
+        'cancelItem' => 'orders.items.cancel',
+        'rerouteItem' => 'orders.items.reroute',
+        'listItemRerouteTargets' => 'orders.items.rerouteTargets',
+        'retryItem' => 'orders.items.retry',
+        'createParcel' => 'orders.parcels.create',
+        'updatePrintshopOrder' => 'orders.printshopOrders.update',
+        'getPrintshopOrderJob' => 'orders.printshopOrders.job.get',
+        'updatePrintshopOrderJob' => 'orders.printshopOrders.job.update',
+        'bundlePrintshopOrderJobFiles' => 'orders.printshopOrders.job.files.bundle',
+        'getPrintshopOrderJobFile' => 'orders.printshopOrders.job.files.get',
+        'listPrintshopOrderJobFiles' => 'orders.printshopOrders.job.files.list',
         'getProgress' => 'orders.progress.get',
-        'listRerouteTargets' => 'orders.rerouteTargets',
-        'retry' => 'orders.retry',
         'sendNow' => 'orders.sendNow',
         'createForPrint' => 'prints.orders.create',
     ];
@@ -84,7 +88,7 @@ final class Orders
      * @param string|null $designId
      * @param string|null $externalRef
      * @param string|null $printshop Only the orders sent to this printshop connection: its id, as list_printshops returns it.
-     * @param string|list<string>|null $status Only the orders in any of these statuses: repeat it, or separate them with commas (`failed,outcome_unknown`).
+     * @param string|list<string>|null $status Only the orders in any of these statuses: repeat it, or separate them with commas (`needs_attention,held`).
      * @param string|null $blankId Only the orders of this blank, whichever variant.
      * @param string|null $variant Only the orders of this variant: its ref.
      * @param int|null $submittedFrom Only orders submitted at or after this time, in epoch milliseconds.
@@ -122,7 +126,7 @@ final class Orders
     }
 
     /**
-     * Place one order for the prints of one item.
+     * Place an order of one or more items.
      *
      * `POST /v1/orders`, with an `Idempotency-Key`: a repeat with the same key is answered with what the first one made.
      * To send the same request again later, keep {@see prepareCreate()} and send it with {@see sendCreate()}.
@@ -130,7 +134,7 @@ final class Orders
      * @param OrdersCreateRequest $body
      * @param string|null $idempotencyKey Your key for the request; a new UUID when null.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_approved`, `design_not_found`, `design_not_stitchable`, `design_unreadable`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `low_resolution`, `missing_fulfilment_keys`, `mixed_blanks`, `not_found`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_position`, `print_files_deleted`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_unavailable`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_not_offered`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_approved`, `design_not_found`, `design_not_stitchable`, `design_unreadable`, `duplicate_page`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `low_resolution`, `missing_fulfilment_keys`, `mixed_blanks`, `not_found`, `origin_forbidden`, `page_count_out_of_range`, `page_missing`, `page_on_unpaged_placement`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_position`, `print_files_deleted`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_takes_no_pages`, `printshop_unavailable`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_not_offered`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      * @throws InvalidArgumentException When the request does not fit the operation; nothing is sent.
      */
     public function create(OrdersCreateRequest $body, ?string $idempotencyKey = null): OrdersCreateResponse
@@ -161,7 +165,7 @@ final class Orders
     /**
      * Sends a request from {@see prepareCreate()}, as prepared or restored with `PreparedRequest::fromArray()`.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_approved`, `design_not_found`, `design_not_stitchable`, `design_unreadable`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `low_resolution`, `missing_fulfilment_keys`, `mixed_blanks`, `not_found`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_position`, `print_files_deleted`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_unavailable`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_not_offered`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_approved`, `design_not_found`, `design_not_stitchable`, `design_unreadable`, `duplicate_page`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `low_resolution`, `missing_fulfilment_keys`, `mixed_blanks`, `not_found`, `origin_forbidden`, `page_count_out_of_range`, `page_missing`, `page_on_unpaged_placement`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_position`, `print_files_deleted`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_takes_no_pages`, `printshop_unavailable`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_not_offered`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      * @throws InvalidArgumentException When the request was prepared for another operation, or does not fit this one.
      */
     public function sendCreate(PreparedRequest $request): OrdersCreateResponse
@@ -175,60 +179,7 @@ final class Orders
     }
 
     /**
-     * Place an order of several items.
-     *
-     * `POST /v1/orders/batch`, with an `Idempotency-Key`: a repeat with the same key is answered with what the first one made.
-     * To send the same request again later, keep {@see prepareCreateBatch()} and send it with {@see sendCreateBatch()}.
-     *
-     * @param OrdersCreateBatchRequest $body
-     * @param string|null $idempotencyKey Your key for the request; a new UUID when null.
-     *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_approved`, `design_not_found`, `design_not_stitchable`, `design_unreadable`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `low_resolution`, `missing_fulfilment_keys`, `mixed_blanks`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_position`, `print_files_deleted`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_unavailable`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_not_offered`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
-     * @throws InvalidArgumentException When the request does not fit the operation; nothing is sent.
-     */
-    public function createBatch(OrdersCreateBatchRequest $body, ?string $idempotencyKey = null): OrdersCreateBatchResponse
-    {
-        return $this->sendCreateBatch(
-            $this->prepareCreateBatch($body, $idempotencyKey),
-        );
-    }
-
-    /**
-     * The `POST /v1/orders/batch` request {@see createBatch()} sends, body encoded and key chosen, for {@see sendCreateBatch()}.
-     * Store its `toArray()` before sending, and a retry sends the same bytes under the same key.
-     *
-     * @param OrdersCreateBatchRequest $body
-     * @param string|null $idempotencyKey Your key for the request; a new UUID when null.
-     *
-     * @throws InvalidArgumentException When the request does not fit the operation.
-     */
-    public function prepareCreateBatch(OrdersCreateBatchRequest $body, ?string $idempotencyKey = null): PreparedRequest
-    {
-        return $this->pixonaut->prepare(
-            'orders.createBatch',
-            body: $body->toArray(),
-            idempotencyKey: $idempotencyKey,
-        );
-    }
-
-    /**
-     * Sends a request from {@see prepareCreateBatch()}, as prepared or restored with `PreparedRequest::fromArray()`.
-     *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_approved`, `design_not_found`, `design_not_stitchable`, `design_unreadable`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `low_resolution`, `missing_fulfilment_keys`, `mixed_blanks`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_position`, `print_files_deleted`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_unavailable`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_not_offered`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
-     * @throws InvalidArgumentException When the request was prepared for another operation, or does not fit this one.
-     */
-    public function sendCreateBatch(PreparedRequest $request): OrdersCreateBatchResponse
-    {
-        $result = $this->pixonaut->send(
-            $request->expect('orders.createBatch'),
-        );
-        return $result->decode(
-            static fn(mixed $json): OrdersCreateBatchResponse => OrdersCreateBatchResponse::fromArray(Decode::object($json, '$'), '$'),
-        );
-    }
-
-    /**
-     * Read one order, with its history.
+     * Read one order, with its items and parcels.
      *
      * `GET /v1/orders/{id}`
      *
@@ -248,35 +199,13 @@ final class Orders
     }
 
     /**
-     * Set an order's status by hand.
-     *
-     * `PATCH /v1/orders/{id}`
-     *
-     * @param string $id
-     * @param OrdersUpdateRequest $body
-     *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `not_found`, `order_not_found`, `order_reference_taken`, `order_status_not_allowed`, `order_status_reason_required`, `origin_forbidden`, `payload_too_large`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
-     */
-    public function update(string $id, OrdersUpdateRequest $body): OrdersUpdateResponse
-    {
-        $result = $this->pixonaut->call(
-            'orders.update',
-            path: ['id' => $id],
-            body: $body->toArray(),
-        );
-        return $result->decode(
-            static fn(mixed $json): OrdersUpdateResponse => OrdersUpdateResponse::fromArray(Decode::object($json, '$'), '$'),
-        );
-    }
-
-    /**
      * Cancel an order before it is made.
      *
      * `POST /v1/orders/{id}/cancel`
      *
      * @param string $id
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `cancel_unavailable`, `db_error`, `feature_disabled`, `forbidden`, `not_found`, `order_at_printshop`, `order_in_flight`, `order_not_found`, `order_status_not_allowed`, `origin_forbidden`, `payload_too_large`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `cancel_unavailable`, `db_error`, `feature_disabled`, `forbidden`, `item_not_found`, `not_found`, `order_at_printshop`, `order_in_flight`, `order_not_found`, `order_status_not_allowed`, `origin_forbidden`, `payload_too_large`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function cancel(string $id): OrdersCancelResponse
     {
@@ -386,55 +315,192 @@ final class Orders
     }
 
     /**
-     * Read an order as its printshop makes it.
+     * Cancel one item of an order before it is made.
      *
-     * `GET /v1/orders/{id}/job`
+     * `POST /v1/orders/{id}/items/{itemId}/cancel`
      *
      * @param string $id
+     * @param string $itemId
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `cancel_unavailable`, `db_error`, `feature_disabled`, `forbidden`, `item_not_found`, `not_found`, `order_at_printshop`, `order_in_flight`, `order_not_found`, `order_status_not_allowed`, `origin_forbidden`, `payload_too_large`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function cancelItem(string $id, string $itemId): OrdersItemsCancelResponse
+    {
+        $result = $this->pixonaut->call(
+            'orders.items.cancel',
+            path: ['id' => $id, 'itemId' => $itemId],
+        );
+        return $result->decode(
+            static fn(mixed $json): OrdersItemsCancelResponse => OrdersItemsCancelResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Send a failed item to another blank.
+     *
+     * `POST /v1/orders/{id}/items/{itemId}/reroute`
+     *
+     * @param string $id
+     * @param string $itemId
+     * @param OrdersItemsRerouteRequest $body
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_stitchable`, `design_unreadable`, `duplicate_page`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `item_not_found`, `lock_timeout`, `missing_fulfilment_keys`, `mixed_blanks`, `not_found`, `order_at_printshop`, `order_not_found`, `order_not_retryable`, `order_superseded`, `origin_forbidden`, `page_count_out_of_range`, `page_missing`, `page_on_unpaged_placement`, `payload_too_large`, `placement_name_differs`, `placement_not_of_blank`, `placement_taken`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_placement`, `print_exceeds_position`, `print_files_deleted`, `print_mapped_twice`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_mapped`, `print_not_of_order`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_short_of_area`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_takes_no_pages`, `printshop_unavailable`, `reroute_blank_not_found`, `reroute_same_blank`, `retry_refused`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_differs`, `technique_not_offered`, `technique_unknown`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function rerouteItem(string $id, string $itemId, OrdersItemsRerouteRequest $body): OrdersItemsRerouteResponse
+    {
+        $result = $this->pixonaut->call(
+            'orders.items.reroute',
+            path: ['id' => $id, 'itemId' => $itemId],
+            body: $body->toArray(),
+        );
+        return $result->decode(
+            static fn(mixed $json): OrdersItemsRerouteResponse => OrdersItemsRerouteResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * List the blanks a failed order could be sent to.
+     *
+     * `GET /v1/orders/{id}/items/{itemId}/reroute-targets`
+     *
+     * @param string $id
+     * @param string $itemId
+     * @param int|null $page The page to read, from 1; the first when left out.
+     * @param string|null $q Only the blanks whose name, or whose printshop's name, holds this text, case aside.
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `item_not_found`, `not_found`, `order_at_printshop`, `order_not_found`, `order_not_retryable`, `order_superseded`, `origin_forbidden`, `print_ticket_stale`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function listItemRerouteTargets(string $id, string $itemId, ?int $page = null, ?string $q = null): OrdersItemsRerouteTargetsResponse
+    {
+        $result = $this->pixonaut->call(
+            'orders.items.rerouteTargets',
+            path: ['id' => $id, 'itemId' => $itemId],
+            query: ['page' => $page, 'q' => $q],
+        );
+        return $result->decode(
+            static fn(mixed $json): OrdersItemsRerouteTargetsResponse => OrdersItemsRerouteTargetsResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Submit a failed item again.
+     *
+     * `POST /v1/orders/{id}/items/{itemId}/retry`
+     *
+     * @param string $id
+     * @param string $itemId
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_stitchable`, `design_unreadable`, `duplicate_page`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `item_not_found`, `lock_timeout`, `missing_fulfilment_keys`, `mixed_blanks`, `not_found`, `order_at_printshop`, `order_not_found`, `order_not_retryable`, `order_superseded`, `origin_forbidden`, `page_count_out_of_range`, `page_missing`, `page_on_unpaged_placement`, `payload_too_large`, `placement_name_differs`, `placement_not_of_blank`, `placement_taken`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_placement`, `print_exceeds_position`, `print_files_deleted`, `print_mapped_twice`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_mapped`, `print_not_of_order`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_short_of_area`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_takes_no_pages`, `printshop_unavailable`, `reroute_blank_not_found`, `reroute_same_blank`, `retry_refused`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_differs`, `technique_not_offered`, `technique_unknown`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function retryItem(string $id, string $itemId): OrdersItemsRetryResponse
+    {
+        $result = $this->pixonaut->call(
+            'orders.items.retry',
+            path: ['id' => $id, 'itemId' => $itemId],
+        );
+        return $result->decode(
+            static fn(mixed $json): OrdersItemsRetryResponse => OrdersItemsRetryResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Record a parcel of a printshop order.
+     *
+     * `POST /v1/orders/{id}/parcels`
+     *
+     * @param string $id
+     * @param OrdersParcelsCreateRequest $body
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `order_not_found`, `origin_forbidden`, `parcel_exceeds_quantity`, `parcel_item_not_found`, `parcel_nothing_left`, `parcel_quantity_invalid`, `parcels_by_printshop`, `payload_too_large`, `printshop_order_not_found`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function createParcel(string $id, OrdersParcelsCreateRequest $body): OrdersParcelsCreateResponse
+    {
+        $result = $this->pixonaut->call(
+            'orders.parcels.create',
+            path: ['id' => $id],
+            body: $body->toArray(),
+        );
+        return $result->decode(
+            static fn(mixed $json): OrdersParcelsCreateResponse => OrdersParcelsCreateResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Set a printshop order's status by hand.
+     *
+     * `PATCH /v1/orders/{id}/printshop-orders/{printshopOrderId}`
+     *
+     * @param string $id
+     * @param string $printshopOrderId
+     * @param OrdersPrintshopOrdersUpdateRequest $body
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `not_found`, `order_not_found`, `order_reference_taken`, `order_status_not_allowed`, `order_status_reason_required`, `origin_forbidden`, `payload_too_large`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function updatePrintshopOrder(string $id, string $printshopOrderId, OrdersPrintshopOrdersUpdateRequest $body): OrdersPrintshopOrdersUpdateResponse
+    {
+        $result = $this->pixonaut->call(
+            'orders.printshopOrders.update',
+            path: ['id' => $id, 'printshopOrderId' => $printshopOrderId],
+            body: $body->toArray(),
+        );
+        return $result->decode(
+            static fn(mixed $json): OrdersPrintshopOrdersUpdateResponse => OrdersPrintshopOrdersUpdateResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Read an order as its printshop makes it.
+     *
+     * `GET /v1/orders/{id}/printshop-orders/{printshopOrderId}/job`
+     *
+     * @param string $id
+     * @param string $printshopOrderId
      * @param string|null $machineProfile
      *
      * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `machine_profile_not_found`, `not_found`, `order_not_found`, `origin_forbidden`, `rate_limited`, `secret_key_required`, `spot_plate_required`, `unauthorized`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
-    public function getJob(string $id, ?string $machineProfile = null): OrdersJobGetResponse
+    public function getPrintshopOrderJob(string $id, string $printshopOrderId, ?string $machineProfile = null): OrdersPrintshopOrdersJobGetResponse
     {
         $result = $this->pixonaut->call(
-            'orders.job.get',
-            path: ['id' => $id],
+            'orders.printshopOrders.job.get',
+            path: ['id' => $id, 'printshopOrderId' => $printshopOrderId],
             query: ['machineProfile' => $machineProfile],
         );
         return $result->decode(
-            static fn(mixed $json): OrdersJobGetResponse => OrdersJobGetResponse::fromArray(Decode::object($json, '$'), '$'),
+            static fn(mixed $json): OrdersPrintshopOrdersJobGetResponse => OrdersPrintshopOrdersJobGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
     /**
      * Report how an order's job stands.
      *
-     * `PATCH /v1/orders/{id}/job`
+     * `PATCH /v1/orders/{id}/printshop-orders/{printshopOrderId}/job`
      *
      * @param string $id
-     * @param OrdersJobUpdateRequest $body
+     * @param string $printshopOrderId
+     * @param OrdersPrintshopOrdersJobUpdateRequest $body
      *
      * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `not_found`, `order_not_found`, `order_reference_taken`, `order_status_not_allowed`, `order_status_reason_required`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
-    public function updateJob(string $id, OrdersJobUpdateRequest $body): OrdersJobUpdateResponse
+    public function updatePrintshopOrderJob(string $id, string $printshopOrderId, OrdersPrintshopOrdersJobUpdateRequest $body): OrdersPrintshopOrdersJobUpdateResponse
     {
         $result = $this->pixonaut->call(
-            'orders.job.update',
-            path: ['id' => $id],
+            'orders.printshopOrders.job.update',
+            path: ['id' => $id, 'printshopOrderId' => $printshopOrderId],
             body: $body->toArray(),
         );
         return $result->decode(
-            static fn(mixed $json): OrdersJobUpdateResponse => OrdersJobUpdateResponse::fromArray(Decode::object($json, '$'), '$'),
+            static fn(mixed $json): OrdersPrintshopOrdersJobUpdateResponse => OrdersPrintshopOrdersJobUpdateResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
     /**
      * Fetch every file of an order's print as one zip.
      *
-     * `GET /v1/orders/{id}/job/bundle`
+     * `GET /v1/orders/{id}/printshop-orders/{printshopOrderId}/job/bundle`
      *
      * @param string $id
+     * @param string $printshopOrderId
      * @param string|null $machineProfile
      * @param string|null $settings
      * @param string|null $printId Which of the order's prints, one of its `printIds`. Required when the order holds several; left out, the order's only print.
@@ -442,11 +508,11 @@ final class Orders
      *
      * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `file_not_found`, `forbidden`, `ink_mask_missing`, `invalid_query`, `machine_profile_not_found`, `not_found`, `order_not_found`, `origin_forbidden`, `part_not_offered`, `print_id_required`, `print_not_found`, `print_profile_unavailable`, `print_raster_too_large`, `rate_limited`, `separation_not_found`, `unauthorized`, `workspace_suspended`), or cannot be reached.
      */
-    public function bundleJobFiles(string $id, ?string $machineProfile = null, ?string $settings = null, ?string $printId = null, ?string $add = null): Binary
+    public function bundlePrintshopOrderJobFiles(string $id, string $printshopOrderId, ?string $machineProfile = null, ?string $settings = null, ?string $printId = null, ?string $add = null): Binary
     {
         $result = $this->pixonaut->call(
-            'orders.job.files.bundle',
-            path: ['id' => $id],
+            'orders.printshopOrders.job.files.bundle',
+            path: ['id' => $id, 'printshopOrderId' => $printshopOrderId],
             query: ['machineProfile' => $machineProfile, 'settings' => $settings, 'printId' => $printId, 'add' => $add],
         );
         return $result->binary();
@@ -455,9 +521,10 @@ final class Orders
     /**
      * Fetch the print file of an order.
      *
-     * `GET /v1/orders/{id}/job/file`
+     * `GET /v1/orders/{id}/printshop-orders/{printshopOrderId}/job/file`
      *
      * @param string $id
+     * @param string $printshopOrderId
      * @param string|null $machineProfile
      * @param string|null $settings
      * @param string|null $printId Which of the order's prints, one of its `printIds`. Required when the order holds several; left out, the order's only print.
@@ -466,11 +533,11 @@ final class Orders
      *
      * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `file_not_found`, `forbidden`, `ink_mask_missing`, `invalid_query`, `machine_profile_not_found`, `not_found`, `order_not_found`, `origin_forbidden`, `part_not_offered`, `print_id_required`, `print_not_found`, `print_profile_unavailable`, `print_raster_too_large`, `rate_limited`, `separation_not_found`, `spot_plate_required`, `unauthorized`, `workspace_suspended`), or cannot be reached.
      */
-    public function getJobFile(string $id, ?string $machineProfile = null, ?string $settings = null, ?string $printId = null, ?string $part = null, ?string $file = null): Binary
+    public function getPrintshopOrderJobFile(string $id, string $printshopOrderId, ?string $machineProfile = null, ?string $settings = null, ?string $printId = null, ?string $part = null, ?string $file = null): Binary
     {
         $result = $this->pixonaut->call(
-            'orders.job.files.get',
-            path: ['id' => $id],
+            'orders.printshopOrders.job.files.get',
+            path: ['id' => $id, 'printshopOrderId' => $printshopOrderId],
             query: [
                 'machineProfile' => $machineProfile,
                 'settings' => $settings,
@@ -485,24 +552,25 @@ final class Orders
     /**
      * List the files an order can be fetched as.
      *
-     * `GET /v1/orders/{id}/job/files`
+     * `GET /v1/orders/{id}/printshop-orders/{printshopOrderId}/job/files`
      *
      * @param string $id
+     * @param string $printshopOrderId
      * @param string|null $machineProfile
      * @param string|null $settings
      * @param string|null $printId Which of the order's prints, one of its `printIds`. Required when the order holds several; left out, the order's only print.
      *
      * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `machine_profile_not_found`, `not_found`, `order_not_found`, `origin_forbidden`, `print_id_required`, `print_not_found`, `rate_limited`, `spot_plate_required`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
-    public function listJobFiles(string $id, ?string $machineProfile = null, ?string $settings = null, ?string $printId = null): OrdersJobFilesListResponse
+    public function listPrintshopOrderJobFiles(string $id, string $printshopOrderId, ?string $machineProfile = null, ?string $settings = null, ?string $printId = null): OrdersPrintshopOrdersJobFilesListResponse
     {
         $result = $this->pixonaut->call(
-            'orders.job.files.list',
-            path: ['id' => $id],
+            'orders.printshopOrders.job.files.list',
+            path: ['id' => $id, 'printshopOrderId' => $printshopOrderId],
             query: ['machineProfile' => $machineProfile, 'settings' => $settings, 'printId' => $printId],
         );
         return $result->decode(
-            static fn(mixed $json): OrdersJobFilesListResponse => OrdersJobFilesListResponse::fromArray(Decode::object($json, '$'), '$'),
+            static fn(mixed $json): OrdersPrintshopOrdersJobFilesListResponse => OrdersPrintshopOrdersJobFilesListResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 
@@ -527,52 +595,7 @@ final class Orders
     }
 
     /**
-     * List the blanks a failed order could be sent to.
-     *
-     * `GET /v1/orders/{id}/reroute-targets`
-     *
-     * @param string $id
-     * @param int|null $page The page to read, from 1; the first when left out.
-     * @param string|null $q Only the blanks whose name, or whose printshop's name, holds this text, case aside.
-     *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `order_at_printshop`, `order_not_found`, `order_not_retryable`, `order_superseded`, `origin_forbidden`, `print_ticket_stale`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
-     */
-    public function listRerouteTargets(string $id, ?int $page = null, ?string $q = null): OrdersRerouteTargetsResponse
-    {
-        $result = $this->pixonaut->call(
-            'orders.rerouteTargets',
-            path: ['id' => $id],
-            query: ['page' => $page, 'q' => $q],
-        );
-        return $result->decode(
-            static fn(mixed $json): OrdersRerouteTargetsResponse => OrdersRerouteTargetsResponse::fromArray(Decode::object($json, '$'), '$'),
-        );
-    }
-
-    /**
-     * Submit a failed order again.
-     *
-     * `POST /v1/orders/{id}/retry`
-     *
-     * @param string $id
-     * @param OrdersRetryRequest|null $body
-     *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_stitchable`, `design_unreadable`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `lock_timeout`, `missing_fulfilment_keys`, `mixed_blanks`, `not_found`, `order_at_printshop`, `order_not_found`, `order_not_retryable`, `order_superseded`, `origin_forbidden`, `payload_too_large`, `placement_name_differs`, `placement_not_of_blank`, `placement_taken`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_placement`, `print_exceeds_position`, `print_files_deleted`, `print_mapped_twice`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_mapped`, `print_not_of_order`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_short_of_area`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_unavailable`, `reroute_blank_not_found`, `reroute_same_blank`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_differs`, `technique_not_offered`, `technique_unknown`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
-     */
-    public function retry(string $id, ?OrdersRetryRequest $body = null): OrdersRetryResponse
-    {
-        $result = $this->pixonaut->call(
-            'orders.retry',
-            path: ['id' => $id],
-            body: $body?->toArray(),
-        );
-        return $result->decode(
-            static fn(mixed $json): OrdersRetryResponse => OrdersRetryResponse::fromArray(Decode::object($json, '$'), '$'),
-        );
-    }
-
-    /**
-     * Send a store order's ready items now.
+     * Send an order's ready items now.
      *
      * `POST /v1/orders/{id}/send-now`
      *
@@ -601,7 +624,7 @@ final class Orders
      * @param PrintsOrdersCreateRequest|null $body
      * @param string|null $idempotencyKey Your key for the request; a new UUID when null.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_stitchable`, `design_unreadable`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `missing_fulfilment_keys`, `mixed_blanks`, `not_found`, `order_at_printshop`, `order_not_found`, `order_not_retryable`, `order_superseded`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_position`, `print_files_deleted`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_unavailable`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_not_offered`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_stitchable`, `design_unreadable`, `duplicate_page`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `missing_fulfilment_keys`, `mixed_blanks`, `not_found`, `order_at_printshop`, `order_not_found`, `order_not_retryable`, `order_superseded`, `origin_forbidden`, `page_count_out_of_range`, `page_missing`, `page_on_unpaged_placement`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_position`, `print_files_deleted`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_takes_no_pages`, `printshop_unavailable`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_not_offered`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      * @throws InvalidArgumentException When the request does not fit the operation; nothing is sent.
      */
     public function createForPrint(string $id, ?PrintsOrdersCreateRequest $body = null, ?string $idempotencyKey = null): PrintsOrdersCreateResponse
@@ -634,7 +657,7 @@ final class Orders
     /**
      * Sends a request from {@see prepareCreateForPrint()}, as prepared or restored with `PreparedRequest::fromArray()`.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_stitchable`, `design_unreadable`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `missing_fulfilment_keys`, `mixed_blanks`, `not_found`, `order_at_printshop`, `order_not_found`, `order_not_retryable`, `order_superseded`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_position`, `print_files_deleted`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_unavailable`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_not_offered`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `design_already_ordered`, `design_erased`, `design_not_stitchable`, `design_unreadable`, `duplicate_page`, `duplicate_placement`, `embroidery_fee_unacknowledged`, `feature_disabled`, `field_value_missing`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_idempotency_key`, `lock_timeout`, `missing_fulfilment_keys`, `mixed_blanks`, `not_found`, `order_at_printshop`, `order_not_found`, `order_not_retryable`, `order_superseded`, `origin_forbidden`, `page_count_out_of_range`, `page_missing`, `page_on_unpaged_placement`, `payload_too_large`, `placement_unfilled`, `plan_limit_reached`, `postal_code_required`, `print_committed_elsewhere`, `print_exceeds_machine`, `print_exceeds_position`, `print_files_deleted`, `print_needs_printshop`, `print_not_completed`, `print_not_found`, `print_not_position_size`, `print_profile_unavailable`, `print_raster_too_large`, `print_superseded`, `print_ticket_stale`, `print_without_placement`, `prints_disagree`, `printshop_cannot_combine`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_paused`, `printshop_takes_no_pages`, `printshop_unavailable`, `saved_address_not_found`, `spot_plate_required`, `stale_update`, `technique_not_offered`, `unauthorized`, `unknown_printshop`, `variant_not_of_blank`, `variant_not_of_design_row`, `variant_required`, `variant_retired`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      * @throws InvalidArgumentException When the request was prepared for another operation, or does not fit this one.
      */
     public function sendCreateForPrint(PreparedRequest $request): PrintsOrdersCreateResponse

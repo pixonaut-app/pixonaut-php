@@ -21,18 +21,15 @@ final class OrderReleasedEventPayload implements Model
     private ?array $decoded = null;
 
     /**
+     * @param string|null $externalRef
      * @param string $releasedBy Values: {@see \Pixonaut\Sdk\Generated\Enum\OrderReleasedEventPayloadReleasedBy}.
      * @param string $status Values: {@see \Pixonaut\Sdk\Generated\Enum\OrderReleasedEventPayloadStatus}.
-     * @param string|null $externalRef
-     * @param list<string>|null $printIds
      */
     public function __construct(
+        public readonly ?string $externalRef,
         public readonly string $orderId,
-        public readonly string $printId,
         public readonly string $releasedBy,
         public readonly string $status,
-        public readonly ?string $externalRef = null,
-        public readonly ?array $printIds = null,
     ) {}
 
     /**
@@ -46,20 +43,14 @@ final class OrderReleasedEventPayload implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            orderId: Decode::string(Decode::required($data, 'orderId', $path), $path . '.orderId'),
-            printId: Decode::string(Decode::required($data, 'printId', $path), $path . '.printId'),
-            releasedBy: Decode::string(Decode::required($data, 'releasedBy', $path), $path . '.releasedBy'),
-            status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
-            externalRef: array_key_exists('externalRef', $data) ? Decode::nullable(
-                $data['externalRef'],
+            externalRef: Decode::nullable(
+                Decode::required($data, 'externalRef', $path),
                 $path . '.externalRef',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ) : null,
-            printIds: array_key_exists('printIds', $data) ? Decode::list(
-                $data['printIds'],
-                $path . '.printIds',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ) : null,
+            ),
+            orderId: Decode::string(Decode::required($data, 'orderId', $path), $path . '.orderId'),
+            releasedBy: Decode::string(Decode::required($data, 'releasedBy', $path), $path . '.releasedBy'),
+            status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
         );
         $model->decoded = $data;
         return $model;
@@ -79,16 +70,10 @@ final class OrderReleasedEventPayload implements Model
     public function toArray(): array
     {
         $data = [];
+        $data['externalRef'] = $this->externalRef;
         $data['orderId'] = $this->orderId;
-        $data['printId'] = $this->printId;
         $data['releasedBy'] = $this->releasedBy;
         $data['status'] = $this->status;
-        if ($this->externalRef !== null) {
-            $data['externalRef'] = $this->externalRef;
-        }
-        if ($this->printIds !== null) {
-            $data['printIds'] = $this->printIds;
-        }
         return $data;
     }
 }

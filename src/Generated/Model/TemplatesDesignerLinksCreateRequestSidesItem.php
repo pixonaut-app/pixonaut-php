@@ -29,6 +29,7 @@ final class TemplatesDesignerLinksCreateRequestSidesItem implements Model
      * @param string|null $initialView The view shown first; absent, the side's first with a photo.
      * @param TemplatesDesignerLinksCreateRequestSidesItemLocalizedLabels|null $localizedLabels The label per customer-facing language, by code: only the languages it has one in. A designer shown in a language left out reads `label`.
      * @param list<TemplatesDesignerLinksCreateRequestSidesItemMockupsItem>|null $mockups The store's own product photos the design is shown on, in place of the blank's views.
+     * @param TemplatesDesignerLinksCreateRequestSidesItemPages|null $pages On a placement printed as pages, the page counts the shopper picks from, on its own steps: a narrower range, or one count. Absent, the placement's whole range.
      * @param string|null $placementId The blank's placement it is printed in; with blankId.
      * @param list<TemplatesDesignerLinksCreateRequestSidesItemPrintSizesItem>|null $printSizes The sizes the shopper picks from, for a print within its area.
      * @param int|null $selectedMockupIndex The photo that starts selected, by its place in mockups.
@@ -46,6 +47,7 @@ final class TemplatesDesignerLinksCreateRequestSidesItem implements Model
         public readonly ?string $initialView = null,
         public readonly ?TemplatesDesignerLinksCreateRequestSidesItemLocalizedLabels $localizedLabels = null,
         public readonly ?array $mockups = null,
+        public readonly ?TemplatesDesignerLinksCreateRequestSidesItemPages $pages = null,
         public readonly ?string $placementId = null,
         public readonly ?array $printSizes = null,
         public readonly ?int $selectedMockupIndex = null,
@@ -78,6 +80,7 @@ final class TemplatesDesignerLinksCreateRequestSidesItem implements Model
                 $path . '.mockups',
                 static fn(mixed $v, string $p): TemplatesDesignerLinksCreateRequestSidesItemMockupsItem => TemplatesDesignerLinksCreateRequestSidesItemMockupsItem::fromArray(Decode::object($v, $p), $p),
             ) : null,
+            pages: array_key_exists('pages', $data) ? TemplatesDesignerLinksCreateRequestSidesItemPages::fromArray(Decode::object($data['pages'], $path . '.pages'), $path . '.pages') : null,
             placementId: array_key_exists('placementId', $data) ? Decode::string($data['placementId'], $path . '.placementId') : null,
             printSizes: array_key_exists('printSizes', $data) ? Decode::list(
                 $data['printSizes'],
@@ -140,6 +143,9 @@ final class TemplatesDesignerLinksCreateRequestSidesItem implements Model
                 static fn(TemplatesDesignerLinksCreateRequestSidesItemMockupsItem $v): mixed => Encode::model($v),
                 $this->mockups,
             );
+        }
+        if ($this->pages !== null) {
+            $data['pages'] = Encode::model($this->pages);
         }
         if ($this->placementId !== null) {
             $data['placementId'] = $this->placementId;

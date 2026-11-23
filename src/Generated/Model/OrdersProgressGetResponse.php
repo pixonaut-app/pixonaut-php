@@ -22,12 +22,14 @@ final class OrdersProgressGetResponse implements Model
     private ?array $decoded = null;
 
     /**
+     * @param list<OrdersProgressGetResponseParcelsItem> $parcels The order's parcels, the first made first: a section each, with how it ships and the items it holds.
      * @param string $status Values: {@see \Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseStatus}.
-     * @param list<OrdersProgressGetResponseStepsItem> $steps Each status the order reached, oldest first, and when. A failed order that was sent again shows the steps of the order that took its place.
+     * @param list<OrdersProgressGetResponseStepsItem> $steps Each status the order reached, oldest first, and when. A failed item that was sent again shows the steps of its latest submission.
      * @param OrdersProgressGetResponseTracking|null $tracking
      */
     public function __construct(
         public readonly string $id,
+        public readonly array $parcels,
         public readonly string $status,
         public readonly array $steps,
         public readonly float $submittedAt,
@@ -46,6 +48,11 @@ final class OrdersProgressGetResponse implements Model
     {
         $model = new self(
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
+            parcels: Decode::list(
+                Decode::required($data, 'parcels', $path),
+                $path . '.parcels',
+                static fn(mixed $v, string $p): OrdersProgressGetResponseParcelsItem => OrdersProgressGetResponseParcelsItem::fromArray(Decode::object($v, $p), $p),
+            ),
             status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
             steps: Decode::list(
                 Decode::required($data, 'steps', $path),
@@ -78,6 +85,10 @@ final class OrdersProgressGetResponse implements Model
     {
         $data = [];
         $data['id'] = $this->id;
+        $data['parcels'] = array_map(
+            static fn(OrdersProgressGetResponseParcelsItem $v): mixed => Encode::model($v),
+            $this->parcels,
+        );
         $data['status'] = $this->status;
         $data['steps'] = array_map(
             static fn(OrdersProgressGetResponseStepsItem $v): mixed => Encode::model($v),

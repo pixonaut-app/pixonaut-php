@@ -15,15 +15,9 @@ final class OrdersGetResponseHistoryItemType
 {
     public const ORDER_CREATED = 'order.created';
 
-    public const ORDER_SUBMITTED = 'order.submitted';
-
     public const ORDER_STATUS_CHANGED = 'order.status_changed';
 
-    public const ORDER_FAILED = 'order.failed';
-
     public const ORDER_CANCELLED = 'order.cancelled';
-
-    public const ORDER_REROUTED = 'order.rerouted';
 
     public const ORDER_DELIVERY_CHANGED = 'order.delivery_changed';
 
@@ -31,24 +25,36 @@ final class OrdersGetResponseHistoryItemType
 
     public const ORDER_RELEASED = 'order.released';
 
-    public const ORDER_TRACKING_ADDED = 'order.tracking_added';
+    public const ITEM_HELD = 'item.held';
 
-    public const ORDER_TRACKING_CHANGED = 'order.tracking_changed';
+    public const ITEM_RELEASED = 'item.released';
+
+    public const ITEM_SUBMITTED = 'item.submitted';
+
+    public const ITEM_STATUS_CHANGED = 'item.status_changed';
+
+    public const ITEM_FAILED = 'item.failed';
+
+    public const ITEM_CANCELLED = 'item.cancelled';
+
+    public const ITEM_REROUTED = 'item.rerouted';
 
     /**
      * Every value this release knows.
      */
     public const KNOWN = [
         self::ORDER_CREATED,
-        self::ORDER_SUBMITTED,
         self::ORDER_STATUS_CHANGED,
-        self::ORDER_FAILED,
         self::ORDER_CANCELLED,
-        self::ORDER_REROUTED,
         self::ORDER_DELIVERY_CHANGED,
         self::ORDER_HELD,
         self::ORDER_RELEASED,
-        self::ORDER_TRACKING_ADDED,
-        self::ORDER_TRACKING_CHANGED,
+        self::ITEM_HELD,
+        self::ITEM_RELEASED,
+        self::ITEM_SUBMITTED,
+        self::ITEM_STATUS_CHANGED,
+        self::ITEM_FAILED,
+        self::ITEM_CANCELLED,
+        self::ITEM_REROUTED,
     ];
 }

@@ -22,17 +22,14 @@ final class OrderCancelledEventPayload implements Model
     private ?array $decoded = null;
 
     /**
-     * @param OrderCancelledEventPayloadAutomation|null $automation
      * @param string|null $externalRef
-     * @param list<string>|null $printIds
+     * @param OrderCancelledEventPayloadAutomation|null $automation
      * @param string|null $via Values: {@see \Pixonaut\Sdk\Generated\Enum\OrderCancelledEventPayloadVia}.
      */
     public function __construct(
+        public readonly ?string $externalRef,
         public readonly string $orderId,
-        public readonly string $printId,
         public readonly ?OrderCancelledEventPayloadAutomation $automation = null,
-        public readonly ?string $externalRef = null,
-        public readonly ?array $printIds = null,
         public readonly ?string $via = null,
     ) {}
 
@@ -47,19 +44,13 @@ final class OrderCancelledEventPayload implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            orderId: Decode::string(Decode::required($data, 'orderId', $path), $path . '.orderId'),
-            printId: Decode::string(Decode::required($data, 'printId', $path), $path . '.printId'),
-            automation: array_key_exists('automation', $data) ? OrderCancelledEventPayloadAutomation::fromArray(Decode::object($data['automation'], $path . '.automation'), $path . '.automation') : null,
-            externalRef: array_key_exists('externalRef', $data) ? Decode::nullable(
-                $data['externalRef'],
+            externalRef: Decode::nullable(
+                Decode::required($data, 'externalRef', $path),
                 $path . '.externalRef',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ) : null,
-            printIds: array_key_exists('printIds', $data) ? Decode::list(
-                $data['printIds'],
-                $path . '.printIds',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ) : null,
+            ),
+            orderId: Decode::string(Decode::required($data, 'orderId', $path), $path . '.orderId'),
+            automation: array_key_exists('automation', $data) ? OrderCancelledEventPayloadAutomation::fromArray(Decode::object($data['automation'], $path . '.automation'), $path . '.automation') : null,
             via: array_key_exists('via', $data) ? Decode::string($data['via'], $path . '.via') : null,
         );
         $model->decoded = $data;
@@ -80,16 +71,10 @@ final class OrderCancelledEventPayload implements Model
     public function toArray(): array
     {
         $data = [];
+        $data['externalRef'] = $this->externalRef;
         $data['orderId'] = $this->orderId;
-        $data['printId'] = $this->printId;
         if ($this->automation !== null) {
             $data['automation'] = Encode::model($this->automation);
-        }
-        if ($this->externalRef !== null) {
-            $data['externalRef'] = $this->externalRef;
-        }
-        if ($this->printIds !== null) {
-            $data['printIds'] = $this->printIds;
         }
         if ($this->via !== null) {
             $data['via'] = $this->via;

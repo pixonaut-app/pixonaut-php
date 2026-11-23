@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Enum;
 
 /**
- * What the printshop made of the change: `sending` while it is being told, `accepted`, `refused` (the order keeps the address the printshop has), or `carried` when what the printshop had not been sent yet carries the new address, so nothing extra was sent.
+ * What its printshops made of the change: one `state` they share, or `partial` when some took it and some refused.
  *
  * The values this release knows. The field is a string, and the API may answer a value added after this release.
  *
@@ -23,8 +23,10 @@ final class OrdersGetResponseDeliveryState
 
     public const CARRIED = 'carried';
 
+    public const PARTIAL = 'partial';
+
     /**
      * Every value this release knows.
      */
-    public const KNOWN = [self::SENDING, self::ACCEPTED, self::REFUSED, self::CARRIED];
+    public const KNOWN = [self::SENDING, self::ACCEPTED, self::REFUSED, self::CARRIED, self::PARTIAL];
 }

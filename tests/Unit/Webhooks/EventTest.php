@@ -26,9 +26,9 @@ final class EventTest extends TestCase
         'createdAt' => 1790086400000,
         'payload' => [
             'orderId' => 'e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b',
-            'printId' => 'c4d5e6f7-a8b9-4c0d-9e1f-2a3b4c5d6e7f',
+            'externalRef' => 'WEB-10482',
             'status' => 'shipped',
-            'previousStatus' => 'printed',
+            'previousStatus' => 'partly_shipped',
         ],
     ];
 
@@ -83,7 +83,7 @@ final class EventTest extends TestCase
 
         self::assertInstanceOf(OrderStatusChangedEvent::class, $typed);
         self::assertSame('shipped', $typed->payload->status);
-        self::assertSame('printed', $typed->payload->previousStatus);
+        self::assertSame('partly_shipped', $typed->payload->previousStatus);
     }
 
     public function testATypeThisReleaseDoesNotKnowIsAnUnknownEventWithItsRawPayload(): void

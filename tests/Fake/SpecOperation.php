@@ -30,6 +30,15 @@ final class SpecOperation
 
     private readonly string $pattern;
 
+    /**
+     * The template's `{name}`s in order, one per capture group of the
+     * pattern. Groups are numbered, not named: PCRE refuses a group name
+     * longer than 32 characters.
+     *
+     * @var list<string>
+     */
+    private readonly array $pathNames;
+
     public function __construct(
         private readonly Spec $spec,
         public readonly string $path,
@@ -60,12 +69,17 @@ final class SpecOperation
         $this->security = $security;
 
         $pattern = '';
+        $pathNames = [];
         foreach (preg_split('/(\{[^}]+\})/', $path, -1, PREG_SPLIT_DELIM_CAPTURE) ?: [] as $segment) {
-            $pattern .= str_starts_with($segment, '{')
-                ? '(?<' . self::group(substr($segment, 1, -1)) . '>[^/]+)'
-                : preg_quote($segment, '~');
+            if (str_starts_with($segment, '{')) {
+                $pathNames[] = substr($segment, 1, -1);
+                $pattern .= '([^/]+)';
+            } else {
+                $pattern .= preg_quote($segment, '~');
+            }
         }
         $this->pattern = '~^' . $pattern . '\z~';
+        $this->pathNames = $pathNames;
     }
 
     /**
@@ -79,10 +93,11 @@ final class SpecOperation
         if (preg_match($this->pattern, $path, $found) !== 1) {
             return null;
         }
+        $found = array_combine($this->pathNames, array_slice($found, 1));
         $values = [];
         foreach ($this->parameters as $parameter) {
             if ($parameter->in === 'path') {
-                $values[$parameter->name] = rawurldecode($found[self::group($parameter->name)] ?? '');
+                $values[$parameter->name] = rawurldecode($found[$parameter->name] ?? '');
             }
         }
 
@@ -245,11 +260,5 @@ final class SpecOperation
         }
 
         return null;
-    }
-
-    /** A PCRE group name for a path value's name, which may hold any character. */
-    private static function group(string $name): string
-    {
-        return 'p' . bin2hex($name);
     }
 }

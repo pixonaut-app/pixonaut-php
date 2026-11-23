@@ -23,6 +23,7 @@ final class BlanksVariantsCostsResponseCostsItem implements Model
 
     /**
      * @param string|null $changedAt When the cost was last told as changed, as an ISO 8601 time: a read found a product or shipping amount more than 2 % from the one last told, or one that appeared, went or changed currency. null while the first read still stands. An amount that moves less, as one billed in another currency than it is priced in does with the exchange rate, is held as read without being told.
+     * @param list<BlanksVariantsCostsResponseCostsItemPagesItem> $pages For a variant of a blank with a placement printed as pages, such as a notebook's, its cost at each page count the placement offers, fewest first: a printshop prices such a product only at a page count, and not in even steps. `product`, `shipping` and `times` above are then the ones at its fewest pages with a price. Empty for any other variant.
      * @param BlanksVariantsCostsResponseCostsItemProduct|null $product What the printshop charges for the variant, printed with the blank's default print: its main side, by one print method. Further print areas and other print methods are not included. null when the printshop publishes no price for it.
      * @param string $readAt When the printshop was last asked, as an ISO 8601 time; for a blank no printshop is bound to, when the variant was last changed.
      * @param string $region The country the cost is for.
@@ -32,6 +33,7 @@ final class BlanksVariantsCostsResponseCostsItem implements Model
      */
     public function __construct(
         public readonly ?string $changedAt,
+        public readonly array $pages,
         public readonly ?BlanksVariantsCostsResponseCostsItemProduct $product,
         public readonly string $readAt,
         public readonly string $region,
@@ -55,6 +57,11 @@ final class BlanksVariantsCostsResponseCostsItem implements Model
                 Decode::required($data, 'changedAt', $path),
                 $path . '.changedAt',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
+            pages: Decode::list(
+                Decode::required($data, 'pages', $path),
+                $path . '.pages',
+                static fn(mixed $v, string $p): BlanksVariantsCostsResponseCostsItemPagesItem => BlanksVariantsCostsResponseCostsItemPagesItem::fromArray(Decode::object($v, $p), $p),
             ),
             product: Decode::nullable(
                 Decode::required($data, 'product', $path),
@@ -90,6 +97,10 @@ final class BlanksVariantsCostsResponseCostsItem implements Model
     {
         $data = [];
         $data['changedAt'] = $this->changedAt;
+        $data['pages'] = array_map(
+            static fn(BlanksVariantsCostsResponseCostsItemPagesItem $v): mixed => Encode::model($v),
+            $this->pages,
+        );
         $data['product'] = $this->product === null ? null : Encode::model($this->product);
         $data['readAt'] = $this->readAt;
         $data['region'] = $this->region;

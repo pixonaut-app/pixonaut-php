@@ -22,23 +22,18 @@ final class OrderStatusChangedEventPayload implements Model
     private ?array $decoded = null;
 
     /**
+     * @param string|null $externalRef
      * @param string $previousStatus Values: {@see \Pixonaut\Sdk\Generated\Enum\OrderStatusChangedEventPayloadPreviousStatus}.
      * @param string $status Values: {@see \Pixonaut\Sdk\Generated\Enum\OrderStatusChangedEventPayloadStatus}.
      * @param OrderStatusChangedEventPayloadAutomation|null $automation
-     * @param string|null $externalRef
-     * @param list<string>|null $printIds
-     * @param OrderStatusChangedEventPayloadTracking|null $tracking
      * @param string|null $via Values: {@see \Pixonaut\Sdk\Generated\Enum\OrderStatusChangedEventPayloadVia}.
      */
     public function __construct(
+        public readonly ?string $externalRef,
         public readonly string $orderId,
         public readonly string $previousStatus,
-        public readonly string $printId,
         public readonly string $status,
         public readonly ?OrderStatusChangedEventPayloadAutomation $automation = null,
-        public readonly ?string $externalRef = null,
-        public readonly ?array $printIds = null,
-        public readonly ?OrderStatusChangedEventPayloadTracking $tracking = null,
         public readonly ?string $via = null,
     ) {}
 
@@ -53,22 +48,15 @@ final class OrderStatusChangedEventPayload implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            orderId: Decode::string(Decode::required($data, 'orderId', $path), $path . '.orderId'),
-            previousStatus: Decode::string(Decode::required($data, 'previousStatus', $path), $path . '.previousStatus'),
-            printId: Decode::string(Decode::required($data, 'printId', $path), $path . '.printId'),
-            status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
-            automation: array_key_exists('automation', $data) ? OrderStatusChangedEventPayloadAutomation::fromArray(Decode::object($data['automation'], $path . '.automation'), $path . '.automation') : null,
-            externalRef: array_key_exists('externalRef', $data) ? Decode::nullable(
-                $data['externalRef'],
+            externalRef: Decode::nullable(
+                Decode::required($data, 'externalRef', $path),
                 $path . '.externalRef',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ) : null,
-            printIds: array_key_exists('printIds', $data) ? Decode::list(
-                $data['printIds'],
-                $path . '.printIds',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ) : null,
-            tracking: array_key_exists('tracking', $data) ? OrderStatusChangedEventPayloadTracking::fromArray(Decode::object($data['tracking'], $path . '.tracking'), $path . '.tracking') : null,
+            ),
+            orderId: Decode::string(Decode::required($data, 'orderId', $path), $path . '.orderId'),
+            previousStatus: Decode::string(Decode::required($data, 'previousStatus', $path), $path . '.previousStatus'),
+            status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
+            automation: array_key_exists('automation', $data) ? OrderStatusChangedEventPayloadAutomation::fromArray(Decode::object($data['automation'], $path . '.automation'), $path . '.automation') : null,
             via: array_key_exists('via', $data) ? Decode::string($data['via'], $path . '.via') : null,
         );
         $model->decoded = $data;
@@ -89,21 +77,12 @@ final class OrderStatusChangedEventPayload implements Model
     public function toArray(): array
     {
         $data = [];
+        $data['externalRef'] = $this->externalRef;
         $data['orderId'] = $this->orderId;
         $data['previousStatus'] = $this->previousStatus;
-        $data['printId'] = $this->printId;
         $data['status'] = $this->status;
         if ($this->automation !== null) {
             $data['automation'] = Encode::model($this->automation);
-        }
-        if ($this->externalRef !== null) {
-            $data['externalRef'] = $this->externalRef;
-        }
-        if ($this->printIds !== null) {
-            $data['printIds'] = $this->printIds;
-        }
-        if ($this->tracking !== null) {
-            $data['tracking'] = Encode::model($this->tracking);
         }
         if ($this->via !== null) {
             $data['via'] = $this->via;

@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The error codes the API 13.1.0 spec names: its refusals (`x-refusals`), and the `error`
+ * The error codes the API 14.0.0 spec names: its refusals (`x-refusals`), and the `error`
  * values of every error answer. The client's own codes are on `ApiException`.
  */
 final class ErrorCode
@@ -360,6 +360,11 @@ final class ErrorCode
     /**
      * Documented with status 422.
      */
+    public const DUPLICATE_PAGE = 'duplicate_page';
+
+    /**
+     * Documented with status 422.
+     */
     public const DUPLICATE_PLACEMENT = 'duplicate_placement';
 
     /**
@@ -608,6 +613,11 @@ final class ErrorCode
     public const INVALID_WEBHOOK_URL = 'invalid_webhook_url';
 
     /**
+     * Documented with status 404.
+     */
+    public const ITEM_NOT_FOUND = 'item_not_found';
+
+    /**
      * Documented with status 409.
      */
     public const LAYOUT_OUT_OF_DATE = 'layout_out_of_date';
@@ -631,6 +641,11 @@ final class ErrorCode
      * Documented with status 429.
      */
     public const LINK_DESIGN_LIMIT = 'link_design_limit';
+
+    /**
+     * Documented with status 422.
+     */
+    public const LINK_PAGES_OFF_RANGE = 'link_pages_off_range';
 
     /**
      * Documented with status 422.
@@ -913,9 +928,49 @@ final class ErrorCode
     public const ORIGINS_NOT_ALLOWED = 'origins_not_allowed';
 
     /**
+     * Documented with status 422.
+     */
+    public const PAGE_COUNT_OUT_OF_RANGE = 'page_count_out_of_range';
+
+    /**
+     * Documented with status 422.
+     */
+    public const PAGE_MISSING = 'page_missing';
+
+    /**
+     * Documented with status 422.
+     */
+    public const PAGE_ON_UNPAGED_PLACEMENT = 'page_on_unpaged_placement';
+
+    /**
      * Documented with status 409.
      */
     public const PALETTE_CHANGED = 'palette_changed';
+
+    /**
+     * Documented with status 422.
+     */
+    public const PARCEL_EXCEEDS_QUANTITY = 'parcel_exceeds_quantity';
+
+    /**
+     * Documented with status 422.
+     */
+    public const PARCEL_ITEM_NOT_FOUND = 'parcel_item_not_found';
+
+    /**
+     * Documented with status 422.
+     */
+    public const PARCEL_NOTHING_LEFT = 'parcel_nothing_left';
+
+    /**
+     * Documented with status 422.
+     */
+    public const PARCEL_QUANTITY_INVALID = 'parcel_quantity_invalid';
+
+    /**
+     * Documented with status 409.
+     */
+    public const PARCELS_BY_PRINTSHOP = 'parcels_by_printshop';
 
     /**
      * Documented with status 404.
@@ -1148,9 +1203,19 @@ final class ErrorCode
     public const PRINTSHOP_DISCONNECTED = 'printshop_disconnected';
 
     /**
+     * Documented with status 404.
+     */
+    public const PRINTSHOP_ORDER_NOT_FOUND = 'printshop_order_not_found';
+
+    /**
      * Documented with status 409.
      */
     public const PRINTSHOP_PAUSED = 'printshop_paused';
+
+    /**
+     * Documented with status 422.
+     */
+    public const PRINTSHOP_TAKES_NO_PAGES = 'printshop_takes_no_pages';
 
     /**
      * Documented with status 422.
@@ -1236,6 +1301,11 @@ final class ErrorCode
      * Documented with status 422.
      */
     public const REROUTE_SAME_BLANK = 'reroute_same_blank';
+
+    /**
+     * Documented with status 409.
+     */
+    public const RETRY_REFUSED = 'retry_refused';
 
     /**
      * Documented with status 400.
@@ -1672,6 +1742,7 @@ final class ErrorCode
         'draft_refused' => [422],
         'duplicate_category' => [409],
         'duplicate_name' => [409],
+        'duplicate_page' => [422],
         'duplicate_placement' => [422],
         'embroidery_fee_unacknowledged' => [422],
         'empty_layout' => [422],
@@ -1722,11 +1793,13 @@ final class ErrorCode
         'invalid_url' => [400],
         'invalid_visibility' => [422],
         'invalid_webhook_url' => [400],
+        'item_not_found' => [404],
         'layout_out_of_date' => [409],
         'layout_proof' => [409],
         'layout_proof_mismatch' => [422],
         'layout_wrong_ratio' => [422],
         'link_design_limit' => [429],
+        'link_pages_off_range' => [422],
         'linked_templates_differ' => [422],
         'locale_not_allowed' => [400],
         'lock_timeout' => [503],
@@ -1783,7 +1856,15 @@ final class ErrorCode
         'order_superseded' => [409],
         'origin_forbidden' => [403],
         'origins_not_allowed' => [400],
+        'page_count_out_of_range' => [422],
+        'page_missing' => [422],
+        'page_on_unpaged_placement' => [422],
         'palette_changed' => [409],
+        'parcel_exceeds_quantity' => [422],
+        'parcel_item_not_found' => [422],
+        'parcel_nothing_left' => [422],
+        'parcel_quantity_invalid' => [422],
+        'parcels_by_printshop' => [409],
         'part_not_offered' => [404],
         'past_events_changed' => [409],
         'payload_too_large' => [422],
@@ -1830,7 +1911,9 @@ final class ErrorCode
         'printshop_cannot_combine' => [422],
         'printshop_differs_from_blank' => [422],
         'printshop_disconnected' => [422],
+        'printshop_order_not_found' => [404],
         'printshop_paused' => [409],
+        'printshop_takes_no_pages' => [422],
         'printshop_unavailable' => [422],
         'proof_adjusts_layout' => [409],
         'proof_already_committed' => [409],
@@ -1848,6 +1931,7 @@ final class ErrorCode
         'repeat_not_committable' => [400],
         'reroute_blank_not_found' => [422],
         'reroute_same_blank' => [422],
+        'retry_refused' => [409],
         'return_url_not_allowed' => [400],
         'return_url_not_https' => [400],
         'return_url_off_store' => [400],

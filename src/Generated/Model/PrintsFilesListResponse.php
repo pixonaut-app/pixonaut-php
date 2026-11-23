@@ -22,7 +22,7 @@ final class PrintsFilesListResponse implements Model
     private ?array $decoded = null;
 
     /**
-     * @param PrintsFilesListResponseCountedFiles|PrintsFilesListResponseCountedOrder|null $counted How the print was counted as an order: its files got without one (`files`, when and by whom), or an order of it (`order`, when it was placed). Null when neither: the first get of its files counts as an order. Getting them again is free.
+     * @param PrintsFilesListResponseCountedFiles|PrintsFilesListResponseCountedOrder|null $counted How the print was counted as an item: its files got without an order (`files`, when and by whom), or an order of it (`order`, when it was placed). Null when neither: the first get of its files counts as an item. Getting them again is free.
      * @param string $fileForm Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintsFilesListResponseFileForm}.
      * @param string $formAsked Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintsFilesListResponseFormAsked}.
      * @param list<PrintsFilesListResponseFormsItem> $forms

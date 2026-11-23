@@ -23,26 +23,22 @@ final class OrdersListResponseCounts implements Model
     private ?array $decoded = null;
 
     /**
-     * @param float|null $awaiting_prints
      * @param float|null $cancelled
-     * @param float|null $failed
+     * @param float|null $done
      * @param float|null $held
-     * @param float|null $outcome_unknown
-     * @param float|null $printed
-     * @param float|null $queued
+     * @param float|null $needs_attention
+     * @param float|null $open
+     * @param float|null $partly_shipped
      * @param float|null $shipped
-     * @param float|null $submitted
      */
     public function __construct(
-        public readonly ?float $awaiting_prints = null,
         public readonly ?float $cancelled = null,
-        public readonly ?float $failed = null,
+        public readonly ?float $done = null,
         public readonly ?float $held = null,
-        public readonly ?float $outcome_unknown = null,
-        public readonly ?float $printed = null,
-        public readonly ?float $queued = null,
+        public readonly ?float $needs_attention = null,
+        public readonly ?float $open = null,
+        public readonly ?float $partly_shipped = null,
         public readonly ?float $shipped = null,
-        public readonly ?float $submitted = null,
     ) {}
 
     /**
@@ -56,15 +52,13 @@ final class OrdersListResponseCounts implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            awaiting_prints: array_key_exists('awaiting_prints', $data) ? Decode::float($data['awaiting_prints'], $path . '.awaiting_prints') : null,
             cancelled: array_key_exists('cancelled', $data) ? Decode::float($data['cancelled'], $path . '.cancelled') : null,
-            failed: array_key_exists('failed', $data) ? Decode::float($data['failed'], $path . '.failed') : null,
+            done: array_key_exists('done', $data) ? Decode::float($data['done'], $path . '.done') : null,
             held: array_key_exists('held', $data) ? Decode::float($data['held'], $path . '.held') : null,
-            outcome_unknown: array_key_exists('outcome_unknown', $data) ? Decode::float($data['outcome_unknown'], $path . '.outcome_unknown') : null,
-            printed: array_key_exists('printed', $data) ? Decode::float($data['printed'], $path . '.printed') : null,
-            queued: array_key_exists('queued', $data) ? Decode::float($data['queued'], $path . '.queued') : null,
+            needs_attention: array_key_exists('needs_attention', $data) ? Decode::float($data['needs_attention'], $path . '.needs_attention') : null,
+            open: array_key_exists('open', $data) ? Decode::float($data['open'], $path . '.open') : null,
+            partly_shipped: array_key_exists('partly_shipped', $data) ? Decode::float($data['partly_shipped'], $path . '.partly_shipped') : null,
             shipped: array_key_exists('shipped', $data) ? Decode::float($data['shipped'], $path . '.shipped') : null,
-            submitted: array_key_exists('submitted', $data) ? Decode::float($data['submitted'], $path . '.submitted') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -84,32 +78,26 @@ final class OrdersListResponseCounts implements Model
     public function toArray(): array
     {
         $data = [];
-        if ($this->awaiting_prints !== null) {
-            $data['awaiting_prints'] = $this->awaiting_prints;
-        }
         if ($this->cancelled !== null) {
             $data['cancelled'] = $this->cancelled;
         }
-        if ($this->failed !== null) {
-            $data['failed'] = $this->failed;
+        if ($this->done !== null) {
+            $data['done'] = $this->done;
         }
         if ($this->held !== null) {
             $data['held'] = $this->held;
         }
-        if ($this->outcome_unknown !== null) {
-            $data['outcome_unknown'] = $this->outcome_unknown;
+        if ($this->needs_attention !== null) {
+            $data['needs_attention'] = $this->needs_attention;
         }
-        if ($this->printed !== null) {
-            $data['printed'] = $this->printed;
+        if ($this->open !== null) {
+            $data['open'] = $this->open;
         }
-        if ($this->queued !== null) {
-            $data['queued'] = $this->queued;
+        if ($this->partly_shipped !== null) {
+            $data['partly_shipped'] = $this->partly_shipped;
         }
         if ($this->shipped !== null) {
             $data['shipped'] = $this->shipped;
-        }
-        if ($this->submitted !== null) {
-            $data['submitted'] = $this->submitted;
         }
         return $data;
     }

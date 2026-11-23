@@ -23,30 +23,20 @@ final class OrdersCreateRequest implements Model
     private ?array $decoded = null;
 
     /**
-     * @param list<OrdersCreateRequestDesignsItem>|null $designs The designs of one item in place of its prints, each an approved design of one side, committed on the same blank in a placement of its own; the first is the order's lead. The order makes a new print of each, as `POST /v1/prints` would, and waits for them; a standing design's order reuses the print of its current revision, completed or still rendering, and makes one only when there is none or it failed. Name `prints` or `designs`, not both.
-     * @param string|null $externalRef The caller's own reference for this order, such as its order id in the shop. Kept exactly as sent and handed to the printshop.
-     * @param list<OrdersCreateRequestPrintsItem>|null $prints The prints of one item, each a print of a design committed on the same blank in a placement of its own, completed or still rendering; the first is the order's lead, which `printId` names on the order. One print places the order `POST /v1/prints/{id}/orders` would. Name `prints` or `designs`, not both.
-     * @param string|null|Omitted $printshopId The printshop to make this order, for a print with no blank whose design named none when it was committed. A print on a blank is made by the blank's printshop: naming another is refused with `printshop_differs_from_blank`, and naming the blank's own as an unknown field. Absent or `null`, a print with no blank goes to the printshop its design was committed with, else the tenant's default.
-     * @param int|null $quantity How many copies to order. A whole number of 1 or more; 1 when left out.
+     * @param list<OrdersCreateRequestItemsItem> $items The order's items, in the order the answer lists them. The items bound for one printshop that takes several items in one order go to it as one of its orders.
+     * @param string|null $externalRef Your own reference for the order, such as its id in your store. Kept exactly as sent; `GET /v1/orders?externalRef=` finds it.
+     * @param string|null|Omitted $printshopId The printshop to make every item with that names none, for prints on no blank.
      * @param OrdersCreateRequestRecipient|null $recipient Who the order is for. Left out, the first order of a design takes what its customer gave.
-     * @param bool|null $reorder Order the design again on purpose. A design has one live order (in any status but `failed` and `cancelled`): absent or false, an order of a design that has one is refused `409 design_already_ordered`, naming the design and its newest live order, and nothing is written. True places the order whatever orders the design has.
      * @param string|null|Omitted $shipToAddressId A saved address to ship to; the customer stays the recipient. null: the customer's. Left out: the workspace's setting.
      * @param OrdersCreateRequestShippingAddress|null $shippingAddress Where the order ships. Left out, the first order of a design takes what its customer gave.
-     * @param OrdersCreateRequestStoreOrder|null $storeOrder The store order this item was sold in, for a store that sells several items in one order. The items of one store order bound for one printshop are sent to it as one of its orders, where it takes several items in one, so they ship together: this order waits, `awaiting_prints`, until every item of the store order has been placed and the prints of those bound for its printshop are done, or until two hours from its first item, then goes with the ones ready. Each item stays an order of its own, with its own status, tracking and retry. A retry or replacement of one goes on its own.
-     * @param string|null $variant The variant of the print's blank the order is for, by ref (`v_…`). Left out, a blank with exactly one variant orders that one, and one with several is refused `variant_required`. A ref of another blank is refused `variant_not_of_blank`, and a retired one `variant_retired`. The order keeps a copy of the variant as it was: its options and the printshop fields it was sent.
      */
     public function __construct(
-        public readonly ?array $designs = null,
+        public readonly array $items,
         public readonly ?string $externalRef = null,
-        public readonly ?array $prints = null,
         public readonly string|null|Omitted $printshopId = Omitted::Field,
-        public readonly ?int $quantity = null,
         public readonly ?OrdersCreateRequestRecipient $recipient = null,
-        public readonly ?bool $reorder = null,
         public readonly string|null|Omitted $shipToAddressId = Omitted::Field,
         public readonly ?OrdersCreateRequestShippingAddress $shippingAddress = null,
-        public readonly ?OrdersCreateRequestStoreOrder $storeOrder = null,
-        public readonly ?string $variant = null,
     ) {}
 
     /**
@@ -60,33 +50,24 @@ final class OrdersCreateRequest implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            designs: array_key_exists('designs', $data) ? Decode::list(
-                $data['designs'],
-                $path . '.designs',
-                static fn(mixed $v, string $p): OrdersCreateRequestDesignsItem => OrdersCreateRequestDesignsItem::fromArray(Decode::object($v, $p), $p),
-            ) : null,
+            items: Decode::list(
+                Decode::required($data, 'items', $path),
+                $path . '.items',
+                static fn(mixed $v, string $p): OrdersCreateRequestItemsItem => OrdersCreateRequestItemsItem::fromArray(Decode::object($v, $p), $p),
+            ),
             externalRef: array_key_exists('externalRef', $data) ? Decode::string($data['externalRef'], $path . '.externalRef') : null,
-            prints: array_key_exists('prints', $data) ? Decode::list(
-                $data['prints'],
-                $path . '.prints',
-                static fn(mixed $v, string $p): OrdersCreateRequestPrintsItem => OrdersCreateRequestPrintsItem::fromArray(Decode::object($v, $p), $p),
-            ) : null,
             printshopId: array_key_exists('printshopId', $data) ? Decode::nullable(
                 $data['printshopId'],
                 $path . '.printshopId',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : Omitted::Field,
-            quantity: array_key_exists('quantity', $data) ? Decode::int($data['quantity'], $path . '.quantity') : null,
             recipient: array_key_exists('recipient', $data) ? OrdersCreateRequestRecipient::fromArray(Decode::object($data['recipient'], $path . '.recipient'), $path . '.recipient') : null,
-            reorder: array_key_exists('reorder', $data) ? Decode::bool($data['reorder'], $path . '.reorder') : null,
             shipToAddressId: array_key_exists('shipToAddressId', $data) ? Decode::nullable(
                 $data['shipToAddressId'],
                 $path . '.shipToAddressId',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : Omitted::Field,
             shippingAddress: array_key_exists('shippingAddress', $data) ? OrdersCreateRequestShippingAddress::fromArray(Decode::object($data['shippingAddress'], $path . '.shippingAddress'), $path . '.shippingAddress') : null,
-            storeOrder: array_key_exists('storeOrder', $data) ? OrdersCreateRequestStoreOrder::fromArray(Decode::object($data['storeOrder'], $path . '.storeOrder'), $path . '.storeOrder') : null,
-            variant: array_key_exists('variant', $data) ? Decode::string($data['variant'], $path . '.variant') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -106,44 +87,24 @@ final class OrdersCreateRequest implements Model
     public function toArray(): array
     {
         $data = [];
-        if ($this->designs !== null) {
-            $data['designs'] = array_map(
-                static fn(OrdersCreateRequestDesignsItem $v): mixed => Encode::model($v),
-                $this->designs,
-            );
-        }
+        $data['items'] = array_map(
+            static fn(OrdersCreateRequestItemsItem $v): mixed => Encode::model($v),
+            $this->items,
+        );
         if ($this->externalRef !== null) {
             $data['externalRef'] = $this->externalRef;
-        }
-        if ($this->prints !== null) {
-            $data['prints'] = array_map(
-                static fn(OrdersCreateRequestPrintsItem $v): mixed => Encode::model($v),
-                $this->prints,
-            );
         }
         if (!$this->printshopId instanceof Omitted) {
             $data['printshopId'] = $this->printshopId;
         }
-        if ($this->quantity !== null) {
-            $data['quantity'] = $this->quantity;
-        }
         if ($this->recipient !== null) {
             $data['recipient'] = Encode::model($this->recipient);
-        }
-        if ($this->reorder !== null) {
-            $data['reorder'] = $this->reorder;
         }
         if (!$this->shipToAddressId instanceof Omitted) {
             $data['shipToAddressId'] = $this->shipToAddressId;
         }
         if ($this->shippingAddress !== null) {
             $data['shippingAddress'] = Encode::model($this->shippingAddress);
-        }
-        if ($this->storeOrder !== null) {
-            $data['storeOrder'] = Encode::model($this->storeOrder);
-        }
-        if ($this->variant !== null) {
-            $data['variant'] = $this->variant;
         }
         return $data;
     }

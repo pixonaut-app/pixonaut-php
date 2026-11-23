@@ -38,6 +38,8 @@ return [
         'Catalogue' => 'printshops',
         'Designs' => 'designs',
         'Events' => 'events',
+        // Font files a browser loads from a signed link; no server calls it.
+        'Fonts' => null,
         'Orders' => 'orders',
         'Pixel' => 'pixel',
         'Printshops' => 'printshops',
@@ -78,11 +80,11 @@ return [
         'blanks.previewTables.get' => 'getPreviewTables',
         // A ZIP of every file, not one.
         'prints.files.bundle' => 'bundleFiles',
-        'orders.job.files.bundle' => 'bundleJobFiles',
+        'orders.printshopOrders.job.files.bundle' => 'bundlePrintshopOrderJobFiles',
         'webhookEndpoints.deliveries.redeliverFailed' => 'redeliverFailed',
         'webhookEndpoints.deliveries.redeliver' => 'redeliver',
         // A noun alone does not say the method lists.
-        'orders.rerouteTargets' => 'listRerouteTargets',
+        'orders.items.rerouteTargets' => 'listItemRerouteTargets',
         'printshopConnections.list' => 'listConnections',
         'blanks.variants.costs' => 'listVariantCosts',
         // The printshop's catalogue is on its resource, beside its connections.

@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The event types the API 13.1.0 spec delivers to webhooks. The API may send a type
+ * The event types the API 14.0.0 spec delivers to webhooks. The API may send a type
  * added after this release: it decodes to `UnknownEvent`.
  */
 final class EventType
@@ -138,6 +138,41 @@ final class EventType
     public const INK_UPDATED = 'ink.updated';
 
     /**
+     * Delivered as `item.cancelled`.
+     */
+    public const ITEM_CANCELLED = 'item.cancelled';
+
+    /**
+     * Delivered as `item.failed`.
+     */
+    public const ITEM_FAILED = 'item.failed';
+
+    /**
+     * Delivered as `item.held`.
+     */
+    public const ITEM_HELD = 'item.held';
+
+    /**
+     * Delivered as `item.released`.
+     */
+    public const ITEM_RELEASED = 'item.released';
+
+    /**
+     * Delivered as `item.rerouted`.
+     */
+    public const ITEM_REROUTED = 'item.rerouted';
+
+    /**
+     * Delivered as `item.status_changed`.
+     */
+    public const ITEM_STATUS_CHANGED = 'item.status_changed';
+
+    /**
+     * Delivered as `item.submitted`.
+     */
+    public const ITEM_SUBMITTED = 'item.submitted';
+
+    /**
      * Delivered as `order.cancelled`.
      */
     public const ORDER_CANCELLED = 'order.cancelled';
@@ -153,11 +188,6 @@ final class EventType
     public const ORDER_DELIVERY_CHANGED = 'order.delivery_changed';
 
     /**
-     * Delivered as `order.failed`.
-     */
-    public const ORDER_FAILED = 'order.failed';
-
-    /**
      * Delivered as `order.held`.
      */
     public const ORDER_HELD = 'order.held';
@@ -168,29 +198,9 @@ final class EventType
     public const ORDER_RELEASED = 'order.released';
 
     /**
-     * Delivered as `order.rerouted`.
-     */
-    public const ORDER_REROUTED = 'order.rerouted';
-
-    /**
      * Delivered as `order.status_changed`.
      */
     public const ORDER_STATUS_CHANGED = 'order.status_changed';
-
-    /**
-     * Delivered as `order.submitted`.
-     */
-    public const ORDER_SUBMITTED = 'order.submitted';
-
-    /**
-     * Delivered as `order.tracking_added`.
-     */
-    public const ORDER_TRACKING_ADDED = 'order.tracking_added';
-
-    /**
-     * Delivered as `order.tracking_changed`.
-     */
-    public const ORDER_TRACKING_CHANGED = 'order.tracking_changed';
 
     /**
      * Delivered as `order_balance.empty`.
@@ -211,6 +221,21 @@ final class EventType
      * Delivered as `palette.updated`.
      */
     public const PALETTE_UPDATED = 'palette.updated';
+
+    /**
+     * Delivered as `parcel.delivered`.
+     */
+    public const PARCEL_DELIVERED = 'parcel.delivered';
+
+    /**
+     * Delivered as `parcel.shipped`.
+     */
+    public const PARCEL_SHIPPED = 'parcel.shipped';
+
+    /**
+     * Delivered as `parcel.tracking_changed`.
+     */
+    public const PARCEL_TRACKING_CHANGED = 'parcel.tracking_changed';
 
     /**
      * Delivered as `print.completed`.
@@ -383,21 +408,26 @@ final class EventType
         self::INK_CREATED,
         self::INK_DELETED,
         self::INK_UPDATED,
+        self::ITEM_CANCELLED,
+        self::ITEM_FAILED,
+        self::ITEM_HELD,
+        self::ITEM_RELEASED,
+        self::ITEM_REROUTED,
+        self::ITEM_STATUS_CHANGED,
+        self::ITEM_SUBMITTED,
         self::ORDER_CANCELLED,
         self::ORDER_CREATED,
         self::ORDER_DELIVERY_CHANGED,
-        self::ORDER_FAILED,
         self::ORDER_HELD,
         self::ORDER_RELEASED,
-        self::ORDER_REROUTED,
         self::ORDER_STATUS_CHANGED,
-        self::ORDER_SUBMITTED,
-        self::ORDER_TRACKING_ADDED,
-        self::ORDER_TRACKING_CHANGED,
         self::ORDER_BALANCE_EMPTY,
         self::PALETTE_CREATED,
         self::PALETTE_DELETED,
         self::PALETTE_UPDATED,
+        self::PARCEL_DELIVERED,
+        self::PARCEL_SHIPPED,
+        self::PARCEL_TRACKING_CHANGED,
         self::PRINT_COMPLETED,
         self::PRINT_CREATED,
         self::PRINT_FAILED,

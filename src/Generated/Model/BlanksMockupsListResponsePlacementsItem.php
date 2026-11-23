@@ -29,6 +29,7 @@ final class BlanksMockupsListResponsePlacementsItem implements Model
      * @param string|null $fillColour The colour, `#rrggbb`, a view of several placements shows in this placement's region while it has no print. Absent when the placement names none.
      * @param float|null $foldMm How far in from the print's edge the product folds, in millimetres, on one that folds, such as a canvas round its frame: a designer draws the fold over the design. Absent on a product that does not fold.
      * @param BlanksMockupsListResponsePlacementsItemLinkWith|null $linkWith The placement it is linked with by default, and whether its print is mirrored then: a designer linking the blank's suggested groups joins the two. Absent when it suggests none.
+     * @param BlanksMockupsListResponsePlacementsItemPages|null $pages The page counts it is printed at, each page this placement's print area, such as a notebook's inner pages: a designer designs each page. Absent on a placement of one page.
      * @param string|null $printMethod How the placement is printed: its own, else its blank category's. Absent when neither names one.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemPrintMethod}.
      * @param BlanksMockupsListResponsePlacementsItemShape|null $shape Where on the product a print may go: the outline, then each cut-out, in fractions of the print area, filled even-odd. A preview clips the print to it and draws it as a guide. Absent when the whole rectangle is printed.
@@ -48,6 +49,7 @@ final class BlanksMockupsListResponsePlacementsItem implements Model
         public readonly ?string $fillColour = null,
         public readonly ?float $foldMm = null,
         public readonly ?BlanksMockupsListResponsePlacementsItemLinkWith $linkWith = null,
+        public readonly ?BlanksMockupsListResponsePlacementsItemPages $pages = null,
         public readonly ?string $printMethod = null,
         public readonly ?BlanksMockupsListResponsePlacementsItemShape $shape = null,
     ) {}
@@ -85,6 +87,7 @@ final class BlanksMockupsListResponsePlacementsItem implements Model
             fillColour: array_key_exists('fillColour', $data) ? Decode::string($data['fillColour'], $path . '.fillColour') : null,
             foldMm: array_key_exists('foldMm', $data) ? Decode::float($data['foldMm'], $path . '.foldMm') : null,
             linkWith: array_key_exists('linkWith', $data) ? BlanksMockupsListResponsePlacementsItemLinkWith::fromArray(Decode::object($data['linkWith'], $path . '.linkWith'), $path . '.linkWith') : null,
+            pages: array_key_exists('pages', $data) ? BlanksMockupsListResponsePlacementsItemPages::fromArray(Decode::object($data['pages'], $path . '.pages'), $path . '.pages') : null,
             printMethod: array_key_exists('printMethod', $data) ? Decode::string($data['printMethod'], $path . '.printMethod') : null,
             shape: array_key_exists('shape', $data) ? BlanksMockupsListResponsePlacementsItemShape::fromArray(Decode::object($data['shape'], $path . '.shape'), $path . '.shape') : null,
         );
@@ -131,6 +134,9 @@ final class BlanksMockupsListResponsePlacementsItem implements Model
         }
         if ($this->linkWith !== null) {
             $data['linkWith'] = Encode::model($this->linkWith);
+        }
+        if ($this->pages !== null) {
+            $data['pages'] = Encode::model($this->pages);
         }
         if ($this->printMethod !== null) {
             $data['printMethod'] = $this->printMethod;

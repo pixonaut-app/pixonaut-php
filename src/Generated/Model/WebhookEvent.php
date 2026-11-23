@@ -21,7 +21,7 @@ final class WebhookEvent
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return AssetCreatedEvent|AssetDeletedEvent|AssetUpdatedEvent|AutomationWebhookEvent|BlankCreatedEvent|BlankDeletedEvent|BlankDriftedEvent|BlankRestoredEvent|BlankUpdatedEvent|BlankVariantCostChangedEvent|CreditsLowEvent|DesignApprovalScheduledEvent|DesignApprovedEvent|DesignChangesRequestedEvent|DesignCommittedEvent|DesignDeletedEvent|DesignDeliveryCapturedEvent|DesignDuplicatedEvent|DesignEditedEvent|DesignPersonalDataErasedEvent|DesignRejectedEvent|DesignUnapprovedEvent|InkCreatedEvent|InkDeletedEvent|InkUpdatedEvent|OrderCancelledEvent|OrderCreatedEvent|OrderDeliveryChangedEvent|OrderFailedEvent|OrderHeldEvent|OrderReleasedEvent|OrderReroutedEvent|OrderStatusChangedEvent|OrderSubmittedEvent|OrderTrackingAddedEvent|OrderTrackingChangedEvent|OrderBalanceEmptyEvent|PaletteCreatedEvent|PaletteDeletedEvent|PaletteUpdatedEvent|PrintCompletedEvent|PrintCreatedEvent|PrintFailedEvent|PrintshopConnectedEvent|PrintshopDeletedEvent|PrintshopDisconnectedEvent|PrintshopReconnectedEvent|PrintshopRestoredEvent|PrintshopUpdatedEvent|RunCancelledEvent|RunCompletedEvent|RunExhaustedEvent|RunFailedEvent|RunStartedEvent|ShapeCreatedEvent|ShapeDeletedEvent|ShapeUpdatedEvent|ShareLinkRegeneratedEvent|ShareLinkRevokedEvent|StoreAccessOffEvent|StoreAccessRequestedEvent|TemplateDeletedEvent|TemplateLiveChangedEvent|TemplateLowResolutionEvent|TemplatePublishedEvent|TemplateRenamedEvent|TextMessagesLowEvent|WebhookPingEvent|\Pixonaut\Sdk\Webhooks\UnknownEvent
+     * @return AssetCreatedEvent|AssetDeletedEvent|AssetUpdatedEvent|AutomationWebhookEvent|BlankCreatedEvent|BlankDeletedEvent|BlankDriftedEvent|BlankRestoredEvent|BlankUpdatedEvent|BlankVariantCostChangedEvent|CreditsLowEvent|DesignApprovalScheduledEvent|DesignApprovedEvent|DesignChangesRequestedEvent|DesignCommittedEvent|DesignDeletedEvent|DesignDeliveryCapturedEvent|DesignDuplicatedEvent|DesignEditedEvent|DesignPersonalDataErasedEvent|DesignRejectedEvent|DesignUnapprovedEvent|InkCreatedEvent|InkDeletedEvent|InkUpdatedEvent|ItemCancelledEvent|ItemFailedEvent|ItemHeldEvent|ItemReleasedEvent|ItemReroutedEvent|ItemStatusChangedEvent|ItemSubmittedEvent|OrderCancelledEvent|OrderCreatedEvent|OrderDeliveryChangedEvent|OrderHeldEvent|OrderReleasedEvent|OrderStatusChangedEvent|OrderBalanceEmptyEvent|PaletteCreatedEvent|PaletteDeletedEvent|PaletteUpdatedEvent|ParcelDeliveredEvent|ParcelShippedEvent|ParcelTrackingChangedEvent|PrintCompletedEvent|PrintCreatedEvent|PrintFailedEvent|PrintshopConnectedEvent|PrintshopDeletedEvent|PrintshopDisconnectedEvent|PrintshopReconnectedEvent|PrintshopRestoredEvent|PrintshopUpdatedEvent|RunCancelledEvent|RunCompletedEvent|RunExhaustedEvent|RunFailedEvent|RunStartedEvent|ShapeCreatedEvent|ShapeDeletedEvent|ShapeUpdatedEvent|ShareLinkRegeneratedEvent|ShareLinkRevokedEvent|StoreAccessOffEvent|StoreAccessRequestedEvent|TemplateDeletedEvent|TemplateLiveChangedEvent|TemplateLowResolutionEvent|TemplatePublishedEvent|TemplateRenamedEvent|TextMessagesLowEvent|WebhookPingEvent|\Pixonaut\Sdk\Webhooks\UnknownEvent
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
@@ -55,21 +55,26 @@ final class WebhookEvent
             'ink.created' => InkCreatedEvent::fromArray(Decode::object($data, $path), $path),
             'ink.deleted' => InkDeletedEvent::fromArray(Decode::object($data, $path), $path),
             'ink.updated' => InkUpdatedEvent::fromArray(Decode::object($data, $path), $path),
+            'item.cancelled' => ItemCancelledEvent::fromArray(Decode::object($data, $path), $path),
+            'item.failed' => ItemFailedEvent::fromArray(Decode::object($data, $path), $path),
+            'item.held' => ItemHeldEvent::fromArray(Decode::object($data, $path), $path),
+            'item.released' => ItemReleasedEvent::fromArray(Decode::object($data, $path), $path),
+            'item.rerouted' => ItemReroutedEvent::fromArray(Decode::object($data, $path), $path),
+            'item.status_changed' => ItemStatusChangedEvent::fromArray(Decode::object($data, $path), $path),
+            'item.submitted' => ItemSubmittedEvent::fromArray(Decode::object($data, $path), $path),
             'order.cancelled' => OrderCancelledEvent::fromArray(Decode::object($data, $path), $path),
             'order.created' => OrderCreatedEvent::fromArray(Decode::object($data, $path), $path),
             'order.delivery_changed' => OrderDeliveryChangedEvent::fromArray(Decode::object($data, $path), $path),
-            'order.failed' => OrderFailedEvent::fromArray(Decode::object($data, $path), $path),
             'order.held' => OrderHeldEvent::fromArray(Decode::object($data, $path), $path),
             'order.released' => OrderReleasedEvent::fromArray(Decode::object($data, $path), $path),
-            'order.rerouted' => OrderReroutedEvent::fromArray(Decode::object($data, $path), $path),
             'order.status_changed' => OrderStatusChangedEvent::fromArray(Decode::object($data, $path), $path),
-            'order.submitted' => OrderSubmittedEvent::fromArray(Decode::object($data, $path), $path),
-            'order.tracking_added' => OrderTrackingAddedEvent::fromArray(Decode::object($data, $path), $path),
-            'order.tracking_changed' => OrderTrackingChangedEvent::fromArray(Decode::object($data, $path), $path),
             'order_balance.empty' => OrderBalanceEmptyEvent::fromArray(Decode::object($data, $path), $path),
             'palette.created' => PaletteCreatedEvent::fromArray(Decode::object($data, $path), $path),
             'palette.deleted' => PaletteDeletedEvent::fromArray(Decode::object($data, $path), $path),
             'palette.updated' => PaletteUpdatedEvent::fromArray(Decode::object($data, $path), $path),
+            'parcel.delivered' => ParcelDeliveredEvent::fromArray(Decode::object($data, $path), $path),
+            'parcel.shipped' => ParcelShippedEvent::fromArray(Decode::object($data, $path), $path),
+            'parcel.tracking_changed' => ParcelTrackingChangedEvent::fromArray(Decode::object($data, $path), $path),
             'print.completed' => PrintCompletedEvent::fromArray(Decode::object($data, $path), $path),
             'print.created' => PrintCreatedEvent::fromArray(Decode::object($data, $path), $path),
             'print.failed' => PrintFailedEvent::fromArray(Decode::object($data, $path), $path),

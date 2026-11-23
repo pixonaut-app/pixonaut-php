@@ -158,7 +158,7 @@ final class ShareLinks
      * @param string $id
      * @param ShareLinksUpdateRequest $body
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `design_limit_not_allowed`, `designer_settings_not_allowed`, `expiry_fixed_by_state`, `feature_disabled`, `invalid_input`, `layout_out_of_date`, `layout_wrong_ratio`, `linked_templates_differ`, `not_found`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `print_size_illegal`, `return_url_not_https`, `return_url_off_store`, `share_link_name_taken`, `share_link_name_too_long`, `state_needs_return_url`, `subject_not_found`, `unauthorized`, `unknown_layout`, `unknown_placement`, `variant_row_invalid`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `design_limit_not_allowed`, `designer_settings_not_allowed`, `expiry_fixed_by_state`, `feature_disabled`, `invalid_input`, `layout_out_of_date`, `layout_wrong_ratio`, `link_pages_off_range`, `linked_templates_differ`, `not_found`, `origin_forbidden`, `payload_too_large`, `placement_unfilled`, `print_size_illegal`, `return_url_not_https`, `return_url_off_store`, `share_link_name_taken`, `share_link_name_too_long`, `state_needs_return_url`, `subject_not_found`, `unauthorized`, `unknown_layout`, `unknown_placement`, `variant_row_invalid`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function update(string $id, ShareLinksUpdateRequest $body): ShareLinksUpdateResponse
     {

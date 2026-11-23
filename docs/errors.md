@@ -68,7 +68,8 @@ Nothing else is retried, so a request is never sent twice behind your back.
 - **A retryable error on any other write**, above all `transport_failed`:
   the request may have reached Pixonaut. Read what it was about before
   sending it again. Before re-sending an order, check the print's orders,
-  and never submit again while an order says `outcome_unknown`.
+  and never submit again while any of an order's items says
+  `outcome_unknown` (the order then says `needs_attention`).
 - **Not retryable**: do not send the same request again. Show the code,
   change the request, or reconnect on `unauthorized`.
 - **`IdempotencyBugException`**: a bug in the integration. Log it with the

@@ -9,7 +9,8 @@ use Pixonaut\Sdk\Exception\ApiException;
 use Pixonaut\Sdk\Generated\Model\ConnectedStoreExchangeCodeRequest;
 use Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption1;
 use Pixonaut\Sdk\Generated\Model\OrdersCreateRequest;
-use Pixonaut\Sdk\Generated\Model\OrdersCreateRequestPrintsItem;
+use Pixonaut\Sdk\Generated\Model\OrdersCreateRequestItemsItem;
+use Pixonaut\Sdk\Generated\Model\OrdersCreateRequestItemsItemPrintsItem;
 use Pixonaut\Sdk\Generated\Model\OrdersCreateRequestRecipient;
 use Pixonaut\Sdk\Generated\Model\OrdersCreateRequestShippingAddress;
 use Pixonaut\Sdk\Http\PreparedRequest;
@@ -46,7 +47,7 @@ final class StoreScenarioTest extends TestCase
         // answers it with the order the first one made.
         $prepared = $pixonaut->orders()->prepareCreate(new OrdersCreateRequest(
             externalRef: 'WEB-10482',
-            prints: [new OrdersCreateRequestPrintsItem(printId: 'print_1')],
+            items: [new OrdersCreateRequestItemsItem(prints: [new OrdersCreateRequestItemsItemPrintsItem(printId: 'print_1')])],
             recipient: new OrdersCreateRequestRecipient(name: 'Alexandra Lind', email: 'alexandra.lind@example.com'),
             shippingAddress: new OrdersCreateRequestShippingAddress(city: 'London', country: 'GB', line1: '12 High Street', postalCode: 'SW1A 1AA'),
         ));
