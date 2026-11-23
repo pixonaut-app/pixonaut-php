@@ -230,7 +230,9 @@ listed. `composer show --all pixonaut/pixonaut-php` lists the versions it
 has.
 
 The workflow needs the repository allowed to create pull requests from
-GitHub Actions. For the pull request checks to run on the release pull
-request, it also needs a `RELEASE_PLEASE_TOKEN` secret (a GitHub App token
-or fine-grained token with contents and pull requests write access): a pull
-request opened with the default `GITHUB_TOKEN` starts no workflows.
+GitHub Actions. Pull request runs on a pull request opened with the default
+`GITHUB_TOKEN` wait for approval, so the release workflow approves the ones
+on the release pull request's head and its checks run like any other pull
+request's. With a `RELEASE_PLEASE_TOKEN` secret (a GitHub App token or
+fine-grained token with contents and pull requests write access) they start
+without approval.
