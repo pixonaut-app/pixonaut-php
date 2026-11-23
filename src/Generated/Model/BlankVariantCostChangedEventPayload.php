@@ -21,12 +21,16 @@ final class BlankVariantCostChangedEventPayload implements Model
      */
     private ?array $decoded = null;
 
+    /**
+     * @param list<BlankVariantCostChangedEventPayloadPagesItem>|null $pages
+     */
     public function __construct(
         public readonly string $blankId,
         public readonly BlankVariantCostChangedEventPayloadProduct $product,
         public readonly string $region,
         public readonly BlankVariantCostChangedEventPayloadShipping $shipping,
         public readonly string $variant,
+        public readonly ?array $pages = null,
     ) {}
 
     /**
@@ -45,6 +49,11 @@ final class BlankVariantCostChangedEventPayload implements Model
             region: Decode::string(Decode::required($data, 'region', $path), $path . '.region'),
             shipping: BlankVariantCostChangedEventPayloadShipping::fromArray(Decode::object(Decode::required($data, 'shipping', $path), $path . '.shipping'), $path . '.shipping'),
             variant: Decode::string(Decode::required($data, 'variant', $path), $path . '.variant'),
+            pages: array_key_exists('pages', $data) ? Decode::list(
+                $data['pages'],
+                $path . '.pages',
+                static fn(mixed $v, string $p): BlankVariantCostChangedEventPayloadPagesItem => BlankVariantCostChangedEventPayloadPagesItem::fromArray(Decode::object($v, $p), $p),
+            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -69,6 +78,12 @@ final class BlankVariantCostChangedEventPayload implements Model
         $data['region'] = $this->region;
         $data['shipping'] = Encode::model($this->shipping);
         $data['variant'] = $this->variant;
+        if ($this->pages !== null) {
+            $data['pages'] = array_map(
+                static fn(BlankVariantCostChangedEventPayloadPagesItem $v): mixed => Encode::model($v),
+                $this->pages,
+            );
+        }
         return $data;
     }
 }

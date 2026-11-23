@@ -29,6 +29,7 @@ final class ShareLinksDesignerGetResponseSidesItem implements Model
      * @param string|null $initialView The view shown first; absent, the side's first with a photo.
      * @param ShareLinksDesignerGetResponseSidesItemLocalizedLabels|null $localizedLabels The label per customer-facing language, by code: only the languages it has one in. A designer shown in a language left out reads `label`.
      * @param list<ShareLinksDesignerGetResponseSidesItemMockupsItem>|null $mockups The store's own product photos the design is shown on, in place of the blank's views.
+     * @param ShareLinksDesignerGetResponseSidesItemPages|null $pages On a placement printed as pages, the page counts the shopper picks from, on its own steps: a narrower range, or one count. Absent, the placement's whole range.
      * @param string|null $placementId The blank's placement it is printed in; with blankId.
      * @param list<ShareLinksDesignerGetResponseSidesItemPrintSizesItem>|null $printSizes The sizes the shopper picks from, for a print within its area.
      * @param int|null $selectedMockupIndex The photo that starts selected, by its place in mockups.
@@ -46,6 +47,7 @@ final class ShareLinksDesignerGetResponseSidesItem implements Model
         public readonly ?string $initialView = null,
         public readonly ?ShareLinksDesignerGetResponseSidesItemLocalizedLabels $localizedLabels = null,
         public readonly ?array $mockups = null,
+        public readonly ?ShareLinksDesignerGetResponseSidesItemPages $pages = null,
         public readonly ?string $placementId = null,
         public readonly ?array $printSizes = null,
         public readonly ?int $selectedMockupIndex = null,
@@ -78,6 +80,7 @@ final class ShareLinksDesignerGetResponseSidesItem implements Model
                 $path . '.mockups',
                 static fn(mixed $v, string $p): ShareLinksDesignerGetResponseSidesItemMockupsItem => ShareLinksDesignerGetResponseSidesItemMockupsItem::fromArray(Decode::object($v, $p), $p),
             ) : null,
+            pages: array_key_exists('pages', $data) ? ShareLinksDesignerGetResponseSidesItemPages::fromArray(Decode::object($data['pages'], $path . '.pages'), $path . '.pages') : null,
             placementId: array_key_exists('placementId', $data) ? Decode::string($data['placementId'], $path . '.placementId') : null,
             printSizes: array_key_exists('printSizes', $data) ? Decode::list(
                 $data['printSizes'],
@@ -140,6 +143,9 @@ final class ShareLinksDesignerGetResponseSidesItem implements Model
                 static fn(ShareLinksDesignerGetResponseSidesItemMockupsItem $v): mixed => Encode::model($v),
                 $this->mockups,
             );
+        }
+        if ($this->pages !== null) {
+            $data['pages'] = Encode::model($this->pages);
         }
         if ($this->placementId !== null) {
             $data['placementId'] = $this->placementId;

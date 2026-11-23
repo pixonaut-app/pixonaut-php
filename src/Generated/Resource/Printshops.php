@@ -47,10 +47,11 @@ final class Printshops
      * @param int|null $offset
      * @param string|null $categoryId Only the products filed under this one of the partner's categories (GET /v1/printshop-connections/{id}/categories).
      * @param string|null $search Only the products whose name holds this, ignoring case; blank is no search. `total` then counts the matches.
+     * @param string|null $madeIn Only the products made in the European Union (`EU`) or in one country (its ISO 3166-1 alpha-2 code, such as `DE`). A printshop that does not say where it makes a product answers none.
      *
      * @throws ApiException When Pixonaut refuses the request (documented: `catalogue_loading`, `catalogue_unavailable`, `connection_not_found`, `db_error`, `feature_disabled`, `forbidden`, `invalid_input`, `lookup_failed`, `no_credentials`, `origin_forbidden`, `sandbox_tenant`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
-    public function listCatalogueProducts(string $connectionId, ?int $limit = null, ?int $offset = null, ?string $categoryId = null, ?string $search = null): PrintshopCatalogueProductsListResponse
+    public function listCatalogueProducts(string $connectionId, ?int $limit = null, ?int $offset = null, ?string $categoryId = null, ?string $search = null, ?string $madeIn = null): PrintshopCatalogueProductsListResponse
     {
         $result = $this->pixonaut->call(
             'printshopCatalogueProducts.list',
@@ -60,6 +61,7 @@ final class Printshops
                 'connectionId' => $connectionId,
                 'categoryId' => $categoryId,
                 'search' => $search,
+                'madeIn' => $madeIn,
             ],
         );
         return $result->decode(

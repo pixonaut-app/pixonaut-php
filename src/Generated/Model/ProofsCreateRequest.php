@@ -36,6 +36,8 @@ final class ProofsCreateRequest implements Model
      * @param string|null $garmentVariant The variant whose colour the design is drawn in, by ref (`v_…`), when it is not the one `variant` names: on a dark colour each layer takes its on-dark value. It sizes nothing. A proof keeps it as `proofVariant`, so its commit is drawn in the same colour, as a design committed without a proof does. Absent, `variant`'s colour; a ref the blank has no variant of draws as on a light product.
      * @param array<string, string>|null $pickedColours The colours the shopper picked, by option name, `#rrggbb` each, such as `{"Colour": "#1b2a4a"}`, for a value of the blank that takes any colour: the product is drawn, and its tone judged, in the pick. A design keeps them, and its order is made in them; a pick for a value that takes no colour is kept and not used. Absent, each such value is its own colour.
      * @param ProofsCreateRequestRepeat|null|Omitted $repeat Lays the design as a repeat of its template across the print area. Null, or absent, places it once. Through a designer link, a repeat the link offers, or null where its shopper may turn the repeat off; absent there, the link's own start.
+     * @param int|null $page On a placement printed as pages, the page this proof is of, from 1.
+     * @param int|null $pageCount On a placement printed as pages, how many pages the shopper picked: one the placement is printed at, and through a designer link one its side offers.
      * @param string|null $viewId The view of the blank's placement the customer previewed the proof in, by id. Kept with the proof and read with the design's proof as `proofViewId`, for display only.
      */
     public function __construct(
@@ -52,6 +54,8 @@ final class ProofsCreateRequest implements Model
         public readonly ?string $garmentVariant = null,
         public readonly ?array $pickedColours = null,
         public readonly ProofsCreateRequestRepeat|null|Omitted $repeat = Omitted::Field,
+        public readonly ?int $page = null,
+        public readonly ?int $pageCount = null,
         public readonly ?string $viewId = null,
     ) {}
 
@@ -91,6 +95,8 @@ final class ProofsCreateRequest implements Model
                 $path . '.repeat',
                 static fn(mixed $v, string $p): ProofsCreateRequestRepeat => ProofsCreateRequestRepeat::fromArray(Decode::object($v, $p), $p),
             ) : Omitted::Field,
+            page: array_key_exists('page', $data) ? Decode::int($data['page'], $path . '.page') : null,
+            pageCount: array_key_exists('pageCount', $data) ? Decode::int($data['pageCount'], $path . '.pageCount') : null,
             viewId: array_key_exists('viewId', $data) ? Decode::string($data['viewId'], $path . '.viewId') : null,
         );
         $model->decoded = $data;
@@ -149,6 +155,12 @@ final class ProofsCreateRequest implements Model
         }
         if (!$this->repeat instanceof Omitted) {
             $data['repeat'] = $this->repeat === null ? null : Encode::model($this->repeat);
+        }
+        if ($this->page !== null) {
+            $data['page'] = $this->page;
+        }
+        if ($this->pageCount !== null) {
+            $data['pageCount'] = $this->pageCount;
         }
         if ($this->viewId !== null) {
             $data['viewId'] = $this->viewId;

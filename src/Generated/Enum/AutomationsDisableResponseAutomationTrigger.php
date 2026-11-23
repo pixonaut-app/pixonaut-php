@@ -29,11 +29,15 @@ final class AutomationsDisableResponseAutomationTrigger
 
     public const PRINT_FAILED = 'print.failed';
 
-    public const ORDER_SUBMITTED = 'order.submitted';
+    public const ITEM_SUBMITTED = 'item.submitted';
+
+    public const ITEM_STATUS_CHANGED = 'item.status_changed';
+
+    public const ITEM_FAILED = 'item.failed';
+
+    public const ITEM_CANCELLED = 'item.cancelled';
 
     public const ORDER_STATUS_CHANGED = 'order.status_changed';
-
-    public const ORDER_FAILED = 'order.failed';
 
     public const ORDER_CANCELLED = 'order.cancelled';
 
@@ -52,9 +56,11 @@ final class AutomationsDisableResponseAutomationTrigger
         self::DESIGN_UNAPPROVED,
         self::PRINT_COMPLETED,
         self::PRINT_FAILED,
-        self::ORDER_SUBMITTED,
+        self::ITEM_SUBMITTED,
+        self::ITEM_STATUS_CHANGED,
+        self::ITEM_FAILED,
+        self::ITEM_CANCELLED,
         self::ORDER_STATUS_CHANGED,
-        self::ORDER_FAILED,
         self::ORDER_CANCELLED,
         self::ORDER_DELIVERY_CHANGED,
         self::TEMPLATE_LOW_RESOLUTION,

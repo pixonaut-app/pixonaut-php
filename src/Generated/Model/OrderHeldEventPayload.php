@@ -21,18 +21,15 @@ final class OrderHeldEventPayload implements Model
     private ?array $decoded = null;
 
     /**
-     * @param string $reason Values: {@see \Pixonaut\Sdk\Generated\Enum\OrderHeldEventPayloadReason}.
      * @param string|null $externalRef
-     * @param list<string>|null $printIds
+     * @param string $reason Values: {@see \Pixonaut\Sdk\Generated\Enum\OrderHeldEventPayloadReason}.
      */
     public function __construct(
+        public readonly ?string $externalRef,
         public readonly int $limit,
         public readonly string $orderId,
         public readonly string $periodEnd,
-        public readonly string $printId,
         public readonly string $reason,
-        public readonly ?string $externalRef = null,
-        public readonly ?array $printIds = null,
     ) {}
 
     /**
@@ -46,21 +43,15 @@ final class OrderHeldEventPayload implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
+            externalRef: Decode::nullable(
+                Decode::required($data, 'externalRef', $path),
+                $path . '.externalRef',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             limit: Decode::int(Decode::required($data, 'limit', $path), $path . '.limit'),
             orderId: Decode::string(Decode::required($data, 'orderId', $path), $path . '.orderId'),
             periodEnd: Decode::string(Decode::required($data, 'periodEnd', $path), $path . '.periodEnd'),
-            printId: Decode::string(Decode::required($data, 'printId', $path), $path . '.printId'),
             reason: Decode::string(Decode::required($data, 'reason', $path), $path . '.reason'),
-            externalRef: array_key_exists('externalRef', $data) ? Decode::nullable(
-                $data['externalRef'],
-                $path . '.externalRef',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ) : null,
-            printIds: array_key_exists('printIds', $data) ? Decode::list(
-                $data['printIds'],
-                $path . '.printIds',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ) : null,
         );
         $model->decoded = $data;
         return $model;
@@ -80,17 +71,11 @@ final class OrderHeldEventPayload implements Model
     public function toArray(): array
     {
         $data = [];
+        $data['externalRef'] = $this->externalRef;
         $data['limit'] = $this->limit;
         $data['orderId'] = $this->orderId;
         $data['periodEnd'] = $this->periodEnd;
-        $data['printId'] = $this->printId;
         $data['reason'] = $this->reason;
-        if ($this->externalRef !== null) {
-            $data['externalRef'] = $this->externalRef;
-        }
-        if ($this->printIds !== null) {
-            $data['printIds'] = $this->printIds;
-        }
         return $data;
     }
 }

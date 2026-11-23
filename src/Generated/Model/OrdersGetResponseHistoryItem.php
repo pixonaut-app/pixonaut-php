@@ -23,6 +23,7 @@ final class OrdersGetResponseHistoryItem implements Model
 
     /**
      * @param OrdersGetResponseHistoryItemAutomation|null $automation The automation that moved it, by the name it had then; null unless `via` is `automation`.
+     * @param string $itemId The item the step was of.
      * @param string|null $reason
      * @param string|null $releasedBy What released a held order, on `order.released`: the workspace's `upgrade` or the `month_reset`; null otherwise.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\OrdersGetResponseHistoryItemReleasedBy}.
@@ -33,6 +34,7 @@ final class OrdersGetResponseHistoryItem implements Model
     public function __construct(
         public readonly float $at,
         public readonly ?OrdersGetResponseHistoryItemAutomation $automation,
+        public readonly string $itemId,
         public readonly ?string $reason,
         public readonly ?string $releasedBy,
         public readonly float $seq,
@@ -58,6 +60,7 @@ final class OrdersGetResponseHistoryItem implements Model
                 $path . '.automation',
                 static fn(mixed $v, string $p): OrdersGetResponseHistoryItemAutomation => OrdersGetResponseHistoryItemAutomation::fromArray(Decode::object($v, $p), $p),
             ),
+            itemId: Decode::string(Decode::required($data, 'itemId', $path), $path . '.itemId'),
             reason: Decode::nullable(
                 Decode::required($data, 'reason', $path),
                 $path . '.reason',
@@ -97,6 +100,7 @@ final class OrdersGetResponseHistoryItem implements Model
         $data = [];
         $data['at'] = $this->at;
         $data['automation'] = $this->automation === null ? null : Encode::model($this->automation);
+        $data['itemId'] = $this->itemId;
         $data['reason'] = $this->reason;
         $data['releasedBy'] = $this->releasedBy;
         $data['seq'] = $this->seq;

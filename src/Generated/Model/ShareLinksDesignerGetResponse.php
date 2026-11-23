@@ -42,6 +42,7 @@ final class ShareLinksDesignerGetResponse implements Model
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ShareLinksDesignerGetResponseLayout}.
      * @param ShareLinksDesignerGetResponseLinkedPlacements|null $linkedPlacements Which of the sides' placements one design drives, such as a sweater's sleeves: a preset, or groups of the sides' placements, a group with a repeat of its own where it repeats apart from the link. The sides of one group print one template. Absent, the groups the blank suggests whose sides print one template; the link keeps the groups it was made with.
      * @param list<ShareLinksDesignerGetResponseMockupsItem>|null $mockups The store's own product photos the design is shown on, in place of the blank's views.
+     * @param ShareLinksDesignerGetResponsePages|null $pages On a placement printed as pages, the page counts the shopper picks from, on its own steps: a narrower range, or one count. Absent, the placement's whole range.
      * @param string|null $panelLayout The name of a panel layout of the link's `blankId`, in place of `placementId`: the page draws one design across the layout's canvas, and each placement it lays out gets its print cut from it, so art runs across the seams. Not with `sides` or `printSizes`.
      * @param string|null $placementId The blank's placement it is printed in; with blankId.
      * @param list<ShareLinksDesignerGetResponsePrintSizesItem>|null $printSizes The sizes the shopper picks from, for a print within its area.
@@ -72,6 +73,7 @@ final class ShareLinksDesignerGetResponse implements Model
         public readonly ?string $layout = null,
         public readonly ?ShareLinksDesignerGetResponseLinkedPlacements $linkedPlacements = null,
         public readonly ?array $mockups = null,
+        public readonly ?ShareLinksDesignerGetResponsePages $pages = null,
         public readonly ?string $panelLayout = null,
         public readonly ?string $placementId = null,
         public readonly ?array $printSizes = null,
@@ -149,6 +151,7 @@ final class ShareLinksDesignerGetResponse implements Model
                 $path . '.mockups',
                 static fn(mixed $v, string $p): ShareLinksDesignerGetResponseMockupsItem => ShareLinksDesignerGetResponseMockupsItem::fromArray(Decode::object($v, $p), $p),
             ) : null,
+            pages: array_key_exists('pages', $data) ? ShareLinksDesignerGetResponsePages::fromArray(Decode::object($data['pages'], $path . '.pages'), $path . '.pages') : null,
             panelLayout: array_key_exists('panelLayout', $data) ? Decode::string($data['panelLayout'], $path . '.panelLayout') : null,
             placementId: array_key_exists('placementId', $data) ? Decode::string($data['placementId'], $path . '.placementId') : null,
             printSizes: array_key_exists('printSizes', $data) ? Decode::list(
@@ -233,6 +236,9 @@ final class ShareLinksDesignerGetResponse implements Model
                 static fn(ShareLinksDesignerGetResponseMockupsItem $v): mixed => Encode::model($v),
                 $this->mockups,
             );
+        }
+        if ($this->pages !== null) {
+            $data['pages'] = Encode::model($this->pages);
         }
         if ($this->panelLayout !== null) {
             $data['panelLayout'] = $this->panelLayout;

@@ -15,12 +15,28 @@ final class OrderCreatedEventPayloadStatus
 {
     public const HELD = 'held';
 
-    public const AWAITING_PRINTS = 'awaiting_prints';
+    public const OPEN = 'open';
 
-    public const SUBMITTED = 'submitted';
+    public const PARTLY_SHIPPED = 'partly_shipped';
+
+    public const SHIPPED = 'shipped';
+
+    public const NEEDS_ATTENTION = 'needs_attention';
+
+    public const CANCELLED = 'cancelled';
+
+    public const DONE = 'done';
 
     /**
      * Every value this release knows.
      */
-    public const KNOWN = [self::HELD, self::AWAITING_PRINTS, self::SUBMITTED];
+    public const KNOWN = [
+        self::HELD,
+        self::OPEN,
+        self::PARTLY_SHIPPED,
+        self::SHIPPED,
+        self::NEEDS_ATTENTION,
+        self::CANCELLED,
+        self::DONE,
+    ];
 }

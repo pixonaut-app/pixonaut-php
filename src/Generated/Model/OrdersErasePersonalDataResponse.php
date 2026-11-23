@@ -22,68 +22,45 @@ final class OrdersErasePersonalDataResponse implements Model
     private ?array $decoded = null;
 
     /**
-     * @param OrdersErasePersonalDataResponseBlank|null $blank The blank `blankId` names, as it reads now; `null` as `blankId` is.
-     * @param string|null $blankId The blank the order's prints are on; `null` for prints on no blank, or an order placed before it was recorded.
-     * @param OrdersErasePersonalDataResponseDelivery|null $delivery The order's latest address change, made with `PATCH /v1/orders/{id}/delivery` after the order was sent; `null` for an order whose address never changed.
-     * @param string $designId The design the lead print was made from.
-     * @param string|null $externalOrderRef
-     * @param string|null $externalRef
-     * @param string|null $failureKind Why Pixonaut failed the order rather than its printshop, as a refusal code: `print_failed` (a print of it could not be made; `lastError` names it), `prints_timed_out` (its prints were not finished within three hours of placing it), the refusal an order waiting for its prints met when it was handed on, such as `technique_not_offered`, or what a connected store's order lacked for its printshop: `blank_needed` (its design is on no blank, and the printshop needs one) or `missing_fulfilment_keys`. `null` for an order its printshop refused, or one not failed.
-     * @param OrdersErasePersonalDataResponseHold|null $hold Why the order is `held`, while it is; `null` for an order not held. A held order is accepted and not handed to its printshop until the month resets with room for it or the workspace upgrades.
-     * @param float|null $lastCheckedAt
-     * @param string|null $lastError
+     * @param OrdersErasePersonalDataResponseDelivery|null $delivery The order's latest address change, made with `PATCH /v1/orders/{id}/delivery` after it was sent; `null` for an order whose address never changed.
+     * @param OrdersErasePersonalDataResponseDeliveryChangeRefusalOrderPastAddressChange|OrdersErasePersonalDataResponseDeliveryChangeRefusalAddressChangeNotAccepted|null $deliveryChangeRefusal Why `PATCH /v1/orders/{id}/delivery` would refuse a change now, by its error code, or `null` when it would take one. A printshop that is already making the order may still refuse it as `order_past_address_change`: that is known only by asking it.
+     * @param list<OrdersErasePersonalDataResponseDeliveryChangesItem> $deliveryChanges The order's address changes, oldest first, each as its `order.delivery_changed` event recorded it. Never the address.
+     * @param string|null $externalRef The caller's own reference for the order, such as the store's order id.
+     * @param list<OrdersErasePersonalDataResponseHistoryItem> $history
+     * @param OrdersErasePersonalDataResponseHold|null $hold Why the whole order is `held`, while it is: the plan's month has no room for it. `null` otherwise.
+     * @param list<OrdersErasePersonalDataResponseItemsItem> $items The order's items, in the order they were placed.
+     * @param list<OrdersErasePersonalDataResponseParcelsItem> $parcels
      * @param float|null $personalDataErasedAt
-     * @param string $printId The order's lead print: the first of `printIds`, and the only one of an order of one print.
-     * @param list<string> $printIds Every print the order holds, the lead first: the prints of one item, each in its own placement on its blank.
-     * @param list<OrdersErasePersonalDataResponsePrintsItemOption1|OrdersErasePersonalDataResponsePrintsItemOption2> $prints `printIds` with each print's design, placement and file.
-     * @param OrdersErasePersonalDataResponsePrintshopAsPlaced|null $printshopAsPlaced The printshop as it was when the order was placed: its name and kind (`adapter`). `null` for an order placed before it was recorded.
-     * @param string|null $printshopConnectionId
-     * @param string|null $printshopName
+     * @param list<OrdersErasePersonalDataResponsePrintshopOrdersItem> $printshopOrders
      * @param OrdersErasePersonalDataResponseRecipient|null $recipient Who the order is for: its customer. When `shipTo` is set, the order ships there and the customer is who it is finally for.
-     * @param string|null $replacedByOrderId The order submitted to replace this one, which names it as `replacesOrderId`; `null` for none.
-     * @param string|null $replacesOrderId The failed order this one was submitted to replace; `null` for an order that replaces none.
+     * @param bool $recipientEmailBounced Whether mail to the recipient's `email` bounced, so none is sent to it until the address changes; `false` for a recipient with no email, or none.
      * @param OrdersErasePersonalDataResponseShipTo|null $shipTo The workspace's saved address the order ships to, as it was when the order was placed; `null` for an order that ships to its customer's address. Its printshop is handed this address, and erasing the order's personal data leaves it.
      * @param OrdersErasePersonalDataResponseShippingAddress|null $shippingAddress The customer's address. Where the order ships, unless `shipTo` is set.
-     * @param string|null $spotOutput Values: {@see \Pixonaut\Sdk\Generated\Enum\OrdersErasePersonalDataResponseSpotOutput}.
-     * @param string $status Values: {@see \Pixonaut\Sdk\Generated\Enum\OrdersErasePersonalDataResponseStatus}.
-     * @param OrdersErasePersonalDataResponseTracking|null $tracking
-     * @param OrdersErasePersonalDataResponseVariant|null $variant The variant as it was when the order was placed: its options and the variant fields its printshop was sent. A later edit of the variant does not change it.
-     * @param string|null $variantRef The variant the order names; `null` as `blankId` is.
+     * @param string $status The order's status, read from its items': `held` while the plan's month has no room for it, `open`, `partly_shipped` once a parcel has left, `shipped` when every item has, `needs_attention` when an item failed or its outcome is unknown, `cancelled` when every item is, `done` when every item has shipped or been cancelled.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\OrdersErasePersonalDataResponseStatus}.
      */
     public function __construct(
-        public readonly string $adapter,
-        public readonly ?OrdersErasePersonalDataResponseBlank $blank,
-        public readonly ?string $blankId,
+        public readonly bool $canErase,
+        public readonly float $createdAt,
         public readonly ?OrdersErasePersonalDataResponseDelivery $delivery,
-        public readonly string $designId,
-        public readonly ?string $externalOrderRef,
+        public readonly OrdersErasePersonalDataResponseDeliveryChangeRefusalOrderPastAddressChange|OrdersErasePersonalDataResponseDeliveryChangeRefusalAddressChangeNotAccepted|null $deliveryChangeRefusal,
+        public readonly array $deliveryChanges,
+        public readonly bool $erasable,
         public readonly ?string $externalRef,
-        public readonly ?string $failureKind,
+        public readonly array $history,
         public readonly ?OrdersErasePersonalDataResponseHold $hold,
         public readonly string $id,
-        public readonly ?float $lastCheckedAt,
-        public readonly ?string $lastError,
+        public readonly array $items,
+        public readonly array $parcels,
         public readonly ?float $personalDataErasedAt,
-        public readonly string $printId,
-        public readonly array $printIds,
-        public readonly array $prints,
-        public readonly ?OrdersErasePersonalDataResponsePrintshopAsPlaced $printshopAsPlaced,
-        public readonly ?string $printshopConnectionId,
-        public readonly ?string $printshopName,
-        public readonly int $quantity,
+        public readonly array $printshopOrders,
         public readonly ?OrdersErasePersonalDataResponseRecipient $recipient,
-        public readonly ?string $replacedByOrderId,
-        public readonly ?string $replacesOrderId,
+        public readonly bool $recipientEmailBounced,
         public readonly ?OrdersErasePersonalDataResponseShipTo $shipTo,
         public readonly ?OrdersErasePersonalDataResponseShippingAddress $shippingAddress,
-        public readonly ?string $spotOutput,
         public readonly string $status,
-        public readonly float $submittedAt,
         public readonly string $tenantId,
-        public readonly ?OrdersErasePersonalDataResponseTracking $tracking,
         public readonly float $updatedAt,
-        public readonly ?OrdersErasePersonalDataResponseVariant $variant,
-        public readonly ?string $variantRef,
     ) {}
 
     /**
@@ -97,37 +74,33 @@ final class OrdersErasePersonalDataResponse implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            adapter: Decode::string(Decode::required($data, 'adapter', $path), $path . '.adapter'),
-            blank: Decode::nullable(
-                Decode::required($data, 'blank', $path),
-                $path . '.blank',
-                static fn(mixed $v, string $p): OrdersErasePersonalDataResponseBlank => OrdersErasePersonalDataResponseBlank::fromArray(Decode::object($v, $p), $p),
-            ),
-            blankId: Decode::nullable(
-                Decode::required($data, 'blankId', $path),
-                $path . '.blankId',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
+            canErase: Decode::bool(Decode::required($data, 'canErase', $path), $path . '.canErase'),
+            createdAt: Decode::float(Decode::required($data, 'createdAt', $path), $path . '.createdAt'),
             delivery: Decode::nullable(
                 Decode::required($data, 'delivery', $path),
                 $path . '.delivery',
                 static fn(mixed $v, string $p): OrdersErasePersonalDataResponseDelivery => OrdersErasePersonalDataResponseDelivery::fromArray(Decode::object($v, $p), $p),
             ),
-            designId: Decode::string(Decode::required($data, 'designId', $path), $path . '.designId'),
-            externalOrderRef: Decode::nullable(
-                Decode::required($data, 'externalOrderRef', $path),
-                $path . '.externalOrderRef',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            deliveryChangeRefusal: Decode::nullable(
+                Decode::required($data, 'deliveryChangeRefusal', $path),
+                $path . '.deliveryChangeRefusal',
+                static fn(mixed $v, string $p): OrdersErasePersonalDataResponseDeliveryChangeRefusalOrderPastAddressChange|OrdersErasePersonalDataResponseDeliveryChangeRefusalAddressChangeNotAccepted => OrdersErasePersonalDataResponseDeliveryChangeRefusal::decode($v, $p),
             ),
+            deliveryChanges: Decode::list(
+                Decode::required($data, 'deliveryChanges', $path),
+                $path . '.deliveryChanges',
+                static fn(mixed $v, string $p): OrdersErasePersonalDataResponseDeliveryChangesItem => OrdersErasePersonalDataResponseDeliveryChangesItem::fromArray(Decode::object($v, $p), $p),
+            ),
+            erasable: Decode::bool(Decode::required($data, 'erasable', $path), $path . '.erasable'),
             externalRef: Decode::nullable(
                 Decode::required($data, 'externalRef', $path),
                 $path . '.externalRef',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
-            failureKind: Decode::nullable(
-                Decode::required($data, 'failureKind', $path),
-                $path . '.failureKind',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            history: Decode::list(
+                Decode::required($data, 'history', $path),
+                $path . '.history',
+                static fn(mixed $v, string $p): OrdersErasePersonalDataResponseHistoryItem => OrdersErasePersonalDataResponseHistoryItem::fromArray(Decode::object($v, $p), $p),
             ),
             hold: Decode::nullable(
                 Decode::required($data, 'hold', $path),
@@ -135,63 +108,32 @@ final class OrdersErasePersonalDataResponse implements Model
                 static fn(mixed $v, string $p): OrdersErasePersonalDataResponseHold => OrdersErasePersonalDataResponseHold::fromArray(Decode::object($v, $p), $p),
             ),
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
-            lastCheckedAt: Decode::nullable(
-                Decode::required($data, 'lastCheckedAt', $path),
-                $path . '.lastCheckedAt',
-                static fn(mixed $v, string $p): float => Decode::float($v, $p),
+            items: Decode::list(
+                Decode::required($data, 'items', $path),
+                $path . '.items',
+                static fn(mixed $v, string $p): OrdersErasePersonalDataResponseItemsItem => OrdersErasePersonalDataResponseItemsItem::fromArray(Decode::object($v, $p), $p),
             ),
-            lastError: Decode::nullable(
-                Decode::required($data, 'lastError', $path),
-                $path . '.lastError',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            parcels: Decode::list(
+                Decode::required($data, 'parcels', $path),
+                $path . '.parcels',
+                static fn(mixed $v, string $p): OrdersErasePersonalDataResponseParcelsItem => OrdersErasePersonalDataResponseParcelsItem::fromArray(Decode::object($v, $p), $p),
             ),
             personalDataErasedAt: Decode::nullable(
                 Decode::required($data, 'personalDataErasedAt', $path),
                 $path . '.personalDataErasedAt',
                 static fn(mixed $v, string $p): float => Decode::float($v, $p),
             ),
-            printId: Decode::string(Decode::required($data, 'printId', $path), $path . '.printId'),
-            printIds: Decode::list(
-                Decode::required($data, 'printIds', $path),
-                $path . '.printIds',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            printshopOrders: Decode::list(
+                Decode::required($data, 'printshopOrders', $path),
+                $path . '.printshopOrders',
+                static fn(mixed $v, string $p): OrdersErasePersonalDataResponsePrintshopOrdersItem => OrdersErasePersonalDataResponsePrintshopOrdersItem::fromArray(Decode::object($v, $p), $p),
             ),
-            prints: Decode::list(
-                Decode::required($data, 'prints', $path),
-                $path . '.prints',
-                static fn(mixed $v, string $p): OrdersErasePersonalDataResponsePrintsItemOption1|OrdersErasePersonalDataResponsePrintsItemOption2 => OrdersErasePersonalDataResponsePrintsItem::decode($v, $p),
-            ),
-            printshopAsPlaced: Decode::nullable(
-                Decode::required($data, 'printshopAsPlaced', $path),
-                $path . '.printshopAsPlaced',
-                static fn(mixed $v, string $p): OrdersErasePersonalDataResponsePrintshopAsPlaced => OrdersErasePersonalDataResponsePrintshopAsPlaced::fromArray(Decode::object($v, $p), $p),
-            ),
-            printshopConnectionId: Decode::nullable(
-                Decode::required($data, 'printshopConnectionId', $path),
-                $path . '.printshopConnectionId',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
-            printshopName: Decode::nullable(
-                Decode::required($data, 'printshopName', $path),
-                $path . '.printshopName',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
-            quantity: Decode::int(Decode::required($data, 'quantity', $path), $path . '.quantity'),
             recipient: Decode::nullable(
                 Decode::required($data, 'recipient', $path),
                 $path . '.recipient',
                 static fn(mixed $v, string $p): OrdersErasePersonalDataResponseRecipient => OrdersErasePersonalDataResponseRecipient::fromArray(Decode::object($v, $p), $p),
             ),
-            replacedByOrderId: Decode::nullable(
-                Decode::required($data, 'replacedByOrderId', $path),
-                $path . '.replacedByOrderId',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
-            replacesOrderId: Decode::nullable(
-                Decode::required($data, 'replacesOrderId', $path),
-                $path . '.replacesOrderId',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
+            recipientEmailBounced: Decode::bool(Decode::required($data, 'recipientEmailBounced', $path), $path . '.recipientEmailBounced'),
             shipTo: Decode::nullable(
                 Decode::required($data, 'shipTo', $path),
                 $path . '.shipTo',
@@ -202,30 +144,9 @@ final class OrdersErasePersonalDataResponse implements Model
                 $path . '.shippingAddress',
                 static fn(mixed $v, string $p): OrdersErasePersonalDataResponseShippingAddress => OrdersErasePersonalDataResponseShippingAddress::fromArray(Decode::object($v, $p), $p),
             ),
-            spotOutput: Decode::nullable(
-                Decode::required($data, 'spotOutput', $path),
-                $path . '.spotOutput',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
             status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
-            submittedAt: Decode::float(Decode::required($data, 'submittedAt', $path), $path . '.submittedAt'),
             tenantId: Decode::string(Decode::required($data, 'tenantId', $path), $path . '.tenantId'),
-            tracking: Decode::nullable(
-                Decode::required($data, 'tracking', $path),
-                $path . '.tracking',
-                static fn(mixed $v, string $p): OrdersErasePersonalDataResponseTracking => OrdersErasePersonalDataResponseTracking::fromArray(Decode::object($v, $p), $p),
-            ),
             updatedAt: Decode::float(Decode::required($data, 'updatedAt', $path), $path . '.updatedAt'),
-            variant: Decode::nullable(
-                Decode::required($data, 'variant', $path),
-                $path . '.variant',
-                static fn(mixed $v, string $p): OrdersErasePersonalDataResponseVariant => OrdersErasePersonalDataResponseVariant::fromArray(Decode::object($v, $p), $p),
-            ),
-            variantRef: Decode::nullable(
-                Decode::required($data, 'variantRef', $path),
-                $path . '.variantRef',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
         );
         $model->decoded = $data;
         return $model;
@@ -245,42 +166,42 @@ final class OrdersErasePersonalDataResponse implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['adapter'] = $this->adapter;
-        $data['blank'] = $this->blank === null ? null : Encode::model($this->blank);
-        $data['blankId'] = $this->blankId;
+        $data['canErase'] = $this->canErase;
+        $data['createdAt'] = $this->createdAt;
         $data['delivery'] = $this->delivery === null ? null : Encode::model($this->delivery);
-        $data['designId'] = $this->designId;
-        $data['externalOrderRef'] = $this->externalOrderRef;
+        $data['deliveryChangeRefusal'] = $this->deliveryChangeRefusal === null ? null : Encode::value($this->deliveryChangeRefusal);
+        $data['deliveryChanges'] = array_map(
+            static fn(OrdersErasePersonalDataResponseDeliveryChangesItem $v): mixed => Encode::model($v),
+            $this->deliveryChanges,
+        );
+        $data['erasable'] = $this->erasable;
         $data['externalRef'] = $this->externalRef;
-        $data['failureKind'] = $this->failureKind;
+        $data['history'] = array_map(
+            static fn(OrdersErasePersonalDataResponseHistoryItem $v): mixed => Encode::model($v),
+            $this->history,
+        );
         $data['hold'] = $this->hold === null ? null : Encode::model($this->hold);
         $data['id'] = $this->id;
-        $data['lastCheckedAt'] = $this->lastCheckedAt;
-        $data['lastError'] = $this->lastError;
-        $data['personalDataErasedAt'] = $this->personalDataErasedAt;
-        $data['printId'] = $this->printId;
-        $data['printIds'] = $this->printIds;
-        $data['prints'] = array_map(
-            static fn(OrdersErasePersonalDataResponsePrintsItemOption1|OrdersErasePersonalDataResponsePrintsItemOption2 $v): mixed => Encode::value($v),
-            $this->prints,
+        $data['items'] = array_map(
+            static fn(OrdersErasePersonalDataResponseItemsItem $v): mixed => Encode::model($v),
+            $this->items,
         );
-        $data['printshopAsPlaced'] = $this->printshopAsPlaced === null ? null : Encode::model($this->printshopAsPlaced);
-        $data['printshopConnectionId'] = $this->printshopConnectionId;
-        $data['printshopName'] = $this->printshopName;
-        $data['quantity'] = $this->quantity;
+        $data['parcels'] = array_map(
+            static fn(OrdersErasePersonalDataResponseParcelsItem $v): mixed => Encode::model($v),
+            $this->parcels,
+        );
+        $data['personalDataErasedAt'] = $this->personalDataErasedAt;
+        $data['printshopOrders'] = array_map(
+            static fn(OrdersErasePersonalDataResponsePrintshopOrdersItem $v): mixed => Encode::model($v),
+            $this->printshopOrders,
+        );
         $data['recipient'] = $this->recipient === null ? null : Encode::model($this->recipient);
-        $data['replacedByOrderId'] = $this->replacedByOrderId;
-        $data['replacesOrderId'] = $this->replacesOrderId;
+        $data['recipientEmailBounced'] = $this->recipientEmailBounced;
         $data['shipTo'] = $this->shipTo === null ? null : Encode::model($this->shipTo);
         $data['shippingAddress'] = $this->shippingAddress === null ? null : Encode::model($this->shippingAddress);
-        $data['spotOutput'] = $this->spotOutput;
         $data['status'] = $this->status;
-        $data['submittedAt'] = $this->submittedAt;
         $data['tenantId'] = $this->tenantId;
-        $data['tracking'] = $this->tracking === null ? null : Encode::model($this->tracking);
         $data['updatedAt'] = $this->updatedAt;
-        $data['variant'] = $this->variant === null ? null : Encode::model($this->variant);
-        $data['variantRef'] = $this->variantRef;
         return $data;
     }
 }

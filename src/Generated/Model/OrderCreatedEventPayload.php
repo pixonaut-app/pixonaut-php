@@ -22,18 +22,13 @@ final class OrderCreatedEventPayload implements Model
 
     /**
      * @param string|null $externalRef
-     * @param list<string> $printIds
-     * @param string|null $replacesOrderId
+     * @param list<string> $itemIds
      * @param string $status Values: {@see \Pixonaut\Sdk\Generated\Enum\OrderCreatedEventPayloadStatus}.
      */
     public function __construct(
-        public readonly string $adapter,
         public readonly ?string $externalRef,
+        public readonly array $itemIds,
         public readonly string $orderId,
-        public readonly string $printId,
-        public readonly array $printIds,
-        public readonly int $quantity,
-        public readonly ?string $replacesOrderId,
         public readonly string $status,
     ) {}
 
@@ -48,25 +43,17 @@ final class OrderCreatedEventPayload implements Model
     public static function fromArray(array $data, string $path = '$'): self
     {
         $model = new self(
-            adapter: Decode::string(Decode::required($data, 'adapter', $path), $path . '.adapter'),
             externalRef: Decode::nullable(
                 Decode::required($data, 'externalRef', $path),
                 $path . '.externalRef',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            itemIds: Decode::list(
+                Decode::required($data, 'itemIds', $path),
+                $path . '.itemIds',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             orderId: Decode::string(Decode::required($data, 'orderId', $path), $path . '.orderId'),
-            printId: Decode::string(Decode::required($data, 'printId', $path), $path . '.printId'),
-            printIds: Decode::list(
-                Decode::required($data, 'printIds', $path),
-                $path . '.printIds',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
-            quantity: Decode::int(Decode::required($data, 'quantity', $path), $path . '.quantity'),
-            replacesOrderId: Decode::nullable(
-                Decode::required($data, 'replacesOrderId', $path),
-                $path . '.replacesOrderId',
-                static fn(mixed $v, string $p): string => Decode::string($v, $p),
-            ),
             status: Decode::string(Decode::required($data, 'status', $path), $path . '.status'),
         );
         $model->decoded = $data;
@@ -87,13 +74,9 @@ final class OrderCreatedEventPayload implements Model
     public function toArray(): array
     {
         $data = [];
-        $data['adapter'] = $this->adapter;
         $data['externalRef'] = $this->externalRef;
+        $data['itemIds'] = $this->itemIds;
         $data['orderId'] = $this->orderId;
-        $data['printId'] = $this->printId;
-        $data['printIds'] = $this->printIds;
-        $data['quantity'] = $this->quantity;
-        $data['replacesOrderId'] = $this->replacesOrderId;
         $data['status'] = $this->status;
         return $data;
     }

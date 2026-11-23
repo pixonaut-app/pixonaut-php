@@ -92,7 +92,7 @@ final class FakePixonautTest extends TestCase
         $fake = new FakePixonaut();
 
         $none = $fake->sendRequest(new Request('GET', '/v1/events'));
-        $wrong = $fake->sendRequest(new Request('POST', '/v1/orders', ['Authorization' => 'Bearer pk_1', 'Content-Type' => 'application/json', 'Idempotency-Key' => 'k1'], '{}'));
+        $wrong = $fake->sendRequest(new Request('POST', '/v1/orders', ['Authorization' => 'Bearer pk_1', 'Content-Type' => 'application/json', 'Idempotency-Key' => 'k1'], '{"items":[{"prints":[{"printId":"print_1"}]}]}'));
 
         self::assertSame([401, 403], [$none->getStatusCode(), $wrong->getStatusCode()]);
         self::assertSame([

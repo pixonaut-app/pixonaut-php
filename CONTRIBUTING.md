@@ -133,7 +133,7 @@ It holds:
 
 - `Model/`: one `final class` per component schema and per object schema of
   a request or response body, named after the operation and its place
-  (`OrdersCreateRequestPrint`). `fromArray()` checks the fields this release
+  (`OrdersCreateRequestItemsItem`). `fromArray()` checks the fields this release
   knows and throws `UnexpectedResponse` naming the JSON path; unknown fields
   stay in `raw()`. `toArray()` gives what a request sends: an optional field
   that may be `null` defaults to `Omitted::Field` and is left out, so `null`

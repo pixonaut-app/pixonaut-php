@@ -12,7 +12,8 @@ use Pixonaut\Sdk\Generated\Model\DesignsApproveRequest;
 use Pixonaut\Sdk\Generated\Model\DesignsApproveRequestConsent;
 use Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption1;
 use Pixonaut\Sdk\Generated\Model\OrdersCreateRequest;
-use Pixonaut\Sdk\Generated\Model\OrdersCreateRequestPrintsItem;
+use Pixonaut\Sdk\Generated\Model\OrdersCreateRequestItemsItem;
+use Pixonaut\Sdk\Generated\Model\OrdersCreateRequestItemsItemPrintsItem;
 use Pixonaut\Sdk\Generated\Model\OrdersCreateRequestRecipient;
 use Pixonaut\Sdk\Generated\Model\OrdersCreateRequestShippingAddress;
 use Pixonaut\Sdk\Http\PreparedRequest;
@@ -61,7 +62,7 @@ final class StoreFlowTest extends TestCase
         // lost answer sends the stored request, the same bytes under the same key.
         $prepared = $pixonaut->orders()->prepareCreate(new OrdersCreateRequest(
             externalRef: 'WEB-10482',
-            prints: [new OrdersCreateRequestPrintsItem(printId: 'print_1')],
+            items: [new OrdersCreateRequestItemsItem(prints: [new OrdersCreateRequestItemsItemPrintsItem(printId: 'print_1')])],
             recipient: new OrdersCreateRequestRecipient(name: 'Alexandra Lind', email: 'alexandra.lind@example.com'),
             shippingAddress: new OrdersCreateRequestShippingAddress(city: 'London', country: 'GB', line1: '12 High Street', postalCode: 'SW1A 1AA'),
         ));
@@ -107,7 +108,7 @@ final class StoreFlowTest extends TestCase
         $client->answerJson(201, ['orderId' => 'o_1']);
 
         try {
-            $client->pixonaut->orders()->create(new OrdersCreateRequest(externalRef: 'WEB-1'));
+            $client->pixonaut->orders()->create(new OrdersCreateRequest(items: [new OrdersCreateRequestItemsItem(prints: [new OrdersCreateRequestItemsItemPrintsItem(printId: 'print_1')])], externalRef: 'WEB-1'));
             self::fail('The answer was read.');
         } catch (ApiException $e) {
             self::assertSame(ApiException::UNEXPECTED_RESPONSE, $e->errorCode);

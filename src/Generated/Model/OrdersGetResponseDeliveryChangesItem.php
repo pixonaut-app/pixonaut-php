@@ -27,6 +27,7 @@ final class OrdersGetResponseDeliveryChangesItem implements Model
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\OrdersGetResponseDeliveryChangesItemBy}.
      * @param string $outcome What the printshop made of it at `at`: a change `sending` is listed again once it is answered.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\OrdersGetResponseDeliveryChangesItemOutcome}.
+     * @param string|null $printshopOrderId The printshop order whose printshop gave this outcome: an order sent to several printshops lists each one's answer. Null where no printshop order held the item yet.
      * @param string|null $words The printshop's own answer to a refused change.
      */
     public function __construct(
@@ -34,6 +35,7 @@ final class OrdersGetResponseDeliveryChangesItem implements Model
         public readonly float $at,
         public readonly string $by,
         public readonly string $outcome,
+        public readonly ?string $printshopOrderId,
         public readonly ?string $words,
     ) {}
 
@@ -52,6 +54,11 @@ final class OrdersGetResponseDeliveryChangesItem implements Model
             at: Decode::float(Decode::required($data, 'at', $path), $path . '.at'),
             by: Decode::string(Decode::required($data, 'by', $path), $path . '.by'),
             outcome: Decode::string(Decode::required($data, 'outcome', $path), $path . '.outcome'),
+            printshopOrderId: Decode::nullable(
+                Decode::required($data, 'printshopOrderId', $path),
+                $path . '.printshopOrderId',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             words: Decode::nullable(
                 Decode::required($data, 'words', $path),
                 $path . '.words',
@@ -80,6 +87,7 @@ final class OrdersGetResponseDeliveryChangesItem implements Model
         $data['at'] = $this->at;
         $data['by'] = $this->by;
         $data['outcome'] = $this->outcome;
+        $data['printshopOrderId'] = $this->printshopOrderId;
         $data['words'] = $this->words;
         return $data;
     }

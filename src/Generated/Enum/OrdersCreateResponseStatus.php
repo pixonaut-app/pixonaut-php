@@ -7,6 +7,8 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Enum;
 
 /**
+ * The order's status, read from its items': `held` while the plan's month has no room for it, `open`, `partly_shipped` once a parcel has left, `shipped` when every item has, `needs_attention` when an item failed or its outcome is unknown, `cancelled` when every item is, `done` when every item has shipped or been cancelled.
+ *
  * The values this release knows. The field is a string, and the API may answer a value added after this release.
  *
  * Schema: `POST /v1/orders answer 201: $.status`.
@@ -15,34 +17,28 @@ final class OrdersCreateResponseStatus
 {
     public const HELD = 'held';
 
-    public const AWAITING_PRINTS = 'awaiting_prints';
+    public const OPEN = 'open';
 
-    public const SUBMITTED = 'submitted';
-
-    public const QUEUED = 'queued';
-
-    public const PRINTED = 'printed';
+    public const PARTLY_SHIPPED = 'partly_shipped';
 
     public const SHIPPED = 'shipped';
 
-    public const FAILED = 'failed';
-
-    public const OUTCOME_UNKNOWN = 'outcome_unknown';
+    public const NEEDS_ATTENTION = 'needs_attention';
 
     public const CANCELLED = 'cancelled';
+
+    public const DONE = 'done';
 
     /**
      * Every value this release knows.
      */
     public const KNOWN = [
         self::HELD,
-        self::AWAITING_PRINTS,
-        self::SUBMITTED,
-        self::QUEUED,
-        self::PRINTED,
+        self::OPEN,
+        self::PARTLY_SHIPPED,
         self::SHIPPED,
-        self::FAILED,
-        self::OUTCOME_UNKNOWN,
+        self::NEEDS_ATTENTION,
         self::CANCELLED,
+        self::DONE,
     ];
 }

@@ -31,17 +31,18 @@ final class BlanksListResponseBlanksItemPlacementsItem implements Model
      * @param list<BlanksListResponseBlanksItemPlacementsItemViewsItem> $views The ways the placement is photographed, such as Flat or On model. Every photo of one view shares its pixel size and its print area.
      * @param list<BlanksListResponseBlanksItemPlacementsItemAreasItem>|null $areas The placement's print area per row of the blank's `areasVaryBy` options, such as one per size; omitted or empty, one print area, its own. maxWidthMm and maxHeightMm are then the widest and tallest row.
      * @param float|null $bleedMm Bleed past the trim on each side, in millimetres, 0 to 50. Omitted, its category's, else the workspace's.
-     * @param string|null $coverage How a print covers the placement: `within`, any size up to the maximum, placed inside it, or `full`, the whole area, such as an all-over-print panel. Omitted, `within`. A `full` placement's size is its area; a smaller one is refused `print_size_not_area`.
+     * @param string|null $coverage `within` (omitted): a print of any size up to the maximum, placed inside it; `full`: the whole area, such as an all-over panel, a smaller print refused `print_size_not_area`.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemCoverage}.
      * @param int|null $dpi Print resolution in dots per inch. Omitted, its category's, else 300.
      * @param string|null $fillColour The `#rrggbb` colour an optional placement left undesigned is printed or delivered as. Null or omitted for none.
-     * @param BlanksListResponseBlanksItemPlacementsItemFlatLayout|null $flatLayout How the product is printed flat on one sheet and folded into shape, such as a folding box: its print area is the sheet, printed edge to edge (`coverage` `full`) at one size. Null or omitted, it is printed as it lies.
+     * @param BlanksListResponseBlanksItemPlacementsItemFlatLayout|null $flatLayout A product printed flat on one sheet and folded, such as a folding box: its print area is the sheet, `coverage` `full`, one size. Null or omitted: printed as it lies.
      * @param float|null $foldMm How far in from the trim the product folds on every side, in millimetres, such as a canvas's wrap round its frame; the designer draws fold lines there. Omitted, no fold.
-     * @param list<BlanksListResponseBlanksItemPlacementsItemGarmentsItem>|null $garments Where the placement sits on each stock item the blank's scenes show, one record per item: the item, a garment area of it, and the print's top left and width on it in millimetres. A scene item with no record draws none of it. Refused `placement_garment_area_unknown` for an unknown item or area, `placement_garment_outside_area` past the area.
-     * @param BlanksListResponseBlanksItemPlacementsItemLinkWith|null $linkWith The placement it is linked with by default, such as a right sleeve with the left one: one design drives both unless a designer link, an SDK mount or a design says otherwise. Null or omitted for none, as when the linked one leaves the blank.
+     * @param list<BlanksListResponseBlanksItemPlacementsItemGarmentsItem>|null $garments Where the placement sits on each stock item the blank's scenes show: per item, a garment area of it and the print's top left and width on it in mm. Refused `placement_garment_area_unknown` (unknown item or area), `placement_garment_outside_area` (past the area).
+     * @param BlanksListResponseBlanksItemPlacementsItemLinkWith|null $linkWith The placement linked by default, such as a right sleeve with the left: one design drives both unless a link, mount or design says otherwise. Null or omitted: none.
+     * @param BlanksListResponseBlanksItemPlacementsItemPages|null $pages Printed as many pages, each this print area (a notebook's inner pages); an order holds one print a page. One a blank at most. Omitted: one page.
      * @param string|null $printMethod How this placement is printed, such as dtg or screen. Omitted, its category's.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemPrintMethod}.
-     * @param bool|null $required Whether an order on the blank must print it: one without a print for it is refused `placement_unfilled`. Omitted is false; a printshop-bound blank takes it from the printshop.
+     * @param bool|null $required Whether an order on the blank must print it, refused `placement_unfilled` without. Omitted: false; a printshop-bound blank takes it from the printshop.
      * @param float|null $safeAreaMm Safe area inside the trim on each side, in millimetres, 0 to 50. Omitted, its category's, else the workspace's.
      * @param BlanksListResponseBlanksItemPlacementsItemShape|null $shape Where on the product a print may go when that is not the whole rectangle: nothing is printed outside the outline or in a cut-out. Null or omitted, the whole rectangle.
      * @param string|null $shopName Printed as: the name the blank's printshop knows the placement by, on orders and job sheets. Null or omitted prints the placement's name.
@@ -63,6 +64,7 @@ final class BlanksListResponseBlanksItemPlacementsItem implements Model
         public readonly ?float $foldMm = null,
         public readonly ?array $garments = null,
         public readonly ?BlanksListResponseBlanksItemPlacementsItemLinkWith $linkWith = null,
+        public readonly ?BlanksListResponseBlanksItemPlacementsItemPages $pages = null,
         public readonly ?string $printMethod = null,
         public readonly ?bool $required = null,
         public readonly ?float $safeAreaMm = null,
@@ -120,6 +122,11 @@ final class BlanksListResponseBlanksItemPlacementsItem implements Model
                 $data['linkWith'],
                 $path . '.linkWith',
                 static fn(mixed $v, string $p): BlanksListResponseBlanksItemPlacementsItemLinkWith => BlanksListResponseBlanksItemPlacementsItemLinkWith::fromArray(Decode::object($v, $p), $p),
+            ) : null,
+            pages: array_key_exists('pages', $data) ? Decode::nullable(
+                $data['pages'],
+                $path . '.pages',
+                static fn(mixed $v, string $p): BlanksListResponseBlanksItemPlacementsItemPages => BlanksListResponseBlanksItemPlacementsItemPages::fromArray(Decode::object($v, $p), $p),
             ) : null,
             printMethod: array_key_exists('printMethod', $data) ? Decode::string($data['printMethod'], $path . '.printMethod') : null,
             required: array_key_exists('required', $data) ? Decode::bool($data['required'], $path . '.required') : null,
@@ -195,6 +202,9 @@ final class BlanksListResponseBlanksItemPlacementsItem implements Model
         }
         if ($this->linkWith !== null) {
             $data['linkWith'] = Encode::model($this->linkWith);
+        }
+        if ($this->pages !== null) {
+            $data['pages'] = Encode::model($this->pages);
         }
         if ($this->printMethod !== null) {
             $data['printMethod'] = $this->printMethod;

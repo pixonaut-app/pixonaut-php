@@ -27,6 +27,7 @@ final class PrintshopCatalogueProductsListResponseProductsItem implements Model
      * @param PrintshopCatalogueProductsListResponseProductsItemHolds $holds What the product holds: how many colours, sizes and variants it is sold in; each null when the partner did not say.
      * @param string|null $imageUrl
      * @param string|null $importedBlankId The blank it was imported as through this connection, the latest when there are several; null when it has not been.
+     * @param PrintshopCatalogueProductsListResponseProductsItemMadeIn|null $madeIn Where the printshop makes the product; null when the printshop does not say, which no made-in filter answers.
      * @param string|null $productKind What kind of product the printshop's data says it is, as the product's options answer it; null where the data does not say, and an import then takes the merchant's own word for a garment as `garmentCut`.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind}.
      */
@@ -37,6 +38,7 @@ final class PrintshopCatalogueProductsListResponseProductsItem implements Model
         public readonly PrintshopCatalogueProductsListResponseProductsItemHolds $holds,
         public readonly ?string $imageUrl,
         public readonly ?string $importedBlankId,
+        public readonly ?PrintshopCatalogueProductsListResponseProductsItemMadeIn $madeIn,
         public readonly string $name,
         public readonly string $productId,
         public readonly ?string $productKind,
@@ -75,6 +77,11 @@ final class PrintshopCatalogueProductsListResponseProductsItem implements Model
                 $path . '.importedBlankId',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            madeIn: Decode::nullable(
+                Decode::required($data, 'madeIn', $path),
+                $path . '.madeIn',
+                static fn(mixed $v, string $p): PrintshopCatalogueProductsListResponseProductsItemMadeIn => PrintshopCatalogueProductsListResponseProductsItemMadeIn::fromArray(Decode::object($v, $p), $p),
+            ),
             name: Decode::string(Decode::required($data, 'name', $path), $path . '.name'),
             productId: Decode::string(Decode::required($data, 'productId', $path), $path . '.productId'),
             productKind: Decode::nullable(
@@ -107,6 +114,7 @@ final class PrintshopCatalogueProductsListResponseProductsItem implements Model
         $data['holds'] = Encode::model($this->holds);
         $data['imageUrl'] = $this->imageUrl;
         $data['importedBlankId'] = $this->importedBlankId;
+        $data['madeIn'] = $this->madeIn === null ? null : Encode::model($this->madeIn);
         $data['name'] = $this->name;
         $data['productId'] = $this->productId;
         $data['productKind'] = $this->productKind;

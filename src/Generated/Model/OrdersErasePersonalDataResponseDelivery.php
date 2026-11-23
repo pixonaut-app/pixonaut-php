@@ -11,7 +11,7 @@ use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * The order's latest address change, made with `PATCH /v1/orders/{id}/delivery` after the order was sent; `null` for an order whose address never changed.
+ * The order's latest address change, made with `PATCH /v1/orders/{id}/delivery` after it was sent; `null` for an order whose address never changed.
  *
  * Schema: `POST /v1/orders/{id}/erase-personal-data answer 200: $.delivery`.
  */
@@ -23,10 +23,9 @@ final class OrdersErasePersonalDataResponseDelivery implements Model
     private ?array $decoded = null;
 
     /**
-     * @param float $at When the change was made.
-     * @param string $state What the printshop made of the change: `sending` while it is being told, `accepted`, `refused` (the order keeps the address the printshop has), or `carried` when what the printshop had not been sent yet carries the new address, so nothing extra was sent.
+     * @param string $state What its printshops made of the change: one `state` they share, or `partial` when some took it and some refused.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\OrdersErasePersonalDataResponseDeliveryState}.
-     * @param string|null $words The printshop's own answer to a refused change; `null` otherwise.
+     * @param string|null $words
      */
     public function __construct(
         public readonly float $at,
