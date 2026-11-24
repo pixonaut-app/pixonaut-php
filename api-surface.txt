@@ -7650,6 +7650,7 @@ Pixonaut\Sdk\Generated\ErrorCode::CONVERSATION_NOT_FOUND const
 Pixonaut\Sdk\Generated\ErrorCode::COPY_IN_PROGRESS const
 Pixonaut\Sdk\Generated\ErrorCode::CORRECTION_PROOF const
 Pixonaut\Sdk\Generated\ErrorCode::COST_REGION_UNSET const
+Pixonaut\Sdk\Generated\ErrorCode::COVER_NOT_AT_PAGE_COUNT const
 Pixonaut\Sdk\Generated\ErrorCode::CUT_OUT_EXHAUSTED const
 Pixonaut\Sdk\Generated\ErrorCode::CUT_OUT_NOT_OFFERED const
 Pixonaut\Sdk\Generated\ErrorCode::CUT_OUT_UNAVAILABLE const
@@ -7792,7 +7793,10 @@ Pixonaut\Sdk\Generated\ErrorCode::ORIGINS_NOT_ALLOWED const
 Pixonaut\Sdk\Generated\ErrorCode::ORIGIN_FORBIDDEN const
 Pixonaut\Sdk\Generated\ErrorCode::PAGE_COUNT_OUT_OF_RANGE const
 Pixonaut\Sdk\Generated\ErrorCode::PAGE_MISSING const
+Pixonaut\Sdk\Generated\ErrorCode::PAGE_NOT_AS_PROOFED const
 Pixonaut\Sdk\Generated\ErrorCode::PAGE_ON_UNPAGED_PLACEMENT const
+Pixonaut\Sdk\Generated\ErrorCode::PAGE_ORDERED_ALONE const
+Pixonaut\Sdk\Generated\ErrorCode::PAGE_REQUIRED const
 Pixonaut\Sdk\Generated\ErrorCode::PALETTE_CHANGED const
 Pixonaut\Sdk\Generated\ErrorCode::PARCELS_BY_PRINTSHOP const
 Pixonaut\Sdk\Generated\ErrorCode::PARCEL_EXCEEDS_QUANTITY const
@@ -7856,6 +7860,7 @@ Pixonaut\Sdk\Generated\ErrorCode::PROOF_EXPIRED const
 Pixonaut\Sdk\Generated\ErrorCode::PROOF_NOT_FOR_DESIGN const
 Pixonaut\Sdk\Generated\ErrorCode::PROOF_NOT_FOUND const
 Pixonaut\Sdk\Generated\ErrorCode::PROOF_OUTDATED const
+Pixonaut\Sdk\Generated\ErrorCode::PROOF_SET_EXPIRED const
 Pixonaut\Sdk\Generated\ErrorCode::PUBLISH_FORBIDDEN const
 Pixonaut\Sdk\Generated\ErrorCode::PUBLISH_GATE_FAILED const
 Pixonaut\Sdk\Generated\ErrorCode::PUBLISH_REFERENCES_UNAVAILABLE const
@@ -7917,6 +7922,7 @@ Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_LAYOUT const
 Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_PLACEMENT const
 Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_PRINTSHOP const
 Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_PROOF const
+Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_PROOF_SET const
 Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_REGION const
 Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_UPLOAD const
 Pixonaut\Sdk\Generated\ErrorCode::UNKNOWN_VARIANT const
@@ -12341,16 +12347,24 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$bleedMm 
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$dpi readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$foldMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$pages readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemPages
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$row readonly array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$safeAreaMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$shape readonly ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemShape
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$usualHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$usualWidthMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::$widthMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $bleedMm = null, ?int $dpi = null, ?float $foldMm = null, ?float $safeAreaMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemShape $shape = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $bleedMm = null, ?int $dpi = null, ?float $foldMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemPages $pages = null, ?float $safeAreaMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemShape $shape = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemPages implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemPages::$max readonly int
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemPages::$min readonly int
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemPages::__construct(int $max, int $min)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemPages::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemPages static
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemPages::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemPages::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemShape implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemShape::$cutByPrintShop readonly ?bool
 Pixonaut\Sdk\Generated\Model\BlanksGetResponsePlacementsItemAreasItemShape::$dFrac readonly string
@@ -13181,16 +13195,24 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$dpi readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$foldMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$pages readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemPages
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$row readonly array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$safeAreaMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$shape readonly ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemShape
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$usualHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$usualWidthMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::$widthMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $bleedMm = null, ?int $dpi = null, ?float $foldMm = null, ?float $safeAreaMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemShape $shape = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $bleedMm = null, ?int $dpi = null, ?float $foldMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemPages $pages = null, ?float $safeAreaMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemShape $shape = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemPages implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemPages::$max readonly int
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemPages::$min readonly int
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemPages::__construct(int $max, int $min)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemPages::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemPages static
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemPages::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemPages::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemShape implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemShape::$cutByPrintShop readonly ?bool
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemPlacementsItemAreasItemShape::$dFrac readonly string
@@ -15826,6 +15848,8 @@ Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$garmentTone read
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$id readonly string
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$language readonly string
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$origin readonly Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponseOrigin
+Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$page readonly ?int
+Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$pageCount readonly ?int
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$personalDataErasedAt readonly ?float
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$pickedColours readonly ?array
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$placementId readonly ?string
@@ -15847,7 +15871,7 @@ Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$templateName rea
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$templateVersion readonly ?int
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$tenantId readonly string
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$variantRow readonly ?array
-Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::__construct(?string $apiKeyId, ?Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponseApprovalConsent $approvalConsent, ?float $approveAfter, ?float $approvedAt, ?string $approvedVia, ?string $blankId, float $committedAt, bool $deletable, mixed $doc, ?string $duplicatedFrom, ?string $externalRef, mixed $fulfilmentPayload, string $garmentTone, string $id, string $language, Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponseOrigin $origin, ?float $personalDataErasedAt, ?array $pickedColours, ?string $placementId, ?bool $previewOpened, ?Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponsePrintSize $printSize, ?string $proofId, ?int $proofRevision, ?string $proofVariant, ?string $proofViewId, ?string $rejectionReason, int $revision, ?string $shareLinkId, bool $standing, string $status, string $templateBaseId, bool $templateDeleted, string $templateId, ?string $templateName, ?int $templateVersion, string $tenantId, ?array $variantRow)
+Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::__construct(?string $apiKeyId, ?Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponseApprovalConsent $approvalConsent, ?float $approveAfter, ?float $approvedAt, ?string $approvedVia, ?string $blankId, float $committedAt, bool $deletable, mixed $doc, ?string $duplicatedFrom, ?string $externalRef, mixed $fulfilmentPayload, string $garmentTone, string $id, string $language, Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponseOrigin $origin, ?int $page, ?int $pageCount, ?float $personalDataErasedAt, ?array $pickedColours, ?string $placementId, ?bool $previewOpened, ?Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponsePrintSize $printSize, ?string $proofId, ?int $proofRevision, ?string $proofVariant, ?string $proofViewId, ?string $rejectionReason, int $revision, ?string $shareLinkId, bool $standing, string $status, string $templateBaseId, bool $templateDeleted, string $templateId, ?string $templateName, ?int $templateVersion, string $tenantId, ?array $variantRow)
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse static
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::toArray(): array
@@ -15960,6 +15984,8 @@ Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$hasPrint readonly bool
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$id readonly string
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$language readonly string
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$origin readonly Pixonaut\Sdk\Generated\Model\DesignsGetResponseOrigin
+Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$page readonly ?int
+Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$pageCount readonly ?int
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$personalDataErasedAt readonly ?float
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$pickedColours readonly ?array
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$pictureUrl readonly ?string
@@ -15982,7 +16008,7 @@ Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$templateName readonly ?string
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$templateVersion readonly ?int
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$tenantId readonly string
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$variantRow readonly ?array
-Pixonaut\Sdk\Generated\Model\DesignsGetResponse::__construct(?string $apiKeyId, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponseApprovalConsent $approvalConsent, ?float $approveAfter, ?float $approvedAt, ?string $approvedVia, ?string $blankId, bool $canDecide, bool $canEdit, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponseChangeRequest $changeRequest, ?array $choices, float $committedAt, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponseCorrectionForm $correctionForm, bool $deletable, mixed $doc, ?string $duplicatedFrom, bool $editable, ?string $externalRef, mixed $fulfilmentPayload, string $garmentTone, bool $hasOrder, bool $hasPrint, string $id, string $language, Pixonaut\Sdk\Generated\Model\DesignsGetResponseOrigin $origin, ?float $personalDataErasedAt, ?array $pickedColours, ?string $pictureUrl, ?string $placementId, ?bool $previewOpened, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponsePrintSize $printSize, ?string $proofId, ?int $proofRevision, ?string $proofVariant, ?string $proofViewId, ?string $rejectionReason, int $revision, ?string $shareLinkId, bool $standing, string $status, string $templateBaseId, bool $templateDeleted, string $templateId, ?string $templateName, ?int $templateVersion, string $tenantId, ?array $variantRow)
+Pixonaut\Sdk\Generated\Model\DesignsGetResponse::__construct(?string $apiKeyId, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponseApprovalConsent $approvalConsent, ?float $approveAfter, ?float $approvedAt, ?string $approvedVia, ?string $blankId, bool $canDecide, bool $canEdit, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponseChangeRequest $changeRequest, ?array $choices, float $committedAt, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponseCorrectionForm $correctionForm, bool $deletable, mixed $doc, ?string $duplicatedFrom, bool $editable, ?string $externalRef, mixed $fulfilmentPayload, string $garmentTone, bool $hasOrder, bool $hasPrint, string $id, string $language, Pixonaut\Sdk\Generated\Model\DesignsGetResponseOrigin $origin, ?int $page, ?int $pageCount, ?float $personalDataErasedAt, ?array $pickedColours, ?string $pictureUrl, ?string $placementId, ?bool $previewOpened, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponsePrintSize $printSize, ?string $proofId, ?int $proofRevision, ?string $proofVariant, ?string $proofViewId, ?string $rejectionReason, int $revision, ?string $shareLinkId, bool $standing, string $status, string $templateBaseId, bool $templateDeleted, string $templateId, ?string $templateName, ?int $templateVersion, string $tenantId, ?array $variantRow)
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsGetResponse static
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::toArray(): array
@@ -17203,6 +17229,7 @@ Pixonaut\Sdk\Generated\Model\OrdersCancelResponseParcelsItemTracking::raw(): arr
 Pixonaut\Sdk\Generated\Model\OrdersCancelResponseParcelsItemTracking::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::$cancelsItems readonly bool
 Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::$itemIds readonly array
@@ -17211,7 +17238,7 @@ Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::$parts rea
 Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::$printshopConnectionId readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::$printshopName readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::$submittedAt readonly float
-Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::__construct(string $adapter, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
+Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::__construct(string $adapter, bool $cancelsItems, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
 Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem static
 Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersCancelResponsePrintshopOrdersItem::toArray(): array
@@ -17627,6 +17654,7 @@ Pixonaut\Sdk\Generated\Model\OrdersCreateResponseParcelsItemTracking::raw(): arr
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponseParcelsItemTracking::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::$cancelsItems readonly bool
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::$itemIds readonly array
@@ -17635,7 +17663,7 @@ Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::$parts rea
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::$printshopConnectionId readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::$printshopName readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::$submittedAt readonly float
-Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::__construct(string $adapter, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
+Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::__construct(string $adapter, bool $cancelsItems, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem static
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersCreateResponsePrintshopOrdersItem::toArray(): array
@@ -18056,6 +18084,7 @@ Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponseParcelsItemTracking::ra
 Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponseParcelsItemTracking::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::$cancelsItems readonly bool
 Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::$itemIds readonly array
@@ -18064,7 +18093,7 @@ Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::$p
 Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::$printshopConnectionId readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::$printshopName readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::$submittedAt readonly float
-Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::__construct(string $adapter, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
+Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::__construct(string $adapter, bool $cancelsItems, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
 Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem static
 Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersDeliveryUpdateResponsePrintshopOrdersItem::toArray(): array
@@ -18423,6 +18452,7 @@ Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponseParcelsItemTracking:
 Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponseParcelsItemTracking::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::$cancelsItems readonly bool
 Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::$itemIds readonly array
@@ -18431,7 +18461,7 @@ Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem:
 Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::$printshopConnectionId readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::$printshopName readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::$submittedAt readonly float
-Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::__construct(string $adapter, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
+Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::__construct(string $adapter, bool $cancelsItems, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
 Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem static
 Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersErasePersonalDataResponsePrintshopOrdersItem::toArray(): array
@@ -18790,6 +18820,7 @@ Pixonaut\Sdk\Generated\Model\OrdersGetResponseParcelsItemTracking::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersGetResponseParcelsItemTracking::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::$cancelsItems readonly bool
 Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::$itemIds readonly array
@@ -18798,7 +18829,7 @@ Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::$parts readon
 Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::$printshopConnectionId readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::$printshopName readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::$submittedAt readonly float
-Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::__construct(string $adapter, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
+Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::__construct(string $adapter, bool $cancelsItems, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
 Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem static
 Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersGetResponsePrintshopOrdersItem::toArray(): array
@@ -19158,6 +19189,7 @@ Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponseParcelsItemTracking::raw()
 Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponseParcelsItemTracking::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::$cancelsItems readonly bool
 Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::$itemIds readonly array
@@ -19166,7 +19198,7 @@ Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::$part
 Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::$printshopConnectionId readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::$printshopName readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::$submittedAt readonly float
-Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::__construct(string $adapter, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
+Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::__construct(string $adapter, bool $cancelsItems, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
 Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem static
 Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersItemsCancelResponsePrintshopOrdersItem::toArray(): array
@@ -19540,6 +19572,7 @@ Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponseParcelsItemTracking::raw(
 Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponseParcelsItemTracking::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::$cancelsItems readonly bool
 Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::$itemIds readonly array
@@ -19548,7 +19581,7 @@ Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::$par
 Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::$printshopConnectionId readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::$printshopName readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::$submittedAt readonly float
-Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::__construct(string $adapter, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
+Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::__construct(string $adapter, bool $cancelsItems, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
 Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem static
 Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersItemsRerouteResponsePrintshopOrdersItem::toArray(): array
@@ -20044,6 +20077,7 @@ Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponseParcelsItemTracking::raw():
 Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponseParcelsItemTracking::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::$cancelsItems readonly bool
 Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::$itemIds readonly array
@@ -20052,7 +20086,7 @@ Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::$parts
 Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::$printshopConnectionId readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::$printshopName readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::$submittedAt readonly float
-Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::__construct(string $adapter, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
+Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::__construct(string $adapter, bool $cancelsItems, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
 Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem static
 Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersItemsRetryResponsePrintshopOrdersItem::toArray(): array
@@ -20599,6 +20633,7 @@ Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponseParcelsItemTracking::raw
 Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponseParcelsItemTracking::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::$cancelsItems readonly bool
 Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::$itemIds readonly array
@@ -20607,7 +20642,7 @@ Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::$pa
 Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::$printshopConnectionId readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::$printshopName readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::$submittedAt readonly float
-Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::__construct(string $adapter, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
+Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::__construct(string $adapter, bool $cancelsItems, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
 Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem static
 Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersParcelsCreateResponsePrintshopOrdersItem::toArray(): array
@@ -22702,6 +22737,7 @@ Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponseParcelsItemTrack
 Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponseParcelsItemTracking::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::$cancelsItems readonly bool
 Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::$itemIds readonly array
@@ -22710,7 +22746,7 @@ Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersI
 Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::$printshopConnectionId readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::$printshopName readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::$submittedAt readonly float
-Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::__construct(string $adapter, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
+Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::__construct(string $adapter, bool $cancelsItems, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
 Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem static
 Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponsePrintshopOrdersItem::toArray(): array
@@ -23125,6 +23161,7 @@ Pixonaut\Sdk\Generated\Model\OrdersSendNowResponseParcelsItemTracking::raw(): ar
 Pixonaut\Sdk\Generated\Model\OrdersSendNowResponseParcelsItemTracking::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::$cancelsItems readonly bool
 Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::$itemIds readonly array
@@ -23133,7 +23170,7 @@ Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::$parts re
 Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::$printshopConnectionId readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::$printshopName readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::$submittedAt readonly float
-Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::__construct(string $adapter, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
+Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::__construct(string $adapter, bool $cancelsItems, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
 Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem static
 Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersSendNowResponsePrintshopOrdersItem::toArray(): array
@@ -25739,6 +25776,7 @@ Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponseParcelsItemTracking::raw(
 Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponseParcelsItemTracking::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::$adapter readonly string
+Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::$cancelsItems readonly bool
 Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::$externalOrderRef readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::$id readonly string
 Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::$itemIds readonly array
@@ -25747,7 +25785,7 @@ Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::$par
 Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::$printshopConnectionId readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::$printshopName readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::$submittedAt readonly float
-Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::__construct(string $adapter, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
+Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::__construct(string $adapter, bool $cancelsItems, ?string $externalOrderRef, string $id, array $itemIds, ?float $lastCheckedAt, array $parts, ?string $printshopConnectionId, ?string $printshopName, float $submittedAt)
 Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem static
 Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintsOrdersCreateResponsePrintshopOrdersItem::toArray(): array
@@ -26090,16 +26128,24 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::$dpi readonly ?int
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::$foldMm readonly ?float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::$pages readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemPages
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::$row readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::$safeAreaMm readonly ?float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::$shape readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemShape
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::$usualHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::$usualWidthMm readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::$widthMm readonly float
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $bleedMm = null, ?int $dpi = null, ?float $foldMm = null, ?float $safeAreaMm = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemShape $shape = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $bleedMm = null, ?int $dpi = null, ?float $foldMm = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemPages $pages = null, ?float $safeAreaMm = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemShape $shape = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemPages implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemPages::$max readonly int
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemPages::$min readonly int
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemPages::__construct(int $max, int $min)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemPages::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemPages static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemPages::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemPages::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemShape implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemShape::$cutByPrintShop readonly ?bool
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemAreasItemShape::$dFrac readonly string
@@ -26944,16 +26990,24 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::$dpi readonly ?int
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::$foldMm readonly ?float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::$pages readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemPages
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::$row readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::$safeAreaMm readonly ?float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::$shape readonly ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemShape
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::$usualHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::$usualWidthMm readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::$widthMm readonly float
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $bleedMm = null, ?int $dpi = null, ?float $foldMm = null, ?float $safeAreaMm = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemShape $shape = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $bleedMm = null, ?int $dpi = null, ?float $foldMm = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemPages $pages = null, ?float $safeAreaMm = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemShape $shape = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemPages implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemPages::$max readonly int
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemPages::$min readonly int
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemPages::__construct(int $max, int $min)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemPages::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemPages static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemPages::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemPages::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemShape implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemShape::$cutByPrintShop readonly ?bool
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemAreasItemShape::$dFrac readonly string
@@ -27839,6 +27893,44 @@ Pixonaut\Sdk\Generated\Model\PrintshopUpdatedEventPayload::__construct(string $a
 Pixonaut\Sdk\Generated\Model\PrintshopUpdatedEventPayload::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopUpdatedEventPayload static
 Pixonaut\Sdk\Generated\Model\PrintshopUpdatedEventPayload::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopUpdatedEventPayload::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequest implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequest::$proofs readonly array
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequest::__construct(array $proofs)
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequest::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequest static
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequest::raw(): array
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequest::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequestProofsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequestProofsItem::$key readonly ?string
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequestProofsItem::$page readonly ?int
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequestProofsItem::$proofToken readonly string
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequestProofsItem::__construct(?string $key, ?int $page, string $proofToken)
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequestProofsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequestProofsItem static
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequestProofsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequestProofsItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ProofSetsCreateResponse implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateResponse::$expiresAt readonly int
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateResponse::$proofSet readonly string
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateResponse::__construct(int $expiresAt, string $proofSet)
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ProofSetsCreateResponse static
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateResponse::raw(): array
+Pixonaut\Sdk\Generated\Model\ProofSetsCreateResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ProofSetsGetResponse implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponse::$expiresAt readonly int
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponse::$proofs readonly array
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponse::__construct(int $expiresAt, array $proofs)
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ProofSetsGetResponse static
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponse::raw(): array
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ProofSetsGetResponseProofsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponseProofsItem::$expiresAt readonly int
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponseProofsItem::$key readonly ?string
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponseProofsItem::$page readonly ?int
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponseProofsItem::$proofToken readonly string
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponseProofsItem::$proofUrl readonly string
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponseProofsItem::__construct(int $expiresAt, ?string $key, ?int $page, string $proofToken, string $proofUrl)
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponseProofsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ProofSetsGetResponseProofsItem static
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponseProofsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\ProofSetsGetResponseProofsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\ProofsCreateRequest implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ProofsCreateRequest::$blankId readonly ?string
 Pixonaut\Sdk\Generated\Model\ProofsCreateRequest::$drawAtTemplateRatio readonly ?bool
@@ -45652,7 +45744,9 @@ final class Pixonaut\Sdk\Generated\Resource\Proofs
 Pixonaut\Sdk\Generated\Resource\Proofs::OPERATIONS const
 Pixonaut\Sdk\Generated\Resource\Proofs::__construct(Pixonaut\Sdk\Pixonaut $pixonaut)
 Pixonaut\Sdk\Generated\Resource\Proofs::create(Pixonaut\Sdk\Generated\Model\ProofsCreateRequest $body, ?string $tz = null, ?string $lang = null, ?string $session = null): Pixonaut\Sdk\Generated\Model\ProofsCreateResponse
+Pixonaut\Sdk\Generated\Resource\Proofs::createProofSet(Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequest $body): Pixonaut\Sdk\Generated\Model\ProofSetsCreateResponse
 Pixonaut\Sdk\Generated\Resource\Proofs::createThroughLayout(Pixonaut\Sdk\Generated\Model\ProofsCreateThroughLayoutRequest $body, ?string $tz = null, ?string $lang = null, ?string $session = null): Pixonaut\Sdk\Generated\Model\ProofsCreateThroughLayoutResponse
+Pixonaut\Sdk\Generated\Resource\Proofs::getProofSet(string $proofSet): Pixonaut\Sdk\Generated\Model\ProofSetsGetResponse
 Pixonaut\Sdk\Generated\Resource\Proofs::validatePayload(Pixonaut\Sdk\Generated\Model\PayloadsValidateRequest $body, ?string $tz = null, ?string $lang = null): Pixonaut\Sdk\Generated\Model\PayloadsValidateResponse
 final class Pixonaut\Sdk\Generated\Resource\Sessions
 Pixonaut\Sdk\Generated\Resource\Sessions::OPERATIONS const

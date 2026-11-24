@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The error codes the API 14.0.0 spec names: its refusals (`x-refusals`), and the `error`
+ * The error codes the API 14.1.0 spec names: its refusals (`x-refusals`), and the `error`
  * values of every error answer. The client's own codes are on `ApiException`.
  */
 final class ErrorCode
@@ -226,6 +226,11 @@ final class ErrorCode
      * Documented with status 422.
      */
     public const COST_REGION_UNSET = 'cost_region_unset';
+
+    /**
+     * Documented with status 422.
+     */
+    public const COVER_NOT_AT_PAGE_COUNT = 'cover_not_at_page_count';
 
     /**
      * Documented with status 409.
@@ -940,7 +945,22 @@ final class ErrorCode
     /**
      * Documented with status 422.
      */
+    public const PAGE_NOT_AS_PROOFED = 'page_not_as_proofed';
+
+    /**
+     * Documented with status 422.
+     */
     public const PAGE_ON_UNPAGED_PLACEMENT = 'page_on_unpaged_placement';
+
+    /**
+     * Documented with status 422.
+     */
+    public const PAGE_ORDERED_ALONE = 'page_ordered_alone';
+
+    /**
+     * Documented with status 422.
+     */
+    public const PAGE_REQUIRED = 'page_required';
 
     /**
      * Documented with status 409.
@@ -1258,6 +1278,11 @@ final class ErrorCode
     public const PROOF_OUTDATED = 'proof_outdated';
 
     /**
+     * Documented with status 410.
+     */
+    public const PROOF_SET_EXPIRED = 'proof_set_expired';
+
+    /**
      * Documented with status 403.
      */
     public const PUBLISH_FORBIDDEN = 'publish_forbidden';
@@ -1558,6 +1583,11 @@ final class ErrorCode
     public const UNKNOWN_PROOF = 'unknown_proof';
 
     /**
+     * Documented with status 404.
+     */
+    public const UNKNOWN_PROOF_SET = 'unknown_proof_set';
+
+    /**
      * Documented with status 422.
      */
     public const UNKNOWN_REGION = 'unknown_region';
@@ -1716,6 +1746,7 @@ final class ErrorCode
         'copy_in_progress' => [409],
         'correction_proof' => [409],
         'cost_region_unset' => [422],
+        'cover_not_at_page_count' => [422],
         'cut_out_exhausted' => [409],
         'cut_out_not_offered' => [422],
         'cut_out_unavailable' => [503],
@@ -1858,7 +1889,10 @@ final class ErrorCode
         'origins_not_allowed' => [400],
         'page_count_out_of_range' => [422],
         'page_missing' => [422],
+        'page_not_as_proofed' => [422],
         'page_on_unpaged_placement' => [422],
+        'page_ordered_alone' => [422],
+        'page_required' => [422],
         'palette_changed' => [409],
         'parcel_exceeds_quantity' => [422],
         'parcel_item_not_found' => [422],
@@ -1922,6 +1956,7 @@ final class ErrorCode
         'proof_not_for_design' => [409],
         'proof_not_found' => [404],
         'proof_outdated' => [409],
+        'proof_set_expired' => [410],
         'publish_forbidden' => [403],
         'publish_gate_failed' => [500],
         'publish_references_unavailable' => [503],
@@ -1982,6 +2017,7 @@ final class ErrorCode
         'unknown_placement' => [422],
         'unknown_printshop' => [422],
         'unknown_proof' => [404],
+        'unknown_proof_set' => [404],
         'unknown_region' => [422],
         'unknown_upload' => [404, 422],
         'unknown_variant' => [422],

@@ -143,6 +143,10 @@ return [
         'proofs.createThroughLayout' => [
             '$.proofToken' => 'Names the proof; redeeming it takes a secret or integration key.',
         ],
+        'proofSets.get' => [
+            '$.proofs[].key' => 'The side\'s key on the designer link, e.g. `cover`.',
+            '$.proofs[].proofToken' => 'Names the proof; redeeming it takes a secret or integration key.',
+        ],
         'scenes.list' => [
             '$.facets.people[].key' => 'The person facet\'s value, as a scene holds it.',
             '$.facets.poses[].key' => 'The pose facet\'s value, as a scene holds it.',

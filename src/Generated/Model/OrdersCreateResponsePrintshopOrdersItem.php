@@ -21,6 +21,7 @@ final class OrdersCreateResponsePrintshopOrdersItem implements Model
     private ?array $decoded = null;
 
     /**
+     * @param bool $cancelsItems Whether its printshop cancels one item of it alone (Printify); `false` where a cancel stops the whole printshop order and every item in it.
      * @param string|null $externalOrderRef The printshop's reference for it; `null` until the printshop answered with one.
      * @param list<string> $itemIds The items sent in it.
      * @param float|null $lastCheckedAt
@@ -30,6 +31,7 @@ final class OrdersCreateResponsePrintshopOrdersItem implements Model
      */
     public function __construct(
         public readonly string $adapter,
+        public readonly bool $cancelsItems,
         public readonly ?string $externalOrderRef,
         public readonly string $id,
         public readonly array $itemIds,
@@ -52,6 +54,7 @@ final class OrdersCreateResponsePrintshopOrdersItem implements Model
     {
         $model = new self(
             adapter: Decode::string(Decode::required($data, 'adapter', $path), $path . '.adapter'),
+            cancelsItems: Decode::bool(Decode::required($data, 'cancelsItems', $path), $path . '.cancelsItems'),
             externalOrderRef: Decode::nullable(
                 Decode::required($data, 'externalOrderRef', $path),
                 $path . '.externalOrderRef',
@@ -104,6 +107,7 @@ final class OrdersCreateResponsePrintshopOrdersItem implements Model
     {
         $data = [];
         $data['adapter'] = $this->adapter;
+        $data['cancelsItems'] = $this->cancelsItems;
         $data['externalOrderRef'] = $this->externalOrderRef;
         $data['id'] = $this->id;
         $data['itemIds'] = $this->itemIds;

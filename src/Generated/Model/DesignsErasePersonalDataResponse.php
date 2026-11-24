@@ -36,6 +36,8 @@ final class DesignsErasePersonalDataResponse implements Model
      * @param string $language The language the design was made in, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`: its template was read in it, with that language's overrides, and its document and print file are that language's.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\DesignsErasePersonalDataResponseLanguage}.
      * @param DesignsErasePersonalDataResponseOrigin $origin Where the design came from: the door it was committed through. A duplicate's is whoever duplicated it.
+     * @param int|null $page On a placement printed as pages, the page the design's proof was of (`page` on `POST /v1/proofs`); an order holds it as that page. Null for a design proofed as no page.
+     * @param int|null $pageCount On a placement printed as pages, how many pages the shopper picked when the design was proofed (`pageCount` on `POST /v1/proofs`); an order holds it to that count. Null for a design proofed as no page.
      * @param float|null $personalDataErasedAt When the design's own personal data was erased (`POST /v1/designs/{id}/erase-personal-data`), or null. An erased design's document holds none of the text or pictures its customer put in, and nothing more is printed, ordered or corrected from it.
      * @param array<string, string>|null $pickedColours The colours the shopper picked, by option name, `#rrggbb` each, such as `{"Colour": "#1b2a4a"}`, as the design was committed: a value of its blank that takes any colour is made in its pick. Null when none was picked.
      * @param string|null $placementId The placement on the blank this design was fitted to when it was made; null whenever `blankId` is. Kept while the blank is, so it may name a placement since removed from the blank: the print box frozen into the document is what prints.
@@ -71,6 +73,8 @@ final class DesignsErasePersonalDataResponse implements Model
         public readonly string $id,
         public readonly string $language,
         public readonly DesignsErasePersonalDataResponseOrigin $origin,
+        public readonly ?int $page,
+        public readonly ?int $pageCount,
         public readonly ?float $personalDataErasedAt,
         public readonly ?array $pickedColours,
         public readonly ?string $placementId,
@@ -153,6 +157,16 @@ final class DesignsErasePersonalDataResponse implements Model
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             language: Decode::string(Decode::required($data, 'language', $path), $path . '.language'),
             origin: DesignsErasePersonalDataResponseOrigin::fromArray(Decode::object(Decode::required($data, 'origin', $path), $path . '.origin'), $path . '.origin'),
+            page: Decode::nullable(
+                Decode::required($data, 'page', $path),
+                $path . '.page',
+                static fn(mixed $v, string $p): int => Decode::int($v, $p),
+            ),
+            pageCount: Decode::nullable(
+                Decode::required($data, 'pageCount', $path),
+                $path . '.pageCount',
+                static fn(mixed $v, string $p): int => Decode::int($v, $p),
+            ),
             personalDataErasedAt: Decode::nullable(
                 Decode::required($data, 'personalDataErasedAt', $path),
                 $path . '.personalDataErasedAt',
@@ -273,6 +287,8 @@ final class DesignsErasePersonalDataResponse implements Model
         $data['id'] = $this->id;
         $data['language'] = $this->language;
         $data['origin'] = Encode::model($this->origin);
+        $data['page'] = $this->page;
+        $data['pageCount'] = $this->pageCount;
         $data['personalDataErasedAt'] = $this->personalDataErasedAt;
         $data['pickedColours'] = $this->pickedColours === null ? null : Encode::object($this->pickedColours);
         $data['placementId'] = $this->placementId;

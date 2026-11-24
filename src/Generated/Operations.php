@@ -12,7 +12,7 @@ use Pixonaut\Sdk\Http\Catalogue;
 use Pixonaut\Sdk\Http\Operation;
 
 /**
- * The operations of the API 14.0.0 spec, as the client sends them.
+ * The operations of the API 14.1.0 spec, as the client sends them.
  */
 final class Operations
 {
@@ -1364,6 +1364,26 @@ final class Operations
                 id: 'printshopConnections.list',
                 method: 'GET',
                 path: '/v1/printshop-connections',
+                credentials: [Credential::SecretKey, Credential::IntegrationKey],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
+                id: 'proofSets.create',
+                method: 'POST',
+                path: '/v1/proof-sets',
+                credentials: [Credential::PublishableKey, Credential::SecretKey, Credential::ShareLink],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
+                id: 'proofSets.get',
+                method: 'GET',
+                path: '/v1/proof-sets/{proofSet}',
                 credentials: [Credential::SecretKey, Credential::IntegrationKey],
                 anonymous: false,
                 idempotent: false,
