@@ -1,5 +1,17 @@
 # Changelog
 
+## [29.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v28.0.0...v29.0.0) (2026-11-24)
+
+Targets the Pixonaut API 14.2.0.
+
+### ⚠ BREAKING CHANGES
+
+* the constructor of OrdersProgressGetResponse takes the new required items argument before parcels, and the optional pages argument of BlanksMockupsListResponsePlacementsItemAreasItem comes before shape, so a positional call to either moves.
+
+### Features
+
+* target the published Pixonaut API 14.2.0 ([#96](https://github.com/pixonaut-app/pixonaut-php/issues/96)) ([660036a](https://github.com/pixonaut-app/pixonaut-php/commit/660036aa79dabf63027a826d6636268536ad1267))
+
 ## [28.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v27.0.0...v28.0.0) (2026-11-24)
 
 Targets the Pixonaut API 14.1.0.
