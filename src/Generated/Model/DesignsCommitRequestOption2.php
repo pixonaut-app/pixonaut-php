@@ -40,6 +40,7 @@ final class DesignsCommitRequestOption2 implements Model
      * @param string|null $garmentVariant The variant whose colour the design is drawn in, by ref (`v_…`), when it is not the one `variant` names: on a dark colour each layer takes its on-dark value. It sizes nothing. A proof keeps it as `proofVariant`, so its commit is drawn in the same colour, as a design committed without a proof does. Absent, `variant`'s colour; a ref the blank has no variant of draws as on a light product.
      * @param array<string, string>|null $pickedColours The colours the shopper picked, by option name, `#rrggbb` each, such as `{"Colour": "#1b2a4a"}`, for a value of the blank that takes any colour: the product is drawn, and its tone judged, in the pick. A design keeps them, and its order is made in them; a pick for a value that takes no colour is kept and not used. Absent, each such value is its own colour.
      * @param DesignsCommitRequestOption2Repeat|null|Omitted $repeat Lays the design as a repeat of its template across the print area. Null, or absent, places it once. Through a designer link, a repeat the link offers, or null where its shopper may turn the repeat off; absent there, the link's own start.
+     * @param int|null $pageCount On a blank with a placement printed as pages, the item's page count this design, of another placement, is made at, such as a photo book's cover, whose area grows with the pages: one that placement is printed at. Kept with the design; an order is held to it.
      */
     public function __construct(
         public readonly string $templateId,
@@ -60,6 +61,7 @@ final class DesignsCommitRequestOption2 implements Model
         public readonly ?string $garmentVariant = null,
         public readonly ?array $pickedColours = null,
         public readonly DesignsCommitRequestOption2Repeat|null|Omitted $repeat = Omitted::Field,
+        public readonly ?int $pageCount = null,
     ) {}
 
     /**
@@ -107,6 +109,7 @@ final class DesignsCommitRequestOption2 implements Model
                 $path . '.repeat',
                 static fn(mixed $v, string $p): DesignsCommitRequestOption2Repeat => DesignsCommitRequestOption2Repeat::fromArray(Decode::object($v, $p), $p),
             ) : Omitted::Field,
+            pageCount: array_key_exists('pageCount', $data) ? Decode::int($data['pageCount'], $path . '.pageCount') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -177,6 +180,9 @@ final class DesignsCommitRequestOption2 implements Model
         }
         if (!$this->repeat instanceof Omitted) {
             $data['repeat'] = $this->repeat === null ? null : Encode::model($this->repeat);
+        }
+        if ($this->pageCount !== null) {
+            $data['pageCount'] = $this->pageCount;
         }
         return $data;
     }

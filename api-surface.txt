@@ -4307,6 +4307,17 @@ Pixonaut\Sdk\Generated\Enum\OrdersPrintshopOrdersUpdateResponseStatus::NEEDS_ATT
 Pixonaut\Sdk\Generated\Enum\OrdersPrintshopOrdersUpdateResponseStatus::OPEN const
 Pixonaut\Sdk\Generated\Enum\OrdersPrintshopOrdersUpdateResponseStatus::PARTLY_SHIPPED const
 Pixonaut\Sdk\Generated\Enum\OrdersPrintshopOrdersUpdateResponseStatus::SHIPPED const
+final class Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseItemsItemStatus
+Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseItemsItemStatus::AWAITING_PRINTS const
+Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseItemsItemStatus::CANCELLED const
+Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseItemsItemStatus::FAILED const
+Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseItemsItemStatus::HELD const
+Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseItemsItemStatus::KNOWN const
+Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseItemsItemStatus::OUTCOME_UNKNOWN const
+Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseItemsItemStatus::PRINTED const
+Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseItemsItemStatus::QUEUED const
+Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseItemsItemStatus::SHIPPED const
+Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseItemsItemStatus::SUBMITTED const
 final class Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseParcelsItemStatus
 Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseParcelsItemStatus::DELIVERED const
 Pixonaut\Sdk\Generated\Enum\OrdersProgressGetResponseParcelsItemStatus::KNOWN const
@@ -13795,15 +13806,23 @@ Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItem::toArray():
 final class Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$foldMm readonly ?float
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$pages readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemPages
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$row readonly array
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$shape readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemShape
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$usualHeightMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$usualWidthMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::$widthMm readonly float
-Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $foldMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemShape $shape = null)
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::__construct(float $heightMm, array $row, float $usualHeightMm, float $usualWidthMm, float $widthMm, ?float $foldMm = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemPages $pages = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemShape $shape = null)
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem static
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItem::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemPages implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemPages::$max readonly int
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemPages::$min readonly int
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemPages::__construct(int $max, int $min)
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemPages::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemPages static
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemPages::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemPages::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemShape implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemShape::$cutByPrintShop readonly ?bool
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemAreasItemShape::$dFrac readonly string
@@ -15400,6 +15419,7 @@ Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::$fulfilmentPayload rea
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::$garmentVariant readonly ?string
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::$heightMm readonly ?float
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::$linked readonly ?Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2Linked
+Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::$pageCount readonly ?int
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::$pickedColours readonly ?array
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::$placementId readonly ?string
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::$previewOpened readonly ?bool
@@ -15410,7 +15430,7 @@ Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::$values readonly mixed
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::$variant readonly ?string
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::$variantRow readonly ?array
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::$widthMm readonly ?float
-Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::__construct(string $templateId, mixed $values = Pixonaut\Sdk\Model\Omitted::Field, ?string $blankId = null, ?string $placementId = null, ?Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2Linked $linked = null, mixed $fulfilmentPayload = Pixonaut\Sdk\Model\Omitted::Field, Pixonaut\Sdk\Model\Omitted|null|string $printshopId = Pixonaut\Sdk\Model\Omitted::Field, ?string $externalRef = null, ?bool $approve = null, ?bool $previewOpened = null, ?float $heightMm = null, ?float $widthMm = null, ?bool $drawAtTemplateRatio = null, ?string $variant = null, ?array $variantRow = null, ?string $garmentVariant = null, ?array $pickedColours = null, Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2Repeat|Pixonaut\Sdk\Model\Omitted|null $repeat = Pixonaut\Sdk\Model\Omitted::Field)
+Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::__construct(string $templateId, mixed $values = Pixonaut\Sdk\Model\Omitted::Field, ?string $blankId = null, ?string $placementId = null, ?Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2Linked $linked = null, mixed $fulfilmentPayload = Pixonaut\Sdk\Model\Omitted::Field, Pixonaut\Sdk\Model\Omitted|null|string $printshopId = Pixonaut\Sdk\Model\Omitted::Field, ?string $externalRef = null, ?bool $approve = null, ?bool $previewOpened = null, ?float $heightMm = null, ?float $widthMm = null, ?bool $drawAtTemplateRatio = null, ?string $variant = null, ?array $variantRow = null, ?string $garmentVariant = null, ?array $pickedColours = null, Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2Repeat|Pixonaut\Sdk\Model\Omitted|null $repeat = Pixonaut\Sdk\Model\Omitted::Field, ?int $pageCount = null)
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2 static
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::raw(): array
 Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2::toArray(): array
@@ -22792,15 +22812,27 @@ Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponseShippingAddress:
 Pixonaut\Sdk\Generated\Model\OrdersPrintshopOrdersUpdateResponseShippingAddress::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse::$id readonly string
+Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse::$items readonly array
 Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse::$parcels readonly array
 Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse::$status readonly string
 Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse::$steps readonly array
 Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse::$submittedAt readonly float
 Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse::$tracking readonly ?Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseTracking
-Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse::__construct(string $id, array $parcels, string $status, array $steps, float $submittedAt, ?Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseTracking $tracking)
+Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse::__construct(string $id, array $items, array $parcels, string $status, array $steps, float $submittedAt, ?Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseTracking $tracking)
 Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse static
 Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseItemsItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseItemsItem::$designId readonly string
+Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseItemsItem::$id readonly string
+Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseItemsItem::$name readonly ?string
+Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseItemsItem::$quantity readonly int
+Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseItemsItem::$status readonly string
+Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseItemsItem::$variant readonly ?string
+Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseItemsItem::__construct(string $designId, string $id, ?string $name, int $quantity, string $status, ?string $variant)
+Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseItemsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseItemsItem static
+Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseItemsItem::raw(): array
+Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseItemsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseParcelsItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseParcelsItem::$deliveredAt readonly ?string
 Pixonaut\Sdk\Generated\Model\OrdersProgressGetResponseParcelsItem::$id readonly string
@@ -45767,7 +45799,7 @@ final class Pixonaut\Sdk\Generated\Resource\Templates
 Pixonaut\Sdk\Generated\Resource\Templates::OPERATIONS const
 Pixonaut\Sdk\Generated\Resource\Templates::__construct(Pixonaut\Sdk\Pixonaut $pixonaut)
 Pixonaut\Sdk\Generated\Resource\Templates::get(string $id, ?string $tz = null, ?string $lang = null, ?string $sdkVersion = null): Pixonaut\Sdk\Generated\Model\TemplatesGetResponse
-Pixonaut\Sdk\Generated\Resource\Templates::getConstraints(string $id, ?string $blankId = null, ?string $placementId = null): Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponse
+Pixonaut\Sdk\Generated\Resource\Templates::getConstraints(string $id, ?string $blankId = null, ?string $placementId = null, ?int $pageCount = null): Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponse
 Pixonaut\Sdk\Generated\Resource\Templates::getMockup(string $id, string $blankId, string $placementId, ?string $mockupId = null, ?string $viewId = null, ?string $variant = null, ?string $size = null, ?string $bleed = null, ?string $showcase = null): Pixonaut\Sdk\Http\Binary
 Pixonaut\Sdk\Generated\Resource\Templates::getPreview(string $id, ?string $size = null, ?string $width = null, ?string $fit = null, ?string $bleed = null, ?string $compact = null, ?string $showcase = null): Pixonaut\Sdk\Http\Binary
 Pixonaut\Sdk\Generated\Resource\Templates::list(?string $status = null, ?string $q = null, array|null|string $ids = null, ?int $page = null, ?int $pageSize = null, ?string $category = null, array|null|string $tag = null, ?string $sort = null, ?string $groupBy = null, ?string $pageOf = null): Pixonaut\Sdk\Generated\Model\TemplatesListResponseOption1|Pixonaut\Sdk\Generated\Model\TemplatesListResponseOption2|Pixonaut\Sdk\Generated\Model\TemplatesListResponseOption3

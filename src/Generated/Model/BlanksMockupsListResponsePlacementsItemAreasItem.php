@@ -24,6 +24,7 @@ final class BlanksMockupsListResponsePlacementsItemAreasItem implements Model
     /**
      * @param array<string, string> $row
      * @param float|null $foldMm How far in from the print's edge the product folds on the row, where that is the row's own, as a canvas on a thicker frame folds further in; 0 for a row that does not fold on a placement that does. Absent, the placement's.
+     * @param BlanksMockupsListResponsePlacementsItemAreasItemPages|null $pages The item page counts this area holds at, such as a photo book's cover from 28 to 58 pages, whose spine grows with its pages. Absent, every count.
      * @param BlanksMockupsListResponsePlacementsItemAreasItemShape|null $shape Where on the product a print may go on the row, such as one phone model's camera opening, as the placement's `shape` is. A preview of a variant at this row clips the print to it and draws it as a guide. Absent, the placement's.
      */
     public function __construct(
@@ -33,6 +34,7 @@ final class BlanksMockupsListResponsePlacementsItemAreasItem implements Model
         public readonly float $usualWidthMm,
         public readonly float $widthMm,
         public readonly ?float $foldMm = null,
+        public readonly ?BlanksMockupsListResponsePlacementsItemAreasItemPages $pages = null,
         public readonly ?BlanksMockupsListResponsePlacementsItemAreasItemShape $shape = null,
     ) {}
 
@@ -57,6 +59,7 @@ final class BlanksMockupsListResponsePlacementsItemAreasItem implements Model
             usualWidthMm: Decode::float(Decode::required($data, 'usualWidthMm', $path), $path . '.usualWidthMm'),
             widthMm: Decode::float(Decode::required($data, 'widthMm', $path), $path . '.widthMm'),
             foldMm: array_key_exists('foldMm', $data) ? Decode::float($data['foldMm'], $path . '.foldMm') : null,
+            pages: array_key_exists('pages', $data) ? BlanksMockupsListResponsePlacementsItemAreasItemPages::fromArray(Decode::object($data['pages'], $path . '.pages'), $path . '.pages') : null,
             shape: array_key_exists('shape', $data) ? BlanksMockupsListResponsePlacementsItemAreasItemShape::fromArray(Decode::object($data['shape'], $path . '.shape'), $path . '.shape') : null,
         );
         $model->decoded = $data;
@@ -84,6 +87,9 @@ final class BlanksMockupsListResponsePlacementsItemAreasItem implements Model
         $data['widthMm'] = $this->widthMm;
         if ($this->foldMm !== null) {
             $data['foldMm'] = $this->foldMm;
+        }
+        if ($this->pages !== null) {
+            $data['pages'] = Encode::model($this->pages);
         }
         if ($this->shape !== null) {
             $data['shape'] = Encode::model($this->shape);

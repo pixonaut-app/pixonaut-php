@@ -213,15 +213,16 @@ final class Templates
      * @param string $id A template id, `baseId@version`.
      * @param string|null $blankId
      * @param string|null $placementId
+     * @param int|null $pageCount The item's page count, on a blank with a placement printed as pages: a placement whose area changes with it, such as a photo book's cover, is answered at that count.
      *
      * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `print_box_unavailable`, `rate_limited`, `unauthorized`, `unknown_placement`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
-    public function getConstraints(string $id, ?string $blankId = null, ?string $placementId = null): TemplatesConstraintsGetResponse
+    public function getConstraints(string $id, ?string $blankId = null, ?string $placementId = null, ?int $pageCount = null): TemplatesConstraintsGetResponse
     {
         $result = $this->pixonaut->call(
             'templates.constraints.get',
             path: ['id' => $id],
-            query: ['blankId' => $blankId, 'placementId' => $placementId],
+            query: ['blankId' => $blankId, 'placementId' => $placementId, 'pageCount' => $pageCount],
         );
         return $result->decode(
             static fn(mixed $json): TemplatesConstraintsGetResponse => TemplatesConstraintsGetResponse::fromArray(Decode::object($json, '$'), '$'),
