@@ -29,6 +29,7 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
      * @param PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPlacementRectPx|null $placementRectPx Where the print area sits on its photos, unless one has its own, in the original photo's pixels; null until marked.
      * @param bool|null $fromPrintshop True on a view a printshop-bound blank took from its printshop: its photo size and print area are the printshop's, not changed by hand. Absent on the workspace's own; sending it is ignored.
      * @param PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemLocalizedLabels|null $localizedLabels What it is called per customer-facing language, by code; a language left out reads `label`. No two views of its placement and kind read the same in one language, ignoring case.
+     * @param bool|null $marksFrame On a scene's view, whether its picture marks a frame round the print, which a variant's frame paints. A view that marks none is painted in the variant's colour, whatever frame it has. Absent, a variant's frame is painted as it always was.
      * @param string|null $maskAssetId A library asset of the view's photo size: where it is light the print shows, where it is dark the print is hidden, as behind a sleeve or a fold. Absent hides nothing.
      * @param PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemMesh|null $mesh Control points the print is laid through or, marked cut, cut to: rows from its top edge, points from its left, as [x, y] in the photo's original pixels; 2 to 33 along each side. Absent, the print is laid in the rect.
      * @param string|null $partnerStyleKey The printshop's own key for the view's photo style, such as a model or lifestyle style; absent on a view made by hand or imported with the product.
@@ -53,6 +54,7 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
         public readonly ?PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemPlacementRectPx $placementRectPx,
         public readonly ?bool $fromPrintshop = null,
         public readonly ?PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemLocalizedLabels $localizedLabels = null,
+        public readonly ?bool $marksFrame = null,
         public readonly ?string $maskAssetId = null,
         public readonly ?PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemMesh $mesh = null,
         public readonly ?string $partnerStyleKey = null,
@@ -99,6 +101,7 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
             ),
             fromPrintshop: array_key_exists('fromPrintshop', $data) ? Decode::bool($data['fromPrintshop'], $path . '.fromPrintshop') : null,
             localizedLabels: array_key_exists('localizedLabels', $data) ? PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemLocalizedLabels::fromArray(Decode::object($data['localizedLabels'], $path . '.localizedLabels'), $path . '.localizedLabels') : null,
+            marksFrame: array_key_exists('marksFrame', $data) ? Decode::bool($data['marksFrame'], $path . '.marksFrame') : null,
             maskAssetId: array_key_exists('maskAssetId', $data) ? Decode::string($data['maskAssetId'], $path . '.maskAssetId') : null,
             mesh: array_key_exists('mesh', $data) ? PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemMesh::fromArray(Decode::object($data['mesh'], $path . '.mesh'), $path . '.mesh') : null,
             partnerStyleKey: array_key_exists('partnerStyleKey', $data) ? Decode::string($data['partnerStyleKey'], $path . '.partnerStyleKey') : null,
@@ -145,6 +148,9 @@ final class PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemV
         }
         if ($this->localizedLabels !== null) {
             $data['localizedLabels'] = Encode::model($this->localizedLabels);
+        }
+        if ($this->marksFrame !== null) {
+            $data['marksFrame'] = $this->marksFrame;
         }
         if ($this->maskAssetId !== null) {
             $data['maskAssetId'] = $this->maskAssetId;

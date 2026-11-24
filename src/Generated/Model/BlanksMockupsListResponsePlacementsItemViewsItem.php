@@ -28,6 +28,7 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
      * @param string|null $camera On a studio style's view, the camera of the style it is seen from: a blank shows one style once for each camera, and this says which this view is.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemViewsItemCamera}.
      * @param BlanksMockupsListResponsePlacementsItemViewsItemFacets|null $facets On a scene's view, the setting, person and pose its scene is chosen by, which a reader groups a product's views with.
+     * @param bool|null $marksFrame On a scene's view, whether its picture marks a frame round the print, which a variant's frame paints. A view that marks none is painted in the variant's colour, whatever frame it has. Absent, a variant's frame is painted as it always was.
      * @param string|null $maskUrl The region's mask, the view's photo size, opened with no key: where it is light the print shows, where it is dark the print is hidden. Absent hides nothing. Valid as long as a photo's `url`.
      * @param BlanksMockupsListResponsePlacementsItemViewsItemMesh|null $mesh Control points the print is laid through or, marked cut, cut to: rows from its top edge, points from its left, as [x, y] in the photo's original pixels; 2 to 33 along each side. Absent, the print is laid in the rect.
      * @param int|null $piece A pattern piece of the view's UV pass, 1 to 253: the region's print is read through the pixels the pass marks with it, in place of a mesh.
@@ -51,6 +52,7 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
         public readonly ?BlanksMockupsListResponsePlacementsItemViewsItemPlacementRectPx $placementRectPx,
         public readonly ?string $camera = null,
         public readonly ?BlanksMockupsListResponsePlacementsItemViewsItemFacets $facets = null,
+        public readonly ?bool $marksFrame = null,
         public readonly ?string $maskUrl = null,
         public readonly ?BlanksMockupsListResponsePlacementsItemViewsItemMesh $mesh = null,
         public readonly ?int $piece = null,
@@ -96,6 +98,7 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
             ),
             camera: array_key_exists('camera', $data) ? Decode::string($data['camera'], $path . '.camera') : null,
             facets: array_key_exists('facets', $data) ? BlanksMockupsListResponsePlacementsItemViewsItemFacets::fromArray(Decode::object($data['facets'], $path . '.facets'), $path . '.facets') : null,
+            marksFrame: array_key_exists('marksFrame', $data) ? Decode::bool($data['marksFrame'], $path . '.marksFrame') : null,
             maskUrl: array_key_exists('maskUrl', $data) ? Decode::string($data['maskUrl'], $path . '.maskUrl') : null,
             mesh: array_key_exists('mesh', $data) ? BlanksMockupsListResponsePlacementsItemViewsItemMesh::fromArray(Decode::object($data['mesh'], $path . '.mesh'), $path . '.mesh') : null,
             piece: array_key_exists('piece', $data) ? Decode::int($data['piece'], $path . '.piece') : null,
@@ -141,6 +144,9 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
         }
         if ($this->facets !== null) {
             $data['facets'] = Encode::model($this->facets);
+        }
+        if ($this->marksFrame !== null) {
+            $data['marksFrame'] = $this->marksFrame;
         }
         if ($this->maskUrl !== null) {
             $data['maskUrl'] = $this->maskUrl;

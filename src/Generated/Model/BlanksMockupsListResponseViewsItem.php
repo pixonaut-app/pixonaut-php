@@ -31,6 +31,7 @@ final class BlanksMockupsListResponseViewsItem implements Model
      * @param string|null $camera On a studio style's view, the camera of the style it is seen from: a blank shows one style once for each camera, and this says which this view is.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponseViewsItemCamera}.
      * @param BlanksMockupsListResponseViewsItemFacets|null $facets On a scene's view, the setting, person and pose its scene is chosen by, which a reader groups a product's views with.
+     * @param bool|null $marksFrame On a scene's view, whether its picture marks a frame round the print, which a variant's frame paints. A view that marks none is painted in the variant's colour, whatever frame it has. Absent, a variant's frame is painted as it always was.
      * @param int|null $position The view's place in the blank's one list of views and scenes, from 0. The first with a photo is the blank's picture. Read only.
      * @param string|null $sceneId The scene this view shows. A scene's view is built from the blank's chosen scenes and is read only.
      * @param int|null $scenePosition On a scene's view, its `position`, for a reader that orders scenes by it.
@@ -48,6 +49,7 @@ final class BlanksMockupsListResponseViewsItem implements Model
         public readonly array $regions,
         public readonly ?string $camera = null,
         public readonly ?BlanksMockupsListResponseViewsItemFacets $facets = null,
+        public readonly ?bool $marksFrame = null,
         public readonly ?int $position = null,
         public readonly ?string $sceneId = null,
         public readonly ?int $scenePosition = null,
@@ -87,6 +89,7 @@ final class BlanksMockupsListResponseViewsItem implements Model
             ),
             camera: array_key_exists('camera', $data) ? Decode::string($data['camera'], $path . '.camera') : null,
             facets: array_key_exists('facets', $data) ? BlanksMockupsListResponseViewsItemFacets::fromArray(Decode::object($data['facets'], $path . '.facets'), $path . '.facets') : null,
+            marksFrame: array_key_exists('marksFrame', $data) ? Decode::bool($data['marksFrame'], $path . '.marksFrame') : null,
             position: array_key_exists('position', $data) ? Decode::int($data['position'], $path . '.position') : null,
             sceneId: array_key_exists('sceneId', $data) ? Decode::string($data['sceneId'], $path . '.sceneId') : null,
             scenePosition: array_key_exists('scenePosition', $data) ? Decode::int($data['scenePosition'], $path . '.scenePosition') : null,
@@ -129,6 +132,9 @@ final class BlanksMockupsListResponseViewsItem implements Model
         }
         if ($this->facets !== null) {
             $data['facets'] = Encode::model($this->facets);
+        }
+        if ($this->marksFrame !== null) {
+            $data['marksFrame'] = $this->marksFrame;
         }
         if ($this->position !== null) {
             $data['position'] = $this->position;
