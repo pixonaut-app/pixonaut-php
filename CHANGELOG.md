@@ -1,5 +1,16 @@
 # Changelog
 
+## [28.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v27.0.0...v28.0.0) (2026-11-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* the constructors of DesignsGetResponse, DesignsErasePersonalDataResponse and every *PrintshopOrdersItem answer model take the new required page, pageCount and cancelsItems arguments, and the optional pages argument of the blank print-area models (*PlacementsItemAreasItem) comes before safeAreaMm and shape, so a positional call to them moves.
+
+### Features
+
+* target the published Pixonaut API 14.1.0 ([#94](https://github.com/pixonaut-app/pixonaut-php/issues/94)) ([061796a](https://github.com/pixonaut-app/pixonaut-php/commit/061796aee179bb436200c5b0a8bf266bcaf2d007))
+
 ## [27.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v26.0.0...v27.0.0) (2026-11-23)
 
 Targets the Pixonaut API 14.0.0.
