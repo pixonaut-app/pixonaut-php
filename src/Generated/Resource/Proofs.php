@@ -9,6 +9,9 @@ namespace Pixonaut\Sdk\Generated\Resource;
 use Pixonaut\Sdk\Exception\ApiException;
 use Pixonaut\Sdk\Generated\Model\PayloadsValidateRequest;
 use Pixonaut\Sdk\Generated\Model\PayloadsValidateResponse;
+use Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequest;
+use Pixonaut\Sdk\Generated\Model\ProofSetsCreateResponse;
+use Pixonaut\Sdk\Generated\Model\ProofSetsGetResponse;
 use Pixonaut\Sdk\Generated\Model\ProofsCreateRequest;
 use Pixonaut\Sdk\Generated\Model\ProofsCreateResponse;
 use Pixonaut\Sdk\Generated\Model\ProofsCreateThroughLayoutRequest;
@@ -27,6 +30,8 @@ final class Proofs
      * @var array<string, string>
      */
     public const OPERATIONS = [
+        'createProofSet' => 'proofSets.create',
+        'getProofSet' => 'proofSets.get',
         'create' => 'proofs.create',
         'createThroughLayout' => 'proofs.createThroughLayout',
         'validatePayload' => 'payloads.validate',
@@ -35,6 +40,46 @@ final class Proofs
     public function __construct(
         private readonly Pixonaut $pixonaut,
     ) {}
+
+    /**
+     * Make a set of approved proofs.
+     *
+     * `POST /v1/proof-sets`
+     *
+     * @param ProofSetsCreateRequest $body
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_request`, `db_error`, `feature_disabled`, `not_found`, `origin_forbidden`, `payload_too_large`, `proof_expired`, `rate_limited`, `unauthorized`, `unknown_proof`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function createProofSet(ProofSetsCreateRequest $body): ProofSetsCreateResponse
+    {
+        $result = $this->pixonaut->call(
+            'proofSets.create',
+            body: $body->toArray(),
+        );
+        return $result->decode(
+            static fn(mixed $json): ProofSetsCreateResponse => ProofSetsCreateResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
+
+    /**
+     * Read a set of approved proofs.
+     *
+     * `GET /v1/proof-sets/{proofSet}`
+     *
+     * @param string $proofSet The set's reference.
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `origin_forbidden`, `proof_set_expired`, `secret_key_required`, `unauthorized`, `unknown_proof_set`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function getProofSet(string $proofSet): ProofSetsGetResponse
+    {
+        $result = $this->pixonaut->call(
+            'proofSets.get',
+            path: ['proofSet' => $proofSet],
+        );
+        return $result->decode(
+            static fn(mixed $json): ProofSetsGetResponse => ProofSetsGetResponse::fromArray(Decode::object($json, '$'), '$'),
+        );
+    }
 
     /**
      * Render a proof.
@@ -46,7 +91,7 @@ final class Proofs
      * @param string|null $lang The language the template's dynamic values are written in when their name names none, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the workspace's default language. A value whose name carries a language, `{date.long:sv}`, keeps it.
      * @param string|null $session The designer's browser session, which the SDK sends so one visitor's uploads and proofs are told apart from another's on the same key: 6 to 64 letters, digits, `_` or `-`. Any other value is ignored.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_json`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `link_design_limit`, `not_found`, `origin_forbidden`, `page_count_out_of_range`, `page_on_unpaged_placement`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_json`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `link_design_limit`, `not_found`, `origin_forbidden`, `page_count_out_of_range`, `page_on_unpaged_placement`, `page_required`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
     public function create(ProofsCreateRequest $body, ?string $tz = null, ?string $lang = null, ?string $session = null): ProofsCreateResponse
     {

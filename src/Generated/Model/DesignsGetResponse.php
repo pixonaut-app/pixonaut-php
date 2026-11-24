@@ -44,6 +44,8 @@ final class DesignsGetResponse implements Model
      * @param string $language The language the design was made in, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`: its template was read in it, with that language's overrides, and its document and print file are that language's.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\DesignsGetResponseLanguage}.
      * @param DesignsGetResponseOrigin $origin Where the design came from: the door it was committed through. A duplicate's is whoever duplicated it.
+     * @param int|null $page On a placement printed as pages, the page the design's proof was of (`page` on `POST /v1/proofs`); an order holds it as that page. Null for a design proofed as no page.
+     * @param int|null $pageCount On a placement printed as pages, how many pages the shopper picked when the design was proofed (`pageCount` on `POST /v1/proofs`); an order holds it to that count. Null for a design proofed as no page.
      * @param float|null $personalDataErasedAt When the design's own personal data was erased (`POST /v1/designs/{id}/erase-personal-data`), or null. An erased design's document holds none of the text or pictures its customer put in, and nothing more is printed, ordered or corrected from it.
      * @param array<string, string>|null $pickedColours The colours the shopper picked, by option name, `#rrggbb` each, such as `{"Colour": "#1b2a4a"}`, as the design was committed: a value of its blank that takes any colour is made in its pick. Null when none was picked.
      * @param string|null $pictureUrl A link to a drawing of the design's current revision, as `GET /v1/designs/{id}/revisions/{revision}/image?format=png` draws it (a PNG that keeps the design's transparency, so white artwork shows on whatever it is laid on), that opens with no key for an hour or two. It opens that revision alone, and stops opening once the design's personal data is erased. Null once it was.
@@ -88,6 +90,8 @@ final class DesignsGetResponse implements Model
         public readonly string $id,
         public readonly string $language,
         public readonly DesignsGetResponseOrigin $origin,
+        public readonly ?int $page,
+        public readonly ?int $pageCount,
         public readonly ?float $personalDataErasedAt,
         public readonly ?array $pickedColours,
         public readonly ?string $pictureUrl,
@@ -195,6 +199,16 @@ final class DesignsGetResponse implements Model
             id: Decode::string(Decode::required($data, 'id', $path), $path . '.id'),
             language: Decode::string(Decode::required($data, 'language', $path), $path . '.language'),
             origin: DesignsGetResponseOrigin::fromArray(Decode::object(Decode::required($data, 'origin', $path), $path . '.origin'), $path . '.origin'),
+            page: Decode::nullable(
+                Decode::required($data, 'page', $path),
+                $path . '.page',
+                static fn(mixed $v, string $p): int => Decode::int($v, $p),
+            ),
+            pageCount: Decode::nullable(
+                Decode::required($data, 'pageCount', $path),
+                $path . '.pageCount',
+                static fn(mixed $v, string $p): int => Decode::int($v, $p),
+            ),
             personalDataErasedAt: Decode::nullable(
                 Decode::required($data, 'personalDataErasedAt', $path),
                 $path . '.personalDataErasedAt',
@@ -331,6 +345,8 @@ final class DesignsGetResponse implements Model
         $data['id'] = $this->id;
         $data['language'] = $this->language;
         $data['origin'] = Encode::model($this->origin);
+        $data['page'] = $this->page;
+        $data['pageCount'] = $this->pageCount;
         $data['personalDataErasedAt'] = $this->personalDataErasedAt;
         $data['pickedColours'] = $this->pickedColours === null ? null : Encode::object($this->pickedColours);
         $data['pictureUrl'] = $this->pictureUrl;

@@ -30,6 +30,7 @@ final class BlanksListResponseBlanksItemPlacementsItemAreasItem implements Model
      * @param float|null $bleedMm Bleed past the trim on the row, in millimetres, 0 to 50. Omitted, the placement's.
      * @param int|null $dpi Print resolution on the row in dots per inch. Omitted, the placement's.
      * @param float|null $foldMm How far in from the trim the product folds on the row, in millimetres. Omitted, the placement's.
+     * @param BlanksListResponseBlanksItemPlacementsItemAreasItemPages|null $pages Item page counts it holds at (a book's cover); omitted, all.
      * @param float|null $safeAreaMm Safe area inside the trim on the row, in millimetres, 0 to 50. Omitted, the placement's.
      * @param BlanksListResponseBlanksItemPlacementsItemAreasItemShape|null $shape Where on the product a print may go on the row, such as one phone model's camera opening: as the placement's `shape`, in fractions of the row's print area. Omitted, the placement's.
      */
@@ -42,6 +43,7 @@ final class BlanksListResponseBlanksItemPlacementsItemAreasItem implements Model
         public readonly ?float $bleedMm = null,
         public readonly ?int $dpi = null,
         public readonly ?float $foldMm = null,
+        public readonly ?BlanksListResponseBlanksItemPlacementsItemAreasItemPages $pages = null,
         public readonly ?float $safeAreaMm = null,
         public readonly ?BlanksListResponseBlanksItemPlacementsItemAreasItemShape $shape = null,
     ) {}
@@ -69,6 +71,7 @@ final class BlanksListResponseBlanksItemPlacementsItemAreasItem implements Model
             bleedMm: array_key_exists('bleedMm', $data) ? Decode::float($data['bleedMm'], $path . '.bleedMm') : null,
             dpi: array_key_exists('dpi', $data) ? Decode::int($data['dpi'], $path . '.dpi') : null,
             foldMm: array_key_exists('foldMm', $data) ? Decode::float($data['foldMm'], $path . '.foldMm') : null,
+            pages: array_key_exists('pages', $data) ? BlanksListResponseBlanksItemPlacementsItemAreasItemPages::fromArray(Decode::object($data['pages'], $path . '.pages'), $path . '.pages') : null,
             safeAreaMm: array_key_exists('safeAreaMm', $data) ? Decode::float($data['safeAreaMm'], $path . '.safeAreaMm') : null,
             shape: array_key_exists('shape', $data) ? BlanksListResponseBlanksItemPlacementsItemAreasItemShape::fromArray(Decode::object($data['shape'], $path . '.shape'), $path . '.shape') : null,
         );
@@ -103,6 +106,9 @@ final class BlanksListResponseBlanksItemPlacementsItemAreasItem implements Model
         }
         if ($this->foldMm !== null) {
             $data['foldMm'] = $this->foldMm;
+        }
+        if ($this->pages !== null) {
+            $data['pages'] = Encode::model($this->pages);
         }
         if ($this->safeAreaMm !== null) {
             $data['safeAreaMm'] = $this->safeAreaMm;
