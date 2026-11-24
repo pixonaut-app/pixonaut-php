@@ -1,5 +1,17 @@
 # Changelog
 
+## [30.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v29.0.0...v30.0.0) (2026-11-24)
+
+Targets the Pixonaut API 14.3.0.
+
+### ⚠ BREAKING CHANGES
+
+* the optional marksFrame argument comes before maskAssetId (or maskUrl, or position) in the constructors of the six view models that gained it, so a positional call to any of them moves.
+
+### Features
+
+* target the published Pixonaut API 14.3.0 ([#98](https://github.com/pixonaut-app/pixonaut-php/issues/98)) ([89ecea3](https://github.com/pixonaut-app/pixonaut-php/commit/89ecea304ecfc05c48f56670be40fe6b705e2b46))
+
 ## [29.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v28.0.0...v29.0.0) (2026-11-24)
 
 Targets the Pixonaut API 14.2.0.
