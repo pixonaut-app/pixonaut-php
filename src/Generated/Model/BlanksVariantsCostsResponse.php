@@ -22,14 +22,18 @@ final class BlanksVariantsCostsResponse implements Model
     private ?array $decoded = null;
 
     /**
-     * @param bool $complete Whether every variant on sale has been read for the region, so no variant is missing from `costs` for not being read yet. false from when a region is first asked for until its last variant is read, and while a variant put on sale since waits for its read. It tells of the whole region, also when `variant` narrows the list. Always true for a blank no printshop is bound to.
+     * @param bool $complete Whether a store can price every variant on sale in the region: each has been read, and has both a `product` price and a `shipping`. false while any is listed in `missing`. It tells of the whole region, also when `variant` narrows the list. Never true for a blank no printshop is bound to, which no printshop prices.
      * @param list<BlanksVariantsCostsResponseCostsItem> $costs
      * @param bool $currencyNeeded Whether the costs wait for the printshop's billing currency: its printshop names no currency in what it answers, and nobody has stated the one it bills the connected account in (`PUT /v1/printshop-connections/{id}/billing-currency`). `costs` is then empty and `complete` false: no amount is read, or shown in a guessed currency. Once it is stated the costs are read in it within moments, and a cost held in another currency is left out until it is read again.
+     * @param list<BlanksVariantsCostsResponseMissingItem> $missing Each variant on sale a store cannot price in the region, in the blank's order, with what it lacks first. Of the whole region, also when `variant` narrows the list. Empty when `complete` is true, and while `currencyNeeded` is.
+     * @param bool $read Whether every variant on sale has been read for the region, so no variant is missing from `costs` for not being read yet: what a page waiting on the read asks again for. false from when a region is first asked for until its last variant is read, and while a variant put on sale since waits for its read. A variant read with no price or no shipping is read: asking again soon does not change it. It tells of the whole region, also when `variant` narrows the list. Always true for a blank no printshop is bound to.
      */
     public function __construct(
         public readonly bool $complete,
         public readonly array $costs,
         public readonly bool $currencyNeeded,
+        public readonly array $missing,
+        public readonly bool $read,
     ) {}
 
     /**
@@ -50,6 +54,12 @@ final class BlanksVariantsCostsResponse implements Model
                 static fn(mixed $v, string $p): BlanksVariantsCostsResponseCostsItem => BlanksVariantsCostsResponseCostsItem::fromArray(Decode::object($v, $p), $p),
             ),
             currencyNeeded: Decode::bool(Decode::required($data, 'currencyNeeded', $path), $path . '.currencyNeeded'),
+            missing: Decode::list(
+                Decode::required($data, 'missing', $path),
+                $path . '.missing',
+                static fn(mixed $v, string $p): BlanksVariantsCostsResponseMissingItem => BlanksVariantsCostsResponseMissingItem::fromArray(Decode::object($v, $p), $p),
+            ),
+            read: Decode::bool(Decode::required($data, 'read', $path), $path . '.read'),
         );
         $model->decoded = $data;
         return $model;
@@ -75,6 +85,11 @@ final class BlanksVariantsCostsResponse implements Model
             $this->costs,
         );
         $data['currencyNeeded'] = $this->currencyNeeded;
+        $data['missing'] = array_map(
+            static fn(BlanksVariantsCostsResponseMissingItem $v): mixed => Encode::model($v),
+            $this->missing,
+        );
+        $data['read'] = $this->read;
         return $data;
     }
 }
