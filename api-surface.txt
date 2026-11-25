@@ -1534,6 +1534,11 @@ Pixonaut\Sdk\Generated\Enum\BlanksPlacementsFittingTemplatesListResponseItemsIte
 Pixonaut\Sdk\Generated\Enum\BlanksPlacementsFittingTemplatesListResponseItemsItemVerdictFalseReason::PRINT_SIZE_NOT_AREA const
 Pixonaut\Sdk\Generated\Enum\BlanksPlacementsFittingTemplatesListResponseItemsItemVerdictFalseReason::TOO_LARGE const
 Pixonaut\Sdk\Generated\Enum\BlanksPlacementsFittingTemplatesListResponseItemsItemVerdictFalseReason::WRONG_RATIO const
+final class Pixonaut\Sdk\Generated\Enum\BlanksVariantsCostsResponseMissingItemReason
+Pixonaut\Sdk\Generated\Enum\BlanksVariantsCostsResponseMissingItemReason::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksVariantsCostsResponseMissingItemReason::NO_PRODUCT const
+Pixonaut\Sdk\Generated\Enum\BlanksVariantsCostsResponseMissingItemReason::NO_SHIPPING const
+Pixonaut\Sdk\Generated\Enum\BlanksVariantsCostsResponseMissingItemReason::UNREAD const
 final class Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseOptionsItemTexturesValue
 Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseOptionsItemTexturesValue::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksVariantsListResponseOptionsItemTexturesValue::METAL const
@@ -14468,7 +14473,9 @@ final class Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse implements 
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::$complete readonly bool
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::$costs readonly array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::$currencyNeeded readonly bool
-Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::__construct(bool $complete, array $costs, bool $currencyNeeded)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::$missing readonly array
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::$read readonly bool
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::__construct(bool $complete, array $costs, bool $currencyNeeded, array $missing, bool $read)
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse static
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponse::toArray(): array
@@ -14580,6 +14587,13 @@ Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping::
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping static
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseCostsItemTimesShipping::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseMissingItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseMissingItem::$reason readonly string
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseMissingItem::$variant readonly string
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseMissingItem::__construct(string $reason, string $variant)
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseMissingItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseMissingItem static
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseMissingItem::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksVariantsCostsResponseMissingItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::$areasVaryBy readonly array
 Pixonaut\Sdk\Generated\Model\BlanksVariantsListResponse::$axes readonly array
