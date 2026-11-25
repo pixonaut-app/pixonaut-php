@@ -37,7 +37,7 @@ final class Pixonaut
 {
     use Resources;
 
-    public const VERSION = '30.0.0'; // x-release-please-version
+    public const VERSION = '31.0.0'; // x-release-please-version
 
     /**
      * Times a request answered `409 idempotency_key_in_use` is sent again

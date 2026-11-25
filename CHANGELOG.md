@@ -1,5 +1,17 @@
 # Changelog
 
+## [31.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v30.0.0...v31.0.0) (2026-11-25)
+
+Targets the Pixonaut API 14.4.0.
+
+### ⚠ BREAKING CHANGES
+
+* BlanksVariantsCostsResponse's constructor takes the new required missing and read arguments.
+
+### Features
+
+* target the published Pixonaut API 14.4.0 ([#100](https://github.com/pixonaut-app/pixonaut-php/issues/100)) ([5a9148f](https://github.com/pixonaut-app/pixonaut-php/commit/5a9148f91a5dc9bc7b542a0bdae33407e236c61e))
+
 ## [30.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v29.0.0...v30.0.0) (2026-11-24)
 
 Targets the Pixonaut API 14.3.0.
