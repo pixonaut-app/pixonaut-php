@@ -44,6 +44,7 @@ final class DesignsDesignerGetResponse implements Model
      * @param array<string, string>|null $layerShapeIds
      * @param array<string, mixed>|null $offeredShapes
      * @param array<string, string>|null $optionLabels
+     * @param string|null $valueSetId The value set `template` was read with, as `valueSet` named it: its values are written into the document as its layers' own. Absent when the read named none.
      */
     public function __construct(
         public readonly ?bool $backgroundSeeThrough,
@@ -72,6 +73,7 @@ final class DesignsDesignerGetResponse implements Model
         public readonly ?array $layerShapeIds = null,
         public readonly ?array $offeredShapes = null,
         public readonly ?array $optionLabels = null,
+        public readonly ?string $valueSetId = null,
     ) {}
 
     /**
@@ -173,6 +175,7 @@ final class DesignsDesignerGetResponse implements Model
                 $path . '.optionLabels',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : null,
+            valueSetId: array_key_exists('valueSetId', $data) ? Decode::string($data['valueSetId'], $path . '.valueSetId') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -245,6 +248,9 @@ final class DesignsDesignerGetResponse implements Model
         }
         if ($this->optionLabels !== null) {
             $data['optionLabels'] = Encode::object($this->optionLabels);
+        }
+        if ($this->valueSetId !== null) {
+            $data['valueSetId'] = $this->valueSetId;
         }
         return $data;
     }

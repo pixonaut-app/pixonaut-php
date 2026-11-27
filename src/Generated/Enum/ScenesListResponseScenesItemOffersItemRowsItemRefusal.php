@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Enum;
 
 /**
- * Why the scene does not show the row, or null when it does: `no_product_model`, the row says no product; `kind_not_accepted`, the scene takes no product of that kind; `footprint_exceeds_anchor`, the product is larger than the anchor's room; `size_outside_reviewed_range`, no product of that size was looked at there; `angle_unsupported`, the camera looks too far up or down; `no_drawer`, nothing draws the kind yet; `shape_outside_grip`, the scene's photo holds a product of another kind or size in a hand.
+ * Why the scene does not show the row, or null when it does: `no_product_model`, the row says no product; `kind_not_accepted`, the scene takes no product of that kind; `footprint_exceeds_anchor`, the product is larger than the anchor's room; `size_outside_reviewed_range`, no product of that size was looked at there; `angle_unsupported`, the camera looks too far up or down; `no_drawer`, nothing draws the kind yet; `shape_outside_grip`, the scene's photo holds a product of another kind or size in a hand; `part_colour_not_shown`, the scene's photo, dyed whole, cannot show a part of a colour of its own.
  *
  * The values this release knows. The field is a string, and the API may answer a value added after this release.
  *
@@ -29,6 +29,8 @@ final class ScenesListResponseScenesItemOffersItemRowsItemRefusal
 
     public const SHAPE_OUTSIDE_GRIP = 'shape_outside_grip';
 
+    public const PART_COLOUR_NOT_SHOWN = 'part_colour_not_shown';
+
     /**
      * Every value this release knows.
      */
@@ -40,5 +42,6 @@ final class ScenesListResponseScenesItemOffersItemRowsItemRefusal
         self::ANGLE_UNSUPPORTED,
         self::NO_DRAWER,
         self::SHAPE_OUTSIDE_GRIP,
+        self::PART_COLOUR_NOT_SHOWN,
     ];
 }

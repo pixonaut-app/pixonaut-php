@@ -54,6 +54,7 @@ final class DesignsErasePersonalDataResponse implements Model
      * @param bool $templateDeleted Whether the design's template was deleted. The design keeps its template's name and version; the template itself can no longer be opened.
      * @param string|null $templateName
      * @param int|null $templateVersion The version of the template the design was made from: `templateId` after its `@`. A design committed from a proof token was made from the proof's version, whatever the template's latest is now.
+     * @param string|null $valueSetId The value set the design's template was read with, as the proof or commit named it in `valueSet`: the store product's values, written into its document and print file. Null when it named none. A store checks it is its product's before taking the design.
      * @param array<string, string>|null $variantRow The size the design was made for, on a blank whose print areas change with its size: the blank's option values it was sized at, such as `{"Size": "XL"}`. An order of a variant of another size is refused with `variant_not_of_design_row`. Null on a blank whose print areas change with nothing, or on no blank.
      */
     public function __construct(
@@ -95,6 +96,7 @@ final class DesignsErasePersonalDataResponse implements Model
         public readonly ?string $templateName,
         public readonly ?int $templateVersion,
         public readonly string $tenantId,
+        public readonly ?string $valueSetId,
         public readonly ?array $variantRow,
     ) {}
 
@@ -243,6 +245,11 @@ final class DesignsErasePersonalDataResponse implements Model
                 static fn(mixed $v, string $p): int => Decode::int($v, $p),
             ),
             tenantId: Decode::string(Decode::required($data, 'tenantId', $path), $path . '.tenantId'),
+            valueSetId: Decode::nullable(
+                Decode::required($data, 'valueSetId', $path),
+                $path . '.valueSetId',
+                static fn(mixed $v, string $p): string => Decode::string($v, $p),
+            ),
             variantRow: Decode::nullable(
                 Decode::required($data, 'variantRow', $path),
                 $path . '.variantRow',
@@ -309,6 +316,7 @@ final class DesignsErasePersonalDataResponse implements Model
         $data['templateName'] = $this->templateName;
         $data['templateVersion'] = $this->templateVersion;
         $data['tenantId'] = $this->tenantId;
+        $data['valueSetId'] = $this->valueSetId;
         $data['variantRow'] = $this->variantRow === null ? null : Encode::object($this->variantRow);
         return $data;
     }

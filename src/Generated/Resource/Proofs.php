@@ -87,17 +87,18 @@ final class Proofs
      * `POST /v1/proofs`
      *
      * @param ProofsCreateRequest $body
+     * @param string|null $valueSet A value set of the template, by the id `POST /v1/templates/{id}/value-sets` answered: the template is read with its values written in as its layers' own, so an offered layer starts at the set's value and a fixed one holds it. A store product names its own. One the template holds no set by is `value_set_not_found`.
      * @param string|null $tz The IANA timezone the template's dynamic values are resolved in, such as `Europe/Stockholm`: today's date there. Absent, the workspace's timezone.
      * @param string|null $lang The language the template's dynamic values are written in when their name names none, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the workspace's default language. A value whose name carries a language, `{date.long:sv}`, keeps it.
      * @param string|null $session The designer's browser session, which the SDK sends so one visitor's uploads and proofs are told apart from another's on the same key: 6 to 64 letters, digits, `_` or `-`. Any other value is ignored.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_json`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `link_design_limit`, `not_found`, `origin_forbidden`, `page_count_out_of_range`, `page_on_unpaged_placement`, `page_required`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_json`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `link_design_limit`, `not_found`, `origin_forbidden`, `page_count_out_of_range`, `page_on_unpaged_placement`, `page_required`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `value_set_not_found`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
-    public function create(ProofsCreateRequest $body, ?string $tz = null, ?string $lang = null, ?string $session = null): ProofsCreateResponse
+    public function create(ProofsCreateRequest $body, ?string $valueSet = null, ?string $tz = null, ?string $lang = null, ?string $session = null): ProofsCreateResponse
     {
         $result = $this->pixonaut->call(
             'proofs.create',
-            query: ['tz' => $tz, 'lang' => $lang],
+            query: ['valueSet' => $valueSet, 'tz' => $tz, 'lang' => $lang],
             body: $body->toArray(),
             headers: ['x-pixonaut-session' => $session],
         );
@@ -112,17 +113,18 @@ final class Proofs
      * `POST /v1/proofs/layout`
      *
      * @param ProofsCreateThroughLayoutRequest $body
+     * @param string|null $valueSet A value set of the template, by the id `POST /v1/templates/{id}/value-sets` answered: the template is read with its values written in as its layers' own, so an offered layer starts at the set's value and a fixed one holds it. A store product names its own. One the template holds no set by is `value_set_not_found`.
      * @param string|null $tz The IANA timezone the template's dynamic values are resolved in, such as `Europe/Stockholm`: today's date there. Absent, the workspace's timezone.
      * @param string|null $lang The language the template's dynamic values are written in when their name names none, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the workspace's default language. A value whose name carries a language, `{date.long:sv}`, keeps it.
      * @param string|null $session The designer's browser session, which the SDK sends so one visitor's uploads and proofs are told apart from another's on the same key: 6 to 64 letters, digits, `_` or `-`. Any other value is ignored.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `empty_layout`, `feature_disabled`, `forbidden`, `invalid_query`, `layout_out_of_date`, `link_design_limit`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_layout`, `unknown_placement`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `bad_request`, `client_closed_request`, `constraint_violation`, `db_error`, `empty_layout`, `feature_disabled`, `forbidden`, `invalid_query`, `layout_out_of_date`, `link_design_limit`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_layout`, `unknown_placement`, `value_set_not_found`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
-    public function createThroughLayout(ProofsCreateThroughLayoutRequest $body, ?string $tz = null, ?string $lang = null, ?string $session = null): ProofsCreateThroughLayoutResponse
+    public function createThroughLayout(ProofsCreateThroughLayoutRequest $body, ?string $valueSet = null, ?string $tz = null, ?string $lang = null, ?string $session = null): ProofsCreateThroughLayoutResponse
     {
         $result = $this->pixonaut->call(
             'proofs.createThroughLayout',
-            query: ['tz' => $tz, 'lang' => $lang],
+            query: ['valueSet' => $valueSet, 'tz' => $tz, 'lang' => $lang],
             body: $body->toArray(),
             headers: ['x-pixonaut-session' => $session],
         );
@@ -137,16 +139,17 @@ final class Proofs
      * `POST /v1/validate`
      *
      * @param PayloadsValidateRequest $body
+     * @param string|null $valueSet A value set of the template, by the id `POST /v1/templates/{id}/value-sets` answered: the template is read with its values written in as its layers' own, so an offered layer starts at the set's value and a fixed one holds it. A store product names its own. One the template holds no set by is `value_set_not_found`.
      * @param string|null $tz The IANA timezone the template's dynamic values are resolved in, such as `Europe/Stockholm`: today's date there. Absent, the workspace's timezone.
      * @param string|null $lang The language the template's dynamic values are written in when their name names none, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the workspace's default language. A value whose name carries a language, `{date.long:sv}`, keeps it.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `bad_json`, `bad_request`, `constraint_violation`, `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_json`, `bad_request`, `constraint_violation`, `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `not_found`, `origin_forbidden`, `payload_too_large`, `rate_limited`, `unauthorized`, `unknown_placement`, `value_set_not_found`, `variant_not_of_blank`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
-    public function validatePayload(PayloadsValidateRequest $body, ?string $tz = null, ?string $lang = null): PayloadsValidateResponse
+    public function validatePayload(PayloadsValidateRequest $body, ?string $valueSet = null, ?string $tz = null, ?string $lang = null): PayloadsValidateResponse
     {
         $result = $this->pixonaut->call(
             'payloads.validate',
-            query: ['tz' => $tz, 'lang' => $lang],
+            query: ['valueSet' => $valueSet, 'tz' => $tz, 'lang' => $lang],
             body: $body->toArray(),
         );
         return $result->decode(

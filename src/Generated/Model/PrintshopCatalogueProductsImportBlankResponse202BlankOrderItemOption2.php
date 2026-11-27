@@ -30,6 +30,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption
      * @param string|null $cutOut For a studio style showing a garment: the id of the garment's cut-out, a scene whose `cutOut` is true, laid over the style's backdrop with a shadow. Left out for a product the style draws from its measures, and for any other scene.
      * @param PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels|null $localizedLabels What the scene is called as a view of this blank in each customer-facing language, by code: only the languages it has a name in. A shopper whose designer is shown in a language left out reads the scene's own label. A studio style has names for each camera it is shown from.
      * @param array<string, string>|null $row The option values the stock photo shows, by option name, of the options the blank's photos change with (`photosVaryBy`): shoppers see it only for the variants with these values. Absent or empty: every variant.
+     * @param bool|null $turned For a setting, true where the product is shown turned half round on its axis: a mug with its handle on the right and the other half of its wrap to the camera. Left out, it faces the way it always does, a mug's handle on the left. A setting is listed once each way round; a studio style turns its product by its cameras instead.
      */
     public function __construct(
         public readonly string $sceneId,
@@ -39,6 +40,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption
         public readonly ?string $cutOut = null,
         public readonly ?PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels $localizedLabels = null,
         public readonly ?array $row = null,
+        public readonly ?bool $turned = null,
     ) {}
 
     /**
@@ -63,6 +65,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption
                 $path . '.row',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : null,
+            turned: array_key_exists('turned', $data) ? Decode::bool($data['turned'], $path . '.turned') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -98,6 +101,9 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption
         }
         if ($this->row !== null) {
             $data['row'] = Encode::object($this->row);
+        }
+        if ($this->turned !== null) {
+            $data['turned'] = $this->turned;
         }
         return $data;
     }

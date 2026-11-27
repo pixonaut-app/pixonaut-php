@@ -27,6 +27,7 @@ final class BlanksListResponseBlanksItemSettingBakesItem implements Model
      * @param int $ready How many of the blank's rows are drawn in the setting.
      * @param string $sceneId The setting's id.
      * @param list<BlanksListResponseBlanksItemSettingBakesItemWaitingItem> $waiting The rows not drawn in the setting, in the variants' order: their variants do not show it.
+     * @param bool|null $turned Set where the setting shows the product turned half round, a mug's other side: a setting bound both ways round is listed once each way.
      */
     public function __construct(
         public readonly string $anchorKey,
@@ -34,6 +35,7 @@ final class BlanksListResponseBlanksItemSettingBakesItem implements Model
         public readonly int $ready,
         public readonly string $sceneId,
         public readonly array $waiting,
+        public readonly ?bool $turned = null,
     ) {}
 
     /**
@@ -56,6 +58,7 @@ final class BlanksListResponseBlanksItemSettingBakesItem implements Model
                 $path . '.waiting',
                 static fn(mixed $v, string $p): BlanksListResponseBlanksItemSettingBakesItemWaitingItem => BlanksListResponseBlanksItemSettingBakesItemWaitingItem::fromArray(Decode::object($v, $p), $p),
             ),
+            turned: array_key_exists('turned', $data) ? Decode::bool($data['turned'], $path . '.turned') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -83,6 +86,9 @@ final class BlanksListResponseBlanksItemSettingBakesItem implements Model
             static fn(BlanksListResponseBlanksItemSettingBakesItemWaitingItem $v): mixed => Encode::model($v),
             $this->waiting,
         );
+        if ($this->turned !== null) {
+            $data['turned'] = $this->turned;
+        }
         return $data;
     }
 }

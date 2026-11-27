@@ -23,6 +23,10 @@ use Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateResponseOption3;
 use Pixonaut\Sdk\Generated\Model\TemplatesPrintSizeValidateResponseTrue;
 use Pixonaut\Sdk\Generated\Model\TemplatesPublishRequest;
 use Pixonaut\Sdk\Generated\Model\TemplatesPublishResponse;
+use Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateRequest;
+use Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse200;
+use Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse201;
+use Pixonaut\Sdk\Generated\Model\TemplatesValueSetsGetResponse;
 use Pixonaut\Sdk\Http\Binary;
 use Pixonaut\Sdk\Model\Decode;
 use Pixonaut\Sdk\Pixonaut;
@@ -46,6 +50,8 @@ final class Templates
         'getConstraints' => 'templates.constraints.get',
         'listFittingPlacements' => 'templates.fittingPlacements.list',
         'validatePrintSize' => 'templates.printSize.validate',
+        'createValueSet' => 'templates.valueSets.create',
+        'getValueSet' => 'templates.valueSets.get',
     ];
 
     public function __construct(
@@ -66,10 +72,11 @@ final class Templates
      * @param string|null $size The long edge in pixels, clamped to the sizes the api renders.
      * @param string|null $bleed Refused: a full-bleed reference cannot be composited.
      * @param string|null $showcase The id of one of the template's showcases, as its read lists them: the template is drawn with that set's values in place of its defaults.
+     * @param string|null $valueSet A value set of the template, by the id `POST /v1/templates/{id}/value-sets` answered: the template is read with its values written in as its layers' own, so an offered layer starts at the set's value and a fixed one holds it. A store product names its own. One the template holds no set by is `value_set_not_found`.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `artwork_decode_failed`, `asset_map_too_large`, `asset_store_unavailable`, `assets_unavailable`, `bleed_not_compositable`, `client_closed_request`, `composite_failed`, `db_error`, `downscale_size_overflow`, `encode_failed`, `feature_disabled`, `forbidden`, `input_too_large`, `invalid_query`, `mockup_cut_unreadable`, `mockup_cut_unusable`, `mockup_mask_decode_failed`, `mockup_mask_unreadable`, `mockup_mesh_unreadable`, `mockup_mesh_unusable`, `mockup_placed_box_empty`, `mockup_rect_outside_photo`, `mockup_rect_unusable`, `mockup_uv_decode_failed`, `mockup_uv_pass_mismatch`, `mockup_uv_unreadable`, `mockup_uv_view_missing`, `mockup_warp_unreadable`, `no_photos`, `origin_forbidden`, `photo_decode_failed`, `print_box_unavailable`, `rate_limited`, `showcase_not_found`, `template_defaults_invalid`, `unauthorized`, `unknown_variant`, `variant_has_no_photo`, `variant_retired`, `workspace_suspended`), or cannot be reached.
+     * @throws ApiException When Pixonaut refuses the request (documented: `artwork_decode_failed`, `asset_map_too_large`, `asset_store_unavailable`, `assets_unavailable`, `bleed_not_compositable`, `client_closed_request`, `composite_failed`, `db_error`, `downscale_size_overflow`, `encode_failed`, `feature_disabled`, `forbidden`, `input_too_large`, `invalid_query`, `mockup_cut_unreadable`, `mockup_cut_unusable`, `mockup_mask_decode_failed`, `mockup_mask_unreadable`, `mockup_mesh_unreadable`, `mockup_mesh_unusable`, `mockup_placed_box_empty`, `mockup_rect_outside_photo`, `mockup_rect_unusable`, `mockup_uv_decode_failed`, `mockup_uv_pass_mismatch`, `mockup_uv_unreadable`, `mockup_uv_view_missing`, `mockup_warp_unreadable`, `no_photos`, `origin_forbidden`, `photo_decode_failed`, `print_box_unavailable`, `rate_limited`, `showcase_not_found`, `template_defaults_invalid`, `unauthorized`, `unknown_variant`, `value_set_not_found`, `variant_has_no_photo`, `variant_retired`, `workspace_suspended`), or cannot be reached.
      */
-    public function getMockup(string $id, string $blankId, string $placementId, ?string $mockupId = null, ?string $viewId = null, ?string $variant = null, ?string $size = null, ?string $bleed = null, ?string $showcase = null): Binary
+    public function getMockup(string $id, string $blankId, string $placementId, ?string $mockupId = null, ?string $viewId = null, ?string $variant = null, ?string $size = null, ?string $bleed = null, ?string $showcase = null, ?string $valueSet = null): Binary
     {
         $result = $this->pixonaut->call(
             'templates.mockup.get',
@@ -83,6 +90,7 @@ final class Templates
                 'size' => $size,
                 'bleed' => $bleed,
                 'showcase' => $showcase,
+                'valueSet' => $valueSet,
             ],
         );
         return $result->binary();
@@ -100,10 +108,11 @@ final class Templates
      * @param string|null $bleed `1` for the unclipped full-bleed reference.
      * @param string|null $compact `1` for as few bytes as show the same picture: a JPEG when nothing in it is transparent and that is smaller, else the PNG. The answer's `content-type` says which. Ignored with `bleed=1`.
      * @param string|null $showcase The id of one of the template's showcases, as its read lists them: the image is drawn with that set's values in place of the defaults.
+     * @param string|null $valueSet A value set of the template, by the id `POST /v1/templates/{id}/value-sets` answered: the template is read with its values written in as its layers' own, so an offered layer starts at the set's value and a fixed one holds it. A store product names its own. One the template holds no set by is `value_set_not_found`.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `client_closed_request`, `db_error`, `draft_has_no_artwork`, `draft_invalid`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `preview_unavailable`, `print_box_unavailable`, `rate_limited`, `showcase_not_found`, `template_defaults_invalid`, `unauthorized`, `workspace_suspended`), or cannot be reached.
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `assets_unavailable`, `client_closed_request`, `db_error`, `draft_has_no_artwork`, `draft_invalid`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `preview_unavailable`, `print_box_unavailable`, `rate_limited`, `showcase_not_found`, `template_defaults_invalid`, `unauthorized`, `value_set_not_found`, `workspace_suspended`), or cannot be reached.
      */
-    public function getPreview(string $id, ?string $size = null, ?string $width = null, ?string $fit = null, ?string $bleed = null, ?string $compact = null, ?string $showcase = null): Binary
+    public function getPreview(string $id, ?string $size = null, ?string $width = null, ?string $fit = null, ?string $bleed = null, ?string $compact = null, ?string $showcase = null, ?string $valueSet = null): Binary
     {
         $result = $this->pixonaut->call(
             'templates.preview.get',
@@ -115,6 +124,7 @@ final class Templates
                 'bleed' => $bleed,
                 'compact' => $compact,
                 'showcase' => $showcase,
+                'valueSet' => $valueSet,
             ],
         );
         return $result->binary();
@@ -186,18 +196,19 @@ final class Templates
      * `GET /v1/templates/{id}`
      *
      * @param string $id A template id, `baseId@version`.
+     * @param string|null $valueSet A value set of the template, by the id `POST /v1/templates/{id}/value-sets` answered: the template is read with its values written in as its layers' own, so an offered layer starts at the set's value and a fixed one holds it. A store product names its own. One the template holds no set by is `value_set_not_found`.
      * @param string|null $tz The IANA timezone the template's dynamic values are resolved in, such as `Europe/Stockholm`: today's date there. Absent, the workspace's timezone.
      * @param string|null $lang The language the template's dynamic values are written in when their name names none, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the workspace's default language. A value whose name carries a language, `{date.long:sv}`, keeps it.
      * @param string|null $sdkVersion The SDK release making the request, which the SDK sends itself. A release that cannot draw the template is refused `sdk_outdated`; a request naming none is served.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `rate_limited`, `sdk_outdated`, `sdk_version_invalid`, `unauthorized`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `invalid_query`, `origin_forbidden`, `rate_limited`, `sdk_outdated`, `sdk_version_invalid`, `unauthorized`, `value_set_not_found`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      */
-    public function get(string $id, ?string $tz = null, ?string $lang = null, ?string $sdkVersion = null): TemplatesGetResponse
+    public function get(string $id, ?string $valueSet = null, ?string $tz = null, ?string $lang = null, ?string $sdkVersion = null): TemplatesGetResponse
     {
         $result = $this->pixonaut->call(
             'templates.get',
             path: ['id' => $id],
-            query: ['tz' => $tz, 'lang' => $lang],
+            query: ['valueSet' => $valueSet, 'tz' => $tz, 'lang' => $lang],
             headers: ['x-pixonaut-sdk-version' => $sdkVersion],
         );
         return $result->decode(
@@ -272,6 +283,55 @@ final class Templates
         );
         return $result->decode(
             static fn(mixed $json): TemplatesPrintSizeValidateResponseFalse|TemplatesPrintSizeValidateResponseTrue|TemplatesPrintSizeValidateResponseOption3 => TemplatesPrintSizeValidateResponse::decode($json, '$'),
+        );
+    }
+
+    /**
+     * Make a value set.
+     *
+     * `POST /v1/templates/{id}/value-sets`
+     *
+     * @param string $id A template id, `baseId@version`.
+     * @param TemplatesValueSetsCreateRequest $body
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `bad_json`, `bad_request`, `db_error`, `feature_disabled`, `forbidden`, `origin_forbidden`, `payload_too_large`, `print_box_unavailable`, `publish_gate_failed`, `publish_references_unavailable`, `secret_key_required`, `template_not_found`, `template_renderer_failed`, `unauthorized`, `value_set_invalid`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function createValueSet(string $id, TemplatesValueSetsCreateRequest $body): TemplatesValueSetsCreateResponse200|TemplatesValueSetsCreateResponse201
+    {
+        $result = $this->pixonaut->call(
+            'templates.valueSets.create',
+            path: ['id' => $id],
+            body: $body->toArray(),
+        );
+        return match ($result->status) {
+            200 => $result->decode(
+                static fn(mixed $json): TemplatesValueSetsCreateResponse200 => TemplatesValueSetsCreateResponse200::fromArray(Decode::object($json, '$'), '$'),
+            ),
+            201 => $result->decode(
+                static fn(mixed $json): TemplatesValueSetsCreateResponse201 => TemplatesValueSetsCreateResponse201::fromArray(Decode::object($json, '$'), '$'),
+            ),
+            default => throw $result->unexpected(),
+        };
+    }
+
+    /**
+     * Read a value set.
+     *
+     * `GET /v1/templates/{id}/value-sets/{valueSetId}`
+     *
+     * @param string $id A template id, `baseId@version`.
+     * @param string $valueSetId The value set's id.
+     *
+     * @throws ApiException When Pixonaut refuses the request (documented: `db_error`, `feature_disabled`, `forbidden`, `origin_forbidden`, `secret_key_required`, `unauthorized`, `value_set_not_found`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     */
+    public function getValueSet(string $id, string $valueSetId): TemplatesValueSetsGetResponse
+    {
+        $result = $this->pixonaut->call(
+            'templates.valueSets.get',
+            path: ['id' => $id, 'valueSetId' => $valueSetId],
+        );
+        return $result->decode(
+            static fn(mixed $json): TemplatesValueSetsGetResponse => TemplatesValueSetsGetResponse::fromArray(Decode::object($json, '$'), '$'),
         );
     }
 }

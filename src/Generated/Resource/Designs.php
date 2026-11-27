@@ -150,17 +150,18 @@ final class Designs
      * To send the same request again later, keep {@see prepareCommit()} and send it with {@see sendCommit()}.
      *
      * @param DesignsCommitRequestOption1|DesignsCommitRequestOption2 $body
+     * @param string|null $valueSet A value set of the template, by the id `POST /v1/templates/{id}/value-sets` answered: the template is read with its values written in as its layers' own, so an offered layer starts at the set's value and a fixed one holds it. A store product names its own. One the template holds no set by is `value_set_not_found`.
      * @param string|null $tz The IANA timezone the template's dynamic values are resolved in, such as `Europe/Stockholm`: today's date there. Absent, the workspace's timezone.
      * @param string|null $lang The language the template's dynamic values are written in when their name names none, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the workspace's default language. A value whose name carries a language, `{date.long:sv}`, keeps it.
      * @param string|null $idempotencyKey Your key for the request; a new UUID when null.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `bad_request`, `constraint_violation`, `correction_proof`, `db_error`, `design_not_stitchable`, `design_unreadable`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_doc`, `invalid_fulfilment_payload`, `invalid_idempotency_key`, `invalid_query`, `layout_proof`, `link_design_limit`, `missing_fulfilment_keys`, `not_found`, `origin_forbidden`, `page_count_out_of_range`, `page_on_unpaged_placement`, `page_required`, `payload_too_large`, `placement_not_committable`, `print_size_not_committable`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_unavailable`, `proof_already_committed`, `proof_expired`, `rate_limited`, `repeat_not_committable`, `secret_key_required`, `spot_plate_required`, `unauthorized`, `unknown_placement`, `unknown_printshop`, `unknown_proof`, `variant_not_of_blank`, `variant_required`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `bad_request`, `constraint_violation`, `correction_proof`, `db_error`, `design_not_stitchable`, `design_unreadable`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_doc`, `invalid_fulfilment_payload`, `invalid_idempotency_key`, `invalid_query`, `layout_proof`, `link_design_limit`, `missing_fulfilment_keys`, `not_found`, `origin_forbidden`, `page_count_out_of_range`, `page_on_unpaged_placement`, `page_required`, `payload_too_large`, `placement_not_committable`, `print_size_not_committable`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_unavailable`, `proof_already_committed`, `proof_expired`, `rate_limited`, `repeat_not_committable`, `secret_key_required`, `spot_plate_required`, `unauthorized`, `unknown_placement`, `unknown_printshop`, `unknown_proof`, `value_set_not_found`, `variant_not_of_blank`, `variant_required`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      * @throws InvalidArgumentException When the request does not fit the operation; nothing is sent.
      */
-    public function commit(DesignsCommitRequestOption1|DesignsCommitRequestOption2 $body, ?string $tz = null, ?string $lang = null, ?string $idempotencyKey = null): DesignsCommitResponse
+    public function commit(DesignsCommitRequestOption1|DesignsCommitRequestOption2 $body, ?string $valueSet = null, ?string $tz = null, ?string $lang = null, ?string $idempotencyKey = null): DesignsCommitResponse
     {
         return $this->sendCommit(
-            $this->prepareCommit($body, $tz, $lang, $idempotencyKey),
+            $this->prepareCommit($body, $valueSet, $tz, $lang, $idempotencyKey),
         );
     }
 
@@ -169,17 +170,18 @@ final class Designs
      * Store its `toArray()` before sending, and a retry sends the same bytes under the same key.
      *
      * @param DesignsCommitRequestOption1|DesignsCommitRequestOption2 $body
+     * @param string|null $valueSet A value set of the template, by the id `POST /v1/templates/{id}/value-sets` answered: the template is read with its values written in as its layers' own, so an offered layer starts at the set's value and a fixed one holds it. A store product names its own. One the template holds no set by is `value_set_not_found`.
      * @param string|null $tz The IANA timezone the template's dynamic values are resolved in, such as `Europe/Stockholm`: today's date there. Absent, the workspace's timezone.
      * @param string|null $lang The language the template's dynamic values are written in when their name names none, one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the workspace's default language. A value whose name carries a language, `{date.long:sv}`, keeps it.
      * @param string|null $idempotencyKey Your key for the request; a new UUID when null.
      *
      * @throws InvalidArgumentException When the request does not fit the operation.
      */
-    public function prepareCommit(DesignsCommitRequestOption1|DesignsCommitRequestOption2 $body, ?string $tz = null, ?string $lang = null, ?string $idempotencyKey = null): PreparedRequest
+    public function prepareCommit(DesignsCommitRequestOption1|DesignsCommitRequestOption2 $body, ?string $valueSet = null, ?string $tz = null, ?string $lang = null, ?string $idempotencyKey = null): PreparedRequest
     {
         return $this->pixonaut->prepare(
             'designs.commit',
-            query: ['tz' => $tz, 'lang' => $lang],
+            query: ['valueSet' => $valueSet, 'tz' => $tz, 'lang' => $lang],
             body: $body->toArray(),
             idempotencyKey: $idempotencyKey,
         );
@@ -188,7 +190,7 @@ final class Designs
     /**
      * Sends a request from {@see prepareCommit()}, as prepared or restored with `PreparedRequest::fromArray()`.
      *
-     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `bad_request`, `constraint_violation`, `correction_proof`, `db_error`, `design_not_stitchable`, `design_unreadable`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_doc`, `invalid_fulfilment_payload`, `invalid_idempotency_key`, `invalid_query`, `layout_proof`, `link_design_limit`, `missing_fulfilment_keys`, `not_found`, `origin_forbidden`, `page_count_out_of_range`, `page_on_unpaged_placement`, `page_required`, `payload_too_large`, `placement_not_committable`, `print_size_not_committable`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_unavailable`, `proof_already_committed`, `proof_expired`, `rate_limited`, `repeat_not_committable`, `secret_key_required`, `spot_plate_required`, `unauthorized`, `unknown_placement`, `unknown_printshop`, `unknown_proof`, `variant_not_of_blank`, `variant_required`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
+     * @throws ApiException When Pixonaut refuses the request (documented: `asset_map_too_large`, `bad_request`, `constraint_violation`, `correction_proof`, `db_error`, `design_not_stitchable`, `design_unreadable`, `feature_disabled`, `forbidden`, `idempotency_key_in_use`, `idempotency_key_reused`, `invalid_doc`, `invalid_fulfilment_payload`, `invalid_idempotency_key`, `invalid_query`, `layout_proof`, `link_design_limit`, `missing_fulfilment_keys`, `not_found`, `origin_forbidden`, `page_count_out_of_range`, `page_on_unpaged_placement`, `page_required`, `payload_too_large`, `placement_not_committable`, `print_size_not_committable`, `printshop_differs_from_blank`, `printshop_disconnected`, `printshop_unavailable`, `proof_already_committed`, `proof_expired`, `rate_limited`, `repeat_not_committable`, `secret_key_required`, `spot_plate_required`, `unauthorized`, `unknown_placement`, `unknown_printshop`, `unknown_proof`, `value_set_not_found`, `variant_not_of_blank`, `variant_required`, `variant_row_invalid`, `workspace_suspended`), cannot be reached, or answers what this release cannot read (`unexpected_response`).
      * @throws InvalidArgumentException When the request was prepared for another operation, or does not fit this one.
      */
     public function sendCommit(PreparedRequest $request): DesignsCommitResponse

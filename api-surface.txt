@@ -957,6 +957,17 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldPartsItem::HANDLE
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldPartsItem::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldPartsItem::LID const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldPartsItem::STRAW const
+final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemPart
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemPart::FINISH const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemPart::FRAME const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemPart::GLASS const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemPart::HANDLE const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemPart::HANGER const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemPart::INSIDE const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemPart::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemPart::LID const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemPart::MAT const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemPart::STRAW const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal::ANGLE_UNSUPPORTED const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal::FOOTPRINT_EXCEEDS_ANCHOR const
@@ -964,6 +975,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal::K
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal::NO_DRAWER const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal::NO_PRODUCT_MODEL const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal::PART_COLOUR_NOT_SHOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal::SHAPE_OUTSIDE_GRIP const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemRefusedItemRefusal::SIZE_OUTSIDE_REVIEWED_RANGE const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseOptionsItemAppearancesValueFillTone
@@ -1189,6 +1201,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponseSettingBakesItemWaitingItemRefusal:
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseSettingBakesItemWaitingItemRefusal::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseSettingBakesItemWaitingItemRefusal::NO_DRAWER const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseSettingBakesItemWaitingItemRefusal::NO_PRODUCT_MODEL const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseSettingBakesItemWaitingItemRefusal::PART_COLOUR_NOT_SHOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseSettingBakesItemWaitingItemRefusal::SHAPE_OUTSIDE_GRIP const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseSettingBakesItemWaitingItemRefusal::SIZE_OUTSIDE_REVIEWED_RANGE const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseSettingBakesItemWaitingItemState
@@ -1234,6 +1247,17 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldPartsI
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldPartsItem::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldPartsItem::LID const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldPartsItem::STRAW const
+final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemPart
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemPart::FINISH const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemPart::FRAME const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemPart::GLASS const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemPart::HANDLE const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemPart::HANGER const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemPart::INSIDE const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemPart::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemPart::LID const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemPart::MAT const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemPart::STRAW const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal::ANGLE_UNSUPPORTED const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal::FOOTPRINT_EXCEEDS_ANCHOR const
@@ -1241,6 +1265,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedIte
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal::NO_DRAWER const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal::NO_PRODUCT_MODEL const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal::PART_COLOUR_NOT_SHOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal::SHAPE_OUTSIDE_GRIP const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal::SIZE_OUTSIDE_REVIEWED_RANGE const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemOptionsItemAppearancesValueFillTone
@@ -1466,6 +1491,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemSettingBakesItemWaitingI
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemSettingBakesItemWaitingItemRefusal::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemSettingBakesItemWaitingItemRefusal::NO_DRAWER const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemSettingBakesItemWaitingItemRefusal::NO_PRODUCT_MODEL const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemSettingBakesItemWaitingItemRefusal::PART_COLOUR_NOT_SHOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemSettingBakesItemWaitingItemRefusal::SHAPE_OUTSIDE_GRIP const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemSettingBakesItemWaitingItemRefusal::SIZE_OUTSIDE_REVIEWED_RANGE const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemSettingBakesItemWaitingItemState
@@ -4694,6 +4720,7 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::RENAME_BLANK_CATEGORY const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::RENAME_SHAPE_CATEGORY const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::RENAME_TEMPLATE_CATEGORY const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::REPLACE_SCENE_PHOTO const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::REPORT_ORDER_JOB const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::REQUEST_DESIGN_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::RESTORE_BLANK const
@@ -4720,12 +4747,15 @@ Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValu
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_FONTS_FAVOURITE const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_PRINTSHOP_BILLING_CURRENCY const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_PRINTSHOP_DRAFT_ORDERS const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_ATTRIBUTE_BLANK_OPTION const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_ATTRIBUTE_QUERY_NAME const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_ATTRIBUTE_TERM_ORDER const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRINT_FILE_FORM const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_FORM const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_PRICE_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
+Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUES const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_SHIPPING_METHOD const
 Pixonaut\Sdk\Generated\Enum\PixelApplicationsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PICTURES const
@@ -4904,6 +4934,7 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::RENAME_BLANK_CATEGORY const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::RENAME_SHAPE_CATEGORY const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::RENAME_TEMPLATE_CATEGORY const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::REPLACE_SCENE_PHOTO const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::REPORT_ORDER_JOB const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::REQUEST_DESIGN_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::RESTORE_BLANK const
@@ -4930,12 +4961,15 @@ Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTo
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_FONTS_FAVOURITE const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_PRINTSHOP_BILLING_CURRENCY const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_PRINTSHOP_DRAFT_ORDERS const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_ATTRIBUTE_BLANK_OPTION const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_ATTRIBUTE_QUERY_NAME const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_ATTRIBUTE_TERM_ORDER const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRINT_FILE_FORM const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_FORM const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_PRICE_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
+Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUES const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_SHIPPING_METHOD const
 Pixonaut\Sdk\Generated\Enum\PixelConversationGetResponseConversationCardsValueTool::SET_STORE_VARIATION_PICTURES const
@@ -5123,6 +5157,7 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::RENAME_BLANK_CATEGORY const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::RENAME_SHAPE_CATEGORY const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::RENAME_TEMPLATE_CATEGORY const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::REPLACE_SCENE_PHOTO const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::REPORT_ORDER_JOB const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::REQUEST_DESIGN_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::RESTORE_BLANK const
@@ -5149,12 +5184,15 @@ Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueT
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_FONTS_FAVOURITE const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_PRINTSHOP_BILLING_CURRENCY const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_PRINTSHOP_DRAFT_ORDERS const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_ATTRIBUTE_BLANK_OPTION const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_ATTRIBUTE_QUERY_NAME const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_ATTRIBUTE_TERM_ORDER const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_BRAND const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRINT_FILE_FORM const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_FORM const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_PRICE_CHANGES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_SHOWCASES const
+Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUES const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_PRODUCT_VALUE_CARDS const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_SHIPPING_METHOD const
 Pixonaut\Sdk\Generated\Enum\PixelDismissalsCreateResponseConversationCardsValueTool::SET_STORE_VARIATION_PICTURES const
@@ -5645,6 +5683,17 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldPartsItem::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldPartsItem::LID const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldPartsItem::STRAW const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemPart
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemPart::FINISH const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemPart::FRAME const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemPart::GLASS const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemPart::HANDLE const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemPart::HANGER const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemPart::INSIDE const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemPart::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemPart::LID const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemPart::MAT const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemPart::STRAW const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemRefusal
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemRefusal::ANGLE_UNSUPPORTED const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemRefusal::FOOTPRINT_EXCEEDS_ANCHOR const
@@ -5652,6 +5701,7 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemRefusal::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemRefusal::NO_DRAWER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemRefusal::NO_PRODUCT_MODEL const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemRefusal::PART_COLOUR_NOT_SHOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemRefusal::SHAPE_OUTSIDE_GRIP const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItemRefusal::SIZE_OUTSIDE_REVIEWED_RANGE const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankOptionsItemAppearancesValueFillTone
@@ -5877,6 +5927,7 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItemWaitingItemRefusal::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItemWaitingItemRefusal::NO_DRAWER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItemWaitingItemRefusal::NO_PRODUCT_MODEL const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItemWaitingItemRefusal::PART_COLOUR_NOT_SHOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItemWaitingItemRefusal::SHAPE_OUTSIDE_GRIP const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItemWaitingItemRefusal::SIZE_OUTSIDE_REVIEWED_RANGE const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItemWaitingItemState
@@ -5936,6 +5987,17 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldPartsItem::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldPartsItem::LID const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldPartsItem::STRAW const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemPart
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemPart::FINISH const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemPart::FRAME const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemPart::GLASS const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemPart::HANDLE const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemPart::HANGER const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemPart::INSIDE const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemPart::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemPart::LID const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemPart::MAT const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemPart::STRAW const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal::ANGLE_UNSUPPORTED const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal::FOOTPRINT_EXCEEDS_ANCHOR const
@@ -5943,6 +6005,7 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal::NO_DRAWER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal::NO_PRODUCT_MODEL const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal::PART_COLOUR_NOT_SHOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal::SHAPE_OUTSIDE_GRIP const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal::SIZE_OUTSIDE_REVIEWED_RANGE const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankOptionsItemAppearancesValueFillTone
@@ -6168,6 +6231,7 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItemWaitingItemRefusal::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItemWaitingItemRefusal::NO_DRAWER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItemWaitingItemRefusal::NO_PRODUCT_MODEL const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItemWaitingItemRefusal::PART_COLOUR_NOT_SHOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItemWaitingItemRefusal::SHAPE_OUTSIDE_GRIP const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItemWaitingItemRefusal::SIZE_OUTSIDE_REVIEWED_RANGE const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItemWaitingItemState
@@ -6667,6 +6731,7 @@ Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemOffersItemRowsItemRefusa
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemOffersItemRowsItemRefusal::KNOWN const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemOffersItemRowsItemRefusal::NO_DRAWER const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemOffersItemRowsItemRefusal::NO_PRODUCT_MODEL const
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemOffersItemRowsItemRefusal::PART_COLOUR_NOT_SHOWN const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemOffersItemRowsItemRefusal::SHAPE_OUTSIDE_GRIP const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemOffersItemRowsItemRefusal::SIZE_OUTSIDE_REVIEWED_RANGE const
 final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemOffersItemStudioCamera
@@ -7924,6 +7989,7 @@ Pixonaut\Sdk\Generated\ErrorCode::TECHNIQUE_DIFFERS const
 Pixonaut\Sdk\Generated\ErrorCode::TECHNIQUE_NOT_OFFERED const
 Pixonaut\Sdk\Generated\ErrorCode::TECHNIQUE_UNKNOWN const
 Pixonaut\Sdk\Generated\ErrorCode::TEMPLATE_DEFAULTS_INVALID const
+Pixonaut\Sdk\Generated\ErrorCode::TEMPLATE_NOT_FOUND const
 Pixonaut\Sdk\Generated\ErrorCode::TEMPLATE_REFERENCED const
 Pixonaut\Sdk\Generated\ErrorCode::TEMPLATE_RENDERER_FAILED const
 Pixonaut\Sdk\Generated\ErrorCode::TEMPLATE_REQUIRED const
@@ -7952,6 +8018,8 @@ Pixonaut\Sdk\Generated\ErrorCode::UPSCALE_PIXELS_EXCEEDED const
 Pixonaut\Sdk\Generated\ErrorCode::UPSCALE_TIMED_OUT const
 Pixonaut\Sdk\Generated\ErrorCode::UPSCALE_UNAVAILABLE const
 Pixonaut\Sdk\Generated\ErrorCode::URL_REFUSED const
+Pixonaut\Sdk\Generated\ErrorCode::VALUE_SET_INVALID const
+Pixonaut\Sdk\Generated\ErrorCode::VALUE_SET_NOT_FOUND const
 Pixonaut\Sdk\Generated\ErrorCode::VARIANT_HAS_NO_PHOTO const
 Pixonaut\Sdk\Generated\ErrorCode::VARIANT_NOT_OF_BLANK const
 Pixonaut\Sdk\Generated\ErrorCode::VARIANT_NOT_OF_DESIGN_ROW const
@@ -12207,10 +12275,11 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeldMinMm::fromArray
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeldMinMm::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemHeldMinMm::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemRefusedItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemRefusedItem::$part readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemRefusedItem::$refusal readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemRefusedItem::$row readonly array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemRefusedItem::$variantRefs readonly array
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemRefusedItem::__construct(string $refusal, array $row, array $variantRefs)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemRefusedItem::__construct(string $refusal, array $row, array $variantRefs, ?string $part = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemRefusedItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemRefusedItem static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemRefusedItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseHeldScenesItemRefusedItem::toArray(): array
@@ -12291,7 +12360,8 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$localizedLabels
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$row readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$sceneId readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$source readonly string
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels $localizedLabels = null, ?array $row = null)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::$turned readonly ?bool
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2LocalizedLabels $localizedLabels = null, ?array $row = null, ?bool $turned = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2 static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseOrderItemOption2::toArray(): array
@@ -12884,8 +12954,9 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponseSettingBakesItem::$anchorKey reado
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseSettingBakesItem::$label readonly string
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseSettingBakesItem::$ready readonly int
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseSettingBakesItem::$sceneId readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseSettingBakesItem::$turned readonly ?bool
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseSettingBakesItem::$waiting readonly array
-Pixonaut\Sdk\Generated\Model\BlanksGetResponseSettingBakesItem::__construct(string $anchorKey, string $label, int $ready, string $sceneId, array $waiting)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseSettingBakesItem::__construct(string $anchorKey, string $label, int $ready, string $sceneId, array $waiting, ?bool $turned = null)
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseSettingBakesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseSettingBakesItem static
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseSettingBakesItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseSettingBakesItem::toArray(): array
@@ -13056,10 +13127,11 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeldMinMm
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeldMinMm::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemHeldMinMm::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemRefusedItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemRefusedItem::$part readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemRefusedItem::$refusal readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemRefusedItem::$row readonly array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemRefusedItem::$variantRefs readonly array
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemRefusedItem::__construct(string $refusal, array $row, array $variantRefs)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemRefusedItem::__construct(string $refusal, array $row, array $variantRefs, ?string $part = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemRefusedItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemRefusedItem static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemRefusedItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemHeldScenesItemRefusedItem::toArray(): array
@@ -13140,7 +13212,8 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$loca
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$row readonly ?array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$sceneId readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$source readonly string
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels $localizedLabels = null, ?array $row = null)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::$turned readonly ?bool
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2LocalizedLabels $localizedLabels = null, ?array $row = null, ?bool $turned = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2 static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemOrderItemOption2::toArray(): array
@@ -13733,8 +13806,9 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSettingBakesItem::$anch
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSettingBakesItem::$label readonly string
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSettingBakesItem::$ready readonly int
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSettingBakesItem::$sceneId readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSettingBakesItem::$turned readonly ?bool
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSettingBakesItem::$waiting readonly array
-Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSettingBakesItem::__construct(string $anchorKey, string $label, int $ready, string $sceneId, array $waiting)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSettingBakesItem::__construct(string $anchorKey, string $label, int $ready, string $sceneId, array $waiting, ?bool $turned = null)
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSettingBakesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSettingBakesItem static
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSettingBakesItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemSettingBakesItem::toArray(): array
@@ -13879,9 +13953,10 @@ Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$source readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$sourceWindowMm readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemSourceWindowMm
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$takesDye readonly ?bool
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$turned readonly ?bool
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$uvPassUrls readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemUvPassUrls
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::$zoomTier readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemZoomTier
-Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::__construct(string $id, string $label, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPhotoSizePx $photoSizePx, array $photos, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPlacementRectPx $placementRectPx, ?string $camera = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemFacets $facets = null, ?bool $marksFrame = null, ?string $maskUrl = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemMesh $mesh = null, ?int $piece = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPieceSizeMm $pieceSizeMm = null, ?int $position = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPrintWindowMm $printWindowMm = null, ?string $sceneId = null, ?int $scenePosition = null, ?string $source = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemSourceWindowMm $sourceWindowMm = null, ?bool $takesDye = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemUvPassUrls $uvPassUrls = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemZoomTier $zoomTier = null)
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::__construct(string $id, string $label, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPhotoSizePx $photoSizePx, array $photos, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPlacementRectPx $placementRectPx, ?string $camera = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemFacets $facets = null, ?bool $marksFrame = null, ?string $maskUrl = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemMesh $mesh = null, ?int $piece = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPieceSizeMm $pieceSizeMm = null, ?int $position = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemPrintWindowMm $printWindowMm = null, ?string $sceneId = null, ?int $scenePosition = null, ?string $source = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemSourceWindowMm $sourceWindowMm = null, ?bool $takesDye = null, ?bool $turned = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemUvPassUrls $uvPassUrls = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItemZoomTier $zoomTier = null)
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem static
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponsePlacementsItemViewsItem::toArray(): array
@@ -14136,9 +14211,10 @@ Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$sceneId readon
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$scenePosition readonly ?int
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$source readonly ?string
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$takesDye readonly ?bool
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$turned readonly ?bool
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$uvPassUrls readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemUvPassUrls
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::$zoomTier readonly ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemZoomTier
-Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::__construct(string $id, string $label, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemPhotoSizePx $photoSizePx, array $photos, array $regions, ?string $camera = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemFacets $facets = null, ?bool $marksFrame = null, ?int $position = null, ?string $sceneId = null, ?int $scenePosition = null, ?string $source = null, ?bool $takesDye = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemUvPassUrls $uvPassUrls = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemZoomTier $zoomTier = null)
+Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::__construct(string $id, string $label, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemPhotoSizePx $photoSizePx, array $photos, array $regions, ?string $camera = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemFacets $facets = null, ?bool $marksFrame = null, ?int $position = null, ?string $sceneId = null, ?int $scenePosition = null, ?string $source = null, ?bool $takesDye = null, ?bool $turned = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemUvPassUrls $uvPassUrls = null, ?Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItemZoomTier $zoomTier = null)
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem static
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksMockupsListResponseViewsItem::toArray(): array
@@ -15788,9 +15864,10 @@ Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse::$revision readonly int
 Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse::$showcases readonly array
 Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse::$status readonly string
 Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse::$template readonly Pixonaut\Sdk\Generated\Model\ResolvedTemplate
+Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse::$valueSetId readonly ?string
 Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse::$variant readonly ?string
 Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse::$workspaceLanguage readonly string
-Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse::__construct(?bool $backgroundSeeThrough, ?string $blankId, mixed $doc, array $fieldKeys, Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponseFormSchema $formSchema, string $language, bool $offersProperties, ?array $pickedColours, bool $pixel, ?string $placementId, bool $poweredBy, string $previewUrl, float $printFloorDpi, Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponsePrintMargins $printMargins, int $revision, array $showcases, string $status, Pixonaut\Sdk\Generated\Model\ResolvedTemplate $template, ?string $variant, string $workspaceLanguage, ?array $colourNames = null, ?string $dieShapeId = null, ?array $fieldTexts = null, ?array $layerShapeIds = null, ?array $offeredShapes = null, ?array $optionLabels = null)
+Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse::__construct(?bool $backgroundSeeThrough, ?string $blankId, mixed $doc, array $fieldKeys, Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponseFormSchema $formSchema, string $language, bool $offersProperties, ?array $pickedColours, bool $pixel, ?string $placementId, bool $poweredBy, string $previewUrl, float $printFloorDpi, Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponsePrintMargins $printMargins, int $revision, array $showcases, string $status, Pixonaut\Sdk\Generated\Model\ResolvedTemplate $template, ?string $variant, string $workspaceLanguage, ?array $colourNames = null, ?string $dieShapeId = null, ?array $fieldTexts = null, ?array $layerShapeIds = null, ?array $offeredShapes = null, ?array $optionLabels = null, ?string $valueSetId = null)
 Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse static
 Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\DesignsDesignerGetResponse::toArray(): array
@@ -15908,8 +15985,9 @@ Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$templateId reado
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$templateName readonly ?string
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$templateVersion readonly ?int
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$tenantId readonly string
+Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$valueSetId readonly ?string
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::$variantRow readonly ?array
-Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::__construct(?string $apiKeyId, ?Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponseApprovalConsent $approvalConsent, ?float $approveAfter, ?float $approvedAt, ?string $approvedVia, ?string $blankId, float $committedAt, bool $deletable, mixed $doc, ?string $duplicatedFrom, ?string $externalRef, mixed $fulfilmentPayload, string $garmentTone, string $id, string $language, Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponseOrigin $origin, ?int $page, ?int $pageCount, ?float $personalDataErasedAt, ?array $pickedColours, ?string $placementId, ?bool $previewOpened, ?Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponsePrintSize $printSize, ?string $proofId, ?int $proofRevision, ?string $proofVariant, ?string $proofViewId, ?string $rejectionReason, int $revision, ?string $shareLinkId, bool $standing, string $status, string $templateBaseId, bool $templateDeleted, string $templateId, ?string $templateName, ?int $templateVersion, string $tenantId, ?array $variantRow)
+Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::__construct(?string $apiKeyId, ?Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponseApprovalConsent $approvalConsent, ?float $approveAfter, ?float $approvedAt, ?string $approvedVia, ?string $blankId, float $committedAt, bool $deletable, mixed $doc, ?string $duplicatedFrom, ?string $externalRef, mixed $fulfilmentPayload, string $garmentTone, string $id, string $language, Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponseOrigin $origin, ?int $page, ?int $pageCount, ?float $personalDataErasedAt, ?array $pickedColours, ?string $placementId, ?bool $previewOpened, ?Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponsePrintSize $printSize, ?string $proofId, ?int $proofRevision, ?string $proofVariant, ?string $proofViewId, ?string $rejectionReason, int $revision, ?string $shareLinkId, bool $standing, string $status, string $templateBaseId, bool $templateDeleted, string $templateId, ?string $templateName, ?int $templateVersion, string $tenantId, ?string $valueSetId, ?array $variantRow)
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse static
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\DesignsErasePersonalDataResponse::toArray(): array
@@ -16045,8 +16123,9 @@ Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$templateId readonly string
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$templateName readonly ?string
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$templateVersion readonly ?int
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$tenantId readonly string
+Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$valueSetId readonly ?string
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::$variantRow readonly ?array
-Pixonaut\Sdk\Generated\Model\DesignsGetResponse::__construct(?string $apiKeyId, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponseApprovalConsent $approvalConsent, ?float $approveAfter, ?float $approvedAt, ?string $approvedVia, ?string $blankId, bool $canDecide, bool $canEdit, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponseChangeRequest $changeRequest, ?array $choices, float $committedAt, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponseCorrectionForm $correctionForm, bool $deletable, mixed $doc, ?string $duplicatedFrom, bool $editable, ?string $externalRef, mixed $fulfilmentPayload, string $garmentTone, bool $hasOrder, bool $hasPrint, string $id, string $language, Pixonaut\Sdk\Generated\Model\DesignsGetResponseOrigin $origin, ?int $page, ?int $pageCount, ?float $personalDataErasedAt, ?array $pickedColours, ?string $pictureUrl, ?string $placementId, ?bool $previewOpened, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponsePrintSize $printSize, ?string $proofId, ?int $proofRevision, ?string $proofVariant, ?string $proofViewId, ?string $rejectionReason, int $revision, ?string $shareLinkId, bool $standing, string $status, string $templateBaseId, bool $templateDeleted, string $templateId, ?string $templateName, ?int $templateVersion, string $tenantId, ?array $variantRow)
+Pixonaut\Sdk\Generated\Model\DesignsGetResponse::__construct(?string $apiKeyId, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponseApprovalConsent $approvalConsent, ?float $approveAfter, ?float $approvedAt, ?string $approvedVia, ?string $blankId, bool $canDecide, bool $canEdit, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponseChangeRequest $changeRequest, ?array $choices, float $committedAt, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponseCorrectionForm $correctionForm, bool $deletable, mixed $doc, ?string $duplicatedFrom, bool $editable, ?string $externalRef, mixed $fulfilmentPayload, string $garmentTone, bool $hasOrder, bool $hasPrint, string $id, string $language, Pixonaut\Sdk\Generated\Model\DesignsGetResponseOrigin $origin, ?int $page, ?int $pageCount, ?float $personalDataErasedAt, ?array $pickedColours, ?string $pictureUrl, ?string $placementId, ?bool $previewOpened, ?Pixonaut\Sdk\Generated\Model\DesignsGetResponsePrintSize $printSize, ?string $proofId, ?int $proofRevision, ?string $proofVariant, ?string $proofViewId, ?string $rejectionReason, int $revision, ?string $shareLinkId, bool $standing, string $status, string $templateBaseId, bool $templateDeleted, string $templateId, ?string $templateName, ?int $templateVersion, string $tenantId, ?string $valueSetId, ?array $variantRow)
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\DesignsGetResponse static
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\DesignsGetResponse::toArray(): array
@@ -26022,10 +26101,11 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldMinMm::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldMinMm::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItem::$part readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItem::$refusal readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItem::$row readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItem::$variantRefs readonly array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItem::__construct(string $refusal, array $row, array $variantRefs)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItem::__construct(string $refusal, array $row, array $variantRefs, ?string $part = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemRefusedItem::toArray(): array
@@ -26106,7 +26186,8 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::$row readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::$sceneId readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::$source readonly string
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels $localizedLabels = null, ?array $row = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::$turned readonly ?bool
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2LocalizedLabels $localizedLabels = null, ?array $row = null, ?bool $turned = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2 static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankOrderItemOption2::toArray(): array
@@ -26699,8 +26780,9 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItem::$label readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItem::$ready readonly int
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItem::$sceneId readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItem::$turned readonly ?bool
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItem::$waiting readonly array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItem::__construct(string $anchorKey, string $label, int $ready, string $sceneId, array $waiting)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItem::__construct(string $anchorKey, string $label, int $ready, string $sceneId, array $waiting, ?bool $turned = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankSettingBakesItem::toArray(): array
@@ -26885,10 +26967,11 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMinMm::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldMinMm::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItem::$part readonly ?string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItem::$refusal readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItem::$row readonly array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItem::$variantRefs readonly array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItem::__construct(string $refusal, array $row, array $variantRefs)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItem::__construct(string $refusal, array $row, array $variantRefs, ?string $part = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItem::toArray(): array
@@ -26969,7 +27052,8 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::$row readonly ?array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::$sceneId readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::$source readonly string
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels $localizedLabels = null, ?array $row = null)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::$turned readonly ?bool
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::__construct(string $sceneId, string $source, ?string $anchor = null, ?string $camera = null, ?string $cutOut = null, ?Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2LocalizedLabels $localizedLabels = null, ?array $row = null, ?bool $turned = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2 static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankOrderItemOption2::toArray(): array
@@ -27562,8 +27646,9 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem::$label readonly string
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem::$ready readonly int
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem::$sceneId readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem::$turned readonly ?bool
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem::$waiting readonly array
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem::__construct(string $anchorKey, string $label, int $ready, string $sceneId, array $waiting)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem::__construct(string $anchorKey, string $label, int $ready, string $sceneId, array $waiting, ?bool $turned = null)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankSettingBakesItem::toArray(): array
@@ -27640,7 +27725,8 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponse::$products r
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponse::$searchComplete readonly bool
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponse::$searchedProducts readonly ?float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponse::$total readonly ?float
-Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponse::__construct(?float $catalogueTotal, array $products, bool $searchComplete, ?float $searchedProducts, ?float $total)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponse::$unreadCategories readonly array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponse::__construct(?float $catalogueTotal, array $products, bool $searchComplete, ?float $searchedProducts, ?float $total, array $unreadCategories)
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponse static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponse::toArray(): array
@@ -27674,6 +27760,14 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItemM
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItemMadeIn::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItemMadeIn static
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItemMadeIn::raw(): array
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseProductsItemMadeIn::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseUnreadCategoriesItem implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseUnreadCategoriesItem::$categoryId readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseUnreadCategoriesItem::$name readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseUnreadCategoriesItem::$retryable readonly bool
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseUnreadCategoriesItem::__construct(string $categoryId, string $name, bool $retryable)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseUnreadCategoriesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseUnreadCategoriesItem static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseUnreadCategoriesItem::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsListResponseUnreadCategoriesItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopConnectedEvent implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopConnectedEvent::$automation readonly ?Pixonaut\Sdk\Generated\Model\PrintshopConnectedEventAutomation
 Pixonaut\Sdk\Generated\Model\PrintshopConnectedEvent::$createdAt readonly int
@@ -35027,7 +35121,8 @@ Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$studio readonly bool
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$takesDye readonly bool
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$thumbnailUrl readonly ?string
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$workspace readonly bool
-Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::__construct(array $areas, bool $cutOut, ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometry $geometry, bool $hasPerson, string $id, string $kind, string $label, ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls $layerUrls, string $person, bool $personSwappable, ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx $pictureSizePx, ?string $pictureUrl, string $pose, string $setting, ?string $stockItem, bool $studio, bool $takesDye, ?string $thumbnailUrl, bool $workspace, ?array $offers = null)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::$zoomUrls readonly ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemZoomUrls
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::__construct(array $areas, bool $cutOut, ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemGeometry $geometry, bool $hasPerson, string $id, string $kind, string $label, ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemLayerUrls $layerUrls, string $person, bool $personSwappable, ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx $pictureSizePx, ?string $pictureUrl, string $pose, string $setting, ?string $stockItem, bool $studio, bool $takesDye, ?string $thumbnailUrl, bool $workspace, ?array $offers = null, ?Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemZoomUrls $zoomUrls = null)
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem static
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItem::toArray(): array
@@ -35253,6 +35348,15 @@ Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx::__constr
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx static
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx::raw(): array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemPictureSizePx::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemZoomUrls implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemZoomUrls::$heightPx readonly int
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemZoomUrls::$mask readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemZoomUrls::$photo readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemZoomUrls::$widthPx readonly int
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemZoomUrls::__construct(int $heightPx, string $mask, string $photo, int $widthPx)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemZoomUrls::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemZoomUrls static
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemZoomUrls::raw(): array
+Pixonaut\Sdk\Generated\Model\ScenesListResponseScenesItemZoomUrls::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::$areas readonly array
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItem::$family readonly string
@@ -44929,8 +45033,9 @@ Pixonaut\Sdk\Generated\Model\TemplatesGetResponse::$printMargins readonly Pixona
 Pixonaut\Sdk\Generated\Model\TemplatesGetResponse::$showcases readonly array
 Pixonaut\Sdk\Generated\Model\TemplatesGetResponse::$status readonly string
 Pixonaut\Sdk\Generated\Model\TemplatesGetResponse::$template readonly Pixonaut\Sdk\Generated\Model\ResolvedTemplate
+Pixonaut\Sdk\Generated\Model\TemplatesGetResponse::$valueSetId readonly ?string
 Pixonaut\Sdk\Generated\Model\TemplatesGetResponse::$workspaceLanguage readonly string
-Pixonaut\Sdk\Generated\Model\TemplatesGetResponse::__construct(?bool $backgroundSeeThrough, array $fieldKeys, Pixonaut\Sdk\Generated\Model\TemplatesGetResponseFormSchema $formSchema, string $language, bool $offersProperties, bool $pixel, bool $poweredBy, string $previewUrl, float $printFloorDpi, Pixonaut\Sdk\Generated\Model\TemplatesGetResponsePrintMargins $printMargins, array $showcases, string $status, Pixonaut\Sdk\Generated\Model\ResolvedTemplate $template, string $workspaceLanguage, ?array $colourNames = null, ?string $dieShapeId = null, ?array $fieldTexts = null, ?array $layerShapeIds = null, ?array $offeredShapes = null, ?array $optionLabels = null)
+Pixonaut\Sdk\Generated\Model\TemplatesGetResponse::__construct(?bool $backgroundSeeThrough, array $fieldKeys, Pixonaut\Sdk\Generated\Model\TemplatesGetResponseFormSchema $formSchema, string $language, bool $offersProperties, bool $pixel, bool $poweredBy, string $previewUrl, float $printFloorDpi, Pixonaut\Sdk\Generated\Model\TemplatesGetResponsePrintMargins $printMargins, array $showcases, string $status, Pixonaut\Sdk\Generated\Model\ResolvedTemplate $template, string $workspaceLanguage, ?array $colourNames = null, ?string $dieShapeId = null, ?array $fieldTexts = null, ?array $layerShapeIds = null, ?array $offeredShapes = null, ?array $optionLabels = null, ?string $valueSetId = null)
 Pixonaut\Sdk\Generated\Model\TemplatesGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesGetResponse static
 Pixonaut\Sdk\Generated\Model\TemplatesGetResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\TemplatesGetResponse::toArray(): array
@@ -45328,6 +45433,36 @@ Pixonaut\Sdk\Generated\Model\TemplatesPublishResponse::__construct(string $templ
 Pixonaut\Sdk\Generated\Model\TemplatesPublishResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesPublishResponse static
 Pixonaut\Sdk\Generated\Model\TemplatesPublishResponse::raw(): array
 Pixonaut\Sdk\Generated\Model\TemplatesPublishResponse::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateRequest implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateRequest::$values readonly array
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateRequest::__construct(array $values)
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateRequest::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateRequest static
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateRequest::raw(): array
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateRequest::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse200 implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse200::$templateId readonly string
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse200::$valueSetId readonly string
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse200::$values readonly array
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse200::__construct(string $templateId, string $valueSetId, array $values)
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse200::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse200 static
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse200::raw(): array
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse200::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse201 implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse201::$templateId readonly string
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse201::$valueSetId readonly string
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse201::$values readonly array
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse201::__construct(string $templateId, string $valueSetId, array $values)
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse201::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse201 static
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse201::raw(): array
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse201::toArray(): array
+final class Pixonaut\Sdk\Generated\Model\TemplatesValueSetsGetResponse implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsGetResponse::$templateId readonly string
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsGetResponse::$valueSetId readonly string
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsGetResponse::$values readonly array
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsGetResponse::__construct(string $templateId, string $valueSetId, array $values)
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsGetResponse::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\TemplatesValueSetsGetResponse static
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsGetResponse::raw(): array
+Pixonaut\Sdk\Generated\Model\TemplatesValueSetsGetResponse::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\TextMessagesLowEvent implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\TextMessagesLowEvent::$automation readonly ?Pixonaut\Sdk\Generated\Model\TextMessagesLowEventAutomation
 Pixonaut\Sdk\Generated\Model\TextMessagesLowEvent::$createdAt readonly int
@@ -45703,7 +45838,7 @@ final class Pixonaut\Sdk\Generated\Resource\Designs
 Pixonaut\Sdk\Generated\Resource\Designs::OPERATIONS const
 Pixonaut\Sdk\Generated\Resource\Designs::__construct(Pixonaut\Sdk\Pixonaut $pixonaut)
 Pixonaut\Sdk\Generated\Resource\Designs::approve(string $id, ?Pixonaut\Sdk\Generated\Model\DesignsApproveRequest $body = null): Pixonaut\Sdk\Generated\Model\DesignsApproveResponse
-Pixonaut\Sdk\Generated\Resource\Designs::commit(Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption1|Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2 $body, ?string $tz = null, ?string $lang = null, ?string $idempotencyKey = null): Pixonaut\Sdk\Generated\Model\DesignsCommitResponse
+Pixonaut\Sdk\Generated\Resource\Designs::commit(Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption1|Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2 $body, ?string $valueSet = null, ?string $tz = null, ?string $lang = null, ?string $idempotencyKey = null): Pixonaut\Sdk\Generated\Model\DesignsCommitResponse
 Pixonaut\Sdk\Generated\Resource\Designs::commitThroughLayout(Pixonaut\Sdk\Generated\Model\DesignsCommitThroughLayoutRequestOption1|Pixonaut\Sdk\Generated\Model\DesignsCommitThroughLayoutRequestOption2 $body): Pixonaut\Sdk\Generated\Model\DesignsCommitThroughLayoutResponse
 Pixonaut\Sdk\Generated\Resource\Designs::createCorrectionLink(string $id, Pixonaut\Sdk\Generated\Model\DesignsCorrectionLinksCreateRequest $body): Pixonaut\Sdk\Generated\Model\DesignsCorrectionLinksCreateResponse
 Pixonaut\Sdk\Generated\Resource\Designs::createCorrectionProof(string $id, Pixonaut\Sdk\Generated\Model\DesignsCorrectionProofsCreateRequest $body): Pixonaut\Sdk\Generated\Model\DesignsCorrectionProofsCreateResponse
@@ -45723,7 +45858,7 @@ Pixonaut\Sdk\Generated\Resource\Designs::getRevision(string $id, string $revisio
 Pixonaut\Sdk\Generated\Resource\Designs::getRevisionImage(string $id, string $revision, ?string $format = null, ?string $width = null, ?string $fit = null): Pixonaut\Sdk\Http\Binary
 Pixonaut\Sdk\Generated\Resource\Designs::list(?int $page = null, ?int $pageSize = null, ?string $status = null, ?string $q = null, ?int $receivedFrom = null, ?int $receivedTo = null, ?string $order = null, ?string $template = null, ?string $externalRef = null, ?string $standing = null, ?string $pageOf = null): Pixonaut\Sdk\Generated\Model\DesignsListResponse
 Pixonaut\Sdk\Generated\Resource\Designs::listRevisions(string $id, ?int $pageSize = null, ?string $before = null): Pixonaut\Sdk\Generated\Model\DesignsRevisionsListResponse
-Pixonaut\Sdk\Generated\Resource\Designs::prepareCommit(Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption1|Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2 $body, ?string $tz = null, ?string $lang = null, ?string $idempotencyKey = null): Pixonaut\Sdk\Http\PreparedRequest
+Pixonaut\Sdk\Generated\Resource\Designs::prepareCommit(Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption1|Pixonaut\Sdk\Generated\Model\DesignsCommitRequestOption2 $body, ?string $valueSet = null, ?string $tz = null, ?string $lang = null, ?string $idempotencyKey = null): Pixonaut\Sdk\Http\PreparedRequest
 Pixonaut\Sdk\Generated\Resource\Designs::reject(string $id, ?Pixonaut\Sdk\Generated\Model\DesignsRejectRequest $body = null): Pixonaut\Sdk\Generated\Model\DesignsRejectResponse
 Pixonaut\Sdk\Generated\Resource\Designs::requestChanges(string $id, Pixonaut\Sdk\Generated\Model\DesignsRequestChangesRequest $body): Pixonaut\Sdk\Generated\Model\DesignsRequestChangesResponse
 Pixonaut\Sdk\Generated\Resource\Designs::restoreRevision(string $id, string $revision, Pixonaut\Sdk\Generated\Model\DesignsRevisionsRestoreRequest $body): Pixonaut\Sdk\Generated\Model\DesignsRevisionsRestoreResponse
@@ -45795,11 +45930,11 @@ Pixonaut\Sdk\Generated\Resource\Printshops::listConnections(?string $q = null): 
 final class Pixonaut\Sdk\Generated\Resource\Proofs
 Pixonaut\Sdk\Generated\Resource\Proofs::OPERATIONS const
 Pixonaut\Sdk\Generated\Resource\Proofs::__construct(Pixonaut\Sdk\Pixonaut $pixonaut)
-Pixonaut\Sdk\Generated\Resource\Proofs::create(Pixonaut\Sdk\Generated\Model\ProofsCreateRequest $body, ?string $tz = null, ?string $lang = null, ?string $session = null): Pixonaut\Sdk\Generated\Model\ProofsCreateResponse
+Pixonaut\Sdk\Generated\Resource\Proofs::create(Pixonaut\Sdk\Generated\Model\ProofsCreateRequest $body, ?string $valueSet = null, ?string $tz = null, ?string $lang = null, ?string $session = null): Pixonaut\Sdk\Generated\Model\ProofsCreateResponse
 Pixonaut\Sdk\Generated\Resource\Proofs::createProofSet(Pixonaut\Sdk\Generated\Model\ProofSetsCreateRequest $body): Pixonaut\Sdk\Generated\Model\ProofSetsCreateResponse
-Pixonaut\Sdk\Generated\Resource\Proofs::createThroughLayout(Pixonaut\Sdk\Generated\Model\ProofsCreateThroughLayoutRequest $body, ?string $tz = null, ?string $lang = null, ?string $session = null): Pixonaut\Sdk\Generated\Model\ProofsCreateThroughLayoutResponse
+Pixonaut\Sdk\Generated\Resource\Proofs::createThroughLayout(Pixonaut\Sdk\Generated\Model\ProofsCreateThroughLayoutRequest $body, ?string $valueSet = null, ?string $tz = null, ?string $lang = null, ?string $session = null): Pixonaut\Sdk\Generated\Model\ProofsCreateThroughLayoutResponse
 Pixonaut\Sdk\Generated\Resource\Proofs::getProofSet(string $proofSet): Pixonaut\Sdk\Generated\Model\ProofSetsGetResponse
-Pixonaut\Sdk\Generated\Resource\Proofs::validatePayload(Pixonaut\Sdk\Generated\Model\PayloadsValidateRequest $body, ?string $tz = null, ?string $lang = null): Pixonaut\Sdk\Generated\Model\PayloadsValidateResponse
+Pixonaut\Sdk\Generated\Resource\Proofs::validatePayload(Pixonaut\Sdk\Generated\Model\PayloadsValidateRequest $body, ?string $valueSet = null, ?string $tz = null, ?string $lang = null): Pixonaut\Sdk\Generated\Model\PayloadsValidateResponse
 final class Pixonaut\Sdk\Generated\Resource\Sessions
 Pixonaut\Sdk\Generated\Resource\Sessions::OPERATIONS const
 Pixonaut\Sdk\Generated\Resource\Sessions::__construct(Pixonaut\Sdk\Pixonaut $pixonaut)
@@ -45818,10 +45953,12 @@ Pixonaut\Sdk\Generated\Resource\ShareLinks::update(string $id, Pixonaut\Sdk\Gene
 final class Pixonaut\Sdk\Generated\Resource\Templates
 Pixonaut\Sdk\Generated\Resource\Templates::OPERATIONS const
 Pixonaut\Sdk\Generated\Resource\Templates::__construct(Pixonaut\Sdk\Pixonaut $pixonaut)
-Pixonaut\Sdk\Generated\Resource\Templates::get(string $id, ?string $tz = null, ?string $lang = null, ?string $sdkVersion = null): Pixonaut\Sdk\Generated\Model\TemplatesGetResponse
+Pixonaut\Sdk\Generated\Resource\Templates::createValueSet(string $id, Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateRequest $body): Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse200|Pixonaut\Sdk\Generated\Model\TemplatesValueSetsCreateResponse201
+Pixonaut\Sdk\Generated\Resource\Templates::get(string $id, ?string $valueSet = null, ?string $tz = null, ?string $lang = null, ?string $sdkVersion = null): Pixonaut\Sdk\Generated\Model\TemplatesGetResponse
 Pixonaut\Sdk\Generated\Resource\Templates::getConstraints(string $id, ?string $blankId = null, ?string $placementId = null, ?int $pageCount = null): Pixonaut\Sdk\Generated\Model\TemplatesConstraintsGetResponse
-Pixonaut\Sdk\Generated\Resource\Templates::getMockup(string $id, string $blankId, string $placementId, ?string $mockupId = null, ?string $viewId = null, ?string $variant = null, ?string $size = null, ?string $bleed = null, ?string $showcase = null): Pixonaut\Sdk\Http\Binary
-Pixonaut\Sdk\Generated\Resource\Templates::getPreview(string $id, ?string $size = null, ?string $width = null, ?string $fit = null, ?string $bleed = null, ?string $compact = null, ?string $showcase = null): Pixonaut\Sdk\Http\Binary
+Pixonaut\Sdk\Generated\Resource\Templates::getMockup(string $id, string $blankId, string $placementId, ?string $mockupId = null, ?string $viewId = null, ?string $variant = null, ?string $size = null, ?string $bleed = null, ?string $showcase = null, ?string $valueSet = null): Pixonaut\Sdk\Http\Binary
+Pixonaut\Sdk\Generated\Resource\Templates::getPreview(string $id, ?string $size = null, ?string $width = null, ?string $fit = null, ?string $bleed = null, ?string $compact = null, ?string $showcase = null, ?string $valueSet = null): Pixonaut\Sdk\Http\Binary
+Pixonaut\Sdk\Generated\Resource\Templates::getValueSet(string $id, string $valueSetId): Pixonaut\Sdk\Generated\Model\TemplatesValueSetsGetResponse
 Pixonaut\Sdk\Generated\Resource\Templates::list(?string $status = null, ?string $q = null, array|null|string $ids = null, ?int $page = null, ?int $pageSize = null, ?string $category = null, array|null|string $tag = null, ?string $sort = null, ?string $groupBy = null, ?string $pageOf = null): Pixonaut\Sdk\Generated\Model\TemplatesListResponseOption1|Pixonaut\Sdk\Generated\Model\TemplatesListResponseOption2|Pixonaut\Sdk\Generated\Model\TemplatesListResponseOption3
 Pixonaut\Sdk\Generated\Resource\Templates::listFittingPlacements(string $id, ?int $page = null, ?int $pageSize = null, ?string $q = null): Pixonaut\Sdk\Generated\Model\TemplatesFittingPlacementsListResponse
 Pixonaut\Sdk\Generated\Resource\Templates::publish(Pixonaut\Sdk\Generated\Model\TemplatesPublishRequest $body): Pixonaut\Sdk\Generated\Model\TemplatesPublishResponse

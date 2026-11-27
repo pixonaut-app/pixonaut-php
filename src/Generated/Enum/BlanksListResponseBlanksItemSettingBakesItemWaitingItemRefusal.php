@@ -29,6 +29,8 @@ final class BlanksListResponseBlanksItemSettingBakesItemWaitingItemRefusal
 
     public const SHAPE_OUTSIDE_GRIP = 'shape_outside_grip';
 
+    public const PART_COLOUR_NOT_SHOWN = 'part_colour_not_shown';
+
     /**
      * Every value this release knows.
      */
@@ -40,5 +42,6 @@ final class BlanksListResponseBlanksItemSettingBakesItemWaitingItemRefusal
         self::ANGLE_UNSUPPORTED,
         self::NO_DRAWER,
         self::SHAPE_OUTSIDE_GRIP,
+        self::PART_COLOUR_NOT_SHOWN,
     ];
 }

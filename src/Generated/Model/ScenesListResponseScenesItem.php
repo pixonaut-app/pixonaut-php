@@ -41,6 +41,7 @@ final class ScenesListResponseScenesItem implements Model
      * @param string|null $thumbnailUrl A link to the scene's picture small, for a list or a picker: at most 256 pixels on its longer side, opening with no key. Null when the scene has no picture.
      * @param bool $workspace Whether the scene is this workspace's own, composed from a stock scene, rather than Pixonaut's.
      * @param list<ScenesListResponseScenesItemOffersItem>|null $offers With `forBlank`: which rows of that blank the scene can show, a setting an anchor at a time, a studio style a camera at a time, and a garment cut-out a studio style at a time. Empty for a scene no blank can show. With `forKind`: only the places a product of that kind can be shown at, and, with no `forBlank`, each with one row of no option values, shown.
+     * @param ScenesListResponseScenesItemZoomUrls|null $zoomUrls For a scene the workspace made, its photo and mask at the zoom tier, each opening with no key: what an edited copy of the photo is made from, at the size `POST /v1/scenes/{id}/photo` takes. Left out for one of Pixonaut's scenes, and in a picker.
      */
     public function __construct(
         public readonly array $areas,
@@ -63,6 +64,7 @@ final class ScenesListResponseScenesItem implements Model
         public readonly ?string $thumbnailUrl,
         public readonly bool $workspace,
         public readonly ?array $offers = null,
+        public readonly ?ScenesListResponseScenesItemZoomUrls $zoomUrls = null,
     ) {}
 
     /**
@@ -128,6 +130,7 @@ final class ScenesListResponseScenesItem implements Model
                 $path . '.offers',
                 static fn(mixed $v, string $p): ScenesListResponseScenesItemOffersItem => ScenesListResponseScenesItemOffersItem::fromArray(Decode::object($v, $p), $p),
             ) : null,
+            zoomUrls: array_key_exists('zoomUrls', $data) ? ScenesListResponseScenesItemZoomUrls::fromArray(Decode::object($data['zoomUrls'], $path . '.zoomUrls'), $path . '.zoomUrls') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -171,6 +174,9 @@ final class ScenesListResponseScenesItem implements Model
                 static fn(ScenesListResponseScenesItemOffersItem $v): mixed => Encode::model($v),
                 $this->offers,
             );
+        }
+        if ($this->zoomUrls !== null) {
+            $data['zoomUrls'] = Encode::model($this->zoomUrls);
         }
         return $data;
     }
