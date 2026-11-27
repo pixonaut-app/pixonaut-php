@@ -1,5 +1,16 @@
 # Changelog
 
+## [32.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v31.0.0...v32.0.0) (2026-11-27)
+
+
+### ⚠ BREAKING CHANGES
+
+* the generated models' constructors and the resource methods taking a template read's query gain the API's new arguments (such as valueSet) in their places, as API 14.5.0 to 14.11.0 added them.
+
+### Features
+
+* target the published Pixonaut API 14.11.0 ([#102](https://github.com/pixonaut-app/pixonaut-php/issues/102)) ([760960c](https://github.com/pixonaut-app/pixonaut-php/commit/760960c963937be22f768dbbc1d86aa1d527a985))
+
 ## [31.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v30.0.0...v31.0.0) (2026-11-25)
 
 Targets the Pixonaut API 14.4.0.
