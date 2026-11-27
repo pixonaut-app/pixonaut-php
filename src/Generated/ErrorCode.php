@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated;
 
 /**
- * The error codes the API 14.4.0 spec names: its refusals (`x-refusals`), and the `error`
+ * The error codes the API 14.11.0 spec names: its refusals (`x-refusals`), and the `error`
  * values of every error answer. The client's own codes are on `ApiException`.
  */
 final class ErrorCode
@@ -1513,6 +1513,11 @@ final class ErrorCode
     public const TEMPLATE_DEFAULTS_INVALID = 'template_defaults_invalid';
 
     /**
+     * Documented with status 404.
+     */
+    public const TEMPLATE_NOT_FOUND = 'template_not_found';
+
+    /**
      * Documented with status 409.
      */
     public const TEMPLATE_REFERENCED = 'template_referenced';
@@ -1651,6 +1656,16 @@ final class ErrorCode
      * Documented with status 422.
      */
     public const URL_REFUSED = 'url_refused';
+
+    /**
+     * Documented with status 422.
+     */
+    public const VALUE_SET_INVALID = 'value_set_invalid';
+
+    /**
+     * Documented with status 404, 422.
+     */
+    public const VALUE_SET_NOT_FOUND = 'value_set_not_found';
 
     /**
      * Documented with status 422.
@@ -2003,6 +2018,7 @@ final class ErrorCode
         'technique_not_offered' => [422],
         'technique_unknown' => [422],
         'template_defaults_invalid' => [422, 500],
+        'template_not_found' => [404],
         'template_referenced' => [409],
         'template_renderer_failed' => [500],
         'template_required' => [400],
@@ -2031,6 +2047,8 @@ final class ErrorCode
         'upscale_timed_out' => [503],
         'upscale_unavailable' => [503],
         'url_refused' => [422],
+        'value_set_invalid' => [422],
+        'value_set_not_found' => [404, 422],
         'variant_has_no_photo' => [422],
         'variant_not_of_blank' => [422],
         'variant_not_of_design_row' => [422],

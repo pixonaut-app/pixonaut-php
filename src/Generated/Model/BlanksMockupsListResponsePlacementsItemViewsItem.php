@@ -41,6 +41,7 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\BlanksMockupsListResponsePlacementsItemViewsItemSource}.
      * @param BlanksMockupsListResponsePlacementsItemViewsItemSourceWindowMm|null $sourceWindowMm The piece of the placement's print the region shows, in millimetres from the print's top-left corner, such as a roll's window; clamped to the print when the print is smaller. Absent, the region shows the whole print at the size of the render's variant.
      * @param bool|null $takesDye On a scene's view, whether a variant's colour recolours it. One that takes none shows only the variants of its colour.
+     * @param bool|null $turned On a setting's view, true where it shows the product turned half round on its axis: a mug with its handle on the right and the other half of its wrap to the camera. A blank shows a setting once each way round.
      * @param BlanksMockupsListResponsePlacementsItemViewsItemUvPassUrls|null $uvPassUrls The maps the view was rendered with from a 3D model of the product, each the view's photo size, opened with no key: a region naming a `piece` is read through them. Absent on a view of photos. Valid as long as a photo's `url`.
      * @param BlanksMockupsListResponsePlacementsItemViewsItemZoomTier|null $zoomTier On a scene's view, its files at the zoom tier: the same view with more pixels, for a preview zoomed past this one's. Each is as large as `photoSizePx`, and a region covers the whole of it.
      */
@@ -64,6 +65,7 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
         public readonly ?string $source = null,
         public readonly ?BlanksMockupsListResponsePlacementsItemViewsItemSourceWindowMm $sourceWindowMm = null,
         public readonly ?bool $takesDye = null,
+        public readonly ?bool $turned = null,
         public readonly ?BlanksMockupsListResponsePlacementsItemViewsItemUvPassUrls $uvPassUrls = null,
         public readonly ?BlanksMockupsListResponsePlacementsItemViewsItemZoomTier $zoomTier = null,
     ) {}
@@ -110,6 +112,7 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
             source: array_key_exists('source', $data) ? Decode::string($data['source'], $path . '.source') : null,
             sourceWindowMm: array_key_exists('sourceWindowMm', $data) ? BlanksMockupsListResponsePlacementsItemViewsItemSourceWindowMm::fromArray(Decode::object($data['sourceWindowMm'], $path . '.sourceWindowMm'), $path . '.sourceWindowMm') : null,
             takesDye: array_key_exists('takesDye', $data) ? Decode::bool($data['takesDye'], $path . '.takesDye') : null,
+            turned: array_key_exists('turned', $data) ? Decode::bool($data['turned'], $path . '.turned') : null,
             uvPassUrls: array_key_exists('uvPassUrls', $data) ? BlanksMockupsListResponsePlacementsItemViewsItemUvPassUrls::fromArray(Decode::object($data['uvPassUrls'], $path . '.uvPassUrls'), $path . '.uvPassUrls') : null,
             zoomTier: array_key_exists('zoomTier', $data) ? BlanksMockupsListResponsePlacementsItemViewsItemZoomTier::fromArray(Decode::object($data['zoomTier'], $path . '.zoomTier'), $path . '.zoomTier') : null,
         );
@@ -180,6 +183,9 @@ final class BlanksMockupsListResponsePlacementsItemViewsItem implements Model
         }
         if ($this->takesDye !== null) {
             $data['takesDye'] = $this->takesDye;
+        }
+        if ($this->turned !== null) {
+            $data['turned'] = $this->turned;
         }
         if ($this->uvPassUrls !== null) {
             $data['uvPassUrls'] = Encode::model($this->uvPassUrls);

@@ -27,6 +27,7 @@ final class PrintshopCatalogueProductsListResponse implements Model
      * @param bool $searchComplete False when a search stopped before the end of the catalogue it searches, so `total` counts the matches among the products it read only. True with no search.
      * @param float|null $searchedProducts How many products an incomplete search read, from the first; null when the search was complete or there was none.
      * @param float|null $total How many products answer the query (the category and the search), across every page; null when the partner did not say.
+     * @param list<PrintshopCatalogueProductsListResponseUnreadCategoriesItem> $unreadCategories The printshop's categories that could not be read this time, so none of their products is listed or counted; empty when every one was.
      */
     public function __construct(
         public readonly ?float $catalogueTotal,
@@ -34,6 +35,7 @@ final class PrintshopCatalogueProductsListResponse implements Model
         public readonly bool $searchComplete,
         public readonly ?float $searchedProducts,
         public readonly ?float $total,
+        public readonly array $unreadCategories,
     ) {}
 
     /**
@@ -68,6 +70,11 @@ final class PrintshopCatalogueProductsListResponse implements Model
                 $path . '.total',
                 static fn(mixed $v, string $p): float => Decode::float($v, $p),
             ),
+            unreadCategories: Decode::list(
+                Decode::required($data, 'unreadCategories', $path),
+                $path . '.unreadCategories',
+                static fn(mixed $v, string $p): PrintshopCatalogueProductsListResponseUnreadCategoriesItem => PrintshopCatalogueProductsListResponseUnreadCategoriesItem::fromArray(Decode::object($v, $p), $p),
+            ),
         );
         $model->decoded = $data;
         return $model;
@@ -95,6 +102,10 @@ final class PrintshopCatalogueProductsListResponse implements Model
         $data['searchComplete'] = $this->searchComplete;
         $data['searchedProducts'] = $this->searchedProducts;
         $data['total'] = $this->total;
+        $data['unreadCategories'] = array_map(
+            static fn(PrintshopCatalogueProductsListResponseUnreadCategoriesItem $v): mixed => Encode::model($v),
+            $this->unreadCategories,
+        );
         return $data;
     }
 }

@@ -157,6 +157,8 @@ final class PixelConversationGetResponseConversationCardsValueTool
 
     public const DISCARD_SCENE_COMPOSITION = 'discard_scene_composition';
 
+    public const REPLACE_SCENE_PHOTO = 'replace_scene_photo';
+
     public const UPDATE_CREDIT_CONFIRMATION = 'update_credit_confirmation';
 
     public const RESTORE_TEMPLATE_REVISION = 'restore_template_revision';
@@ -319,6 +321,10 @@ final class PixelConversationGetResponseConversationCardsValueTool
 
     public const SET_STORE_ATTRIBUTE_QUERY_NAME = 'set_store_attribute_query_name';
 
+    public const SET_STORE_ATTRIBUTE_BLANK_OPTION = 'set_store_attribute_blank_option';
+
+    public const SET_STORE_ATTRIBUTE_TERM_ORDER = 'set_store_attribute_term_order';
+
     public const CREATE_STORE_CATEGORY = 'create_store_category';
 
     public const UPDATE_STORE_CATEGORY = 'update_store_category';
@@ -342,6 +348,8 @@ final class PixelConversationGetResponseConversationCardsValueTool
     public const SET_STORE_VARIATION_SETUP = 'set_store_variation_setup';
 
     public const SET_STORE_PRODUCT_FORM = 'set_store_product_form';
+
+    public const SET_STORE_PRODUCT_VALUES = 'set_store_product_values';
 
     public const SET_STORE_PRODUCT_VALUE_CARDS = 'set_store_product_value_cards';
 
@@ -439,6 +447,7 @@ final class PixelConversationGetResponseConversationCardsValueTool
         self::COMPOSE_SCENE,
         self::KEEP_SCENE_CANDIDATE,
         self::DISCARD_SCENE_COMPOSITION,
+        self::REPLACE_SCENE_PHOTO,
         self::UPDATE_CREDIT_CONFIRMATION,
         self::RESTORE_TEMPLATE_REVISION,
         self::DELETE_TEMPLATE,
@@ -520,6 +529,8 @@ final class PixelConversationGetResponseConversationCardsValueTool
         self::UPDATE_STORE_ATTRIBUTE_TERM,
         self::DELETE_STORE_ATTRIBUTE_TERM,
         self::SET_STORE_ATTRIBUTE_QUERY_NAME,
+        self::SET_STORE_ATTRIBUTE_BLANK_OPTION,
+        self::SET_STORE_ATTRIBUTE_TERM_ORDER,
         self::CREATE_STORE_CATEGORY,
         self::UPDATE_STORE_CATEGORY,
         self::DELETE_STORE_CATEGORY,
@@ -532,6 +543,7 @@ final class PixelConversationGetResponseConversationCardsValueTool
         self::SET_STORE_VARIATION_PRINT_SIZE,
         self::SET_STORE_VARIATION_SETUP,
         self::SET_STORE_PRODUCT_FORM,
+        self::SET_STORE_PRODUCT_VALUES,
         self::SET_STORE_PRODUCT_VALUE_CARDS,
         self::UPDATE_STORE_PRICING_SETTINGS,
         self::UPDATE_STORE_SETTINGS,

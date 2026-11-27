@@ -26,8 +26,13 @@ use UnexpectedValueException;
  */
 final class Arguments
 {
-    /** Text tried for a string parameter whose schema gives no value, until one fits its pattern. */
-    private const STRING_GUESSES = ['example', '1', '1.0.0', '1:1', 'abc-1', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'];
+    /**
+     * Text tried for a string parameter whose schema gives no value, until one
+     * fits its pattern. The last is a value set's id (`vs_` and 24 hex
+     * digits), which the reference's `valueSet` query takes and names no
+     * example of.
+     */
+    private const STRING_GUESSES = ['example', '1', '1.0.0', '1:1', 'abc-1', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'vs_000000000000000000000000'];
 
     /**
      * The resource method each operation is sent by.

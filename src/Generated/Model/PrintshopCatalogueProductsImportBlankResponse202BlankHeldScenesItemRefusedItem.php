@@ -22,15 +22,18 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemR
     private ?array $decoded = null;
 
     /**
-     * @param string $refusal The rule that refuses it: `shape_outside_grip` for a product of another kind or a size the grip does not close round, `no_product_model` for a row with no product model.
+     * @param string $refusal The rule that refuses it: `part_colour_not_shown` for a product with a part of a colour of its own, such as a black inside, which the scene's photo, dyed whole, cannot show.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemRefusal}.
      * @param array<string, string> $row The row: its values of the options the blank's product changes with (`modelVariesBy`). Empty for a blank with one product.
      * @param list<string> $variantRefs The refs of the variants with the row's values, of those the scene is of: the ones with no photo on it.
+     * @param string|null $part The part a `part_colour_not_shown` row is refused by, such as `inside` or `handle`.
+     *     Values: {@see \Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemRefusedItemPart}.
      */
     public function __construct(
         public readonly string $refusal,
         public readonly array $row,
         public readonly array $variantRefs,
+        public readonly ?string $part = null,
     ) {}
 
     /**
@@ -55,6 +58,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemR
                 $path . '.variantRefs',
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ),
+            part: array_key_exists('part', $data) ? Decode::string($data['part'], $path . '.part') : null,
         );
         $model->decoded = $data;
         return $model;
@@ -77,6 +81,9 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemR
         $data['refusal'] = $this->refusal;
         $data['row'] = Encode::object($this->row);
         $data['variantRefs'] = $this->variantRefs;
+        if ($this->part !== null) {
+            $data['part'] = $this->part;
+        }
         return $data;
     }
 }

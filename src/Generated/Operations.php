@@ -12,7 +12,7 @@ use Pixonaut\Sdk\Http\Catalogue;
 use Pixonaut\Sdk\Http\Operation;
 
 /**
- * The operations of the API 14.4.0 spec, as the client sends them.
+ * The operations of the API 14.11.0 spec, as the client sends them.
  */
 final class Operations
 {
@@ -1588,6 +1588,26 @@ final class Operations
                 method: 'POST',
                 path: '/v1/templates/{id}/print-size',
                 credentials: [Credential::PublishableKey, Credential::SecretKey, Credential::IntegrationKey, Credential::ShareLink],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
+                id: 'templates.valueSets.create',
+                method: 'POST',
+                path: '/v1/templates/{id}/value-sets',
+                credentials: [Credential::SecretKey, Credential::IntegrationKey],
+                anonymous: false,
+                idempotent: false,
+                accept: 'application/json',
+                sensitive: false,
+            ),
+            new Operation(
+                id: 'templates.valueSets.get',
+                method: 'GET',
+                path: '/v1/templates/{id}/value-sets/{valueSetId}',
+                credentials: [Credential::SecretKey, Credential::IntegrationKey],
                 anonymous: false,
                 idempotent: false,
                 accept: 'application/json',

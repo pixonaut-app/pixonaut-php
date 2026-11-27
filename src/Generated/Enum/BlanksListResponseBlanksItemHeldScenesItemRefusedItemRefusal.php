@@ -7,7 +7,7 @@ declare(strict_types=1);
 namespace Pixonaut\Sdk\Generated\Enum;
 
 /**
- * The rule that refuses it: `shape_outside_grip` for a product of another kind or a size the grip does not close round, `no_product_model` for a row with no product model.
+ * The rule that refuses it: `part_colour_not_shown` for a product with a part of a colour of its own, such as a black inside, which the scene's photo, dyed whole, cannot show.
  *
  * The values this release knows. The field is a string, and the API may answer a value added after this release.
  *
@@ -29,6 +29,8 @@ final class BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal
 
     public const SHAPE_OUTSIDE_GRIP = 'shape_outside_grip';
 
+    public const PART_COLOUR_NOT_SHOWN = 'part_colour_not_shown';
+
     /**
      * Every value this release knows.
      */
@@ -40,5 +42,6 @@ final class BlanksListResponseBlanksItemHeldScenesItemRefusedItemRefusal
         self::ANGLE_UNSUPPORTED,
         self::NO_DRAWER,
         self::SHAPE_OUTSIDE_GRIP,
+        self::PART_COLOUR_NOT_SHOWN,
     ];
 }
