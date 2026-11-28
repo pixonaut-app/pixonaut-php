@@ -22,7 +22,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
     private ?array $decoded = null;
 
     /**
-     * @param PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFramedSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant $model What the product is, by kind.
+     * @param PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFramedSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant $model What the product is, by kind.
      * @param array<string, string> $row A value for each `modelVariesBy` option, by option name; {} for none.
      * @param list<string>|null $fromPrintshop The model's fields its printshop's data gave, each named as a measure names it (`depthMm`, `parts.frame.depthMm`). Omitted, none.
      */

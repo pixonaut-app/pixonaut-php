@@ -22,7 +22,7 @@ final class BlanksGetResponseProductModelsItem implements Model
     private ?array $decoded = null;
 
     /**
-     * @param BlanksGetResponseProductModelsItemModelCanvas|BlanksGetResponseProductModelsItemModelCylinder|BlanksGetResponseProductModelsItemModelFlatSheet|BlanksGetResponseProductModelsItemModelFramedSheet|BlanksGetResponseProductModelsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant $model What the product is, by kind.
+     * @param BlanksGetResponseProductModelsItemModelBook|BlanksGetResponseProductModelsItemModelCanvas|BlanksGetResponseProductModelsItemModelCylinder|BlanksGetResponseProductModelsItemModelFlatSheet|BlanksGetResponseProductModelsItemModelFramedSheet|BlanksGetResponseProductModelsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant $model What the product is, by kind.
      * @param array<string, string> $row A value for each `modelVariesBy` option, by option name; {} for none.
      * @param list<string>|null $fromPrintshop The model's fields its printshop's data gave, each named as a measure names it (`depthMm`, `parts.frame.depthMm`). Omitted, none.
      */

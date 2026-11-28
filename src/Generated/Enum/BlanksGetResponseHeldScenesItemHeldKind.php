@@ -23,8 +23,10 @@ final class BlanksGetResponseHeldScenesItemHeldKind
 
     public const GARMENT_CUT = 'garment-cut';
 
+    public const BOOK = 'book';
+
     /**
      * Every value this release knows.
      */
-    public const KNOWN = [self::FLAT_SHEET, self::FRAMED_SHEET, self::CANVAS, self::CYLINDER, self::GARMENT_CUT];
+    public const KNOWN = [self::FLAT_SHEET, self::FRAMED_SHEET, self::CANVAS, self::CYLINDER, self::GARMENT_CUT, self::BOOK];
 }

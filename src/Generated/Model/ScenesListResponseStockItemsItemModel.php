@@ -21,7 +21,7 @@ final class ScenesListResponseStockItemsItemModel
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return ScenesListResponseStockItemsItemModelCanvas|ScenesListResponseStockItemsItemModelCylinder|ScenesListResponseStockItemsItemModelFlatSheet|ScenesListResponseStockItemsItemModelFramedSheet|ScenesListResponseStockItemsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant
+     * @return ScenesListResponseStockItemsItemModelBook|ScenesListResponseStockItemsItemModelCanvas|ScenesListResponseStockItemsItemModelCylinder|ScenesListResponseStockItemsItemModelFlatSheet|ScenesListResponseStockItemsItemModelFramedSheet|ScenesListResponseStockItemsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
@@ -31,6 +31,11 @@ final class ScenesListResponseStockItemsItemModel
             $data,
             $path,
             [
+                [
+                    static fn(mixed $v, string $p): ScenesListResponseStockItemsItemModelBook => ScenesListResponseStockItemsItemModelBook::fromArray(Decode::object($v, $p), $p),
+                    1007,
+                    ['kind' => 'book'],
+                ],
                 [
                     static fn(mixed $v, string $p): ScenesListResponseStockItemsItemModelCanvas => ScenesListResponseStockItemsItemModelCanvas::fromArray(Decode::object($v, $p), $p),
                     1006,

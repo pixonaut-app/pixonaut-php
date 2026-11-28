@@ -21,7 +21,7 @@ final class BlanksListResponseBlanksItemProductModelsItemModel
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return BlanksListResponseBlanksItemProductModelsItemModelCanvas|BlanksListResponseBlanksItemProductModelsItemModelCylinder|BlanksListResponseBlanksItemProductModelsItemModelFlatSheet|BlanksListResponseBlanksItemProductModelsItemModelFramedSheet|BlanksListResponseBlanksItemProductModelsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant
+     * @return BlanksListResponseBlanksItemProductModelsItemModelBook|BlanksListResponseBlanksItemProductModelsItemModelCanvas|BlanksListResponseBlanksItemProductModelsItemModelCylinder|BlanksListResponseBlanksItemProductModelsItemModelFlatSheet|BlanksListResponseBlanksItemProductModelsItemModelFramedSheet|BlanksListResponseBlanksItemProductModelsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
@@ -31,6 +31,11 @@ final class BlanksListResponseBlanksItemProductModelsItemModel
             $data,
             $path,
             [
+                [
+                    static fn(mixed $v, string $p): BlanksListResponseBlanksItemProductModelsItemModelBook => BlanksListResponseBlanksItemProductModelsItemModelBook::fromArray(Decode::object($v, $p), $p),
+                    1007,
+                    ['kind' => 'book'],
+                ],
                 [
                     static fn(mixed $v, string $p): BlanksListResponseBlanksItemProductModelsItemModelCanvas => BlanksListResponseBlanksItemProductModelsItemModelCanvas::fromArray(Decode::object($v, $p), $p),
                     1006,
