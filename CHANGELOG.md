@@ -1,5 +1,16 @@
 # Changelog
 
+## [34.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v33.1.0...v34.0.0) (2026-11-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* the designer link request and read models gain a `valueSet` constructor parameter ahead of `variantRow`, `variants` and `views`, so a positional call past it moves.
+
+### Features
+
+* target the published Pixonaut API 15.1.0 ([#108](https://github.com/pixonaut-app/pixonaut-php/issues/108)) ([e206a02](https://github.com/pixonaut-app/pixonaut-php/commit/e206a0275b53401317a9067edfff7040a5a5cbf6))
+
 ## [33.1.0](https://github.com/pixonaut-app/pixonaut-php/compare/v33.0.0...v33.1.0) (2026-11-28)
 
 Targets the Pixonaut API 15.0.1.
