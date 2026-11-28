@@ -30,7 +30,7 @@ final class ShareLinksUpdateRequest implements Model
      * @param string|null $initialView The view shown first; absent, the side's first with a photo.
      * @param string|null $layout How every side's form lays out its steps: `page`, every step on one page, or `steps`, one step at a time. Absent, each side's form follows its template's own `form.layout`, and is a page when the template names none.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ShareLinksUpdateRequestLayout}.
-     * @param ShareLinksUpdateRequestLinkedPlacements|null $linkedPlacements Which of the sides' placements one design drives, such as a sweater's sleeves: a preset, or groups of the sides' placements, a group with a repeat of its own where it repeats apart from the link. The sides of one group print one template. Absent, the groups the blank suggests whose sides print one template; the link keeps the groups it was made with.
+     * @param ShareLinksUpdateRequestLinkedPlacements|null $linkedPlacements Which of the sides' placements one design drives, such as a sweater's sleeves: a preset, or groups of the sides' placements, a group with a repeat of its own where it repeats apart from the link. The sides of one group print one template, with one `valueSet` or none. Absent, the groups the blank suggests whose sides print one template with one value set; the link keeps the groups it was made with.
      * @param string|null|Omitted $locale The language a designer link's page is shown in; null for the workspace's default. An address copied before that names a language (`?lang=`) keeps showing it: copy the link's `url` again.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\ShareLinksUpdateRequestLocale}.
      * @param list<ShareLinksUpdateRequestMockupsItem>|null $mockups The store's own product photos the design is shown on, in place of the blank's views.
@@ -48,6 +48,7 @@ final class ShareLinksUpdateRequest implements Model
      * @param list<ShareLinksUpdateRequestSidesItem>|null $sides Several sides of one item, a front and a back, each its own template and placement, designed one after the other; then the one-side fields go on each side instead.
      * @param string|null|Omitted $state What a designer link carries back to its `returnUrl`; null removes it. Setting one makes the link one shopper's visit again: it works for 24 hours from the change.
      * @param string|null $templateId A designer link's template, by base id: the one a link with one side opens, and a side naming none. Sent with what the page shows; absent, the link keeps its template.
+     * @param string|null $valueSet A value set of the side's template, by the id `POST /v1/templates/{id}/value-sets` answered: the hosted designer reads the template with its values written in as its layers' own, and the side's proofs and designs record it as their `valueSetId`. One the template holds no set by is refused `value_set_not_found`. Absent, the template's own values.
      * @param array<string, string>|null $variantRow The size the side sells, as a value of each option its blank's print areas change with (`{"Size": "XL"}`): its proofs and designs are made at that size, and a request naming another is refused. Only on a blank whose print areas change with its size; absent, the shopper's request names the size.
      * @param list<string>|null $variants The blank's variants offered, by ref; empty or absent, all.
      * @param list<string>|null $views The blank's views the side is shown in; empty or absent, all.
@@ -76,6 +77,7 @@ final class ShareLinksUpdateRequest implements Model
         public readonly ?array $sides = null,
         public readonly string|null|Omitted $state = Omitted::Field,
         public readonly ?string $templateId = null,
+        public readonly ?string $valueSet = null,
         public readonly ?array $variantRow = null,
         public readonly ?array $variants = null,
         public readonly ?array $views = null,
@@ -151,6 +153,7 @@ final class ShareLinksUpdateRequest implements Model
                 static fn(mixed $v, string $p): string => Decode::string($v, $p),
             ) : Omitted::Field,
             templateId: array_key_exists('templateId', $data) ? Decode::string($data['templateId'], $path . '.templateId') : null,
+            valueSet: array_key_exists('valueSet', $data) ? Decode::string($data['valueSet'], $path . '.valueSet') : null,
             variantRow: array_key_exists('variantRow', $data) ? Decode::map(
                 $data['variantRow'],
                 $path . '.variantRow',
@@ -262,6 +265,9 @@ final class ShareLinksUpdateRequest implements Model
         }
         if ($this->templateId !== null) {
             $data['templateId'] = $this->templateId;
+        }
+        if ($this->valueSet !== null) {
+            $data['valueSet'] = $this->valueSet;
         }
         if ($this->variantRow !== null) {
             $data['variantRow'] = Encode::object($this->variantRow);

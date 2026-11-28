@@ -12,7 +12,7 @@ use Pixonaut\Sdk\Model\Encode;
 use Pixonaut\Sdk\Model\Model;
 
 /**
- * Which of the sides' placements one design drives, such as a sweater's sleeves: a preset, or groups of the sides' placements, a group with a repeat of its own where it repeats apart from the link. The sides of one group print one template. Absent, the groups the blank suggests whose sides print one template; the link keeps the groups it was made with.
+ * Which of the sides' placements one design drives, such as a sweater's sleeves: a preset, or groups of the sides' placements, a group with a repeat of its own where it repeats apart from the link. The sides of one group print one template, with one `valueSet` or none. Absent, the groups the blank suggests whose sides print one template with one value set; the link keeps the groups it was made with.
  *
  * Schema: `GET /v1/share-links/{id}/designer answer 200: $.linkedPlacements`.
  */
