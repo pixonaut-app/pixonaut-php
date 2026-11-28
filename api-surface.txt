@@ -946,6 +946,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponseGenerationDecision::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseGenerationDecision::NONE const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseGenerationDecision::OPEN const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind::BOOK const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseHeldScenesItemHeldKind::FLAT_SHEET const
@@ -1036,6 +1037,10 @@ Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFrom
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayoutAngle::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayoutAngle::THREE_QUARTER const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponsePlacementsItemViewsItemUvPassesFromFlatLayoutAngle::TOP const
+final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelBookBoundOn
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelBookBoundOn::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelBookBoundOn::LEFT const
+Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelBookBoundOn::RIGHT const
 final class Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelCanvasEdge
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelCanvasEdge::COLOUR const
 Pixonaut\Sdk\Generated\Enum\BlanksGetResponseProductModelsItemModelCanvasEdge::KNOWN const
@@ -1236,6 +1241,7 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemGenerationDecision::KNOW
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemGenerationDecision::NONE const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemGenerationDecision::OPEN const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind::BOOK const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemHeldScenesItemHeldKind::FLAT_SHEET const
@@ -1326,6 +1332,10 @@ Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemU
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::KNOWN const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::THREE_QUARTER const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::TOP const
+final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelBookBoundOn
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelBookBoundOn::KNOWN const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelBookBoundOn::LEFT const
+Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelBookBoundOn::RIGHT const
 final class Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelCanvasEdge
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelCanvasEdge::COLOUR const
 Pixonaut\Sdk\Generated\Enum\BlanksListResponseBlanksItemProductModelsItemModelCanvasEdge::KNOWN const
@@ -5672,6 +5682,7 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankGenerationDecision::NONE const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankGenerationDecision::OPEN const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind::BOOK const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankHeldScenesItemHeldKind::FLAT_SHEET const
@@ -5762,6 +5773,10 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::THREE_QUARTER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::TOP const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBookBoundOn
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBookBoundOn::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBookBoundOn::LEFT const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBookBoundOn::RIGHT const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvasEdge
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvasEdge::COLOUR const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvasEdge::KNOWN const
@@ -5976,6 +5991,7 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankGenerationDecision::NONE const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankGenerationDecision::OPEN const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind::BOOK const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankHeldScenesItemHeldKind::FLAT_SHEET const
@@ -6066,6 +6082,10 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202Blan
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::KNOWN const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::THREE_QUARTER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankPlacementsItemViewsItemUvPassesFromFlatLayoutAngle::TOP const
+final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBookBoundOn
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBookBoundOn::KNOWN const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBookBoundOn::LEFT const
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBookBoundOn::RIGHT const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvasEdge
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvasEdge::COLOUR const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvasEdge::KNOWN const
@@ -6264,6 +6284,7 @@ Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202JobS
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202JobState::RUNNING const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsImportBlankResponse202JobState::SUCCEEDED const
 final class Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind
+Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind::BOOK const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\PrintshopCatalogueProductsListResponseProductsItemProductKind::FLAT_SHEET const
@@ -6678,6 +6699,7 @@ Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemAccep
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemAcceptsItem::STANDS const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemAcceptsItem::WORN const
 final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemKind
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemKind::BOOK const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemKind::FLAT_SHEET const
@@ -6696,6 +6718,7 @@ Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemRevie
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemPartsItem::MAT const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryAnchorsItemReviewedItemPartsItem::STRAW const
 final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind::BOOK const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseScenesItemGeometryHeldKind::FLAT_SHEET const
@@ -6747,12 +6770,17 @@ Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemFamily::FLAT const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemFamily::KNOWN const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemFamily::RIGID const
 final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::BOOK const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::CANVAS const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::CYLINDER const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::FLAT_SHEET const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::FRAMED_SHEET const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::GARMENT_CUT const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemKind::KNOWN const
+final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelBookBoundOn
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelBookBoundOn::KNOWN const
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelBookBoundOn::LEFT const
+Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelBookBoundOn::RIGHT const
 final class Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelCanvasEdge
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelCanvasEdge::COLOUR const
 Pixonaut\Sdk\Generated\Enum\ScenesListResponseStockItemsItemModelCanvasEdge::KNOWN const
@@ -12687,6 +12715,18 @@ Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::raw(): array
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModel
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook::$boardOverhangMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook::$boundOn readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook::$foldMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook::$kind readonly string
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook::$spineMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook::__construct(float $boardOverhangMm, string $boundOn, float $foldMm, float $heightMm, string $kind, float $spineMm, float $widthMm)
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook static
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelBook::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::$depthMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksGetResponseProductModelsItemModelCanvas::$edge readonly string
@@ -13539,6 +13579,18 @@ Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::raw(
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModel
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook::$boardOverhangMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook::$boundOn readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook::$foldMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook::$kind readonly string
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook::$spineMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook::__construct(float $boardOverhangMm, string $boundOn, float $foldMm, float $heightMm, string $kind, float $spineMm, float $widthMm)
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook static
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook::raw(): array
+Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelBook::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::$depthMm readonly float
 Pixonaut\Sdk\Generated\Model\BlanksListResponseBlanksItemProductModelsItemModelCanvas::$edge readonly string
@@ -26513,6 +26565,18 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModel
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook::$boardOverhangMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook::$boundOn readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook::$foldMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook::$kind readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook::$spineMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook::__construct(float $boardOverhangMm, string $boundOn, float $foldMm, float $heightMm, string $kind, float $spineMm, float $widthMm)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelBook::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::$depthMm readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse200BlankProductModelsItemModelCanvas::$edge readonly string
@@ -27379,6 +27443,18 @@ Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202Bla
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModel
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook::$boardOverhangMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook::$boundOn readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook::$foldMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook::$kind readonly string
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook::$spineMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook::__construct(float $boardOverhangMm, string $boundOn, float $foldMm, float $heightMm, string $kind, float $spineMm, float $widthMm)
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook static
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook::raw(): array
+Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::$depthMm readonly float
 Pixonaut\Sdk\Generated\Model\PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::$edge readonly string
@@ -35379,6 +35455,18 @@ Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemAreasItem::raw(): a
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemAreasItem::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModel
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModel::decode(mixed $data, string $path = '$'): Pixonaut\Sdk\Model\Model static
+final class Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook implements Pixonaut\Sdk\Model\Model
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook::$boardOverhangMm readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook::$boundOn readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook::$foldMm readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook::$heightMm readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook::$kind readonly string
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook::$spineMm readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook::$widthMm readonly float
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook::__construct(float $boardOverhangMm, string $boundOn, float $foldMm, float $heightMm, string $kind, float $spineMm, float $widthMm)
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook::fromArray(array $data, string $path = '$'): Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook static
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook::raw(): array
+Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelBook::toArray(): array
 final class Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas implements Pixonaut\Sdk\Model\Model
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::$depthMm readonly float
 Pixonaut\Sdk\Generated\Model\ScenesListResponseStockItemsItemModelCanvas::$edge readonly string

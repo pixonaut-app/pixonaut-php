@@ -21,7 +21,7 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
      *
      * @param string $path Where the value is in the document, for the error.
      *
-     * @return PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFramedSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant
+     * @return PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCylinder|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFlatSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelFramedSheet|PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelGarmentCut|\Pixonaut\Sdk\Model\UnknownVariant
      *
      * @throws UnexpectedResponse When no variant matches, or a `oneOf` matches two.
      */
@@ -31,6 +31,11 @@ final class PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsIt
             $data,
             $path,
             [
+                [
+                    static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook => PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelBook::fromArray(Decode::object($v, $p), $p),
+                    1007,
+                    ['kind' => 'book'],
+                ],
                 [
                     static fn(mixed $v, string $p): PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas => PrintshopCatalogueProductsImportBlankResponse202BlankProductModelsItemModelCanvas::fromArray(Decode::object($v, $p), $p),
                     1006,
