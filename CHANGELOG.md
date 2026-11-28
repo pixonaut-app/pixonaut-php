@@ -1,5 +1,17 @@
 # Changelog
 
+## [35.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v34.0.0...v35.0.0) (2026-11-28)
+
+Targets the Pixonaut API 16.0.0.
+
+### ⚠ BREAKING CHANGES
+
+* target the published Pixonaut API 16.0.0 ([#110](https://github.com/pixonaut-app/pixonaut-php/issues/110))
+
+### Features
+
+* target the published Pixonaut API 16.0.0 ([#110](https://github.com/pixonaut-app/pixonaut-php/issues/110)) ([9c71f23](https://github.com/pixonaut-app/pixonaut-php/commit/9c71f233a9c90da060073c2ba977c712a69799fc))
+
 ## [34.0.0](https://github.com/pixonaut-app/pixonaut-php/compare/v33.1.0...v34.0.0) (2026-11-28)
 
 Targets the Pixonaut API 15.1.0.
