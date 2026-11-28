@@ -35,6 +35,7 @@ final class ShareLinksDesignerGetResponseSidesItem implements Model
      * @param int|null $selectedMockupIndex The photo that starts selected, by its place in mockups.
      * @param int|null $selectedPrintSizeIndex The size that starts selected, by its place in printSizes.
      * @param string|null $templateId The template's base id; the link's own when absent.
+     * @param string|null $valueSet A value set of the side's template, by the id `POST /v1/templates/{id}/value-sets` answered: the hosted designer reads the template with its values written in as its layers' own, and the side's proofs and designs record it as their `valueSetId`. One the template holds no set by is refused `value_set_not_found`. Absent, the template's own values.
      * @param array<string, string>|null $variantRow The size the side sells, as a value of each option its blank's print areas change with (`{"Size": "XL"}`): its proofs and designs are made at that size, and a request naming another is refused. Only on a blank whose print areas change with its size; absent, the shopper's request names the size.
      * @param list<string>|null $variants The blank's variants offered, by ref; empty or absent, all.
      * @param list<string>|null $views The blank's views the side is shown in; empty or absent, all.
@@ -53,6 +54,7 @@ final class ShareLinksDesignerGetResponseSidesItem implements Model
         public readonly ?int $selectedMockupIndex = null,
         public readonly ?int $selectedPrintSizeIndex = null,
         public readonly ?string $templateId = null,
+        public readonly ?string $valueSet = null,
         public readonly ?array $variantRow = null,
         public readonly ?array $variants = null,
         public readonly ?array $views = null,
@@ -90,6 +92,7 @@ final class ShareLinksDesignerGetResponseSidesItem implements Model
             selectedMockupIndex: array_key_exists('selectedMockupIndex', $data) ? Decode::int($data['selectedMockupIndex'], $path . '.selectedMockupIndex') : null,
             selectedPrintSizeIndex: array_key_exists('selectedPrintSizeIndex', $data) ? Decode::int($data['selectedPrintSizeIndex'], $path . '.selectedPrintSizeIndex') : null,
             templateId: array_key_exists('templateId', $data) ? Decode::string($data['templateId'], $path . '.templateId') : null,
+            valueSet: array_key_exists('valueSet', $data) ? Decode::string($data['valueSet'], $path . '.valueSet') : null,
             variantRow: array_key_exists('variantRow', $data) ? Decode::map(
                 $data['variantRow'],
                 $path . '.variantRow',
@@ -164,6 +167,9 @@ final class ShareLinksDesignerGetResponseSidesItem implements Model
         }
         if ($this->templateId !== null) {
             $data['templateId'] = $this->templateId;
+        }
+        if ($this->valueSet !== null) {
+            $data['valueSet'] = $this->valueSet;
         }
         if ($this->variantRow !== null) {
             $data['variantRow'] = Encode::object($this->variantRow);

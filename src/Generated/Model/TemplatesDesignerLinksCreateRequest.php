@@ -32,7 +32,7 @@ final class TemplatesDesignerLinksCreateRequest implements Model
      * @param string|null $initialView The view shown first; absent, the side's first with a photo.
      * @param string|null $layout How every side's form lays out its steps: `page`, every step on one page, or `steps`, one step at a time. Absent, each side's form follows its template's own `form.layout`, and is a page when the template names none.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\TemplatesDesignerLinksCreateRequestLayout}.
-     * @param TemplatesDesignerLinksCreateRequestLinkedPlacements|null $linkedPlacements Which of the sides' placements one design drives, such as a sweater's sleeves: a preset, or groups of the sides' placements, a group with a repeat of its own where it repeats apart from the link. The sides of one group print one template. Absent, the groups the blank suggests whose sides print one template; the link keeps the groups it was made with.
+     * @param TemplatesDesignerLinksCreateRequestLinkedPlacements|null $linkedPlacements Which of the sides' placements one design drives, such as a sweater's sleeves: a preset, or groups of the sides' placements, a group with a repeat of its own where it repeats apart from the link. The sides of one group print one template, with one `valueSet` or none. Absent, the groups the blank suggests whose sides print one template with one value set; the link keeps the groups it was made with.
      * @param string|null $locale The language the page is shown in: one of `en`, `sv`, `de`, `fr`, `es`, `nl`, `da`, `nb`, `fi`. Absent, the page is shown in the workspace's default language. The link's `url` carries `?lang=<locale>` when it names one.
      *     Values: {@see \Pixonaut\Sdk\Generated\Enum\TemplatesDesignerLinksCreateRequestLocale}.
      * @param list<TemplatesDesignerLinksCreateRequestMockupsItem>|null $mockups The store's own product photos the design is shown on, in place of the blank's views.
@@ -49,6 +49,7 @@ final class TemplatesDesignerLinksCreateRequest implements Model
      * @param int|null $selectedPrintSizeIndex The size that starts selected, by its place in printSizes.
      * @param list<TemplatesDesignerLinksCreateRequestSidesItem>|null $sides Several sides of one item, a front and a back, each its own template and placement, designed one after the other; then the one-side fields go on each side instead.
      * @param string|null $state Carried back to `returnUrl` untouched, for the store to match the customer to its own session. Only with `returnUrl`.
+     * @param string|null $valueSet A value set of the side's template, by the id `POST /v1/templates/{id}/value-sets` answered: the hosted designer reads the template with its values written in as its layers' own, and the side's proofs and designs record it as their `valueSetId`. One the template holds no set by is refused `value_set_not_found`. Absent, the template's own values.
      * @param array<string, string>|null $variantRow The size the side sells, as a value of each option its blank's print areas change with (`{"Size": "XL"}`): its proofs and designs are made at that size, and a request naming another is refused. Only on a blank whose print areas change with its size; absent, the shopper's request names the size.
      * @param list<string>|null $variants The blank's variants offered, by ref; empty or absent, all.
      * @param list<string>|null $views The blank's views the side is shown in; empty or absent, all.
@@ -78,6 +79,7 @@ final class TemplatesDesignerLinksCreateRequest implements Model
         public readonly ?int $selectedPrintSizeIndex = null,
         public readonly ?array $sides = null,
         public readonly ?string $state = null,
+        public readonly ?string $valueSet = null,
         public readonly ?array $variantRow = null,
         public readonly ?array $variants = null,
         public readonly ?array $views = null,
@@ -130,6 +132,7 @@ final class TemplatesDesignerLinksCreateRequest implements Model
                 static fn(mixed $v, string $p): TemplatesDesignerLinksCreateRequestSidesItem => TemplatesDesignerLinksCreateRequestSidesItem::fromArray(Decode::object($v, $p), $p),
             ) : null,
             state: array_key_exists('state', $data) ? Decode::string($data['state'], $path . '.state') : null,
+            valueSet: array_key_exists('valueSet', $data) ? Decode::string($data['valueSet'], $path . '.valueSet') : null,
             variantRow: array_key_exists('variantRow', $data) ? Decode::map(
                 $data['variantRow'],
                 $path . '.variantRow',
@@ -244,6 +247,9 @@ final class TemplatesDesignerLinksCreateRequest implements Model
         }
         if ($this->state !== null) {
             $data['state'] = $this->state;
+        }
+        if ($this->valueSet !== null) {
+            $data['valueSet'] = $this->valueSet;
         }
         if ($this->variantRow !== null) {
             $data['variantRow'] = Encode::object($this->variantRow);
