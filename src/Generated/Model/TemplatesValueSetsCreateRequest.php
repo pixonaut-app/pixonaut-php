@@ -22,7 +22,7 @@ final class TemplatesValueSetsCreateRequest implements Model
     private ?array $decoded = null;
 
     /**
-     * @param array<string, array<string, mixed>> $values Values for the template's layers, by layer id and then prop, as a design's values are: a text's `content`, an image's `src` (an asset id), a colour, a layer's `opacity`, or the artwork's own under its reserved key. Any prop the layer has, offered or not.
+     * @param array<string, array<string, mixed>> $values Values for the template's layers, by layer id and then prop, as a design's values are: a text's `content`, an image's `src` (an asset id), a colour, a layer's `opacity`. The template's background is not a layer: its values go under `$artwork`, as the template's `background` holds them: `imageAssetId` (a library asset id) for a picture background, `color` for a colour one, and a picture's `fit`, `crop` and `tileScale` where the template's background has them, e.g. `{"$artwork": {"imageAssetId": "<asset id>"}}`. It cannot change which of the two the background is. Any prop the layer has, offered or not.
      */
     public function __construct(
         public readonly array $values,
